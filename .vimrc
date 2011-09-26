@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " File: .vimrc
 " Author: itchyny
-" Last Change: 2011/09/26 23:48:05.
+" Last Change: 2011/09/27 00:10:54.
 " --------------------------------------------------------------------------------------------------------------
 "
 "
@@ -129,9 +129,6 @@ Bundle 'TwitVim'
 " --------------------------------------------------------------------------------------------------------------
                                                                                           let mapleader=";"
 Bundle 'Shougo/vimshell'
-  function! Vimshell_Complete() " TODO
-    exec unite#sources#vimshell_history#start_complete(!0)
-  endfunction
   augroup Vimshell
     autocmd!
     let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
@@ -147,12 +144,12 @@ Bundle 'Shougo/vimshell'
     autocmd FileType vimshell inoremap <buffer> <C-j> <ESC><C-w>j
     autocmd FileType vimshell inoremap <buffer> <C-k> <ESC><C-w>k
     autocmd FileType vimshell inoremap <buffer> <C-l> <ESC><C-w>l
-    autocmd FileType vimshell inoremap <buffer> <expr><silent> <C-p> Vimshell_Complete()
+    autocmd FileType vimshell inoremap <buffer> <expr><silent> <C-p> unite#sources#vimshell_history#start_complete(!0)
     " <Up><Down>の設定では効かないので, エスケープ文字で設定してます.
-    autocmd FileType vimshell inoremap <buffer> <expr><silent> OA Vimshell_Complete()
-    autocmd FileType vimshell inoremap <buffer> <expr><silent> OB Vimshell_Complete()
-    autocmd FileType vimshell nnoremap <buffer> <expr><silent> OA Vimshell_Complete()
-    autocmd FileType vimshell nnoremap <buffer> <expr><silent> OB Vimshell_Complete()
+    autocmd FileType vimshell inoremap <buffer> <expr><silent> OA unite#sources#vimshell_history#start_complete(!0)
+    autocmd FileType vimshell inoremap <buffer> <expr><silent> OB unite#sources#vimshell_history#start_complete(!0)
+    autocmd FileType vimshell nnoremap <buffer> <expr><silent> OA unite#sources#vimshell_history#start_complete(!0)
+    autocmd FileType vimshell nnoremap <buffer> <expr><silent> OB unite#sources#vimshell_history#start_complete(!0)
   augroup END
   nnoremap <Leader><Leader>s :<C-u>VimShellTab<CR>
   nnoremap <Leader>s :<C-u>vnew<CR>:<C-u>VimShell<CR>
