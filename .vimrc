@@ -1,28 +1,23 @@
 " --------------------------------------------------------------------------------------------------------------
-" File: .vimrc
-" Author: itchyny
-" Last Change: 2011/09/27 00:10:54.
+" - * File: .vimrc
+" - * Author: itchyny
+" - * Last Change: 2011/09/27 09:32:16.
 " --------------------------------------------------------------------------------------------------------------
-"
-"
 
-" Initial accessory {{{
+" INITIALIZE {{{
+" --------------------------------------------------------------------------------------------------------------
 set nocompatible
 filetype off
 let s:ismac = has('mac') || system('uname') =~? 'Darwin'
-
-" Set augroup.
-augroup MyAutoCmd
-  autocmd!
-augroup END
 " }}}
 
 " VUNDLES {{{
 " Vundle {{{
 " --------------------------------------------------------------------------------------------------------------
-"   + Write setting for each bundles right after Bundle '~~~'
-"   + If vundle is not installed, execute below.
-"   +   :! git clone http://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+  " --| Write setting for each bundles right after Bundle '~~~'
+  " --| If vundle is not installed, execute below.
+  " --|   :! git clone http://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+  " --| After that, reboot Vim and execute BundleInstall!
 let $BUNDLE=$HOME."/.vim/bundle"
 set runtimepath+=~/.vim/bundle/vundle/
 call vundle#rc()
@@ -42,7 +37,10 @@ Bundle 'Shougo/neocomplcache'
   imap <expr><C-l> neocomplcache#sources#snippets_complete#expandable() ?
         \     "\<Plug>(neocomplcache_snippets_expand)" : "\<C-w>l"
 Bundle 'ujihisa/neco-look'
+  " --| Requirement: look commnad
 Bundle 'neco-ghc'
+  " --| Requirement: ghc-mod
+  " --|   $ cabal install ghc-mod
 " }}}
 
 " Unite ( "," ) {{{
@@ -53,6 +51,7 @@ Bundle 'Shougo/unite.vim'
   let g:unite_enable_start_insert=1
   noremap <C-p> :Unite buffer<CR>
   noremap <C-n> :Unite -buffer-name=file file<CR>
+  noremap <C-o> :Unite -buffer-name=file file<CR>
   noremap <C-z> :Unite file_mru<CR>
   nnoremap <Leader><Leader> :Unite file_mru<CR>
   augroup Unite
@@ -67,6 +66,9 @@ Bundle 'Shougo/unite.vim'
 Bundle 'unite-colorscheme'
 Bundle 'ujihisa/vim-ref'
 Bundle 'ujihisa/ref-hoogle'
+  " --| Requirement: hoogle
+  " --|   $ cabal install hoogle
+  " --|   $ hoogle data
   nnoremap <Leader>h :<C-u>Unite ref/hoogle<CR>
 " }}}
 
@@ -74,7 +76,7 @@ Bundle 'ujihisa/ref-hoogle'
 " --------------------------------------------------------------------------------------------------------------
                                                                                          let mapleader="\\"
 Bundle 'Shougo/vimproc'
-  " I use an easy script following, with setting of vimproc_dll_path.
+  " --| I use an easy script following, with setting of vimproc_dll_path.
   "
   "    #! /bin/sh
   "    cd ~/.vim/bundle/vimproc/
@@ -129,6 +131,7 @@ Bundle 'TwitVim'
 " --------------------------------------------------------------------------------------------------------------
                                                                                           let mapleader=";"
 Bundle 'Shougo/vimshell'
+  " --| Requirement: vimproc
   augroup Vimshell
     autocmd!
     let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
@@ -166,9 +169,11 @@ Bundle 'Shougo/vimshell'
 Bundle 'tpope/vim-surround'
 Bundle 't9md/vim-surround_custom_mapping'
 Bundle 'scrooloose/nerdcommenter'
+Bundle 'tComment'
 Bundle 'hrp/EnhancedCommentify'
   let g:EnhCommentifyBindInInsert='No'
 Bundle 'sjl/gundo.vim'
+  " --| Requirement: +python
   nnoremap <Leader>g :<C-u>GundoToggle<CR>
 Bundle 'Align'
 "Bundle 'msanders/snipmate.vim'
@@ -176,6 +181,7 @@ Bundle 'laughedelic/dotvim'
 "Bundle 'CSApprox'
 "Bundle 'errormarker.vim'
 Bundle 'mattn/calendar-vim'
+  autocmd FileType calendar nnoremap <silent> <buffer> <ESC><ESC> :<C-u>q<CR>
 Bundle 'autodate.vim'
   let g:autodate_format="%Y/%m/%d %H:%M:%S"
 Bundle 'smartword'
@@ -222,7 +228,8 @@ Bundle 'Wombat'
 
 " }}} VUNDLES
 
-" ENCODING / JAPANESE {{{
+" ENCODING {{{
+" --------------------------------------------------------------------------------------------------------------
 set encoding=utf-8
 set fenc=utf-8
 set fileencodings=utf-8,iso-2022-jp,cp932,euc-jp,default,latin
@@ -244,7 +251,7 @@ function! SetUTF8Xattr(file)
 endfunction
 " }}}
 
-" }}}
+" }}} ENCODING
 
 " APPERANCE {{{
 " --------------------------------------------------------------------------------------------------------------
@@ -366,6 +373,7 @@ augroup END
 " }}} FILE READING
 
 " EDIT {{{
+" --------------------------------------------------------------------------------------------------------------
 " Search {{{
 set wrapscan                " 最後まで検索したら先頭へ戻る
 set ignorecase              " 大文字小文字無視
@@ -383,7 +391,10 @@ set shiftwidth=2
 " }}}
 
 " Special keys (tab, backspace) {{{
-autocmd MyAutoCmd FileType * set textwidth=0   " No auto breking line
+augroup Textwidth
+  autocmd!
+  autocmd FileType * set textwidth=0   " No auto breking line
+augroup END
 set expandtab               " insert spaces with <Tab>
 set tabstop=2
 retab
@@ -395,7 +406,7 @@ set clipboard=unnamed
 set clipboard+=autoselect
 " }}}
 
-" }}}
+" }}} EDIT
 
 " UTILITY {{{
 " --------------------------------------------------------------------------------------------------------------
@@ -474,6 +485,7 @@ nnoremap \g :call TextEdit()<CR>
 " }}}
 
 " 新型戦闘力計測器 {{{
+" http://d.hatena.ne.jp/thinca/20091031/1257001194
 function! Scouter(file, ...)
   let pat = '^\s*$\|^\s*"'
   let lines = readfile(a:file)
@@ -505,7 +517,7 @@ set ttyfast
 set wildmode=list:longest   " コマンドライン補間をシェルっぽく
 " }}}
 
-" }}}
+" }}} OTHERS
 
 " KEY MAPPING {{{
 " --------------------------------------------------------------------------------------------------------------
@@ -532,6 +544,11 @@ inoremap <C-p> <ESC>:<C-u>set paste<CR>p:<C-u>set nopaste<CR>
 
 " remove spaces at the end of lines
 nnoremap ,<Space> ma:%s/  *$//<CR>`a<ESC><ESC>
+
+" selecting all
+nnoremap <C-a> gg<S-v><S-g>
+inoremap <C-a> gg<S-v><S-g>
+vnoremap <C-a> gg<S-v><S-g>
 " }}}
 
 " file {{{
@@ -577,7 +594,7 @@ inoremap <C-Left> <ESC>gT
 " assign arrow keys to page-(up|down)
 nnoremap <Down> <C-d>
 nnoremap <Up>  <C-u>
-nnoremap <SPACE> <C-f>
+"nnoremap <SPACE> <C-f>
 "nnoremap <S-SPACE> <C-b>
 
 " select last paste
@@ -587,60 +604,44 @@ nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
 autocmd FileType help nnoremap <silent> <buffer> <ESC><ESC> :<C-u>q<CR>
 " }}}
 
-" }}}
+" }}} KEY MAPPING
 
-
-
-
-" KEY MAPPINGS {{{
+" REFERENCE TO KEY MAPPING {{{
+" --------------------------------------------------------------------------------------------------------------
 " normal mode
-"      +===========+===========================+============+======================+====================+=========================+
-"      | mapleader |             \             |      ;     |        ,             | <S-                |    <C-                  |
-"      |           |  Outer world of Vim       |            |                      |                    |                         |
-"      +===========+===========================+============+======================+====================+=========================+
-"      |     a     |                           |            |                      |   -default         |                         |
-"      |     b     |  OpenBrowser              |            |   smartword-b        |   ?                |                         |
-"      |     c     |                           |            |                      |   -default         |                         |
-"      |     d     |                           |            |                      |   -default         |                         |
-"      |     e     |  QuickRun <i              |            |                      |   ?                |                         |
-"      |     f     |  VimFiler                 |            |                      |   ?                |                         |
-"      |     g     |                           |   Ghci     |   GundoToggle        |   -default         |                         |
-"      |     h     |                           |            |   Unite ref/hoogle   |   VimshellPop      |    <C-w>h               |
-"      |     i     |  GhciInfo                 |            |                      |   -default         |                         |
-"      |     j     |                           |            |                      |   -default         |    <C-w>j               |
-"      |     k     |                           |            |                      |   ?                |    <C-w>k               |
-"      |     l     |  GhciLoad                 |            |                      |   ?                |    <C-w>l               |
-"      |     m     |                           |            |                      |   ?                |                         |
-"      |     n     |                           |            |                      |   ?                |     Unite file          |
-"      |     o     |  QuickRun <i >output      |            |                      |   -default         |                         |
-"      |     p     |  PosttoTwitter            |   Python   |                      |   ?                |     Unite buffer        |
-"      |     q     |                           |            |                      |   ?                |                         |
-"      |     r     |  QuickRun                 |            |                      |   -default         |                         |
-"      |     s     |  OpenBrowser              |   VimShell |                      |   ?                |                         |
-"      |     t     |  GhciType                 |            |                      |   ?                |                         |
-"      |     u     |                           |            |                      |   ?                |     Unite               |
-"      |     v     |  CoqStart                 |            |                      |   -default         |                         |
-"      |     w     |                           |            |   smartword-w        |   ?                |                         |
-"      |     x     |                           |            |                      |   ?                |                         |
-"      |     y     |                           |            |                      |   ?                |                         |
-"      |     z     |                           |   zsh      |                      |   ?                |     Unite file_mru      |
-"      | <Leader>  |                           |            |   Unite file_mru     |   --------         |                         |
-"      |    .      |    .vimrc                 |   .zshrc   |                      |                    |                         |
-"      +===========+===========================+============+======================+====================+=========================+
-" }}}
-
-
-
-"set display+=lastline     " 画面最後の行をできる限り表示する。
-"  set noimdisable           " IME
-"  set iminsert=0 imsearch=0
-"  set noimcmdline
-"  "inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
-"  augroup InsModeAu
-"    autocmd!
-"    autocmd InsertEnter,CmdwinEnter * set noimdisable
-"    autocmd InsertLeave,CmdwinLeave * set imdisable
-"  augroup END
-"set fdm=indent
+" +===========+======================+=============+====================+=================+===================+
+" | mapleader |          \           |     ;       |         ,          |      <S-        |      <C-          |
+" |           |  Outer world of Vim  |  vimshell   |      utility       |                 |                   |
+" +===========+======================+=============+====================+=================+===================+
+" |     a     |                      |             |                    |   -default      |   gg<S-v><S-g>    |
+" |     b     |  OpenBrowser         |             |  smartword-b       |                 |   -default        |
+" |     c     |                      |             |                    |   -default      |                   |
+" |     d     |                      |             |                    |   -default      |                   |
+" |     e     |  QuickRun <i         |             |                    |                 |   zencoding       |
+" |     f     |  VimFiler            |             |                    |                 |   -default        |
+" |     g     |                      |  Ghci       |  GundoToggle       |   -default      |                   |
+" |     h     |                      |             |  Unite ref/hoogle  |   VimshellPop   |   <C-w>h          |
+" |     i     |  GhciInfo            |             |                    |   -default      |                   |
+" |     j     |                      |             |                    |   -default      |   <C-w>j          |
+" |     k     |                      |             |                    |                 |   <C-w>k          |
+" |     l     |  GhciLoad            |             |                    |                 |   <C-w>l          |
+" |     m     |                      |             |                    |                 |                   |
+" |     n     |                      |             |                    |                 |   Unite file      |
+" |     o     |  QuickRun <i >output |             |                    |   -default      |   Unite file      |
+" |     p     |  PosttoTwitter       |  Python     |                    |                 |   Unite buffer    |
+" |     q     |                      |             |                    |                 |   <C-w>(default)  |
+" |     r     |  QuickRun            |             |                    |   -default      |   -default        |
+" |     s     |  OpenBrowser         |  VimShell   |                    |                 |   :w<CR>          |
+" |     t     |  GhciType            |             |                    |                 |                   |
+" |     u     |                      |             |                    |                 |   Unite           |
+" |     v     |  CoqStart            |             |                    |   -default      |   -default        |
+" |     w     |                      |             |  smartword-w       |                 |   :q<CR>          |
+" |     x     |                      |             |                    |                 |                   |
+" |     y     |                      |             |                    |                 |                   |
+" |     z     |                      |  zsh        |                    |                 |   Unite file_mru  |
+" |<Leader>^2 |                      |             |  Unite file_mru    |   --------      |   -----           |
+" |    .      |    .vimrc            |  .zshrc     |                    |                 |                   |
+" +===========+======================+=============+====================+=================+===================+
+" }}} REFERENCE TO KEY MAPPING
 
 " vim: foldmethod=marker
