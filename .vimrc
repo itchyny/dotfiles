@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2011/09/28 09:12:01.
+" - * Last Change: 2011/10/02 22:53:32.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -14,11 +14,15 @@ let s:ismac = has('mac') || system('uname') =~? 'Darwin'
 " VUNDLES {{{
 " Vundle {{{
 " --------------------------------------------------------------------------------------------------------------
-  " --| Write setting for each bundles right after Bundle '~~~'
-  " --| If vundle is not installed, execute below.
-  " --|   :! git clone http://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
-  " --| After that, reboot Vim and execute BundleInstall!
 let $BUNDLE=$HOME."/.vim/bundle"
+let s:vundle_dir = $BUNDLE.'/vundle'
+function! s:init_vundle()
+  if !isdirectory(s:vundle_dir)
+    echo "initializing vundle\n"
+    silent exec '!git clone -q git://github.com/gmarik/vundle.git '.s:vundle_dir
+  endif
+endfunction
+call s:init_vundle()
 set runtimepath+=~/.vim/bundle/vundle/
 call vundle#rc()
 Bundle 'gmarik/vundle'
@@ -48,13 +52,12 @@ Bundle 'neco-ghc'
 " --------------------------------------------------------------------------------------------------------------
                                                                                          let mapleader=","
 Bundle 'Shougo/unite.vim'
-  nnoremap <C-u> :Unite<SPACE>
   let g:unite_enable_start_insert=1
-  noremap <C-p> :Unite buffer<CR>
-  noremap <C-n> :Unite -buffer-name=file file<CR>
-  noremap <C-o> :Unite -buffer-name=file file<CR>
-  noremap <C-z> :Unite file_mru<CR>
-"  nnoremap <Leader><Leader> :Unite file_mru<CR>
+  nnoremap <C-u> :Unite<SPACE>
+  nnoremap <C-p> :Unite buffer<CR>
+  nnoremap <C-n> :Unite -buffer-name=file file<CR>
+  nnoremap <C-o> :Unite -buffer-name=file file<CR>
+  nnoremap <C-z> :Unite file_mru<CR>
   augroup Unite
     autocmd!
     autocmd FileType unite nnoremap <silent> <buffer> <expr> <C-J> unite#do_action('split')
@@ -107,19 +110,22 @@ Bundle 'thinca/vim-quickrun'
   let g:quickrun_config.javascript = {'command' : 'node'}
   nnoremap <Leader>r :<C-u>QuickRun  <CR>
   nnoremap <Leader>e :<C-u>QuickRun <i <CR>
-  nnoremap <Leader>o :<C-u>QuickRun <i >output <CR>
-  autocmd FileType quickrun inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
-  autocmd FileType quickrun nnoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
-  autocmd FileType quickrun vnoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
+  nnoremap <Leader>o :<C-u>QuickRun <i >file:output<CR>
+  augroup QuickRun
+    autocmd!
+    autocmd FileType quickrun inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
+    autocmd FileType quickrun nnoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
+    autocmd FileType quickrun vnoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
+  augroup END
 Bundle 'Shougo/vimfiler'
   let g:vimfiler_as_default_explorer = 1
   nnoremap <Leader>f :<C-u>VimFiler<CR>
 Bundle 'eagletmt/ghci-vim'
   augroup Ghci
     autocmd!
-    autocmd Filetype haskell nnoremap <Leader>l :<C-u>GhciLoad<CR>
-    autocmd Filetype haskell nnoremap <Leader>i :<C-u>GhciInfo<CR>
-    autocmd Filetype haskell nnoremap <Leader>t :<C-u>GhciType<CR>
+    autocmd Filetype haskell nnoremap <Leader>l :GhciLoad<CR>
+    autocmd Filetype haskell nnoremap <Leader>i :GhciInfo<CR>
+    autocmd Filetype haskell nnoremap <Leader>t :GhciType<CR>
   augroup END
 Bundle 'eagletmt/coqtop-vim'
   nnoremap <Leader>v :<C-u>CoqStart<CR>
@@ -129,6 +135,7 @@ Bundle 'tyru/open-browser.vim'
   nmap <Leader>s <Plug>(openbrowser-search)
 Bundle 'TwitVim'
   nnoremap <Leader>p :<C-u>PosttoTwitter<CR>
+"  nnoremap <Leader>p :<C-u>!tweet<SPACE>
 " }}}
 
 " vimshell ( ";" ) {{{
@@ -220,12 +227,13 @@ Bundle 'coq-syntax'
 Bundle 'Coq-indent'
 Bundle 'rest.vim'
 " vim-rst-table: require vim_bridge (install with easy_install)
-Bundle 'nvie/vim-rst-tables'
+" Bundle 'nvie/vim-rst-tables'
 Bundle 'VST'
-Bundle 'indenthaskell.vim'
-Bundle 'syntaxhaskell.vim'
-Bundle 'Haskell-Conceal'
 Bundle 'syntaxm4.vim'
+Bundle 'syntaxhaskell.vim'
+"Bundle 'Haskell-Conceal'
+Bundle 'indenthaskell.vim'
+Bundle 'haskell.vim'
 " }}}
 
 " Colorscheme {{{
@@ -239,10 +247,11 @@ Bundle 'Wombat'
 " --------------------------------------------------------------------------------------------------------------
 set encoding=utf-8
 set fenc=utf-8
-set fileencodings=utf-8,iso-2022-jp,cp932,euc-jp,default,latin
-set formatoptions+=mM       " 日本語の行の連結時には空白を入力しない。
-" ☆や□や○の文字があってもカーソル位置がずれないようにする。
-" terminator, gnome-terminalを以下のコマンドに貼り替える(Ubuntu)
+set fileencodings=utf-8,euc-jp,sjis,jis,iso-2022-jp,cp932,latin
+set formatoptions+=mM       " 日本語の行の連結時には空白を入力しない
+" ☆や□や○の文字があってもカーソル位置がずれないようにする
+" ambiwidthの設定のみでは, 解決しない場合がある
+" Ubuntuでは, gnome-terminal, terminatorを以下のコマンドに貼り替えると解決する
 "   /bin/sh -c "VTE_CJK_WIDTH=1 terminator -m"
 "   /bin/sh -c "VTE_CJK_WIDTH=1 gnome-terminal --disable-factory"
 set ambiwidth=double
@@ -278,7 +287,7 @@ set showtabline=2           " always show tab
 " }}}
 
 " Status line {{{
-set ruler                   " show the cursor position (needless if you set 'statusline')
+set ruler                   " show the cursor position (needless if you set 'statusline' later)
 set laststatus=2            " ステータスラインを常に表示
 set statusline=%{expand('%:p:t')}\ %<\(%{expand('%:p:h')}\)%=\ %m%r%y%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}[%3l,%3c,%3p]
 " }}}
@@ -401,6 +410,7 @@ set shiftwidth=2
 augroup Textwidth
   autocmd!
   autocmd FileType * set textwidth=0   " No auto breking line
+  autocmd FileType *.rest set textwidth=50
 augroup END
 set expandtab               " insert spaces with <Tab>
 set tabstop=2
@@ -469,6 +479,23 @@ nnoremap <C-F5> :<C-u>!make release<CR>
 " nnoremap <C-a> :call AOJtemplate()<CR>zRjjjjjo
 " }}}
 
+" GCJTemplate {{{
+function! GCJ()
+  call append( 0, 'main = interact $ format . map solve . parseInput')
+  call append( 1, '')
+  call append( 2, 'parseInput = tail . map (map read . words :: String -> [Int]) . lines')
+  call append( 3, '')
+  call append( 4, 'format :: (Show a) => [a] -> String')
+  call append( 5, 'format = unlines . map f . zip [1..]')
+  call append( 6, '  where s x | ((==''"'') . head . show) x = init $ tail $ show x')
+  call append( 8, '            | otherwise                   = show x')
+  call append( 9, '        f  = \x -> "Case #" ++ show (fst x) ++ ": " ++ s (snd x)')
+  call append(10, '')
+  call append(11, 'solve (x:_) =')
+endfunction
+nnoremap ,p :<C-u>call GCJ()<CR><S-g>
+" }}}
+
 " Open file explorer at current directory {{{
 function! Explorer()
   if s:ismac
@@ -507,7 +534,7 @@ command! -bar -bang -nargs=? -complete=file Scouter
 
 " Quick open dot files {{{
 nnoremap \. :e ~/.vimrc<CR>
-      " autocmd BufWritePost .vimrc source %
+  " autocmd BufWritePost .vimrc source %
 nnoremap ;. :e ~/.zshrc<CR>
 " }}}
 
@@ -530,20 +557,21 @@ set wildmode=list:longest   " コマンドライン補間をシェルっぽく
 " --------------------------------------------------------------------------------------------------------------
 
 " edit {{{
-" Increment and decrement of numbers
-noremap + <C-a>
-noremap - <C-x>
+" Increment and decrement of alphabets, numbers
+set nrformats+=alpha
+nnoremap + <C-a>
+nnoremap - <C-x>
 
 " fold by indentation
-noremap [ zak
-noremap ] <S>j
+nnoremap [ zak
+nnoremap ] <S>j
 
 " indentation in visual mode
 vnoremap < <gv
 vnoremap > >gv|
 
 " always use line visual mode
-noremap v <S-v>
+nnoremap v <S-v>
 
 " easy copy, paste
 vnoremap <C-c> y
@@ -652,7 +680,6 @@ autocmd FileType help nnoremap <silent> <buffer> <ESC><ESC> :<C-u>q<CR>
 " |     y     |                      |             |                    |                 |                    |
 " +- - - - - -+- - - - - - - - - - - +- - - - - - -+- - - - - - - - - - +- - - - - - - - -+- - - - - - - - - - +
 " |     z     |                      |  zsh        |                    |                 |   Unite file_mru   |
-" |<Leader>^2 |                      |             |  Unite file_mru    |                 |                    |
 " |    .      |  .vimrc              |  .zshrc     |                    |                 |                    |
 " +===========+======================+=============+====================+=================+====================+
 " }}} REFERENCE TO KEY MAPPING
