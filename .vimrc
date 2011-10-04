@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2011/10/02 22:53:32.
+" - * Last Change: 2011/10/04 09:38:01.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -9,6 +9,9 @@
 set nocompatible
 filetype off
 let s:ismac = has('mac') || system('uname') =~? 'Darwin'
+augroup ESC
+  autocmd!
+augroup END
 " }}}
 
 " VUNDLES {{{
@@ -26,7 +29,7 @@ call s:init_vundle()
 set runtimepath+=~/.vim/bundle/vundle/
 call vundle#rc()
 Bundle 'gmarik/vundle'
-  autocmd FileType vundle nnoremap <silent> <buffer> <ESC><ESC> :<C-u>q<CR>
+  autocmd ESC FileType vundle nnoremap <silent> <buffer> <ESC><ESC> :<C-u>q<CR>
 " }}}
 
 " Complement {{{
@@ -64,9 +67,9 @@ Bundle 'Shougo/unite.vim'
     autocmd FileType unite inoremap <silent> <buffer> <expr> <C-J> unite#do_action('split')
     autocmd FileType unite nnoremap <silent> <buffer> <expr> <C-K> unite#do_action('vsplit')
     autocmd FileType unite inoremap <silent> <buffer> <expr> <C-K> unite#do_action('vsplit')
-    autocmd FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
-    autocmd FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
   augroup END
+  autocmd ESC FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
+  autocmd ESC FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
 Bundle 'unite-colorscheme'
 Bundle 'ujihisa/vim-ref'
 Bundle 'ujihisa/ref-hoogle'
@@ -111,12 +114,9 @@ Bundle 'thinca/vim-quickrun'
   nnoremap <Leader>r :<C-u>QuickRun  <CR>
   nnoremap <Leader>e :<C-u>QuickRun <i <CR>
   nnoremap <Leader>o :<C-u>QuickRun <i >file:output<CR>
-  augroup QuickRun
-    autocmd!
-    autocmd FileType quickrun inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
-    autocmd FileType quickrun nnoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
-    autocmd FileType quickrun vnoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
-  augroup END
+  autocmd ESC FileType quickrun inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
+  autocmd ESC FileType quickrun nnoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
+  autocmd ESC FileType quickrun vnoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
 Bundle 'Shougo/vimfiler'
   let g:vimfiler_as_default_explorer = 1
   nnoremap <Leader>f :<C-u>VimFiler<CR>
@@ -158,9 +158,6 @@ Bundle 'Shougo/vimshell'
     autocmd FileType vimshell inoremap <buffer> <C-j> <ESC><C-w>j
     autocmd FileType vimshell inoremap <buffer> <C-k> <ESC><C-w>k
     autocmd FileType vimshell inoremap <buffer> <C-l> <ESC><C-w>l
-    autocmd FileType vimshell inoremap <buffer> <ESC><ESC> :<C-u>q<CR>
-    autocmd FileType vimshell vnoremap <buffer> <ESC><ESC> :<C-u>q<CR>
-    autocmd FileType vimshell nnoremap <buffer> <ESC><ESC> :<C-u>q<CR>
     autocmd FileType vimshell inoremap <buffer> <expr><silent> <C-p> unite#sources#vimshell_history#start_complete(!0)
     " <Up><Down>の設定では効かないので, エスケープ文字で設定してます.
     autocmd FileType vimshell inoremap <buffer> <expr><silent> OA unite#sources#vimshell_history#start_complete(!0)
@@ -168,6 +165,9 @@ Bundle 'Shougo/vimshell'
     autocmd FileType vimshell nnoremap <buffer> <expr><silent> OA unite#sources#vimshell_history#start_complete(!0)
     autocmd FileType vimshell nnoremap <buffer> <expr><silent> OB unite#sources#vimshell_history#start_complete(!0)
   augroup END
+  autocmd ESC FileType vimshell inoremap <buffer> <ESC><ESC> :<C-u>q<CR>
+  autocmd ESC FileType vimshell vnoremap <buffer> <ESC><ESC> :<C-u>q<CR>
+  autocmd ESC FileType vimshell nnoremap <buffer> <ESC><ESC> :<C-u>q<CR>
   nnoremap <Leader><Leader>s :<C-u>VimShellTab<CR>
   nnoremap <Leader>s :<C-u>vnew<CR>:<C-u>VimShell<CR>
   nnoremap <S-h> :<C-u>VimShellPop<CR>
@@ -195,12 +195,13 @@ Bundle 'laughedelic/dotvim'
 "Bundle 'CSApprox'
 Bundle 'errormarker.vim'
 Bundle 'mattn/calendar-vim'
-  autocmd FileType calendar nnoremap <silent> <buffer> <ESC><ESC> :<C-u>q<CR>
+  autocmd ESC FileType calendar nnoremap <silent> <buffer> <ESC><ESC> :<C-u>q<CR>
 Bundle 'autodate.vim'
   let g:autodate_format="%Y/%m/%d %H:%M:%S"
 Bundle 'smartword'
   map <Leader>w  <Plug>(smartword-w)
   map <Leader>b  <Plug>(smartword-b)
+Bundle 'VimCalc'
 " }}}
 
 " Syntax {{{
@@ -358,13 +359,14 @@ augroup END
 let $BINS="*.bin,*.exe,*.png,*.gif,*.jpg,*.jpeg,*.bmp,*.PNG,*.JPG,*.JPEG,*.BMP,*.ico,*.pdf,*.dvi,*.pyc,*.mp3"
 augroup Binary
   autocmd!
+  autocmd FileType xxd nnoremap <silent> <buffer> ,b :%!xxd -g1 <CR><CR>
   autocmd BufReadPost $BINS call BinReadPost()
-  autocmd BufWritePre $BINS call BinWritePre()
-  autocmd BufWritePost $BINS call BinWritePost()
-  autocmd CursorHold $BINS call BinReHex()
+"  autocmd BufWritePre $BINS call BinWritePre()
+"  autocmd BufWritePost $BINS call BinWritePost()
+"  autocmd CursorHold $BINS call BinReHex()
   function! BinReadPost()
-    silent %!xxd -g1
     set ft=xxd
+"    exec '%!xxd -g1'
   endfunction
   function! BinWritePre()
     let s:saved_pos = getpos( '.' )
@@ -372,6 +374,7 @@ augroup Binary
   endfunction
   function! BinWritePost()
     silent %!xxd -g1
+    silent %!xxd
     call setpos( '.', s:saved_pos )
     set nomod
   endfunction
@@ -384,6 +387,7 @@ augroup Binary
     let &modified = s:modified
   endfunction
 augroup END
+
 " }}}
 
 " }}} FILE READING
@@ -579,7 +583,7 @@ inoremap <C-p> <ESC>:<C-u>set paste<CR>p:<C-u>set nopaste<CR>
 vnoremap <C-x> d
 
 " remove spaces at the end of lines
-nnoremap ,<Space> ma:%s/  *$//<CR>`a<ESC><ESC>
+nnoremap ,<Space> ma:%s/  *$//<CR>`a<ESC>
 
 " selecting all
 nnoremap <C-a> gg<S-v><S-g>
@@ -637,7 +641,7 @@ nnoremap <Up>  <C-u>
 nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
 
 " quit help
-autocmd FileType help nnoremap <silent> <buffer> <ESC><ESC> :<C-u>q<CR>
+autocmd ESC FileType help nnoremap <silent> <buffer> <ESC><ESC> :<C-u>q<CR>
 " }}}
 
 " }}} KEY MAPPING
