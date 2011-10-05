@@ -1,8 +1,9 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2011/10/04 09:38:01.
+" - * Last Change: 2011/10/06 08:01:09.
 " --------------------------------------------------------------------------------------------------------------
+"  TODO: help for statusline
 
 " INITIALIZE {{{
 " --------------------------------------------------------------------------------------------------------------
@@ -120,6 +121,13 @@ Bundle 'thinca/vim-quickrun'
 Bundle 'Shougo/vimfiler'
   let g:vimfiler_as_default_explorer = 1
   nnoremap <Leader>f :<C-u>VimFiler<CR>
+    let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
+    let g:vimshell_prompt = " $ "
+  augroup Vimfiler
+    autocmd!
+    autocmd FileType vimfiler nunmap <buffer> <C-l>
+    autocmd FileType vimfiler noremap <buffer> <C-l> <ESC><C-w>l
+  augroup END
 Bundle 'eagletmt/ghci-vim'
   augroup Ghci
     autocmd!
@@ -202,6 +210,8 @@ Bundle 'smartword'
   map <Leader>w  <Plug>(smartword-w)
   map <Leader>b  <Plug>(smartword-b)
 Bundle 'VimCalc'
+  autocmd ESC FileType vimcalc nnoremap <silent> <buffer> <ESC><ESC> :<C-u>q<CR>
+Bundle 'autodate.vim'
 " }}}
 
 " Syntax {{{
@@ -359,7 +369,8 @@ augroup END
 let $BINS="*.bin,*.exe,*.png,*.gif,*.jpg,*.jpeg,*.bmp,*.PNG,*.JPG,*.JPEG,*.BMP,*.ico,*.pdf,*.dvi,*.pyc,*.mp3"
 augroup Binary
   autocmd!
-  autocmd FileType xxd nnoremap <silent> <buffer> ,b :%!xxd -g1 <CR><CR>
+  autocmd FileType xxd nnoremap <silent> <buffer> ,b :%!xxd <CR><CR>
+  autocmd FileType xxd nnoremap <silent> <buffer> ,r :%!xxd -r <CR><CR>
   autocmd BufReadPost $BINS call BinReadPost()
 "  autocmd BufWritePre $BINS call BinWritePre()
 "  autocmd BufWritePost $BINS call BinWritePost()
@@ -587,7 +598,7 @@ nnoremap ,<Space> ma:%s/  *$//<CR>`a<ESC>
 
 " selecting all
 nnoremap <C-a> gg<S-v><S-g>
-inoremap <C-a> gg<S-v><S-g>
+inoremap <C-a> <ESC>gg<S-v><S-g>
 vnoremap <C-a> gg<S-v><S-g>
 " }}}
 
@@ -609,27 +620,34 @@ nnoremap # :<C-u>set hlsearch<CR>#
 " Navigation {{{
 " window
 inoremap <C-h> <ESC><C-w>h
-inoremap <C-l> <ESC><C-w>l
-inoremap <C-k> <ESC><C-w>k
 inoremap <C-j> <ESC><C-w>j
+inoremap <C-k> <ESC><C-w>k
+inoremap <C-l> <ESC><C-w>l
 nnoremap <C-h> <C-w>h
-nnoremap <C-l> <C-w>l
-nnoremap <C-k> <C-w>k
 nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 nnoremap <C-x> <C-w>x
-nnoremap <C-q> <C-w>
+vnoremap <C-h> <C-w>h
+vnoremap <C-j> <C-w>j
+vnoremap <C-k> <C-w>k
+vnoremap <C-l> <C-w>l
+vnoremap <C-x> <C-w>x
 inoremap <C-q> <ESC><C-w>
+nnoremap <C-q> <C-w>
 vnoremap <C-q> <ESC><C-w>
-nnoremap <C-w> :<C-u>q<CR>
 inoremap <C-w> <ESC>:<C-u>q<CR>
+nnoremap <C-w> :<C-u>q<CR>
 vnoremap <C-w> :<C-u>q<CR>
 
 " tab
 nnoremap <C-t> :<C-u>tabnew<CR>
-nnoremap <C-Right> gt
-nnoremap <C-Left> gT
-inoremap <C-Right> <ESC>gt
 inoremap <C-Left> <ESC>gT
+inoremap <C-Right> <ESC>gt
+nnoremap <C-Left> gT
+nnoremap <C-Right> gt
+vnoremap <C-Left> gT
+vnoremap <C-Right> gt
 
 " assign arrow keys to page-(up|down)
 nnoremap <Down> <C-d>
