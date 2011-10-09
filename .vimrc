@@ -1,9 +1,8 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2011/10/06 08:01:09.
+" - * Last Change: 2011/10/09 14:49:22.
 " --------------------------------------------------------------------------------------------------------------
-"  TODO: help for statusline
 
 " INITIALIZE {{{
 " --------------------------------------------------------------------------------------------------------------
@@ -45,7 +44,7 @@ Bundle 'Shougo/neocomplcache'
         \     "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
   imap <expr><C-l> neocomplcache#sources#snippets_complete#expandable() ?
         \     "\<Plug>(neocomplcache_snippets_expand)" : "\<C-w>l"
-Bundle 'ujihisa/neco-look'
+"Bundle 'ujihisa/neco-look'
   " --| Requirement: look commnad
 Bundle 'neco-ghc'
   " --| Requirement: ghc-mod
@@ -227,8 +226,13 @@ Bundle 'pangloss/vim-javascript'
 Bundle 'JSON.vim'
 Bundle 'html5.vim'
 Bundle 'wavded/vim-stylus'
-"Bundle 'css_color.vim'
-Bundle 'skammer/vim-css-color'
+Bundle 'colorizer'
+  augroup colorizer
+    autocmd!
+    autocmd BufNewFile,BufReadPost *.css ColorHighlight
+  augroup END
+" Bundle 'css_color.vim'
+" Bundle 'skammer/vim-css-color'
 Bundle 'groenewege/vim-less'
 Bundle 'less.vim'
 Bundle 'syntaxm4.vim'
@@ -300,7 +304,9 @@ set showtabline=2           " always show tab
 " Status line {{{
 set ruler                   " show the cursor position (needless if you set 'statusline' later)
 set laststatus=2            " ステータスラインを常に表示
-set statusline=%{expand('%:p:t')}\ %<\(%{expand('%:p:h')}\)%=\ %m%r%y%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}[%3l,%3c,%3p]
+set statusline=%{expand('%:p:t')}\ %<[%{expand('%:p:h')}]%=\ %m%r%y%w[%{&fenc!=''?&fenc:&enc}][%{&ff}][%3l,%3c,%3p]
+
+
 " }}}
 
 " Color {{{
@@ -355,7 +361,6 @@ set autoread                " 外部のエディタで編集中のファイル�
 augroup Filetype
   autocmd!
   autocmd BufNewFile,BufReadPost *.hs   set filetype=haskell
-  autocmd BufNewFile,BufReadPost *.sir  set filetype=haskell
   autocmd BufNewFile,BufReadPost *.json set filetype=json
   autocmd BufNewFile,BufReadPost *.less set filetype=less
   autocmd BufNewFile,BufReadPost *.rst  set filetype=rest
