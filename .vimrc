@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2011/10/09 14:49:22.
+" - * Last Change: 2011/10/11 18:01:25.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -171,6 +171,10 @@ Bundle 'Shougo/vimshell'
     autocmd FileType vimshell inoremap <buffer> <expr><silent> OB unite#sources#vimshell_history#start_complete(!0)
     autocmd FileType vimshell nnoremap <buffer> <expr><silent> OA unite#sources#vimshell_history#start_complete(!0)
     autocmd FileType vimshell nnoremap <buffer> <expr><silent> OB unite#sources#vimshell_history#start_complete(!0)
+    autocmd FileType vimshell inoremap <buffer> <expr><silent> <Up> unite#sources#vimshell_history#start_complete(!0)
+    autocmd FileType vimshell inoremap <buffer> <expr><silent> <Down> unite#sources#vimshell_history#start_complete(!0)
+    autocmd FileType vimshell nnoremap <buffer> <expr><silent> <Up> unite#sources#vimshell_history#start_complete(!0)
+    autocmd FileType vimshell nnoremap <buffer> <expr><silent> <Down> unite#sources#vimshell_history#start_complete(!0)
   augroup END
   autocmd ESC FileType vimshell inoremap <buffer> <ESC><ESC> :<C-u>q<CR>
   autocmd ESC FileType vimshell vnoremap <buffer> <ESC><ESC> :<C-u>q<CR>
@@ -178,9 +182,15 @@ Bundle 'Shougo/vimshell'
   nnoremap <Leader><Leader>s :<C-u>VimShellTab<CR>
   nnoremap <Leader>s :<C-u>vnew<CR>:<C-u>VimShell<CR>
   nnoremap <S-h> :<C-u>VimShellPop<CR>
-  nnoremap <Leader>z :<C-u>tabnew<CR>:VimShellInteractive zsh<CR>
-  nnoremap <Leader>g :<C-u>tabnew<CR>:VimShellInteractive ghci<CR>
-  nnoremap <Leader>p :<C-u>tabnew<CR>:VimShellInteractive python<CR>
+  nnoremap <Leader>z :<C-u>VimShellInteractive zsh<CR>
+  " autocmd FileType int-* call s:interactive_settings()
+  function! s:interactive_settings()
+    set filetype=haskell
+    :syntax enable
+  endfunction
+  " autocmd FileType int-ghci set filetype=haskell
+  nnoremap <Leader>g :<C-u>VimShellInteractive ghci<CR>
+  nnoremap <Leader>p :<C-u>VimShellInteractive python<CR>
   " nnoremap <Leader>a :<C-u>tabnew<CR>:VimShellInteractive gdb ./a.out
 " }}}
 
@@ -191,8 +201,6 @@ Bundle 'tpope/vim-surround'
 Bundle 't9md/vim-surround_custom_mapping'
 "Bundle 'scrooloose/nerdcommenter'
 Bundle 'tComment'
-Bundle 'hrp/EnhancedCommentify'
-  let g:EnhCommentifyBindInInsert='No'
 Bundle 'sjl/gundo.vim'
   " --| Requirement: +python
   nnoremap <Leader>g :<C-u>GundoToggle<CR>
@@ -203,6 +211,7 @@ Bundle 'laughedelic/dotvim'
 Bundle 'errormarker.vim'
 Bundle 'mattn/calendar-vim'
   autocmd ESC FileType calendar nnoremap <silent> <buffer> <ESC><ESC> :<C-u>q<CR>
+  nnoremap <Leader>c :<C-u>Calendar<CR>
 Bundle 'autodate.vim'
   let g:autodate_format="%Y/%m/%d %H:%M:%S"
 Bundle 'smartword'
@@ -210,6 +219,7 @@ Bundle 'smartword'
   map <Leader>b  <Plug>(smartword-b)
 Bundle 'VimCalc'
   autocmd ESC FileType vimcalc nnoremap <silent> <buffer> <ESC><ESC> :<C-u>q<CR>
+  nnoremap <Leader>a :<C-u>Calc<CR>
 Bundle 'autodate.vim'
 " }}}
 
@@ -227,10 +237,10 @@ Bundle 'JSON.vim'
 Bundle 'html5.vim'
 Bundle 'wavded/vim-stylus'
 Bundle 'colorizer'
-  augroup colorizer
-    autocmd!
-    autocmd BufNewFile,BufReadPost *.css ColorHighlight
-  augroup END
+  " augroup colorizer
+  "   autocmd!
+  "   autocmd BufNewFile,BufReadPost *.css ColorHighlight
+  " augroup END
 " Bundle 'css_color.vim'
 " Bundle 'skammer/vim-css-color'
 Bundle 'groenewege/vim-less'
@@ -305,8 +315,6 @@ set showtabline=2           " always show tab
 set ruler                   " show the cursor position (needless if you set 'statusline' later)
 set laststatus=2            " ステータスラインを常に表示
 set statusline=%{expand('%:p:t')}\ %<[%{expand('%:p:h')}]%=\ %m%r%y%w[%{&fenc!=''?&fenc:&enc}][%{&ff}][%3l,%3c,%3p]
-
-
 " }}}
 
 " Color {{{
@@ -676,9 +684,9 @@ autocmd ESC FileType help nnoremap <silent> <buffer> <ESC><ESC> :<C-u>q<CR>
 " | mapleader |          \           |     ;       |         ,          |      <S-        |      <C-           |
 " |           |  Outer world of Vim  |  vimshell   |      utility       |                 |                    |
 " +===========+======================+=============+====================+=================+====================+
-" |     a     |                      |             |                    |   -default      |   gg<S-v><S-g>     |
+" |     a     |                      |             |  Calc              |   -default      |   gg<S-v><S-g>     |
 " |     b     |  OpenBrowser         |             |  smartword-b       |                 |   -default         |
-" |     c     |                      |             |                    |   -default      |                    |
+" |     c     |                      |             |  Calendar          |   -default      |                    |
 " |     d     |                      |             |                    |   -default      |                    |
 " |     e     |  QuickRun <i         |             |                    |                 |   zencoding        |
 " +- - - - - -+- - - - - - - - - - - +- - - - - - -+- - - - - - - - - - +- - - - - - - - -+- - - - - - - - - - +
