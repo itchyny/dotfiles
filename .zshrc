@@ -1,7 +1,7 @@
 # --------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2011/09/28 08:20:44.
+# - * Last Change: 2011/10/12 08:16:44.
 # --------------------------------------------------------------------------------------------------------------
 
 setopt prompt_subst
@@ -215,6 +215,7 @@ if [ `uname` = "Darwin" ]; then
   alias evince='open -a Preview'
   alias display='open -a Preview'
   alias eog='open -a Preview'
+  alias port_update='sudo port selfupdate && sudo port -d sync  && sudo port outdated && sudo port upgrade outdated'
 elif [ `uname` = "Linux" ]; then
 fi
 alias chrome='google-chrome'

@@ -22,4 +22,4 @@ alias yoruho='python ~/Dropbox/py/itchyny/yoruho.py'
 alias tweet='python ~/Dropbox/py/itchyny/tweet.py'
 alias twitter='runhaskell ~/Dropbox/hs/twitter/twitter.hs'
 alias ll='ls -alt'
-
+alias port_update='sudo port selfupdate && sudo port -d sync  && sudo port outdated && sudo port upgrade outdated'

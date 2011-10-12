@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2011/10/11 18:01:25.
+" - * Last Change: 2011/10/12 16:07:34.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -30,6 +30,7 @@ set runtimepath+=~/.vim/bundle/vundle/
 call vundle#rc()
 Bundle 'gmarik/vundle'
   autocmd ESC FileType vundle nnoremap <silent> <buffer> <ESC><ESC> :<C-u>q<CR>
+  nnoremap <S-b> :<C-u>BundleInstall!<CR>
 " }}}
 
 " Complement {{{
@@ -685,7 +686,7 @@ autocmd ESC FileType help nnoremap <silent> <buffer> <ESC><ESC> :<C-u>q<CR>
 " |           |  Outer world of Vim  |  vimshell   |      utility       |                 |                    |
 " +===========+======================+=============+====================+=================+====================+
 " |     a     |                      |             |  Calc              |   -default      |   gg<S-v><S-g>     |
-" |     b     |  OpenBrowser         |             |  smartword-b       |                 |   -default         |
+" |     b     |  OpenBrowser         |             |  smartword-b       |   BundleInstall!|   -default         |
 " |     c     |                      |             |  Calendar          |   -default      |                    |
 " |     d     |                      |             |                    |   -default      |                    |
 " |     e     |  QuickRun <i         |             |                    |                 |   zencoding        |
