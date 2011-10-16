@@ -1,7 +1,7 @@
 # --------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2011/10/12 08:16:44.
+# - * Last Change: 2011/10/13 17:12:51.
 # --------------------------------------------------------------------------------------------------------------
 
 setopt prompt_subst
@@ -42,6 +42,7 @@ LS_COLORS+='*.gz=01;34:*.tar=01;34:*.zip=01;34:'
 LS_COLORS+='*.pdf=01;32:*makefile=01;32:*.html=01;32:'
 export LS_COLORS     # doesn't work in Mac
 export LSCOLORS=GahFCxdxbxegedabagacad
+alias prompt_kadai='PROMPT=" %% "'
 
 # title of terminal
 case "${TERM}" in
@@ -303,6 +304,7 @@ alias -s {gz,tgz,zip,lzh,bz2,tbz,Z,tar,arj,xz}=extract
 alias fg='fg || if [ $? -eq 1 ]; then; vi; fi;'
 
 
+# .vimrcのambiwidthを参照してください
 alias gnome-terminal='/bin/sh -c "VTE_CJK_WIDTH=1 gnome-terminal --disable-factory"'
 alias terminator='/bin/sh -c "VTE_CJK_WIDTH=1 terminator --disable-factory"'
 
