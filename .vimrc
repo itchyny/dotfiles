@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2011/10/16 20:45:57.
+" - * Last Change: 2011/10/16 22:32:00.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -122,8 +122,6 @@ Bundle 'thinca/vim-quickrun'
 Bundle 'Shougo/vimfiler'
   let g:vimfiler_as_default_explorer = 1
   nnoremap <Leader>f :<C-u>VimFiler<CR>
-    let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
-    let g:vimshell_prompt = " $ "
   augroup Vimfiler
     autocmd!
     autocmd FileType vimfiler nunmap <buffer> <C-l>
@@ -178,9 +176,9 @@ Bundle 'Shougo/vimshell'
     autocmd FileType vimshell nnoremap <buffer> <expr><silent> <Up> unite#sources#vimshell_history#start_complete(!0)
     autocmd FileType vimshell nnoremap <buffer> <expr><silent> <Down> unite#sources#vimshell_history#start_complete(!0)
   augroup END
-  autocmd ESC FileType vimshell inoremap <buffer> <ESC><ESC><ESC> :<C-u>q<CR>
-  autocmd ESC FileType vimshell vnoremap <buffer> <ESC><ESC><ESC> :<C-u>q<CR>
-  autocmd ESC FileType vimshell nnoremap <buffer> <ESC><ESC><ESC> :<C-u>q<CR>
+  " autocmd ESC FileType vimshell inoremap <buffer> <ESC> <NOP>
+  autocmd ESC FileType vimshell vnoremap <buffer> <ESC><ESC> :<C-u>q<CR>
+  autocmd ESC FileType vimshell nnoremap <buffer> <ESC><ESC> :<C-u>q<CR>
   nnoremap <Leader><Leader>s :<C-u>VimShellTab<CR>
   nnoremap <Leader>s :<C-u>vnew<CR>:<C-u>VimShell<CR>
   nnoremap <S-h> :<C-u>VimShellPop<CR>
@@ -206,6 +204,7 @@ Bundle 'tComment'
 Bundle 'sjl/gundo.vim'
   " --| Requirement: +python
   nnoremap <Leader>g :<C-u>GundoToggle<CR>
+  autocmd ESC FileType gundo nnoremap <silent> <buffer> <ESC><ESC> :<C-u>GundoToggle<CR>
 Bundle 'Align'
 "Bundle 'msanders/snipmate.vim'
 Bundle 'laughedelic/dotvim'
@@ -258,7 +257,6 @@ Bundle 'rest.vim'
 Bundle 'VST'
 Bundle 'syntaxm4.vim'
 Bundle 'syntaxhaskell.vim'
-"Bundle 'Haskell-Conceal'
 Bundle 'indenthaskell.vim'
 Bundle 'haskell.vim'
 Bundle 'tpope/vim-markdown'
@@ -389,13 +387,14 @@ augroup Binary
   autocmd!
   autocmd FileType xxd nnoremap <silent> <buffer> ,b :%!xxd <CR><CR>
   autocmd FileType xxd nnoremap <silent> <buffer> ,r :%!xxd -r <CR><CR>
+  autocmd BufReadPre $BINS let &binary = 1
   autocmd BufReadPost $BINS call BinReadPost()
-"  autocmd BufWritePre $BINS call BinWritePre()
-"  autocmd BufWritePost $BINS call BinWritePost()
-"  autocmd CursorHold $BINS call BinReHex()
+  autocmd BufWritePre $BINS call BinWritePre()
+  autocmd BufWritePost $BINS call BinWritePost()
+  autocmd CursorHold $BINS call BinReHex()
   function! BinReadPost()
     set ft=xxd
-"    exec '%!xxd -g1'
+    exec '%!xxd -g1'
   endfunction
   function! BinWritePre()
     let s:saved_pos = getpos( '.' )
@@ -403,7 +402,6 @@ augroup Binary
   endfunction
   function! BinWritePost()
     silent %!xxd -g1
-    silent %!xxd
     call setpos( '.', s:saved_pos )
     set nomod
   endfunction
@@ -416,7 +414,6 @@ augroup Binary
     let &modified = s:modified
   endfunction
 augroup END
-
 " }}}
 
 " }}} FILE READING
