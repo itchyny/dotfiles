@@ -1,7 +1,7 @@
 # --------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2011/10/13 17:12:51.
+# - * Last Change: 2011/10/17 22:22:51.
 # --------------------------------------------------------------------------------------------------------------
 
 setopt prompt_subst
@@ -181,6 +181,9 @@ export PATH=$PATH:~/Dropbox/js/narwhal/bin/
 export PATH=$PATH:~/Dropbox/js/jison/bin/
 export PATH=$PATH:~/Dropbox/js/coffee-script/bin/
 export PATH=$PATH:~/.cabal/bin/
+
+# KUINS3のプロキシ for git
+# export http_proxy=http://proxy.kuins.net:8080/
 
 # go to ../ with key ^
 function cdup() {
