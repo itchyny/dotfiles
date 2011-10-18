@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2011/10/16 22:32:00.
+" - * Last Change: 2011/10/18 08:50:12.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -71,6 +71,8 @@ Bundle 'Shougo/unite.vim'
   augroup END
   autocmd ESC FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
   autocmd ESC FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
+Bundle 'Shougo/unite-build'
+  nnoremap <S-F5> :<C-u>Unite build<CR>
 Bundle 'unite-colorscheme'
 Bundle 'ujihisa/vim-ref'
 Bundle 'ujihisa/ref-hoogle'
@@ -165,7 +167,6 @@ Bundle 'Shougo/vimshell'
     autocmd FileType vimshell inoremap <buffer> <C-j> <ESC><C-w>j
     autocmd FileType vimshell inoremap <buffer> <C-k> <ESC><C-w>k
     autocmd FileType vimshell inoremap <buffer> <C-l> <ESC><C-w>l
-    autocmd FileType vimshell inoremap <buffer> <expr><silent> <C-p> unite#sources#vimshell_history#start_complete(!0)
     " <Up><Down>の設定では効かないので, エスケープ文字で設定してます.
     autocmd FileType vimshell inoremap <buffer> <expr><silent> OA unite#sources#vimshell_history#start_complete(!0)
     autocmd FileType vimshell inoremap <buffer> <expr><silent> OB unite#sources#vimshell_history#start_complete(!0)
@@ -487,7 +488,6 @@ function! Automake()
   endif
 endfunction
 nnoremap <F5> :<C-u>call Automake()<CR>
-nnoremap <C-F5> :<C-u>!make release<CR>
 " }}}
 
 " AOJ template {{{
