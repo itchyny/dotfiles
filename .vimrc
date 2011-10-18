@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2011/10/18 08:50:12.
+" - * Last Change: 2011/10/18 17:26:30.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -18,24 +18,25 @@ augroup END
 " Vundle {{{
 " --------------------------------------------------------------------------------------------------------------
 let $BUNDLE = $HOME."/.vim/bundle"
-let s:vundle_dir = $BUNDLE.'/vundle'
+let s:vundle_dir = $BUNDLE.'/neobundle'
 function! s:init_vundle()
   if !isdirectory(s:vundle_dir)
-    echo "initializing vundle\n"
-    silent exec '!git clone -q git://github.com/gmarik/vundle.git '.s:vundle_dir
+    echo "initializing neobundle\n"
+    exec '!git clone git@github.com:Shougo/neobundle.vim.git'.s:vundle_dir
   endif
 endfunction
 call s:init_vundle()
-set runtimepath+=~/.vim/bundle/vundle/
-call vundle#rc()
-Bundle 'gmarik/vundle'
+set runtimepath+=~/.vim/bundle/neobundle/
+call neobundle#rc(expand($BUNDLE))
+
+NeoBundle 'Shougo/neobundle.vim'
   autocmd ESC FileType vundle nnoremap <silent> <buffer> <ESC><ESC> :<C-u>q<CR>
-  nnoremap <S-b> :<C-u>BundleInstall!<CR>
+  nnoremap <S-b> :<C-u>NeoBundleInstall!<CR>
 " }}}
 
 " Complement {{{
 " --------------------------------------------------------------------------------------------------------------
-Bundle 'Shougo/neocomplcache'
+NeoBundle 'Shougo/neocomplcache'
   let g:neocomplcache_enable_at_startup = 1
   let g:neocomplcache_enable_smart_case = 1
   let g:neocomplcache_enable_underbar_completion = 1
@@ -45,9 +46,9 @@ Bundle 'Shougo/neocomplcache'
         \     "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
   imap <expr><C-l> neocomplcache#sources#snippets_complete#expandable() ?
         \     "\<Plug>(neocomplcache_snippets_expand)" : "\<C-w>l"
-"Bundle 'ujihisa/neco-look'
+" NeoBundle 'ujihisa/neco-look'
   " --| Requirement: look commnad
-Bundle 'neco-ghc'
+NeoBundle 'neco-ghc'
   " --| Requirement: ghc-mod
   " --|   $ cabal install ghc-mod
 " }}}
@@ -55,7 +56,7 @@ Bundle 'neco-ghc'
 " Unite ( "," ) {{{
 " --------------------------------------------------------------------------------------------------------------
                                                                                          let mapleader=","
-Bundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/unite.vim'
   let g:unite_enable_start_insert=1
   nnoremap <C-u> :Unite<SPACE>
   nnoremap <C-p> :Unite buffer<CR>
@@ -71,11 +72,11 @@ Bundle 'Shougo/unite.vim'
   augroup END
   autocmd ESC FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
   autocmd ESC FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
-Bundle 'Shougo/unite-build'
+NeoBundle 'Shougo/unite-build'
   nnoremap <S-F5> :<C-u>Unite build<CR>
-Bundle 'unite-colorscheme'
-Bundle 'ujihisa/vim-ref'
-Bundle 'ujihisa/ref-hoogle'
+NeoBundle 'unite-colorscheme'
+NeoBundle 'ujihisa/vim-ref'
+NeoBundle 'ujihisa/ref-hoogle'
   " --| Requirement: hoogle
   " --|   $ cabal install hoogle
   " --|   $ hoogle data
@@ -85,7 +86,7 @@ Bundle 'ujihisa/ref-hoogle'
 " QuickRun / Filer / Outer world of Vim ( "\\" ) {{{
 " --------------------------------------------------------------------------------------------------------------
                                                                                          let mapleader="\\"
-Bundle 'Shougo/vimproc'
+NeoBundle 'Shougo/vimproc'
   " --| I use an easy script following, with setting of vimproc_dll_path.
   "
   "    #! /bin/sh
@@ -111,7 +112,7 @@ Bundle 'Shougo/vimproc'
    "let g:vimproc_dll_path = $HOME."/.vim/bundle/vimproc/autoload/procunix.so"
    let g:vimproc_dll_path = $BUNDLE."/vimproc/autoload/procunix.so"
   endif
-Bundle 'thinca/vim-quickrun'
+NeoBundle 'thinca/vim-quickrun'
   let g:quickrun_config = {'*': {'runmode': 'async:vimproc', 'split': 'vertical'}}
   let g:quickrun_config.javascript = {'command' : 'node'}
   let g:quickrun_config.markdown = { 'type': 'markdown/pandoc', 'outputter': 'browser', 'cmdopt': '-s' }
@@ -121,7 +122,7 @@ Bundle 'thinca/vim-quickrun'
   autocmd ESC FileType quickrun inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
   autocmd ESC FileType quickrun nnoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
   autocmd ESC FileType quickrun vnoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
-Bundle 'Shougo/vimfiler'
+NeoBundle 'Shougo/vimfiler'
   let g:vimfiler_as_default_explorer = 1
   nnoremap <Leader>f :<C-u>VimFiler<CR>
   augroup Vimfiler
@@ -129,20 +130,20 @@ Bundle 'Shougo/vimfiler'
     autocmd FileType vimfiler nunmap <buffer> <C-l>
     autocmd FileType vimfiler noremap <buffer> <C-l> <ESC><C-w>l
   augroup END
-Bundle 'eagletmt/ghci-vim'
+NeoBundle 'eagletmt/ghci-vim'
   augroup Ghci
     autocmd!
     autocmd Filetype haskell nnoremap <Leader>l :GhciLoad<CR>
     autocmd Filetype haskell nnoremap <Leader>i :GhciInfo<CR>
     autocmd Filetype haskell nnoremap <Leader>t :GhciType<CR>
   augroup END
-Bundle 'eagletmt/coqtop-vim'
+NeoBundle 'eagletmt/coqtop-vim'
   nnoremap <Leader>v :<C-u>CoqStart<CR>
-Bundle 'tyru/open-browser.vim'
+NeoBundle 'tyru/open-browser.vim'
   nmap <Leader>b <Plug>(openbrowser-smart-search)
   vmap <Leader>b <Plug>(openbrowser-smart-search)
   nmap <Leader>s <Plug>(openbrowser-search)
-Bundle 'TwitVim'
+NeoBundle 'TwitVim'
   nnoremap <Leader>p :<C-u>PosttoTwitter<CR>
 "  nnoremap <Leader>p :<C-u>!tweet<SPACE>
 " }}}
@@ -150,7 +151,7 @@ Bundle 'TwitVim'
 " vimshell ( ";" ) {{{
 " --------------------------------------------------------------------------------------------------------------
                                                                                           let mapleader=";"
-Bundle 'Shougo/vimshell'
+NeoBundle 'Shougo/vimshell'
   " --| Requirement: vimproc
   augroup Vimshell
     autocmd!
@@ -198,74 +199,74 @@ Bundle 'Shougo/vimshell'
 " Commenter / Utility ( "," ) {{{
 " --------------------------------------------------------------------------------------------------------------
                                                                                           let mapleader=","
-Bundle 'tpope/vim-surround'
-Bundle 't9md/vim-surround_custom_mapping'
-"Bundle 'scrooloose/nerdcommenter'
-Bundle 'tComment'
-Bundle 'sjl/gundo.vim'
+NeoBundle 'tpope/vim-surround'
+NeoBundle 't9md/vim-surround_custom_mapping'
+"NeoBundle 'scrooloose/nerdcommenter'
+NeoBundle 'tComment'
+NeoBundle 'sjl/gundo.vim'
   " --| Requirement: +python
   nnoremap <Leader>g :<C-u>GundoToggle<CR>
   autocmd ESC FileType gundo nnoremap <silent> <buffer> <ESC><ESC> :<C-u>GundoToggle<CR>
-Bundle 'Align'
-"Bundle 'msanders/snipmate.vim'
-Bundle 'laughedelic/dotvim'
-"Bundle 'CSApprox'
-Bundle 'errormarker.vim'
-Bundle 'mattn/calendar-vim'
+NeoBundle 'Align'
+"NeoBundle 'msanders/snipmate.vim'
+NeoBundle 'laughedelic/dotvim'
+"NeoBundle 'CSApprox'
+NeoBundle 'errormarker.vim'
+NeoBundle 'mattn/calendar-vim'
   autocmd ESC FileType calendar nnoremap <silent> <buffer> <ESC><ESC> :<C-u>q<CR>
   nnoremap <Leader>c :<C-u>Calendar<CR>
-Bundle 'autodate.vim'
+NeoBundle 'autodate.vim'
   let g:autodate_format="%Y/%m/%d %H:%M:%S"
-Bundle 'smartword'
+NeoBundle 'smartword'
   map <Leader>w  <Plug>(smartword-w)
   map <Leader>b  <Plug>(smartword-b)
-Bundle 'VimCalc'
+NeoBundle 'VimCalc'
   autocmd ESC FileType vimcalc nnoremap <silent> <buffer> <ESC><ESC> :<C-u>q<CR>
   nnoremap <Leader>a :<C-u>Calc<CR>
-Bundle 'autodate.vim'
+NeoBundle 'autodate.vim'
 " }}}
 
 " Syntax {{{
 " --------------------------------------------------------------------------------------------------------------
-Bundle 'mattn/zencoding-vim'
+NeoBundle 'mattn/zencoding-vim'
   let g:user_zen_expandabbr_key = '<c-e>'
   let g:user_zen_settings = { 'html' : { 'indentation' : '  ' }, }
-Bundle 'tsaleh/vim-matchit'
-Bundle 'JavaScript-syntax'
-Bundle 'tyok/js-mask'
-Bundle 'itspriddle/vim-javascript-indent'
-Bundle 'pangloss/vim-javascript'
-Bundle 'JSON.vim'
-Bundle 'html5.vim'
-Bundle 'wavded/vim-stylus'
-Bundle 'colorizer'
+NeoBundle 'tsaleh/vim-matchit'
+NeoBundle 'JavaScript-syntax'
+NeoBundle 'tyok/js-mask'
+NeoBundle 'itspriddle/vim-javascript-indent'
+NeoBundle 'pangloss/vim-javascript'
+NeoBundle 'JSON.vim'
+NeoBundle 'html5.vim'
+NeoBundle 'wavded/vim-stylus'
+NeoBundle 'colorizer'
   " augroup colorizer
   "   autocmd!
   "   autocmd BufNewFile,BufReadPost *.css ColorHighlight
   " augroup END
-" Bundle 'css_color.vim'
-" Bundle 'skammer/vim-css-color'
-Bundle 'groenewege/vim-less'
-Bundle 'less.vim'
-Bundle 'syntaxm4.vim'
-Bundle 'vim-scripts/jade.vim'
-Bundle 'vim-coffee-script'
-Bundle 'coq-syntax'
-Bundle 'Coq-indent'
-Bundle 'rest.vim'
+" NeoBundle 'css_color.vim'
+" NeoBundle 'skammer/vim-css-color'
+NeoBundle 'groenewege/vim-less'
+NeoBundle 'less.vim'
+NeoBundle 'syntaxm4.vim'
+NeoBundle 'vim-scripts/jade.vim'
+NeoBundle 'vim-coffee-script'
+NeoBundle 'coq-syntax'
+NeoBundle 'Coq-indent'
+NeoBundle 'rest.vim'
 " vim-rst-table: require vim_bridge (install with easy_install)
-" Bundle 'nvie/vim-rst-tables'
-Bundle 'VST'
-Bundle 'syntaxm4.vim'
-Bundle 'syntaxhaskell.vim'
-Bundle 'indenthaskell.vim'
-Bundle 'haskell.vim'
-Bundle 'tpope/vim-markdown'
+" NeoBundle 'nvie/vim-rst-tables'
+NeoBundle 'VST'
+NeoBundle 'syntaxm4.vim'
+NeoBundle 'syntaxhaskell.vim'
+NeoBundle 'indenthaskell.vim'
+NeoBundle 'haskell.vim'
+NeoBundle 'tpope/vim-markdown'
 " }}}
 
 " Colorscheme {{{
 " --------------------------------------------------------------------------------------------------------------
-Bundle 'Wombat'
+NeoBundle 'Wombat'
 " }}}
 
 " }}} VUNDLES
@@ -388,14 +389,15 @@ augroup Binary
   autocmd!
   autocmd FileType xxd nnoremap <silent> <buffer> ,b :%!xxd <CR><CR>
   autocmd FileType xxd nnoremap <silent> <buffer> ,r :%!xxd -r <CR><CR>
-  autocmd BufReadPre $BINS let &binary = 1
+  " autocmd BufReadPre $BINS let &binary = 1
   autocmd BufReadPost $BINS call BinReadPost()
   autocmd BufWritePre $BINS call BinWritePre()
   autocmd BufWritePost $BINS call BinWritePost()
   autocmd CursorHold $BINS call BinReHex()
   function! BinReadPost()
-    set ft=xxd
-    exec '%!xxd -g1'
+    set filetype=xxd
+    exec '%!xxd'
+    " let &binary = 1
   endfunction
   function! BinWritePre()
     let s:saved_pos = getpos( '.' )
@@ -687,7 +689,7 @@ autocmd ESC FileType help nnoremap <silent> <buffer> <ESC><ESC> :<C-u>q<CR>
 " |         |  Outer world of Vim  |  vimshell  |      utility       |                   |                    |
 " +=========+======================+============+====================+===================+====================+
 " |    a    |                      |            |  Calc              |   -default        |   gg<S-v><S-g>     |
-" |    b    |  OpenBrowser         |            |  smartword-b       |   BundleInstall!  |   -default         |
+" |    b    |  OpenBrowser         |            |  smartword-b       | NeoBundleInstall! |   -default         |
 " |    c    |                      |            |  Calendar          |   -default        |                    |
 " |    d    |                      |            |                    |   -default        |                    |
 " |    e    |  QuickRun <i         |            |                    |                   |   zencoding        |
