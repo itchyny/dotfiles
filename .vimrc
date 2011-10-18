@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2011/10/18 20:30:17.
+" - * Last Change: 2011/10/18 21:17:38.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -14,11 +14,11 @@ augroup ESC
 augroup END
 " }}}
 
-" Neobundles {{{
+" Bundles {{{
 " neobundle {{{
 " --------------------------------------------------------------------------------------------------------------
 let $BUNDLE = $HOME."/.vim/bundle"
-let s:neobundle_dir = $BUNDLE.'/neobundle'
+let s:neobundle_dir = $BUNDLE.'/neobundle.vim'
 function! s:init_neobundle()
   if !isdirectory(s:neobundle_dir)
     echo "initializing neobundle\n"
@@ -26,7 +26,7 @@ function! s:init_neobundle()
   endif
 endfunction
 call s:init_neobundle()
-set runtimepath+=~/.vim/bundle/neobundle/
+set runtimepath+=~/.vim/bundle/neobundle.vim/
 call neobundle#rc(expand($BUNDLE))
 
 NeoBundle 'Shougo/neobundle.vim'
@@ -40,7 +40,6 @@ NeoBundle 'Shougo/neocomplcache'
   let g:neocomplcache_enable_smart_case = 1
   let g:neocomplcache_enable_underbar_completion = 1
   let g:neocomplcache_enable_camel_case_completion = 1
-  let g:neocomplcache_snippets_dir = $BUNDLE."/snipmate.vim/snippets/"
   imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ?
         \     "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
   imap <expr><C-l> neocomplcache#sources#snippets_complete#expandable() ?
@@ -268,7 +267,7 @@ NeoBundle 'tpope/vim-markdown'
 NeoBundle 'Wombat'
 " }}}
 
-" }}} Neobundles
+" }}} Bundles
 
 " ENCODING {{{
 " --------------------------------------------------------------------------------------------------------------
