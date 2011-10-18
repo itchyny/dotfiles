@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2011/10/18 17:26:30.
+" - * Last Change: 2011/10/18 20:30:17.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -14,24 +14,23 @@ augroup ESC
 augroup END
 " }}}
 
-" VUNDLES {{{
-" Vundle {{{
+" Neobundles {{{
+" neobundle {{{
 " --------------------------------------------------------------------------------------------------------------
 let $BUNDLE = $HOME."/.vim/bundle"
-let s:vundle_dir = $BUNDLE.'/neobundle'
-function! s:init_vundle()
-  if !isdirectory(s:vundle_dir)
+let s:neobundle_dir = $BUNDLE.'/neobundle'
+function! s:init_neobundle()
+  if !isdirectory(s:neobundle_dir)
     echo "initializing neobundle\n"
-    exec '!git clone git@github.com:Shougo/neobundle.vim.git'.s:vundle_dir
+    exec '!git clone git@github.com:Shougo/neobundle.vim.git '.s:neobundle_dir
   endif
 endfunction
-call s:init_vundle()
+call s:init_neobundle()
 set runtimepath+=~/.vim/bundle/neobundle/
 call neobundle#rc(expand($BUNDLE))
 
 NeoBundle 'Shougo/neobundle.vim'
-  autocmd ESC FileType vundle nnoremap <silent> <buffer> <ESC><ESC> :<C-u>q<CR>
-  nnoremap <S-b> :<C-u>NeoBundleInstall!<CR>
+  nnoremap <silent> <S-b> :<C-u>NeoBundleInstall!<CR>
 " }}}
 
 " Complement {{{
@@ -269,7 +268,7 @@ NeoBundle 'tpope/vim-markdown'
 NeoBundle 'Wombat'
 " }}}
 
-" }}} VUNDLES
+" }}} Neobundles
 
 " ENCODING {{{
 " --------------------------------------------------------------------------------------------------------------

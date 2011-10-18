@@ -182,7 +182,7 @@ export PATH=$PATH:~/Dropbox/js/jison/bin/
 export PATH=$PATH:~/Dropbox/js/coffee-script/bin/
 export PATH=$PATH:~/.cabal/bin/
 
-export http_proxy=http://proxy.kuins.net:8080/
+# export http_proxy=http://proxy.kuins.net:8080/
 
 # go to ../ with key ^
 function cdup() {
