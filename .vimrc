@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2011/10/18 21:17:38.
+" - * Last Change: 2011/10/23 09:38:28.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -17,20 +17,20 @@ augroup END
 " Bundles {{{
 " neobundle {{{
 " --------------------------------------------------------------------------------------------------------------
-let $BUNDLE = $HOME."/.vim/bundle"
+let $VIM = $HOME.'/.vim'
+let $BUNDLE = $VIM.'/bundle'
 let s:neobundle_dir = $BUNDLE.'/neobundle.vim'
 function! s:init_neobundle()
   if !isdirectory(s:neobundle_dir)
-    echo "initializing neobundle\n"
+    echo 'initializing neobundle\n'
     exec '!git clone git@github.com:Shougo/neobundle.vim.git '.s:neobundle_dir
   endif
 endfunction
 call s:init_neobundle()
-set runtimepath+=~/.vim/bundle/neobundle.vim/
+execute 'set runtimepath+='.expand(s:neobundle_dir)
 call neobundle#rc(expand($BUNDLE))
-
 NeoBundle 'Shougo/neobundle.vim'
-  nnoremap <silent> <S-b> :<C-u>NeoBundleInstall!<CR>
+  nnoremap <silent> <S-b> :<C-u>Unite neobundle/install:!<CR>
 " }}}
 
 " Complement {{{
@@ -104,10 +104,8 @@ NeoBundle 'Shougo/vimproc'
   "    fi
   "
   if s:ismac
-   "let g:vimproc_dll_path = $HOME."/.vim/bundle/vimproc/autoload/procmac.so"
    let g:vimproc_dll_path = $BUNDLE."/vimproc/autoload/procmac.so"
   else
-   "let g:vimproc_dll_path = $HOME."/.vim/bundle/vimproc/autoload/procunix.so"
    let g:vimproc_dll_path = $BUNDLE."/vimproc/autoload/procunix.so"
   endif
 NeoBundle 'thinca/vim-quickrun'
@@ -154,7 +152,7 @@ NeoBundle 'Shougo/vimshell'
   augroup Vimshell
     autocmd!
     let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
-    let g:vimshell_prompt = " $ "
+    let g:vimshell_prompt = ' $ '
     " for easy window moving, unmap C-[hjkl]
     autocmd FileType vimshell iunmap <buffer> <C-h>
     autocmd FileType vimshell iunmap <buffer> <C-k>
@@ -183,11 +181,6 @@ NeoBundle 'Shougo/vimshell'
   nnoremap <Leader>s :<C-u>vnew<CR>:<C-u>VimShell<CR>
   nnoremap <S-h> :<C-u>VimShellPop<CR>
   nnoremap <Leader>z :<C-u>VimShellInteractive zsh<CR>
-  " autocmd FileType int-* call s:interactive_settings()
-  function! s:interactive_settings()
-    set filetype=haskell
-    :syntax enable
-  endfunction
   " autocmd FileType int-ghci set filetype=haskell
   nnoremap <Leader>g :<C-u>VimShellInteractive ghci<CR>
   nnoremap <Leader>p :<C-u>VimShellInteractive python<CR>
@@ -199,7 +192,6 @@ NeoBundle 'Shougo/vimshell'
                                                                                           let mapleader=","
 NeoBundle 'tpope/vim-surround'
 NeoBundle 't9md/vim-surround_custom_mapping'
-"NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'tComment'
 NeoBundle 'sjl/gundo.vim'
   " --| Requirement: +python
@@ -208,7 +200,6 @@ NeoBundle 'sjl/gundo.vim'
 NeoBundle 'Align'
 "NeoBundle 'msanders/snipmate.vim'
 NeoBundle 'laughedelic/dotvim'
-"NeoBundle 'CSApprox'
 NeoBundle 'errormarker.vim'
 NeoBundle 'mattn/calendar-vim'
   autocmd ESC FileType calendar nnoremap <silent> <buffer> <ESC><ESC> :<C-u>q<CR>
@@ -242,8 +233,6 @@ NeoBundle 'colorizer'
   "   autocmd!
   "   autocmd BufNewFile,BufReadPost *.css ColorHighlight
   " augroup END
-" NeoBundle 'css_color.vim'
-" NeoBundle 'skammer/vim-css-color'
 NeoBundle 'groenewege/vim-less'
 NeoBundle 'less.vim'
 NeoBundle 'syntaxm4.vim'
@@ -339,7 +328,6 @@ highlight PmenuSel guifg=black guibg=darkgray ctermfg=black ctermbg=darkgray
 highlight PmenuSbar guifg=white guibg=darkgray ctermfg=white ctermbg=darkgray
 highlight PmenuThumb guifg=white guibg=darkgray ctermfg=white ctermbg=darkgray
 highlight Special ctermfg=red guifg=red
-"highlight Visual guibg=grey ctermbg=grey
 highlight VertSplit guifg=black guibg=darkgray gui=none ctermfg=black ctermbg=darkgray cterm=none
 autocmd FileType * highlight Identifier ctermfg=cyan guifg=cyan
 autocmd FileType * highlight Function ctermfg=green guifg=green
@@ -435,6 +423,7 @@ filetype plugin indent on
 set autoindent
 set smartindent
 set shiftwidth=2
+  autocmd FileType markdown setl shiftwidth=4
 " }}}
 
 " Special keys (tab, backspace) {{{
