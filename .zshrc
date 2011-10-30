@@ -1,7 +1,7 @@
 # --------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2011/10/25 00:34:37.
+# - * Last Change: 2011/10/29 11:03:08.
 # --------------------------------------------------------------------------------------------------------------
 
 setopt prompt_subst
@@ -225,7 +225,6 @@ alias chrome='google-chrome'
 alias gosh='rlwrap gosh'
 alias coqtop='rlwrap coqtop'
 alias vi='vim'
-alias cpp='cd ~/Dropbox/cpp/'
 alias hs='cd ~/Dropbox/hs/'
 alias js='cd ~/Dropbox/js/'
 alias univ='cd ~/Dropbox/univ/'

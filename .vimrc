@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2011/10/26 17:00:35.
+" - * Last Change: 2011/10/28 22:36:28.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -357,14 +357,15 @@ set autoread                " 外部のエディタで編集中のファイル�
 " Filetype {{{
 augroup Filetype
   autocmd!
-  autocmd BufNewFile,BufReadPost *.hs   set filetype=haskell
-  autocmd BufNewFile,BufReadPost *.json set filetype=json
-  autocmd BufNewFile,BufReadPost *.less set filetype=less
-  autocmd BufNewFile,BufReadPost *.rst  set filetype=rest
-  autocmd BufNewFile,BufReadPost *.v    set filetype=coq
-  autocmd BufNewFile,BufReadPost *.y    set filetype=haskell
-  autocmd BufNewFile,BufReadPost *.mkd  set filetype=markdown
-  autocmd BufNewFile,BufReadPost *.md   set filetype=markdown
+  autocmd BufNewFile,BufReadPost,BufEnter *.hs   set filetype=haskell
+  autocmd BufNewFile,BufReadPost,BufEnter *.json set filetype=json
+  autocmd BufNewFile,BufReadPost,BufEnter *.less set filetype=less
+  autocmd BufNewFile,BufReadPost,BufEnter *.rst  set filetype=rest
+  autocmd BufNewFile,BufReadPost,BufEnter *.v    set filetype=coq
+  autocmd BufNewFile,BufReadPost,BufEnter *.y    set filetype=haskell
+  autocmd BufNewFile,BufReadPost,BufEnter *.mkd  set filetype=markdown
+  autocmd BufNewFile,BufReadPost,BufEnter *.md   set filetype=markdown
+  autocmd BufNewFile,BufReadPost,BufEnter *.r    set filetype=r
 augroup END
 " }}}
 
