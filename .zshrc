@@ -1,7 +1,7 @@
 # --------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2011/10/29 11:03:08.
+# - * Last Change: 2011/11/03 14:57:53.
 # --------------------------------------------------------------------------------------------------------------
 
 setopt prompt_subst
@@ -247,6 +247,7 @@ alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 alias emacs='vi'
+alias crontab="EDITOR=\"$HOME/bin/vi\" crontab"
 alias yoruho='python ~/Dropbox/py/itchyny/yoruho.py'
 alias tweet='python ~/Dropbox/py/itchyny/tweet.py'
 alias twitter='rlwrap runhaskell ~/Dropbox/hs/twitter/twitter.hs'
@@ -277,6 +278,9 @@ alias -s pdf=evince
 alias -s png=eog
 alias -s jpg=eog
 alias -s bmp=eog
+alias -s PNG=eog
+alias -s JPG=eog
+alias -s BMP=eog
 alias -s mp3=mplayer
 alias -s wav=mplayer
 alias -s cpp=runcpp

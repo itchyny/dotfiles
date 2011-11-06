@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2011/10/28 22:36:28.
+" - * Last Change: 2011/11/06 17:00:03.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -40,6 +40,7 @@ NeoBundle 'Shougo/neocomplcache'
   let g:neocomplcache_enable_smart_case = 1
   let g:neocomplcache_enable_underbar_completion = 1
   let g:neocomplcache_enable_camel_case_completion = 1
+  let g:neocomplcache_snippets_dir = expand($VIM.'/snippets')
   imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ?
         \     "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
   imap <expr><C-l> neocomplcache#sources#snippets_complete#expandable() ?
@@ -181,7 +182,7 @@ NeoBundle 'Shougo/vimshell'
   nnoremap <Leader>s :<C-u>vnew<CR>:<C-u>VimShell<CR>
   nnoremap <S-h> :<C-u>VimShellPop<CR>
   nnoremap <Leader>z :<C-u>VimShellInteractive zsh<CR>
-  " autocmd FileType int-ghci set filetype=haskell
+  autocmd FileType int-ghci set filetype=haskell
   nnoremap <Leader>g :<C-u>VimShellInteractive ghci<CR>
   nnoremap <Leader>p :<C-u>VimShellInteractive python<CR>
   " nnoremap <Leader>a :<C-u>tabnew<CR>:VimShellInteractive gdb ./a.out
@@ -358,6 +359,7 @@ set autoread                " 外部のエディタで編集中のファイル�
 augroup Filetype
   autocmd!
   autocmd BufNewFile,BufReadPost,BufEnter *.hs   set filetype=haskell
+  autocmd BufNewFile,BufReadPost,BufEnter *.tex  set filetype=tex
   autocmd BufNewFile,BufReadPost,BufEnter *.json set filetype=json
   autocmd BufNewFile,BufReadPost,BufEnter *.less set filetype=less
   autocmd BufNewFile,BufReadPost,BufEnter *.rst  set filetype=rest
@@ -376,14 +378,14 @@ augroup Binary
   autocmd!
   autocmd FileType xxd nnoremap <silent> <buffer> ,b :%!xxd <CR><CR>
   autocmd FileType xxd nnoremap <silent> <buffer> ,r :%!xxd -r <CR><CR>
-  " autocmd BufReadPre $BINS let &binary = 1
+  autocmd BufReadPre $BINS let &binary = 1
   autocmd BufReadPost $BINS call BinReadPost()
-  autocmd BufWritePre $BINS call BinWritePre()
-  autocmd BufWritePost $BINS call BinWritePost()
-  autocmd CursorHold $BINS call BinReHex()
+  " autocmd BufWritePre $BINS call BinWritePre()
+  " autocmd BufWritePost $BINS call BinWritePost()
+  " autocmd CursorHold $BINS call BinReHex()
   function! BinReadPost()
     set filetype=xxd
-    exec '%!xxd'
+    " exec '%!xxd'
     " let &binary = 1
   endfunction
   function! BinWritePre()
@@ -458,13 +460,13 @@ augroup END
 " Enable omni completation {{{
 augroup Omnifunc
   autocmd!
-  autocmd FileType c          set omnifunc=ccomplete#Complete
-  autocmd FileType css        set omnifunc=csscomplete#CompleteCSS
-  autocmd FileType html       set omnifunc=htmlcomplete#CompleteTags
-  autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-  autocmd FileType php        set omnifunc=phpcomplete#CompletePHP
-  autocmd FileType python     set omnifunc=pythoncomplete#Complete
-  autocmd FileType xml        set omnifunc=xmlcomplete#CompleteTags
+  autocmd FileType c          setlocal omnifunc=ccomplete#Complete
+  autocmd FileType css        setlocal omnifunc=csscomplete#CompleteCSS
+  autocmd FileType html       setlocal omnifunc=htmlcomplete#CompleteTags
+  autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+  autocmd FileType php        setlocal omnifunc=phpcomplete#CompletePHP
+  autocmd FileType python     setlocal omnifunc=pythoncomplete#Complete
+  autocmd FileType xml        setlocal omnifunc=xmlcomplete#CompleteTags
 augroup END
 setlocal omnifunc=syntaxcomplete#Complete
 " }}}
