@@ -1,7 +1,7 @@
 # --------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2011/11/03 14:57:53.
+# - * Last Change: 2011/11/13 19:28:32.
 # --------------------------------------------------------------------------------------------------------------
 
 setopt prompt_subst
@@ -83,15 +83,15 @@ setopt noautoremoveslash
 # コマンドラインの引数で --prefix=/usr などの = 以降でも補完できる
 setopt magic_equal_subst
 zmodload zsh/complist
-bindkey -M menuselect 'h' vi-backward-char
-bindkey -M menuselect 'j' vi-down-line-or-history
-bindkey -M menuselect 'k' vi-up-line-or-history
-bindkey -M menuselect 'l' vi-forward-char
-autoload -Uz history-search-end
-zle -N history-beginning-search-backward-end history-search-end
-zle -N history-beginning-search-forward-end history-search-end
-bindkey "^P" history-beginning-search-backward-end
-bindkey "^N" history-beginning-search-forward-end
+# bindkey -M menuselect 'h' vi-backward-char
+# bindkey -M menuselect 'j' vi-down-line-or-history
+# bindkey -M menuselect 'k' vi-up-line-or-history
+# bindkey -M menuselect 'l' vi-forward-char
+# autoload -Uz history-search-end
+# zle -N history-beginning-search-backward-end history-search-end
+# zle -N history-beginning-search-forward-end history-search-end
+# bindkey "^P" history-beginning-search-backward-end
+# bindkey "^N" history-beginning-search-forward-end
 
 # #
 # case-insensitive (uppercase from lowercase) completion
@@ -208,18 +208,25 @@ function google() {
   w3m http://www.google.co.jp/$opt # 引数がなければ $opt は空
 }
 
+
+source .zsh/plugin/incr*.zsh
+
 # for vim's C-s
 stty -ixon -ixoff
 
 # alias settings
 # for Mac
+alias cabal-update='sudo cabal update && sudo cabal install cabal-install && sudo cabal update'
 if [ `uname` = "Darwin" ]; then
   alias google-chrome='open -a Google\ Chrome'
   alias evince='open -a Preview'
   alias display='open -a Preview'
   alias eog='open -a Preview'
-  alias port_update='sudo port selfupdate && sudo port -d sync  && sudo port outdated && sudo port upgrade outdated'
+  alias port-update='sudo port selfupdate && sudo port upgrade outdated'
+  alias update='cabal-update && port-update'
 elif [ `uname` = "Linux" ]; then
+  alias apt-get-update='sudo apt-get update'
+  alias update='cabal-update && apt-get-update'
 fi
 alias chrome='google-chrome'
 alias gosh='rlwrap gosh'
@@ -247,6 +254,7 @@ alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 alias emacs='vi'
+alias ccat='pygmentize'
 alias crontab="EDITOR=\"$HOME/bin/vi\" crontab"
 alias yoruho='python ~/Dropbox/py/itchyny/yoruho.py'
 alias tweet='python ~/Dropbox/py/itchyny/tweet.py'

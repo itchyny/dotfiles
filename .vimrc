@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2011/11/08 09:28:17.
+" - * Last Change: 2011/11/11 15:50:14.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -128,13 +128,13 @@ NeoBundle 'Shougo/vimfiler'
     autocmd FileType vimfiler nunmap <buffer> <C-l>
     autocmd FileType vimfiler noremap <buffer> <C-l> <ESC><C-w>l
   augroup END
-NeoBundle 'eagletmt/ghci-vim'
-  augroup Ghci
-    autocmd!
-    autocmd Filetype haskell nnoremap <Leader>l :GhciLoad<CR>
-    autocmd Filetype haskell nnoremap <Leader>i :GhciInfo<CR>
-    autocmd Filetype haskell nnoremap <Leader>t :GhciType<CR>
-  augroup END
+" NeoBundle 'eagletmt/ghci-vim'
+"   augroup Ghci
+"     autocmd!
+"     autocmd Filetype haskell nnoremap <Leader>l :GhciLoad<CR>
+"     autocmd Filetype haskell nnoremap <Leader>i :GhciInfo<CR>
+"     autocmd Filetype haskell nnoremap <Leader>t :GhciType<CR>
+"   augroup END
 NeoBundle 'eagletmt/coqtop-vim'
   nnoremap <Leader>v :<C-u>CoqStart<CR>
 NeoBundle 'tyru/open-browser.vim'
