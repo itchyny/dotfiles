@@ -1,7 +1,7 @@
 # --------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2011/11/13 20:25:21.
+# - * Last Change: 2011/11/13 22:47:05.
 # --------------------------------------------------------------------------------------------------------------
 
 setopt prompt_subst
@@ -36,8 +36,8 @@ PROMPT2="%{$bg[blue]%}%_>%{$reset_color%}%b "
 SPROMPT="%{$bg[red]%}(._.%)? %B %r is correct? [n,y,a,e]:%{${reset_color}%}%b "
 [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] && PROMPT="%{$bg[red]%}${HOST%%.*}${PROMPT}%{${reset_color}%}"
 LS_COLORS='di=01;36:ln=01;35:ex=01;31:'
-LS_COLORS+='*.js=01;35:*.cpp=01;35:*.hs=01;35:*.py=01;35:*.pl=01;35:*.tex=01;35:*.csv=01;35:*.R=01;35:*.json=01;35:*.txt=01;35:*.sty=01;35:*.coffee=01;35:*.class=01;35:*.java=01;35:*.less=01;35:*.css=01;35:'
-LS_COLORS+='*.jpg=01;33:*.png=01;33:*.bmp=01;33:'
+LS_COLORS+='*.c=01;35:*.js=01;35:*.cpp=01;35:*.hs=01;35:*.py=01;35:*.pl=01;35:*.tex=01;35:*.csv=01;35:*.r=01;35:*.R=01;35:*.json=01;35:*.txt=01;35:*.sty=01;35:*.coffee=01;35:*.class=01;35:*.java=01;35:*.less=01;35:*.css=01;35:'
+LS_COLORS+='*.jpg=01;33:*.png=01;33:*.bmp=01;33:*.JPG=01;33:*.PNG=01;33:*.BMP=01;33:'
 LS_COLORS+='*.gz=01;34:*.tar=01;34:*.zip=01;34:'
 LS_COLORS+='*.pdf=01;32:*makefile=01;32:*.html=01;32:'
 export LS_COLORS     # doesn't work in Mac
@@ -54,27 +54,27 @@ echo -ne "\033]0;${USER}@${PWD}\007"
   ;;
 esac
 
-# # enable complement
-# autoload -Uz compinit; compinit
-# # even if in sudo
-# zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin
-# # store the directory foreach cd, and show complement directories with cd -<TAB>
-# setopt auto_pushd
-# # complement for variable names
-# setopt auto_param_keys
-# # 補完するかの質問は画面を超える時にのみに行う｡
-# LISTMAX=0
-# # 補完候補が複数ある時に、一覧表示
-# setopt auto_list
-# # 補完時に無視するファイルの種類
-# fignore=(.o .dvi .aux .log .toc - \~)
+# enable complement
+autoload -Uz compinit; compinit
+# even if in sudo
+zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin
+# store the directory foreach cd, and show complement directories with cd -<TAB>
+setopt auto_pushd
+# complement for variable names
+setopt auto_param_keys
+# 補完するかの質問は画面を超える時にのみに行う｡
+LISTMAX=0
+# 補完候補が複数ある時に、一覧表示
+setopt auto_list
+# 補完時に無視するファイルの種類
+fignore=(.o .dvi .aux .log .toc - \~)
 # # 補完キー（Tab, Ctrl+I) を連打するだけで順に補完候補を自動で補完
 # setopt auto_menu
-# # ディレクトリ名の補完で末尾の / を自動的に付加し、次の補完に備える
-# setopt auto_param_slash
+# ディレクトリ名の補完で末尾の / を自動的に付加し、次の補完に備える
+setopt auto_param_slash
 # setopt noautoremoveslash
 # use arrow keys to select from complement list
-zstyle ':completion:*:default' menu select true
+# zstyle ':completion:*:default' menu select true
 
 # # colorize list as ls color
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
@@ -95,12 +95,13 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 # bindkey "^N" history-beginning-search-forward-end
 
 # #
-# case-insensitive (uppercase from lowercase) completion
-# #zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
-# case-insensitive (all) completion
-# #zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 # case-insensitive,partial-word and then substring completion
-# zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+#
+# case-insensitive (all) completion
+# zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+# case-insensitive (uppercase from lowercase) completion
+# zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
 # do not beep
 setopt no_beep
