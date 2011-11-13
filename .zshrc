@@ -1,7 +1,7 @@
 # --------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2011/11/13 19:28:32.
+# - * Last Change: 2011/11/13 20:25:21.
 # --------------------------------------------------------------------------------------------------------------
 
 setopt prompt_subst
@@ -54,35 +54,36 @@ echo -ne "\033]0;${USER}@${PWD}\007"
   ;;
 esac
 
-# enable complement
-autoload -Uz compinit; compinit
-# even if in sudo
-zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin
-# store the directory foreach cd, and show complement directories with cd -<TAB>
-setopt auto_pushd
-# complement for variable names
-setopt auto_param_keys
-# 補完するかの質問は画面を超える時にのみに行う｡
-LISTMAX=0
+# # enable complement
+# autoload -Uz compinit; compinit
+# # even if in sudo
+# zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin
+# # store the directory foreach cd, and show complement directories with cd -<TAB>
+# setopt auto_pushd
+# # complement for variable names
+# setopt auto_param_keys
+# # 補完するかの質問は画面を超える時にのみに行う｡
+# LISTMAX=0
+# # 補完候補が複数ある時に、一覧表示
+# setopt auto_list
+# # 補完時に無視するファイルの種類
+# fignore=(.o .dvi .aux .log .toc - \~)
+# # 補完キー（Tab, Ctrl+I) を連打するだけで順に補完候補を自動で補完
+# setopt auto_menu
+# # ディレクトリ名の補完で末尾の / を自動的に付加し、次の補完に備える
+# setopt auto_param_slash
+# setopt noautoremoveslash
 # use arrow keys to select from complement list
 zstyle ':completion:*:default' menu select true
-# colorize list as ls color
+
+# # colorize list as ls color
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-# 補完候補が複数ある時に、一覧表示
-setopt auto_list
-# 補完時に無視するファイルの種類
-fignore=(.o .dvi .aux .log .toc - \~)
-# 補完キー（Tab, Ctrl+I) を連打するだけで順に補完候補を自動で補完
-# setopt auto_menu
-# ディレクトリ名の補完で末尾の / を自動的に付加し、次の補完に備える
-# setopt auto_param_slash
-setopt noautoremoveslash
 
 # auto_list の補完候補一覧で、ls -F のようにファイルの種別をマーク表示しない
 # setopt list_types
 # コマンドラインの引数で --prefix=/usr などの = 以降でも補完できる
-setopt magic_equal_subst
-zmodload zsh/complist
+# setopt magic_equal_subst
+# zmodload zsh/complist
 # bindkey -M menuselect 'h' vi-backward-char
 # bindkey -M menuselect 'j' vi-down-line-or-history
 # bindkey -M menuselect 'k' vi-up-line-or-history
@@ -99,7 +100,7 @@ zmodload zsh/complist
 # case-insensitive (all) completion
 # #zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 # case-insensitive,partial-word and then substring completion
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+# zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
 # do not beep
 setopt no_beep
@@ -160,12 +161,12 @@ function pcolor() {
 }
 
 # 予測
-autoload -U predict-on
-zle -N predict-on
-zle -N predict-off
-bindkey '^xp' predict-on
-bindkey '^x^p' predict-off
-zstyle ':predict' verbose true
+# autoload -U predict-on
+# zle -N predict-on
+# zle -N predict-off
+# bindkey '^xp' predict-on
+# bindkey '^x^p' predict-off
+# zstyle ':predict' verbose true
 
 
 # path settings
@@ -194,6 +195,13 @@ zle -N cdup
 alias cdup='cd ../'
 bindkey '\^' cdup
 
+# colorize sudo
+function sudo() {
+    echo "\e[38;5;200m"
+    /usr/bin/sudo $*
+    echo "\e[m"
+}
+
 # Google it within w3m
 function google() {
   local str opt
@@ -207,7 +215,6 @@ function google() {
   fi
   w3m http://www.google.co.jp/$opt # 引数がなければ $opt は空
 }
-
 
 source .zsh/plugin/incr*.zsh
 
@@ -242,6 +249,7 @@ alias :x='exit'
 alias :xa='exit'
 alias h='sudo shutdown -h'
 alias r='sudo shutdown -r'
+alias l='ls -al'
 alias v='vim'
 alias mpg123='mpg123 -zC'
 function runcpp () { g++ $1; ./a.out; }
