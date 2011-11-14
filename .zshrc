@@ -1,7 +1,7 @@
 # --------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2011/11/13 22:47:05.
+# - * Last Change: 2011/11/14 21:14:58.
 # --------------------------------------------------------------------------------------------------------------
 
 setopt prompt_subst
@@ -42,7 +42,7 @@ LS_COLORS+='*.gz=01;34:*.tar=01;34:*.zip=01;34:'
 LS_COLORS+='*.pdf=01;32:*makefile=01;32:*.html=01;32:'
 export LS_COLORS     # doesn't work in Mac
 export LSCOLORS=GahFCxdxbxegedabagacad
-alias prompt_kadai='PROMPT=" %% "'
+alias prompt_kadai='PROMPT=" $ "'
 
 # title of terminal
 case "${TERM}" in
@@ -97,7 +97,6 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 # #
 # case-insensitive,partial-word and then substring completion
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
-#
 # case-insensitive (all) completion
 # zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 # case-insensitive (uppercase from lowercase) completion
@@ -196,6 +195,15 @@ zle -N cdup
 alias cdup='cd ../'
 bindkey '\^' cdup
 
+function startvim() {
+  exec < /dev/tty
+  ${EDITOR}
+  zle reset-prompt
+}
+zle -N startvim
+alias startvim='vi'
+bindkey '\@' startvim
+
 # colorize sudo
 function sudo() {
     echo "\e[38;5;200m"
@@ -239,6 +247,7 @@ fi
 alias chrome='google-chrome'
 alias gosh='rlwrap gosh'
 alias coqtop='rlwrap coqtop'
+alias v='vim'
 alias vi='vim'
 alias hs='cd ~/Dropbox/hs/'
 alias js='cd ~/Dropbox/js/'
@@ -251,7 +260,6 @@ alias :xa='exit'
 alias h='sudo shutdown -h'
 alias r='sudo shutdown -r'
 alias l='ls -al'
-alias v='vim'
 alias mpg123='mpg123 -zC'
 function runcpp () { g++ $1; ./a.out; }
 alias asm=runcpp
