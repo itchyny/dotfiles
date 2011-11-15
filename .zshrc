@@ -1,7 +1,7 @@
 # --------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2011/11/14 21:14:58.
+# - * Last Change: 2011/11/15 09:48:01.
 # --------------------------------------------------------------------------------------------------------------
 
 setopt prompt_subst
@@ -192,17 +192,22 @@ function cdup() {
   zle reset-prompt
 }
 zle -N cdup
-alias cdup='cd ../'
 bindkey '\^' cdup
 
-function startvim() {
+function starteditor() {
   exec < /dev/tty
   ${EDITOR}
   zle reset-prompt
 }
-zle -N startvim
-alias startvim='vi'
-bindkey '\@' startvim
+zle -N starteditor
+bindkey '\@' starteditor
+
+function echoat () {
+  # TODO
+  echo -n "@"
+}
+zle -N echoat
+bindkey '\\\@' echoat
 
 # colorize sudo
 function sudo() {
