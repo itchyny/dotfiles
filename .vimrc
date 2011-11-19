@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2011/11/11 15:50:14.
+" - * Last Change: 2011/11/19 10:10:06.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -20,13 +20,11 @@ augroup END
 let $VIM = $HOME.'/.vim'
 let $BUNDLE = $VIM.'/bundle'
 let s:neobundle_dir = $BUNDLE.'/neobundle.vim'
-function! s:init_neobundle()
-  if !isdirectory(s:neobundle_dir)
-    echo 'initializing neobundle\n'
-    exec '!git clone git@github.com:Shougo/neobundle.vim.git '.s:neobundle_dir
-  endif
-endfunction
-call s:init_neobundle()
+if !isdirectory(s:neobundle_dir)
+  echo 'initializing neobundle\n'
+  exec '!git clone git@github.com:Shougo/neobundle.vim.git '.s:neobundle_dir
+  exec '!git clone git@github.com:Shougo/unite.vim.git '.$BUNDLE.'/unite.vim'
+else
 execute 'set runtimepath+='.expand(s:neobundle_dir)
 call neobundle#rc(expand($BUNDLE))
 NeoBundle 'Shougo/neobundle.vim'
@@ -117,16 +115,26 @@ NeoBundle 'thinca/vim-quickrun'
   nnoremap <Leader>r :<C-u>QuickRun  <CR>
   nnoremap <Leader>e :<C-u>QuickRun <i <CR>
   nnoremap <Leader>o :<C-u>QuickRun <i >file:output<CR>
-  autocmd ESC FileType quickrun inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
-  autocmd ESC FileType quickrun nnoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
-  autocmd ESC FileType quickrun vnoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
+  autocmd ESC FileType quickrun inoremap <silent> <buffer> <ESC><ESC><ESC> <ESC>:q<CR>
+  autocmd ESC FileType quickrun nnoremap <silent> <buffer> <ESC><ESC><ESC> <ESC>:q<CR>
+  autocmd ESC FileType quickrun vnoremap <silent> <buffer> <ESC><ESC><ESC> <ESC>:q<CR>
 NeoBundle 'Shougo/vimfiler'
   let g:vimfiler_as_default_explorer = 1
+  " doesn't work
+  hi def link vimfilerPdf Function
+  hi def link vimfilerHtml Function
+  hi def link vimfilerDateToday Identifier
+  hi def link vimfilerDate Statement
+  hi def link vimfilerTypeLink Constant
+  hi def link vimfilerTypeExecute Special
+  hi def link vimfilerTypeArchive NonText
+  hi def link vimfilerTypeImage Statement
   nnoremap <Leader>f :<C-u>VimFiler<CR>
   augroup Vimfiler
     autocmd!
     autocmd FileType vimfiler nunmap <buffer> <C-l>
     autocmd FileType vimfiler noremap <buffer> <C-l> <ESC><C-w>l
+    autocmd FileType vimfiler noremap <buffer> <c-r> <Plug>(vimfiler_redraw_screen)
   augroup END
 " NeoBundle 'eagletmt/ghci-vim'
 "   augroup Ghci
@@ -151,6 +159,10 @@ NeoBundle 'TwitVim'
                                                                                           let mapleader=";"
 NeoBundle 'Shougo/vimshell'
   " --| Requirement: vimproc
+  hi def link VimShellLink Constant
+  hi def link VimShellExe Special
+  hi def link VimShellUserPrompt Function
+  hi def link VimShellPrompt Function
   augroup Vimshell
     autocmd!
     let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
@@ -177,8 +189,8 @@ NeoBundle 'Shougo/vimshell'
     autocmd FileType vimshell nnoremap <buffer> <expr><silent> <Down> unite#sources#vimshell_history#start_complete(!0)
   augroup END
   " autocmd ESC FileType vimshell inoremap <buffer> <ESC> <NOP>
-  autocmd ESC FileType vimshell vnoremap <buffer> <ESC><ESC> :<C-u>q<CR>
-  autocmd ESC FileType vimshell nnoremap <buffer> <ESC><ESC> :<C-u>q<CR>
+  autocmd ESC FileType vimshell vnoremap <buffer> <ESC><ESC><ESC> :<C-u>q<CR>
+  autocmd ESC FileType vimshell nnoremap <buffer> <ESC><ESC><ESC> :<C-u>q<CR>
   nnoremap <Leader><Leader>s :<C-u>VimShellTab<CR>
   nnoremap <Leader>s :<C-u>vnew<CR>:<C-u>VimShell<CR>
   nnoremap <S-h> :<C-u>VimShellPop<CR>
@@ -212,7 +224,7 @@ NeoBundle 'smartword'
   map <Leader>w  <Plug>(smartword-w)
   map <Leader>b  <Plug>(smartword-b)
 NeoBundle 'VimCalc'
-  autocmd ESC FileType vimcalc nnoremap <silent> <buffer> <ESC><ESC> :<C-u>q<CR>
+  autocmd ESC FileType vimcalc nnoremap <silent> <buffer> <ESC><ESC><ESC> :<C-u>q<CR>
   nnoremap <Leader>a :<C-u>Calc<CR>
 NeoBundle 'autodate.vim'
 " }}}
@@ -251,13 +263,25 @@ NeoBundle 'syntaxhaskell.vim'
 NeoBundle 'indenthaskell.vim'
 NeoBundle 'haskell.vim'
 NeoBundle 'tpope/vim-markdown'
+NeoBundle 'basyura/jslint.vim'
+function! s:javascript_filetype_settings()
+  autocmd BufLeave     <buffer> call jslint#clear()
+  autocmd CursorHold,BufWritePost <buffer> call jslint#check()
+  autocmd CursorMoved  <buffer> call jslint#message()
+endfunction
+augroup JsLint
+  autocmd!
+  autocmd FileType javascript call s:javascript_filetype_settings()
+augroup END
 " }}}
 
 " Colorscheme {{{
 " --------------------------------------------------------------------------------------------------------------
 NeoBundle 'Wombat'
+colorscheme wombat
 " }}}
 
+endif
 " }}} Bundles
 
 " ENCODING {{{
@@ -297,7 +321,7 @@ set showmode
 " Main appearance {{{
 set shortmess+=I            " disable start up message
 set number                  " line number
-set nocursorline
+set cursorline
 set nocursorcolumn
 set showmatch               " 括弧の対応
 set showtabline=2           " always show tab
@@ -310,7 +334,6 @@ set statusline=%{expand('%:p:t')}\ %<[%{expand('%:p:h')}]%=\ %m%r%y%w[%{&fenc!='
 " }}}
 
 " Color {{{
-colorscheme wombat
 syntax enable
 set background=dark
 if !has("gui_running")
@@ -627,17 +650,21 @@ nnoremap # :<C-u>set hlsearch<CR>#
 
 " Navigation {{{
 " window
+" <C-j> doesn't work. When pressed <C-j>, <C-m> is triggered.
 inoremap <C-h> <ESC><C-w>h
 inoremap <C-j> <ESC><C-w>j
+inoremap <C-m> <ESC><C-w>j
 inoremap <C-k> <ESC><C-w>k
 inoremap <C-l> <ESC><C-w>l
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
+nnoremap <C-m> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 nnoremap <C-x> <C-w>x
 vnoremap <C-h> <C-w>h
 vnoremap <C-j> <C-w>j
+vnoremap <C-m> <C-w>j
 vnoremap <C-k> <C-w>k
 vnoremap <C-l> <C-w>l
 vnoremap <C-x> <C-w>x
