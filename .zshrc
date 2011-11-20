@@ -1,7 +1,7 @@
 # --------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2011/11/15 09:48:01.
+# - * Last Change: 2011/11/21 00:36:09.
 # --------------------------------------------------------------------------------------------------------------
 
 setopt prompt_subst
@@ -201,13 +201,6 @@ function starteditor() {
 }
 zle -N starteditor
 bindkey '\@' starteditor
-
-function echoat () {
-  # TODO
-  echo -n "@"
-}
-zle -N echoat
-bindkey '\\\@' echoat
 
 # colorize sudo
 function sudo() {

@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2011/11/19 10:10:06.
+" - * Last Change: 2011/11/20 14:29:04.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -243,10 +243,10 @@ NeoBundle 'JSON.vim'
 NeoBundle 'html5.vim'
 NeoBundle 'wavded/vim-stylus'
 NeoBundle 'colorizer'
-  " augroup colorizer
-  "   autocmd!
-  "   autocmd BufNewFile,BufReadPost *.css ColorHighlight
-  " augroup END
+  augroup colorizer
+    autocmd!
+    autocmd BufNewFile,BufReadPost *.css ColorHighlight
+  augroup END
 NeoBundle 'groenewege/vim-less'
 NeoBundle 'less.vim'
 NeoBundle 'syntaxm4.vim'
@@ -265,9 +265,9 @@ NeoBundle 'haskell.vim'
 NeoBundle 'tpope/vim-markdown'
 NeoBundle 'basyura/jslint.vim'
 function! s:javascript_filetype_settings()
-  autocmd BufLeave     <buffer> call jslint#clear()
-  autocmd CursorHold,BufWritePost <buffer> call jslint#check()
+  autocmd BufWritePost <buffer> call jslint#check()
   autocmd CursorMoved  <buffer> call jslint#message()
+  autocmd BufLeave     <buffer> call jslint#clear()
 endfunction
 augroup JsLint
   autocmd!
@@ -650,10 +650,9 @@ nnoremap # :<C-u>set hlsearch<CR>#
 
 " Navigation {{{
 " window
-" <C-j> doesn't work. When pressed <C-j>, <C-m> is triggered.
+" <C-j> doesn't work.
 inoremap <C-h> <ESC><C-w>h
 inoremap <C-j> <ESC><C-w>j
-inoremap <C-m> <ESC><C-w>j
 inoremap <C-k> <ESC><C-w>k
 inoremap <C-l> <ESC><C-w>l
 nnoremap <C-h> <C-w>h
