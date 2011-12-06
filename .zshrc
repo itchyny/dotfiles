@@ -1,7 +1,7 @@
 # --------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2011/11/21 00:36:09.
+# - * Last Change: 2011/12/01 14:48:23.
 # --------------------------------------------------------------------------------------------------------------
 
 setopt prompt_subst
@@ -36,7 +36,8 @@ PROMPT2="%{$bg[blue]%}%_>%{$reset_color%}%b "
 SPROMPT="%{$bg[red]%}(._.%)? %B %r is correct? [n,y,a,e]:%{${reset_color}%}%b "
 [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] && PROMPT="%{$bg[red]%}${HOST%%.*}${PROMPT}%{${reset_color}%}"
 LS_COLORS='di=01;36:ln=01;35:ex=01;31:'
-LS_COLORS+='*.c=01;35:*.js=01;35:*.cpp=01;35:*.hs=01;35:*.py=01;35:*.pl=01;35:*.tex=01;35:*.csv=01;35:*.r=01;35:*.R=01;35:*.json=01;35:*.txt=01;35:*.sty=01;35:*.coffee=01;35:*.class=01;35:*.java=01;35:*.less=01;35:*.css=01;35:'
+LS_COLORS+='*.c=01;35:*.cpp=01;35:*.js=01;35:*.json=01;35:*.hs=01;35:*.py=01;35:*.pl=01;35:'
+LS_COLORS+='*.tex=01;35:*.csv=01;35:*.r=01;35:*.R=01;35:*.txt=01;35:*.sty=01;35:*.coffee=01;35:*.class=01;35:*.java=01;35:*.less=01;35:*.css=01;35:'
 LS_COLORS+='*.jpg=01;33:*.png=01;33:*.bmp=01;33:*.JPG=01;33:*.PNG=01;33:*.BMP=01;33:'
 LS_COLORS+='*.gz=01;34:*.tar=01;34:*.zip=01;34:'
 LS_COLORS+='*.pdf=01;32:*makefile=01;32:*.html=01;32:'
@@ -202,13 +203,6 @@ function starteditor() {
 zle -N starteditor
 bindkey '\@' starteditor
 
-# colorize sudo
-function sudo() {
-    echo "\e[38;5;200m"
-    /usr/bin/sudo $*
-    echo "\e[m"
-}
-
 # Google it within w3m
 function google() {
   local str opt
@@ -223,7 +217,7 @@ function google() {
   w3m http://www.google.co.jp/$opt # 引数がなければ $opt は空
 }
 
-source .zsh/plugin/incr*.zsh
+[ -e ~/.zsh/plugin/incr*.zsh ] && source ~/.zsh/plugin/incr*.zsh
 
 # for vim's C-s
 stty -ixon -ixoff

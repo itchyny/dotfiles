@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2011/11/20 14:29:04.
+" - * Last Change: 2011/12/03 21:41:34.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -78,6 +78,7 @@ NeoBundle 'ujihisa/ref-hoogle'
   " --|   $ cabal install hoogle
   " --|   $ hoogle data
   nnoremap <Leader>h :<C-u>Unite ref/hoogle<CR>
+NeoBundle 'h1mesuke/unite-outline'
 " }}}
 
 " QuickRun / Filer / Outer world of Vim ( "\\" ) {{{
@@ -120,6 +121,7 @@ NeoBundle 'thinca/vim-quickrun'
   autocmd ESC FileType quickrun vnoremap <silent> <buffer> <ESC><ESC><ESC> <ESC>:q<CR>
 NeoBundle 'Shougo/vimfiler'
   let g:vimfiler_as_default_explorer = 1
+  let g:vimfiler_sort_type = 'TIME'
   " doesn't work
   hi def link vimfilerPdf Function
   hi def link vimfilerHtml Function
@@ -129,7 +131,7 @@ NeoBundle 'Shougo/vimfiler'
   hi def link vimfilerTypeExecute Special
   hi def link vimfilerTypeArchive NonText
   hi def link vimfilerTypeImage Statement
-  nnoremap <Leader>f :<C-u>VimFiler<CR>
+  nnoremap <Leader>f :<C-u>VimFilerCreate<CR>
   augroup Vimfiler
     autocmd!
     autocmd FileType vimfiler nunmap <buffer> <C-l>
@@ -143,8 +145,6 @@ NeoBundle 'Shougo/vimfiler'
 "     autocmd Filetype haskell nnoremap <Leader>i :GhciInfo<CR>
 "     autocmd Filetype haskell nnoremap <Leader>t :GhciType<CR>
 "   augroup END
-NeoBundle 'eagletmt/coqtop-vim'
-  nnoremap <Leader>v :<C-u>CoqStart<CR>
 NeoBundle 'tyru/open-browser.vim'
   nmap <Leader>b <Plug>(openbrowser-smart-search)
   vmap <Leader>b <Plug>(openbrowser-smart-search)
@@ -264,15 +264,17 @@ NeoBundle 'indenthaskell.vim'
 NeoBundle 'haskell.vim'
 NeoBundle 'tpope/vim-markdown'
 NeoBundle 'basyura/jslint.vim'
-function! s:javascript_filetype_settings()
-  autocmd BufWritePost <buffer> call jslint#check()
-  autocmd CursorMoved  <buffer> call jslint#message()
-  autocmd BufLeave     <buffer> call jslint#clear()
-endfunction
-augroup JsLint
-  autocmd!
-  autocmd FileType javascript call s:javascript_filetype_settings()
-augroup END
+if s:ismac
+  function! s:javascript_filetype_settings()
+    autocmd BufWritePost <buffer> call jslint#check()
+    autocmd CursorMoved  <buffer> call jslint#message()
+    autocmd BufLeave     <buffer> call jslint#clear()
+  endfunction
+  augroup JsLint
+    autocmd!
+    autocmd FileType javascript call s:javascript_filetype_settings()
+  augroup END
+endif
 " }}}
 
 " Colorscheme {{{
@@ -642,10 +644,10 @@ vnoremap <C-s> :<C-u>w<CR>
 
 " search {{{
 nnoremap <silent> <Esc><Esc> :<C-u>set nohlsearch<CR>
-nnoremap / :<C-u>set hlsearch<CR>/
-nnoremap ? :<C-u>set hlsearch<CR>?
-nnoremap * :<C-u>set hlsearch<CR>*
-nnoremap # :<C-u>set hlsearch<CR>#
+nnoremap <silent> / :<C-u>set hlsearch<CR>/
+nnoremap <silent> ? :<C-u>set hlsearch<CR>?
+nnoremap <silent> * :<C-u>set hlsearch<CR>*
+nnoremap <silent> # :<C-u>set hlsearch<CR>#
 " }}}
 
 " Navigation {{{
