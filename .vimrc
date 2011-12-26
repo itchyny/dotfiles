@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2011/12/03 21:41:34.
+" - * Last Change: 2011/12/26 14:50:06.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -111,6 +111,7 @@ NeoBundle 'Shougo/vimproc'
 NeoBundle 'thinca/vim-quickrun'
   let g:quickrun_config = {'*': {'runmode': 'async:vimproc', 'split': 'vertical'}}
   let g:quickrun_config.javascript = {'command' : 'node'}
+  let g:quickrun_config.roy = {'command' : 'roy'}
   let g:quickrun_config.markdown = { 'type': 'markdown/pandoc', 'outputter': 'browser', 'cmdopt': '-s' }
   let g:quickrun_config.lhaskell = {'command' : 'runhaskell'}
   nnoremap <Leader>r :<C-u>QuickRun  <CR>
@@ -122,7 +123,6 @@ NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'Shougo/vimfiler'
   let g:vimfiler_as_default_explorer = 1
   let g:vimfiler_sort_type = 'TIME'
-  " doesn't work
   hi def link vimfilerPdf Function
   hi def link vimfilerHtml Function
   hi def link vimfilerDateToday Identifier
@@ -132,11 +132,20 @@ NeoBundle 'Shougo/vimfiler'
   hi def link vimfilerTypeArchive NonText
   hi def link vimfilerTypeImage Statement
   nnoremap <Leader>f :<C-u>VimFilerCreate<CR>
+  nnoremap <Leader><Leader> :<C-u>VimFilerCreate<CR>
+  let g:vimfiler_execute_file_list = { 'pdf': 'open',
+                                     \ 'png': 'open',
+                                     \ 'jpg': 'open',
+                                     \ 'bmp': 'open',
+                                     \ 'ppt': 'open',
+                                     \ 'html': 'open',
+                                     \ }
   augroup Vimfiler
     autocmd!
     autocmd FileType vimfiler nunmap <buffer> <C-l>
+    autocmd FileType vimfiler nunmap <buffer> \
     autocmd FileType vimfiler noremap <buffer> <C-l> <ESC><C-w>l
-    autocmd FileType vimfiler noremap <buffer> <c-r> <Plug>(vimfiler_redraw_screen)
+    autocmd FileType vimfiler noremap <buffer> <C-r> <Plug>(vimfiler_redraw_screen)
   augroup END
 " NeoBundle 'eagletmt/ghci-vim'
 "   augroup Ghci
@@ -227,6 +236,13 @@ NeoBundle 'VimCalc'
   autocmd ESC FileType vimcalc nnoremap <silent> <buffer> <ESC><ESC><ESC> :<C-u>q<CR>
   nnoremap <Leader>a :<C-u>Calc<CR>
 NeoBundle 'autodate.vim'
+NeoBundle 'kana/vim-arpeggio'
+  "jk同時押しでEsc
+  call arpeggio#load()
+  Arpeggionmap jk <Esc>
+  Arpeggioimap jk <Esc>
+  Arpeggiocmap jk <Esc>
+  Arpeggiovmap jk <Esc>
 " }}}
 
 " Syntax {{{
@@ -388,6 +404,7 @@ augroup Filetype
   autocmd BufNewFile,BufReadPost,BufEnter *.tex  set filetype=tex
   autocmd BufNewFile,BufReadPost,BufEnter *.json set filetype=json
   autocmd BufNewFile,BufReadPost,BufEnter *.less set filetype=less
+  autocmd BufNewFile,BufReadPost,BufEnter *.roy  set filetype=roy
   autocmd BufNewFile,BufReadPost,BufEnter *.rst  set filetype=rest
   autocmd BufNewFile,BufReadPost,BufEnter *.v    set filetype=coq
   autocmd BufNewFile,BufReadPost,BufEnter *.y    set filetype=haskell
