@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2011/12/26 14:50:06.
+" - * Last Change: 2011/12/28 00:08:18.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -112,6 +112,7 @@ NeoBundle 'thinca/vim-quickrun'
   let g:quickrun_config = {'*': {'runmode': 'async:vimproc', 'split': 'vertical'}}
   let g:quickrun_config.javascript = {'command' : 'node'}
   let g:quickrun_config.roy = {'command' : 'roy'}
+  let g:quickrun_config.hss = {'command' : 'runhaskell'}
   let g:quickrun_config.markdown = { 'type': 'markdown/pandoc', 'outputter': 'browser', 'cmdopt': '-s' }
   let g:quickrun_config.lhaskell = {'command' : 'runhaskell'}
   nnoremap <Leader>r :<C-u>QuickRun  <CR>
@@ -597,6 +598,7 @@ command! -bar -bang -nargs=? -complete=file Scouter
 \        echo Scouter(empty(<q-args>) ? $MYVIMRC : expand(<q-args>), <bang>0)
 " }}}
 
+nnoremap ss :echo synIDattr(synID(line('.'), col('.'), 0), 'name')<CR>
 " Quick open dot files {{{
 nnoremap \. :e ~/.vimrc<CR>
   " autocmd BufWritePost .vimrc source %
