@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2011/12/28 00:08:18.
+" - * Last Change: 2012/01/06 19:00:23.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -143,10 +143,10 @@ NeoBundle 'Shougo/vimfiler'
                                      \ }
   augroup Vimfiler
     autocmd!
-    autocmd FileType vimfiler nunmap <buffer> <C-l>
-    autocmd FileType vimfiler nunmap <buffer> \
-    autocmd FileType vimfiler noremap <buffer> <C-l> <ESC><C-w>l
-    autocmd FileType vimfiler noremap <buffer> <C-r> <Plug>(vimfiler_redraw_screen)
+    autocmd FileType vimfiler nunmap <buffer>  <C-l>
+    autocmd FileType vimfiler nunmap <buffer>  \
+    autocmd FileType vimfiler noremap <buffer>  <C-l> <ESC><C-w>l
+    autocmd FileType vimfiler noremap <buffer>  <C-r> <Plug>(vimfiler_redraw_screen)
   augroup END
 " NeoBundle 'eagletmt/ghci-vim'
 "   augroup Ghci
@@ -332,12 +332,13 @@ endfunction
 " APPERANCE {{{
 " --------------------------------------------------------------------------------------------------------------
 " Frame appearance {{{
-set list
 set showcmd
 set showmode
 " }}}
 
 " Main appearance {{{
+set list
+" set listchars=tab:^I,trail:@,eol:$
 set shortmess+=I            " disable start up message
 set number                  " line number
 set cursorline
@@ -377,6 +378,8 @@ autocmd FileType * highlight Identifier ctermfg=cyan guifg=cyan
 autocmd FileType * highlight Function ctermfg=green guifg=green
 autocmd FileType * highlight String ctermfg=magenta guifg=magenta
 autocmd FileType * highlight StatusLineNC guifg=black guibg=darkgray gui=none ctermfg=black ctermbg=darkgray cterm=none
+highlight ZenkakuSpace cterm=underline ctermbg=red guibg=#666666
+au BufEnter * let w:m3 = matchadd("ZenkakuSpace", '　')
 
 " Statusline color
 let s:hi_normal = 'highlight StatusLine guifg=black guibg=blue gui=none ctermfg=black ctermbg=blue cterm=none'
@@ -652,6 +655,9 @@ nnoremap ,<Space> ma:%s/  *$//<CR>`a<ESC>
 nnoremap <C-a> gg<S-v><S-g>
 inoremap <C-a> <ESC>gg<S-v><S-g>
 vnoremap <C-a> gg<S-v><S-g>
+
+" smart Enter
+inoremap <silent> <expr> <CR> (pumvisible()?"\<ESC>o":"\<C-g>u\<CR>")
 " }}}
 
 " file {{{
@@ -735,11 +741,11 @@ autocmd ESC FileType help nnoremap <silent> <buffer> <ESC><ESC> :<C-u>q<CR>
 " |    f    |  VimFiler            |            |                    |                   |   -default         |
 " |    g    |  gedit / Textedit    |  Ghci      |  GundoToggle       |   -default        |                    |
 " |    h    |                      |            |  Unite ref/hoogle  |   VimshellPop     |   <C-w>h           |
-" |    i    |  GhciInfo            |            |                    |   -default        |                    |
+" |    i    |                      |            |                    |   -default        |                    |
 " |    j    |                      |            |                    |   -default        |   <C-w>j           |
 " +- - - - -+- - - - - - - - - - - +- - - - - - +- - - - - - - - - - +- - - - - - - - - -+- - - - - - - - - - +
 " |    k    |                      |            |                    |                   |   <C-w>k           |
-" |    l    |  GhciLoad            |            |                    |                   |   <C-w>l           |
+" |    l    |                      |            |                    |                   |   <C-w>l           |
 " |    m    |                      |            |                    |                   |                    |
 " |    n    |  nautilus / Finder   |            |                    |                   |   Unite file       |
 " |    o    |  QuickRun <i >output |            |                    |   -default        |   Unite file       |
@@ -748,7 +754,7 @@ autocmd ESC FileType help nnoremap <silent> <buffer> <ESC><ESC> :<C-u>q<CR>
 " |    q    |                      |            |                    |                   |   <C-w>(default)   |
 " |    r    |  QuickRun            |            |                    |   -default        |   -default         |
 " |    s    |  OpenBrowser         |  VimShell  |                    |                   |   :w<CR>           |
-" |    t    |  GhciType            |            |                    |                   |   tabnew           |
+" |    t    |                      |            |                    |                   |   tabnew           |
 " +- - - - -+- - - - - - - - - - - +- - - - - - +- - - - - - - - - - +- - - - - - - - - -+- - - - - - - - - - +
 " |    u    |                      |            |                    |                   |   Unite            |
 " |    v    |  CoqStart            |            |                    |   -default        |   -default         |
