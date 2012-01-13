@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/01/06 19:00:23.
+" - * Last Change: 2012/01/13 21:16:05.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -17,6 +17,7 @@ augroup END
 " Bundles {{{
 " neobundle {{{
 " --------------------------------------------------------------------------------------------------------------
+let s:nosudo = $SUDO_USER == ''
 let $VIM = $HOME.'/.vim'
 let $BUNDLE = $VIM.'/bundle'
 let s:neobundle_dir = $BUNDLE.'/neobundle.vim'
@@ -33,6 +34,7 @@ NeoBundle 'Shougo/neobundle.vim'
 
 " Complement {{{
 " --------------------------------------------------------------------------------------------------------------
+if s:nosudo
 NeoBundle 'Shougo/neocomplcache'
   let g:neocomplcache_enable_at_startup = 1
   let g:neocomplcache_enable_smart_case = 1
@@ -48,11 +50,13 @@ NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'neco-ghc'
   " --| Requirement: ghc-mod
   " --|   $ cabal install ghc-mod
+endif
 " }}}
 
 " Unite ( "," ) {{{
 " --------------------------------------------------------------------------------------------------------------
                                                                                          let mapleader=","
+if s:nosudo
 NeoBundle 'Shougo/unite.vim'
   let g:unite_enable_start_insert=1
   nnoremap <C-u> :Unite<SPACE>
@@ -79,6 +83,8 @@ NeoBundle 'ujihisa/ref-hoogle'
   " --|   $ hoogle data
   nnoremap <Leader>h :<C-u>Unite ref/hoogle<CR>
 NeoBundle 'h1mesuke/unite-outline'
+NeoBundle 'ujihisa/unite-haskellimport'
+endif
 " }}}
 
 " QuickRun / Filer / Outer world of Vim ( "\\" ) {{{
@@ -111,7 +117,7 @@ NeoBundle 'Shougo/vimproc'
 NeoBundle 'thinca/vim-quickrun'
   let g:quickrun_config = {'*': {'runmode': 'async:vimproc', 'split': 'vertical'}}
   let g:quickrun_config.javascript = {'command' : 'node'}
-  let g:quickrun_config.roy = {'command' : 'roy'}
+  let g:quickrun_config.roy = {'command' : '~/Dropbox/js/roy/roy'}
   let g:quickrun_config.hss = {'command' : 'runhaskell'}
   let g:quickrun_config.markdown = { 'type': 'markdown/pandoc', 'outputter': 'browser', 'cmdopt': '-s' }
   let g:quickrun_config.lhaskell = {'command' : 'runhaskell'}
@@ -121,6 +127,7 @@ NeoBundle 'thinca/vim-quickrun'
   autocmd ESC FileType quickrun inoremap <silent> <buffer> <ESC><ESC><ESC> <ESC>:q<CR>
   autocmd ESC FileType quickrun nnoremap <silent> <buffer> <ESC><ESC><ESC> <ESC>:q<CR>
   autocmd ESC FileType quickrun vnoremap <silent> <buffer> <ESC><ESC><ESC> <ESC>:q<CR>
+if s:nosudo
 NeoBundle 'Shougo/vimfiler'
   let g:vimfiler_as_default_explorer = 1
   let g:vimfiler_sort_type = 'TIME'
@@ -135,9 +142,9 @@ NeoBundle 'Shougo/vimfiler'
   nnoremap <Leader>f :<C-u>VimFilerCreate<CR>
   nnoremap <Leader><Leader> :<C-u>VimFilerCreate<CR>
   let g:vimfiler_execute_file_list = { 'pdf': 'open',
-                                     \ 'png': 'open',
-                                     \ 'jpg': 'open',
-                                     \ 'bmp': 'open',
+                                     \ 'png': 'open', 'PNG': 'open',
+                                     \ 'jpg': 'open', 'JPG': 'open',
+                                     \ 'bmp': 'open', 'BMP': 'open',
                                      \ 'ppt': 'open',
                                      \ 'html': 'open',
                                      \ }
@@ -148,6 +155,7 @@ NeoBundle 'Shougo/vimfiler'
     autocmd FileType vimfiler noremap <buffer>  <C-l> <ESC><C-w>l
     autocmd FileType vimfiler noremap <buffer>  <C-r> <Plug>(vimfiler_redraw_screen)
   augroup END
+endif
 " NeoBundle 'eagletmt/ghci-vim'
 "   augroup Ghci
 "     autocmd!
@@ -159,6 +167,11 @@ NeoBundle 'tyru/open-browser.vim'
   nmap <Leader>b <Plug>(openbrowser-smart-search)
   vmap <Leader>b <Plug>(openbrowser-smart-search)
   nmap <Leader>s <Plug>(openbrowser-search)
+NeoBundle 'mattn/webapi-vim'
+NeoBundle 'basyura/twibill.vim'
+NeoBundle 'basyura/TweetVim'
+  " http://d.hatena.ne.jp/basyura/20111230/p1
+  let g:tweetvim_config_dir = expand('~/Dropbox/.tweetvim')
 NeoBundle 'TwitVim'
   nnoremap <Leader>p :<C-u>PosttoTwitter<CR>
 "  nnoremap <Leader>p :<C-u>!tweet<SPACE>
@@ -167,48 +180,51 @@ NeoBundle 'TwitVim'
 " vimshell ( ";" ) {{{
 " --------------------------------------------------------------------------------------------------------------
                                                                                           let mapleader=";"
+if s:nosudo
 NeoBundle 'Shougo/vimshell'
-  " --| Requirement: vimproc
-  hi def link VimShellLink Constant
-  hi def link VimShellExe Special
-  hi def link VimShellUserPrompt Function
-  hi def link VimShellPrompt Function
-  augroup Vimshell
-    autocmd!
-    let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
-    let g:vimshell_prompt = ' $ '
-    " for easy window moving, unmap C-[hjkl]
-    autocmd FileType vimshell iunmap <buffer> <C-h>
-    autocmd FileType vimshell iunmap <buffer> <C-k>
-    autocmd FileType vimshell iunmap <buffer> <C-l>
-    autocmd FileType vimshell iunmap <buffer> <C-w>
-    autocmd FileType vimshell nunmap <buffer> <C-k>
-    autocmd FileType vimshell nunmap <buffer> <C-l>
-    autocmd FileType vimshell inoremap <buffer> <C-h> <ESC><C-w>h
-    autocmd FileType vimshell inoremap <buffer> <C-j> <ESC><C-w>j
-    autocmd FileType vimshell inoremap <buffer> <C-k> <ESC><C-w>k
-    autocmd FileType vimshell inoremap <buffer> <C-l> <ESC><C-w>l
-    " <Up><Down>の設定では効かないので, エスケープ文字で設定してます.
-    autocmd FileType vimshell inoremap <buffer> <expr><silent> OA unite#sources#vimshell_history#start_complete(!0)
-    autocmd FileType vimshell inoremap <buffer> <expr><silent> OB unite#sources#vimshell_history#start_complete(!0)
-    autocmd FileType vimshell nnoremap <buffer> <expr><silent> OA unite#sources#vimshell_history#start_complete(!0)
-    autocmd FileType vimshell nnoremap <buffer> <expr><silent> OB unite#sources#vimshell_history#start_complete(!0)
-    autocmd FileType vimshell inoremap <buffer> <expr><silent> <Up> unite#sources#vimshell_history#start_complete(!0)
-    autocmd FileType vimshell inoremap <buffer> <expr><silent> <Down> unite#sources#vimshell_history#start_complete(!0)
-    autocmd FileType vimshell nnoremap <buffer> <expr><silent> <Up> unite#sources#vimshell_history#start_complete(!0)
-    autocmd FileType vimshell nnoremap <buffer> <expr><silent> <Down> unite#sources#vimshell_history#start_complete(!0)
-  augroup END
-  " autocmd ESC FileType vimshell inoremap <buffer> <ESC> <NOP>
-  autocmd ESC FileType vimshell vnoremap <buffer> <ESC><ESC><ESC> :<C-u>q<CR>
-  autocmd ESC FileType vimshell nnoremap <buffer> <ESC><ESC><ESC> :<C-u>q<CR>
-  nnoremap <Leader><Leader>s :<C-u>VimShellTab<CR>
-  nnoremap <Leader>s :<C-u>vnew<CR>:<C-u>VimShell<CR>
-  nnoremap <S-h> :<C-u>VimShellPop<CR>
-  nnoremap <Leader>z :<C-u>VimShellInteractive zsh<CR>
-  autocmd FileType int-ghci set filetype=haskell
-  nnoremap <Leader>g :<C-u>VimShellInteractive ghci<CR>
-  nnoremap <Leader>p :<C-u>VimShellInteractive python<CR>
-  " nnoremap <Leader>a :<C-u>tabnew<CR>:VimShellInteractive gdb ./a.out
+" --| Requirement: vimproc
+let g:vimshell_interactive_update_time = 150
+hi def link VimShellLink Constant
+hi def link VimShellExe Special
+hi def link VimShellUserPrompt Function
+hi def link VimShellPrompt Function
+augroup Vimshell
+  autocmd!
+  let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
+  let g:vimshell_prompt = ' $ '
+  " for easy window moving, unmap C-[hjkl]
+  autocmd FileType vimshell iunmap <buffer> <C-h>
+  autocmd FileType vimshell iunmap <buffer> <C-k>
+  autocmd FileType vimshell iunmap <buffer> <C-l>
+  autocmd FileType vimshell iunmap <buffer> <C-w>
+  autocmd FileType vimshell nunmap <buffer> <C-k>
+  autocmd FileType vimshell nunmap <buffer> <C-l>
+  autocmd FileType vimshell inoremap <buffer> <C-h> <ESC><C-w>h
+  autocmd FileType vimshell inoremap <buffer> <C-j> <ESC><C-w>j
+  autocmd FileType vimshell inoremap <buffer> <C-k> <ESC><C-w>k
+  autocmd FileType vimshell inoremap <buffer> <C-l> <ESC><C-w>l
+  " <Up><Down>の設定では効かないので, エスケープ文字で設定してます.
+  autocmd FileType vimshell inoremap <buffer> <expr><silent> OA unite#sources#vimshell_history#start_complete(!0)
+  autocmd FileType vimshell inoremap <buffer> <expr><silent> OB unite#sources#vimshell_history#start_complete(!0)
+  autocmd FileType vimshell nnoremap <buffer> <expr><silent> OA unite#sources#vimshell_history#start_complete(!0)
+  autocmd FileType vimshell nnoremap <buffer> <expr><silent> OB unite#sources#vimshell_history#start_complete(!0)
+  autocmd FileType vimshell inoremap <buffer> <expr><silent> <Up> unite#sources#vimshell_history#start_complete(!0)
+  autocmd FileType vimshell inoremap <buffer> <expr><silent> <Down> unite#sources#vimshell_history#start_complete(!0)
+  autocmd FileType vimshell nnoremap <buffer> <expr><silent> <Up> unite#sources#vimshell_history#start_complete(!0)
+  autocmd FileType vimshell nnoremap <buffer> <expr><silent> <Down> unite#sources#vimshell_history#start_complete(!0)
+augroup END
+" autocmd ESC FileType vimshell inoremap <buffer> <ESC> <NOP>
+autocmd ESC FileType vimshell vnoremap <buffer> <ESC><ESC><ESC> :<C-u>q<CR>
+autocmd ESC FileType vimshell nnoremap <buffer> <ESC><ESC><ESC> :<C-u>q<CR>
+nnoremap <Leader><Leader>s :<C-u>VimShellTab<CR>
+nnoremap <Leader>s :<C-u>vnew<CR>:<C-u>VimShell<CR>
+nnoremap <S-h> :<C-u>VimShellPop<CR>
+nnoremap <Leader>z :<C-u>VimShellInteractive zsh<CR>
+autocmd FileType int-ghci set filetype=haskell
+nnoremap <Leader>g :<C-u>VimShellInteractive ghci<CR>
+nnoremap <Leader>p :<C-u>VimShellInteractive python<CR>
+" nnoremap <Leader>a :<C-u>tabnew<CR>:VimShellInteractive gdb ./a.out
+endif
 " }}}
 
 " Commenter / Utility ( "," ) {{{
@@ -230,9 +246,6 @@ NeoBundle 'mattn/calendar-vim'
   nnoremap <Leader>c :<C-u>Calendar<CR>
 NeoBundle 'autodate.vim'
   let g:autodate_format="%Y/%m/%d %H:%M:%S"
-NeoBundle 'smartword'
-  map <Leader>w  <Plug>(smartword-w)
-  map <Leader>b  <Plug>(smartword-b)
 NeoBundle 'VimCalc'
   autocmd ESC FileType vimcalc nnoremap <silent> <buffer> <ESC><ESC><ESC> :<C-u>q<CR>
   nnoremap <Leader>a :<C-u>Calc<CR>
@@ -613,7 +626,6 @@ nnoremap ;. :e ~/.zshrc<CR>
 " OTHERS {{{
 " --------------------------------------------------------------------------------------------------------------
 " Performance {{{
-set lazyredraw
 set ttyfast
 " }}}
 
@@ -733,7 +745,7 @@ autocmd ESC FileType help nnoremap <silent> <buffer> <ESC><ESC> :<C-u>q<CR>
 " |         |  Outer world of Vim  |  vimshell  |      utility       |                   |                    |
 " +=========+======================+============+====================+===================+====================+
 " |    a    |                      |            |  Calc              |   -default        |   gg<S-v><S-g>     |
-" |    b    |  OpenBrowser         |            |  smartword-b       | NeoBundleInstall! |   -default         |
+" |    b    |  OpenBrowser         |            |                    | NeoBundleInstall! |   -default         |
 " |    c    |                      |            |  Calendar          |   -default        |                    |
 " |    d    |                      |            |                    |   -default        |                    |
 " |    e    |  QuickRun <i         |            |                    |                   |   zencoding        |
@@ -758,7 +770,7 @@ autocmd ESC FileType help nnoremap <silent> <buffer> <ESC><ESC> :<C-u>q<CR>
 " +- - - - -+- - - - - - - - - - - +- - - - - - +- - - - - - - - - - +- - - - - - - - - -+- - - - - - - - - - +
 " |    u    |                      |            |                    |                   |   Unite            |
 " |    v    |  CoqStart            |            |                    |   -default        |   -default         |
-" |    w    |                      |            |  smartword-w       |                   |   :q<CR>           |
+" |    w    |                      |            |                    |                   |   :q<CR>           |
 " |    x    |                      |            |                    |                   |   d                |
 " |    y    |                      |            |                    |                   |                    |
 " +- - - - -+- - - - - - - - - - - +- - - - - - +- - - - - - - - - - +- - - - - - - - - -+- - - - - - - - - - +
