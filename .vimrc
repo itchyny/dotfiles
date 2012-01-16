@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/01/16 17:05:23.
+" - * Last Change: 2012/01/16 17:10:55.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -202,6 +202,7 @@ augroup Vimshell
   autocmd FileType vimshell iunmap <buffer> <C-w>
   autocmd FileType vimshell nunmap <buffer> <C-k>
   autocmd FileType vimshell nunmap <buffer> <C-l>
+  autocmd FileType vimshell nmap <buffer> <C-m> <ESC><C-q>j
   autocmd FileType vimshell inoremap <buffer> <C-h> <ESC><C-w>h
   autocmd FileType vimshell inoremap <buffer> <C-j> <ESC><C-w>j
   autocmd FileType vimshell inoremap <buffer> <C-k> <ESC><C-w>k
