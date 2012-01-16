@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/01/16 16:59:33.
+" - * Last Change: 2012/01/16 17:05:23.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -156,7 +156,7 @@ NeoBundle 'Shougo/vimfiler'
     autocmd FileType vimfiler nmap <buffer> <C-l> <ESC><C-q>l
     autocmd FileType vimfiler nmap <buffer> <C-r> <Plug>(vimfiler_redraw_screen)
     autocmd FileType vimfiler nmap <buffer> O <Plug>(vimfiler_sync_with_another_vimfiler)
-    autocmd FileType vimfiler nmap <buffer><expr> e vimfiler#smart_cursor_map("\<Plug>(vimfiler_cd_file)", "\<Plug>(vimfiler_edit_file)")
+    autocmd FileType vimfiler nmap <buffer><expr> e vimfiler#smart_cursor_map("\<Plug>(vimfiler_cd_file)","\<Plug>(vimfiler_edit_file)")
   augroup END
 endif
 " NeoBundle 'eagletmt/ghci-vim'
@@ -394,8 +394,10 @@ autocmd FileType * highlight Identifier ctermfg=cyan guifg=cyan
 autocmd FileType * highlight Function ctermfg=green guifg=green
 autocmd FileType * highlight String ctermfg=magenta guifg=magenta
 autocmd FileType * highlight StatusLineNC guifg=black guibg=darkgray gui=none ctermfg=black ctermbg=darkgray cterm=none
-highlight ZenkakuSpace cterm=underline ctermbg=red guibg=#666666
+highlight ZenkakuSpace ctermfg=black ctermbg=red guibg=#666666
 au BufEnter * let w:m3 = matchadd("ZenkakuSpace", '　')
+highlight ZenkakuSpace ctermfg=black ctermbg=red guibg=#666666
+au BufEnter * let w:m4 = matchadd("Todo", 'TODO')
 
 " Statusline color
 let s:hi_normal = 'highlight StatusLine guifg=black guibg=blue gui=none ctermfg=black ctermbg=blue cterm=none'
