@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/01/13 21:16:05.
+" - * Last Change: 2012/01/16 16:59:33.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -131,6 +131,7 @@ if s:nosudo
 NeoBundle 'Shougo/vimfiler'
   let g:vimfiler_as_default_explorer = 1
   let g:vimfiler_sort_type = 'TIME'
+  let g:vimfiler_safe_mode_by_default = 0
   hi def link vimfilerPdf Function
   hi def link vimfilerHtml Function
   hi def link vimfilerDateToday Identifier
@@ -139,8 +140,8 @@ NeoBundle 'Shougo/vimfiler'
   hi def link vimfilerTypeExecute Special
   hi def link vimfilerTypeArchive NonText
   hi def link vimfilerTypeImage Statement
-  nnoremap <Leader>f :<C-u>VimFilerCreate<CR>
-  nnoremap <Leader><Leader> :<C-u>VimFilerCreate<CR>
+  nnoremap <Leader>f :<C-u>VimFilerCurrentDir<CR>
+  nnoremap <Leader><Leader> :<C-u>VimFilerCurrentDir<CR>
   let g:vimfiler_execute_file_list = { 'pdf': 'open',
                                      \ 'png': 'open', 'PNG': 'open',
                                      \ 'jpg': 'open', 'JPG': 'open',
@@ -150,10 +151,12 @@ NeoBundle 'Shougo/vimfiler'
                                      \ }
   augroup Vimfiler
     autocmd!
-    autocmd FileType vimfiler nunmap <buffer>  <C-l>
-    autocmd FileType vimfiler nunmap <buffer>  \
-    autocmd FileType vimfiler noremap <buffer>  <C-l> <ESC><C-w>l
-    autocmd FileType vimfiler noremap <buffer>  <C-r> <Plug>(vimfiler_redraw_screen)
+    autocmd FileType vimfiler nunmap <buffer> <C-l>
+    autocmd FileType vimfiler nunmap <buffer> \
+    autocmd FileType vimfiler nmap <buffer> <C-l> <ESC><C-q>l
+    autocmd FileType vimfiler nmap <buffer> <C-r> <Plug>(vimfiler_redraw_screen)
+    autocmd FileType vimfiler nmap <buffer> O <Plug>(vimfiler_sync_with_another_vimfiler)
+    autocmd FileType vimfiler nmap <buffer><expr> e vimfiler#smart_cursor_map("\<Plug>(vimfiler_cd_file)", "\<Plug>(vimfiler_edit_file)")
   augroup END
 endif
 " NeoBundle 'eagletmt/ghci-vim'
@@ -617,6 +620,7 @@ command! -bar -bang -nargs=? -complete=file Scouter
 nnoremap ss :echo synIDattr(synID(line('.'), col('.'), 0), 'name')<CR>
 " Quick open dot files {{{
 nnoremap \. :e ~/.vimrc<CR>
+nnoremap \v :so ~/.vimrc<CR>
   " autocmd BufWritePost .vimrc source %
 nnoremap ;. :e ~/.zshrc<CR>
 " }}}
