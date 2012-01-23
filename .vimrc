@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/01/16 17:10:55.
+" - * Last Change: 2012/01/23 17:20:32.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -243,7 +243,6 @@ NeoBundle 'sjl/gundo.vim'
   autocmd ESC FileType gundo nnoremap <silent> <buffer> <ESC><ESC> :<C-u>GundoToggle<CR>
 NeoBundle 'Align'
 "NeoBundle 'msanders/snipmate.vim'
-NeoBundle 'laughedelic/dotvim'
 NeoBundle 'errormarker.vim'
 NeoBundle 'mattn/calendar-vim'
   autocmd ESC FileType calendar nnoremap <silent> <buffer> <ESC><ESC> :<C-u>q<CR>
@@ -253,18 +252,11 @@ NeoBundle 'autodate.vim'
 NeoBundle 'VimCalc'
   autocmd ESC FileType vimcalc nnoremap <silent> <buffer> <ESC><ESC><ESC> :<C-u>q<CR>
   nnoremap <Leader>a :<C-u>Calc<CR>
-NeoBundle 'autodate.vim'
-NeoBundle 'kana/vim-arpeggio'
-  "jk同時押しでEsc
-  call arpeggio#load()
-  Arpeggionmap jk <Esc>
-  Arpeggioimap jk <Esc>
-  Arpeggiocmap jk <Esc>
-  Arpeggiovmap jk <Esc>
 " }}}
 
 " Syntax {{{
 " --------------------------------------------------------------------------------------------------------------
+NeoBundle 'scrooloose/syntastic'
 NeoBundle 'mattn/zencoding-vim'
   let g:user_zen_expandabbr_key = '<c-e>'
   let g:user_zen_settings = { 'html' : { 'indentation' : '  ' }, }
@@ -289,8 +281,6 @@ NeoBundle 'vim-coffee-script'
 NeoBundle 'coq-syntax'
 NeoBundle 'Coq-indent'
 NeoBundle 'rest.vim'
-" vim-rst-table: require vim_bridge (install with easy_install)
-" NeoBundle 'nvie/vim-rst-tables'
 NeoBundle 'VST'
 NeoBundle 'syntaxm4.vim'
 NeoBundle 'syntaxhaskell.vim'
@@ -298,7 +288,7 @@ NeoBundle 'indenthaskell.vim'
 NeoBundle 'haskell.vim'
 NeoBundle 'tpope/vim-markdown'
 NeoBundle 'basyura/jslint.vim'
-if s:ismac
+if s:ismac " somehow on ubuntu, an error occurs
   function! s:javascript_filetype_settings()
     autocmd BufWritePost <buffer> call jslint#check()
     autocmd CursorMoved  <buffer> call jslint#message()
