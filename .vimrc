@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/01/23 17:20:32.
+" - * Last Change: 2012/01/27 11:25:51.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -158,6 +158,7 @@ NeoBundle 'Shougo/vimfiler'
     autocmd FileType vimfiler nmap <buffer> O <Plug>(vimfiler_sync_with_another_vimfiler)
     autocmd FileType vimfiler nmap <buffer><expr> e vimfiler#smart_cursor_map("\<Plug>(vimfiler_cd_file)","\<Plug>(vimfiler_edit_file)")
   augroup END
+  autocmd VimEnter * VimFilerCurrentDir
 endif
 " NeoBundle 'eagletmt/ghci-vim'
 "   augroup Ghci
