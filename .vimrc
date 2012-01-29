@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/01/27 12:06:06.
+" - * Last Change: 2012/01/29 18:22:33.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -47,7 +47,7 @@ NeoBundle 'Shougo/neocomplcache'
         \     "\<Plug>(neocomplcache_snippets_expand)" : "\<C-w>l"
 " NeoBundle 'ujihisa/neco-look'
   " --| Requirement: look commnad
-NeoBundle 'neco-ghc'
+NeoBundle 'neco-ghc', {'type' : 'nosync'}
   " --| Requirement: ghc-mod
   " --|   $ cabal install ghc-mod
 endif
@@ -75,15 +75,15 @@ NeoBundle 'Shougo/unite.vim'
   autocmd ESC FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
 NeoBundle 'Shougo/unite-build'
   nnoremap <F5> :<C-u>Unite build<CR>
-NeoBundle 'unite-colorscheme'
-NeoBundle 'ujihisa/vim-ref'
-NeoBundle 'ujihisa/ref-hoogle'
+NeoBundle 'unite-colorscheme', {'type' : 'nosync'}
+NeoBundle 'ujihisa/vim-ref', {'type' : 'nosync'}
+NeoBundle 'ujihisa/ref-hoogle', {'type' : 'nosync'}
   " --| Requirement: hoogle
   " --|   $ cabal install hoogle
   " --|   $ hoogle data
   nnoremap <Leader>h :<C-u>Unite ref/hoogle<CR>
-NeoBundle 'h1mesuke/unite-outline'
-NeoBundle 'ujihisa/unite-haskellimport'
+NeoBundle 'h1mesuke/unite-outline', {'type' : 'nosync'}
+NeoBundle 'ujihisa/unite-haskellimport', {'type' : 'nosync'}
 endif
 " }}}
 
@@ -167,16 +167,16 @@ endif
 "     autocmd Filetype haskell nnoremap <Leader>i :GhciInfo<CR>
 "     autocmd Filetype haskell nnoremap <Leader>t :GhciType<CR>
 "   augroup END
-NeoBundle 'tyru/open-browser.vim'
+NeoBundle 'tyru/open-browser.vim', {'type' : 'nosync'}
   nmap <Leader>b <Plug>(openbrowser-smart-search)
   vmap <Leader>b <Plug>(openbrowser-smart-search)
   nmap <Leader>s <Plug>(openbrowser-search)
-NeoBundle 'mattn/webapi-vim'
-NeoBundle 'basyura/twibill.vim'
-NeoBundle 'basyura/TweetVim'
+NeoBundle 'mattn/webapi-vim', {'type' : 'nosync'}
+NeoBundle 'basyura/twibill.vim', {'type' : 'nosync'}
+NeoBundle 'basyura/TweetVim', {'type' : 'nosync'}
   " http://d.hatena.ne.jp/basyura/20111230/p1
   let g:tweetvim_config_dir = expand('~/Dropbox/.tweetvim')
-NeoBundle 'TwitVim'
+NeoBundle 'TwitVim', {'type' : 'nosync'}
   nnoremap <Leader>p :<C-u>PosttoTwitter<CR>
 "  nnoremap <Leader>p :<C-u>!tweet<SPACE>
 " }}}
@@ -235,22 +235,22 @@ endif
 " Commenter / Utility ( "," ) {{{
 " --------------------------------------------------------------------------------------------------------------
                                                                                           let mapleader=","
-NeoBundle 'tpope/vim-surround'
-NeoBundle 't9md/vim-surround_custom_mapping'
-NeoBundle 'tComment'
-NeoBundle 'sjl/gundo.vim'
+NeoBundle 'tpope/vim-surround', {'type' : 'nosync'}
+NeoBundle 't9md/vim-surround_custom_mapping', {'type' : 'nosync'}
+NeoBundle 'tComment', {'type' : 'nosync'}
+NeoBundle 'sjl/gundo.vim', {'type' : 'nosync'}
   " --| Requirement: +python
   nnoremap <Leader>g :<C-u>GundoToggle<CR>
   autocmd ESC FileType gundo nnoremap <silent> <buffer> <ESC><ESC> :<C-u>GundoToggle<CR>
-NeoBundle 'Align'
-"NeoBundle 'msanders/snipmate.vim'
-NeoBundle 'errormarker.vim'
-NeoBundle 'mattn/calendar-vim'
+NeoBundle 'Align', {'type' : 'nosync'}
+"NeoBundle 'msanders/snipmate.vim', {'type' : 'nosync'}
+NeoBundle 'errormarker.vim', {'type' : 'nosync'}
+NeoBundle 'mattn/calendar-vim', {'type' : 'nosync'}
   autocmd ESC FileType calendar nnoremap <silent> <buffer> <ESC><ESC> :<C-u>q<CR>
   nnoremap <Leader>c :<C-u>Calendar<CR>
-NeoBundle 'autodate.vim'
+NeoBundle 'autodate.vim', {'type' : 'nosync'}
   let g:autodate_format="%Y/%m/%d %H:%M:%S"
-NeoBundle 'VimCalc'
+NeoBundle 'VimCalc', {'type' : 'nosync'}
   autocmd ESC FileType vimcalc nnoremap <silent> <buffer> <ESC><ESC><ESC> :<C-u>q<CR>
   nnoremap <Leader>a :<C-u>Calc<CR>
 " }}}
@@ -258,38 +258,39 @@ NeoBundle 'VimCalc'
 " Syntax {{{
 " --------------------------------------------------------------------------------------------------------------
 NeoBundle 'scrooloose/syntastic'
-NeoBundle 'mattn/zencoding-vim'
+NeoBundle 'mattn/zencoding-vim', {'type' : 'nosync'}
   let g:user_zen_expandabbr_key = '<c-e>'
   let g:user_zen_settings = { 'html' : { 'indentation' : '  ' }, }
-NeoBundle 'tsaleh/vim-matchit'
-NeoBundle 'JavaScript-syntax'
-NeoBundle 'tyok/js-mask'
-NeoBundle 'itspriddle/vim-javascript-indent'
-NeoBundle 'pangloss/vim-javascript'
-NeoBundle 'JSON.vim'
-NeoBundle 'html5.vim'
-NeoBundle 'wavded/vim-stylus'
-NeoBundle 'colorizer'
+NeoBundle 'tsaleh/vim-matchit', {'type' : 'nosync'}
+NeoBundle 'JavaScript-syntax', {'type' : 'nosync'}
+NeoBundle 'tyok/js-mask', {'type' : 'nosync'}
+NeoBundle 'itspriddle/vim-javascript-indent', {'type' : 'nosync'}
+NeoBundle 'pangloss/vim-javascript', {'type' : 'nosync'}
+NeoBundle 'JSON.vim', {'type' : 'nosync'}
+NeoBundle 'html5.vim', {'type' : 'nosync'}
+NeoBundle 'wavded/vim-stylus', {'type' : 'nosync'}
+NeoBundle 'colorizer', {'type' : 'nosync'}
   augroup colorizer
     autocmd!
     autocmd BufNewFile,BufReadPost *.css ColorHighlight
   augroup END
-NeoBundle 'groenewege/vim-less'
-NeoBundle 'less.vim'
-NeoBundle 'syntaxm4.vim'
-NeoBundle 'vim-scripts/jade.vim'
-NeoBundle 'vim-coffee-script'
-NeoBundle 'coq-syntax'
-NeoBundle 'Coq-indent'
-NeoBundle 'rest.vim'
-NeoBundle 'VST'
-NeoBundle 'syntaxm4.vim'
-NeoBundle 'syntaxhaskell.vim'
-NeoBundle 'indenthaskell.vim'
-NeoBundle 'haskell.vim'
-NeoBundle 'tpope/vim-markdown'
+NeoBundle 'groenewege/vim-less', {'type' : 'nosync'}
+NeoBundle 'less.vim', {'type' : 'nosync'}
+NeoBundle 'syntaxm4.vim', {'type' : 'nosync'}
+NeoBundle 'vim-scripts/jade.vim', {'type' : 'nosync'}
+NeoBundle 'vim-coffee-script', {'type' : 'nosync'}
+NeoBundle 'coq-syntax', {'type' : 'nosync'}
+NeoBundle 'Coq-indent', {'type' : 'nosync'}
+NeoBundle 'rest.vim', {'type' : 'nosync'}
+NeoBundle 'VST', {'type' : 'nosync'}
+NeoBundle 'syntaxm4.vim', {'type' : 'nosync'}
+NeoBundle 'syntaxhaskell.vim', {'type' : 'nosync'}
+NeoBundle 'indenthaskell.vim', {'type' : 'nosync'}
+NeoBundle 'haskell.vim', {'type' : 'nosync'}
+NeoBundle 'tpope/vim-markdown', {'type' : 'nosync'}
 NeoBundle 'basyura/jslint.vim'
-if s:ismac " somehow on ubuntu, an error occurs
+let $JS_CMD='node'
+if s:ismac
   function! s:javascript_filetype_settings()
     autocmd BufWritePost <buffer> call jslint#check()
     autocmd CursorMoved  <buffer> call jslint#message()
@@ -304,7 +305,7 @@ endif
 
 " Colorscheme {{{
 " --------------------------------------------------------------------------------------------------------------
-NeoBundle 'Wombat'
+NeoBundle 'Wombat', {'type' : 'nosync'}
 colorscheme wombat
 " }}}
 

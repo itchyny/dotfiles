@@ -1,7 +1,7 @@
 # --------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2012/01/01 09:14:23.
+# - * Last Change: 2012/01/29 19:01:30.
 # --------------------------------------------------------------------------------------------------------------
 
 setopt prompt_subst
@@ -265,9 +265,10 @@ alias mv='mv -i'
 alias emacs='vi'
 alias ccat='pygmentize'
 alias crontab="EDITOR=\"$HOME/bin/vi\" crontab"
-alias yoruho='python ~/Dropbox/py/itchyny/yoruho.py'
 alias tweet='python ~/Dropbox/py/itchyny/tweet.py'
 alias twitter='rlwrap runhaskell ~/Dropbox/hs/twitter/twitter.hs'
+alias ntpupdate='sudo /usr/sbin/ntpdate time.asia.apple.com >> ~/.ntpdate.log 2>>&1'
+alias yoruho='sudo /usr/sbin/ntpdate time.asia.apple.com >> ~/.ntpdate.log 2>>&1 && python ~/Dropbox/py/itchyny/yoruho.py'
 
 case "${OSTYPE}" in
   freebsd*|darwin*)
