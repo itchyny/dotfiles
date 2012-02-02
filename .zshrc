@@ -1,7 +1,7 @@
 # --------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2012/01/29 19:01:30.
+# - * Last Change: 2012/02/01 00:06:35.
 # --------------------------------------------------------------------------------------------------------------
 
 setopt prompt_subst
@@ -176,12 +176,14 @@ export PATH=$PATH:/opt/local/bin/   # for Mac
 export MANPATH=/usr/local/share/man:/usr/local/man:/usr/share/man
 # node paths
 export PATH=$PATH:~/node_modules/less/bin/
+export PATH=$PATH:~/node_modules/stylus/bin/
 export PATH=$PATH:~/node_modules/nodester-cli/bin/
 export PATH=$PATH:~/node_modules/node-dev/
 export PATH=$PATH:~/node_modules/jade/bin/
 export PATH=$PATH:~/Dropbox/js/narwhal/bin/
 export PATH=$PATH:~/Dropbox/js/jison/bin/
 export PATH=$PATH:~/Dropbox/js/coffee-script/bin/
+export PATH=$PATH:~/Dropbox/js/roy/
 export PATH=$PATH:~/.cabal/bin/
 
 # export http_proxy=http://proxy.kuins.net:8080/
@@ -269,6 +271,7 @@ alias tweet='python ~/Dropbox/py/itchyny/tweet.py'
 alias twitter='rlwrap runhaskell ~/Dropbox/hs/twitter/twitter.hs'
 alias ntpupdate='sudo /usr/sbin/ntpdate time.asia.apple.com >> ~/.ntpdate.log 2>>&1'
 alias yoruho='sudo /usr/sbin/ntpdate time.asia.apple.com >> ~/.ntpdate.log 2>>&1 && python ~/Dropbox/py/itchyny/yoruho.py'
+alias roy='~/Dropbox/js/roy/roy'
 
 case "${OSTYPE}" in
   freebsd*|darwin*)

@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/01/29 18:22:33.
+" - * Last Change: 2012/02/02 12:23:03.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -117,7 +117,7 @@ NeoBundle 'Shougo/vimproc'
 NeoBundle 'thinca/vim-quickrun'
   let g:quickrun_config = {'*': {'runmode': 'async:vimproc', 'split': 'vertical'}}
   let g:quickrun_config.javascript = {'command' : 'node'}
-  let g:quickrun_config.roy = {'command' : '~/Dropbox/js/roy/roy'}
+  let g:quickrun_config.roy = {'command' : 'roy'}
   let g:quickrun_config.hss = {'command' : 'runhaskell'}
   let g:quickrun_config.markdown = { 'type': 'markdown/pandoc', 'outputter': 'browser', 'cmdopt': '-s' }
   let g:quickrun_config.lhaskell = {'command' : 'runhaskell'}
@@ -157,6 +157,7 @@ NeoBundle 'Shougo/vimfiler'
     autocmd FileType vimfiler nmap <buffer> <C-r> <Plug>(vimfiler_redraw_screen)
     autocmd FileType vimfiler nmap <buffer> O <Plug>(vimfiler_sync_with_another_vimfiler)
     autocmd FileType vimfiler nmap <buffer><expr> e vimfiler#smart_cursor_map("\<Plug>(vimfiler_cd_file)","\<Plug>(vimfiler_edit_file)")
+    autocmd FileType vimfiler nmap <buffer> ;s :execute("VimShell -split ".b:vimfiler.current_dir)<CR>
   augroup END
   " autocmd VimEnter * VimFilerCurrentDir
 endif
@@ -187,7 +188,9 @@ NeoBundle 'TwitVim', {'type' : 'nosync'}
 if s:nosudo
 NeoBundle 'Shougo/vimshell'
 " --| Requirement: vimproc
-let g:vimshell_interactive_update_time = 150
+  let g:vimshell_interactive_update_time = 150
+  let g:vimshell_popup_command = "split"
+  let g:vimshell_split_command = "vsplit"
 hi def link VimShellLink Constant
 hi def link VimShellExe Special
 hi def link VimShellUserPrompt Function
@@ -208,6 +211,7 @@ augroup Vimshell
   autocmd FileType vimshell inoremap <buffer> <C-j> <ESC><C-w>j
   autocmd FileType vimshell inoremap <buffer> <C-k> <ESC><C-w>k
   autocmd FileType vimshell inoremap <buffer> <C-l> <ESC><C-w>l
+  autocmd FileType vimshell imap <buffer> <C-^> <ESC><C-^>
   " <Up><Down>の設定では効かないので, エスケープ文字で設定してます.
   autocmd FileType vimshell inoremap <buffer> <expr><silent> OA unite#sources#vimshell_history#start_complete(!0)
   autocmd FileType vimshell inoremap <buffer> <expr><silent> OB unite#sources#vimshell_history#start_complete(!0)
@@ -222,7 +226,7 @@ augroup END
 autocmd ESC FileType vimshell vnoremap <buffer> <ESC><ESC><ESC> :<C-u>q<CR>
 autocmd ESC FileType vimshell nnoremap <buffer> <ESC><ESC><ESC> :<C-u>q<CR>
 nnoremap <Leader><Leader>s :<C-u>VimShellTab<CR>
-nnoremap <Leader>s :<C-u>vnew<CR>:<C-u>VimShell<CR>
+nnoremap <Leader>s :<C-u>VimShell -split=v<CR>
 nnoremap <S-h> :<C-u>VimShellPop<CR>
 nnoremap <Leader>z :<C-u>VimShellInteractive zsh<CR>
 autocmd FileType int-ghci set filetype=haskell
@@ -298,7 +302,7 @@ if s:ismac
   endfunction
   augroup JsLint
     autocmd!
-    autocmd FileType javascript call s:javascript_filetype_settings()
+    " autocmd FileType javascript call s:javascript_filetype_settings()
   augroup END
 endif
 " }}}
