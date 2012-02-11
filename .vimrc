@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/02/02 12:23:03.
+" - * Last Change: 2012/02/11 16:42:41.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -40,6 +40,8 @@ NeoBundle 'Shougo/neocomplcache'
   let g:neocomplcache_enable_smart_case = 1
   let g:neocomplcache_enable_underbar_completion = 1
   let g:neocomplcache_enable_camel_case_completion = 1
+  let g:neocomplcache_enable_cursor_hold_i = 0
+NeoBundle 'Shougo/neocomplcache-snippets-complete'
   let g:neocomplcache_snippets_dir = expand($VIM.'/snippets')
   imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ?
         \     "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
@@ -62,6 +64,7 @@ NeoBundle 'Shougo/unite.vim'
   nnoremap <C-u> :Unite<SPACE>
   nnoremap <C-p> :Unite buffer<CR>
   nnoremap <C-n> :Unite -buffer-name=file file<CR>
+  nnoremap <S-k> :Unite output:message<CR>
   nnoremap <C-o> :Unite -buffer-name=file file<CR>
   nnoremap <C-z> :Unite file_mru<CR>
   augroup Unite
@@ -157,9 +160,8 @@ NeoBundle 'Shougo/vimfiler'
     autocmd FileType vimfiler nmap <buffer> <C-r> <Plug>(vimfiler_redraw_screen)
     autocmd FileType vimfiler nmap <buffer> O <Plug>(vimfiler_sync_with_another_vimfiler)
     autocmd FileType vimfiler nmap <buffer><expr> e vimfiler#smart_cursor_map("\<Plug>(vimfiler_cd_file)","\<Plug>(vimfiler_edit_file)")
-    autocmd FileType vimfiler nmap <buffer> ;s :execute("VimShell -split ".b:vimfiler.current_dir)<CR>
+    " autocmd FileType vimfiler nmap <buffer> ;s :execute("VimShell -split ".b:vimfiler.current_dir)<CR>
   augroup END
-  " autocmd VimEnter * VimFilerCurrentDir
 endif
 " NeoBundle 'eagletmt/ghci-vim'
 "   augroup Ghci
@@ -225,8 +227,8 @@ augroup END
 " autocmd ESC FileType vimshell inoremap <buffer> <ESC> <NOP>
 autocmd ESC FileType vimshell vnoremap <buffer> <ESC><ESC><ESC> :<C-u>q<CR>
 autocmd ESC FileType vimshell nnoremap <buffer> <ESC><ESC><ESC> :<C-u>q<CR>
-nnoremap <Leader><Leader>s :<C-u>VimShellTab<CR>
-nnoremap <Leader>s :<C-u>VimShell -split=v<CR>
+nnoremap <Leader><Leader>s :<C-u>VimShell -split<CR>
+" TODO
 nnoremap <S-h> :<C-u>VimShellPop<CR>
 nnoremap <Leader>z :<C-u>VimShellInteractive zsh<CR>
 autocmd FileType int-ghci set filetype=haskell
@@ -234,6 +236,118 @@ nnoremap <Leader>g :<C-u>VimShellInteractive ghci<CR>
 nnoremap <Leader>p :<C-u>VimShellInteractive python<CR>
 " nnoremap <Leader>a :<C-u>tabnew<CR>:VimShellInteractive gdb ./a.out
 endif
+" }}}
+
+
+" Conque Shell {{{
+" --------------------------------------------------------------------------------------------------------------
+set runtimepath+=~/.vim/otherplugin/conque
+" great entry: http://d.hatena.ne.jp/h1mesuke/20100720/p1
+augroup MyConqueTerm
+  function! s:myconque_start_shell(path)
+    let bufname = s:term_bufname(1)
+    let g:my_terminal = conque_term#open('zsh', ['belowright', 'vsplit'])
+    call g:my_terminal.writeln('cd '.a:path)
+  endfunction
+  function! s:myconque_current_dir()
+    if &l:filetype ==# 'vimfiler'
+      let path = b:vimfiler.current_dir
+    else
+      let path = expand('%:p:h')
+    endif
+    return path
+  endfunction
+  function! s:myconque_focus_into_buffer(bufname)
+    let bufnr = bufnr(a:bufname)
+    let winnr = bufwinnr(bufnr)
+    if winnr == -1
+      execute 'vnew'
+      execute 'buffer' bufnr
+    else
+      execute winnr 'wincmd w'
+    endif
+  endfunction
+  function! s:myconque()
+    let path = s:myconque_current_dir()
+    let bufname = s:term_bufname(1)
+    let cdcmd = 'cd '.path
+    if bufexists(bufname)
+      call s:myconque_focus_into_buffer(bufname)
+      call g:my_terminal.writeln(cdcmd)
+    else
+      call s:myconque_start_shell(path)
+    endif
+  endfunction
+  autocmd!
+  command! -complete=shellcmd MyConque call s:myconque()
+  autocmd BufEnter * if &l:filetype ==# 'conque_term' | startinsert! | endif
+augroup END
+nnoremap <silent> <Leader>s :MyConque<CR>
+let g:ConqueTerm_Color          = 1
+let g:ConqueTerm_Syntax         = 'conque'
+let g:ConqueTerm_ReadUnfocused  = 1
+let g:ConqueTerm_CWInsert       = 1
+let g:ConqueTerm_MyTermCommand  = 'zsh'
+let g:ConqueTerm_MyTermPosition = 'J'
+" Creates a new term buffer.
+function! s:new_term()
+  let g:my_terminal = conque_term#open('zsh', ['belowright', 'vsplit'])
+endfunction
+function! s:term_bufname(termnr)
+  return printf("%s - %d", g:ConqueTerm_MyTermCommand, a:termnr)
+endfunction
+" Shows the term buffer with the given term number.
+function! s:show_term(termnr)
+  let bufname = s:term_bufname(a:termnr)
+  if bufexists(bufname)
+    let bufnr = bufnr(bufname)
+    let winnr = bufwinnr(bufnr)
+    if winnr == -1
+      execute 'vnew'
+      execute 'buffer' bufnr
+      execute 'wincmd' g:ConqueTerm_MyTermPosition
+    else
+      execute winnr 'wincmd w'
+    endif
+  elseif a:termnr == 1
+    call s:new_term()
+  else
+    echo "Term buffer not created yet"
+  endif
+endfunction
+" Shows the term buffer with the given term number. (exclusive)
+function! s:swtich_term(termnr)
+  let bufname = s:term_bufname(a:termnr)
+  if bufexists(bufname)
+    for nr in range(1,9)
+      let bufname = s:term_bufname(nr)
+      if bufexists(bufname)
+        let bufnr = bufnr(bufname)
+        let winnr = bufwinnr(bufnr)
+        if winnr != -1
+          execute winnr 'wincmd w'
+          wincmd c
+        endif
+      endif
+    endfor
+    call s:show_term(a:termnr)
+  elseif a:termnr == 1
+    call s:new_term()
+  else
+    echo "Term buffer not created yet"
+  endif
+endfunction
+
+" show the main shell
+" nnoremap <silent> H :<C-u>call <SID>show_term(1)<CR>
+" show the shell of the given term number
+" for nr in range(1,9)
+"   execute 'nnoremap <silent> <Space>'.nr.' :<C-u>call <SID>swtich_term('.nr.')<CR>'
+"   execute 'nnoremap <silent> <Space><Space>'.nr.' :<C-u>call <SID>show_term('.nr.')<CR>'
+" endfor
+
+" create a new shell
+" nnoremap <silent> <Space>sh :<C-u>call <SID>new_term()<CR>
 " }}}
 
 " Commenter / Utility ( "," ) {{{
@@ -261,7 +375,7 @@ NeoBundle 'VimCalc', {'type' : 'nosync'}
 
 " Syntax {{{
 " --------------------------------------------------------------------------------------------------------------
-NeoBundle 'scrooloose/syntastic'
+NeoBundle 'scrooloose/syntastic', {'type' : 'nosync'}
 NeoBundle 'mattn/zencoding-vim', {'type' : 'nosync'}
   let g:user_zen_expandabbr_key = '<c-e>'
   let g:user_zen_settings = { 'html' : { 'indentation' : '  ' }, }
@@ -292,19 +406,19 @@ NeoBundle 'syntaxhaskell.vim', {'type' : 'nosync'}
 NeoBundle 'indenthaskell.vim', {'type' : 'nosync'}
 NeoBundle 'haskell.vim', {'type' : 'nosync'}
 NeoBundle 'tpope/vim-markdown', {'type' : 'nosync'}
-NeoBundle 'basyura/jslint.vim'
-let $JS_CMD='node'
-if s:ismac
-  function! s:javascript_filetype_settings()
-    autocmd BufWritePost <buffer> call jslint#check()
-    autocmd CursorMoved  <buffer> call jslint#message()
-    autocmd BufLeave     <buffer> call jslint#clear()
-  endfunction
-  augroup JsLint
-    autocmd!
-    " autocmd FileType javascript call s:javascript_filetype_settings()
-  augroup END
-endif
+NeoBundle 'basyura/jslint.vim', {'type' : 'nosync'}
+  let $JS_CMD='node'
+  if s:ismac
+    function! s:javascript_filetype_settings()
+      autocmd BufWritePost <buffer> call jslint#check()
+      autocmd CursorMoved  <buffer> call jslint#message()
+      autocmd BufLeave     <buffer> call jslint#clear()
+    endfunction
+    augroup JsLint
+      autocmd!
+      " autocmd FileType javascript call s:javascript_filetype_settings()
+    augroup END
+  endif
 " }}}
 
 " Colorscheme {{{
@@ -513,9 +627,14 @@ set clipboard+=autoselect
 " UTILITY {{{
 " --------------------------------------------------------------------------------------------------------------
 " Move to the directory for each buffer {{{
-augroup MoveDirectory
+augroup ChangeDirectory
   autocmd!
-  autocmd BufEnter * execute ":lcd " . expand("%:p:h")
+  function! s:change_directory()
+    if &filetype != "vimfiler"
+      execute ":lcd " . expand("%:p:h")
+    endif
+  endfunction
+  autocmd BufEnter * call s:change_directory()
 augroup END
 " }}}
 

@@ -1,7 +1,7 @@
 # --------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2012/02/01 00:06:35.
+# - * Last Change: 2012/02/07 21:49:51.
 # --------------------------------------------------------------------------------------------------------------
 
 setopt prompt_subst
@@ -32,6 +32,7 @@ setopt append_history
 autoload -Uz colors; colors
 # check colors with commant $ where color
 PROMPT="%(?.%{$bg[green]%}.%{$bg[blue]%})%(?!(._.)/!(;_;%)?) %B%~$%b%{${reset_color}%} "
+PROMPT="%(?.%{$fg[green]%}.%{$fg[blue]%})%B%~$%b%{${reset_color}%} "
 PROMPT2="%{$bg[blue]%}%_>%{$reset_color%}%b "
 SPROMPT="%{$bg[red]%}(._.%)? %B %r is correct? [n,y,a,e]:%{${reset_color}%}%b "
 [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] && PROMPT="%{$bg[red]%}${HOST%%.*}${PROMPT}%{${reset_color}%}"
