@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/02/11 16:42:41.
+" - * Last Change: 2012/02/18 23:29:53.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -52,6 +52,7 @@ NeoBundle 'Shougo/neocomplcache-snippets-complete'
 NeoBundle 'neco-ghc', {'type' : 'nosync'}
   " --| Requirement: ghc-mod
   " --|   $ cabal install ghc-mod
+" NeoBundle 'eagletmt/ghcmod-vim'
 endif
 " }}}
 
@@ -229,7 +230,11 @@ autocmd ESC FileType vimshell vnoremap <buffer> <ESC><ESC><ESC> :<C-u>q<CR>
 autocmd ESC FileType vimshell nnoremap <buffer> <ESC><ESC><ESC> :<C-u>q<CR>
 nnoremap <Leader><Leader>s :<C-u>VimShell -split<CR>
 " TODO
-nnoremap <S-h> :<C-u>VimShellPop<CR>
+function! s:openvimshell()
+  let path = s:myconque_current_dir()
+  execute "VimShellPop ".path
+endfunction
+nnoremap <silent> <S-h> :call <SID>openvimshell()<CR>
 nnoremap <Leader>z :<C-u>VimShellInteractive zsh<CR>
 autocmd FileType int-ghci set filetype=haskell
 nnoremap <Leader>g :<C-u>VimShellInteractive ghci<CR>
