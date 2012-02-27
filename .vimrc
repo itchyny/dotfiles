@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/02/18 23:29:53.
+" - * Last Change: 2012/02/24 17:05:30.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -164,6 +164,7 @@ NeoBundle 'Shougo/vimfiler'
     " autocmd FileType vimfiler nmap <buffer> ;s :execute("VimShell -split ".b:vimfiler.current_dir)<CR>
   augroup END
 endif
+NeoBundle 'Shougo/vinarise'
 " NeoBundle 'eagletmt/ghci-vim'
 "   augroup Ghci
 "     autocmd!
