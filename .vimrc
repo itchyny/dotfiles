@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/02/24 17:05:30.
+" - * Last Change: 2012/03/03 08:33:00.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -124,6 +124,7 @@ NeoBundle 'thinca/vim-quickrun'
   let g:quickrun_config.roy = {'command' : 'roy'}
   let g:quickrun_config.hss = {'command' : 'runhaskell'}
   let g:quickrun_config.markdown = { 'type': 'markdown/pandoc', 'outputter': 'browser', 'cmdopt': '-s' }
+  let g:quickrun_config.qcl = { 'command': 'qcl' }
   let g:quickrun_config.lhaskell = {'command' : 'runhaskell'}
   nnoremap <Leader>r :<C-u>QuickRun  <CR>
   nnoremap <Leader>e :<C-u>QuickRun <i <CR>
@@ -394,10 +395,10 @@ NeoBundle 'JSON.vim', {'type' : 'nosync'}
 NeoBundle 'html5.vim', {'type' : 'nosync'}
 NeoBundle 'wavded/vim-stylus', {'type' : 'nosync'}
 NeoBundle 'colorizer', {'type' : 'nosync'}
-  augroup colorizer
-    autocmd!
-    autocmd BufNewFile,BufReadPost *.css ColorHighlight
-  augroup END
+  " augroup colorizer
+  "   autocmd!
+  "   autocmd BufNewFile,BufReadPost *.css ColorHighlight
+  " augroup END
 NeoBundle 'groenewege/vim-less', {'type' : 'nosync'}
 NeoBundle 'less.vim', {'type' : 'nosync'}
 NeoBundle 'syntaxm4.vim', {'type' : 'nosync'}
@@ -478,6 +479,7 @@ set cursorline
 set nocursorcolumn
 set showmatch               " 括弧の対応
 set showtabline=2           " always show tab
+set previewheight=20
 " }}}
 
 " Status line {{{
@@ -550,6 +552,7 @@ augroup Filetype
   autocmd BufNewFile,BufReadPost,BufEnter *.mkd  set filetype=markdown
   autocmd BufNewFile,BufReadPost,BufEnter *.md   set filetype=markdown
   autocmd BufNewFile,BufReadPost,BufEnter *.r    set filetype=r
+  autocmd BufNewFile,BufReadPost,BufEnter *.qcl  set filetype=qcl
 augroup END
 " }}}
 
@@ -637,7 +640,7 @@ augroup ChangeDirectory
   autocmd!
   function! s:change_directory()
     if &filetype != "vimfiler"
-      execute ":lcd " . expand("%:p:h")
+      execute ":lcd " . substitute(expand("%:p:h"),'\*vinarise\* - ','','')
     endif
   endfunction
   autocmd BufEnter * call s:change_directory()
