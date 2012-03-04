@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/03/03 08:33:00.
+" - * Last Change: 2012/03/04 13:44:10.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -9,6 +9,7 @@
 set nocompatible
 filetype off
 let s:ismac = has('mac') || system('uname') =~? 'Darwin'
+let s:nosudo = $SUDO_USER == ''
 augroup ESC
   autocmd!
 augroup END
@@ -17,7 +18,6 @@ augroup END
 " Bundles {{{
 " neobundle {{{
 " --------------------------------------------------------------------------------------------------------------
-let s:nosudo = $SUDO_USER == ''
 let $VIM = $HOME.'/.vim'
 let $BUNDLE = $VIM.'/bundle'
 let s:neobundle_dir = $BUNDLE.'/neobundle.vim'
@@ -233,7 +233,7 @@ autocmd ESC FileType vimshell nnoremap <buffer> <ESC><ESC><ESC> :<C-u>q<CR>
 nnoremap <Leader><Leader>s :<C-u>VimShell -split<CR>
 " TODO
 function! s:openvimshell()
-  let path = s:myconque_current_dir()
+  let path = s:current_directory()
   execute "VimShellPop ".path
 endfunction
 nnoremap <silent> <S-h> :call <SID>openvimshell()<CR>
@@ -256,14 +256,6 @@ augroup MyConqueTerm
     let g:my_terminal = conque_term#open('zsh', ['belowright', 'vsplit'])
     call g:my_terminal.writeln('cd '.a:path)
   endfunction
-  function! s:myconque_current_dir()
-    if &l:filetype ==# 'vimfiler'
-      let path = b:vimfiler.current_dir
-    else
-      let path = expand('%:p:h')
-    endif
-    return path
-  endfunction
   function! s:myconque_focus_into_buffer(bufname)
     let bufnr = bufnr(a:bufname)
     let winnr = bufwinnr(bufnr)
@@ -275,7 +267,7 @@ augroup MyConqueTerm
     endif
   endfunction
   function! s:myconque()
-    let path = s:myconque_current_dir()
+    let path = s:current_directory()
     let bufname = s:term_bufname(1)
     let cdcmd = 'cd '.path
     if bufexists(bufname)
@@ -636,12 +628,18 @@ set clipboard+=autoselect
 " UTILITY {{{
 " --------------------------------------------------------------------------------------------------------------
 " Move to the directory for each buffer {{{
+function! s:current_directory()
+  if &filetype ==# 'vimfiler'
+    let path = b:vimfiler.current_dir
+  else
+    let path = substitute(expand("%:p:h"),'\*vinarise\* - ','','')
+  endif
+  return path
+endfunction
 augroup ChangeDirectory
   autocmd!
   function! s:change_directory()
-    if &filetype != "vimfiler"
-      execute ":lcd " . substitute(expand("%:p:h"),'\*vinarise\* - ','','')
-    endif
+    execute ":lcd " . s:current_directory()
   endfunction
   autocmd BufEnter * call s:change_directory()
 augroup END
@@ -750,6 +748,12 @@ nnoremap \. :e ~/.vimrc<CR>
 nnoremap \v :so ~/.vimrc<CR>
   " autocmd BufWritePost .vimrc source %
 nnoremap ;. :e ~/.zshrc<CR>
+
+" template for blog {{{
+nnoremap ,cpp i>\|cpp\|<CR>\|\|<<ESC>O
+nnoremap ,sh i>\|sh\|<CR>\|\|<<ESC>O
+nnoremap ,hs i>\|haskell\|<CR>\|\|<<ESC>O
+"}}}
 " }}}
 
 " }}} UTILITY
