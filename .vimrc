@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/03/04 13:44:10.
+" - * Last Change: 2012/03/17 21:19:09.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -29,7 +29,7 @@ else
 execute 'set runtimepath+='.expand(s:neobundle_dir)
 call neobundle#rc(expand($BUNDLE))
 NeoBundle 'Shougo/neobundle.vim'
-  nnoremap <silent> <S-b> :<C-u>Unite neobundle/install:!<CR>
+  nnoremap <silent> <S-b><S-b> :<C-u>Unite neobundle/install:!<CR>
 " }}}
 
 " Complement {{{
@@ -95,29 +95,6 @@ endif
 " --------------------------------------------------------------------------------------------------------------
                                                                                          let mapleader="\\"
 NeoBundle 'Shougo/vimproc'
-  " --| I use an easy script following, with setting of vimproc_dll_path.
-  "
-  "    #! /bin/sh
-  "    cd ~/.vim/bundle/vimproc/
-  "    if [ `uname` = "Darwin" ]; then
-  "      echo "Mac!!!"
-  "      make -f make_mac.mak
-  "      cd autoload/
-  "      rm procmac.so
-  "      mv proc.so procmac.so
-  "    elif [ `uname` = "Linux" ]; then
-  "      echo "Linux!!!"
-  "      make -f make_gcc.mak
-  "      cd autoload/
-  "      rm procunix.so
-  "      mv proc.so procunix.so
-  "    fi
-  "
-  if s:ismac
-   let g:vimproc_dll_path = $BUNDLE."/vimproc/autoload/procmac.so"
-  else
-   let g:vimproc_dll_path = $BUNDLE."/vimproc/autoload/procunix.so"
-  endif
 NeoBundle 'thinca/vim-quickrun'
   let g:quickrun_config = {'*': {'runmode': 'async:vimproc', 'split': 'vertical'}}
   let g:quickrun_config.javascript = {'command' : 'node'}
@@ -244,7 +221,6 @@ nnoremap <Leader>p :<C-u>VimShellInteractive python<CR>
 " nnoremap <Leader>a :<C-u>tabnew<CR>:VimShellInteractive gdb ./a.out
 endif
 " }}}
-
 
 " Conque Shell {{{
 " --------------------------------------------------------------------------------------------------------------
