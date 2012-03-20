@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/03/17 21:19:09.
+" - * Last Change: 2012/03/20 22:28:11.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -28,7 +28,7 @@ if !isdirectory(s:neobundle_dir)
 else
 execute 'set runtimepath+='.expand(s:neobundle_dir)
 call neobundle#rc(expand($BUNDLE))
-NeoBundle 'Shougo/neobundle.vim'
+NeoBundle 'Shougo/neobundle.vim', {'type' : 'nosync'}
   nnoremap <silent> <S-b><S-b> :<C-u>Unite neobundle/install:!<CR>
 " }}}
 
@@ -77,7 +77,7 @@ NeoBundle 'Shougo/unite.vim'
   augroup END
   autocmd ESC FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
   autocmd ESC FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
-NeoBundle 'Shougo/unite-build'
+NeoBundle 'Shougo/unite-build', {'type' : 'nosync'}
   nnoremap <F5> :<C-u>Unite build<CR>
 NeoBundle 'unite-colorscheme', {'type' : 'nosync'}
 NeoBundle 'ujihisa/vim-ref', {'type' : 'nosync'}
@@ -95,7 +95,7 @@ endif
 " --------------------------------------------------------------------------------------------------------------
                                                                                          let mapleader="\\"
 NeoBundle 'Shougo/vimproc'
-NeoBundle 'thinca/vim-quickrun'
+NeoBundle 'thinca/vim-quickrun', {'type' : 'nosync'}
   let g:quickrun_config = {'*': {'runmode': 'async:vimproc', 'split': 'vertical'}}
   let g:quickrun_config.javascript = {'command' : 'node'}
   let g:quickrun_config.roy = {'command' : 'roy'}
@@ -610,7 +610,7 @@ function! s:current_directory()
   else
     let path = substitute(expand("%:p:h"),'\*vinarise\* - ','','')
   endif
-  return path
+  return vimfiler#util#escape_file_searching(path)
 endfunction
 augroup ChangeDirectory
   autocmd!
