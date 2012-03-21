@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/03/20 22:28:11.
+" - * Last Change: 2012/03/21 11:22:06.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -312,18 +312,6 @@ function! s:swtich_term(termnr)
     echo "Term buffer not created yet"
   endif
 endfunction
-
-" show the main shell
-" nnoremap <silent> H :<C-u>call <SID>show_term(1)<CR>
-" show the shell of the given term number
-" for nr in range(1,9)
-"   execute 'nnoremap <silent> <Space>'.nr.' :<C-u>call <SID>swtich_term('.nr.')<CR>'
-"   execute 'nnoremap <silent> <Space><Space>'.nr.' :<C-u>call <SID>show_term('.nr.')<CR>'
-" endfor
-
-" create a new shell
-" nnoremap <silent> <Space>sh :<C-u>call <SID>new_term()<CR>
-" }}}
 
 " Commenter / Utility ( "," ) {{{
 " --------------------------------------------------------------------------------------------------------------
