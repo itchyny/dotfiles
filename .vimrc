@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/03/21 11:22:06.
+" - * Last Change: 2012/03/25 02:28:27.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -124,10 +124,12 @@ NeoBundle 'Shougo/vimfiler'
   hi def link vimfilerTypeImage Statement
   nnoremap <Leader>f :<C-u>VimFilerCurrentDir<CR>
   nnoremap <Leader><Leader> :<C-u>VimFilerCurrentDir<CR>
+  nnoremap @<Leader> :<C-u>VimFilerCurrentDir<CR>
   let g:vimfiler_execute_file_list = { 'pdf': 'open',
                                      \ 'png': 'open', 'PNG': 'open',
                                      \ 'jpg': 'open', 'JPG': 'open',
                                      \ 'bmp': 'open', 'BMP': 'open',
+                                     \ 'ico': 'open',
                                      \ 'ppt': 'open',
                                      \ 'html': 'open',
                                      \ }
@@ -312,6 +314,7 @@ function! s:swtich_term(termnr)
     echo "Term buffer not created yet"
   endif
 endfunction
+" }}}
 
 " Commenter / Utility ( "," ) {{{
 " --------------------------------------------------------------------------------------------------------------
@@ -598,7 +601,7 @@ function! s:current_directory()
   else
     let path = substitute(expand("%:p:h"),'\*vinarise\* - ','','')
   endif
-  return vimfiler#util#escape_file_searching(path)
+  return escape(path, '*[]?{}, ')
 endfunction
 augroup ChangeDirectory
   autocmd!

@@ -1,7 +1,7 @@
 # --------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2012/02/15 16:06:19.
+# - * Last Change: 2012/03/21 16:11:43.
 # --------------------------------------------------------------------------------------------------------------
 
 setopt prompt_subst
@@ -43,9 +43,9 @@ LS_COLORS+='*.jpg=01;33:*.png=01;33:*.bmp=01;33:*.JPG=01;33:*.PNG=01;33:*.BMP=01
 LS_COLORS+='*.gz=01;34:*.tar=01;34:*.zip=01;34:'
 LS_COLORS+='*.pdf=01;32:*makefile=01;32:*.html=01;32:'
 export LS_COLORS     # doesn't work in Mac
-export LSCOLORS=GahFCxdxbxegedabagacad
+# export LSCOLORS=aahfcxdxbxegedabagaad
+export LSCOLORS=gxfxcxdxbxegedabagacad
 alias prompt_kadai='PROMPT=" $ "'
-
 # title of terminal
 case "${TERM}" in
   kterm*|xterm)
