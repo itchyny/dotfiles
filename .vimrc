@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/03/25 02:28:27.
+" - * Last Change: 2012/05/05 12:30:25.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -41,7 +41,7 @@ NeoBundle 'Shougo/neocomplcache'
   let g:neocomplcache_enable_underbar_completion = 1
   let g:neocomplcache_enable_camel_case_completion = 1
   let g:neocomplcache_enable_cursor_hold_i = 0
-NeoBundle 'Shougo/neocomplcache-snippets-complete'
+NeoBundle 'Shougo/neocomplcache-snippets-complete', {'type' : 'nosync'}
   let g:neocomplcache_snippets_dir = expand($VIM.'/snippets')
   imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ?
         \     "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
@@ -52,7 +52,7 @@ NeoBundle 'Shougo/neocomplcache-snippets-complete'
 NeoBundle 'neco-ghc', {'type' : 'nosync'}
   " --| Requirement: ghc-mod
   " --|   $ cabal install ghc-mod
-" NeoBundle 'eagletmt/ghcmod-vim'
+NeoBundle 'eagletmt/ghcmod-vim', {'type' : 'nosync'}
 endif
 " }}}
 
@@ -125,9 +125,11 @@ NeoBundle 'Shougo/vimfiler'
   nnoremap <Leader>f :<C-u>VimFilerCurrentDir<CR>
   nnoremap <Leader><Leader> :<C-u>VimFilerCurrentDir<CR>
   nnoremap @<Leader> :<C-u>VimFilerCurrentDir<CR>
+  nnoremap @@ :<C-u>VimFilerCurrentDir<CR>
   let g:vimfiler_execute_file_list = { 'pdf': 'open',
                                      \ 'png': 'open', 'PNG': 'open',
                                      \ 'jpg': 'open', 'JPG': 'open',
+                                     \ 'gif': 'open', 'GIF': 'open',
                                      \ 'bmp': 'open', 'BMP': 'open',
                                      \ 'ico': 'open',
                                      \ 'ppt': 'open',
@@ -144,7 +146,7 @@ NeoBundle 'Shougo/vimfiler'
     " autocmd FileType vimfiler nmap <buffer> ;s :execute("VimShell -split ".b:vimfiler.current_dir)<CR>
   augroup END
 endif
-NeoBundle 'Shougo/vinarise'
+NeoBundle 'Shougo/vinarise', {'type' : 'nosync'}
 " NeoBundle 'eagletmt/ghci-vim'
 "   augroup Ghci
 "     autocmd!
@@ -158,9 +160,6 @@ NeoBundle 'tyru/open-browser.vim', {'type' : 'nosync'}
   nmap <Leader>s <Plug>(openbrowser-search)
 NeoBundle 'mattn/webapi-vim', {'type' : 'nosync'}
 NeoBundle 'basyura/twibill.vim', {'type' : 'nosync'}
-NeoBundle 'basyura/TweetVim', {'type' : 'nosync'}
-  " http://d.hatena.ne.jp/basyura/20111230/p1
-  let g:tweetvim_config_dir = expand('~/Dropbox/.tweetvim')
 NeoBundle 'TwitVim', {'type' : 'nosync'}
   nnoremap <Leader>p :<C-u>PosttoTwitter<CR>
 "  nnoremap <Leader>p :<C-u>!tweet<SPACE>
@@ -666,7 +665,7 @@ function! GCJ()
   call append( 5, 'format = unlines . map f . zip [1..]')
   call append( 6, '  where s x | ((==''"'') . head . show) x = init $ tail $ show x')
   call append( 8, '            | otherwise                   = show x')
-  call append( 9, '        f  = \x -> "Case #" ++ show (fst x) ++ ": " ++ s (snd x)')
+  call append( 9, '        f x = "Case #" ++ show (fst x) ++ ": " ++ s (snd x)')
   call append(10, '')
   call append(11, 'solve (x:_) =')
 endfunction

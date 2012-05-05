@@ -1,7 +1,7 @@
 # --------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2012/03/21 16:11:43.
+# - * Last Change: 2012/05/05 13:47:25.
 # --------------------------------------------------------------------------------------------------------------
 
 setopt prompt_subst
@@ -235,9 +235,16 @@ if [ `uname` = "Darwin" ]; then
   alias eog='open -a Preview'
   alias port-update='sudo port selfupdate && sudo port upgrade outdated'
   alias update='cabal-update && port-update'
+  pman () {
+    man -t $@ | open -f -a /Applications/Preview.app
+  }
 elif [ `uname` = "Linux" ]; then
   alias apt-get-update='sudo apt-get update'
   alias update='cabal-update && apt-get-update'
+  alias open='gnome-open'
+  alias pbcopy='xsel --clipboard --input'
+  # alias pbcopy='xsel -i -b'
+  # alias pbpaste='xsel -o -b'
 fi
 alias chrome='google-chrome'
 alias gosh='rlwrap gosh'
@@ -258,8 +265,6 @@ alias l='ls -al'
 alias mpg123='mpg123 -zC'
 function runcpp () { g++ $1; ./a.out; }
 alias asm=runcpp
-# alias pbcopy='xsel -i -b'
-# alias pbpaste='xsel -o -b'
 alias mplayer='mplayer -lavdopts threads=2'
 alias mp3='mplayer'
 alias rm='rm -i'
