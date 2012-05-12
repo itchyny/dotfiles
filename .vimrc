@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/05/05 12:30:25.
+" - * Last Change: 2012/05/11 23:39:28.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -340,7 +340,7 @@ NeoBundle 'VimCalc', {'type' : 'nosync'}
 
 " Syntax {{{
 " --------------------------------------------------------------------------------------------------------------
-NeoBundle 'scrooloose/syntastic', {'type' : 'nosync'}
+" NeoBundle 'scrooloose/syntastic', {'type' : 'nosync'}
 NeoBundle 'mattn/zencoding-vim', {'type' : 'nosync'}
   let g:user_zen_expandabbr_key = '<c-e>'
   let g:user_zen_settings = { 'html' : { 'indentation' : '  ' }, }
@@ -371,19 +371,19 @@ NeoBundle 'syntaxhaskell.vim', {'type' : 'nosync'}
 NeoBundle 'indenthaskell.vim', {'type' : 'nosync'}
 NeoBundle 'haskell.vim', {'type' : 'nosync'}
 NeoBundle 'tpope/vim-markdown', {'type' : 'nosync'}
-NeoBundle 'basyura/jslint.vim', {'type' : 'nosync'}
-  let $JS_CMD='node'
-  if s:ismac
-    function! s:javascript_filetype_settings()
-      autocmd BufWritePost <buffer> call jslint#check()
-      autocmd CursorMoved  <buffer> call jslint#message()
-      autocmd BufLeave     <buffer> call jslint#clear()
-    endfunction
-    augroup JsLint
-      autocmd!
-      " autocmd FileType javascript call s:javascript_filetype_settings()
-    augroup END
-  endif
+" NeoBundle 'basyura/jslint.vim', {'type' : 'nosync'}
+"   let $JS_CMD='node'
+"   if s:ismac
+"     function! s:javascript_filetype_settings()
+"       autocmd BufWritePost <buffer> call jslint#check()
+"       autocmd CursorMoved  <buffer> call jslint#message()
+"       autocmd BufLeave     <buffer> call jslint#clear()
+"     endfunction
+"     augroup JsLint
+"       autocmd!
+"       " autocmd FileType javascript call s:javascript_filetype_settings()
+"     augroup END
+"   endif
 " }}}
 
 " Colorscheme {{{
@@ -501,6 +501,8 @@ augroup Filetype
   autocmd!
   autocmd BufNewFile,BufReadPost,BufEnter *.hs   set filetype=haskell
   autocmd BufNewFile,BufReadPost,BufEnter *.tex  set filetype=tex
+  autocmd BufNewFile,BufReadPost,BufEnter *.tex  set noautoindent
+  autocmd BufNewFile,BufReadPost,BufEnter *.tex  set nosmartindent
   autocmd BufNewFile,BufReadPost,BufEnter *.json set filetype=json
   autocmd BufNewFile,BufReadPost,BufEnter *.less set filetype=less
   autocmd BufNewFile,BufReadPost,BufEnter *.roy  set filetype=roy
@@ -638,15 +640,15 @@ nnoremap <S-F5> :<C-u>call Automake()<CR>
 
 " AOJ template {{{
 function! AOJtemplate()
-  call append(0, '#include <cstdio>')
-  call append(1, '#include <iostream>')
-  call append(2, '#include <cmath>')
-  call append(3, '#include <stack>')
-  call append(4, '#include <vector>')
-  call append(5, '#include <algorithm>')
-  call append(6, '#include <string>')
-  call append(8, 'typedef long long ll;')
-  call append(9, 'using namespace std;')
+  call append( 0, '#include <cstdio>')
+  call append( 1, '#include <iostream>')
+  call append( 2, '#include <cmath>')
+  call append( 3, '#include <stack>')
+  call append( 4, '#include <vector>')
+  call append( 5, '#include <algorithm>')
+  call append( 6, '#include <string>')
+  call append( 8, 'typedef long long ll;')
+  call append( 9, 'using namespace std;')
   call append(10, '')
   call append(11, 'int main () {')
   call append(12, '  int i = 0, j = 0, k = 0, l = 0, m = 0, n = 0;')
