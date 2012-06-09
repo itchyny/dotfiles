@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/06/09 23:46:48.
+" - * Last Change: 2012/06/09 23:56:37.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -206,6 +206,7 @@ augroup END
 autocmd ESC FileType vimshell vnoremap <buffer> <ESC><ESC><ESC> :<C-u>q<CR>
 autocmd ESC FileType vimshell nnoremap <buffer> <ESC><ESC><ESC> :<C-u>q<CR>
 nnoremap <Leader><Leader>s :<C-u>VimShell -split<CR>
+nnoremap <Leader>s :<C-u>VimShell -split<CR>
 " TODO
 function! s:openvimshell()
   let path = s:current_directory()
@@ -221,98 +222,6 @@ NeoBundle 'neco-ghc', {'type' : 'nosync'}
   " --| Requirement: ghc-mod
   " --|   $ cabal install ghc-mod
 endif
-" }}}
-
-" Conque Shell {{{
-" --------------------------------------------------------------------------------------------------------------
-set runtimepath+=~/.vim/otherplugin/conque
-" great entry: http://d.hatena.ne.jp/h1mesuke/20100720/p1
-augroup MyConqueTerm
-  function! s:myconque_start_shell(path)
-    let bufname = s:term_bufname(1)
-    let g:my_terminal = conque_term#open('zsh', ['belowright', 'vsplit'])
-    call g:my_terminal.writeln('cd '.a:path)
-  endfunction
-  function! s:myconque_focus_into_buffer(bufname)
-    let bufnr = bufnr(a:bufname)
-    let winnr = bufwinnr(bufnr)
-    if winnr == -1
-      execute 'vnew'
-      execute 'buffer' bufnr
-    else
-      execute winnr 'wincmd w'
-    endif
-  endfunction
-  function! s:myconque()
-    let path = s:current_directory()
-    let bufname = s:term_bufname(1)
-    let cdcmd = 'cd '.path
-    if bufexists(bufname)
-      call s:myconque_focus_into_buffer(bufname)
-      call g:my_terminal.writeln(cdcmd)
-    else
-      call s:myconque_start_shell(path)
-    endif
-  endfunction
-  autocmd!
-  command! -complete=shellcmd MyConque call s:myconque()
-  autocmd BufEnter * if &l:filetype ==# 'conque_term' | startinsert! | endif
-augroup END
-nnoremap <silent> <Leader>s :MyConque<CR>
-let g:ConqueTerm_Color          = 1
-let g:ConqueTerm_Syntax         = 'conque'
-let g:ConqueTerm_ReadUnfocused  = 1
-let g:ConqueTerm_CWInsert       = 1
-let g:ConqueTerm_MyTermCommand  = 'zsh'
-let g:ConqueTerm_MyTermPosition = 'J'
-" Creates a new term buffer.
-function! s:new_term()
-  let g:my_terminal = conque_term#open('zsh', ['belowright', 'vsplit'])
-endfunction
-function! s:term_bufname(termnr)
-  return printf("%s - %d", g:ConqueTerm_MyTermCommand, a:termnr)
-endfunction
-" Shows the term buffer with the given term number.
-function! s:show_term(termnr)
-  let bufname = s:term_bufname(a:termnr)
-  if bufexists(bufname)
-    let bufnr = bufnr(bufname)
-    let winnr = bufwinnr(bufnr)
-    if winnr == -1
-      execute 'vnew'
-      execute 'buffer' bufnr
-      execute 'wincmd' g:ConqueTerm_MyTermPosition
-    else
-      execute winnr 'wincmd w'
-    endif
-  elseif a:termnr == 1
-    call s:new_term()
-  else
-    echo "Term buffer not created yet"
-  endif
-endfunction
-" Shows the term buffer with the given term number. (exclusive)
-function! s:swtich_term(termnr)
-  let bufname = s:term_bufname(a:termnr)
-  if bufexists(bufname)
-    for nr in range(1,9)
-      let bufname = s:term_bufname(nr)
-      if bufexists(bufname)
-        let bufnr = bufnr(bufname)
-        let winnr = bufwinnr(bufnr)
-        if winnr != -1
-          execute winnr 'wincmd w'
-          wincmd c
-        endif
-      endif
-    endfor
-    call s:show_term(a:termnr)
-  elseif a:termnr == 1
-    call s:new_term()
-  else
-    echo "Term buffer not created yet"
-  endif
-endfunction
 " }}}
 
 " Commenter / Utility ( "," ) {{{
