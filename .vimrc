@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/05/11 23:39:28.
+" - * Last Change: 2012/06/09 12:56:53.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -49,10 +49,6 @@ NeoBundle 'Shougo/neocomplcache-snippets-complete', {'type' : 'nosync'}
         \     "\<Plug>(neocomplcache_snippets_expand)" : "\<C-w>l"
 " NeoBundle 'ujihisa/neco-look'
   " --| Requirement: look commnad
-NeoBundle 'neco-ghc', {'type' : 'nosync'}
-  " --| Requirement: ghc-mod
-  " --|   $ cabal install ghc-mod
-NeoBundle 'eagletmt/ghcmod-vim', {'type' : 'nosync'}
 endif
 " }}}
 
@@ -147,13 +143,13 @@ NeoBundle 'Shougo/vimfiler'
   augroup END
 endif
 NeoBundle 'Shougo/vinarise', {'type' : 'nosync'}
-" NeoBundle 'eagletmt/ghci-vim'
-"   augroup Ghci
-"     autocmd!
-"     autocmd Filetype haskell nnoremap <Leader>l :GhciLoad<CR>
-"     autocmd Filetype haskell nnoremap <Leader>i :GhciInfo<CR>
-"     autocmd Filetype haskell nnoremap <Leader>t :GhciType<CR>
-"   augroup END
+NeoBundle 'eagletmt/ghci-vim'
+  augroup Ghci
+    autocmd!
+    autocmd Filetype haskell nnoremap <Leader>l :GhciLoad<CR>
+    autocmd Filetype haskell nnoremap <Leader>i :GhciInfo<CR>
+    autocmd Filetype haskell nnoremap <Leader>t :GhciType<CR>
+  augroup END
 NeoBundle 'tyru/open-browser.vim', {'type' : 'nosync'}
   nmap <Leader>b <Plug>(openbrowser-smart-search)
   vmap <Leader>b <Plug>(openbrowser-smart-search)
@@ -163,6 +159,7 @@ NeoBundle 'basyura/twibill.vim', {'type' : 'nosync'}
 NeoBundle 'TwitVim', {'type' : 'nosync'}
   nnoremap <Leader>p :<C-u>PosttoTwitter<CR>
 "  nnoremap <Leader>p :<C-u>!tweet<SPACE>
+NeoBundle 'eagletmt/ghcmod-vim', {'type' : 'nosync'}
 " }}}
 
 " vimshell ( ";" ) {{{
@@ -220,6 +217,9 @@ autocmd FileType int-ghci set filetype=haskell
 nnoremap <Leader>g :<C-u>VimShellInteractive ghci<CR>
 nnoremap <Leader>p :<C-u>VimShellInteractive python<CR>
 " nnoremap <Leader>a :<C-u>tabnew<CR>:VimShellInteractive gdb ./a.out
+NeoBundle 'neco-ghc', {'type' : 'nosync'}
+  " --| Requirement: ghc-mod
+  " --|   $ cabal install ghc-mod
 endif
 " }}}
 
@@ -346,9 +346,7 @@ NeoBundle 'mattn/zencoding-vim', {'type' : 'nosync'}
   let g:user_zen_settings = { 'html' : { 'indentation' : '  ' }, }
 NeoBundle 'tsaleh/vim-matchit', {'type' : 'nosync'}
 NeoBundle 'JavaScript-syntax', {'type' : 'nosync'}
-NeoBundle 'tyok/js-mask', {'type' : 'nosync'}
 NeoBundle 'itspriddle/vim-javascript-indent', {'type' : 'nosync'}
-NeoBundle 'pangloss/vim-javascript', {'type' : 'nosync'}
 NeoBundle 'JSON.vim', {'type' : 'nosync'}
 NeoBundle 'html5.vim', {'type' : 'nosync'}
 NeoBundle 'wavded/vim-stylus', {'type' : 'nosync'}
@@ -362,13 +360,11 @@ NeoBundle 'less.vim', {'type' : 'nosync'}
 NeoBundle 'syntaxm4.vim', {'type' : 'nosync'}
 NeoBundle 'vim-scripts/jade.vim', {'type' : 'nosync'}
 NeoBundle 'vim-coffee-script', {'type' : 'nosync'}
-NeoBundle 'coq-syntax', {'type' : 'nosync'}
-NeoBundle 'Coq-indent', {'type' : 'nosync'}
 NeoBundle 'rest.vim', {'type' : 'nosync'}
 NeoBundle 'VST', {'type' : 'nosync'}
 NeoBundle 'syntaxm4.vim', {'type' : 'nosync'}
 NeoBundle 'syntaxhaskell.vim', {'type' : 'nosync'}
-NeoBundle 'indenthaskell.vim', {'type' : 'nosync'}
+" NeoBundle 'indenthaskell.vim', {'type' : 'nosync'}
 NeoBundle 'haskell.vim', {'type' : 'nosync'}
 NeoBundle 'tpope/vim-markdown', {'type' : 'nosync'}
 " NeoBundle 'basyura/jslint.vim', {'type' : 'nosync'}
@@ -424,13 +420,13 @@ endfunction
 " APPERANCE {{{
 " --------------------------------------------------------------------------------------------------------------
 " Frame appearance {{{
-set showcmd
-set showmode
+" set showcmd
+set noshowmode " https://github.com/vim-jp/issues/issues/100
 " }}}
 
 " Main appearance {{{
 set list
-" set listchars=tab:^I,trail:@,eol:$
+" set listchars=tab:^I,trail:@
 set shortmess+=I            " disable start up message
 set number                  " line number
 set cursorline
@@ -443,8 +439,16 @@ set previewheight=20
 " Status line {{{
 set ruler                   " show the cursor position (needless if you set 'statusline' later)
 set laststatus=2            " ステータスラインを常に表示
-set statusline=%{expand('%:p:t')}\ %<[%{expand('%:p:h')}]%=\ %m%r%y%w[%{&fenc!=''?&fenc:&enc}][%{&ff}][%3l,%3c,%3p]
-" }}}
+set statusline=%{expand('%:p:t')}\ %<[%{expand('%:p:h')}]%=\ %m%r%y%w[%{&fenc!=''?&fenc:&enc}][%{&ff}][%3l,%3c,%3p][%{strftime(\"%m/%d\ %H:%M\")}]
+NeoBundle 'Lokaltog/vim-powerline'
+" sudo apt-get install fontforge
+" sudo apt-get install python-fontforge
+" cd ~/.vim/bundle/vim-powerline/fontpatcher
+" wget http://levien.com/type/myfonts/Inconsolata.otf
+" python ./fontpatcher ./Iconsolata.otf
+" sudo mv ./Iconsolata-Powerline.otf /usr/share/fonts
+set guifont=Iconsolata-Powerline.otf
+let g:Powerline_symbols='fancy'
 
 " Color {{{
 syntax enable
@@ -623,6 +627,7 @@ augroup Omnifunc
   autocmd FileType php        setlocal omnifunc=phpcomplete#CompletePHP
   autocmd FileType python     setlocal omnifunc=pythoncomplete#Complete
   autocmd FileType xml        setlocal omnifunc=xmlcomplete#CompleteTags
+  autocmd FileType haskell    setlocal omnifunc=necoghc#omnifunc
 augroup END
 setlocal omnifunc=syntaxcomplete#Complete
 " }}}
@@ -755,8 +760,9 @@ nnoremap ] <S>j
 vnoremap < <gv
 vnoremap > >gv|
 
-" always use line visual mode
-nnoremap v <S-v>
+" swap line/normal visual mode
+noremap <S-v> v
+noremap v <S-v>
 
 " easy copy, paste
 vnoremap <C-c> y
