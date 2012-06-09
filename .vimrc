@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/06/09 13:44:06.
+" - * Last Change: 2012/06/09 13:51:06.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -492,11 +492,11 @@ call Pl#Hi#Allocate({
 
 let g:Powerline#Colorschemes#my#colorscheme = Pl#Colorscheme#Init([
 	\ Pl#Hi#Segments(['SPLIT'], {
-		\ 'i': ['white', 'gray1'],
-		\ 'v': ['white', 'gray1'],
-		\ 'r': ['white', 'gray1'],
+		\ 'i': ['white', 'gray2'],
+		\ 'v': ['white', 'gray2'],
+		\ 'r': ['white', 'gray2'],
 		\ 'N': ['white', 'gray0'],
-		\ 'n': ['white', 'gray1'],
+		\ 'n': ['white', 'gray2'],
 		\ }),
 	\
 	\ Pl#Hi#Segments(['mode_indicator'], {
