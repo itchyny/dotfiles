@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/06/09 13:51:06.
+" - * Last Change: 2012/06/09 17:39:21.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -446,7 +446,7 @@ NeoBundle 'Lokaltog/vim-powerline'
 " cd ~/.vim/bundle/vim-powerline/fontpatcher
 " wget http://levien.com/type/myfonts/Inconsolata.otf
 " python ./fontpatcher ./Iconsolata.otf
-" sudo mv ./Iconsolata-Powerline.otf /usr/share/fonts
+" sudo cp ./Iconsolata-Powerline.otf /usr/share/fonts
 set guifont=Iconsolata-Powerline.otf
 let g:Powerline_symbols='fancy'
 call Pl#Hi#Allocate({
@@ -489,13 +489,17 @@ call Pl#Hi#Allocate({
 	\ 'gray9'          : 250,
 	\ 'gray10'         : 252,
 	\ })
-
+" 'n': normal mode
+" 'i': insert mode
+" 'v': visual mode
+" 'r': replace mode
+" 'N': not active
 let g:Powerline#Colorschemes#my#colorscheme = Pl#Colorscheme#Init([
 	\ Pl#Hi#Segments(['SPLIT'], {
 		\ 'i': ['white', 'gray2'],
 		\ 'v': ['white', 'gray2'],
 		\ 'r': ['white', 'gray2'],
-		\ 'N': ['white', 'gray0'],
+		\ 'N': ['gray0', 'gray0'],
 		\ 'n': ['white', 'gray2'],
 		\ }),
 	\
@@ -511,7 +515,7 @@ let g:Powerline#Colorschemes#my#colorscheme = Pl#Colorscheme#Init([
 		\ 'i': ['gray2', 'gray7'],
 		\ 'v': ['gray2', 'gray7'],
 		\ 'r': ['gray2', 'gray7'],
-		\ 'N': ['gray4', 'gray1'],
+		\ 'N': ['gray0', 'gray2'],
 		\ 'n': ['mediumcyan', 'darkblue'],
 		\ }),
 	\
@@ -519,7 +523,7 @@ let g:Powerline#Colorschemes#my#colorscheme = Pl#Colorscheme#Init([
 		\ 'i': ['white', 'gray4', ['bold']],
 		\ 'v': ['white', 'gray4', ['bold']],
 		\ 'r': ['white', 'gray4', ['bold']],
-		\ 'N': ['gray7', 'gray0', ['bold']],
+		\ 'N': ['gray0', 'gray2', ['bold']],
 		\ 'n': ['white', 'darkblue', ['bold']],
 		\ }),
 	\
@@ -535,31 +539,31 @@ let g:Powerline#Colorschemes#my#colorscheme = Pl#Colorscheme#Init([
 		\ 'i': ['white', 'gray4'],
 		\ 'v': ['white', 'gray4'],
 		\ 'r': ['white', 'gray4'],
-		\ 'N': ['gray7', 'gray1'],
+		\ 'N': ['gray1', 'gray1'],
 		\ 'n': ['white', 'darkblue'],
 		\ }),
 	\
 	\ Pl#Hi#Segments(['fileinfo.flags'], {
-		\ 'i': ['brightestred', ['bold']],
-		\ 'v': ['brightestred', ['bold']],
-		\ 'r': ['brightestred', ['bold']],
-		\ 'N': ['darkred'],
-		\ 'n': ['brightestred', ['bold']],
+		\ 'i': ['brightestred'],
+		\ 'v': ['brightestred'],
+		\ 'r': ['brightestred'],
+		\ 'N': ['gray4'],
+		\ 'n': ['brightestred'],
 		\ }),
 	\
 	\ Pl#Hi#Segments(['currenttag', 'fileformat', 'fileencoding', 'pwd', 'filetype', 'rvm:string', 'rvm:statusline', 'virtualenv:statusline', 'charcode', 'currhigroup'], {
-		\ 'i': ['white', 'gray4'],
-		\ 'v': ['white', 'gray4'],
-		\ 'r': ['white', 'gray4'],
+		\ 'i': ['gray9', 'gray4'],
+		\ 'v': ['gray9', 'gray4'],
+		\ 'r': ['gray9', 'gray4'],
 		\ 'n': ['mediumcyan', 'darkestblue'],
 		\ }),
 	\
 	\ Pl#Hi#Segments(['lineinfo'], {
-		\ 'i': ['gray2', 'gray10', ['bold']],
-		\ 'v': ['gray2', 'gray10', ['bold']],
-		\ 'r': ['gray2', 'gray10', ['bold']],
-		\ 'N': ['gray7', 'gray1', ['bold']],
-		\ 'n': ['darkestcyan', 'mediumcyan', ['bold']],
+		\ 'i': ['gray2', 'gray10'],
+		\ 'v': ['gray2', 'gray10'],
+		\ 'r': ['gray2', 'gray10'],
+		\ 'N': ['gray2', 'gray4'],
+		\ 'n': ['darkestcyan', 'mediumcyan'],
 		\ }),
 	\
 	\ Pl#Hi#Segments(['errors'], {
@@ -570,11 +574,11 @@ let g:Powerline#Colorschemes#my#colorscheme = Pl#Colorscheme#Init([
 		\ }),
 	\
 	\ Pl#Hi#Segments(['lineinfo.line.tot'], {
-		\ 'i': ['gray2', ['bold']],
-		\ 'v': ['gray2', ['bold']],
-		\ 'r': ['gray2', ['bold']],
-		\ 'N': ['gray5', ['bold']],
-		\ 'n': ['darkestcyan', ['bold']],
+		\ 'i': ['gray2'],
+		\ 'v': ['gray2'],
+		\ 'r': ['gray2'],
+		\ 'N': ['gray2'],
+		\ 'n': ['darkestcyan'],
 		\ }),
 	\
 	\ Pl#Hi#Segments(['paste_indicator', 'ws_marker'], {
