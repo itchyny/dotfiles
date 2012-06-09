@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/06/09 12:56:53.
+" - * Last Change: 2012/06/09 13:44:06.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -449,6 +449,194 @@ NeoBundle 'Lokaltog/vim-powerline'
 " sudo mv ./Iconsolata-Powerline.otf /usr/share/fonts
 set guifont=Iconsolata-Powerline.otf
 let g:Powerline_symbols='fancy'
+call Pl#Hi#Allocate({
+	\ 'black'          : 16,
+	\ 'white'          : 231,
+	\
+	\ 'darkestgreen'   : 22,
+	\ 'darkgreen'      : 28,
+	\ 'mediumgreen'    : 70,
+	\ 'brightgreen'    : 148,
+	\
+	\ 'darkestcyan'    : 23,
+	\ 'mediumcyan'     : 117,
+	\
+	\ 'darkestblue'    : 24,
+	\ 'darkblue'       : 31,
+	\
+	\ 'darkestred'     : 52,
+	\ 'darkred'        : 88,
+	\ 'mediumred'      : 124,
+	\ 'brightred'      : 160,
+	\ 'brightestred'   : 196,
+	\
+	\ 'darkestpurple'  : 55,
+	\ 'mediumpurple'   : 98,
+	\ 'brightpurple'   : 189,
+	\
+	\ 'brightorange'   : 208,
+	\ 'brightestorange': 214,
+	\
+	\ 'gray0'          : 233,
+	\ 'gray1'          : 235,
+	\ 'gray2'          : 236,
+	\ 'gray3'          : 239,
+	\ 'gray4'          : 240,
+	\ 'gray5'          : 241,
+	\ 'gray6'          : 244,
+	\ 'gray7'          : 245,
+	\ 'gray8'          : 247,
+	\ 'gray9'          : 250,
+	\ 'gray10'         : 252,
+	\ })
+
+let g:Powerline#Colorschemes#my#colorscheme = Pl#Colorscheme#Init([
+	\ Pl#Hi#Segments(['SPLIT'], {
+		\ 'i': ['white', 'gray1'],
+		\ 'v': ['white', 'gray1'],
+		\ 'r': ['white', 'gray1'],
+		\ 'N': ['white', 'gray0'],
+		\ 'n': ['white', 'gray1'],
+		\ }),
+	\
+	\ Pl#Hi#Segments(['mode_indicator'], {
+		\ 'i': ['darkestgreen', 'brightgreen', ['bold']],
+		\ 'n': ['darkestcyan', 'white', ['bold']],
+		\ 'v': ['darkred', 'brightorange', ['bold']],
+		\ 'r': ['white', 'brightred', ['bold']],
+		\ 's': ['white', 'gray5', ['bold']],
+		\ }),
+	\
+	\ Pl#Hi#Segments(['branch', 'scrollpercent', 'raw', 'filesize'], {
+		\ 'i': ['gray2', 'gray7'],
+		\ 'v': ['gray2', 'gray7'],
+		\ 'r': ['gray2', 'gray7'],
+		\ 'N': ['gray4', 'gray1'],
+		\ 'n': ['mediumcyan', 'darkblue'],
+		\ }),
+	\
+	\ Pl#Hi#Segments(['fileinfo', 'filename'], {
+		\ 'i': ['white', 'gray4', ['bold']],
+		\ 'v': ['white', 'gray4', ['bold']],
+		\ 'r': ['white', 'gray4', ['bold']],
+		\ 'N': ['gray7', 'gray0', ['bold']],
+		\ 'n': ['white', 'darkblue', ['bold']],
+		\ }),
+	\
+	\ Pl#Hi#Segments(['fileinfo.filepath', 'status'], {
+		\ 'i': ['gray10'],
+		\ 'v': ['gray10'],
+		\ 'r': ['gray10'],
+		\ 'N': ['gray5'],
+		\ 'n': ['mediumcyan'],
+		\ }),
+	\
+	\ Pl#Hi#Segments(['static_str'], {
+		\ 'i': ['white', 'gray4'],
+		\ 'v': ['white', 'gray4'],
+		\ 'r': ['white', 'gray4'],
+		\ 'N': ['gray7', 'gray1'],
+		\ 'n': ['white', 'darkblue'],
+		\ }),
+	\
+	\ Pl#Hi#Segments(['fileinfo.flags'], {
+		\ 'i': ['brightestred', ['bold']],
+		\ 'v': ['brightestred', ['bold']],
+		\ 'r': ['brightestred', ['bold']],
+		\ 'N': ['darkred'],
+		\ 'n': ['brightestred', ['bold']],
+		\ }),
+	\
+	\ Pl#Hi#Segments(['currenttag', 'fileformat', 'fileencoding', 'pwd', 'filetype', 'rvm:string', 'rvm:statusline', 'virtualenv:statusline', 'charcode', 'currhigroup'], {
+		\ 'i': ['white', 'gray4'],
+		\ 'v': ['white', 'gray4'],
+		\ 'r': ['white', 'gray4'],
+		\ 'n': ['mediumcyan', 'darkestblue'],
+		\ }),
+	\
+	\ Pl#Hi#Segments(['lineinfo'], {
+		\ 'i': ['gray2', 'gray10', ['bold']],
+		\ 'v': ['gray2', 'gray10', ['bold']],
+		\ 'r': ['gray2', 'gray10', ['bold']],
+		\ 'N': ['gray7', 'gray1', ['bold']],
+		\ 'n': ['darkestcyan', 'mediumcyan', ['bold']],
+		\ }),
+	\
+	\ Pl#Hi#Segments(['errors'], {
+		\ 'i': ['brightestorange', 'gray2', ['bold']],
+		\ 'v': ['brightestorange', 'gray2', ['bold']],
+		\ 'r': ['brightestorange', 'gray2', ['bold']],
+		\ 'n': ['brightestorange', 'darkestblue', ['bold']],
+		\ }),
+	\
+	\ Pl#Hi#Segments(['lineinfo.line.tot'], {
+		\ 'i': ['gray2', ['bold']],
+		\ 'v': ['gray2', ['bold']],
+		\ 'r': ['gray2', ['bold']],
+		\ 'N': ['gray5', ['bold']],
+		\ 'n': ['darkestcyan', ['bold']],
+		\ }),
+	\
+	\ Pl#Hi#Segments(['paste_indicator', 'ws_marker'], {
+		\ 'n': ['white', 'brightred', ['bold']],
+		\ }),
+	\
+	\ Pl#Hi#Segments(['gundo:static_str.name', 'command_t:static_str.name'], {
+		\ 'n': ['white', 'mediumred', ['bold']],
+		\ 'N': ['brightred', 'darkestred', ['bold']],
+		\ }),
+	\
+	\ Pl#Hi#Segments(['gundo:static_str.buffer', 'command_t:raw.line'], {
+		\ 'n': ['white', 'darkred'],
+		\ 'N': ['brightred', 'darkestred'],
+		\ }),
+	\
+	\ Pl#Hi#Segments(['gundo:SPLIT', 'command_t:SPLIT'], {
+		\ 'n': ['white', 'darkred'],
+		\ 'N': ['white', 'darkestred'],
+		\ }),
+	\
+	\ Pl#Hi#Segments(['lustyexplorer:static_str.name', 'minibufexplorer:static_str.name', 'nerdtree:raw.name', 'tagbar:static_str.name'], {
+		\ 'n': ['white', 'mediumgreen', ['bold']],
+		\ 'N': ['mediumgreen', 'darkestgreen', ['bold']],
+		\ }),
+	\
+	\ Pl#Hi#Segments(['lustyexplorer:static_str.buffer', 'tagbar:static_str.buffer'], {
+		\ 'n': ['brightgreen', 'darkgreen'],
+		\ 'N': ['mediumgreen', 'darkestgreen'],
+		\ }),
+	\
+	\ Pl#Hi#Segments(['lustyexplorer:SPLIT', 'minibufexplorer:SPLIT', 'nerdtree:SPLIT', 'tagbar:SPLIT'], {
+		\ 'n': ['white', 'darkgreen'],
+		\ 'N': ['white', 'darkestgreen'],
+		\ }),
+	\
+	\ Pl#Hi#Segments(['ctrlp:focus', 'ctrlp:byfname'], {
+		\ 'n': ['brightpurple', 'darkestpurple'],
+		\ }),
+	\
+	\ Pl#Hi#Segments(['ctrlp:prev', 'ctrlp:next', 'ctrlp:pwd'], {
+		\ 'n': ['white', 'mediumpurple'],
+		\ }),
+	\
+	\ Pl#Hi#Segments(['ctrlp:item'], {
+		\ 'n': ['darkestpurple', 'white', ['bold']],
+		\ }),
+	\
+	\ Pl#Hi#Segments(['ctrlp:marked'], {
+		\ 'n': ['brightestred', 'darkestpurple', ['bold']],
+		\ }),
+	\
+	\ Pl#Hi#Segments(['ctrlp:count'], {
+		\ 'n': ['darkestpurple', 'white'],
+		\ }),
+	\
+	\ Pl#Hi#Segments(['ctrlp:SPLIT'], {
+		\ 'n': ['white', 'darkestpurple'],
+		\ }),
+	\ ])
+let g:Powerline_colorscheme='my'
+" }}}
 
 " Color {{{
 syntax enable
@@ -479,20 +667,21 @@ highlight ZenkakuSpace ctermfg=black ctermbg=red guibg=#666666
 au BufEnter * let w:m3 = matchadd("ZenkakuSpace", '　')
 highlight ZenkakuSpace ctermfg=black ctermbg=red guibg=#666666
 au BufEnter * let w:m4 = matchadd("Todo", 'TODO')
+"}}}
 
-" Statusline color
-let s:hi_normal = 'highlight StatusLine guifg=black guibg=blue gui=none ctermfg=black ctermbg=blue cterm=none'
-let s:hi_insert = 'highlight StatusLine guifg=black guibg=darkmagenta gui=none ctermfg=black ctermbg=darkmagenta cterm=none'
-silent exec s:hi_normal
-augroup InsertStatus
-  autocmd!
-  autocmd InsertEnter * exec s:hi_insert
-  autocmd InsertLeave * exec s:hi_normal
-augroup END
-if has('unix') && !has('gui_running')
-  " ESC後にすぐ反映されない対策(実際これいる)
+" Statusline color {{{
+" let s:hi_normal = 'highlight StatusLine guifg=black guibg=blue gui=none ctermfg=black ctermbg=blue cterm=none'
+" let s:hi_insert = 'highlight StatusLine guifg=black guibg=darkmagenta gui=none ctermfg=black ctermbg=darkmagenta cterm=none'
+" silent exec s:hi_normal
+" augroup InsertStatus
+"   autocmd!
+"   autocmd InsertEnter * exec s:hi_insert
+"   autocmd InsertLeave * exec s:hi_normal
+" augroup END
+" if has('unix') && !has('gui_running')
+"   " ESC後にすぐ反映されない対策(実際これいる)
   inoremap <silent> <ESC> <ESC>
-endif
+" endif
 " }}}
 " }}} APPERANCE
 
