@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/06/09 23:56:37.
+" - * Last Change: 2012/06/10 11:41:53.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -23,6 +23,8 @@ let $BUNDLE = $VIM.'/bundle'
 let s:neobundle_dir = $BUNDLE.'/neobundle.vim'
 if !isdirectory(s:neobundle_dir)
   echo 'initializing neobundle\n'
+  exec '!mkdir -p '.s:neobundle_dir
+  exec '!mkdir -p '.$BUNDLE.'/unite.vim'
   exec '!git clone git@github.com:Shougo/neobundle.vim.git '.s:neobundle_dir
   exec '!git clone git@github.com:Shougo/unite.vim.git '.$BUNDLE.'/unite.vim'
 else
@@ -139,7 +141,6 @@ NeoBundle 'Shougo/vimfiler'
     autocmd FileType vimfiler nmap <buffer> <C-r> <Plug>(vimfiler_redraw_screen)
     autocmd FileType vimfiler nmap <buffer> O <Plug>(vimfiler_sync_with_another_vimfiler)
     autocmd FileType vimfiler nmap <buffer><expr> e vimfiler#smart_cursor_map("\<Plug>(vimfiler_cd_file)","\<Plug>(vimfiler_edit_file)")
-    " autocmd FileType vimfiler nmap <buffer> ;s :execute("VimShell -split ".b:vimfiler.current_dir)<CR>
   augroup END
 endif
 NeoBundle 'Shougo/vinarise', {'type' : 'nosync'}
@@ -202,22 +203,15 @@ augroup Vimshell
   autocmd FileType vimshell nnoremap <buffer> <expr><silent> <Up> unite#sources#vimshell_history#start_complete(!0)
   autocmd FileType vimshell nnoremap <buffer> <expr><silent> <Down> unite#sources#vimshell_history#start_complete(!0)
 augroup END
-" autocmd ESC FileType vimshell inoremap <buffer> <ESC> <NOP>
 autocmd ESC FileType vimshell vnoremap <buffer> <ESC><ESC><ESC> :<C-u>q<CR>
 autocmd ESC FileType vimshell nnoremap <buffer> <ESC><ESC><ESC> :<C-u>q<CR>
 nnoremap <Leader><Leader>s :<C-u>VimShell -split<CR>
-nnoremap <Leader>s :<C-u>VimShell -split<CR>
-" TODO
-function! s:openvimshell()
-  let path = s:current_directory()
-  execute "VimShellPop ".path
-endfunction
-nnoremap <silent> <S-h> :call <SID>openvimshell()<CR>
+nnoremap <Leader>s :<C-u>VimShellCreate<CR>
+nnoremap <silent> <S-h> :<C-u>execute 'VimShellPop '.<SID>current_directory()<CR>
 nnoremap <Leader>z :<C-u>VimShellInteractive zsh<CR>
 autocmd FileType int-ghci set filetype=haskell
 nnoremap <Leader>g :<C-u>VimShellInteractive ghci<CR>
 nnoremap <Leader>p :<C-u>VimShellInteractive python<CR>
-" nnoremap <Leader>a :<C-u>tabnew<CR>:VimShellInteractive gdb ./a.out
 NeoBundle 'neco-ghc', {'type' : 'nosync'}
   " --| Requirement: ghc-mod
   " --|   $ cabal install ghc-mod
@@ -235,7 +229,7 @@ NeoBundle 'sjl/gundo.vim', {'type' : 'nosync'}
   nnoremap <Leader>g :<C-u>GundoToggle<CR>
   autocmd ESC FileType gundo nnoremap <silent> <buffer> <ESC><ESC> :<C-u>GundoToggle<CR>
 NeoBundle 'Align', {'type' : 'nosync'}
-"NeoBundle 'msanders/snipmate.vim', {'type' : 'nosync'}
+NeoBundle 'msanders/snipmate.vim', {'type' : 'nosync'}
 NeoBundle 'errormarker.vim', {'type' : 'nosync'}
 NeoBundle 'mattn/calendar-vim', {'type' : 'nosync'}
   autocmd ESC FileType calendar nnoremap <silent> <buffer> <ESC><ESC> :<C-u>q<CR>
@@ -249,7 +243,7 @@ NeoBundle 'VimCalc', {'type' : 'nosync'}
 
 " Syntax {{{
 " --------------------------------------------------------------------------------------------------------------
-" NeoBundle 'scrooloose/syntastic', {'type' : 'nosync'}
+NeoBundle 'scrooloose/syntastic', {'type' : 'nosync'}
 NeoBundle 'mattn/zencoding-vim', {'type' : 'nosync'}
   let g:user_zen_expandabbr_key = '<c-e>'
   let g:user_zen_settings = { 'html' : { 'indentation' : '  ' }, }
@@ -273,7 +267,6 @@ NeoBundle 'rest.vim', {'type' : 'nosync'}
 NeoBundle 'VST', {'type' : 'nosync'}
 NeoBundle 'syntaxm4.vim', {'type' : 'nosync'}
 NeoBundle 'syntaxhaskell.vim', {'type' : 'nosync'}
-" NeoBundle 'indenthaskell.vim', {'type' : 'nosync'}
 NeoBundle 'haskell.vim', {'type' : 'nosync'}
 NeoBundle 'tpope/vim-markdown', {'type' : 'nosync'}
 " NeoBundle 'basyura/jslint.vim', {'type' : 'nosync'}
@@ -376,7 +369,6 @@ call Pl#Hi#Allocate({
   \ 'mediumred'      : 124,
   \ 'brightred'      : 160,
   \ 'brightestred'   : 196,
-  \
   \
   \ 'darkestyellow'  : 59,
   \ 'darkyellow'     : 100,
@@ -519,12 +511,6 @@ endif
 " }}}
 
 " Highlight {{{
-" highlight TabLineSel guifg=white guibg=black  gui=bold ctermfg=white ctermbg=black  cterm=bold
-" highlight TabLine    guifg=black guibg=white  gui=none ctermfg=black ctermbg=white  cterm=none
-" highlight Normal guifg=#f6f3e8 guibg=#242424 gui=none
-" highlight NonText guifg=#808080 guibg=#242424 gui=none
-" highlight LineNr guifg=#857b6f guibg=#000000 gui=none
-" highlight CursorColumn guibg=none ctermbg=none
 highlight Pmenu guifg=black guibg=gray ctermfg=black ctermbg=gray
 highlight PmenuSel guifg=black guibg=darkgray ctermfg=black ctermbg=darkgray
 highlight PmenuSbar guifg=white guibg=darkgray ctermfg=white ctermbg=darkgray
@@ -536,9 +522,9 @@ autocmd FileType * highlight Function ctermfg=green guifg=green
 autocmd FileType * highlight String ctermfg=magenta guifg=magenta
 autocmd FileType * highlight StatusLineNC guifg=black guibg=darkgray gui=none ctermfg=black ctermbg=darkgray cterm=none
 highlight ZenkakuSpace ctermfg=black ctermbg=red guibg=#666666
-au BufEnter * let w:m3 = matchadd("ZenkakuSpace", '　')
+autocmd BufEnter * let w:m3 = matchadd("ZenkakuSpace", '　')
 highlight ZenkakuSpace ctermfg=black ctermbg=red guibg=#666666
-au BufEnter * let w:m4 = matchadd("Todo", 'TODO')
+autocmd BufEnter * let w:m4 = matchadd("Todo", 'TODO')
 "}}}
 
 " Statusline color {{{
@@ -550,10 +536,10 @@ au BufEnter * let w:m4 = matchadd("Todo", 'TODO')
 "   autocmd InsertEnter * exec s:hi_insert
 "   autocmd InsertLeave * exec s:hi_normal
 " augroup END
-" if has('unix') && !has('gui_running')
-"   " ESC後にすぐ反映されない対策(実際これいる)
+if has('unix') && !has('gui_running')
+  " ESC後にすぐ反映されない対策(実際これいる)
   inoremap <silent> <ESC> <ESC>
-" endif
+endif
 " }}}
 " }}} APPERANCE
 
@@ -565,19 +551,19 @@ set autoread                " 外部のエディタで編集中のファイル�
 augroup Filetype
   autocmd!
   autocmd BufNewFile,BufReadPost,BufEnter *.hs   set filetype=haskell
+  autocmd BufNewFile,BufReadPost,BufEnter *.json set filetype=json
+  autocmd BufNewFile,BufReadPost,BufEnter *.less set filetype=less
+  autocmd BufNewFile,BufReadPost,BufEnter *.md   set filetype=markdown
+  autocmd BufNewFile,BufReadPost,BufEnter *.mkd  set filetype=markdown
+  autocmd BufNewFile,BufReadPost,BufEnter *.qcl  set filetype=qcl
+  autocmd BufNewFile,BufReadPost,BufEnter *.r    set filetype=r
+  autocmd BufNewFile,BufReadPost,BufEnter *.roy  set filetype=roy
+  autocmd BufNewFile,BufReadPost,BufEnter *.rst  set filetype=rest
   autocmd BufNewFile,BufReadPost,BufEnter *.tex  set filetype=tex
   autocmd BufNewFile,BufReadPost,BufEnter *.tex  set noautoindent
   autocmd BufNewFile,BufReadPost,BufEnter *.tex  set nosmartindent
-  autocmd BufNewFile,BufReadPost,BufEnter *.json set filetype=json
-  autocmd BufNewFile,BufReadPost,BufEnter *.less set filetype=less
-  autocmd BufNewFile,BufReadPost,BufEnter *.roy  set filetype=roy
-  autocmd BufNewFile,BufReadPost,BufEnter *.rst  set filetype=rest
   autocmd BufNewFile,BufReadPost,BufEnter *.v    set filetype=coq
   autocmd BufNewFile,BufReadPost,BufEnter *.y    set filetype=haskell
-  autocmd BufNewFile,BufReadPost,BufEnter *.mkd  set filetype=markdown
-  autocmd BufNewFile,BufReadPost,BufEnter *.md   set filetype=markdown
-  autocmd BufNewFile,BufReadPost,BufEnter *.r    set filetype=r
-  autocmd BufNewFile,BufReadPost,BufEnter *.qcl  set filetype=qcl
 augroup END
 " }}}
 
@@ -749,6 +735,7 @@ function! Explorer()
   endif
 endfunction
 nnoremap \n :call Explorer()<CR>
+nnoremap ge :call Explorer()<CR>
 " }}}
 
 " Quickly open with outer text editor {{{
@@ -780,7 +767,6 @@ nnoremap ss :echo synIDattr(synID(line('.'), col('.'), 0), 'name')<CR>
 " Quick open dot files {{{
 nnoremap \. :e ~/.vimrc<CR>
 nnoremap \v :so ~/.vimrc<CR>
-  " autocmd BufWritePost .vimrc source %
 nnoremap ;. :e ~/.zshrc<CR>
 
 " template for blog {{{
@@ -809,7 +795,7 @@ set wildmode=list:longest   " コマンドライン補間をシェルっぽく
 
 " edit {{{
 " Increment and decrement of alphabets, numbers
-set nrformats+=alpha
+" set nrformats+=alpha
 nnoremap + <C-a>
 nnoremap - <C-x>
 
