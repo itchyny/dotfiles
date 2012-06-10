@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/06/11 00:15:50.
+" - * Last Change: 2012/06/11 06:00:53.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -26,12 +26,16 @@ if !isdirectory(s:neobundle_dir)
   exec '!mkdir -p '.s:neobundle_dir
   exec '!git clone git@github.com:Shougo/neobundle.vim.git '.s:neobundle_dir
   exec '!git clone git@github.com:Shougo/unite.vim.git '.$BUNDLE.'/unite.vim'
-  exec '!git clone git@github.com:Shougo/neocomplcache.vim.git '.$BUNDLE.'/neocomplcache.vim'
-  exec '!git clone git@github.com:Shougo/vimproc.vim.git '.$BUNDLE.'/vimproc.vim'
-  exec $VIM.'/makeproc.sh'
-  exec '!git clone git@github.com:Shougo/vimfiler.vim.git '.$BUNDLE.'/vimfiler.vim'
-  exec '!git clone git@github.com:thinca/vim-quickrun.vim.git '.$BUNDLE.'/vim-quickrun.vim'
-  exec '!git clone git@github.com:Shougo/vimshell.vim.git '.$BUNDLE.'/vimshell.vim'
+  exec '!git clone git@github.com:Shougo/neocomplcache.vim.git '.$BUNDLE.'/neocomplcache'
+  exec '!git clone git@github.com:Shougo/vimproc.vim.git '.$BUNDLE.'/vimproc'
+  if s:ismac
+    exec '!cd '.$BUNDLE.'/vimproc && make -f make_mac.mak'
+  else
+    exec '!cd '.$BUNDLE.'/vimproc && make -f make_unix.mak'
+  endif
+  exec '!git clone git@github.com:Shougo/vimfiler.vim.git '.$BUNDLE.'/vimfiler'
+  exec '!git clone git@github.com:thinca/vim-quickrun.vim.git '.$BUNDLE.'/vim-quickrun'
+  exec '!git clone git@github.com:Shougo/vimshell.vim.git '.$BUNDLE.'/vimshell'
 else
 execute 'set runtimepath+='.expand(s:neobundle_dir)
 call neobundle#rc(expand($BUNDLE))
@@ -352,6 +356,7 @@ set ruler                   " show the cursor position (needless if you set 'sta
 set laststatus=2            " ステータスラインを常に表示
 set statusline=%{expand('%:p:t')}\ %<[%{expand('%:p:h')}]%=\ %m%r%y%w[%{&fenc!=''?&fenc:&enc}][%{&ff}][%3l,%3c,%3p][%{strftime(\"%m/%d\ %H:%M\")}]
 NeoBundle 'Lokaltog/vim-powerline', {'type' : 'nosync'}
+try
 " sudo apt-get install fontforge
 " sudo apt-get install python-fontforge
 " cd ~/.vim/bundle/vim-powerline/fontpatcher
@@ -457,7 +462,7 @@ let g:Powerline#Colorschemes#my#colorscheme = Pl#Colorscheme#Init([
     \ }),
   \
   \ Pl#Hi#Segments(['errors'], {
-    \ 'n': ['brightestorange', 'gray2', ['bold']],
+    \ 'n': ['white', 'gray2'],
     \ }),
   \
   \ Pl#Hi#Segments(['lineinfo.line.tot'], {
@@ -509,6 +514,8 @@ let g:Powerline#Colorschemes#my#colorscheme = Pl#Colorscheme#Init([
     \ }),
   \ ])
 let g:Powerline_colorscheme='my'
+catch
+endtry
 " }}}
 
 " Color {{{
@@ -537,14 +544,16 @@ autocmd BufEnter * let w:m4 = matchadd("Todo", 'TODO')
 "}}}
 
 " Statusline color {{{
-" let s:hi_normal = 'highlight StatusLine guifg=black guibg=blue gui=none ctermfg=black ctermbg=blue cterm=none'
-" let s:hi_insert = 'highlight StatusLine guifg=black guibg=darkmagenta gui=none ctermfg=black ctermbg=darkmagenta cterm=none'
-" silent exec s:hi_normal
-" augroup InsertStatus
-"   autocmd!
-"   autocmd InsertEnter * exec s:hi_insert
-"   autocmd InsertLeave * exec s:hi_normal
-" augroup END
+if !exists('g:Powerline_colorscheme')
+let s:hi_normal = 'highlight StatusLine guifg=black guibg=blue gui=none ctermfg=black ctermbg=blue cterm=none'
+let s:hi_insert = 'highlight StatusLine guifg=black guibg=darkmagenta gui=none ctermfg=black ctermbg=darkmagenta cterm=none'
+silent exec s:hi_normal
+augroup InsertStatus
+  autocmd!
+  autocmd InsertEnter * exec s:hi_insert
+  autocmd InsertLeave * exec s:hi_normal
+augroup END
+endif
 if has('unix') && !has('gui_running')
   " ESC後にすぐ反映されない対策(実際これいる)
   inoremap <silent> <ESC> <ESC>
