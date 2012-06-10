@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/06/10 11:41:53.
+" - * Last Change: 2012/06/10 23:18:23.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -24,20 +24,20 @@ let s:neobundle_dir = $BUNDLE.'/neobundle.vim'
 if !isdirectory(s:neobundle_dir)
   echo 'initializing neobundle\n'
   exec '!mkdir -p '.s:neobundle_dir
-  exec '!mkdir -p '.$BUNDLE.'/unite.vim'
   exec '!git clone git@github.com:Shougo/neobundle.vim.git '.s:neobundle_dir
   exec '!git clone git@github.com:Shougo/unite.vim.git '.$BUNDLE.'/unite.vim'
 else
 execute 'set runtimepath+='.expand(s:neobundle_dir)
 call neobundle#rc(expand($BUNDLE))
 NeoBundle 'Shougo/neobundle.vim', {'type' : 'nosync'}
-  nnoremap <silent> <S-b><S-b> :<C-u>Unite neobundle/install:!<CR>
+  nnoremap <silent> <S-b><S-b> :<C-u>NeoBundleUpdate<CR>
+  " nnoremap <silent> <S-b><S-b> :<C-u>Unite neobundle/install:!<CR>
 " }}}
 
 " Complement {{{
 " --------------------------------------------------------------------------------------------------------------
 if s:nosudo
-NeoBundle 'Shougo/neocomplcache'
+NeoBundle 'Shougo/neocomplcache', {'type' : 'nosync'}
   let g:neocomplcache_enable_at_startup = 1
   let g:neocomplcache_enable_smart_case = 1
   let g:neocomplcache_enable_underbar_completion = 1
@@ -58,7 +58,7 @@ endif
 " --------------------------------------------------------------------------------------------------------------
                                                                                          let mapleader=","
 if s:nosudo
-NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/unite.vim', {'type' : 'nosync'}
   let g:unite_enable_start_insert=1
   nnoremap <C-u> :Unite<SPACE>
   nnoremap <C-p> :Unite buffer<CR>
@@ -92,13 +92,13 @@ endif
 " QuickRun / Filer / Outer world of Vim ( "\\" ) {{{
 " --------------------------------------------------------------------------------------------------------------
                                                                                          let mapleader="\\"
-NeoBundle 'Shougo/vimproc'
+NeoBundle 'Shougo/vimproc', {'type' : 'nosync'}
 NeoBundle 'thinca/vim-quickrun', {'type' : 'nosync'}
   let g:quickrun_config = {'*': {'runmode': 'async:vimproc', 'split': 'vertical'}}
   let g:quickrun_config.javascript = {'command' : 'node'}
   let g:quickrun_config.roy = {'command' : 'roy'}
   let g:quickrun_config.hss = {'command' : 'runhaskell'}
-  let g:quickrun_config.markdown = { 'type': 'markdown/pandoc', 'outputter': 'browser', 'cmdopt': '-s' }
+  let g:quickrun_config.markdown = { 'type' : 'markdown/pandoc', 'outputter': 'browser', 'cmdopt': '-s' }
   let g:quickrun_config.qcl = { 'command': 'qcl' }
   let g:quickrun_config.lhaskell = {'command' : 'runhaskell'}
   nnoremap <Leader>r :<C-u>QuickRun  <CR>
@@ -108,7 +108,7 @@ NeoBundle 'thinca/vim-quickrun', {'type' : 'nosync'}
   autocmd ESC FileType quickrun nnoremap <silent> <buffer> <ESC><ESC><ESC> <ESC>:q<CR>
   autocmd ESC FileType quickrun vnoremap <silent> <buffer> <ESC><ESC><ESC> <ESC>:q<CR>
 if s:nosudo
-NeoBundle 'Shougo/vimfiler'
+NeoBundle 'Shougo/vimfiler', {'type' : 'nosync'}
   let g:vimfiler_as_default_explorer = 1
   let g:vimfiler_sort_type = 'TIME'
   let g:vimfiler_safe_mode_by_default = 0
@@ -144,7 +144,7 @@ NeoBundle 'Shougo/vimfiler'
   augroup END
 endif
 NeoBundle 'Shougo/vinarise', {'type' : 'nosync'}
-NeoBundle 'eagletmt/ghci-vim'
+NeoBundle 'eagletmt/ghci-vim', {'type' : 'nosync'}
   augroup Ghci
     autocmd!
     autocmd Filetype haskell nnoremap <Leader>l :GhciLoad<CR>
@@ -167,7 +167,7 @@ NeoBundle 'eagletmt/ghcmod-vim', {'type' : 'nosync'}
 " --------------------------------------------------------------------------------------------------------------
                                                                                           let mapleader=";"
 if s:nosudo
-NeoBundle 'Shougo/vimshell'
+NeoBundle 'Shougo/vimshell', {'type' : 'nosync'}
 " --| Requirement: vimproc
   let g:vimshell_interactive_update_time = 150
   let g:vimshell_popup_command = "split"
@@ -269,7 +269,7 @@ NeoBundle 'syntaxm4.vim', {'type' : 'nosync'}
 NeoBundle 'syntaxhaskell.vim', {'type' : 'nosync'}
 NeoBundle 'haskell.vim', {'type' : 'nosync'}
 NeoBundle 'tpope/vim-markdown', {'type' : 'nosync'}
-" NeoBundle 'basyura/jslint.vim', {'type' : 'nosync'}
+" NeoBundle 'basyura/jslint.vim'
 "   let $JS_CMD='node'
 "   if s:ismac
 "     function! s:javascript_filetype_settings()
@@ -342,7 +342,7 @@ set previewheight=20
 set ruler                   " show the cursor position (needless if you set 'statusline' later)
 set laststatus=2            " ステータスラインを常に表示
 set statusline=%{expand('%:p:t')}\ %<[%{expand('%:p:h')}]%=\ %m%r%y%w[%{&fenc!=''?&fenc:&enc}][%{&ff}][%3l,%3c,%3p][%{strftime(\"%m/%d\ %H:%M\")}]
-NeoBundle 'Lokaltog/vim-powerline'
+NeoBundle 'Lokaltog/vim-powerline', {'type' : 'nosync'}
 " sudo apt-get install fontforge
 " sudo apt-get install python-fontforge
 " cd ~/.vim/bundle/vim-powerline/fontpatcher
@@ -411,10 +411,10 @@ let g:Powerline#Colorschemes#my#colorscheme = Pl#Colorscheme#Init([
     \ }),
   \
   \ Pl#Hi#Segments(['fileinfo', 'filename'], {
-    \ 'i': ['white', 'darkgreen', ['bold']],
-    \ 'n': ['white', 'darkblue', ['bold']],
-    \ 'v': ['white', 'mediumpurple', ['bold']],
-    \ 'r': ['white', 'brightred', ['bold']],
+    \ 'i': ['white', 'darkestgreen', ['bold']],
+    \ 'n': ['white', 'darkestblue', ['bold']],
+    \ 'v': ['white', 'darkestpurple', ['bold']],
+    \ 'r': ['white', 'mediumred', ['bold']],
     \ 'N': ['gray0', 'gray2', ['bold']],
     \ }),
   \
@@ -881,8 +881,6 @@ vnoremap <C-Right> gt
 " assign arrow keys to page-(up|down)
 nnoremap <Down> <C-d>
 nnoremap <Up>  <C-u>
-"nnoremap <SPACE> <C-f>
-"nnoremap <S-SPACE> <C-b>
 
 " select last paste
 nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
