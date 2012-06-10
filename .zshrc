@@ -1,7 +1,7 @@
 # --------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2012/06/10 07:36:49.
+# - * Last Change: 2012/06/11 08:16:28.
 # --------------------------------------------------------------------------------------------------------------
 
 setopt prompt_subst
@@ -342,7 +342,7 @@ alias fg='fg || if [ $? -eq 1 ]; then; vi; fi;'
 alias gnome-terminal='/bin/sh -c "VTE_CJK_WIDTH=1 gnome-terminal --disable-factory"'
 alias terminator='/bin/sh -c "VTE_CJK_WIDTH=1 terminator --disable-factory"'
 
-[ -e Dropbox ] && cd Dropbox
+[ -e ~/Dropbox ] && cd ~/Dropbox
 
 # merged from incr-0.2.zsh by y.fujii
 autoload -U compinit
