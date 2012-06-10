@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/06/10 23:18:23.
+" - * Last Change: 2012/06/11 00:15:50.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -26,6 +26,12 @@ if !isdirectory(s:neobundle_dir)
   exec '!mkdir -p '.s:neobundle_dir
   exec '!git clone git@github.com:Shougo/neobundle.vim.git '.s:neobundle_dir
   exec '!git clone git@github.com:Shougo/unite.vim.git '.$BUNDLE.'/unite.vim'
+  exec '!git clone git@github.com:Shougo/neocomplcache.vim.git '.$BUNDLE.'/neocomplcache.vim'
+  exec '!git clone git@github.com:Shougo/vimproc.vim.git '.$BUNDLE.'/vimproc.vim'
+  exec $VIM.'/makeproc.sh'
+  exec '!git clone git@github.com:Shougo/vimfiler.vim.git '.$BUNDLE.'/vimfiler.vim'
+  exec '!git clone git@github.com:thinca/vim-quickrun.vim.git '.$BUNDLE.'/vim-quickrun.vim'
+  exec '!git clone git@github.com:Shougo/vimshell.vim.git '.$BUNDLE.'/vimshell.vim'
 else
 execute 'set runtimepath+='.expand(s:neobundle_dir)
 call neobundle#rc(expand($BUNDLE))
@@ -287,7 +293,10 @@ NeoBundle 'tpope/vim-markdown', {'type' : 'nosync'}
 " Colorscheme {{{
 " --------------------------------------------------------------------------------------------------------------
 NeoBundle 'Wombat', {'type' : 'nosync'}
-colorscheme wombat
+try
+  colorscheme wombat
+catch
+endtry
 " }}}
 
 endif
