@@ -1,7 +1,7 @@
 # --------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2012/06/11 08:16:28.
+# - * Last Change: 2012/06/20 19:51:31.
 # --------------------------------------------------------------------------------------------------------------
 
 setopt prompt_subst
@@ -35,6 +35,7 @@ PROMPT="%(?.%{$bg[green]%}.%{$bg[blue]%})%(?!(._.)/!(;_;%)?) %B%~$%b%{${reset_co
 PROMPT="%(?.%{$fg[green]%}.%{$fg[blue]%})%B%~$%b%{${reset_color}%} "
 PROMPT2="%{$bg[blue]%}%_>%{$reset_color%}%b "
 SPROMPT="%{$bg[red]%}(._.%)? %B %r is correct? [n,y,a,e]:%{${reset_color}%}%b "
+SPROMPT="%{$bg[red]%}%B%r is correct? [n,y,a,e]:%{${reset_color}%}%b "
 [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] && PROMPT="%{$bg[red]%}${HOST%%.*}${PROMPT}%{${reset_color}%}"
 LS_COLORS='di=01;36:ln=01;35:ex=01;31:'
 LS_COLORS+='*.c=01;35:*.cpp=01;35:*.js=01;35:*.json=01;35:*.hs=01;35:*.py=01;35:*.pl=01;35:'
@@ -265,7 +266,7 @@ alias l='ls -al'
 alias mpg123='mpg123 -zC'
 function runcpp () { g++ $1; ./a.out; }
 alias asm=runcpp
-alias mplayer='mplayer -lavdopts threads=2'
+alias mplayer='mplayer -lavdopts threads=2 -loop 0 -shuffle'
 alias mp3='mplayer'
 alias rm='rm -i'
 alias cp='cp -i'
@@ -342,7 +343,7 @@ alias fg='fg || if [ $? -eq 1 ]; then; vi; fi;'
 alias gnome-terminal='/bin/sh -c "VTE_CJK_WIDTH=1 gnome-terminal --disable-factory"'
 alias terminator='/bin/sh -c "VTE_CJK_WIDTH=1 terminator --disable-factory"'
 
-[ -e ~/Dropbox ] && cd ~/Dropbox
+[ -e ~/Dropbox ] && cd ~/Dropbox > /dev/null
 
 # merged from incr-0.2.zsh by y.fujii
 autoload -U compinit

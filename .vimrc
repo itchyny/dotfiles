@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/06/11 06:00:53.
+" - * Last Change: 2012/06/26 17:58:55.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -151,6 +151,7 @@ NeoBundle 'Shougo/vimfiler', {'type' : 'nosync'}
     autocmd FileType vimfiler nmap <buffer> <C-r> <Plug>(vimfiler_redraw_screen)
     autocmd FileType vimfiler nmap <buffer> O <Plug>(vimfiler_sync_with_another_vimfiler)
     autocmd FileType vimfiler nmap <buffer><expr> e vimfiler#smart_cursor_map("\<Plug>(vimfiler_cd_file)","\<Plug>(vimfiler_edit_file)")
+    autocmd VimEnter * VimFiler
   augroup END
 endif
 NeoBundle 'Shougo/vinarise', {'type' : 'nosync'}
@@ -170,7 +171,7 @@ NeoBundle 'basyura/twibill.vim', {'type' : 'nosync'}
 NeoBundle 'TwitVim', {'type' : 'nosync'}
   nnoremap <Leader>p :<C-u>PosttoTwitter<CR>
 "  nnoremap <Leader>p :<C-u>!tweet<SPACE>
-NeoBundle 'eagletmt/ghcmod-vim', {'type' : 'nosync'}
+" NeoBundle 'eagletmt/ghcmod-vim', {'type' : 'nosync'}
 " }}}
 
 " vimshell ( ";" ) {{{
@@ -222,7 +223,7 @@ nnoremap <Leader>z :<C-u>VimShellInteractive zsh<CR>
 autocmd FileType int-ghci set filetype=haskell
 nnoremap <Leader>g :<C-u>VimShellInteractive ghci<CR>
 nnoremap <Leader>p :<C-u>VimShellInteractive python<CR>
-NeoBundle 'neco-ghc', {'type' : 'nosync'}
+" NeoBundle 'neco-ghc', {'type' : 'nosync'}
   " --| Requirement: ghc-mod
   " --|   $ cabal install ghc-mod
 endif
@@ -239,7 +240,6 @@ NeoBundle 'sjl/gundo.vim', {'type' : 'nosync'}
   nnoremap <Leader>g :<C-u>GundoToggle<CR>
   autocmd ESC FileType gundo nnoremap <silent> <buffer> <ESC><ESC> :<C-u>GundoToggle<CR>
 NeoBundle 'Align', {'type' : 'nosync'}
-NeoBundle 'msanders/snipmate.vim', {'type' : 'nosync'}
 NeoBundle 'errormarker.vim', {'type' : 'nosync'}
 NeoBundle 'mattn/calendar-vim', {'type' : 'nosync'}
   autocmd ESC FileType calendar nnoremap <silent> <buffer> <ESC><ESC> :<C-u>q<CR>
@@ -279,19 +279,6 @@ NeoBundle 'syntaxm4.vim', {'type' : 'nosync'}
 NeoBundle 'syntaxhaskell.vim', {'type' : 'nosync'}
 NeoBundle 'haskell.vim', {'type' : 'nosync'}
 NeoBundle 'tpope/vim-markdown', {'type' : 'nosync'}
-" NeoBundle 'basyura/jslint.vim'
-"   let $JS_CMD='node'
-"   if s:ismac
-"     function! s:javascript_filetype_settings()
-"       autocmd BufWritePost <buffer> call jslint#check()
-"       autocmd CursorMoved  <buffer> call jslint#message()
-"       autocmd BufLeave     <buffer> call jslint#clear()
-"     endfunction
-"     augroup JsLint
-"       autocmd!
-"       " autocmd FileType javascript call s:javascript_filetype_settings()
-"     augroup END
-"   endif
 " }}}
 
 " Colorscheme {{{
@@ -676,7 +663,10 @@ endfunction
 augroup ChangeDirectory
   autocmd!
   function! s:change_directory()
-    execute ":lcd " . s:current_directory()
+    try
+      execute ":lcd " . s:current_directory()
+    catch
+    endtry
   endfunction
   autocmd BufEnter * call s:change_directory()
 augroup END
@@ -950,5 +940,4 @@ autocmd ESC FileType help nnoremap <silent> <buffer> <ESC><ESC> :<C-u>q<CR>
 " |   .     |  .vimrc              |  .zshrc    |                    |                   |                    |
 " +=========+======================+============+====================+===================+====================+
 " }}} REFERENCE TO KEY MAPPING
-
 " vim: foldmethod=marker
