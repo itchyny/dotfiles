@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/06/26 17:58:55.
+" - * Last Change: 2012/07/01 18:29:46.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -778,9 +778,9 @@ nnoremap \v :so ~/.vimrc<CR>
 nnoremap ;. :e ~/.zshrc<CR>
 
 " template for blog {{{
-nnoremap ,cpp i>\|cpp\|<CR>\|\|<<ESC>O
-nnoremap ,sh i>\|sh\|<CR>\|\|<<ESC>O
-nnoremap ,hs i>\|haskell\|<CR>\|\|<<ESC>O
+nnoremap ,cpp i>\|cpp\|<CR>\|\|<<ESC>O<ESC>
+nnoremap ,sh i>\|sh\|<CR>\|\|<<ESC>O<ESC>
+nnoremap ,hs i>\|haskell\|<CR>\|\|<<ESC>O<ESC>
 "}}}
 " }}}
 
@@ -940,4 +940,5 @@ autocmd ESC FileType help nnoremap <silent> <buffer> <ESC><ESC> :<C-u>q<CR>
 " |   .     |  .vimrc              |  .zshrc    |                    |                   |                    |
 " +=========+======================+============+====================+===================+====================+
 " }}} REFERENCE TO KEY MAPPING
+
 " vim: foldmethod=marker
