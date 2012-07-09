@@ -1,7 +1,7 @@
 # --------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2012/06/28 09:37:13.
+# - * Last Change: 2012/07/09 16:31:47.
 # --------------------------------------------------------------------------------------------------------------
 
 setopt prompt_subst
@@ -279,6 +279,7 @@ alias twitter='rlwrap runhaskell ~/Dropbox/hs/twitter/twitter.hs'
 alias ntpupdate='sudo /usr/sbin/ntpdate time.asia.apple.com >> ~/.ntpdate.log'
 alias yoruho='sudo /usr/sbin/ntpdate time.asia.apple.com >> ~/.ntpdate.log && python ~/Dropbox/py/itchyny/yoruho.py'
 alias roy='~/Dropbox/js/roy/roy'
+alias c='clear'
 
 case "${OSTYPE}" in
   freebsd*|darwin*)
@@ -486,3 +487,4 @@ function expand-or-complete-prefix-incr
 }
 # end merged from incr-0.2.zsh by y.fujii
 
+c
