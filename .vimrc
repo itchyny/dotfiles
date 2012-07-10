@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/07/02 23:05:42.
+" - * Last Change: 2012/07/11 00:09:54.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -122,14 +122,14 @@ NeoBundle 'Shougo/vimfiler', {'type' : 'nosync'}
   let g:vimfiler_as_default_explorer = 1
   let g:vimfiler_sort_type = 'TIME'
   let g:vimfiler_safe_mode_by_default = 0
-  hi def link vimfilerPdf Function
-  hi def link vimfilerHtml Function
-  hi def link vimfilerDateToday Identifier
-  hi def link vimfilerDate Statement
-  hi def link vimfilerTypeLink Constant
-  hi def link vimfilerTypeExecute Special
-  hi def link vimfilerTypeArchive NonText
-  hi def link vimfilerTypeImage Statement
+  highlight default link vimfilerPdf Function
+  highlight default link vimfilerHtml Function
+  highlight default link vimfilerDateToday Identifier
+  highlight default link vimfilerDate Statement
+  highlight default link vimfilerTypeLink Constant
+  highlight default link vimfilerTypeExecute Special
+  highlight default link vimfilerTypeArchive NonText
+  highlight default link vimfilerTypeImage Statement
   nnoremap <Leader>f :<C-u>VimFilerCurrentDir<CR>
   nnoremap <Leader><Leader> :<C-u>VimFilerCurrentDir<CR>
   nnoremap @<Leader> :<C-u>VimFilerCurrentDir<CR>
@@ -167,9 +167,9 @@ NeoBundle 'tyru/open-browser.vim', {'type' : 'nosync'}
   vmap <Leader>b <Plug>(openbrowser-smart-search)
   nmap <Leader>s <Plug>(openbrowser-search)
 NeoBundle 'mattn/webapi-vim', {'type' : 'nosync'}
-NeoBundle 'basyura/twibill.vim', {'type' : 'nosync'}
-NeoBundle 'TwitVim', {'type' : 'nosync'}
-  nnoremap <Leader>p :<C-u>PosttoTwitter<CR>
+" NeoBundle 'basyura/twibill.vim', {'type' : 'nosync'}
+" NeoBundle 'TwitVim', {'type' : 'nosync'}
+"   nnoremap <Leader>p :<C-u>PosttoTwitter<CR>
 "  nnoremap <Leader>p :<C-u>!tweet<SPACE>
 " NeoBundle 'eagletmt/ghcmod-vim', {'type' : 'nosync'}
 " }}}
@@ -183,14 +183,14 @@ NeoBundle 'Shougo/vimshell', {'type' : 'nosync'}
   let g:vimshell_interactive_update_time = 150
   let g:vimshell_popup_command = "split"
   let g:vimshell_split_command = "vsplit"
-hi def link VimShellLink Constant
-hi def link VimShellExe Special
-hi def link VimShellUserPrompt Function
-hi def link VimShellPrompt Function
-augroup Vimshell
-  autocmd!
   let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
   let g:vimshell_prompt = ' $ '
+highlight default link VimShellLink Constant
+highlight default link VimShellExe Statement
+highlight default link VimShellUserPrompt Function
+highlight default link VimShellPrompt Function
+augroup Vimshell
+  autocmd!
   " for easy window moving, unmap C-[hjkl]
   autocmd FileType vimshell iunmap <buffer> <C-h>
   autocmd FileType vimshell iunmap <buffer> <C-k>
@@ -328,13 +328,18 @@ set noshowmode " https://github.com/vim-jp/issues/issues/100
 
 " Main appearance {{{
 set list
-" set listchars=tab:^I,trail:@
+set listchars=tab:▸\ ,trail:-,eol:\ ,extends:»,precedes:«,nbsp:%
+highlight SpecialKey term=underline ctermfg=darkgray guifg=darkgray
 set shortmess+=I            " disable start up message
-set number                  " line number
+set number
+autocmd FileType vimshell setlocal nonumber
 set cursorline
+autocmd FileType calendar setlocal nocursorline
+autocmd FileType vimcalc setlocal nocursorline
+autocmd FileType vimshell setlocal nocursorline
 set nocursorcolumn
 set showmatch               " 括弧の対応
-set showtabline=2           " always show tab
+set showtabline=1
 set previewheight=20
 " }}}
 
@@ -526,7 +531,7 @@ autocmd FileType * highlight String ctermfg=magenta guifg=magenta
 autocmd FileType * highlight StatusLineNC guifg=black guibg=darkgray gui=none ctermfg=black ctermbg=darkgray cterm=none
 highlight ZenkakuSpace ctermfg=black ctermbg=red guibg=#666666
 autocmd BufEnter * let w:m3 = matchadd("ZenkakuSpace", '　')
-highlight ZenkakuSpace ctermfg=black ctermbg=red guibg=#666666
+highlight Todo ctermfg=black ctermbg=yellow guibg=#888800
 autocmd BufEnter * let w:m4 = matchadd("Todo", 'TODO')
 "}}}
 
