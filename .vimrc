@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/07/11 12:38:57.
+" - * Last Change: 2012/07/11 14:24:59.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -198,7 +198,25 @@ augroup Vimshell
   autocmd FileType vimshell iunmap <buffer> <C-w>
   autocmd FileType vimshell nunmap <buffer> <C-k>
   autocmd FileType vimshell nunmap <buffer> <C-l>
+  autocmd FileType vimshell nmap <buffer> <C-a> <Nop>
+  autocmd FileType vimshell nmap <buffer> a GA
   autocmd FileType vimshell nmap <buffer> <C-m> <ESC><C-q>j
+  autocmd FileType vimshell nnoremap <buffer> x <Nop>
+  autocmd FileType vimshell nnoremap <buffer> dd <Nop>
+  autocmd FileType vimshell nnoremap <buffer> dj <Nop>
+  autocmd FileType vimshell nnoremap <buffer> dk <Nop>
+  autocmd FileType vimshell nnoremap <buffer> dG <Nop>
+  autocmd FileType vimshell nnoremap <buffer> dg <Nop>
+  autocmd FileType vimshell vnoremap <buffer> x <Nop>
+  autocmd FileType vimshell vnoremap <buffer> dd <Nop>
+  autocmd FileType vimshell vnoremap <buffer> dj <Nop>
+  autocmd FileType vimshell vnoremap <buffer> dk <Nop>
+  autocmd FileType vimshell vnoremap <buffer> dG <Nop>
+  autocmd FileType vimshell vnoremap <buffer> dg <Nop>
+  autocmd FileType vimshell vnoremap <buffer> c <Nop>
+  autocmd FileType vimshell vnoremap <buffer> <delete> <Nop>
+  autocmd FileType vimshell vnoremap <buffer> a <ESC><ESC>GA
+  autocmd FileType vimshell vnoremap <buffer> y yGA
   autocmd FileType vimshell inoremap <buffer> <C-h> <ESC><C-w>h
   autocmd FileType vimshell inoremap <buffer> <C-j> <ESC><C-w>j
   autocmd FileType vimshell inoremap <buffer> <C-k> <ESC><C-w>k
@@ -328,11 +346,12 @@ set noshowmode " https://github.com/vim-jp/issues/issues/100
 
 " Main appearance {{{
 set list
-set listchars=tab:▸\ ,trail:-,eol:\ ,extends:»,precedes:«,nbsp:%
+set listchars=tab:▸\ ,extends:»,precedes:«,nbsp:%
 highlight SpecialKey term=underline ctermfg=darkgray guifg=darkgray
 set shortmess+=I            " disable start up message
 set number
 autocmd FileType vimshell setlocal nonumber
+autocmd FileType vimcalc setlocal nonumber
 set cursorline
 autocmd FileType calendar setlocal nocursorline
 autocmd FileType vimcalc setlocal nocursorline
