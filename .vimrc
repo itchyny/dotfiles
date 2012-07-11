@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/07/11 10:59:18.
+" - * Last Change: 2012/07/11 12:35:19.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -23,19 +23,19 @@ let $BUNDLE = $VIM.'/bundle'
 let s:neobundle_dir = $BUNDLE.'/neobundle.vim'
 if !isdirectory(s:neobundle_dir)
   echo 'initializing neobundle\n'
-  exec '!mkdir -p '.s:neobundle_dir
-  exec '!git clone git@github.com:Shougo/neobundle.vim.git '.s:neobundle_dir
-  exec '!git clone git@github.com:Shougo/unite.vim.git '.$BUNDLE.'/unite.vim'
-  exec '!git clone git@github.com:Shougo/neocomplcache.vim.git '.$BUNDLE.'/neocomplcache'
-  exec '!git clone git@github.com:Shougo/vimproc.vim.git '.$BUNDLE.'/vimproc'
+  execute '!mkdir -p '.s:neobundle_dir
+  execute '!git clone git@github.com:Shougo/neobundle.vim.git '.s:neobundle_dir
+  execute '!git clone git@github.com:Shougo/unite.vim.git '.$BUNDLE.'/unite.vim'
+  execute '!git clone git@github.com:Shougo/neocomplcache.vim.git '.$BUNDLE.'/neocomplcache'
+  execute '!git clone git@github.com:Shougo/vimproc.vim.git '.$BUNDLE.'/vimproc'
   if s:ismac
-    exec '!cd '.$BUNDLE.'/vimproc && make -f make_mac.mak'
+    execute '!cd '.$BUNDLE.'/vimproc && make -f make_mac.mak'
   else
-    exec '!cd '.$BUNDLE.'/vimproc && make -f make_unix.mak'
+    execute '!cd '.$BUNDLE.'/vimproc && make -f make_unix.mak'
   endif
-  exec '!git clone git@github.com:Shougo/vimfiler.vim.git '.$BUNDLE.'/vimfiler'
-  exec '!git clone git@github.com:thinca/vim-quickrun.vim.git '.$BUNDLE.'/vim-quickrun'
-  exec '!git clone git@github.com:Shougo/vimshell.vim.git '.$BUNDLE.'/vimshell'
+  execute '!git clone git@github.com:Shougo/vimfiler.vim.git '.$BUNDLE.'/vimfiler'
+  execute '!git clone git@github.com:thinca/vim-quickrun.vim.git '.$BUNDLE.'/vim-quickrun'
+  execute '!git clone git@github.com:Shougo/vimshell.vim.git '.$BUNDLE.'/vimshell'
 else
 execute 'set runtimepath+='.expand(s:neobundle_dir)
 call neobundle#rc(expand($BUNDLE))
@@ -153,8 +153,8 @@ NeoBundle 'Shougo/vimfiler'
     autocmd FileType vimfiler nmap <buffer><expr> e vimfiler#smart_cursor_map("\<Plug>(vimfiler_cd_file)","\<Plug>(vimfiler_edit_file)")
     autocmd VimEnter * VimFiler
   augroup END
-endif
 NeoBundle 'Shougo/vinarise'
+endif
 NeoBundle 'eagletmt/ghci-vim'
   augroup Ghci
     autocmd!
@@ -539,11 +539,11 @@ autocmd BufEnter * let w:m4 = matchadd("Todo", 'TODO')
 if !exists('g:Powerline_colorscheme')
 let s:hi_normal = 'highlight StatusLine guifg=black guibg=blue gui=none ctermfg=black ctermbg=blue cterm=none'
 let s:hi_insert = 'highlight StatusLine guifg=black guibg=darkmagenta gui=none ctermfg=black ctermbg=darkmagenta cterm=none'
-silent exec s:hi_normal
+silent execute s:hi_normal
 augroup InsertStatus
   autocmd!
-  autocmd InsertEnter * exec s:hi_insert
-  autocmd InsertLeave * exec s:hi_normal
+  autocmd InsertEnter * execute s:hi_insert
+  autocmd InsertLeave * execute s:hi_normal
 augroup END
 endif
 if has('unix') && !has('gui_running')
@@ -590,7 +590,7 @@ augroup Binary
   " autocmd CursorHold $BINS call BinReHex()
   function! BinReadPost()
     set filetype=xxd
-    " exec '%!xxd'
+    " execute '%!xxd'
     " let &binary = 1
   endfunction
   function! BinWritePre()
@@ -694,9 +694,9 @@ setlocal omnifunc=syntaxcomplete#Complete
 " Make with F5 key {{{
 function! Automake()
   if(filereadable('./OMakefile'))
-    exec '!omake'
+    execute '!omake'
   else
-    exec '!make all'
+    execute '!make all'
   endif
 endfunction
 nnoremap <S-F5> :<C-u>call Automake()<CR>
@@ -741,9 +741,9 @@ nnoremap ,p :<C-u>call GCJ()<CR><S-g>
 " Open file explorer at current directory {{{
 function! Explorer()
   if s:ismac
-    exec '! open -a Finder .'
+    execute '! open -a Finder .'
   else
-    exec '! nautilus .'
+    execute '! nautilus .'
   endif
 endfunction
 nnoremap \n :call Explorer()<CR>
@@ -753,9 +753,9 @@ nnoremap ge :call Explorer()<CR>
 " Quickly open with outer text editor {{{
 function! TextEdit()
   if s:ismac
-    exec '! open -a TextEdit %'
+    execute '! open -a TextEdit %'
   else
-    exec '! gedit %'
+    execute '! gedit %'
   endif
 endfunction
 nnoremap \g :call TextEdit()<CR>
@@ -943,5 +943,4 @@ autocmd ESC FileType help nnoremap <silent> <buffer> <ESC><ESC> :<C-u>q<CR>
 " |    .    |  .vimrc              |  .zshrc    |                    |                   |                    |
 " +=========+======================+============+====================+===================+====================+
 " }}} REFERENCE TO KEY MAPPING
-
 " vim: foldmethod=marker
