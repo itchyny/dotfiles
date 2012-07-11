@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/07/11 10:56:16.
+" - * Last Change: 2012/07/11 10:59:18.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -39,7 +39,7 @@ if !isdirectory(s:neobundle_dir)
 else
 execute 'set runtimepath+='.expand(s:neobundle_dir)
 call neobundle#rc(expand($BUNDLE))
-NeoBundle 'Shougo/neobundle.vim', {'type' : 'nosync'}
+NeoBundle 'Shougo/neobundle.vim'
   " nnoremap <silent> <S-b><S-b> :<C-u>NeoBundleUpdate<CR>
   nnoremap <silent> <S-b><S-b> :<C-u>Unite neobundle/install:!<CR>
 " }}}
@@ -47,13 +47,13 @@ NeoBundle 'Shougo/neobundle.vim', {'type' : 'nosync'}
 " Complement {{{
 " --------------------------------------------------------------------------------------------------------------
 if s:nosudo
-NeoBundle 'Shougo/neocomplcache', {'type' : 'nosync'}
+NeoBundle 'Shougo/neocomplcache'
   let g:neocomplcache_enable_at_startup = 1
   let g:neocomplcache_enable_smart_case = 1
   let g:neocomplcache_enable_underbar_completion = 1
   let g:neocomplcache_enable_camel_case_completion = 1
   let g:neocomplcache_enable_cursor_hold_i = 0
-NeoBundle 'Shougo/neocomplcache-snippets-complete', {'type' : 'nosync'}
+NeoBundle 'Shougo/neocomplcache-snippets-complete'
   let g:neocomplcache_snippets_dir = expand($VIM.'/snippets')
   imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ?
         \     "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
@@ -68,7 +68,7 @@ endif
 " --------------------------------------------------------------------------------------------------------------
                                                                                          let mapleader=","
 if s:nosudo
-NeoBundle 'Shougo/unite.vim', {'type' : 'nosync'}
+NeoBundle 'Shougo/unite.vim'
   let g:unite_enable_start_insert=1
   nnoremap <C-u> :Unite<SPACE>
   nnoremap <C-p> :Unite buffer<CR>
@@ -85,25 +85,25 @@ NeoBundle 'Shougo/unite.vim', {'type' : 'nosync'}
   augroup END
   autocmd ESC FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
   autocmd ESC FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
-NeoBundle 'Shougo/unite-build', {'type' : 'nosync'}
+NeoBundle 'Shougo/unite-build'
   nnoremap <F5> :<C-u>Unite build<CR>
-NeoBundle 'unite-colorscheme', {'type' : 'nosync'}
-NeoBundle 'ujihisa/vim-ref', {'type' : 'nosync'}
-NeoBundle 'ujihisa/ref-hoogle', {'type' : 'nosync'}
+NeoBundle 'unite-colorscheme'
+NeoBundle 'ujihisa/vim-ref'
+NeoBundle 'ujihisa/ref-hoogle'
   " --| Requirement: hoogle
   " --|   $ cabal install hoogle
   " --|   $ hoogle data
   nnoremap <Leader>h :<C-u>Unite ref/hoogle<CR>
-NeoBundle 'h1mesuke/unite-outline', {'type' : 'nosync'}
-NeoBundle 'ujihisa/unite-haskellimport', {'type' : 'nosync'}
+NeoBundle 'h1mesuke/unite-outline'
+NeoBundle 'ujihisa/unite-haskellimport'
 endif
 " }}}
 
 " QuickRun / Filer / Outer world of Vim ( "\\" ) {{{
 " --------------------------------------------------------------------------------------------------------------
                                                                                          let mapleader="\\"
-NeoBundle 'Shougo/vimproc', {'type' : 'nosync'}
-NeoBundle 'thinca/vim-quickrun', {'type' : 'nosync'}
+NeoBundle 'Shougo/vimproc'
+NeoBundle 'thinca/vim-quickrun'
   let g:quickrun_config = {'*': {'runmode': 'async:vimproc', 'split': 'vertical'}}
   let g:quickrun_config.javascript = {'command' : 'node'}
   let g:quickrun_config.roy = {'command' : 'roy'}
@@ -118,7 +118,7 @@ NeoBundle 'thinca/vim-quickrun', {'type' : 'nosync'}
   autocmd ESC FileType quickrun nnoremap <silent> <buffer> <ESC><ESC><ESC> <ESC>:q<CR>
   autocmd ESC FileType quickrun vnoremap <silent> <buffer> <ESC><ESC><ESC> <ESC>:q<CR>
 if s:nosudo
-NeoBundle 'Shougo/vimfiler', {'type' : 'nosync'}
+NeoBundle 'Shougo/vimfiler'
   let g:vimfiler_as_default_explorer = 1
   let g:vimfiler_sort_type = 'TIME'
   let g:vimfiler_safe_mode_by_default = 0
@@ -154,31 +154,31 @@ NeoBundle 'Shougo/vimfiler', {'type' : 'nosync'}
     autocmd VimEnter * VimFiler
   augroup END
 endif
-NeoBundle 'Shougo/vinarise', {'type' : 'nosync'}
-NeoBundle 'eagletmt/ghci-vim', {'type' : 'nosync'}
+NeoBundle 'Shougo/vinarise'
+NeoBundle 'eagletmt/ghci-vim'
   augroup Ghci
     autocmd!
     autocmd Filetype haskell nnoremap <Leader>l :GhciLoad<CR>
     autocmd Filetype haskell nnoremap <Leader>i :GhciInfo<CR>
     autocmd Filetype haskell nnoremap <Leader>t :GhciType<CR>
   augroup END
-NeoBundle 'tyru/open-browser.vim', {'type' : 'nosync'}
+NeoBundle 'tyru/open-browser.vim'
   nmap <Leader>b <Plug>(openbrowser-smart-search)
   vmap <Leader>b <Plug>(openbrowser-smart-search)
   nmap <Leader>s <Plug>(openbrowser-search)
-NeoBundle 'mattn/webapi-vim', {'type' : 'nosync'}
-" NeoBundle 'basyura/twibill.vim', {'type' : 'nosync'}
-" NeoBundle 'TwitVim', {'type' : 'nosync'}
+NeoBundle 'mattn/webapi-vim'
+" NeoBundle 'basyura/twibill.vim'
+" NeoBundle 'TwitVim'
 "   nnoremap <Leader>p :<C-u>PosttoTwitter<CR>
 "  nnoremap <Leader>p :<C-u>!tweet<SPACE>
-" NeoBundle 'eagletmt/ghcmod-vim', {'type' : 'nosync'}
+" NeoBundle 'eagletmt/ghcmod-vim'
 " }}}
 
 " vimshell ( ";" ) {{{
 " --------------------------------------------------------------------------------------------------------------
                                                                                           let mapleader=";"
 if s:nosudo
-NeoBundle 'Shougo/vimshell', {'type' : 'nosync'}
+NeoBundle 'Shougo/vimshell'
 " --| Requirement: vimproc
   let g:vimshell_interactive_update_time = 150
   let g:vimshell_popup_command = "split"
@@ -223,7 +223,7 @@ nnoremap <Leader>z :<C-u>VimShellInteractive zsh<CR>
 autocmd FileType int-ghci set filetype=haskell
 nnoremap <Leader>g :<C-u>VimShellInteractive ghci<CR>
 nnoremap <Leader>p :<C-u>VimShellInteractive python<CR>
-" NeoBundle 'neco-ghc', {'type' : 'nosync'}
+" NeoBundle 'neco-ghc'
   " --| Requirement: ghc-mod
   " --|   $ cabal install ghc-mod
 endif
@@ -232,58 +232,58 @@ endif
 " Commenter / Utility ( "," ) {{{
 " --------------------------------------------------------------------------------------------------------------
                                                                                           let mapleader=","
-NeoBundle 'tpope/vim-surround', {'type' : 'nosync'}
-NeoBundle 't9md/vim-surround_custom_mapping', {'type' : 'nosync'}
-NeoBundle 'tComment', {'type' : 'nosync'}
-NeoBundle 'sjl/gundo.vim', {'type' : 'nosync'}
+NeoBundle 'tpope/vim-surround'
+NeoBundle 't9md/vim-surround_custom_mapping'
+NeoBundle 'tComment'
+NeoBundle 'sjl/gundo.vim'
   " --| Requirement: +python
   nnoremap <Leader>g :<C-u>GundoToggle<CR>
   autocmd ESC FileType gundo nnoremap <silent> <buffer> <ESC><ESC> :<C-u>GundoToggle<CR>
-NeoBundle 'Align', {'type' : 'nosync'}
-NeoBundle 'errormarker.vim', {'type' : 'nosync'}
-NeoBundle 'mattn/calendar-vim', {'type' : 'nosync'}
+NeoBundle 'Align'
+NeoBundle 'errormarker.vim'
+NeoBundle 'mattn/calendar-vim'
   autocmd ESC FileType calendar nnoremap <silent> <buffer> <ESC><ESC> :<C-u>q<CR>
   nnoremap <Leader>c :<C-u>Calendar<CR>
-NeoBundle 'autodate.vim', {'type' : 'nosync'}
+NeoBundle 'autodate.vim'
   let g:autodate_format="%Y/%m/%d %H:%M:%S"
-NeoBundle 'VimCalc', {'type' : 'nosync'}
+NeoBundle 'VimCalc'
   autocmd ESC FileType vimcalc nnoremap <silent> <buffer> <ESC><ESC><ESC> :<C-u>q<CR>
   nnoremap <Leader>a :<C-u>Calc<CR>
 " }}}
 
 " Syntax {{{
 " --------------------------------------------------------------------------------------------------------------
-NeoBundle 'scrooloose/syntastic', {'type' : 'nosync'}
-NeoBundle 'mattn/zencoding-vim', {'type' : 'nosync'}
+NeoBundle 'scrooloose/syntastic'
+NeoBundle 'mattn/zencoding-vim'
   let g:user_zen_expandabbr_key = '<c-e>'
   let g:user_zen_settings = { 'html' : { 'indentation' : '  ' }, }
-NeoBundle 'tsaleh/vim-matchit', {'type' : 'nosync'}
-NeoBundle 'JavaScript-syntax', {'type' : 'nosync'}
-NeoBundle 'itspriddle/vim-javascript-indent', {'type' : 'nosync'}
-NeoBundle 'JSON.vim', {'type' : 'nosync'}
-NeoBundle 'html5.vim', {'type' : 'nosync'}
-NeoBundle 'wavded/vim-stylus', {'type' : 'nosync'}
-NeoBundle 'colorizer', {'type' : 'nosync'}
+NeoBundle 'tsaleh/vim-matchit'
+NeoBundle 'JavaScript-syntax'
+NeoBundle 'itspriddle/vim-javascript-indent'
+NeoBundle 'JSON.vim'
+NeoBundle 'html5.vim'
+NeoBundle 'wavded/vim-stylus'
+NeoBundle 'colorizer'
   " augroup colorizer
   "   autocmd!
   "   autocmd BufNewFile,BufReadPost *.css ColorHighlight
   " augroup END
-NeoBundle 'groenewege/vim-less', {'type' : 'nosync'}
-NeoBundle 'less.vim', {'type' : 'nosync'}
-NeoBundle 'syntaxm4.vim', {'type' : 'nosync'}
-NeoBundle 'vim-scripts/jade.vim', {'type' : 'nosync'}
-NeoBundle 'vim-coffee-script', {'type' : 'nosync'}
-NeoBundle 'rest.vim', {'type' : 'nosync'}
-NeoBundle 'VST', {'type' : 'nosync'}
-NeoBundle 'syntaxm4.vim', {'type' : 'nosync'}
-NeoBundle 'syntaxhaskell.vim', {'type' : 'nosync'}
-NeoBundle 'haskell.vim', {'type' : 'nosync'}
-NeoBundle 'tpope/vim-markdown', {'type' : 'nosync'}
+NeoBundle 'groenewege/vim-less'
+NeoBundle 'less.vim'
+NeoBundle 'syntaxm4.vim'
+NeoBundle 'vim-scripts/jade.vim'
+NeoBundle 'vim-coffee-script'
+NeoBundle 'rest.vim'
+NeoBundle 'VST'
+NeoBundle 'syntaxm4.vim'
+NeoBundle 'syntaxhaskell.vim'
+NeoBundle 'haskell.vim'
+NeoBundle 'tpope/vim-markdown'
 " }}}
 
 " Colorscheme {{{
 " --------------------------------------------------------------------------------------------------------------
-NeoBundle 'Wombat', {'type' : 'nosync'}
+NeoBundle 'Wombat'
 try
   colorscheme wombat
 catch
@@ -347,14 +347,14 @@ set previewheight=20
 set ruler                   " show the cursor position (needless if you set 'statusline' later)
 set laststatus=2            " ステータスラインを常に表示
 set statusline=%{expand('%:p:t')}\ %<[%{expand('%:p:h')}]%=\ %m%r%y%w[%{&fenc!=''?&fenc:&enc}][%{&ff}][%3l,%3c,%3p][%{strftime(\"%m/%d\ %H:%M\")}]
-NeoBundle 'Lokaltog/vim-powerline', {'type' : 'nosync'}
+NeoBundle 'Lokaltog/vim-powerline'
 try
-" sudo apt-get install fontforge
-" sudo apt-get install python-fontforge
-" cd ~/.vim/bundle/vim-powerline/fontpatcher
-" wget http://levien.com/type/myfonts/Inconsolata.otf
-" python ./fontpatcher ./Iconsolata.otf
-" sudo cp ./Iconsolata-Powerline.otf /usr/share/fonts
+" --| $ sudo apt-get install fontforge
+" --| $ sudo apt-get install python-fontforge
+" --| $ cd ~/.vim/bundle/vim-powerline/fontpatcher
+" --| $ wget http://levien.com/type/myfonts/Inconsolata.otf
+" --| $ python ./fontpatcher ./Iconsolata.otf
+" --| $ sudo cp ./Iconsolata-Powerline.otf /usr/share/fonts
 set guifont=Iconsolata-Powerline.otf
 let g:Powerline_symbols='fancy'
 call Pl#Hi#Allocate({
@@ -940,7 +940,7 @@ autocmd ESC FileType help nnoremap <silent> <buffer> <ESC><ESC> :<C-u>q<CR>
 " |    y    |                      |            |                    |                   |                    |
 " +- - - - -+- - - - - - - - - - - +- - - - - - +- - - - - - - - - - +- - - - - - - - - -+- - - - - - - - - - +
 " |    z    |                      |  zsh       |                    |                   |   Unite file_mru   |
-" |   .     |  .vimrc              |  .zshrc    |                    |                   |                    |
+" |    .    |  .vimrc              |  .zshrc    |                    |                   |                    |
 " +=========+======================+============+====================+===================+====================+
 " }}} REFERENCE TO KEY MAPPING
 
