@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/07/11 00:09:54.
+" - * Last Change: 2012/07/11 10:56:16.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -572,7 +572,6 @@ augroup Filetype
   autocmd BufNewFile,BufReadPost,BufEnter *.tex  set filetype=tex
   autocmd BufNewFile,BufReadPost,BufEnter *.tex  set noautoindent
   autocmd BufNewFile,BufReadPost,BufEnter *.tex  set nosmartindent
-  autocmd BufNewFile,BufReadPost,BufEnter *.v    set filetype=coq
   autocmd BufNewFile,BufReadPost,BufEnter *.y    set filetype=haskell
 augroup END
 " }}}
@@ -669,7 +668,7 @@ augroup ChangeDirectory
   autocmd!
   function! s:change_directory()
     try
-      execute ":lcd " . s:current_directory()
+      execute ':lcd ' . s:current_directory()
     catch
     endtry
   endfunction
@@ -827,7 +826,6 @@ noremap v <S-v>
 " easy copy, paste
 vnoremap <C-c> y
 inoremap <C-p> <ESC>:<C-u>set paste<CR>p:<C-u>set nopaste<CR>
-vnoremap <C-x> d
 
 " remove spaces at the end of lines
 nnoremap ,<Space> ma:%s/  *$//<CR>`a<ESC>
@@ -858,7 +856,7 @@ nnoremap <silent> # :<C-u>set hlsearch<CR>#
 
 " Navigation {{{
 " window
-" <C-j> doesn't work.
+" <C-j> doesn't work, without the setting of <C-m>
 inoremap <C-h> <ESC><C-w>h
 inoremap <C-j> <ESC><C-w>j
 inoremap <C-k> <ESC><C-w>k
@@ -898,7 +896,7 @@ nnoremap <Up>  <C-u>
 " select last paste
 nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
 
-" quit help
+" quit help with escapae key
 autocmd ESC FileType help nnoremap <silent> <buffer> <ESC><ESC> :<C-u>q<CR>
 " }}}
 
@@ -929,14 +927,14 @@ autocmd ESC FileType help nnoremap <silent> <buffer> <ESC><ESC> :<C-u>q<CR>
 " |    n    |  nautilus / Finder   |            |                    |                   |   Unite file       |
 " |    o    |  QuickRun <i >output |            |                    |   -default        |   Unite file       |
 " +- - - - -+- - - - - - - - - - - +- - - - - - +- - - - - - - - - - +- - - - - - - - - -+- - - - - - - - - - +
-" |    p    |  PosttoTwitter       |  Python    |                    |                   |   Unite buffer     |
+" |    p    |                      |  Python    |                    |                   |   Unite buffer     |
 " |    q    |                      |            |                    |                   |   <C-w>(default)   |
 " |    r    |  QuickRun            |            |                    |   -default        |   -default         |
 " |    s    |  OpenBrowser         |  VimShell  |                    |                   |   :w<CR>           |
 " |    t    |                      |            |                    |                   |   tabnew           |
 " +- - - - -+- - - - - - - - - - - +- - - - - - +- - - - - - - - - - +- - - - - - - - - -+- - - - - - - - - - +
 " |    u    |                      |            |                    |                   |   Unite            |
-" |    v    |  CoqStart            |            |                    |   -default        |   -default         |
+" |    v    |                      |            |                    |   -default        |   -default         |
 " |    w    |                      |            |                    |                   |   :q<CR>           |
 " |    x    |                      |            |                    |                   |   d                |
 " |    y    |                      |            |                    |                   |                    |
