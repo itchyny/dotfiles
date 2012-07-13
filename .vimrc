@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/07/11 14:24:59.
+" - * Last Change: 2012/07/13 10:14:40.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -128,7 +128,8 @@ NeoBundle 'Shougo/vimfiler'
   highlight default link vimfilerDate Statement
   highlight default link vimfilerTypeLink Constant
   highlight default link vimfilerTypeExecute Special
-  highlight default link vimfilerTypeArchive NonText
+  autocmd Filetype vimfiler highlight Archive ctermfg=12 guifg=#808080 guibg=#303030
+  highlight default link vimfilerTypeArchive Archive
   highlight default link vimfilerTypeImage Statement
   nnoremap <Leader>f :<C-u>VimFilerCurrentDir<CR>
   nnoremap <Leader><Leader> :<C-u>VimFilerCurrentDir<CR>
@@ -347,7 +348,6 @@ set noshowmode " https://github.com/vim-jp/issues/issues/100
 " Main appearance {{{
 set list
 set listchars=tab:▸\ ,extends:»,precedes:«,nbsp:%
-highlight SpecialKey term=underline ctermfg=darkgray guifg=darkgray
 set shortmess+=I            " disable start up message
 set number
 autocmd FileType vimshell setlocal nonumber
@@ -544,6 +544,8 @@ highlight PmenuSbar guifg=white guibg=darkgray ctermfg=white ctermbg=darkgray
 highlight PmenuThumb guifg=white guibg=darkgray ctermfg=white ctermbg=darkgray
 highlight Special ctermfg=red guifg=red
 highlight VertSplit guifg=black guibg=darkgray gui=none ctermfg=black ctermbg=darkgray cterm=none
+highlight SpecialKey term=underline ctermfg=darkgray guifg=darkgray
+highlight NonText ctermfg=black guifg=black " hide tilde for empty lines
 autocmd FileType * highlight Identifier ctermfg=cyan guifg=cyan
 autocmd FileType * highlight Function ctermfg=green guifg=green
 autocmd FileType * highlight String ctermfg=magenta guifg=magenta
