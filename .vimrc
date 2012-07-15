@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/07/15 10:01:28.
+" - * Last Change: 2012/07/15 20:45:04.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -26,16 +26,16 @@ if !isdirectory(s:neobundle_dir)
   execute '!mkdir -p '.s:neobundle_dir
   execute '!git clone git@github.com:Shougo/neobundle.vim.git '.s:neobundle_dir
   execute '!git clone git@github.com:Shougo/unite.vim.git '.$BUNDLE.'/unite.vim'
-  execute '!git clone git@github.com:Shougo/neocomplcache.vim.git '.$BUNDLE.'/neocomplcache'
-  execute '!git clone git@github.com:Shougo/vimproc.vim.git '.$BUNDLE.'/vimproc'
+  execute '!git clone git@github.com:Shougo/neocomplcache.git '.$BUNDLE.'/neocomplcache'
+  execute '!git clone git@github.com:Shougo/vimproc.git '.$BUNDLE.'/vimproc'
   if s:ismac
     execute '!cd '.$BUNDLE.'/vimproc && make -f make_mac.mak'
   else
     execute '!cd '.$BUNDLE.'/vimproc && make -f make_unix.mak'
   endif
-  execute '!git clone git@github.com:Shougo/vimfiler.vim.git '.$BUNDLE.'/vimfiler'
-  execute '!git clone git@github.com:thinca/vim-quickrun.vim.git '.$BUNDLE.'/vim-quickrun'
-  execute '!git clone git@github.com:Shougo/vimshell.vim.git '.$BUNDLE.'/vimshell'
+  execute '!git clone git@github.com:Shougo/vimfiler.git '.$BUNDLE.'/vimfiler'
+  execute '!git clone git@github.com:thinca/vim-quickrun.git '.$BUNDLE.'/vim-quickrun'
+  execute '!git clone git@github.com:Shougo/vimshell.git '.$BUNDLE.'/vimshell'
 else
 execute 'set runtimepath+='.expand(s:neobundle_dir)
 call neobundle#rc(expand($BUNDLE))
@@ -243,9 +243,12 @@ nnoremap <Leader>z :<C-u>VimShellInteractive zsh<CR>
 autocmd FileType int-ghci set filetype=haskell
 nnoremap <Leader>g :<C-u>VimShellInteractive ghci<CR>
 nnoremap <Leader>p :<C-u>VimShellInteractive python<CR>
+try
 NeoBundle 'neco-ghc'
   " --| Requirement: ghc-mod
   " --|   $ cabal install ghc-mod
+catch
+endtry
 endif
 " }}}
 
