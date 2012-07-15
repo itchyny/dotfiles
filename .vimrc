@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/07/13 10:14:40.
+" - * Last Change: 2012/07/15 10:01:28.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -172,7 +172,7 @@ NeoBundle 'mattn/webapi-vim'
 " NeoBundle 'TwitVim'
 "   nnoremap <Leader>p :<C-u>PosttoTwitter<CR>
 "  nnoremap <Leader>p :<C-u>!tweet<SPACE>
-" NeoBundle 'eagletmt/ghcmod-vim'
+NeoBundle 'eagletmt/ghcmod-vim'
 " }}}
 
 " vimshell ( ";" ) {{{
@@ -181,6 +181,7 @@ NeoBundle 'mattn/webapi-vim'
 if s:nosudo
 NeoBundle 'Shougo/vimshell'
 " --| Requirement: vimproc
+" --| $ sudo chmod 4755 /usr/bin/sudo
   let g:vimshell_interactive_update_time = 150
   let g:vimshell_popup_command = "split"
   let g:vimshell_split_command = "vsplit"
@@ -242,7 +243,7 @@ nnoremap <Leader>z :<C-u>VimShellInteractive zsh<CR>
 autocmd FileType int-ghci set filetype=haskell
 nnoremap <Leader>g :<C-u>VimShellInteractive ghci<CR>
 nnoremap <Leader>p :<C-u>VimShellInteractive python<CR>
-" NeoBundle 'neco-ghc'
+NeoBundle 'neco-ghc'
   " --| Requirement: ghc-mod
   " --|   $ cabal install ghc-mod
 endif
@@ -352,10 +353,12 @@ set shortmess+=I            " disable start up message
 set number
 autocmd FileType vimshell setlocal nonumber
 autocmd FileType vimcalc setlocal nonumber
+autocmd FileType quickrun setlocal nonumber
 set cursorline
 autocmd FileType calendar setlocal nocursorline
 autocmd FileType vimcalc setlocal nocursorline
 autocmd FileType vimshell setlocal nocursorline
+autocmd FileType quickrun setlocal nocursorline
 set nocursorcolumn
 set showmatch               " 括弧の対応
 set showtabline=1
