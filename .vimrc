@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/07/16 11:21:35.
+" - * Last Change: 2012/07/17 05:20:19.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -66,7 +66,7 @@ endif
 
 " Unite ( "," ) {{{
 " --------------------------------------------------------------------------------------------------------------
-                                                                                         let mapleader=","
+let mapleader=","
 if s:nosudo
 NeoBundle 'Shougo/unite.vim'
   let g:unite_enable_start_insert=1
@@ -101,7 +101,7 @@ endif
 
 " QuickRun / Filer / Outer world of Vim ( "\\" ) {{{
 " --------------------------------------------------------------------------------------------------------------
-                                                                                         let mapleader="\\"
+let mapleader="\\"
 NeoBundle 'Shougo/vimproc'
 NeoBundle 'thinca/vim-quickrun'
   let g:quickrun_config = {'*': {'runmode': 'async:vimproc', 'split': 'vertical'}}
@@ -173,7 +173,7 @@ NeoBundle 'eagletmt/ghcmod-vim'
 
 " vimshell ( ";" ) {{{
 " --------------------------------------------------------------------------------------------------------------
-                                                                                          let mapleader=";"
+let mapleader=";"
 if s:nosudo
 NeoBundle 'Shougo/vimshell'
 " --| Requirement: vimproc
@@ -246,7 +246,7 @@ endif
 
 " Commenter / Utility ( "," ) {{{
 " --------------------------------------------------------------------------------------------------------------
-                                                                                          let mapleader=","
+let mapleader=","
 NeoBundle 'tpope/vim-surround'
 NeoBundle 't9md/vim-surround_custom_mapping'
 NeoBundle 'tComment'
@@ -298,11 +298,17 @@ NeoBundle 'tpope/vim-markdown'
 
 " Colorscheme {{{
 " --------------------------------------------------------------------------------------------------------------
-NeoBundle 'Wombat'
+" NeoBundle 'Wombat'
+" try
+"   colorscheme wombat
+" catch
+" endtry
 try
-  colorscheme wombat
+  colorscheme color
 catch
 endtry
+NeoBundle 'xterm-color-table.vim'
+  " http://www.vim.org/scripts/script.php?script_id=3412
 " }}}
 
 endif
@@ -536,24 +542,6 @@ endif
 " }}}
 
 " Highlight {{{
-highlight Pmenu guifg=black guibg=gray ctermfg=black ctermbg=gray
-highlight PmenuSel guifg=black guibg=darkgray ctermfg=black ctermbg=darkgray
-highlight PmenuSbar guifg=white guibg=darkgray ctermfg=white ctermbg=darkgray
-highlight PmenuThumb guifg=white guibg=darkgray ctermfg=white ctermbg=darkgray
-highlight Special ctermfg=red guifg=red
-highlight VertSplit guifg=black guibg=darkgray gui=none ctermfg=black ctermbg=darkgray cterm=none
-highlight SpecialKey term=underline ctermfg=darkgray guifg=darkgray
-highlight NonText ctermfg=black guifg=black " hide tilde for empty lines
-highlight Archive ctermfg=12 guifg=#808080 guibg=#303030
-autocmd FileType * highlight Identifier ctermfg=14 guifg=cyan
-autocmd FileType * highlight Constant ctermfg=159 guifg=Cyan
-autocmd FileType * highlight Function ctermfg=green guifg=green
-autocmd FileType * highlight String ctermfg=magenta guifg=magenta
-autocmd FileType * highlight StatusLineNC guifg=black guibg=darkgray gui=none ctermfg=black ctermbg=darkgray cterm=none
-highlight default link ZenkakuSpace Error
-autocmd BufEnter * let w:m3 = matchadd("ZenkakuSpace", '　')
-highlight Todo ctermfg=black ctermbg=yellow guibg=#888800
-autocmd BufEnter * let w:m4 = matchadd("Todo", 'TODO')
 "}}}
 
 " Statusline color {{{
@@ -970,4 +958,5 @@ autocmd ESC FileType help nnoremap <silent> <buffer> <ESC><ESC> :<C-u>q<CR>
 " |    .    |  .vimrc              |  .zshrc    |                    |                   |                    |
 " +=========+======================+============+====================+===================+====================+
 " }}} REFERENCE TO KEY MAPPING
-" vim: foldmethod=marker
+"
+" vim:foldmethod=marker
