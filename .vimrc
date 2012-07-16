@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/07/15 20:45:04.
+" - * Last Change: 2012/07/16 11:21:35.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -122,15 +122,11 @@ NeoBundle 'Shougo/vimfiler'
   let g:vimfiler_as_default_explorer = 1
   let g:vimfiler_sort_type = 'TIME'
   let g:vimfiler_safe_mode_by_default = 0
-  highlight default link vimfilerPdf Function
-  highlight default link vimfilerHtml Function
-  highlight default link vimfilerDateToday Identifier
-  highlight default link vimfilerDate Statement
-  highlight default link vimfilerTypeLink Constant
-  highlight default link vimfilerTypeExecute Special
-  autocmd Filetype vimfiler highlight Archive ctermfg=12 guifg=#808080 guibg=#303030
-  highlight default link vimfilerTypeArchive Archive
-  highlight default link vimfilerTypeImage Statement
+  let g:vimfiler_tree_leaf_icon = ' '
+  let g:vimfiler_tree_opened_icon = '▾'
+  let g:vimfiler_tree_closed_icon = '▸'
+  let g:vimfiler_file_icon = '-'
+  let g:vimfiler_marked_file_icon = '+'
   nnoremap <Leader>f :<C-u>VimFilerCurrentDir<CR>
   nnoremap <Leader><Leader> :<C-u>VimFilerCurrentDir<CR>
   nnoremap @<Leader> :<C-u>VimFilerCurrentDir<CR>
@@ -187,10 +183,6 @@ NeoBundle 'Shougo/vimshell'
   let g:vimshell_split_command = "vsplit"
   let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
   let g:vimshell_prompt = ' $ '
-highlight default link VimShellLink Constant
-highlight default link VimShellExe Statement
-highlight default link VimShellUserPrompt Function
-highlight default link VimShellPrompt Function
 augroup Vimshell
   autocmd!
   " for easy window moving, unmap C-[hjkl]
@@ -552,11 +544,13 @@ highlight Special ctermfg=red guifg=red
 highlight VertSplit guifg=black guibg=darkgray gui=none ctermfg=black ctermbg=darkgray cterm=none
 highlight SpecialKey term=underline ctermfg=darkgray guifg=darkgray
 highlight NonText ctermfg=black guifg=black " hide tilde for empty lines
-autocmd FileType * highlight Identifier ctermfg=cyan guifg=cyan
+highlight Archive ctermfg=12 guifg=#808080 guibg=#303030
+autocmd FileType * highlight Identifier ctermfg=14 guifg=cyan
+autocmd FileType * highlight Constant ctermfg=159 guifg=Cyan
 autocmd FileType * highlight Function ctermfg=green guifg=green
 autocmd FileType * highlight String ctermfg=magenta guifg=magenta
 autocmd FileType * highlight StatusLineNC guifg=black guibg=darkgray gui=none ctermfg=black ctermbg=darkgray cterm=none
-highlight ZenkakuSpace ctermfg=black ctermbg=red guibg=#666666
+highlight default link ZenkakuSpace Error
 autocmd BufEnter * let w:m3 = matchadd("ZenkakuSpace", '　')
 highlight Todo ctermfg=black ctermbg=yellow guibg=#888800
 autocmd BufEnter * let w:m4 = matchadd("Todo", 'TODO')
@@ -801,6 +795,12 @@ endfunction
 command! -bar -bang -nargs=? -complete=file Scouter
 \        echo Scouter(empty(<q-args>) ? $MYVIMRC : expand(<q-args>), <bang>0)
 " }}}
+
+function! Syntax()
+  :echo synIDattr(synID(line('.'), col('.'), 0), 'name')
+endfunction
+command! Syntax call Syntax()
+command! S call Syntax()
 
 nnoremap ss :echo synIDattr(synID(line('.'), col('.'), 0), 'name')<CR>
 " Quick open dot files {{{
