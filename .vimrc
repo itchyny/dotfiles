@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/07/17 05:20:19.
+" - * Last Change: 2012/07/17 22:48:50.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -126,7 +126,7 @@ NeoBundle 'Shougo/vimfiler'
   let g:vimfiler_tree_opened_icon = '▾'
   let g:vimfiler_tree_closed_icon = '▸'
   let g:vimfiler_file_icon = '-'
-  let g:vimfiler_marked_file_icon = '+'
+  let g:vimfiler_marked_file_icon = '*'
   nnoremap <Leader>f :<C-u>VimFilerCurrentDir<CR>
   nnoremap <Leader><Leader> :<C-u>VimFilerCurrentDir<CR>
   nnoremap @<Leader> :<C-u>VimFilerCurrentDir<CR>
@@ -261,9 +261,11 @@ NeoBundle 'mattn/calendar-vim'
   nnoremap <Leader>c :<C-u>Calendar<CR>
 NeoBundle 'autodate.vim'
   let g:autodate_format="%Y/%m/%d %H:%M:%S"
+if has('python')
 NeoBundle 'VimCalc'
   autocmd ESC FileType vimcalc nnoremap <silent> <buffer> <ESC><ESC><ESC> :<C-u>q<CR>
   nnoremap <Leader>a :<C-u>Calc<CR>
+endif
 " }}}
 
 " Syntax {{{
@@ -387,7 +389,7 @@ call Pl#Hi#Allocate({
   \ 'darkestgreen'   : 22,
   \ 'darkgreen'      : 28,
   \
-  \ 'darkestcyan'    : 23,
+  \ 'darkestcyan'    : 20,
   \ 'mediumcyan'     : 117,
   \
   \ 'darkestblue'    : 24,
@@ -441,7 +443,7 @@ let g:Powerline#Colorschemes#my#colorscheme = Pl#Colorscheme#Init([
   \
   \ Pl#Hi#Segments(['fileinfo', 'filename'], {
     \ 'i': ['white', 'darkestgreen', ['bold']],
-    \ 'n': ['white', 'darkestblue', ['bold']],
+    \ 'n': ['white', 'darkestcyan', ['bold']],
     \ 'v': ['white', 'darkestpurple', ['bold']],
     \ 'r': ['white', 'mediumred', ['bold']],
     \ 'N': ['gray0', 'gray2', ['bold']],
