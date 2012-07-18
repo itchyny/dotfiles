@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/07/18 23:21:46.
+" - * Last Change: 2012/07/19 06:54:17.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -200,13 +200,11 @@ NeoBundle 'Shougo/vimshell'
     autocmd FileType vimshell inoremap <buffer> <C-k> <ESC><C-w>k
     autocmd FileType vimshell inoremap <buffer> <C-l> <ESC><C-w>l
     " disable unexpected deleting
-    autocmd FileType vimshell nnoremap <buffer> x <Nop>
     autocmd FileType vimshell nnoremap <buffer> dd <Nop>
     autocmd FileType vimshell nnoremap <buffer> dj <Nop>
     autocmd FileType vimshell nnoremap <buffer> dk <Nop>
     autocmd FileType vimshell nnoremap <buffer> dG <Nop>
     autocmd FileType vimshell nnoremap <buffer> dg <Nop>
-    autocmd FileType vimshell vnoremap <buffer> x <Nop>
     autocmd FileType vimshell vnoremap <buffer> dd <Nop>
     autocmd FileType vimshell vnoremap <buffer> dj <Nop>
     autocmd FileType vimshell vnoremap <buffer> dk <Nop>
@@ -237,7 +235,7 @@ NeoBundle 'Shougo/vimshell'
   nnoremap <Leader>g :<C-u>VimShellInteractive ghci<CR>
   nnoremap <Leader>p :<C-u>VimShellInteractive python<CR>
 if system('which ghc-mod') !~? '.*not found'
-  "neocomplcache (neco-ghc) throws fatal error when ghc-mod is not found"
+  " neocomplcache (neco-ghc) throws fatal error when ghc-mod is not found"
 NeoBundle 'neco-ghc'
 NeoBundle 'eagletmt/ghcmod-vim'
   " --| Requirement: ghc-mod
