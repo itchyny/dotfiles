@@ -1,7 +1,7 @@
 # --------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2012/07/16 22:25:27.
+# - * Last Change: 2012/07/18 23:20:16.
 # --------------------------------------------------------------------------------------------------------------
 
 setopt prompt_subst
@@ -337,9 +337,6 @@ function extract() {
 alias -s {gz,tgz,zip,lzh,bz2,tbz,Z,tar,arj,xz}=extract
 
 alias fg='fg || if [ $? -eq 1 ]; then; vi; fi;'
-
-
-
 
 # .vimrcのambiwidthを参照してください
 alias gnome-terminal='/bin/sh -c "VTE_CJK_WIDTH=1 gnome-terminal --disable-factory"'

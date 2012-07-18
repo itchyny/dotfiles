@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/07/18 22:27:45.
+" - * Last Change: 2012/07/18 23:21:46.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -183,59 +183,59 @@ NeoBundle 'Shougo/vimshell'
   let g:vimshell_split_command = "vsplit"
   let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
   let g:vimshell_prompt = ' $ '
-augroup Vimshell
-  autocmd!
-  " for easy window moving, unmap C-[hjkl]
-  autocmd FileType vimshell iunmap <buffer> <C-h>
-  autocmd FileType vimshell iunmap <buffer> <C-k>
-  autocmd FileType vimshell iunmap <buffer> <C-l>
-  autocmd FileType vimshell iunmap <buffer> <C-w>
-  autocmd FileType vimshell nunmap <buffer> <C-k>
-  autocmd FileType vimshell nunmap <buffer> <C-l>
-  autocmd FileType vimshell nmap <buffer> <C-a> <Nop>
-  autocmd FileType vimshell nmap <buffer> a GA
-  autocmd FileType vimshell nmap <buffer> <C-m> <ESC><C-q>j
-  " disable unexpected deleting
-  autocmd FileType vimshell nnoremap <buffer> x <Nop>
-  autocmd FileType vimshell nnoremap <buffer> dd <Nop>
-  autocmd FileType vimshell nnoremap <buffer> dj <Nop>
-  autocmd FileType vimshell nnoremap <buffer> dk <Nop>
-  autocmd FileType vimshell nnoremap <buffer> dG <Nop>
-  autocmd FileType vimshell nnoremap <buffer> dg <Nop>
-  autocmd FileType vimshell vnoremap <buffer> x <Nop>
-  autocmd FileType vimshell vnoremap <buffer> dd <Nop>
-  autocmd FileType vimshell vnoremap <buffer> dj <Nop>
-  autocmd FileType vimshell vnoremap <buffer> dk <Nop>
-  autocmd FileType vimshell vnoremap <buffer> dG <Nop>
-  autocmd FileType vimshell vnoremap <buffer> dg <Nop>
-  autocmd FileType vimshell vnoremap <buffer> c <Nop>
-  autocmd FileType vimshell vnoremap <buffer> <delete> <Nop>
-  autocmd FileType vimshell vnoremap <buffer> a <ESC><ESC>GA
-  autocmd FileType vimshell vnoremap <buffer> y yGA
-  autocmd FileType vimshell inoremap <buffer> <C-h> <ESC><C-w>h
-  autocmd FileType vimshell inoremap <buffer> <C-j> <ESC><C-w>j
-  autocmd FileType vimshell inoremap <buffer> <C-k> <ESC><C-w>k
-  autocmd FileType vimshell inoremap <buffer> <C-l> <ESC><C-w>l
-  autocmd FileType vimshell imap <buffer> <C-^> <ESC><C-^>
-  " <Up><Down>の設定では効かないので, エスケープ文字で設定してます.
-  autocmd FileType vimshell inoremap <buffer> <expr><silent> OA unite#sources#vimshell_history#start_complete(!0)
-  autocmd FileType vimshell inoremap <buffer> <expr><silent> OB unite#sources#vimshell_history#start_complete(!0)
-  autocmd FileType vimshell nnoremap <buffer> <expr><silent> OA unite#sources#vimshell_history#start_complete(!0)
-  autocmd FileType vimshell nnoremap <buffer> <expr><silent> OB unite#sources#vimshell_history#start_complete(!0)
-  autocmd FileType vimshell inoremap <buffer> <expr><silent> <Up> unite#sources#vimshell_history#start_complete(!0)
-  autocmd FileType vimshell inoremap <buffer> <expr><silent> <Down> unite#sources#vimshell_history#start_complete(!0)
-  autocmd FileType vimshell nnoremap <buffer> <expr><silent> <Up> unite#sources#vimshell_history#start_complete(!0)
-  autocmd FileType vimshell nnoremap <buffer> <expr><silent> <Down> unite#sources#vimshell_history#start_complete(!0)
-augroup END
-" autocmd ESC FileType vimshell vnoremap <buffer> <ESC><ESC><ESC> :<C-u>q<CR>
-" autocmd ESC FileType vimshell nnoremap <buffer> <ESC><ESC><ESC> :<C-u>q<CR>
-nnoremap <silent> <Leader><Leader>s :<C-u>VimShell -split<CR>
-nnoremap <silent> <Leader>s :<C-u>execute 'VimShellCreate '.<SID>current_directory()<CR>
-nnoremap <silent> <S-h> :<C-u>execute 'VimShellPop '.<SID>current_directory()<CR>
-nnoremap <Leader>z :<C-u>VimShellInteractive zsh<CR>
-autocmd FileType int-ghci set filetype=haskell
-nnoremap <Leader>g :<C-u>VimShellInteractive ghci<CR>
-nnoremap <Leader>p :<C-u>VimShellInteractive python<CR>
+  augroup Vimshell
+    autocmd!
+    " for easy window moving, unmap C-[hjkl]
+    autocmd FileType vimshell iunmap <buffer> <C-h>
+    autocmd FileType vimshell iunmap <buffer> <C-k>
+    autocmd FileType vimshell iunmap <buffer> <C-l>
+    autocmd FileType vimshell iunmap <buffer> <C-w>
+    autocmd FileType vimshell nunmap <buffer> <C-k>
+    autocmd FileType vimshell nunmap <buffer> <C-l>
+    autocmd FileType vimshell nmap <buffer> <C-a> <Nop>
+    autocmd FileType vimshell nmap <buffer> a GA
+    autocmd FileType vimshell nmap <buffer> <C-m> <ESC><C-q>j
+    autocmd FileType vimshell inoremap <buffer> <C-h> <ESC><C-w>h
+    autocmd FileType vimshell inoremap <buffer> <C-j> <ESC><C-w>j
+    autocmd FileType vimshell inoremap <buffer> <C-k> <ESC><C-w>k
+    autocmd FileType vimshell inoremap <buffer> <C-l> <ESC><C-w>l
+    " disable unexpected deleting
+    autocmd FileType vimshell nnoremap <buffer> x <Nop>
+    autocmd FileType vimshell nnoremap <buffer> dd <Nop>
+    autocmd FileType vimshell nnoremap <buffer> dj <Nop>
+    autocmd FileType vimshell nnoremap <buffer> dk <Nop>
+    autocmd FileType vimshell nnoremap <buffer> dG <Nop>
+    autocmd FileType vimshell nnoremap <buffer> dg <Nop>
+    autocmd FileType vimshell vnoremap <buffer> x <Nop>
+    autocmd FileType vimshell vnoremap <buffer> dd <Nop>
+    autocmd FileType vimshell vnoremap <buffer> dj <Nop>
+    autocmd FileType vimshell vnoremap <buffer> dk <Nop>
+    autocmd FileType vimshell vnoremap <buffer> dG <Nop>
+    autocmd FileType vimshell vnoremap <buffer> dg <Nop>
+    autocmd FileType vimshell vnoremap <buffer> c <Nop>
+    autocmd FileType vimshell vnoremap <buffer> <delete> <Nop>
+    autocmd FileType vimshell vnoremap <buffer> a <ESC><ESC>GA
+    autocmd FileType vimshell vnoremap <buffer> y yGA
+    autocmd FileType vimshell imap <buffer> <C-^> <ESC><C-^>
+    " <Up><Down>の設定では効かないので, エスケープ文字で設定してます.
+    autocmd FileType vimshell inoremap <buffer> <expr><silent> OA unite#sources#vimshell_history#start_complete(!0)
+    autocmd FileType vimshell inoremap <buffer> <expr><silent> OB unite#sources#vimshell_history#start_complete(!0)
+    autocmd FileType vimshell nnoremap <buffer> <expr><silent> OA unite#sources#vimshell_history#start_complete(!0)
+    autocmd FileType vimshell nnoremap <buffer> <expr><silent> OB unite#sources#vimshell_history#start_complete(!0)
+    autocmd FileType vimshell inoremap <buffer> <expr><silent> <Up> unite#sources#vimshell_history#start_complete(!0)
+    autocmd FileType vimshell inoremap <buffer> <expr><silent> <Down> unite#sources#vimshell_history#start_complete(!0)
+    autocmd FileType vimshell nnoremap <buffer> <expr><silent> <Up> unite#sources#vimshell_history#start_complete(!0)
+    autocmd FileType vimshell nnoremap <buffer> <expr><silent> <Down> unite#sources#vimshell_history#start_complete(!0)
+  augroup END
+  " autocmd ESC FileType vimshell vnoremap <buffer> <ESC><ESC><ESC> :<C-u>q<CR>
+  " autocmd ESC FileType vimshell nnoremap <buffer> <ESC><ESC><ESC> :<C-u>q<CR>
+  nnoremap <silent> <Leader><Leader>s :<C-u>VimShell -split<CR>
+  nnoremap <silent> <Leader>s :<C-u>execute 'VimShellCreate '.<SID>current_directory()<CR>
+  nnoremap <silent> <S-h> :<C-u>execute 'VimShellPop '.<SID>current_directory()<CR>
+  nnoremap <Leader>z :<C-u>VimShellInteractive zsh<CR>
+  autocmd FileType int-ghci set filetype=haskell
+  nnoremap <Leader>g :<C-u>VimShellInteractive ghci<CR>
+  nnoremap <Leader>p :<C-u>VimShellInteractive python<CR>
 if system('which ghc-mod') !~? '.*not found'
   "neocomplcache (neco-ghc) throws fatal error when ghc-mod is not found"
 NeoBundle 'neco-ghc'
