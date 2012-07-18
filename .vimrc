@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/07/17 22:48:50.
+" - * Last Change: 2012/07/18 18:07:07.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -168,7 +168,6 @@ NeoBundle 'mattn/webapi-vim'
 " NeoBundle 'TwitVim'
 "   nnoremap <Leader>p :<C-u>PosttoTwitter<CR>
 "  nnoremap <Leader>p :<C-u>!tweet<SPACE>
-NeoBundle 'eagletmt/ghcmod-vim'
 " }}}
 
 " vimshell ( ";" ) {{{
@@ -235,12 +234,12 @@ nnoremap <Leader>z :<C-u>VimShellInteractive zsh<CR>
 autocmd FileType int-ghci set filetype=haskell
 nnoremap <Leader>g :<C-u>VimShellInteractive ghci<CR>
 nnoremap <Leader>p :<C-u>VimShellInteractive python<CR>
-try
+if system('which ghc-mod') !~? '.*not found'
 NeoBundle 'neco-ghc'
+NeoBundle 'eagletmt/ghcmod-vim'
   " --| Requirement: ghc-mod
   " --|   $ cabal install ghc-mod
-catch
-endtry
+endif
 endif
 " }}}
 
