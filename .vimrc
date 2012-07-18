@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/07/18 21:58:53.
+" - * Last Change: 2012/07/18 22:25:10.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -227,8 +227,8 @@ augroup Vimshell
   autocmd FileType vimshell nnoremap <buffer> <expr><silent> <Up> unite#sources#vimshell_history#start_complete(!0)
   autocmd FileType vimshell nnoremap <buffer> <expr><silent> <Down> unite#sources#vimshell_history#start_complete(!0)
 augroup END
-autocmd ESC FileType vimshell vnoremap <buffer> <ESC><ESC><ESC> :<C-u>q<CR>
-autocmd ESC FileType vimshell nnoremap <buffer> <ESC><ESC><ESC> :<C-u>q<CR>
+" autocmd ESC FileType vimshell vnoremap <buffer> <ESC><ESC><ESC> :<C-u>q<CR>
+" autocmd ESC FileType vimshell nnoremap <buffer> <ESC><ESC><ESC> :<C-u>q<CR>
 nnoremap <silent> <Leader><Leader>s :<C-u>VimShell -split<CR>
 nnoremap <silent> <Leader>s :<C-u>execute 'VimShellCreate '.<SID>current_directory()<CR>
 nnoremap <silent> <S-h> :<C-u>execute 'VimShellPop '.<SID>current_directory()<CR>
@@ -237,6 +237,7 @@ autocmd FileType int-ghci set filetype=haskell
 nnoremap <Leader>g :<C-u>VimShellInteractive ghci<CR>
 nnoremap <Leader>p :<C-u>VimShellInteractive python<CR>
 if system('which ghc-mod') !~? '.*not found'
+  "neocomplcache (neco-ghc) throws fatal error when ghc-mod is not found"
 NeoBundle 'neco-ghc'
 NeoBundle 'eagletmt/ghcmod-vim'
   " --| Requirement: ghc-mod
@@ -643,7 +644,7 @@ filetype plugin indent on
 set autoindent
 set smartindent
 set shiftwidth=2
-  autocmd FileType markdown setl shiftwidth=4
+  autocmd FileType markdown setlocal shiftwidth=4
 " }}}
 
 " Special keys (tab, backspace) {{{
