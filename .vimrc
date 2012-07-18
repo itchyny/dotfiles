@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/07/19 06:54:17.
+" - * Last Change: 2012/07/19 07:02:48.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -22,20 +22,24 @@ let $VIM = $HOME.'/.vim'
 let $BUNDLE = $VIM.'/bundle'
 let s:neobundle_dir = $BUNDLE.'/neobundle.vim'
 if !isdirectory(s:neobundle_dir)
-  echo 'initializing neobundle\n'
-  execute '!mkdir -p '.s:neobundle_dir
-  execute '!git clone git@github.com:Shougo/neobundle.vim.git '.s:neobundle_dir
-  execute '!git clone git@github.com:Shougo/unite.vim.git '.$BUNDLE.'/unite.vim'
-  execute '!git clone git@github.com:Shougo/neocomplcache.git '.$BUNDLE.'/neocomplcache'
-  execute '!git clone git@github.com:Shougo/vimproc.git '.$BUNDLE.'/vimproc'
-  if s:ismac
-    execute '!cd '.$BUNDLE.'/vimproc && make -f make_mac.mak'
+  if system('which git') =~? '.*not found'
+    echo 'git not found! Sorry, this .vimrc cannot be installed without git'
   else
-    execute '!cd '.$BUNDLE.'/vimproc && make -f make_unix.mak'
+    echo 'initializing neobundle'
+    execute '!mkdir -p '.s:neobundle_dir.
+         ' && git clone git@github.com:Shougo/neobundle.vim.git '.s:neobundle_dir.
+         ' && git clone git@github.com:Shougo/unite.vim.git '.$BUNDLE.'/unite.vim'.
+         ' && git clone git@github.com:Shougo/neocomplcache.git '.$BUNDLE.'/neocomplcache'.
+         ' && git clone git@github.com:Shougo/vimproc.git '.$BUNDLE.'/vimproc'.
+         ' && git clone git@github.com:Shougo/vimfiler.git '.$BUNDLE.'/vimfiler'.
+         ' && git clone git@github.com:thinca/vim-quickrun.git '.$BUNDLE.'/vim-quickrun'.
+         ' && git clone git@github.com:Shougo/vimshell.git '.$BUNDLE.'/vimshell'
+    if s:ismac
+      execute '!cd '.$BUNDLE.'/vimproc && make -f make_mac.mak'
+    else
+      execute '!cd '.$BUNDLE.'/vimproc && make -f make_unix.mak'
+    endif
   endif
-  execute '!git clone git@github.com:Shougo/vimfiler.git '.$BUNDLE.'/vimfiler'
-  execute '!git clone git@github.com:thinca/vim-quickrun.git '.$BUNDLE.'/vim-quickrun'
-  execute '!git clone git@github.com:Shougo/vimshell.git '.$BUNDLE.'/vimshell'
 else
 execute 'set runtimepath+='.expand(s:neobundle_dir)
 call neobundle#rc(expand($BUNDLE))
