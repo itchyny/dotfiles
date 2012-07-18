@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/07/18 22:25:10.
+" - * Last Change: 2012/07/18 22:27:45.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -788,13 +788,14 @@ command! -bar -bang -nargs=? -complete=file Scouter
 \        echo Scouter(empty(<q-args>) ? $MYVIMRC : expand(<q-args>), <bang>0)
 " }}}
 
+" view syntax name under cursor
 function! Syntax()
   :echo synIDattr(synID(line('.'), col('.'), 0), 'name')
 endfunction
 command! Syntax call Syntax()
 command! S call Syntax()
+nnoremap ss :Syntax<CR>
 
-nnoremap ss :echo synIDattr(synID(line('.'), col('.'), 0), 'name')<CR>
 " Quick open dot files {{{
 nnoremap \. :e ~/.vimrc<CR>
 nnoremap \v :so ~/.vimrc<CR>
