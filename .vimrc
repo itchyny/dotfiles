@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/07/18 18:07:07.
+" - * Last Change: 2012/07/18 21:58:53.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -176,7 +176,8 @@ let mapleader=";"
 if s:nosudo
 NeoBundle 'Shougo/vimshell'
 " --| Requirement: vimproc
-" --| $ sudo chmod 4755 /usr/bin/sudo
+" --| If you can't use sudo, do:
+" --|  $ sudo chmod 4755 /usr/bin/sudo
   let g:vimshell_interactive_update_time = 150
   let g:vimshell_popup_command = "split"
   let g:vimshell_split_command = "vsplit"
@@ -194,6 +195,7 @@ augroup Vimshell
   autocmd FileType vimshell nmap <buffer> <C-a> <Nop>
   autocmd FileType vimshell nmap <buffer> a GA
   autocmd FileType vimshell nmap <buffer> <C-m> <ESC><C-q>j
+  " disable unexpected deleting
   autocmd FileType vimshell nnoremap <buffer> x <Nop>
   autocmd FileType vimshell nnoremap <buffer> dd <Nop>
   autocmd FileType vimshell nnoremap <buffer> dj <Nop>
@@ -227,8 +229,8 @@ augroup Vimshell
 augroup END
 autocmd ESC FileType vimshell vnoremap <buffer> <ESC><ESC><ESC> :<C-u>q<CR>
 autocmd ESC FileType vimshell nnoremap <buffer> <ESC><ESC><ESC> :<C-u>q<CR>
-nnoremap <Leader><Leader>s :<C-u>VimShell -split<CR>
-nnoremap <Leader>s :<C-u>VimShellCreate<CR>
+nnoremap <silent> <Leader><Leader>s :<C-u>VimShell -split<CR>
+nnoremap <silent> <Leader>s :<C-u>execute 'VimShellCreate '.<SID>current_directory()<CR>
 nnoremap <silent> <S-h> :<C-u>execute 'VimShellPop '.<SID>current_directory()<CR>
 nnoremap <Leader>z :<C-u>VimShellInteractive zsh<CR>
 autocmd FileType int-ghci set filetype=haskell
@@ -238,7 +240,7 @@ if system('which ghc-mod') !~? '.*not found'
 NeoBundle 'neco-ghc'
 NeoBundle 'eagletmt/ghcmod-vim'
   " --| Requirement: ghc-mod
-  " --|   $ cabal install ghc-mod
+  " --|  $ cabal install ghc-mod
 endif
 endif
 " }}}
@@ -373,12 +375,12 @@ set laststatus=2            " ステータスラインを常に表示
 set statusline=%{expand('%:p:t')}\ %<[%{expand('%:p:h')}]%=\ %m%r%y%w[%{&fenc!=''?&fenc:&enc}][%{&ff}][%3l,%3c,%3p][%{strftime(\"%m/%d\ %H:%M\")}]
 NeoBundle 'Lokaltog/vim-powerline'
 try
-" --| $ sudo apt-get install fontforge
-" --| $ sudo apt-get install python-fontforge
-" --| $ cd ~/.vim/bundle/vim-powerline/fontpatcher
-" --| $ wget http://levien.com/type/myfonts/Inconsolata.otf
-" --| $ python ./fontpatcher ./Iconsolata.otf
-" --| $ sudo cp ./Iconsolata-Powerline.otf /usr/share/fonts
+" --|  $ sudo apt-get install fontforge
+" --|  $ sudo apt-get install python-fontforge
+" --|  $ cd ~/.vim/bundle/vim-powerline/fontpatcher
+" --|  $ wget http://levien.com/type/myfonts/Inconsolata.otf
+" --|  $ python ./fontpatcher ./Iconsolata.otf
+" --|  $ sudo cp ./Iconsolata-Powerline.otf /usr/share/fonts
 set guifont=Iconsolata-Powerline.otf
 let g:Powerline_symbols='fancy'
 call Pl#Hi#Allocate({
