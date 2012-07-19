@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/07/19 07:02:48.
+" - * Last Change: 2012/07/19 09:09:11.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -27,13 +27,13 @@ if !isdirectory(s:neobundle_dir)
   else
     echo 'initializing neobundle'
     execute '!mkdir -p '.s:neobundle_dir.
-         ' && git clone git@github.com:Shougo/neobundle.vim.git '.s:neobundle_dir.
-         ' && git clone git@github.com:Shougo/unite.vim.git '.$BUNDLE.'/unite.vim'.
-         ' && git clone git@github.com:Shougo/neocomplcache.git '.$BUNDLE.'/neocomplcache'.
-         ' && git clone git@github.com:Shougo/vimproc.git '.$BUNDLE.'/vimproc'.
-         ' && git clone git@github.com:Shougo/vimfiler.git '.$BUNDLE.'/vimfiler'.
-         ' && git clone git@github.com:thinca/vim-quickrun.git '.$BUNDLE.'/vim-quickrun'.
-         ' && git clone git@github.com:Shougo/vimshell.git '.$BUNDLE.'/vimshell'
+       \ ' && git clone git@github.com:Shougo/neobundle.vim.git '.$BUNDLE.'/neobundle.vim'.
+       \ ' && git clone git@github.com:Shougo/unite.vim.git '.$BUNDLE.'/unite.vim'.
+       \ ' && git clone git@github.com:Shougo/neocomplcache.git '.$BUNDLE.'/neocomplcache'.
+       \ ' && git clone git@github.com:Shougo/vimproc.git '.$BUNDLE.'/vimproc'.
+       \ ' && git clone git@github.com:Shougo/vimfiler.git '.$BUNDLE.'/vimfiler'.
+       \ ' && git clone git@github.com:thinca/vim-quickrun.git '.$BUNDLE.'/vim-quickrun'.
+       \ ' && git clone git@github.com:Shougo/vimshell.git '.$BUNDLE.'/vimshell'
     if s:ismac
       execute '!cd '.$BUNDLE.'/vimproc && make -f make_mac.mak'
     else
