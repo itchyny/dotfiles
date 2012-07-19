@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/07/19 09:21:36.
+" - * Last Change: 2012/07/19 09:48:58.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -23,10 +23,10 @@ let $BUNDLE = $VIM.'/bundle'
 let s:neobundle_dir = $BUNDLE.'/neobundle.vim'
 if !isdirectory(s:neobundle_dir)
   if system('which git') =~? '.*not found'
-    echo 'git not found! Sorry, this .vimrc cannot be installed without git'
+    echo 'git not found! Sorry, this .vimrc cannot be completely used without git'
   else
     echo 'initializing neobundle'
-    execute '!mkdir -p '.s:neobundle_dir.
+    execute '!mkdir -p '.$BUNDLE.
        \ ' && git clone git@github.com:Shougo/neobundle.vim.git '.$BUNDLE.'/neobundle.vim'.
        \ ' && git clone git@github.com:Shougo/unite.vim.git '.$BUNDLE.'/unite.vim'.
        \ ' && git clone git@github.com:Shougo/neocomplcache.git '.$BUNDLE.'/neocomplcache'.
@@ -35,7 +35,11 @@ if !isdirectory(s:neobundle_dir)
        \ ' && git clone git@github.com:thinca/vim-quickrun.git '.$BUNDLE.'/vim-quickrun'.
        \ ' && git clone git@github.com:Shougo/vimshell.git '.$BUNDLE.'/vimshell'
     if s:ismac
-      execute '!cd '.$BUNDLE.'/vimproc && make -f make_mac.mak'
+      if system('which llvm-gcc') =~? '.*not found'
+        execute '!cd '.$BUNDLE.'/vimproc && gcc -O2 -W -Wall -Wno-unused -bundle -fPIC -arch x86_64 -arch i386 -o autoload/vimproc_mac.so autoload/proc.c -lutil'
+      else
+        execute '!cd '.$BUNDLE.'/vimproc && make -f make_mac.mak'
+      endif
     else
       execute '!cd '.$BUNDLE.'/vimproc && make -f make_unix.mak'
     endif
@@ -318,65 +322,8 @@ NeoBundle 'xterm-color-table.vim'
   " http://www.vim.org/scripts/script.php?script_id=3412
 " }}}
 
-endif
-" }}} Bundles
-
-" ENCODING {{{
+" Powerline {{{
 " --------------------------------------------------------------------------------------------------------------
-set encoding=utf-8
-set fenc=utf-8
-set fileencodings=utf-8,euc-jp,sjis,jis,iso-2022-jp,cp932,latin
-set formatoptions+=mM       " 日本語の行の連結時には空白を入力しない
-" ☆や□や○の文字があってもカーソル位置がずれないようにする
-" ambiwidthの設定のみでは, 解決しない場合がある
-" Ubuntuでは, gnome-terminal, terminatorを以下のコマンドに貼り替えると解決する
-"   /bin/sh -c "VTE_CJK_WIDTH=1 terminator -m"
-"   /bin/sh -c "VTE_CJK_WIDTH=1 gnome-terminal --disable-factory"
-set ambiwidth=double
-
-" 書類を開くことができませんでした。テキストエンコーディング日本語(Mac OS)には対応していません。 {{{
-" http://d.hatena.ne.jp/uasi/20110523/1306079612
-autocmd BufWritePost * call SetUTF8Xattr(expand("<afile>"))
-function! SetUTF8Xattr(file)
-  let isutf8 = &fileencoding == "utf-8" || ( &fileencoding == "" && &encoding == "utf-8")
-  if s:ismac && isutf8
-    call system("xattr -w com.apple.TextEncoding 'utf-8;134217984' '" . a:file . "'")
-  endif
-endfunction
-" }}}
-
-" }}} ENCODING
-
-" APPERANCE {{{
-" --------------------------------------------------------------------------------------------------------------
-" Frame appearance {{{
-" set showcmd
-set noshowmode " https://github.com/vim-jp/issues/issues/100
-" }}}
-
-" Main appearance {{{
-set list
-set listchars=tab:▸\ ,extends:»,precedes:«,nbsp:%
-set shortmess+=I            " disable start up message
-set number
-autocmd FileType vimshell setlocal nonumber
-autocmd FileType vimcalc setlocal nonumber
-autocmd FileType quickrun setlocal nonumber
-set cursorline
-autocmd FileType calendar setlocal nocursorline
-autocmd FileType vimcalc setlocal nocursorline
-autocmd FileType vimshell setlocal nocursorline
-autocmd FileType quickrun setlocal nocursorline
-set nocursorcolumn
-set showmatch               " 括弧の対応
-set showtabline=1
-set previewheight=20
-" }}}
-
-" Status line {{{
-set ruler                   " show the cursor position (needless if you set 'statusline' later)
-set laststatus=2            " ステータスラインを常に表示
-set statusline=%{expand('%:p:t')}\ %<[%{expand('%:p:h')}]%=\ %m%r%y%w[%{&fenc!=''?&fenc:&enc}][%{&ff}][%3l,%3c,%3p][%{strftime(\"%m/%d\ %H:%M\")}]
 NeoBundle 'Lokaltog/vim-powerline'
 try
 " --|  $ sudo apt-get install fontforge
@@ -538,6 +485,67 @@ let g:Powerline#Colorschemes#my#colorscheme = Pl#Colorscheme#Init([
 let g:Powerline_colorscheme='my'
 catch
 endtry
+endif
+" }}}
+
+" }}} Bundles
+
+" ENCODING {{{
+" --------------------------------------------------------------------------------------------------------------
+set encoding=utf-8
+set fenc=utf-8
+set fileencodings=utf-8,euc-jp,sjis,jis,iso-2022-jp,cp932,latin
+set formatoptions+=mM       " 日本語の行の連結時には空白を入力しない
+" ☆や□や○の文字があってもカーソル位置がずれないようにする
+" ambiwidthの設定のみでは, 解決しない場合がある
+" Ubuntuでは, gnome-terminal, terminatorを以下のコマンドに貼り替えると解決する
+"   /bin/sh -c "VTE_CJK_WIDTH=1 terminator -m"
+"   /bin/sh -c "VTE_CJK_WIDTH=1 gnome-terminal --disable-factory"
+set ambiwidth=double
+
+" 書類を開くことができませんでした。テキストエンコーディング日本語(Mac OS)には対応していません。 {{{
+" http://d.hatena.ne.jp/uasi/20110523/1306079612
+autocmd BufWritePost * call SetUTF8Xattr(expand("<afile>"))
+function! SetUTF8Xattr(file)
+  let isutf8 = &fileencoding == "utf-8" || ( &fileencoding == "" && &encoding == "utf-8")
+  if s:ismac && isutf8
+    call system("xattr -w com.apple.TextEncoding 'utf-8;134217984' '" . a:file . "'")
+  endif
+endfunction
+" }}}
+
+" }}} ENCODING
+
+" APPERANCE {{{
+" --------------------------------------------------------------------------------------------------------------
+" Frame appearance {{{
+" set showcmd
+set noshowmode " https://github.com/vim-jp/issues/issues/100
+" }}}
+
+" Main appearance {{{
+set list
+set listchars=tab:▸\ ,extends:»,precedes:«,nbsp:%
+set shortmess+=I            " disable start up message
+set number
+autocmd FileType vimshell setlocal nonumber
+autocmd FileType vimcalc setlocal nonumber
+autocmd FileType quickrun setlocal nonumber
+set cursorline
+autocmd FileType calendar setlocal nocursorline
+autocmd FileType vimcalc setlocal nocursorline
+autocmd FileType vimshell setlocal nocursorline
+autocmd FileType quickrun setlocal nocursorline
+set nocursorcolumn
+set showmatch               " 括弧の対応
+set showtabline=1
+set previewheight=20
+" }}}
+
+" Status line {{{
+set ruler                   " show the cursor position (needless if you set 'statusline' later)
+set laststatus=2            " ステータスラインを常に表示
+set statusline=%{expand('%:p:t')}\ %<[%{expand('%:p:h')}]%=\ %m%r%y%w[%{&fenc!=''?&fenc:&enc}][%{&ff}][%3l,%3c,%3p][%{strftime(\"%m/%d\ %H:%M\")}]
 " }}}
 
 " Color {{{
