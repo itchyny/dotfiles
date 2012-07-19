@@ -1,7 +1,7 @@
 # --------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2012/07/18 23:20:16.
+# - * Last Change: 2012/07/19 09:20:44.
 # --------------------------------------------------------------------------------------------------------------
 
 setopt prompt_subst
@@ -190,6 +190,7 @@ export PATH=$PATH:~/Dropbox/js/coffee-script/bin/
 export PATH=$PATH:~/Dropbox/js/roy/
 export PATH=$PATH:~/.cabal/bin/
 export PATH=$PATH:~/Library/Haskell/bin/
+export PATH=$PATH:~/Dropbox/bin/
 
 # export http_proxy=http://proxy.kuins.net:8080/
 
