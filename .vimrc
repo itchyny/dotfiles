@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/07/19 09:48:58.
+" - * Last Change: 2012/07/19 09:55:35.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -25,7 +25,7 @@ if !isdirectory(s:neobundle_dir)
   if system('which git') =~? '.*not found'
     echo 'git not found! Sorry, this .vimrc cannot be completely used without git'
   else
-    echo 'initializing neobundle'
+    echo 'Initializing neobundle'
     execute '!mkdir -p '.$BUNDLE.
        \ ' && git clone git@github.com:Shougo/neobundle.vim.git '.$BUNDLE.'/neobundle.vim'.
        \ ' && git clone git@github.com:Shougo/unite.vim.git '.$BUNDLE.'/unite.vim'.
@@ -259,10 +259,6 @@ let mapleader=","
 NeoBundle 'tpope/vim-surround'
 NeoBundle 't9md/vim-surround_custom_mapping'
 NeoBundle 'tComment'
-NeoBundle 'sjl/gundo.vim'
-  " --| Requirement: +python
-  nnoremap <Leader>g :<C-u>GundoToggle<CR>
-  autocmd ESC FileType gundo nnoremap <silent> <buffer> <ESC><ESC> :<C-u>GundoToggle<CR>
 NeoBundle 'Align'
 NeoBundle 'errormarker.vim'
 NeoBundle 'mattn/calendar-vim'
@@ -271,7 +267,12 @@ NeoBundle 'mattn/calendar-vim'
 NeoBundle 'autodate.vim'
   let g:autodate_format="%Y/%m/%d %H:%M:%S"
 if has('python')
+NeoBundle 'sjl/gundo.vim'
+  " --| Requirement: +python
+  nnoremap <Leader>g :<C-u>GundoToggle<CR>
+  autocmd ESC FileType gundo nnoremap <silent> <buffer> <ESC><ESC> :<C-u>GundoToggle<CR>
 NeoBundle 'VimCalc'
+  " --| Requirement: +python
   autocmd ESC FileType vimcalc nnoremap <silent> <buffer> <ESC><ESC><ESC> :<C-u>q<CR>
   nnoremap <Leader>a :<C-u>Calc<CR>
 endif
