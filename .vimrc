@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/07/19 09:55:35.
+" - * Last Change: 2012/07/19 09:59:22.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -173,10 +173,6 @@ NeoBundle 'tyru/open-browser.vim'
   vmap <Leader>b <Plug>(openbrowser-smart-search)
   nmap <Leader>s <Plug>(openbrowser-search)
 NeoBundle 'mattn/webapi-vim'
-" NeoBundle 'basyura/twibill.vim'
-" NeoBundle 'TwitVim'
-"   nnoremap <Leader>p :<C-u>PosttoTwitter<CR>
-"  nnoremap <Leader>p :<C-u>!tweet<SPACE>
 " }}}
 
 " vimshell ( ";" ) {{{
@@ -486,9 +482,9 @@ let g:Powerline#Colorschemes#my#colorscheme = Pl#Colorscheme#Init([
 let g:Powerline_colorscheme='my'
 catch
 endtry
-endif
 " }}}
 
+endif
 " }}} Bundles
 
 " ENCODING {{{
@@ -508,7 +504,7 @@ set ambiwidth=double
 " http://d.hatena.ne.jp/uasi/20110523/1306079612
 autocmd BufWritePost * call SetUTF8Xattr(expand("<afile>"))
 function! SetUTF8Xattr(file)
-  let isutf8 = &fileencoding == "utf-8" || ( &fileencoding == "" && &encoding == "utf-8")
+  let isutf8 = &fileencoding == "utf-8" || (&fileencoding == "" && &encoding == "utf-8")
   if s:ismac && isutf8
     call system("xattr -w com.apple.TextEncoding 'utf-8;134217984' '" . a:file . "'")
   endif
@@ -619,20 +615,20 @@ augroup Binary
     " let &binary = 1
   endfunction
   function! BinWritePre()
-    let s:saved_pos = getpos( '.' )
+    let s:saved_pos = getpos('.')
     silent %!xxd -r
   endfunction
   function! BinWritePost()
     silent %!xxd -g1
-    call setpos( '.', s:saved_pos )
+    call setpos('.', s:saved_pos)
     set nomod
   endfunction
   function! BinReHex()
-    let s:saved_pos = getpos( '.' )
+    let s:saved_pos = getpos('.')
     let s:modified = &modified
     silent %!xxd -r
     silent %!xxd -g1
-    call setpos( '.', s:saved_pos )
+    call setpos('.', s:saved_pos)
     let &modified = s:modified
   endfunction
 augroup END
