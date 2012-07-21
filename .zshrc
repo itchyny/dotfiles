@@ -1,7 +1,7 @@
 # --------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2012/07/19 09:20:44.
+# - * Last Change: 2012/07/19 10:15:28.
 # --------------------------------------------------------------------------------------------------------------
 
 setopt prompt_subst
@@ -346,6 +346,7 @@ alias terminator='/bin/sh -c "VTE_CJK_WIDTH=1 terminator --disable-factory"'
 [ -e ~/Dropbox ] && cd ~/Dropbox > /dev/null
 
 # merged from incr-0.2.zsh by y.fujii
+# http://mimosa-pudica.net/zsh-incremental.html
 autoload -U compinit
 zle -N self-insert self-insert-incr
 zle -N vi-cmd-mode-incr

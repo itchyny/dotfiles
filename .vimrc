@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/07/19 09:59:22.
+" - * Last Change: 2012/07/21 12:45:27.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -23,20 +23,21 @@ let $BUNDLE = $VIM.'/bundle'
 let s:neobundle_dir = $BUNDLE.'/neobundle.vim'
 if !isdirectory(s:neobundle_dir)
   if system('which git') =~? '.*not found'
-    echo 'git not found! Sorry, this .vimrc cannot be completely used without git'
+    echo 'git not found! Sorry, this .vimrc cannot be completely used without git.'
   else
     echo 'Initializing neobundle'
-    execute '!mkdir -p '.$BUNDLE.
-       \ ' && git clone git@github.com:Shougo/neobundle.vim.git '.$BUNDLE.'/neobundle.vim'.
-       \ ' && git clone git@github.com:Shougo/unite.vim.git '.$BUNDLE.'/unite.vim'.
-       \ ' && git clone git@github.com:Shougo/neocomplcache.git '.$BUNDLE.'/neocomplcache'.
-       \ ' && git clone git@github.com:Shougo/vimproc.git '.$BUNDLE.'/vimproc'.
-       \ ' && git clone git@github.com:Shougo/vimfiler.git '.$BUNDLE.'/vimfiler'.
-       \ ' && git clone git@github.com:thinca/vim-quickrun.git '.$BUNDLE.'/vim-quickrun'.
-       \ ' && git clone git@github.com:Shougo/vimshell.git '.$BUNDLE.'/vimshell'
+    execute '!mkdir -p '.$BUNDLE
+       \.' && git clone git@github.com:Shougo/neobundle.vim.git '.$BUNDLE.'/neobundle.vim'
+       \.' && git clone git@github.com:Shougo/unite.vim.git '.$BUNDLE.'/unite.vim'
+       \.' && git clone git@github.com:Shougo/neocomplcache.git '.$BUNDLE.'/neocomplcache'
+       \.' && git clone git@github.com:Shougo/vimproc.git '.$BUNDLE.'/vimproc'
+       \.' && git clone git@github.com:Shougo/vimfiler.git '.$BUNDLE.'/vimfiler'
+       \.' && git clone git@github.com:thinca/vim-quickrun.git '.$BUNDLE.'/vim-quickrun'
+       \.' && git clone git@github.com:Shougo/vimshell.git '.$BUNDLE.'/vimshell'
     if s:ismac
       if system('which llvm-gcc') =~? '.*not found'
-        execute '!cd '.$BUNDLE.'/vimproc && gcc -O2 -W -Wall -Wno-unused -bundle -fPIC -arch x86_64 -arch i386 -o autoload/vimproc_mac.so autoload/proc.c -lutil'
+        execute '!cd '.$BUNDLE.'/vimproc && gcc -O2 -W -Wall -Wno-unused -bundle -fPIC -arch x86_64 -arch '
+              \.'i386 -o autoload/vimproc_mac.so autoload/proc.c -lutil'
       else
         execute '!cd '.$BUNDLE.'/vimproc && make -f make_mac.mak'
       endif
@@ -306,12 +307,8 @@ NeoBundle 'tpope/vim-markdown'
 
 " Colorscheme {{{
 " --------------------------------------------------------------------------------------------------------------
-" NeoBundle 'Wombat'
-" try
-"   colorscheme wombat
-" catch
-" endtry
 try
+  " color.vim is ~/.vim/colors/color.vim
   colorscheme color
 catch
 endtry
@@ -506,7 +503,7 @@ autocmd BufWritePost * call SetUTF8Xattr(expand("<afile>"))
 function! SetUTF8Xattr(file)
   let isutf8 = &fileencoding == "utf-8" || (&fileencoding == "" && &encoding == "utf-8")
   if s:ismac && isutf8
-    call system("xattr -w com.apple.TextEncoding 'utf-8;134217984' '" . a:file . "'")
+    call system("xattr -w com.apple.TextEncoding 'utf-8;134217984' '".a:file."'")
   endif
 endfunction
 " }}}
@@ -534,7 +531,7 @@ autocmd FileType vimcalc setlocal nocursorline
 autocmd FileType vimshell setlocal nocursorline
 autocmd FileType quickrun setlocal nocursorline
 set nocursorcolumn
-set showmatch               " 括弧の対応
+set showmatch
 set showtabline=1
 set previewheight=20
 " }}}
@@ -576,7 +573,7 @@ endif
 
 " FILE READING {{{
 " --------------------------------------------------------------------------------------------------------------
-set autoread                " 外部のエディタで編集中のファイルが変更されたら自動で読み直す
+set autoread
 
 " Filetype {{{
 augroup Filetype
@@ -689,7 +686,7 @@ augroup ChangeDirectory
   autocmd!
   function! s:change_directory()
     try
-      execute ':lcd ' . s:current_directory()
+      execute ':lcd '.s:current_directory()
     catch
     endtry
   endfunction
@@ -796,24 +793,25 @@ command! -bar -bang -nargs=? -complete=file Scouter
 \        echo Scouter(empty(<q-args>) ? $MYVIMRC : expand(<q-args>), <bang>0)
 " }}}
 
-" view syntax name under cursor
+" view syntax name under cursor {{{
 function! Syntax()
   :echo synIDattr(synID(line('.'), col('.'), 0), 'name')
 endfunction
 command! Syntax call Syntax()
 command! S call Syntax()
 nnoremap ss :Syntax<CR>
+" }}}
 
 " Quick open dot files {{{
 nnoremap \. :e ~/.vimrc<CR>
 nnoremap \v :so ~/.vimrc<CR>
 nnoremap ;. :e ~/.zshrc<CR>
+" }}}
 
 " template for blog {{{
 nnoremap ,cpp i>\|cpp\|<CR>\|\|<<ESC>O<ESC>
 nnoremap ,sh i>\|sh\|<CR>\|\|<<ESC>O<ESC>
 nnoremap ,hs i>\|haskell\|<CR>\|\|<<ESC>O<ESC>
-"}}}
 " }}}
 
 " }}} UTILITY
@@ -922,7 +920,7 @@ nnoremap <Down> <C-d>
 nnoremap <Up>  <C-u>
 
 " select last paste
-nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
+nnoremap <expr> gp '`['.strpart(getregtype(), 0, 1).'`]'
 
 " quit help with escapae key
 autocmd ESC FileType help nnoremap <silent> <buffer> <ESC><ESC> :<C-u>q<CR>
