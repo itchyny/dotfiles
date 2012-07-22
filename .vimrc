@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/07/21 12:45:27.
+" - * Last Change: 2012/07/22 09:34:49.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -143,7 +143,7 @@ NeoBundle 'Shougo/vimfiler'
   nnoremap @@ :<C-u>VimFilerCurrentDir<CR>
   let g:vimfiler_execute_file_list = { 'pdf': 'open',
                                      \ 'png': 'open', 'PNG': 'open',
-                                     \ 'jpg': 'open', 'JPG': 'open',
+                                     \ 'jpg': 'open', 'JPG': 'open', 'jpeg': 'open',
                                      \ 'gif': 'open', 'GIF': 'open',
                                      \ 'bmp': 'open', 'BMP': 'open',
                                      \ 'ico': 'open',
@@ -308,8 +308,8 @@ NeoBundle 'tpope/vim-markdown'
 " Colorscheme {{{
 " --------------------------------------------------------------------------------------------------------------
 try
-  " color.vim is ~/.vim/colors/color.vim
-  colorscheme color
+NeoBundle 'itchyny/landscape.vim'
+  colorscheme landscape
 catch
 endtry
 NeoBundle 'xterm-color-table.vim'
