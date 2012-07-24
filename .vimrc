@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/07/23 12:13:06.
+" - * Last Change: 2012/07/25 06:10:56.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -234,7 +234,6 @@ NeoBundle 'Shougo/vimshell'
   nnoremap <silent> <Leader>s :<C-u>execute 'VimShellCreate '.<SID>current_directory()<CR>
   nnoremap <silent> <S-h> :<C-u>execute 'VimShellPop '.<SID>current_directory()<CR>
   nnoremap <Leader>z :<C-u>VimShellInteractive zsh<CR>
-  autocmd FileType int-ghci set filetype=haskell
   nnoremap <Leader>g :<C-u>VimShellInteractive ghci<CR>
   nnoremap <Leader>p :<C-u>VimShellInteractive python<CR>
 if system('which ghc-mod') !~? '.*not found'
@@ -677,7 +676,7 @@ function! s:current_directory()
   else
     let path = substitute(expand("%:p:h"),'\*vinarise\* - ','','')
   endif
-  return escape(path, '*[]?{}, ')
+  return escape(path, '*[]?{} ')
 endfunction
 augroup ChangeDirectory
   autocmd!
