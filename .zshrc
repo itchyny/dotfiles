@@ -1,7 +1,7 @@
 # --------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2012/07/22 18:39:43.
+# - * Last Change: 2012/07/26 07:27:22.
 # --------------------------------------------------------------------------------------------------------------
 
 setopt prompt_subst
@@ -191,6 +191,7 @@ export PATH=$PATH:~/Dropbox/js/roy/
 export PATH=$PATH:~/.cabal/bin/
 export PATH=$PATH:~/Library/Haskell/bin/
 export PATH=$PATH:~/Dropbox/bin/
+export PATH=$PATH:/Applications/Xcode.app/Contents/Developer/usr/bin/
 
 # export http_proxy=http://proxy.kuins.net:8080/
 
