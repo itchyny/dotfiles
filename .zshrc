@@ -1,7 +1,7 @@
 # --------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2012/07/26 07:27:22.
+# - * Last Change: 2012/07/26 19:48:50.
 # --------------------------------------------------------------------------------------------------------------
 
 setopt prompt_subst
@@ -258,7 +258,7 @@ alias vi='vim'
 alias hs='cd ~/Dropbox/hs/'
 alias js='cd ~/Dropbox/js/'
 alias univ='cd ~/Dropbox/univ/'
-alias port='/usr/bin/env port'      # for Mac
+alias port='/usr/bin/env port'
 alias :q='exit'
 alias :qa='exit'
 alias :x='exit'
