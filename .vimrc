@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/07/30 19:41:13.
+" - * Last Change: 2012/07/31 10:12:03.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -143,12 +143,13 @@ NeoBundle 'Shougo/vimfiler'
   nnoremap @@ :<C-u>VimFilerCurrentDir<CR>
   let g:vimfiler_execute_file_list = { 'pdf': 'open', 'PDF': 'open',
                                      \ 'png': 'open', 'PNG': 'open',
-                                     \ 'jpg': 'open', 'JPG': 'open', 'jpeg': 'open',
+                                     \ 'jpg': 'open', 'JPG': 'open',
+                                     \ 'jpeg': 'open', 'JPEG': 'open',
                                      \ 'gif': 'open', 'GIF': 'open',
                                      \ 'bmp': 'open', 'BMP': 'open',
-                                     \ 'ico': 'open',
-                                     \ 'ppt': 'open',
-                                     \ 'html': 'open',
+                                     \ 'ico': 'open', 'ICO': 'open',
+                                     \ 'ppt': 'open', 'PPT': 'open',
+                                     \ 'html': 'open', 'HTML': 'open',
                                      \ }
   augroup Vimfiler
     autocmd!
