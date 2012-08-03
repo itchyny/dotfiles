@@ -1,7 +1,7 @@
 # --------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2012/08/04 06:27:50.
+# - * Last Change: 2012/08/04 06:56:01.
 # --------------------------------------------------------------------------------------------------------------
 
 setopt prompt_subst
@@ -173,26 +173,24 @@ function pcolor() {
 # bindkey '^x^p' predict-off
 # zstyle ':predict' verbose true
 
-
 # path settings
-export PATH=$PATH:/usr/local/bin/
-export PATH=$PATH:/opt/local/bin/   # for Mac
 export MANPATH=/usr/local/share/man:/usr/local/man:/usr/share/man
-# node paths
-export PATH=$PATH:~/node_modules/less/bin/
-export PATH=$PATH:~/node_modules/stylus/bin/
-export PATH=$PATH:~/node_modules/nodester-cli/bin/
-export PATH=$PATH:~/node_modules/node-dev/
-export PATH=$PATH:~/node_modules/jade/bin/
-export PATH=$PATH:~/Dropbox/js/narwhal/bin/
-export PATH=$PATH:~/Dropbox/js/jison/bin/
-export PATH=$PATH:~/Dropbox/js/coffee-script/bin/
-export PATH=$PATH:~/Dropbox/js/roy/
-export PATH=$PATH:~/.cabal/bin/
-export PATH=$PATH:~/Library/Haskell/bin/
-export PATH=$PATH:~/Dropbox/bin/
 export PATH=$PATH:/Applications/Xcode.app/Contents/Developer/usr/bin/
+export PATH=$PATH:/usr/local/bin/
 export PATH=$PATH:/usr/local/git/bin/
+export PATH=$PATH:/opt/local/bin/
+export PATH=$PATH:~/.cabal/bin/
+export PATH=$PATH:~/Dropbox/bin/
+export PATH=$PATH:~/Dropbox/js/coffee-script/bin/
+export PATH=$PATH:~/Dropbox/js/jison/bin/
+export PATH=$PATH:~/Dropbox/js/narwhal/bin/
+export PATH=$PATH:~/Dropbox/js/roy/
+export PATH=$PATH:~/Library/Haskell/bin/
+export PATH=$PATH:~/node_modules/jade/bin/
+export PATH=$PATH:~/node_modules/less/bin/
+export PATH=$PATH:~/node_modules/node-dev/
+export PATH=$PATH:~/node_modules/nodester-cli/bin/
+export PATH=$PATH:~/node_modules/stylus/bin/
 
 # export http_proxy=http://proxy.kuins.net:8080/
 
@@ -226,8 +224,6 @@ function google() {
   fi
   w3m http://www.google.co.jp/$opt
 }
-
-# export MANPAGER=cat
 
 # for vim's C-s
 stty -ixon -ixoff
