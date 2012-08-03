@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/08/03 09:14:27.
+" - * Last Change: 2012/08/03 17:16:28.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -22,7 +22,7 @@ let $VIM = $HOME.'/.vim'
 let $BUNDLE = $VIM.'/bundle'
 let s:neobundle_dir = $BUNDLE.'/neobundle.vim'
 if !isdirectory(s:neobundle_dir)
-  if system('which git') =~? '.*not found'
+  if !executable('git')
     echo 'git not found! Sorry, this .vimrc cannot be completely used without git.'
   else
     echo 'Initializing neobundle'
@@ -35,7 +35,7 @@ if !isdirectory(s:neobundle_dir)
        \.' && git clone git@github.com:thinca/vim-quickrun.git '.$BUNDLE.'/vim-quickrun'
        \.' && git clone git@github.com:Shougo/vimshell.git '.$BUNDLE.'/vimshell'
     if s:ismac
-      if system('which llvm-gcc') =~? '.*not found'
+      if !executable('llvm-gcc')
         execute '!cd '.$BUNDLE.'/vimproc && gcc -O2 -W -Wall -Wno-unused -bundle -fPIC -arch x86_64 -arch '
               \.'i386 -o autoload/vimproc_mac.so autoload/proc.c -lutil'
       else
@@ -238,7 +238,7 @@ NeoBundle 'Shougo/vimshell'
   nnoremap <Leader>z :<C-u>VimShellInteractive zsh<CR>
   nnoremap <Leader>g :<C-u>VimShellInteractive ghci<CR>
   nnoremap <Leader>p :<C-u>VimShellInteractive python<CR>
-if system('which ghc-mod') !~? '.*not found'
+if !executable('ghc-mod')
   " neocomplcache (neco-ghc) throws fatal error when ghc-mod is not found"
 NeoBundle 'neco-ghc'
 NeoBundle 'eagletmt/ghcmod-vim'
