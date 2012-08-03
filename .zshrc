@@ -1,7 +1,7 @@
 # --------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2012/08/03 09:17:19.
+# - * Last Change: 2012/08/03 12:41:29.
 # --------------------------------------------------------------------------------------------------------------
 
 setopt prompt_subst
@@ -226,7 +226,7 @@ function google() {
   w3m http://www.google.co.jp/$opt
 }
 
-export MANPAGER=cat
+# export MANPAGER=cat
 
 # for vim's C-s
 stty -ixon -ixoff
@@ -286,7 +286,7 @@ alias yoruho='sudo /usr/sbin/ntpdate time.asia.apple.com >> ~/.ntpdate.log && py
 alias roy='~/Dropbox/js/roy/roy'
 alias c='clear'
 alias d='date'
-
+alias slideshow="cam -e -c -s 2"
 case "${OSTYPE}" in
   freebsd*|darwin*)
     alias ls="ls -wG"
