@@ -1,7 +1,7 @@
 # --------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2012/07/30 13:54:01.
+# - * Last Change: 2012/08/03 09:17:19.
 # --------------------------------------------------------------------------------------------------------------
 
 setopt prompt_subst
@@ -215,16 +215,18 @@ bindkey '\@' starteditor
 # Google it within w3m
 function google() {
   local str opt
-  if [ $# != 0 ]; then # 引数が存在すれば
+  if [ $# != 0 ]; then
     for i in $*; do
       str="$str+$i"
     done
-    str=`echo $str | sed 's/^\+//'` # 先頭の「+」を削除
+    str=`echo $str | sed 's/^\+//'`
     opt='search?num=50&hl=ja&ie=utf-8&oe=utf-8&lr=lang_ja'
     opt="${opt}&q=${str}"
   fi
-  w3m http://www.google.co.jp/$opt # 引数がなければ $opt は空
+  w3m http://www.google.co.jp/$opt
 }
+
+export MANPAGER=cat
 
 # for vim's C-s
 stty -ixon -ixoff
