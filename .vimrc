@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/08/03 17:16:28.
+" - * Last Change: 2012/08/04 06:18:06.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -238,7 +238,7 @@ NeoBundle 'Shougo/vimshell'
   nnoremap <Leader>z :<C-u>VimShellInteractive zsh<CR>
   nnoremap <Leader>g :<C-u>VimShellInteractive ghci<CR>
   nnoremap <Leader>p :<C-u>VimShellInteractive python<CR>
-if !executable('ghc-mod')
+if executable('ghc-mod')
   " neocomplcache (neco-ghc) throws fatal error when ghc-mod is not found"
 NeoBundle 'neco-ghc'
 NeoBundle 'eagletmt/ghcmod-vim'
