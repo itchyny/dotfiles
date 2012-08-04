@@ -1,7 +1,7 @@
 # --------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2012/08/04 20:33:28.
+# - * Last Change: 2012/08/04 20:47:42.
 # --------------------------------------------------------------------------------------------------------------
 
 setopt prompt_subst
@@ -346,10 +346,17 @@ alias terminator='/bin/sh -c "VTE_CJK_WIDTH=1 terminator --disable-factory"'
 
 [ -e ~/Dropbox ] && cd ~/Dropbox > /dev/null
 
-# merged from incr-0.2.zsh by y.fujii
 # http://mimosa-pudica.net/zsh-incremental.html
-[ -e ~/Dropbox/dotfiles/incr-0.2.zsh ] && source ~/Dropbox/dotfiles/incr-0.2.zsh
+[ -e ~/Dropbox/dotfiles/incr-0.2.zsh ] \
+  && source ~/Dropbox/dotfiles/incr-0.2.zsh
+
+# git://github.com/zsh-users/zsh-history-substring-search.git
+[ -e ~/Dropbox/dotfiles/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] \
+  && source ~/Dropbox/dotfiles/zsh-history-substring-search/zsh-history-substring-search.zsh
 
 # git://github.com/zsh-users/zsh-syntax-highlighting.git
-[ -e ~/Dropbox/dotfiles/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] &&
-  source ~/Dropbox/dotfiles/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+[ -e ~/Dropbox/dotfiles/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] \
+  && source ~/Dropbox/dotfiles/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+
+
