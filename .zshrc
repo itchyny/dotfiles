@@ -1,7 +1,7 @@
 # --------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2012/08/04 20:47:42.
+# - * Last Change: 2012/08/05 01:15:31.
 # --------------------------------------------------------------------------------------------------------------
 
 setopt prompt_subst
@@ -283,7 +283,8 @@ alias yoruho='sudo /usr/sbin/ntpdate time.asia.apple.com >> ~/.ntpdate.log && py
 alias roy='~/Dropbox/js/roy/roy'
 alias c='clear'
 alias d='date'
-alias slideshow="cam -e -c -s 2"
+which cam > /dev/null && alias slideshow="cam -e -c -s 2"
+
 case "${OSTYPE}" in
   freebsd*|darwin*)
     alias ls="ls -wG"
@@ -357,6 +358,5 @@ alias terminator='/bin/sh -c "VTE_CJK_WIDTH=1 terminator --disable-factory"'
 # git://github.com/zsh-users/zsh-syntax-highlighting.git
 [ -e ~/Dropbox/dotfiles/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] \
   && source ~/Dropbox/dotfiles/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
 
 
