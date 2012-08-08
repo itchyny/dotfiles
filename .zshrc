@@ -1,7 +1,7 @@
 # --------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2012/08/05 01:15:31.
+# - * Last Change: 2012/08/07 09:10:29.
 # --------------------------------------------------------------------------------------------------------------
 
 setopt prompt_subst
@@ -358,5 +358,4 @@ alias terminator='/bin/sh -c "VTE_CJK_WIDTH=1 terminator --disable-factory"'
 # git://github.com/zsh-users/zsh-syntax-highlighting.git
 [ -e ~/Dropbox/dotfiles/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] \
   && source ~/Dropbox/dotfiles/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
 

@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/08/04 18:13:39.
+" - * Last Change: 2012/08/09 05:49:12.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -326,6 +326,7 @@ try
 " --|  $ sudo cp ./Iconsolata-Powerline.otf /usr/share/fonts
 set guifont=Iconsolata-Powerline.otf
 let g:Powerline_symbols='fancy'
+let g:Powerline_mode_n = 'NORMAL'
 call Pl#Hi#Allocate({
   \ 'black'          : 16,
   \ 'white'          : 231,
@@ -333,7 +334,7 @@ call Pl#Hi#Allocate({
   \ 'darkestgreen'   : 22,
   \ 'darkgreen'      : 28,
   \
-  \ 'darkestcyan'    : 20,
+  \ 'darkestcyan'    : 21,
   \ 'mediumcyan'     : 117,
   \
   \ 'darkestblue'    : 24,
@@ -347,7 +348,7 @@ call Pl#Hi#Allocate({
   \
   \ 'darkestyellow'  : 59,
   \ 'darkyellow'     : 100,
-  \ 'darkestpurple'  : 55,
+  \ 'darkestpurple'  : 57,
   \ 'mediumpurple'   : 98,
   \ 'brightpurple'   : 189,
   \
