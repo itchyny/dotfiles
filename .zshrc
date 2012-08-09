@@ -1,7 +1,7 @@
 # --------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2012/08/07 09:10:29.
+# - * Last Change: 2012/08/09 15:45:02.
 # --------------------------------------------------------------------------------------------------------------
 
 setopt prompt_subst
@@ -283,7 +283,7 @@ alias yoruho='sudo /usr/sbin/ntpdate time.asia.apple.com >> ~/.ntpdate.log && py
 alias roy='~/Dropbox/js/roy/roy'
 alias c='clear'
 alias d='date'
-which cam > /dev/null && alias slideshow="cam -e -c -s 2"
+which cam > /dev/null && alias slideshow="cam -e -c -s 1"
 
 case "${OSTYPE}" in
   freebsd*|darwin*)
