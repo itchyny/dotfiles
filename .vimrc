@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/08/13 05:46:46.
+" - * Last Change: 2012/08/13 11:40:29.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -138,6 +138,7 @@ NeoBundle 'Shougo/vimfiler'
   let g:vimfiler_tree_closed_icon = '▸'
   let g:vimfiler_file_icon = '-'
   let g:vimfiler_marked_file_icon = '*'
+  let g:vimfiler_readonly_file_icon = '✗'
   nnoremap <Leader>f :<C-u>VimFilerCurrentDir<CR>
   nnoremap <Leader><Leader> :<C-u>VimFilerCurrentDir<CR>
   nnoremap @<Leader> :<C-u>VimFilerCurrentDir<CR>
