@@ -1,11 +1,12 @@
 # --------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2012/08/13 15:35:51.
+# - * Last Change: 2012/08/13 15:44:28.
 # --------------------------------------------------------------------------------------------------------------
 
 # initialize
 setopt prompt_subst
+setopt no_check_jobs
 
 # history
 HISTFILE=~/.histfile
@@ -55,7 +56,7 @@ setopt auto_param_slash
 setopt auto_pushd
 setopt mark_dirs
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin
 
 # beep
@@ -69,7 +70,7 @@ setopt correct
 [ -e /etc/zsh_command_not_found ] && source /etc/zsh_command_not_found
 
 # operation
-WORDCHARS='*?_-.[]~=&;!#$%^(){}<>' # delete word with c-w
+WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 setopt auto_cd
 setopt no_flow_control
 
@@ -135,6 +136,9 @@ function starteditor() {
 }
 zle -N starteditor
 bindkey '\@' starteditor
+
+# cd with ls
+function chpwd() { ls }
 
 # for vim's C-s
 stty -ixon -ixoff
@@ -206,9 +210,6 @@ case "${OSTYPE}" in
     ;;
 esac
 
-# cd with ls
-function chpwd() { ls }
-
 # suffix alias according to file extension
 alias -s txt=cat
 alias -s tex=vi
@@ -248,14 +249,10 @@ function extract() {
   esac
 }
 alias -s {gz,tgz,zip,lzh,bz2,tbz,Z,tar,arj,xz}=extract
-
 alias fg='fg || if [ $? -eq 1 ]; then; vi; fi;'
-
-# .vimrcのambiwidthを参照してください
+# see ambiwidth in .vimrc
 alias gnome-terminal='/bin/sh -c "VTE_CJK_WIDTH=1 gnome-terminal --disable-factory"'
 alias terminator='/bin/sh -c "VTE_CJK_WIDTH=1 terminator --disable-factory"'
-
-[ -e ~/Dropbox ] && cd ~/Dropbox > /dev/null
 
 # http://mimosa-pudica.net/zsh-incremental.html
 [ -e ~/Dropbox/dotfiles/incr-0.2.zsh ] \
@@ -268,4 +265,6 @@ alias terminator='/bin/sh -c "VTE_CJK_WIDTH=1 terminator --disable-factory"'
 # https://github.com/zsh-users/zsh-syntax-highlighting
 [ -e ~/Dropbox/dotfiles/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] \
   && source ~/Dropbox/dotfiles/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+[ -e ~/Dropbox ] && cd ~/Dropbox > /dev/null
 
