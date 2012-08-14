@@ -1,7 +1,7 @@
 # --------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2012/08/14 10:51:47.
+# - * Last Change: 2012/08/14 10:53:53.
 # --------------------------------------------------------------------------------------------------------------
 
 # history
@@ -204,7 +204,7 @@ alias ntpupdate='sudo /usr/sbin/ntpdate time.asia.apple.com >> ~/.ntpdate.log'
   alias yoruho='sudo /usr/sbin/ntpdate time.asia.apple.com >> ~/.ntpdate.log && python ~/Dropbox/py/itchyny/yoruho.py'
 [ -e ~/Dropbox/js/roy/roy ] && \
   alias roy='~/Dropbox/js/roy/roy'
-[ -e cd ~/Dropbox/univ/ ] && \
+[ -e ~/Dropbox/univ/ ] && \
   alias univ='cd ~/Dropbox/univ/'
 case "${OSTYPE}" in
   freebsd*|darwin*)
