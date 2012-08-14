@@ -1,12 +1,8 @@
 # --------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2012/08/13 15:44:28.
+# - * Last Change: 2012/08/14 10:51:47.
 # --------------------------------------------------------------------------------------------------------------
-
-# initialize
-setopt prompt_subst
-setopt no_check_jobs
 
 # history
 HISTFILE=~/.histfile
@@ -33,6 +29,7 @@ export LSCOLORS=gxfxcxdxbxegedabagacad
 export TERM=xterm-256color
 
 # prompt
+setopt prompt_subst
 PROMPT="%(?.%{$fg[green]%}.%{$fg[blue]%})%B%~$%b%{${reset_color}%} "
 PROMPT2="%{$bg[blue]%}%_>%{$reset_color%}%b "
 SPROMPT="%{$bg[red]%}%B%r is correct? [n,y,a,e]:%{${reset_color}%}%b "
@@ -64,6 +61,7 @@ setopt no_beep
 setopt nolistbeep
 
 # appearance
+setopt no_check_jobs
 setopt print_eight_bit
 setopt list_packed
 setopt correct
@@ -164,41 +162,50 @@ elif [ `uname` = "Linux" ]; then
   # alias pbpaste='xsel -o -b'
 fi
 alias chrome='google-chrome'
-alias gosh='rlwrap gosh'
-alias coqtop='rlwrap coqtop'
-alias v='vim'
+function runcpp () { g++ $1; ./a.out; }
+alias asm=runcpp
+# editor
 alias vi='vim'
-alias hs='cd ~/Dropbox/hs/'
-alias js='cd ~/Dropbox/js/'
-alias univ='cd ~/Dropbox/univ/'
-alias port='/usr/bin/env port'
 alias :q='exit'
 alias :qa='exit'
 alias :x='exit'
 alias :xa='exit'
+alias emacs='vi'
+alias fg='fg || if [ $? -eq 1 ]; then; vi; fi;'
+# see ambiwidth in .vimrc
+alias gnome-terminal='/bin/sh -c "VTE_CJK_WIDTH=1 gnome-terminal --disable-factory"'
+alias terminator='/bin/sh -c "VTE_CJK_WIDTH=1 terminator --disable-factory"'
+# one alphabet
+alias v='vim'
 alias h='sudo shutdown -h'
 alias r='sudo shutdown -r'
 alias l='ls -al'
+alias c='clear'
+alias d='date'
+# default option
 alias mpg123='mpg123 -zC'
-function runcpp () { g++ $1; ./a.out; }
-alias asm=runcpp
 alias mplayer='mplayer -lavdopts threads=2 -loop 0 -shuffle'
-alias mp3='mplayer'
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
-alias emacs='vi'
-alias ccat='pygmentize'
 alias crontab="EDITOR=\"$HOME/bin/vi\" crontab"
-alias tweet='python ~/Dropbox/py/itchyny/tweet.py'
-alias twitter='rlwrap runhaskell ~/Dropbox/hs/twitter/twitter.hs'
-alias ntpupdate='sudo /usr/sbin/ntpdate time.asia.apple.com >> ~/.ntpdate.log'
-alias yoruho='sudo /usr/sbin/ntpdate time.asia.apple.com >> ~/.ntpdate.log && python ~/Dropbox/py/itchyny/yoruho.py'
-alias roy='~/Dropbox/js/roy/roy'
-alias c='clear'
-alias d='date'
+# rlwrap
+which gosh > /dev/null && alias gosh='rlwrap gosh'
+which coqtop > /dev/null && alias coqtop='rlwrap coqtop'
+# others
+which pygmentize > /dev/null && alias ccat='pygmentize'
 which cam > /dev/null && alias slideshow="cam -e -c -s 1"
-
+[ -e ~/Dropbox/py/itchyny/tweet.py ] && \
+  alias tweet='python ~/Dropbox/py/itchyny/tweet.py'
+[ -e ~/Dropbox/hs/twitter/twitter.hs ] && \
+  alias twitter='rlwrap runhaskell ~/Dropbox/hs/twitter/twitter.hs'
+alias ntpupdate='sudo /usr/sbin/ntpdate time.asia.apple.com >> ~/.ntpdate.log'
+[ -e ~/Dropbox/py/itchyny/yoruho.py ] && \
+  alias yoruho='sudo /usr/sbin/ntpdate time.asia.apple.com >> ~/.ntpdate.log && python ~/Dropbox/py/itchyny/yoruho.py'
+[ -e ~/Dropbox/js/roy/roy ] && \
+  alias roy='~/Dropbox/js/roy/roy'
+[ -e cd ~/Dropbox/univ/ ] && \
+  alias univ='cd ~/Dropbox/univ/'
 case "${OSTYPE}" in
   freebsd*|darwin*)
     alias ls="ls -wG"
@@ -249,10 +256,6 @@ function extract() {
   esac
 }
 alias -s {gz,tgz,zip,lzh,bz2,tbz,Z,tar,arj,xz}=extract
-alias fg='fg || if [ $? -eq 1 ]; then; vi; fi;'
-# see ambiwidth in .vimrc
-alias gnome-terminal='/bin/sh -c "VTE_CJK_WIDTH=1 gnome-terminal --disable-factory"'
-alias terminator='/bin/sh -c "VTE_CJK_WIDTH=1 terminator --disable-factory"'
 
 # http://mimosa-pudica.net/zsh-incremental.html
 [ -e ~/Dropbox/dotfiles/incr-0.2.zsh ] \
