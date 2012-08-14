@@ -1,7 +1,7 @@
 # --------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2012/08/14 10:53:53.
+# - * Last Change: 2012/08/14 16:49:49.
 # --------------------------------------------------------------------------------------------------------------
 
 # history
@@ -110,9 +110,15 @@ function mkcd {
 
 function pcolor() {
   for ((f = 0; f < 255; f++)); do
-    printf "\e[38;5;%dm %3d#\e[m" $f $f
-    if [[ $f%8 -eq 7 ]] then
-      printf "\n"
+    printf "\e[38;5;%dm %3d\e[m" $f $f
+    if [[ $f -ge 16 ]] then
+      if [[ $f%6 -eq 3 ]] then
+        printf "\n"
+      fi
+    else
+      if [[ $f%8 -eq 7 ]] then
+        printf "\n"
+      fi
     fi
   done
   echo
@@ -258,16 +264,16 @@ function extract() {
 alias -s {gz,tgz,zip,lzh,bz2,tbz,Z,tar,arj,xz}=extract
 
 # http://mimosa-pudica.net/zsh-incremental.html
-[ -e ~/Dropbox/dotfiles/incr-0.2.zsh ] \
-  && source ~/Dropbox/dotfiles/incr-0.2.zsh
+[ -e ~/Dropbox/dotfiles/incr-0.2.zsh ] && \
+  source ~/Dropbox/dotfiles/incr-0.2.zsh
 
 # https://github.com/zsh-users/zsh-history-substring-search
-[ -e ~/Dropbox/dotfiles/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] \
-  && source ~/Dropbox/dotfiles/zsh-history-substring-search/zsh-history-substring-search.zsh
+[ -e ~/Dropbox/dotfiles/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && \
+  source ~/Dropbox/dotfiles/zsh-history-substring-search/zsh-history-substring-search.zsh
 
 # https://github.com/zsh-users/zsh-syntax-highlighting
-[ -e ~/Dropbox/dotfiles/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] \
-  && source ~/Dropbox/dotfiles/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+[ -e ~/Dropbox/dotfiles/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && \
+  source ~/Dropbox/dotfiles/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 [ -e ~/Dropbox ] && cd ~/Dropbox > /dev/null
 
