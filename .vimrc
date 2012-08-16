@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/08/13 15:58:50.
+" - * Last Change: 2012/08/16 15:59:11.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -22,9 +22,7 @@ let $VIM = $HOME.'/.vim'
 let $BUNDLE = $VIM.'/bundle'
 let s:neobundle_dir = $BUNDLE.'/neobundle.vim'
 if !isdirectory(s:neobundle_dir)
-  if !executable('git')
-    echo 'git not found! Sorry, this .vimrc cannot be completely used without git.'
-  else
+  if executable('git')
     echo 'Initializing neobundle'
     execute '!mkdir -p '.$BUNDLE
        \.' && git clone git@github.com:Shougo/neobundle.vim.git '.$BUNDLE.'/neobundle.vim'
@@ -35,15 +33,17 @@ if !isdirectory(s:neobundle_dir)
        \.' && git clone git@github.com:thinca/vim-quickrun.git '.$BUNDLE.'/vim-quickrun'
        \.' && git clone git@github.com:Shougo/vimshell.git '.$BUNDLE.'/vimshell'
     if s:ismac
-      if !executable('llvm-gcc')
+      if executable('llvm-gcc')
+        execute '!cd '.$BUNDLE.'/vimproc && make -f make_mac.mak'
+      else
         execute '!cd '.$BUNDLE.'/vimproc && gcc -O2 -W -Wall -Wno-unused -bundle -fPIC -arch x86_64 -arch '
               \.'i386 -o autoload/vimproc_mac.so autoload/proc.c -lutil'
-      else
-        execute '!cd '.$BUNDLE.'/vimproc && make -f make_mac.mak'
       endif
     else
       execute '!cd '.$BUNDLE.'/vimproc && make -f make_unix.mak'
     endif
+  else
+    echo 'git not found! Sorry, this .vimrc cannot be completely used without git.'
   endif
 else
 execute 'set runtimepath+='.expand(s:neobundle_dir)
