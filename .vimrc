@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/08/16 15:59:11.
+" - * Last Change: 2012/08/18 16:24:05.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -50,7 +50,7 @@ execute 'set runtimepath+='.expand(s:neobundle_dir)
 call neobundle#rc(expand($BUNDLE))
 NeoBundle 'Shougo/neobundle.vim'
   " nnoremap <silent> <S-b><S-b> :<C-u>NeoBundleUpdate<CR>
-  nnoremap <silent> <S-b><S-b> :<C-u>Unite neobundle/install:!<CR>
+  nnoremap <silent> <S-b><S-b> :<C-u>Unite neobundle/update<CR>
 " }}}
 
 " Complement {{{
