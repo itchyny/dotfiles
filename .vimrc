@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/08/18 16:24:05.
+" - * Last Change: 2012/08/20 21:32:40.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -81,7 +81,7 @@ NeoBundle 'Shougo/unite.vim'
   let g:unite_enable_start_insert=1
   nnoremap <C-u> :Unite<SPACE>
   nnoremap <C-p> :Unite buffer<CR>
-  nnoremap <C-n> :Unite -buffer-name=file file<CR>
+  nnoremap <C-n> :Unite file/new<CR>
   nnoremap <S-k> :Unite output:message<CR>
   nnoremap <C-o> :Unite -buffer-name=file file<CR>
   nnoremap <C-z> :Unite file_mru<CR>
@@ -578,19 +578,20 @@ set autoread
 " Filetype {{{
 augroup Filetype
   autocmd!
-  autocmd BufNewFile,BufReadPost,BufEnter *.hs   set filetype=haskell
-  autocmd BufNewFile,BufReadPost,BufEnter *.json set filetype=json
-  autocmd BufNewFile,BufReadPost,BufEnter *.less set filetype=less
-  autocmd BufNewFile,BufReadPost,BufEnter *.md   set filetype=markdown
-  autocmd BufNewFile,BufReadPost,BufEnter *.mkd  set filetype=markdown
-  autocmd BufNewFile,BufReadPost,BufEnter *.qcl  set filetype=qcl
-  autocmd BufNewFile,BufReadPost,BufEnter *.r    set filetype=r
-  autocmd BufNewFile,BufReadPost,BufEnter *.roy  set filetype=roy
-  autocmd BufNewFile,BufReadPost,BufEnter *.rst  set filetype=rest
-  autocmd BufNewFile,BufReadPost,BufEnter *.tex  set filetype=tex
-  autocmd BufNewFile,BufReadPost,BufEnter *.tex  set noautoindent
-  autocmd BufNewFile,BufReadPost,BufEnter *.tex  set nosmartindent
-  autocmd BufNewFile,BufReadPost,BufEnter *.y    set filetype=haskell
+  autocmd BufNewFile,BufReadPost,BufEnter *.hs   setlocal filetype=haskell
+  autocmd BufNewFile,BufReadPost,BufEnter *.json setlocal filetype=json
+  autocmd BufNewFile,BufReadPost,BufEnter *.less setlocal filetype=less
+  autocmd BufNewFile,BufReadPost,BufEnter *.md   setlocal filetype=markdown
+  autocmd BufNewFile,BufReadPost,BufEnter *.md   setlocal shiftwidth=4
+  autocmd BufNewFile,BufReadPost,BufEnter *.mkd  setlocal filetype=markdown
+  autocmd BufNewFile,BufReadPost,BufEnter *.qcl  setlocal filetype=qcl
+  autocmd BufNewFile,BufReadPost,BufEnter *.r    setlocal filetype=r
+  autocmd BufNewFile,BufReadPost,BufEnter *.roy  setlocal filetype=roy
+  autocmd BufNewFile,BufReadPost,BufEnter *.rst  setlocal filetype=rest
+  autocmd BufNewFile,BufReadPost,BufEnter *.tex  setlocal filetype=tex
+  autocmd BufNewFile,BufReadPost,BufEnter *.tex  setlocal noautoindent
+  autocmd BufNewFile,BufReadPost,BufEnter *.tex  setlocal nosmartindent
+  autocmd BufNewFile,BufReadPost,BufEnter *.y    setlocal filetype=haskell
 augroup END
 " }}}
 
