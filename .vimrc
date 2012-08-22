@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/08/22 14:47:19.
+" - * Last Change: 2012/08/22 15:13:37.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -121,7 +121,7 @@ NeoBundle 'thinca/vim-quickrun'
   let g:quickrun_config.qcl = { 'command': 'qcl' }
   let g:quickrun_config.lhaskell = {'command' : 'runhaskell'}
   let g:quickrun_config.tex = {'command' : 'autolatex'}
-  let g:quickrun_config.nroff = { 'command': 'man', 'args': "-P cat | tr '\b' '#' | sed -e 's/.#//g'" }
+  let g:quickrun_config.nroff = { 'command': 'man', 'args': "-P cat | tr '\b' '#####' | sed -e 's/.#####//g'" }
   nnoremap <Leader>r :<C-u>QuickRun  <CR>
   nnoremap <Leader>e :<C-u>QuickRun <i <CR>
   nnoremap <Leader>o :<C-u>QuickRun <i >file:output<CR>
