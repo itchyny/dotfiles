@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/08/25 14:00:52.
+" - * Last Change: 2012/08/25 14:13:40.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -83,7 +83,7 @@ NeoBundle 'Shougo/unite.vim'
   nnoremap <C-p> :Unite buffer<CR>
   nnoremap <C-n> :Unite file/new<CR>
   nnoremap <S-k> :Unite output:message<CR>
-  nnoremap <C-o> :<C-u>execute 'Unite -buffer-name=file file:'.<SID>current_directory_abbr()<CR>
+  nnoremap <silent> <C-o> :<C-u>execute 'Unite -buffer-name=file file:'.<SID>current_directory_abbr()<CR>
   nnoremap <C-z> :Unite file_mru<CR>
   augroup Unite
     autocmd!
