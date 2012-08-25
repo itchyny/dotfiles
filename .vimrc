@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/08/25 14:13:40.
+" - * Last Change: 2012/08/25 20:34:41.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -80,11 +80,11 @@ if s:nosudo
 NeoBundle 'Shougo/unite.vim'
   let g:unite_enable_start_insert=1
   nnoremap <C-u> :Unite<SPACE>
-  nnoremap <C-p> :Unite buffer<CR>
-  nnoremap <C-n> :Unite file/new<CR>
-  nnoremap <S-k> :Unite output:message<CR>
-  nnoremap <silent> <C-o> :<C-u>execute 'Unite -buffer-name=file file:'.<SID>current_directory_abbr()<CR>
-  nnoremap <C-z> :Unite file_mru<CR>
+  nnoremap <C-p> :Unite buffer -buffer-name=buffer<CR>
+  nnoremap <C-n> :Unite file/new -buffer-name=file/new<CR>
+  nnoremap <S-k> :Unite output:message -buffer-name=output:message<CR>
+  nnoremap <silent> <C-o> :<C-u>execute 'Unite file:'.<SID>current_directory_abbr().' -buffer-name=file'<CR>
+  nnoremap <C-z> :Unite file_mru -buffer-name=file_mru<CR>
   augroup Unite
     autocmd!
     autocmd FileType unite nnoremap <silent> <buffer> <expr> <C-J> unite#do_action('split')
@@ -95,14 +95,14 @@ NeoBundle 'Shougo/unite.vim'
   autocmd ESC FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
   autocmd ESC FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
 NeoBundle 'Shougo/unite-build'
-  nnoremap <F5> :<C-u>Unite build<CR>
+  nnoremap <F5> :<C-u>Unite build -buffer-name=build<CR>
 NeoBundle 'unite-colorscheme'
 NeoBundle 'ujihisa/vim-ref'
 NeoBundle 'ujihisa/ref-hoogle'
   " --| Requirement: hoogle
   " --|   $ cabal install hoogle
   " --|   $ hoogle data
-  nnoremap <Leader>h :<C-u>Unite ref/hoogle<CR>
+  nnoremap <Leader>h :<C-u>Unite ref/hoogle -buffer-name=ref/hoogle<CR>
 NeoBundle 'h1mesuke/unite-outline'
 NeoBundle 'ujihisa/unite-haskellimport'
 endif
@@ -139,10 +139,10 @@ NeoBundle 'Shougo/vimfiler'
   let g:vimfiler_file_icon = '-'
   let g:vimfiler_marked_file_icon = '✓'
   let g:vimfiler_readonly_file_icon = '✗'
-  nnoremap <Leader>f :<C-u>VimFilerCurrentDir<CR>
-  nnoremap <Leader><Leader> :<C-u>VimFilerCurrentDir<CR>
-  nnoremap @<Leader> :<C-u>VimFilerCurrentDir<CR>
-  nnoremap @@ :<C-u>VimFilerCurrentDir<CR>
+  nnoremap <Leader>f :<C-u>VimFilerCurrentDir -buffer-name=vimfiler<CR>
+  nnoremap <Leader><Leader> :<C-u>VimFilerCurrentDir -buffer-name=vimfiler<CR>
+  nnoremap @<Leader> :<C-u>VimFilerCurrentDir -buffer-name=vimfiler<CR>
+  nnoremap @@ :<C-u>VimFilerCurrentDir -buffer-name=vimfiler<CR>
   let g:vimfiler_execute_file_list = { 'pdf': 'open', 'PDF': 'open',
                                      \ 'png': 'open', 'PNG': 'open',
                                      \ 'jpg': 'open', 'JPG': 'open',
@@ -161,7 +161,7 @@ NeoBundle 'Shougo/vimfiler'
     autocmd FileType vimfiler nmap <buffer> <C-r> <Plug>(vimfiler_redraw_screen)
     autocmd FileType vimfiler nmap <buffer> O <Plug>(vimfiler_sync_with_another_vimfiler)
     autocmd FileType vimfiler nmap <buffer><expr> e vimfiler#smart_cursor_map("\<Plug>(vimfiler_cd_file)","\<Plug>(vimfiler_edit_file)")
-    autocmd VimEnter * if argc() == 0 | execute('VimFiler') | endif
+    autocmd VimEnter * if argc() == 0 | execute('VimFiler -buffer-name=vimfiler') | endif
   augroup END
 NeoBundle 'Shougo/vinarise'
 endif
@@ -240,7 +240,7 @@ NeoBundle 'Shougo/vimshell'
   nnoremap <Leader>g :<C-u>VimShellInteractive ghci<CR>
   nnoremap <Leader>p :<C-u>VimShellInteractive python<CR>
 if executable('ghc-mod')
-  " neocomplcache (neco-ghc) throws fatal error when ghc-mod is not found"
+  " neocomplcache (neco-ghc) throws fatal error when ghc-mod is not found
 NeoBundle 'neco-ghc'
 NeoBundle 'eagletmt/ghcmod-vim'
   " --| Requirement: ghc-mod
