@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/08/26 00:32:53.
+" - * Last Change: 2012/08/26 00:47:50.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -532,11 +532,13 @@ set number
 autocmd FileType vimshell setlocal nonumber
 autocmd FileType vimcalc setlocal nonumber
 autocmd FileType quickrun setlocal nonumber
+autocmd FileType int-ghci setlocal nonumber
 set cursorline
 autocmd FileType calendar setlocal nocursorline
 autocmd FileType vimcalc setlocal nocursorline
 autocmd FileType vimshell setlocal nocursorline
 autocmd FileType quickrun setlocal nocursorline
+autocmd FileType int-ghci setlocal nocursorline
 set nocursorcolumn
 set showmatch
 set showtabline=1
