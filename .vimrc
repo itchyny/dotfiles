@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/08/23 19:10:19.
+" - * Last Change: 2012/08/25 14:00:52.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -83,7 +83,7 @@ NeoBundle 'Shougo/unite.vim'
   nnoremap <C-p> :Unite buffer<CR>
   nnoremap <C-n> :Unite file/new<CR>
   nnoremap <S-k> :Unite output:message<CR>
-  nnoremap <C-o> :Unite -buffer-name=file file<CR>
+  nnoremap <C-o> :<C-u>execute 'Unite -buffer-name=file file:'.<SID>current_directory_abbr()<CR>
   nnoremap <C-z> :Unite file_mru<CR>
   augroup Unite
     autocmd!
@@ -682,6 +682,11 @@ function! s:current_directory()
     let path = substitute(expand("%:p:h"),'\*vinarise\* - ','','')
   endif
   return escape(path, '*[]?{} ')
+endfunction
+function! s:current_directory_abbr()
+  return substitute(substitute(s:current_directory(),
+        \ escape(substitute(expand("%:p:h"),'\*vinarise\* - ','',''), '*[]?{} ')
+        \ , '.', ''), '^./', '', '')
 endfunction
 augroup ChangeDirectory
   autocmd!
