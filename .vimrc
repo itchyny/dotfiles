@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/08/26 01:10:54.
+" - * Last Change: 2012/08/27 22:22:43.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -42,7 +42,11 @@ if !isdirectory(s:neobundle_dir)
         echo 'gcc not found!'
       endif
     else
-      execute '!cd '.$BUNDLE.'/vimproc && make -f make_unix.mak'
+      if executable('gcc')
+        execute '!cd '.$BUNDLE.'/vimproc && make -f make_unix.mak'
+      else
+        echo 'gcc not found!'
+      endif
     endif
   else
     echo 'git not found! Sorry, this .vimrc cannot be completely used without git.'
