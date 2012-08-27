@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/08/27 23:01:52.
+" - * Last Change: 2012/08/27 23:03:45.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -102,7 +102,7 @@ NeoBundle 'Shougo/unite.vim'
   autocmd ESC FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
   autocmd ESC FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
 NeoBundle 'Shougo/unite-build'
-  nnoremap <F5> :<C-u>Unite build -buffer-name=build<CR>
+  nnoremap <silent><F5> :<C-u>Unite build -buffer-name=build<CR>
 NeoBundle 'unite-colorscheme'
 NeoBundle 'ujihisa/vim-ref'
 NeoBundle 'ujihisa/ref-hoogle'
