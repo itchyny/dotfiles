@@ -1,7 +1,7 @@
 # --------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2012/09/03 10:48:14.
+# - * Last Change: 2012/09/05 10:09:25.
 # --------------------------------------------------------------------------------------------------------------
 
 # history
@@ -174,7 +174,7 @@ elif [ `uname` = "Linux" ]; then
   # alias pbpaste='xsel -o -b'
 fi
 alias chrome='google-chrome'
-function runcpp () { g++ $1; ./a.out; }
+function runcpp () { g++ -O3 $1; ./a.out; }
 alias asm=runcpp
 # editor
 alias vi='vim'
