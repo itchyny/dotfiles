@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/09/05 11:37:48.
+" - * Last Change: 2012/09/11 07:47:53.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -289,6 +289,7 @@ endif
 " Syntax {{{
 " --------------------------------------------------------------------------------------------------------------
 NeoBundle 'scrooloose/syntastic'
+NeoBundle 'chikatoike/activefix.vim'
 NeoBundle 'mattn/zencoding-vim'
   let g:user_zen_expandabbr_key = '<c-e>'
   let g:user_zen_settings = { 'html' : { 'indentation' : '  ' }, }

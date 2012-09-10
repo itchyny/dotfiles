@@ -1,7 +1,7 @@
 # --------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2012/09/05 10:09:25.
+# - * Last Change: 2012/09/09 09:19:25.
 # --------------------------------------------------------------------------------------------------------------
 
 # history
@@ -196,7 +196,8 @@ alias c='clear'
 alias d='date'
 # default option
 alias mpg123='mpg123 -zC'
-alias mplayer='mplayer -lavdopts threads=2 -loop 0 -shuffle'
+alias mplayer='mplayer -subdelay 100000'
+alias music='mplayer -lavdopts threads=2 -loop 0 -shuffle'
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
