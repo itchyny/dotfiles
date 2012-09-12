@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/09/11 07:47:53.
+" - * Last Change: 2012/09/12 12:49:49.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -872,9 +872,9 @@ noremap v <S-v>
 vnoremap <C-c> y
 inoremap <C-p> <ESC>:<C-u>set paste<CR>p:<C-u>set nopaste<CR>
 if s:ismac
-  nmap \pp :r !pbpaste<CR><CR>
-  nmap \pb :.w !pbcopy<CR><CR>
-  vmap \pb :w !pbcopy<CR><CR>
+  nmap <silent> \pp :r !pbpaste<CR><CR>
+  nmap <silent> \pb :.w !pbcopy<CR><CR>
+  vmap <silent> \pb :w !pbcopy<CR><CR>
 endif
 
 " remove spaces at the end of lines
