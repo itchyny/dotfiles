@@ -1,7 +1,7 @@
 # --------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2012/09/09 09:19:25.
+# - * Last Change: 2012/09/13 15:35:39.
 # --------------------------------------------------------------------------------------------------------------
 
 # history
@@ -202,6 +202,7 @@ alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 alias crontab="EDITOR=\"$HOME/bin/vi\" crontab"
+alias arxiv="wget --user-agent='Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_1) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/21.0.1180.89 Safari/537.1' "
 # rlwrap
 which gosh > /dev/null && alias gosh='rlwrap gosh'
 which coqtop > /dev/null && alias coqtop='rlwrap coqtop'
