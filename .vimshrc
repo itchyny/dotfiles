@@ -23,3 +23,4 @@ alias ll='ls -alt'
 alias port_update='sudo port selfupdate && sudo port -d sync  && sudo port outdated && sudo port upgrade outdated'
 alias mplayer='mplayer -lavdopts threads=2 -loop 0 -shuffle'
 alias c='clear'
+alias wget="wget --user-agent='Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_1) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/21.0.1180.89 Safari/537.1' "
