@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/09/15 00:35:52.
+" - * Last Change: 2012/09/15 11:17:45.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -173,8 +173,7 @@ NeoBundle 'Shougo/vimfiler'
     autocmd FileType vimfiler nmap <buffer> <C-r> <Plug>(vimfiler_redraw_screen)
     autocmd FileType vimfiler nmap <buffer> O <Plug>(vimfiler_sync_with_another_vimfiler)
     autocmd FileType vimfiler nmap <buffer><expr> e vimfiler#smart_cursor_map("\<Plug>(vimfiler_cd_file)","\<Plug>(vimfiler_edit_file)")
-    autocmd VimEnter * if argc() == 0 && exists(':VimFiler')
-          \| execute('VimFiler -buffer-name=vimfiler') | endif
+    autocmd VimEnter * if argc() == 0 && exists(':VimFiler') | execute('VimFiler -buffer-name=vimfiler') | endif
   augroup END
 NeoBundle 'Shougo/vinarise'
 endif

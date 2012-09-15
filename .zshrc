@@ -1,7 +1,7 @@
 # --------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2012/09/13 15:37:26.
+# - * Last Change: 2012/09/15 19:29:30.
 # --------------------------------------------------------------------------------------------------------------
 
 # history
@@ -130,7 +130,7 @@ function cdup() {
   zle reset-prompt
 }
 zle -N cdup
-bindkey '\^' cdup
+bindkey '^' cdup
 
 function starteditor() {
   exec < /dev/tty
@@ -138,7 +138,7 @@ function starteditor() {
   zle reset-prompt
 }
 zle -N starteditor
-bindkey '\@' starteditor
+bindkey '@' starteditor
 
 function clean() {
   clear
