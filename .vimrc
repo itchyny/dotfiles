@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/09/15 20:16:30.
+" - * Last Change: 2012/09/16 20:55:30.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -290,7 +290,7 @@ endif
 " Syntax {{{
 " --------------------------------------------------------------------------------------------------------------
 NeoBundle 'scrooloose/syntastic'
-NeoBundle 'chikatoike/activefix.vim'
+" NeoBundle 'chikatoike/activefix.vim'
 NeoBundle 'mattn/zencoding-vim'
   let g:user_zen_expandabbr_key = '<c-e>'
   let g:user_zen_settings = { 'html' : { 'indentation' : '  ' }, }
@@ -337,9 +337,9 @@ try
 " --|  $ sudo apt-get install python-fontforge
 " --|  $ cd ~/.vim/bundle/vim-powerline/fontpatcher
 " --|  $ wget http://levien.com/type/myfonts/Inconsolata.otf
-" --|  $ python ./fontpatcher ./Iconsolata.otf
-" --|  $ sudo cp ./Iconsolata-Powerline.otf /usr/share/fonts
-set guifont=Iconsolata-Powerline.otf
+" --|  $ python ./fontpatcher ./Inconsolata.otf
+" --|  $ sudo cp ./Inconsolata-Powerline.otf /usr/share/fonts
+set guifont=Inconsolata-Powerline.otf
 let g:Powerline_symbols='fancy'
 let g:Powerline_mode_n = 'NORMAL'
 call Pl#Hi#Allocate({
