@@ -1,15 +1,17 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/09/17 15:32:10.
+" - * Last Change: 2012/09/17 17:28:59.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
 " --------------------------------------------------------------------------------------------------------------
 set nocompatible
 filetype off
+let s:isunix = has('unix')
 let s:iswin = has('win16') || has('win32') || has('win64')
-let s:ismac = has('mac') || system('uname') =~? 'Darwin'
+let s:iscygwin = has('win32unix')
+let s:ismac = !s:iswin && !s:iscygwin && (has('mac') || has('macunix') || has('guimacvim') || system('uname') =~? '^darwin')
 let s:nosudo = $SUDO_USER == ''
 augroup ESC
   autocmd!
@@ -145,8 +147,8 @@ NeoBundle 'Shougo/vimfiler'
   let g:vimfiler_sort_type = 'TIME'
   let g:vimfiler_safe_mode_by_default = 0
   if s:iswin
-    let g:vimfiler_tree_leaf_icon = '+'
-    let g:vimfiler_tree_opened_icon = '+'
+    let g:vimfiler_tree_leaf_icon = '|'
+    let g:vimfiler_tree_opened_icon = '-'
     let g:vimfiler_tree_closed_icon = '+'
   else
     let g:vimfiler_tree_leaf_icon = ' '
