@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/09/17 12:06:11.
+" - * Last Change: 2012/09/17 13:31:43.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -696,6 +696,17 @@ set clipboard=unnamed
 set clipboard+=autoselect
 " }}}
 
+" IME {{{
+set iminsert=0
+set imsearch=-1
+" }}}
+
+" Windows specific {{{
+if s:iswin
+  set noswapfile
+endif
+" }}}
+
 " }}} EDIT
 
 " UTILITY {{{
@@ -804,6 +815,8 @@ nnoremap ge :call Explorer()<CR>
 function! TextEdit()
   if s:ismac
     execute '! open -a TextEdit %'
+  elseif s:iswin
+    execute '! notepad %'
   else
     execute '! gedit %'
   endif
