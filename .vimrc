@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/09/17 14:24:51.
+" - * Last Change: 2012/09/17 15:32:10.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -43,6 +43,8 @@ if !isdirectory(s:neobundle_dir)
       else
         echo 'gcc not found!'
       endif
+    elseif s:iswin
+      echo "access https://github.com/Shougo/vimproc/downloads to get dll"
     else
       if executable('gcc')
         execute '!cd '.$BUNDLE.'/vimproc && make -f make_unix.mak'
@@ -255,8 +257,8 @@ NeoBundle 'Shougo/vimshell'
     autocmd FileType vimshell autocmd BufEnter * call vimshell#start_insert(1)
   augroup END
   nnoremap <silent> <Leader><Leader>s :<C-u>VimShell -split<CR>
-  nnoremap <silent> <Leader>s :<C-u>execute 'VimShellCreate '.<SID>current_directory()<CR>
-  nnoremap <silent> <S-h> :<C-u>execute 'VimShellPop '.<SID>current_directory()<CR>
+  nnoremap <silent> <Leader>s :<C-u>execute 'VimShellCreate '.<SID>current_directory_auto()<CR>
+  nnoremap <silent> <S-h> :<C-u>execute 'VimShellPop '.<SID>current_directory_auto()<CR>
   nnoremap <Leader>z :<C-u>VimShellInteractive zsh<CR>
   nnoremap <Leader>g :<C-u>VimShellInteractive ghci<CR>
   nnoremap <Leader>p :<C-u>VimShellInteractive python<CR>
@@ -713,17 +715,26 @@ endif
 " --------------------------------------------------------------------------------------------------------------
 " Move to the directory for each buffer {{{
 function! s:current_directory()
+  return escape(substitute(expand("%:p:h"),'\*vinarise\* - ','',''), '*[]?{} ')
+endfunction
+function! s:current_directory_auto()
   if &filetype ==# 'vimfiler'
     let path = b:vimfiler.current_dir
   else
-    let path = substitute(expand("%:p:h"),'\*vinarise\* - ','','')
+    let path = s:current_directory()
   endif
   return escape(path, '*[]?{} ')
 endfunction
 function! s:current_directory_abbr()
-  return substitute(substitute(s:current_directory(),
-        \ escape(substitute(expand("%:p:h"),'\*vinarise\* - ','',''), '*[]?{} ')
-        \ , '.', ''), '^./', '', '')
+  let path = s:current_directory_auto()
+  let rawpath = s:current_directory()
+  if s:iswin
+    if &filetype !=# 'vimfiler'
+      let path = substitute(path, '\\', '/', 'g')
+    endif
+    let rawpath = substitute(rawpath, '\\', '/', 'g')
+  endif
+  return substitute(substitute(path, rawpath, '.', ''), '^./', '', '')
 endfunction
 augroup ChangeDirectory
   autocmd!
