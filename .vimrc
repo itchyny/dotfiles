@@ -1,18 +1,20 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/09/16 20:55:30.
+" - * Last Change: 2012/09/17 12:06:11.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
 " --------------------------------------------------------------------------------------------------------------
 set nocompatible
 filetype off
+let s:iswin = has('win16') || has('win32') || has('win64')
 let s:ismac = has('mac') || system('uname') =~? 'Darwin'
 let s:nosudo = $SUDO_USER == ''
 augroup ESC
   autocmd!
 augroup END
+autocmd GUIEnter * simalt ~x
 " }}}
 
 " Bundles {{{
@@ -140,9 +142,15 @@ NeoBundle 'Shougo/vimfiler'
   let g:vimfiler_as_default_explorer = 1
   let g:vimfiler_sort_type = 'TIME'
   let g:vimfiler_safe_mode_by_default = 0
-  let g:vimfiler_tree_leaf_icon = ' '
-  let g:vimfiler_tree_opened_icon = '▾'
-  let g:vimfiler_tree_closed_icon = '▸'
+  if s:iswin
+    let g:vimfiler_tree_leaf_icon = '+'
+    let g:vimfiler_tree_opened_icon = '+'
+    let g:vimfiler_tree_closed_icon = '+'
+  else
+    let g:vimfiler_tree_leaf_icon = ' '
+    let g:vimfiler_tree_opened_icon = '▾'
+    let g:vimfiler_tree_closed_icon = '▸'
+  endif
   let g:vimfiler_file_icon = '-'
   if s:ismac
     let g:vimfiler_readonly_file_icon = '✗'
@@ -339,7 +347,7 @@ try
 " --|  $ wget http://levien.com/type/myfonts/Inconsolata.otf
 " --|  $ python ./fontpatcher ./Inconsolata.otf
 " --|  $ sudo cp ./Inconsolata-Powerline.otf /usr/share/fonts
-set guifont=Inconsolata-Powerline.otf
+set guifont=Inconsolata_for_Powerline:h11:cANSI
 let g:Powerline_symbols='fancy'
 let g:Powerline_mode_n = 'NORMAL'
 call Pl#Hi#Allocate({
@@ -533,7 +541,11 @@ set noshowmode " https://github.com/vim-jp/issues/issues/100
 
 " Main appearance {{{
 set list
-set listchars=tab:▸\ ,extends:»,precedes:«,nbsp:%
+if s:iswin
+  set listchars=tab:^I,nbsp:%
+else
+  set listchars=tab:▸\ ,extends:»,precedes:«,nbsp:%
+endif
 set shortmess+=I            " disable start up message
 set number
 autocmd FileType vimshell setlocal nonumber
