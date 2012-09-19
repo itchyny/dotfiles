@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/09/17 17:28:59.
+" - * Last Change: 2012/09/19 00:20:41.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -95,7 +95,7 @@ NeoBundle 'Shougo/unite.vim'
   nnoremap <silent><C-p> :Unite buffer -buffer-name=buffer<CR>
   nnoremap <silent><C-n> :Unite file/new directory/new -buffer-name=file/new,directory/new<CR>
   nnoremap <silent><S-k> :Unite output:message -buffer-name=output:message<CR>
-  nnoremap <silent><C-o> :execute 'Unite file:'.<SID>current_directory_abbr().' -buffer-name=file'<CR>
+  nnoremap <silent><C-o> :execute 'Unite file:'.<SID>change_directory().' -buffer-name=file'<CR>
   nnoremap <silent><C-z> :Unite file_mru -buffer-name=file_mru<CR>
   nnoremap <silent><S-l> :Unite line -buffer-name=line<CR>
   augroup Unite
@@ -129,9 +129,9 @@ NeoBundle 'thinca/vim-quickrun'
   let g:quickrun_config = {'*': {'runmode': 'async:vimproc', 'split': 'vertical', 'into': 1}}
   let g:quickrun_config.javascript = {'command' : 'node'}
   let g:quickrun_config.roy = {'command' : 'roy'}
-  let g:quickrun_config.hss = {'command' : 'runhaskell'}
   let g:quickrun_config.markdown = {'type' : 'markdown/pandoc', 'outputter': 'browser', 'cmdopt': '-s'}
   let g:quickrun_config.qcl = {'command': 'qcl'}
+  let g:quickrun_config.haskell = {'command' : 'runhaskell'}
   let g:quickrun_config.lhaskell = {'command' : 'runhaskell'}
   let g:quickrun_config.tex = {'command' : 'autolatex'}
   let g:quickrun_config.nroff = {'command': 'man', 'args': "-P cat | tr '\b' '\1' | sed -e 's/.\1//g'", 'filetype': 'man'}
@@ -352,6 +352,7 @@ try
 " --|  $ python ./fontpatcher ./Inconsolata.otf
 " --|  $ sudo cp ./Inconsolata-Powerline.otf /usr/share/fonts
 set guifont=Inconsolata_for_Powerline:h11:cANSI
+set guifontwide=MS_Gothic:h11:cSHIFTJIS
 let g:Powerline_symbols='fancy'
 let g:Powerline_mode_n = 'NORMAL'
 call Pl#Hi#Allocate({
@@ -738,14 +739,15 @@ function! s:current_directory_abbr()
   endif
   return substitute(substitute(path, rawpath, '.', ''), '^./', '', '')
 endfunction
+function! s:change_directory()
+  try
+    execute ':lcd '.s:current_directory_auto()
+  catch
+  endtry
+  return s:current_directory_abbr()
+endfunction
 augroup ChangeDirectory
   autocmd!
-  function! s:change_directory()
-    try
-      execute ':lcd '.s:current_directory()
-    catch
-    endtry
-  endfunction
   autocmd BufEnter * call s:change_directory()
 augroup END
 " }}}
