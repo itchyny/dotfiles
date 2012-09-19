@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/09/20 00:15:58.
+" - * Last Change: 2012/09/20 00:25:28.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -107,7 +107,7 @@ NeoBundle 'Shougo/unite.vim'
   augroup END
   autocmd ESC FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
   autocmd ESC FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
-  let $STARTFILE='\.*.\(exe\|png\|gif\|jpg\|jpeg\|bmp\|pdf\|mp3\|mp4\|avi\|mkv\)'
+  let s:startfiletypes = '\.*.\(exe\|png\|gif\|jpg\|jpeg\|bmp\|pdf\|mp3\|mp4\|avi\|mkv\)'
   let auto_open = {
         \ 'description' : 'edit or open files',
         \ 'is_selectable' : 1,
@@ -115,7 +115,7 @@ NeoBundle 'Shougo/unite.vim'
   function! auto_open.func(candidates)
     try
       for candidate in a:candidates
-        if candidate.word =~? $STARTFILE
+        if candidate.word =~? s:startfiletypes
           call unite#take_action('start', candidate)
         else
           call unite#take_action('open', candidate)
