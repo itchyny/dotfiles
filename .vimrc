@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/09/20 00:10:51.
+" - * Last Change: 2012/09/20 00:15:58.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -708,7 +708,7 @@ set shiftwidth=2
 augroup Textwidth
   autocmd!
   autocmd FileType * set textwidth=0   " No auto breking line
-  autocmd FileType *.rest set textwidth=50
+  autocmd FileType *.rest setlocal textwidth=50
 augroup END
 set expandtab               " insert spaces with <Tab>
 set tabstop=2
