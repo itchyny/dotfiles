@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/09/19 00:20:41.
+" - * Last Change: 2012/09/20 00:10:51.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -107,6 +107,26 @@ NeoBundle 'Shougo/unite.vim'
   augroup END
   autocmd ESC FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
   autocmd ESC FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
+  let $STARTFILE='\.*.\(exe\|png\|gif\|jpg\|jpeg\|bmp\|pdf\|mp3\|mp4\|avi\|mkv\)'
+  let auto_open = {
+        \ 'description' : 'edit or open files',
+        \ 'is_selectable' : 1,
+        \ }
+  function! auto_open.func(candidates)
+    try
+      for candidate in a:candidates
+        if candidate.word =~? $STARTFILE
+          call unite#take_action('start', candidate)
+        else
+          call unite#take_action('open', candidate)
+        endif
+      endfor
+    catch
+    endtry
+  endfunction
+  call unite#custom_action('file', 'auto open', auto_open)
+  call unite#custom_default_action('file', 'auto open')
+  unlet auto_open
 NeoBundle 'Shougo/unite-build'
   nnoremap <silent><F5> :<C-u>Unite build -buffer-name=build<CR>
 NeoBundle 'unite-colorscheme'
