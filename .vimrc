@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/09/20 00:25:28.
+" - * Last Change: 2012/09/20 17:31:57.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -100,10 +100,11 @@ NeoBundle 'Shougo/unite.vim'
   nnoremap <silent><S-l> :Unite line -buffer-name=line<CR>
   augroup Unite
     autocmd!
-    autocmd FileType unite nnoremap <silent> <buffer> <expr> <C-J> unite#do_action('split')
-    autocmd FileType unite inoremap <silent> <buffer> <expr> <C-J> unite#do_action('split')
-    autocmd FileType unite nnoremap <silent> <buffer> <expr> <C-K> unite#do_action('vsplit')
-    autocmd FileType unite inoremap <silent> <buffer> <expr> <C-K> unite#do_action('vsplit')
+    autocmd FileType unite nnoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
+    autocmd FileType unite inoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
+    autocmd FileType unite nnoremap <silent> <buffer> <expr> <C-k> unite#do_action('vsplit')
+    autocmd FileType unite inoremap <silent> <buffer> <expr> <C-k> unite#do_action('vsplit')
+    autocmd FileType unite nmap <buffer> <C-a> <Plug>(unite_insert_enter)
   augroup END
   autocmd ESC FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
   autocmd ESC FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
