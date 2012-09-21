@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/09/20 17:31:57.
+" - * Last Change: 2012/09/21 09:33:39.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -132,11 +132,13 @@ NeoBundle 'Shougo/unite-build'
   nnoremap <silent><F5> :<C-u>Unite build -buffer-name=build<CR>
 NeoBundle 'unite-colorscheme'
 NeoBundle 'ujihisa/vim-ref'
+if executable('hoogle')
 NeoBundle 'ujihisa/ref-hoogle'
   " --| Requirement: hoogle
   " --|   $ cabal install hoogle
   " --|   $ hoogle data
   nnoremap <Leader>h :<C-u>Unite ref/hoogle -buffer-name=ref/hoogle<CR>
+endif
 NeoBundle 'h1mesuke/unite-outline'
 NeoBundle 'ujihisa/unite-haskellimport'
 endif
@@ -206,7 +208,7 @@ NeoBundle 'Shougo/vimfiler'
     autocmd FileType vimfiler nmap <buffer> <C-r> <Plug>(vimfiler_redraw_screen)
     autocmd FileType vimfiler nmap <buffer> O <Plug>(vimfiler_sync_with_another_vimfiler)
     autocmd FileType vimfiler nmap <buffer><expr> e vimfiler#smart_cursor_map("\<Plug>(vimfiler_cd_file)","\<Plug>(vimfiler_edit_file)")
-    autocmd VimEnter * if argc() == 0 && exists(':VimFiler') | execute('VimFiler -buffer-name=vimfiler') | endif
+    " autocmd VimEnter * if argc() == 0 && exists(':VimFiler') | execute('VimFiler -buffer-name=vimfiler') | endif
   augroup END
 NeoBundle 'Shougo/vinarise'
 endif
@@ -253,7 +255,7 @@ NeoBundle 'Shougo/vimshell'
     autocmd FileType vimshell inoremap <buffer> <C-j> <ESC><C-w>j
     autocmd FileType vimshell inoremap <buffer> <C-k> <ESC><C-w>k
     autocmd FileType vimshell inoremap <buffer> <C-l> <ESC><C-w>l
-    autocmd FileType vimshell inoremap <silent><buffer> _ <ESC>:call vimshell#execute('clear')<CR>i<Space>$<Space>
+    autocmd FileType vimshell inoremap <silent><buffer> __ <ESC>:call vimshell#execute('clear')<CR>i<Space>$<Space>
     " disable unexpected deleting
     autocmd FileType vimshell nnoremap <buffer> dj <Nop>
     autocmd FileType vimshell nnoremap <buffer> dk <Nop>
@@ -334,10 +336,10 @@ NeoBundle 'JSON.vim'
 NeoBundle 'html5.vim'
 NeoBundle 'wavded/vim-stylus'
 NeoBundle 'colorizer'
-  " augroup colorizer
-  "   autocmd!
-  "   autocmd BufNewFile,BufReadPost *.css ColorHighlight
-  " augroup END
+  augroup colorizer
+    autocmd!
+    autocmd BufNewFile,BufReadPost *.css ColorHighlight
+  augroup END
 NeoBundle 'groenewege/vim-less'
 NeoBundle 'less.vim'
 NeoBundle 'syntaxm4.vim'
@@ -574,16 +576,16 @@ else
 endif
 set shortmess+=I            " disable start up message
 set number
-autocmd FileType vimshell setlocal nonumber
-autocmd FileType vimcalc setlocal nonumber
-autocmd FileType quickrun setlocal nonumber
-autocmd FileType int-ghci setlocal nonumber
+  autocmd FileType vimshell setlocal nonumber
+  autocmd FileType vimcalc setlocal nonumber
+  autocmd FileType quickrun setlocal nonumber
+  autocmd FileType int-ghci setlocal nonumber
 set cursorline
-autocmd FileType calendar setlocal nocursorline
-autocmd FileType vimcalc setlocal nocursorline
-autocmd FileType vimshell setlocal nocursorline
-autocmd FileType quickrun setlocal nocursorline
-autocmd FileType int-ghci setlocal nocursorline
+  autocmd FileType calendar setlocal nocursorline
+  autocmd FileType vimcalc setlocal nocursorline
+  autocmd FileType vimshell setlocal nocursorline
+  autocmd FileType quickrun setlocal nocursorline
+  autocmd FileType int-ghci setlocal nocursorline
 set nocursorcolumn
 set showmatch
 set showtabline=1
@@ -634,15 +636,12 @@ augroup Filetype
   autocmd BufNewFile,BufReadPost,BufEnter *.json setlocal filetype=json
   autocmd BufNewFile,BufReadPost,BufEnter *.less setlocal filetype=less
   autocmd BufNewFile,BufReadPost,BufEnter *.md   setlocal filetype=markdown
-  autocmd BufNewFile,BufReadPost,BufEnter *.md   setlocal shiftwidth=4
   autocmd BufNewFile,BufReadPost,BufEnter *.mkd  setlocal filetype=markdown
   autocmd BufNewFile,BufReadPost,BufEnter *.qcl  setlocal filetype=qcl
   autocmd BufNewFile,BufReadPost,BufEnter *.r    setlocal filetype=r
   autocmd BufNewFile,BufReadPost,BufEnter *.roy  setlocal filetype=roy
   autocmd BufNewFile,BufReadPost,BufEnter *.rst  setlocal filetype=rest
   autocmd BufNewFile,BufReadPost,BufEnter *.tex  setlocal filetype=tex
-  autocmd BufNewFile,BufReadPost,BufEnter *.tex  setlocal noautoindent
-  autocmd BufNewFile,BufReadPost,BufEnter *.tex  setlocal nosmartindent
   autocmd BufNewFile,BufReadPost,BufEnter *.y    setlocal filetype=haskell
 augroup END
 " }}}
@@ -700,17 +699,16 @@ set magic                   " パターン中で.[*の特殊文字を使用す�
 " Indent {{{
 filetype plugin indent on
 set autoindent
+  autocmd FileType tex setlocal noautoindent
 set smartindent
+  autocmd FileType tex setlocal nosmartindent
 set shiftwidth=2
   autocmd FileType markdown setlocal shiftwidth=4
 " }}}
 
 " Special keys (tab, backspace) {{{
-augroup Textwidth
-  autocmd!
-  autocmd FileType * set textwidth=0   " No auto breking line
-  autocmd FileType *.rest setlocal textwidth=50
-augroup END
+set textwidth=0   " No auto breking line
+  autocmd FileType rest setlocal textwidth=50
 set expandtab               " insert spaces with <Tab>
 set tabstop=2
 retab
@@ -737,28 +735,36 @@ endif
 
 " UTILITY {{{
 " --------------------------------------------------------------------------------------------------------------
-" Move to the directory for each buffer {{{
-function! s:current_directory()
-  return escape(substitute(expand("%:p:h"),'\*vinarise\* - ','',''), '*[]?{} ')
+" Move to the directory for each buffer, current directory functions {{{
+function! s:directory_escape(directory)
+  return escape(a:directory, '*[]?{} ')
+endfunction
+function! s:current_directory_raw()
+  return substitute(expand('%:p:h'),'\*\(vinarise\|bitmapview\)\* - ','','')
+endfunction
+function! s:current_directory_escape()
+  return s:directory_escape(s:current_directory_raw())
 endfunction
 function! s:current_directory_auto()
   if &filetype ==# 'vimfiler'
-    let path = b:vimfiler.current_dir
+    return s:directory_escape(b:vimfiler.current_dir)
   else
-    let path = s:current_directory()
+    return s:current_directory_escape()
   endif
-  return escape(path, '*[]?{} ')
+endfunction
+function! s:substitute_path_slash(path)
+  return substitute(a:path, '\\', '/', 'g')
 endfunction
 function! s:current_directory_abbr()
   let path = s:current_directory_auto()
-  let rawpath = s:current_directory()
+  let rawpath = s:current_directory_escape()
   if s:iswin
     if &filetype !=# 'vimfiler'
-      let path = substitute(path, '\\', '/', 'g')
+      let path = s:substitute_path_slash(path)
     endif
-    let rawpath = substitute(rawpath, '\\', '/', 'g')
+    let rawpath = s:substitute_path_slash(rawpath)
   endif
-  return substitute(substitute(path, rawpath, '.', ''), '^./', '', '')
+  return substitute(substitute(substitute(path, rawpath, '.', ''), '^./', '', ''), '^.$', '', '')
 endfunction
 function! s:change_directory()
   try
