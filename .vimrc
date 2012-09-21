@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/09/21 09:33:39.
+" - * Last Change: 2012/09/21 12:54:37.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -860,7 +860,7 @@ function! TextEdit()
   if s:ismac
     execute '! open -a TextEdit %'
   elseif s:iswin
-    execute '! notepad %'
+    silent execute '! notepad %'
   else
     execute '! gedit %'
   endif
