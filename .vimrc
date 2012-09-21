@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/09/21 12:54:37.
+" - * Last Change: 2012/09/21 17:40:50.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -16,7 +16,6 @@ let s:nosudo = $SUDO_USER == ''
 augroup ESC
   autocmd!
 augroup END
-autocmd GUIEnter * simalt ~x
 " }}}
 
 " Bundles {{{
@@ -208,7 +207,6 @@ NeoBundle 'Shougo/vimfiler'
     autocmd FileType vimfiler nmap <buffer> <C-r> <Plug>(vimfiler_redraw_screen)
     autocmd FileType vimfiler nmap <buffer> O <Plug>(vimfiler_sync_with_another_vimfiler)
     autocmd FileType vimfiler nmap <buffer><expr> e vimfiler#smart_cursor_map("\<Plug>(vimfiler_cd_file)","\<Plug>(vimfiler_edit_file)")
-    " autocmd VimEnter * if argc() == 0 && exists(':VimFiler') | execute('VimFiler -buffer-name=vimfiler') | endif
   augroup END
 NeoBundle 'Shougo/vinarise'
 endif
@@ -735,6 +733,14 @@ endif
 
 " UTILITY {{{
 " --------------------------------------------------------------------------------------------------------------
+" On starting vim {{{
+autocmd VimEnter * 
+      \ call Pl#UpdateStatusline(1) |
+      \ if argc() == 0 && exists(':VimFiler') | 
+      \ execute('VimFiler -buffer-name=vimfiler') | endif
+autocmd GUIEnter * simalt ~x
+" }}}
+
 " Move to the directory for each buffer, current directory functions {{{
 function! s:directory_escape(directory)
   return escape(a:directory, '*[]?{} ')
