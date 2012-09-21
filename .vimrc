@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/09/21 17:40:50.
+" - * Last Change: 2012/09/21 17:45:17.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -734,10 +734,15 @@ endif
 " UTILITY {{{
 " --------------------------------------------------------------------------------------------------------------
 " On starting vim {{{
-autocmd VimEnter * 
-      \ call Pl#UpdateStatusline(1) |
-      \ if argc() == 0 && exists(':VimFiler') | 
-      \ execute('VimFiler -buffer-name=vimfiler') | endif
+function! s:enter()
+  if exists('g:Powerline_colorscheme')
+    silent call Pl#UpdateStatusline(1)
+  endif
+  if argc() == 0 && exists(':VimFiler')
+    silent execute('VimFiler -buffer-name=vimfiler')
+  endif
+endfunction
+autocmd VimEnter * call s:enter()
 autocmd GUIEnter * simalt ~x
 " }}}
 
