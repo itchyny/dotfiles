@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/09/21 17:45:17.
+" - * Last Change: 2012/09/23 13:16:48.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -727,6 +727,12 @@ set imsearch=-1
 if s:iswin
   set noswapfile
 endif
+" }}}
+
+" Gui specific {{{
+map <LeftMouse> <Nop>
+map <RightMouse> <Nop>
+map <LeftRelease> <Nop>
 " }}}
 
 " }}} EDIT
