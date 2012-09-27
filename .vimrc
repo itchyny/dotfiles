@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/09/23 13:16:48.
+" - * Last Change: 2012/09/27 19:05:31.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -496,8 +496,8 @@ let g:Powerline#Colorschemes#my#colorscheme = Pl#Colorscheme#Init([
     \ }),
   \
   \ Pl#Hi#Segments(['gundo:SPLIT', 'command_t:SPLIT'], {
-    \ 'n': ['white', 'darkred'],
-    \ 'N': ['white', 'darkestred'],
+    \ 'n': ['white', 'gray2'],
+    \ 'N': ['white', 'gray0'],
     \ }),
   \
   \ Pl#Hi#Segments(['ctrlp:focus', 'ctrlp:byfname'], {
