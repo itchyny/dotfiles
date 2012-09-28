@@ -1,7 +1,7 @@
 # --------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2012/09/21 09:25:03.
+# - * Last Change: 2012/09/27 23:36:19.
 # --------------------------------------------------------------------------------------------------------------
 
 # history
@@ -215,7 +215,8 @@ which cam > /dev/null && alias slideshow="cam -e -c -s 1"
   alias twitter='rlwrap runhaskell ~/Dropbox/hs/twitter/twitter.hs'
 alias ntpupdate='sudo /usr/sbin/ntpdate time.asia.apple.com >> ~/.ntpdate.log'
 [ -e ~/Dropbox/py/itchyny/yoruho.py ] && \
-  alias yoruho='sudo /usr/sbin/ntpdate time.asia.apple.com >> ~/.ntpdate.log && python ~/Dropbox/py/itchyny/yoruho.py'
+  alias yoruho='sudo /usr/sbin/ntpdate time.asia.apple.com >> ~/.ntpdate.log && python ~/Dropbox/py/itchyny/yoruho.py' && \
+  alias y='yoruho'
 [ -e ~/Dropbox/js/roy/roy ] && \
   alias roy='~/Dropbox/js/roy/roy'
 [ -e ~/Dropbox/univ/ ] && \
