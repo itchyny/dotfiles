@@ -1,7 +1,7 @@
 # --------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2012/09/28 15:01:04.
+# - * Last Change: 2012/09/30 16:57:15.
 # --------------------------------------------------------------------------------------------------------------
 
 # history
@@ -162,6 +162,7 @@ if [ `uname` = "Darwin" ]; then
   alias eog='open -a Preview'
   alias port-update='sudo port selfupdate && sudo port upgrade outdated'
   alias update='cabal-update && port-update'
+  alias eject='sudo diskutil unmount'
   pman () {
     man -t $@ | open -f -a /Applications/Preview.app
   }
