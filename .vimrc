@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/09/27 19:05:31.
+" - * Last Change: 2012/10/02 10:09:08.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -94,7 +94,7 @@ NeoBundle 'Shougo/unite.vim'
   nnoremap <silent><C-p> :Unite buffer -buffer-name=buffer<CR>
   nnoremap <silent><C-n> :Unite file/new directory/new -buffer-name=file/new,directory/new<CR>
   nnoremap <silent><S-k> :Unite output:message -buffer-name=output:message<CR>
-  nnoremap <silent><C-o> :execute 'Unite file:'.<SID>change_directory().' -buffer-name=file'<CR>
+  nnoremap <silent><C-o> :execute 'Unite file:'.<SID>change_directory().' file/new -buffer-name=file'<CR>
   nnoremap <silent><C-z> :Unite file_mru -buffer-name=file_mru<CR>
   nnoremap <silent><S-l> :Unite line -buffer-name=line<CR>
   augroup Unite
