@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/10/06 08:31:51.
+" - * Last Change: 2012/10/06 08:32:19.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -694,6 +694,7 @@ augroup Filetype
   autocmd BufNewFile,BufReadPost,BufEnter *.roy  setlocal filetype=roy
   autocmd BufNewFile,BufReadPost,BufEnter *.rst  setlocal filetype=rest
   autocmd BufNewFile,BufReadPost,BufEnter *.tex  setlocal filetype=tex
+  autocmd BufNewFile,BufReadPost,BufEnter *.cls  setlocal filetype=tex
   autocmd BufNewFile,BufReadPost,BufEnter *.y    setlocal filetype=haskell
 augroup END
 " }}}
