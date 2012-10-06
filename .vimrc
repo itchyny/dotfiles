@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/10/06 12:27:01.
+" - * Last Change: 2012/10/06 16:58:25.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -149,14 +149,39 @@ let mapleader="\\"
 NeoBundle 'Shougo/vimproc'
 NeoBundle 'thinca/vim-quickrun'
   let g:quickrun_config = {'*': {'runmode': 'async:vimproc', 'split': 'vertical', 'into': 1}}
-  let g:quickrun_config.javascript = {'command' : 'node'}
-  let g:quickrun_config.roy = {'command' : 'roy'}
-  let g:quickrun_config.markdown = {'type' : 'markdown/pandoc', 'outputter': 'browser', 'cmdopt': '-s'}
-  let g:quickrun_config.qcl = {'command': 'qcl'}
-  let g:quickrun_config.haskell = {'command' : 'runhaskell'}
-  let g:quickrun_config.lhaskell = {'command' : 'runhaskell'}
-  let g:quickrun_config.tex = {'command' : 'autolatex'}
-  let g:quickrun_config.nroff = {'command': 'man', 'args': "-P cat | tr '\b' '\1' | sed -e 's/.\1//g'", 'filetype': 'man'}
+  if executable('node')
+    let g:quickrun_config.javascript = {'command' : 'node'}
+  endif
+  if executable('roy')
+    let g:quickrun_config.roy = {'command' : 'roy'}
+  endif
+  if executable('pandoc')
+    let g:quickrun_config.markdown = {'type' : 'markdown/pandoc', 'outputter': 'browser', 'cmdopt': '-s'}
+  endif
+  if executable('qcl')
+    let g:quickrun_config.qcl = {'command': 'qcl'}
+  endif
+  if executable('runhaskell')
+    let g:quickrun_config.haskell = {'command' : 'runhaskell'}
+    let g:quickrun_config.lhaskell = {'command' : 'runhaskell'}
+  endif
+  if executable('autolatex')
+    let g:quickrun_config.tex = {'command' : 'autolatex'}
+  else
+    if executable('platex')
+      let g:quickrun_config.tex = {'command' : 'platex'}
+    endif
+  endif
+  if executable('man')
+    let g:quickrun_config.nroff = {'command': 'man', 'args': "-P cat | tr '\b' '\1' | sed -e 's/.\1//g'", 'filetype': 'man'}
+  endif
+  if executable('autognuplot')
+    let g:quickrun_config.gnuplot = {'command' : 'autognuplot'}
+  else
+    if executable('gnuplot')
+      let g:quickrun_config.gnuplot = {'command' : 'gnuplot'}
+    endif
+  endif
   nnoremap <Leader>r :<C-u>QuickRun  <CR>
   nnoremap <Leader>e :<C-u>QuickRun <i <CR>
   nnoremap <Leader>o :<C-u>QuickRun <i >file:output<CR>
