@@ -1,7 +1,7 @@
 # --------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2012/09/30 16:57:15.
+# - * Last Change: 2012/10/06 10:13:38.
 # --------------------------------------------------------------------------------------------------------------
 
 # history
@@ -195,6 +195,7 @@ alias r='sudo shutdown -r'
 alias l='ls -al'
 alias c='clear'
 alias d='date'
+alias z='zsh'
 # default option
 alias mpg123='mpg123 -zC'
 alias mplayer='mplayer -subdelay 100000'
