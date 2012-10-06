@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/10/06 16:58:25.
+" - * Last Change: 2012/10/06 20:04:28.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -167,20 +167,16 @@ NeoBundle 'thinca/vim-quickrun'
   endif
   if executable('autolatex')
     let g:quickrun_config.tex = {'command' : 'autolatex'}
-  else
-    if executable('platex')
-      let g:quickrun_config.tex = {'command' : 'platex'}
-    endif
+  elseif executable('platex')
+    let g:quickrun_config.tex = {'command' : 'platex'}
   endif
   if executable('man')
     let g:quickrun_config.nroff = {'command': 'man', 'args': "-P cat | tr '\b' '\1' | sed -e 's/.\1//g'", 'filetype': 'man'}
   endif
   if executable('autognuplot')
     let g:quickrun_config.gnuplot = {'command' : 'autognuplot'}
-  else
-    if executable('gnuplot')
-      let g:quickrun_config.gnuplot = {'command' : 'gnuplot'}
-    endif
+  elseif executable('gnuplot')
+    let g:quickrun_config.gnuplot = {'command' : 'gnuplot'}
   endif
   nnoremap <Leader>r :<C-u>QuickRun  <CR>
   nnoremap <Leader>e :<C-u>QuickRun <i <CR>
