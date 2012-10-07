@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/10/07 09:09:09.
+" - * Last Change: 2012/10/07 11:25:15.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -322,7 +322,7 @@ let mapleader=","
 NeoBundle 'tpope/vim-surround'
 NeoBundle 't9md/vim-surround_custom_mapping'
 NeoBundle 'tComment'
-  call tcomment#DefineType('gnuplot', '# %s')
+  autocmd Filetype gnuplot call tcomment#DefineType('gnuplot', '# %s')
 NeoBundle 'Align'
 NeoBundle 'errormarker.vim'
 NeoBundle 'mattn/calendar-vim'
