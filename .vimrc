@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/10/07 11:25:15.
+" - * Last Change: 2012/10/08 01:18:41.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -73,6 +73,7 @@ NeoBundle 'Shougo/neocomplcache'
   let g:neocomplcache_enable_underbar_completion = 1
   let g:neocomplcache_enable_camel_case_completion = 1
   let g:neocomplcache_enable_cursor_hold_i = 0
+  let g:neocomplcache_max_list = 10
 NeoBundle 'Shougo/neocomplcache-snippets-complete'
   let g:neocomplcache_snippets_dir = expand($VIM.'/snippets')
   imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ?
@@ -682,7 +683,7 @@ endif
 " }}}
 
 " Statusline color {{{
-if !exists('g:Powerline_colorscheme')
+if !exists('g:Powerline_loaded')
 let s:hi_normal = 'highlight StatusLine guifg=black guibg=blue gui=none ctermfg=black ctermbg=blue cterm=none'
 let s:hi_insert = 'highlight StatusLine guifg=black guibg=darkmagenta gui=none ctermfg=black ctermbg=darkmagenta cterm=none'
 silent execute s:hi_normal
@@ -1142,7 +1143,7 @@ autocmd ESC FileType help nnoremap <silent> <buffer> <ESC><ESC> :<C-u>q<CR>
 " |    n    |  nautilus / Finder   |            |                    |                   |   Unite file       |
 " |    o    |  QuickRun <i >output |            |                    |   -default        |   Unite file       |
 " +- - - - -+- - - - - - - - - - - +- - - - - - +- - - - - - - - - - +- - - - - - - - - -+- - - - - - - - - - +
-" |    p    |                      |  Python    |                    |                   |   Unite buffer     |
+" |    p    |  paste (mac)         |  Python    |                    |                   |   Unite buffer     |
 " |    q    |                      |            |                    |                   |   <C-w>(default)   |
 " |    r    |  QuickRun            |            |                    |   -default        |   -default         |
 " |    s    |  OpenBrowser         |  VimShell  |                    |                   |   :w<CR>           |
