@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/10/08 10:44:29.
+" - * Last Change: 2012/10/08 10:51:36.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -599,7 +599,7 @@ if has('iconv')
   " fileencodingsを構築
   if &encoding ==# 'utf-8'
     let s:fileencodings_default = &fileencodings
-    let &fileencodings = s:enc_jis .','. s:enc_euc .',cp932'
+    let &fileencodings = s:enc_jis .','. s:enc_euc " .',cp932'
     let &fileencodings = &fileencodings .','. s:fileencodings_default
     unlet s:fileencodings_default
   else
