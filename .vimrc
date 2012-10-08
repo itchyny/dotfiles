@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/10/08 01:18:41.
+" - * Last Change: 2012/10/08 10:44:29.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -269,7 +269,6 @@ NeoBundle 'Shougo/vimshell'
     autocmd FileType vimshell nunmap <buffer> <C-k>
     autocmd FileType vimshell nunmap <buffer> <C-l>
     autocmd FileType vimshell nmap <buffer> <C-a> <Nop>
-    autocmd FileType vimshell nmap <buffer> a GA
     autocmd FileType vimshell nmap <buffer> <C-m> <ESC><C-q>j
     autocmd FileType vimshell inoremap <buffer> <C-h> <ESC><C-w>h
     autocmd FileType vimshell inoremap <buffer> <C-j> <ESC><C-w>j
