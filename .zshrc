@@ -1,7 +1,7 @@
 # --------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2012/10/09 21:59:50.
+# - * Last Change: 2012/10/10 00:22:32.
 # --------------------------------------------------------------------------------------------------------------
 
 # history
@@ -173,6 +173,7 @@ elif [ `uname` = "Linux" ]; then
   alias pbcopy='xsel --clipboard --input'
   # alias pbcopy='xsel -i -b'
   # alias pbpaste='xsel -o -b'
+  alias eject='sudo eject'
 fi
 alias chrome='google-chrome'
 function runcpp () { g++ -O3 $1; ./a.out; }
