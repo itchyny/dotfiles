@@ -1,7 +1,7 @@
 # --------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2012/10/11 23:40:33.
+# - * Last Change: 2012/10/12 07:49:42.
 # --------------------------------------------------------------------------------------------------------------
 
 # history
@@ -205,7 +205,7 @@ alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 alias crontab="EDITOR=\"$HOME/bin/vi\" crontab"
-alias wget="wget --user-agent='Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_1) AppleWebKit/537.4 (KHTML, like Gecko) Chrome/22.0.1229.79 Safari/537.4' "
+alias wget="wget --user-agent='Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_2) AppleWebKit/537.4 (KHTML, like Gecko) Chrome/22.0.1229.94 Safari/537.4' "
 # git
 alias am='git commit -am'
 alias gd='git diff'
