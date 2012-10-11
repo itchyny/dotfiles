@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/10/11 23:38:59.
+" - * Last Change: 2012/10/11 23:57:50.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -62,6 +62,17 @@ call neobundle#rc(expand($BUNDLE))
 NeoBundle 'Shougo/neobundle.vim'
   " nnoremap <silent> <S-b><S-b> :<C-u>NeoBundleUpdate<CR>
   nnoremap <silent> <S-b><S-b> :<C-u>Unite neobundle/update<CR>
+" }}}
+
+" Colorscheme {{{
+" --------------------------------------------------------------------------------------------------------------
+try
+NeoBundle 'itchyny/landscape.vim'
+  colorscheme landscape
+catch
+endtry
+NeoBundle 'xterm-color-table.vim'
+  " http://www.vim.org/scripts/script.php?script_id=3412
 " }}}
 
 " Complement {{{
@@ -372,17 +383,6 @@ NeoBundle 'syntaxm4.vim'
 NeoBundle 'syntaxhaskell.vim'
 NeoBundle 'haskell.vim'
 NeoBundle 'tpope/vim-markdown'
-" }}}
-
-" Colorscheme {{{
-" --------------------------------------------------------------------------------------------------------------
-try
-NeoBundle 'itchyny/landscape.vim'
-  colorscheme landscape
-catch
-endtry
-NeoBundle 'xterm-color-table.vim'
-  " http://www.vim.org/scripts/script.php?script_id=3412
 " }}}
 
 " Powerline {{{
