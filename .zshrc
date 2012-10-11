@@ -1,7 +1,7 @@
 # --------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2012/10/11 23:14:55.
+# - * Last Change: 2012/10/11 23:20:44.
 # --------------------------------------------------------------------------------------------------------------
 
 # history
@@ -213,7 +213,7 @@ which gosh > /dev/null && alias gosh='rlwrap gosh'
 which coqtop > /dev/null && alias coqtop='rlwrap coqtop'
 # others
 which pygmentize > /dev/null && alias ccat='pygmentize'
-which cam > /dev/null && alias slideshow="cam -e -c -s 1"
+which cam > /dev/null && alias slideshow='cam -e -c -s 1'
 [ -e ~/Dropbox/py/itchyny/tweet.py ] && \
   alias tweet='python ~/Dropbox/py/itchyny/tweet.py'
 [ -e ~/Dropbox/hs/twitter/twitter.hs ] && \
@@ -228,11 +228,11 @@ alias ntpupdate='sudo /usr/sbin/ntpdate time.asia.apple.com >> ~/.ntpdate.log'
   alias univ='cd ~/Dropbox/univ/'
 case "${OSTYPE}" in
   freebsd*|darwin*)
-    alias ls="ls -wG"
+    alias ls='ls -wG'
     alias ll='ls -altrwG'
     ;;
   *)
-    alias ls="ls --color"
+    alias ls='ls --color'
     alias ll='ls -altr --color'
     ;;
 esac

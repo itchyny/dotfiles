@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/10/11 22:28:45.
+" - * Last Change: 2012/10/11 23:22:04.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -45,7 +45,7 @@ if !isdirectory(s:neobundle_dir)
         echo 'gcc not found!'
       endif
     elseif s:iswin
-      echo "access https://github.com/Shougo/vimproc/downloads to get dll"
+      echo 'access https://github.com/Shougo/vimproc/downloads to get dll'
     else
       if executable('gcc')
         execute '!cd '.$BUNDLE.'/vimproc && make -f make_unix.mak'
@@ -255,8 +255,8 @@ NeoBundle 'Shougo/vimshell'
 " --| If you can't use sudo, do:
 " --|  $ sudo chmod 4755 /usr/bin/sudo
   let g:vimshell_interactive_update_time = 150
-  let g:vimshell_popup_command = "split"
-  let g:vimshell_split_command = "vsplit"
+  let g:vimshell_popup_command = 'split'
+  let g:vimshell_split_command = 'vsplit'
   let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
   let g:vimshell_prompt = ' $ '
   augroup Vimshell
@@ -329,7 +329,7 @@ NeoBundle 'mattn/calendar-vim'
   autocmd ESC FileType calendar nnoremap <silent> <buffer> <ESC><ESC> :<C-u>q<CR>
   nnoremap <Leader>c :<C-u>Calendar<CR>
 NeoBundle 'autodate.vim'
-  let g:autodate_format="%Y/%m/%d %H:%M:%S"
+  let g:autodate_format='%Y/%m/%d %H:%M:%S'
 if has('python')
 NeoBundle 'sjl/gundo.vim'
   " --| Requirement: +python
@@ -676,7 +676,7 @@ set statusline=%{expand('%:p:t')}\ %<[%{expand('%:p:h')}]%=\ %m%r%y%w[%{&fenc!='
 " Color {{{
 syntax enable
 set background=dark
-if !has("gui_running")
+if !has('gui_running')
   set t_Co=256
 endif
 " }}}
@@ -724,7 +724,7 @@ augroup END
 
 " Binary editor {{{
 " http://d.hatena.ne.jp/goth_wrist_cut/20090809/1249800323
-let $BINS="*.bin,*.exe,*.png,*.gif,*.jpg,*.jpeg,*.bmp,*.PNG,*.JPG,*.JPEG,*.BMP,*.ico,*.pdf,*.dvi,*.pyc,*.mp3"
+let $BINS='*.bin,*.exe,*.png,*.gif,*.jpg,*.jpeg,*.bmp,*.PNG,*.JPG,*.JPEG,*.BMP,*.ico,*.pdf,*.dvi,*.pyc,*.mp3'
 augroup Binary
   autocmd!
   autocmd FileType xxd nnoremap <silent> <buffer> ,b :%!xxd <CR><CR>
