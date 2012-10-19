@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/10/19 11:35:20.
+" - * Last Change: 2012/10/19 16:57:18.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -84,10 +84,11 @@ NeoBundle 'Shougo/neocomplcache'
   let g:neocomplcache_enable_underbar_completion = 1
   let g:neocomplcache_enable_camel_case_completion = 1
   let g:neocomplcache_enable_cursor_hold_i = 0
-  let g:neocomplcache_max_list = 10
-  let g:neocomplcache_min_keyword_length = 2
-  let g:neocomplcache_min_syntax_length = 2
+  let g:neocomplcache_max_list = 5
   let g:neocomplcache_skip_auto_completion_time = "0.50"
+  let g:neocomplcache_auto_completion_start_length = 3
+  let g:neocomplcache_manual_completion_start_length = 3
+  let g:neocomplcache_enable_wildcard = 0
 NeoBundle 'Shougo/neocomplcache-snippets-complete'
   let g:neocomplcache_snippets_dir = expand($VIM.'/snippets')
   imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ?
