@@ -26,3 +26,4 @@ alias c='clear'
 alias wget="wget --user-agent='Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_2) AppleWebKit/537.4 (KHTML, like Gecko) Chrome/22.0.1229.94 Safari/537.4' "
 alias am='git commit -am'
 alias gd='git diff'
+alias ungzip='gzip -d'

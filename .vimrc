@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/10/11 23:57:50.
+" - * Last Change: 2012/10/19 11:34:59.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -85,6 +85,8 @@ NeoBundle 'Shougo/neocomplcache'
   let g:neocomplcache_enable_camel_case_completion = 1
   let g:neocomplcache_enable_cursor_hold_i = 0
   let g:neocomplcache_max_list = 10
+  let g:neocomplcache_min_keyword_length = 2
+  let g:neocomplcache_min_syntax_length = 2
 NeoBundle 'Shougo/neocomplcache-snippets-complete'
   let g:neocomplcache_snippets_dir = expand($VIM.'/snippets')
   imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ?
@@ -183,7 +185,7 @@ NeoBundle 'thinca/vim-quickrun'
     let g:quickrun_config.tex = {'command' : 'platex'}
   endif
   if executable('man')
-    let g:quickrun_config.nroff = {'command': 'man', 'args': "-P cat | tr '\b' '\1' | sed -e 's/.\1//g'", 'filetype': 'man'}
+    let g:quickrun_config.nroff = {'command': 'man', 'args': " -P cat | tr '\b' '\1' | sed -e 's/.\1//g'", 'filetype': 'man'}
   endif
   if executable('autognuplot')
     let g:quickrun_config.gnuplot = {'command' : 'autognuplot'}
