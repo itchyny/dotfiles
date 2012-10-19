@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/10/19 16:57:18.
+" - * Last Change: 2012/10/19 17:08:28.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -336,6 +336,7 @@ endif
 " --------------------------------------------------------------------------------------------------------------
 let mapleader=","
 NeoBundle 'tpope/vim-surround'
+  let g:surround_{char2nr('$')} = '$\r$'
 NeoBundle 't9md/vim-surround_custom_mapping'
 NeoBundle 'tComment'
   autocmd Filetype gnuplot call tcomment#DefineType('gnuplot', '# %s')
