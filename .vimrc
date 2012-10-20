@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/10/20 23:53:15.
+" - * Last Change: 2012/10/21 00:51:57.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -1108,11 +1108,15 @@ nnoremap <C-Right> gt
 vnoremap <C-Left> gT
 vnoremap <C-Right> gt
 
-" assign arrow keys to page-(up|down), just move in insert mode
-nnoremap <Down> <C-d>
-nnoremap <Up>  <C-u>
-inoremap OA <ESC>ka
-inoremap OB <ESC>ja
+" assign arrow keys to one line move
+nnoremap <ESC>A <up>
+nnoremap <ESC>B <down>
+nnoremap <ESC>C <right>
+nnoremap <ESC>D <left>
+inoremap <ESC>A <up>
+inoremap <ESC>B <down>
+inoremap <ESC>C <right>
+inoremap <ESC>D <left>
 
 " select last paste
 nnoremap <expr> gp '`['.strpart(getregtype(), 0, 1).'`]'
