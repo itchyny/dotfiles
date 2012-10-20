@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/10/19 17:08:28.
+" - * Last Change: 2012/10/20 10:09:04.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -89,12 +89,10 @@ NeoBundle 'Shougo/neocomplcache'
   let g:neocomplcache_auto_completion_start_length = 3
   let g:neocomplcache_manual_completion_start_length = 3
   let g:neocomplcache_enable_wildcard = 0
-NeoBundle 'Shougo/neocomplcache-snippets-complete'
-  let g:neocomplcache_snippets_dir = expand($VIM.'/snippets')
-  imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ?
-        \     "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
-  imap <expr><C-l> neocomplcache#sources#snippets_complete#expandable() ?
-        \     "\<Plug>(neocomplcache_snippets_expand)" : "\<C-w>l"
+NeoBundle 'Shougo/neosnippet'
+  let g:neosnippet#snippets_directory = expand($VIM.'/snippets')
+  imap <expr><TAB> neosnippet#expandable() ?
+        \     "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
 " NeoBundle 'ujihisa/neco-look'
   " --| Requirement: look commnad
 endif
