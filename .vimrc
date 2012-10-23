@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/10/21 11:07:59.
+" - * Last Change: 2012/10/24 04:41:22.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -1107,16 +1107,6 @@ nnoremap <C-Left> gT
 nnoremap <C-Right> gt
 vnoremap <C-Left> gT
 vnoremap <C-Right> gt
-
-" assign arrow keys to one line move
-nnoremap OA <up>
-nnoremap OB <down>
-nnoremap OC <right>
-nnoremap OD <left>
-inoremap OA <up>
-inoremap OB <down>
-inoremap OC <right>
-inoremap OD <left>
 
 " select last paste
 nnoremap <expr> gp '`['.strpart(getregtype(), 0, 1).'`]'
