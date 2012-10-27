@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/10/24 04:41:22.
+" - * Last Change: 2012/10/27 09:45:44.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -991,9 +991,16 @@ nnoremap ss :Syntax<CR>
 " }}}
 
 " Quick open dot files {{{
-nnoremap \. :e ~/.vimrc<CR>
-nnoremap \v :so ~/.vimrc<CR>
-nnoremap ;. :e ~/.zshrc<CR>
+if filereadable(expand('~/Dropbox/dotfiles/.vimrc'))
+  nnoremap \. :e ~/Dropbox/dotfiles/.vimrc<CR>
+elseif filereadable(expand('~/.vimrc'))
+  nnoremap \. :e ~/.vimrc<CR>
+endif
+if filereadable(expand('~/Dropbox/dotfiles/.zshrc'))
+  nnoremap ;. :e ~/Dropbox/dotfiles/.zshrc<CR>
+elseif filereadable(expand('~/.zshrc'))
+  nnoremap ;. :e ~/.zshrc<CR>
+endif
 " }}}
 
 " template for blog {{{
