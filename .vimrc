@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/10/27 09:45:44.
+" - * Last Change: 2012/10/28 08:56:47.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -1120,6 +1120,9 @@ nnoremap <expr> gp '`['.strpart(getregtype(), 0, 1).'`]'
 
 " quit help with escapae key
 autocmd ESC FileType help nnoremap <silent> <buffer> <ESC><ESC> :<C-u>q<CR>
+
+" disable EX-mode
+map <S-q> <Nop>
 " }}}
 
 " }}} KEY MAPPING
