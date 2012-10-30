@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/10/28 08:56:47.
+" - * Last Change: 2012/10/30 10:16:54.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -895,13 +895,13 @@ setlocal omnifunc=syntaxcomplete#Complete
 
 " Make with S-F5 key (user omake) {{{
 function! Automake()
-  if(filereadable('./OMakefile') && executable('omake'))
+  if filereadable('./OMakefile') && executable('omake')
     execute '!omake'
-  else
+  elseif filereadable('Makefile') || filereadable('makefile')
     execute '!make all'
   endif
 endfunction
-nnoremap <S-F5> :<C-u>call Automake()<CR>
+nnoremap <silent> <S-F5> :<C-u>call Automake()<CR>
 " }}}
 
 " AOJ template {{{
