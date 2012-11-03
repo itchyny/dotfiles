@@ -1,7 +1,7 @@
 # --------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2012/10/20 23:54:43.
+# - * Last Change: 2012/11/03 16:12:33.
 # --------------------------------------------------------------------------------------------------------------
 
 # history
@@ -212,6 +212,7 @@ alias am='git commit -am'
 alias gd='git diff'
 # un*
 alias ungzip='gzip -d'
+alias untar='tar xvf'
 # rlwrap
 which gosh > /dev/null && alias gosh='rlwrap gosh'
 which coqtop > /dev/null && alias coqtop='rlwrap coqtop'
