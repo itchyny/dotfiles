@@ -1,7 +1,7 @@
 # --------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2012/11/03 16:12:33.
+# - * Last Change: 2012/11/03 16:13:19.
 # --------------------------------------------------------------------------------------------------------------
 
 # history
@@ -210,6 +210,7 @@ alias aspell="aspell -c -l en_US"
 # git
 alias am='git commit -am'
 alias gd='git diff'
+alias gp='git push'
 # un*
 alias ungzip='gzip -d'
 alias untar='tar xvf'
