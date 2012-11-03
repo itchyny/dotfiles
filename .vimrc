@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/10/30 10:16:54.
+" - * Last Change: 2012/11/03 16:04:01.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -573,11 +573,11 @@ set ambiwidth=double
 
 " 書類を開くことができませんでした。テキストエンコーディング日本語(Mac OS)には対応していません。 {{{
 " http://d.hatena.ne.jp/uasi/20110523/1306079612
-autocmd BufWritePost * call SetUTF8Xattr(expand("<afile>"))
+autocmd BufWritePost * call SetUTF8Xattr(escape(expand("<afile>"), "*[]?{}' "))
 function! SetUTF8Xattr(file)
   let isutf8 = &fileencoding == "utf-8" || (&fileencoding == "" && &encoding == "utf-8")
   if s:ismac && isutf8
-    call system("xattr -w com.apple.TextEncoding 'utf-8;134217984' '".a:file."'")
+    call system("xattr -w com.apple.TextEncoding 'utf-8;134217984' \"".a:file."\"")
   endif
 endfunction
 " }}}
