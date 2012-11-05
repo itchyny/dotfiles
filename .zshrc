@@ -1,7 +1,7 @@
 # --------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2012/11/03 16:13:19.
+# - * Last Change: 2012/11/05 11:31:09.
 # --------------------------------------------------------------------------------------------------------------
 
 # history
@@ -83,7 +83,7 @@ export PATH=$PATH:/usr/local/bin/
 export PATH=$PATH:/usr/local/git/bin/
 export PATH=$PATH:/opt/local/bin/
 export PATH=$PATH:~/.cabal/bin/
-export PATH=$PATH:~/Dropbox/bin/
+export PATH=~/Dropbox/bin/:$PATH
 export PATH=$PATH:~/Dropbox/js/coffee-script/bin/
 export PATH=$PATH:~/Dropbox/js/jison/bin/
 export PATH=$PATH:~/Dropbox/js/narwhal/bin/

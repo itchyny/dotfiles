@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/11/03 16:14:19.
+" - * Last Change: 2012/11/05 15:43:26.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -193,6 +193,7 @@ NeoBundle 'thinca/vim-quickrun'
     let g:quickrun_config.gnuplot = {'command' : 'gnuplot'}
   endif
   nnoremap <Leader>r :<C-u>QuickRun  <CR>
+  nnoremap <Leader><Leader>r :<C-u>QuickRun >file:temp.dat<CR>
   nnoremap <Leader>e :<C-u>QuickRun <i <CR>
   nnoremap <Leader>o :<C-u>QuickRun <i >file:output<CR>
   autocmd ESC FileType quickrun inoremap <silent> <buffer> <ESC><ESC><ESC> <ESC>:q<CR>
