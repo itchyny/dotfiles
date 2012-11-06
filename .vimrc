@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/11/05 15:43:26.
+" - * Last Change: 2012/11/06 10:56:48.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -160,7 +160,14 @@ endif
 " QuickRun / Filer / Outer world of Vim ( "\\" ) {{{
 " --------------------------------------------------------------------------------------------------------------
 let mapleader="\\"
-NeoBundle 'Shougo/vimproc'
+NeoBundle 'Shougo/vimproc', {
+  \ 'build' : {
+  \     'windows' : 'echo "Sorry, cannot update vimproc binary file in Windows."',
+  \     'cygwin' : 'make -f make_cygwin.mak',
+  \     'mac' : 'make -f make_mac.mak',
+  \     'unix' : 'make -f make_unix.mak',
+  \   },
+  \ }
 NeoBundle 'thinca/vim-quickrun'
   let g:quickrun_config = {'*': {'runmode': 'async:vimproc', 'split': 'vertical', 'into': 1}}
   if executable('node')
