@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/11/06 10:56:48.
+" - * Last Change: 2012/11/06 11:41:59.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -383,14 +383,17 @@ NeoBundle 'colorizer'
     autocmd!
     autocmd BufNewFile,BufReadPost *.css ColorHighlight
   augroup END
-NeoBundle 'groenewege/vim-less'
-NeoBundle 'less.vim'
-NeoBundle 'syntaxm4.vim'
-NeoBundle 'vim-scripts/jade.vim'
+NeoBundleLazy 'groenewege/vim-less'
+  autocmd FileType less NeoBundleSource vim-less
+NeoBundleLazy 'less.vim'
+  autocmd FileType less NeoBundleSource less.vim
+NeoBundleLazy 'syntaxm4.vim'
+  autocmd FileType m4 NeoBundleSource syntaxm4.vim
+NeoBundleLazy 'vim-scripts/jade.vim'
+  autocmd FileType jade NeoBundleSource jade.vim
 NeoBundle 'vim-coffee-script'
 NeoBundle 'rest.vim'
 NeoBundle 'VST'
-NeoBundle 'syntaxm4.vim'
 NeoBundle 'syntaxhaskell.vim'
 NeoBundle 'haskell.vim'
 NeoBundle 'tpope/vim-markdown'
@@ -721,6 +724,7 @@ augroup Filetype
   autocmd BufNewFile,BufReadPost,BufEnter *.cls  setlocal filetype=tex
   autocmd BufNewFile,BufReadPost,BufEnter *.gnuplot setlocal filetype=gnuplot
   autocmd BufNewFile,BufReadPost,BufEnter *.hs   setlocal filetype=haskell
+  autocmd BufNewFile,BufReadPost,BufEnter *.jade setlocal filetype=jade
   autocmd BufNewFile,BufReadPost,BufEnter *.json setlocal filetype=json
   autocmd BufNewFile,BufReadPost,BufEnter *.less setlocal filetype=less
   autocmd BufNewFile,BufReadPost,BufEnter *.md   setlocal filetype=markdown
