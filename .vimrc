@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/11/06 11:41:59.
+" - * Last Change: 2012/11/15 15:14:38.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -117,6 +117,8 @@ NeoBundle 'Shougo/unite.vim'
     autocmd FileType unite inoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
     autocmd FileType unite nnoremap <silent> <buffer> <expr> <C-k> unite#do_action('vsplit')
     autocmd FileType unite inoremap <silent> <buffer> <expr> <C-k> unite#do_action('vsplit')
+    autocmd FileType unite inoremap <silent> <buffer> <C-z> <Nop>
+    autocmd FileType unite inoremap <silent> <buffer> <C-o> <Nop>
     autocmd FileType unite nmap <buffer> <C-a> <Plug>(unite_insert_enter)
   augroup END
   autocmd ESC FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
