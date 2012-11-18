@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/11/15 15:14:38.
+" - * Last Change: 2012/11/17 18:21:40.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -93,7 +93,7 @@ NeoBundle 'Shougo/neosnippet'
   let g:neosnippet#snippets_directory = expand($VIM.'/snippets')
   imap <expr><TAB> neosnippet#expandable() ?
         \     "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
-" NeoBundle 'ujihisa/neco-look'
+NeoBundle 'ujihisa/neco-look'
   " --| Requirement: look commnad
 endif
 " }}}
@@ -230,10 +230,10 @@ NeoBundle 'Shougo/vimfiler'
     let g:vimfiler_readonly_file_icon = 'x'
     let g:vimfiler_marked_file_icon = 'v'
   endif
-  nnoremap <Leader>f :<C-u>VimFilerCurrentDir -buffer-name=vimfiler<CR>
-  nnoremap <Leader><Leader> :<C-u>VimFilerCurrentDir -buffer-name=vimfiler<CR>
-  nnoremap @<Leader> :<C-u>VimFilerCurrentDir -buffer-name=vimfiler<CR>
-  nnoremap @@ :<C-u>VimFilerCurrentDir -buffer-name=vimfiler<CR>
+  nnoremap <silent> <Leader>f :<C-u>VimFilerCurrentDir -buffer-name=vimfiler<CR>
+  nnoremap <silent> <Leader><Leader> :<C-u>VimFilerCurrentDir -buffer-name=vimfiler<CR>
+  nnoremap <silent> @<Leader> :<C-u>VimFilerCurrentDir -buffer-name=vimfiler<CR>
+  nnoremap <silent> @@ :<C-u>VimFilerCurrentDir -buffer-name=vimfiler<CR>
   let g:vimfiler_execute_file_list = { 'pdf': 'open', 'PDF': 'open',
                                      \ 'png': 'open', 'PNG': 'open',
                                      \ 'jpg': 'open', 'JPG': 'open',
@@ -348,6 +348,7 @@ NeoBundle 'tpope/vim-surround'
 NeoBundle 't9md/vim-surround_custom_mapping'
 NeoBundle 'tComment'
   autocmd Filetype gnuplot call tcomment#DefineType('gnuplot', '# %s')
+  autocmd Filetype haxe call tcomment#DefineType('haxe', '// %s')
 NeoBundle 'Align'
 NeoBundle 'errormarker.vim'
 NeoBundle 'mattn/calendar-vim'
@@ -399,6 +400,7 @@ NeoBundle 'VST'
 NeoBundle 'syntaxhaskell.vim'
 NeoBundle 'haskell.vim'
 NeoBundle 'tpope/vim-markdown'
+NeoBundle 'haxe.vim'
 " }}}
 
 " Powerline {{{
@@ -726,6 +728,7 @@ augroup Filetype
   autocmd BufNewFile,BufReadPost,BufEnter *.cls  setlocal filetype=tex
   autocmd BufNewFile,BufReadPost,BufEnter *.gnuplot setlocal filetype=gnuplot
   autocmd BufNewFile,BufReadPost,BufEnter *.hs   setlocal filetype=haskell
+  autocmd BufNewFile,BufReadPost,BufEnter *.hx   setlocal filetype=haxe
   autocmd BufNewFile,BufReadPost,BufEnter *.jade setlocal filetype=jade
   autocmd BufNewFile,BufReadPost,BufEnter *.json setlocal filetype=json
   autocmd BufNewFile,BufReadPost,BufEnter *.less setlocal filetype=less
