@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/11/26 02:59:19.
+" - * Last Change: 2012/11/26 03:05:59.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -244,6 +244,7 @@ NeoBundle 'Shougo/vimfiler'
                                      \ 'ppt': 'open', 'PPT': 'open',
                                      \ 'html': 'open', 'HTML': 'open',
                                      \ }
+  let s:useT = system('ls -lT > /dev/null 2>&1; echo $?') =~ "^0"
   function! s:touchmt()
     let marked_files = vimfiler#get_marked_filenames()
     if !empty(marked_files)
@@ -260,10 +261,12 @@ NeoBundle 'Shougo/vimfiler'
       let vimfiler_current_dir = getcwd()
     endif
     let current_dir = getcwd()
-    if s:ismac
+    if s:useT
       let atime = system('ls -lT '.filepath." | awk {'print $9\"/\"$6\"/\"$7\" \"$8'} | sed -e 's/\\/\\(\\d\\)\\//\\/0\\1\\//' | tr -d '\\n'")
+      echo atime
     else
       let atime = system('ls -l '.filepath." | awk {'print $6\" \"$7'} | tr -d '\\n'")
+      echo atime
     endif
     let atime = substitute(atime, '-', '/', 'g')
     try
