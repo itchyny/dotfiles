@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/11/26 03:05:59.
+" - * Last Change: 2012/11/26 08:56:25.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -244,7 +244,7 @@ NeoBundle 'Shougo/vimfiler'
                                      \ 'ppt': 'open', 'PPT': 'open',
                                      \ 'html': 'open', 'HTML': 'open',
                                      \ }
-  let s:useT = system('ls -lT > /dev/null 2>&1; echo $?') =~ "^0"
+  let s:useT = system('ls -lT > /dev/null 2>&1; echo $?') =~ '^0'
   function! s:touchmt()
     let marked_files = vimfiler#get_marked_filenames()
     if !empty(marked_files)
@@ -255,34 +255,32 @@ NeoBundle 'Shougo/vimfiler'
       return
     endif
     let filepath = file.action__path
-    let vimfiler_current_dir =
-          \ get(unite#get_context(), 'vimfiler__current_directory', '')
+    let vimfiler_current_dir = get(unite#get_context(), 'vimfiler__current_directory', '')
     if vimfiler_current_dir == ''
       let vimfiler_current_dir = getcwd()
     endif
     let current_dir = getcwd()
     if s:useT
-      let atime = system('ls -lT '.filepath." | awk {'print $9\"/\"$6\"/\"$7\" \"$8'} | sed -e 's/\\/\\(\\d\\)\\//\\/0\\1\\//' | tr -d '\\n'")
-      echo atime
+      let atime = system('ls -lT '.filepath." | awk {'print $9\"/\"$6\"/\"$7\" \"$8'} "
+            \ ."| sed -e 's/\\/\\(\\d\\)\\//\\/0\\1\\//' | tr -d '\\n'")
     else
       let atime = system('ls -l '.filepath." | awk {'print $6\" \"$7'} | tr -d '\\n'")
-      echo atime
     endif
     let atime = substitute(atime, '-', '/', 'g')
     try
       lcd `=vimfiler_current_dir`
-      let newtime = input(printf('New time: %s -> ', atime))
+      let newtime = input(printf('New time: %s -> ', atime), '')
       redraw
       if newtime != ''
-        let newtime = substitute(substitute(substitute(newtime,'\d\@<!\(\d\)$','0\1','')
-              \ ,'\d\@<!\(\d\)\d\@!','0\1','g'),' ','','g')
+        let newtime = substitute(substitute(substitute(newtime, '\d\@<!\(\d\)$', '0\1', '')
+              \ , '\d\@<!\(\d\)\d\@!', '0\1', 'g'), ' ', '', 'g')
         if newtime =~? '^\d\+/\d\+/\d\+$' || len(newtime) <= 8
           let newtime .= '0000'
         endif
         if newtime =~? '\d\+:\d\+:\d\+$'
-          let newtime = substitute(newtime,'\(\d\+:\d\+\):\(\d\+\)$','\1.\2','')
+          let newtime = substitute(newtime, '\(\d\+:\d\+\):\(\d\+\)$', '\1.\2', '')
         endif
-        let newtime = substitute(newtime,'[/: -]','','g')
+        let newtime = substitute(newtime, '[/: -]', '', 'g')
         call system('touch -at '.newtime.' -mt '.newtime.' '.filepath)
       endif
     finally
@@ -296,7 +294,7 @@ NeoBundle 'Shougo/vimfiler'
     autocmd FileType vimfiler nmap <buffer> <C-l> <ESC><C-q>l
     autocmd FileType vimfiler nmap <buffer> <C-r> <Plug>(vimfiler_redraw_screen)
     autocmd FileType vimfiler nmap <buffer> O <Plug>(vimfiler_sync_with_another_vimfiler)
-    autocmd FileType vimfiler nmap <buffer><expr> e vimfiler#smart_cursor_map("\<Plug>(vimfiler_cd_file)","\<Plug>(vimfiler_edit_file)")
+    autocmd FileType vimfiler nmap <buffer><expr> e vimfiler#smart_cursor_map("\<Plug>(vimfiler_cd_file)", "\<Plug>(vimfiler_edit_file)")
     autocmd FileType vimfiler nmap <buffer><expr> t <SID>touchmt()
   augroup END
 NeoBundle 'Shougo/vinarise'
@@ -902,7 +900,7 @@ function! s:directory_escape(directory)
   return escape(a:directory, '*[]?{} ')
 endfunction
 function! s:current_directory_raw()
-  return substitute(expand('%:p:h'),'\*\(vinarise\|bitmapview\)\* - ','','')
+  return substitute(expand('%:p:h'), '\*\(vinarise\|bitmapview\)\* - ', '', '')
 endfunction
 function! s:current_directory_escape()
   return s:directory_escape(s:current_directory_raw())
@@ -1038,7 +1036,7 @@ function! Scouter(file, ...)
   if !a:0 || !a:1
     let lines = split(substitute(join(lines, "\n"), '\n\s*\\', '', 'g'), "\n")
   endif
-  return len(filter(lines,'v:val !~ pat'))
+  return len(filter(lines, 'v:val !~ pat'))
 endfunction
 command! -bar -bang -nargs=? -complete=file Scouter
 \        echo Scouter(empty(<q-args>) ? $MYVIMRC : expand(<q-args>), <bang>0)
