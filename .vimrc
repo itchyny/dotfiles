@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/11/17 18:21:40.
+" - * Last Change: 2012/11/26 02:28:08.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -244,6 +244,40 @@ NeoBundle 'Shougo/vimfiler'
                                      \ 'ppt': 'open', 'PPT': 'open',
                                      \ 'html': 'open', 'HTML': 'open',
                                      \ }
+  function! s:touchmt()
+    let marked_files = vimfiler#get_marked_filenames()
+    if !empty(marked_files)
+      return
+    endif
+    let file = vimfiler#get_file()
+    if empty(file)
+      return
+    endif
+    let filepath = file.action__path
+    let vimfiler_current_dir =
+          \ get(unite#get_context(), 'vimfiler__current_directory', '')
+    if vimfiler_current_dir == ''
+      let vimfiler_current_dir = getcwd()
+    endif
+    let current_dir = getcwd()
+    let atime = system('stat -lt "%Y%m%d%H%M" '.filepath."| sed -e 's/.*\\([0-9]\\{12\\}\\).*/\\1/' | tr -d '\\n'")
+    try
+      lcd `=vimfiler_current_dir`
+      let newtime = input(printf('New time: %s -> ', atime))
+      redraw
+      if newtime != ''
+        let newtime = substitute(substitute(substitute(newtime,'\d\@<!\(\d\)$','0\1','')
+              \ ,'\d\@<!\(\d\)\d\@!','0\1','g'),' ','','g')
+        if newtime =~? '^\d\+/\d\+/\d\+$' || len(newtime) <= 8
+          let newtime .= '0000'
+        endif
+        let newtime = substitute(newtime,'[/: ]','','g')
+        call system('touch -at '.newtime.' -mt '.newtime.' '.filepath)
+      endif
+    finally
+      lcd `=current_dir`
+    endtry
+  endfunction
   augroup Vimfiler
     autocmd!
     autocmd FileType vimfiler nunmap <buffer> <C-l>
@@ -252,10 +286,11 @@ NeoBundle 'Shougo/vimfiler'
     autocmd FileType vimfiler nmap <buffer> <C-r> <Plug>(vimfiler_redraw_screen)
     autocmd FileType vimfiler nmap <buffer> O <Plug>(vimfiler_sync_with_another_vimfiler)
     autocmd FileType vimfiler nmap <buffer><expr> e vimfiler#smart_cursor_map("\<Plug>(vimfiler_cd_file)","\<Plug>(vimfiler_edit_file)")
+    autocmd FileType vimfiler nmap <buffer><expr> t <SID>touchmt()
   augroup END
 NeoBundle 'Shougo/vinarise'
 endif
-NeoBundle 'eagletmt/ghci-vim'
+NeoBundleLazy 'eagletmt/ghci-vim'
   augroup Ghci
     autocmd!
     autocmd Filetype haskell nnoremap <Leader>l :GhciLoad<CR>
@@ -332,8 +367,8 @@ NeoBundle 'Shougo/vimshell'
   nnoremap <Leader>p :<C-u>VimShellInteractive python<CR>
 if executable('ghc-mod')
   " neocomplcache (neco-ghc) throws fatal error when ghc-mod is not found
-NeoBundle 'neco-ghc'
-NeoBundle 'eagletmt/ghcmod-vim'
+NeoBundleLazy 'neco-ghc'
+NeoBundleLazy 'eagletmt/ghcmod-vim'
   " --| Requirement: ghc-mod
   " --|  $ cabal install ghc-mod
 endif
@@ -912,7 +947,7 @@ setlocal omnifunc=syntaxcomplete#Complete
 
 " Make with S-F5 key (user omake) {{{
 function! Automake()
-  if filereadable('./OMakefile') && executable('omake')
+  if filereadable('OMakefile') && executable('omake')
     execute '!omake'
   elseif filereadable('Makefile') || filereadable('makefile')
     execute '!make all'
