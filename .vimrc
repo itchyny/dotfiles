@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/11/26 02:56:33.
+" - * Last Change: 2012/11/26 02:59:19.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -265,6 +265,7 @@ NeoBundle 'Shougo/vimfiler'
     else
       let atime = system('ls -l '.filepath." | awk {'print $6\" \"$7'} | tr -d '\\n'")
     endif
+    let atime = substitute(atime, '-', '/', 'g')
     try
       lcd `=vimfiler_current_dir`
       let newtime = input(printf('New time: %s -> ', atime))
