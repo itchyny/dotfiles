@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/11/26 02:54:53.
+" - * Last Change: 2012/11/26 02:56:33.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -260,11 +260,10 @@ NeoBundle 'Shougo/vimfiler'
       let vimfiler_current_dir = getcwd()
     endif
     let current_dir = getcwd()
-    " let atime = system('stat -lt "%Y%m%d%H%M" '.filepath."| sed -e 's/.*\\([0-9]\\{12\\}\\).*/\\1/' | tr -d '\\n'")
     if s:ismac
       let atime = system('ls -lT '.filepath." | awk {'print $9\"/\"$6\"/\"$7\" \"$8'} | sed -e 's/\\/\\(\\d\\)\\//\\/0\\1\\//' | tr -d '\\n'")
     else
-      let atime = system('ls -l '.filepath." | awk {'print $6\" \"$7'} | sed -e 's/\\/\\(\\d\\)\\//\\/0\\1\\//' | tr -d '\\n'")
+      let atime = system('ls -l '.filepath." | awk {'print $6\" \"$7'} | tr -d '\\n'")
     endif
     try
       lcd `=vimfiler_current_dir`
