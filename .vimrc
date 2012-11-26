@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/11/26 13:27:59.
+" - * Last Change: 2012/11/26 13:47:58.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -261,9 +261,9 @@ NeoBundle 'Shougo/vimfiler'
     endif
     let current_dir = getcwd()
     if s:usestatl
-      let atime = system('stat -lt "%Y/%m/%d %H:%M" '.filepath." | awk {'print $6\" \"$7'} | tr -d '\\n'")
+      let atime = system('stat -lt "%Y/%m/%d %H:%M" "'.filepath."\" | awk {'print $6\" \"$7'} | tr -d '\\n'")
     else
-      let atime = system('stat --printf "%y" '.filepath." | sed -e 's/\\..*//'")
+      let atime = system('stat --printf "%y" "'.filepath."\" | sed -e 's/\\..*//'")
     endif
     let atime = substitute(atime, '-', '/', 'g')
     try
@@ -281,7 +281,7 @@ NeoBundle 'Shougo/vimfiler'
       endif
       let newtime = substitute(newtime, '\(\d\+:\d\+\):\(\d\+\)$', '\1.\2', '')
       let newtime = substitute(newtime, '[/:]', '', 'g')
-      call system('touch -at '.newtime.' -mt '.newtime.' '.filepath)
+      call system('touch -at '.newtime.' -mt '.newtime.' "'.filepath.'"')
     finally
       lcd `=current_dir`
     endtry
