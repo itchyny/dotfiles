@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/11/26 08:56:25.
+" - * Last Change: 2012/11/26 09:16:08.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -271,18 +271,18 @@ NeoBundle 'Shougo/vimfiler'
       lcd `=vimfiler_current_dir`
       let newtime = input(printf('New time: %s -> ', atime), '')
       redraw
-      if newtime != ''
-        let newtime = substitute(substitute(substitute(newtime, '\d\@<!\(\d\)$', '0\1', '')
-              \ , '\d\@<!\(\d\)\d\@!', '0\1', 'g'), ' ', '', 'g')
-        if newtime =~? '^\d\+/\d\+/\d\+$' || len(newtime) <= 8
-          let newtime .= '0000'
-        endif
-        if newtime =~? '\d\+:\d\+:\d\+$'
-          let newtime = substitute(newtime, '\(\d\+:\d\+\):\(\d\+\)$', '\1.\2', '')
-        endif
-        let newtime = substitute(newtime, '[/: -]', '', 'g')
-        call system('touch -at '.newtime.' -mt '.newtime.' '.filepath)
+      if newtime == ''
+        let newtime = atime
       endif
+      let newtime = substitute(newtime, '\d\@<!\(\d\)$', '0\1', '')
+      let newtime = substitute(newtime , '\d\@<!\(\d\)\d\@!', '0\1', 'g')
+      let newtime = substitute(newtime, ' ', '', 'g')
+      if newtime =~? '^\d\+/\d\+/\d\+$' || len(newtime) <= 8
+        let newtime .= '0000'
+      endif
+      let newtime = substitute(newtime, '\(\d\+:\d\+\):\(\d\+\)$', '\1.\2', '')
+      let newtime = substitute(newtime, '[/: -]', '', 'g')
+      call system('touch -at '.newtime.' -mt '.newtime.' '.filepath)
     finally
       lcd `=current_dir`
     endtry
