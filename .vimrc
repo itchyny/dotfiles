@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/11/26 09:16:08.
+" - * Last Change: 2012/11/26 09:45:08.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -244,7 +244,7 @@ NeoBundle 'Shougo/vimfiler'
                                      \ 'ppt': 'open', 'PPT': 'open',
                                      \ 'html': 'open', 'HTML': 'open',
                                      \ }
-  let s:useT = system('ls -lT > /dev/null 2>&1; echo $?') =~ '^0'
+  let s:usestatl = system('stat -l . > /dev/null 2>&1; echo $?') =~ '^0'
   function! s:touchmt()
     let marked_files = vimfiler#get_marked_filenames()
     if !empty(marked_files)
@@ -260,11 +260,10 @@ NeoBundle 'Shougo/vimfiler'
       let vimfiler_current_dir = getcwd()
     endif
     let current_dir = getcwd()
-    if s:useT
-      let atime = system('ls -lT '.filepath." | awk {'print $9\"/\"$6\"/\"$7\" \"$8'} "
-            \ ."| sed -e 's/\\/\\(\\d\\)\\//\\/0\\1\\//' | tr -d '\\n'")
+    if s:usestatl
+      let atime = system('stat -lt "%Y/%m/%d %H:%M" '.filepath." | awk {'print $6\" \"$7'} | tr -d '\\n'")
     else
-      let atime = system('ls -l '.filepath." | awk {'print $6\" \"$7'} | tr -d '\\n'")
+      let atime = system('stat --printf "%y" '.filepath." | sed -e 's/\\..*//'")
     endif
     let atime = substitute(atime, '-', '/', 'g')
     try
