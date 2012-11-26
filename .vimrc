@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/11/26 13:24:30.
+" - * Last Change: 2012/11/26 13:27:59.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -275,7 +275,6 @@ NeoBundle 'Shougo/vimfiler'
       endif
       let newtime = substitute(newtime, '\d\@<!\(\d\)$', '0\1', '')
       let newtime = substitute(newtime, '\d\@<!\(\d\)\d\@!', '0\1', 'g')
-      let newtime = substitute(newtime, ' ', '', 'g')
       let newtime = substitute(newtime, '[ -]', '', 'g')
       if newtime =~? '^\d\+/\d\+/\d\+$' || len(newtime) <= 8
         let newtime .= '0000'
