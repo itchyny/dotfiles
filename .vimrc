@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/11/26 09:45:08.
+" - * Last Change: 2012/11/26 09:52:35.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -345,11 +345,9 @@ NeoBundle 'Shougo/vimshell'
     " disable unexpected deleting
     autocmd FileType vimshell nnoremap <buffer> dj <Nop>
     autocmd FileType vimshell nnoremap <buffer> dk <Nop>
-    autocmd FileType vimshell nnoremap <buffer> dG <Nop>
     autocmd FileType vimshell nnoremap <buffer> dg <Nop>
     autocmd FileType vimshell vnoremap <buffer> dj <Nop>
     autocmd FileType vimshell vnoremap <buffer> dk <Nop>
-    autocmd FileType vimshell vnoremap <buffer> dG <Nop>
     autocmd FileType vimshell vnoremap <buffer> dg <Nop>
     autocmd FileType vimshell vnoremap <buffer> c <Nop>
     autocmd FileType vimshell vnoremap <buffer> <delete> <Nop>
