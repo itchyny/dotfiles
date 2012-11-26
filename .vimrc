@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/11/26 09:52:35.
+" - * Last Change: 2012/11/26 13:24:30.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -245,7 +245,7 @@ NeoBundle 'Shougo/vimfiler'
                                      \ 'html': 'open', 'HTML': 'open',
                                      \ }
   let s:usestatl = system('stat -l . > /dev/null 2>&1; echo $?') =~ '^0'
-  function! s:touchmt()
+  function! s:changetime()
     let marked_files = vimfiler#get_marked_filenames()
     if !empty(marked_files)
       return
@@ -268,19 +268,20 @@ NeoBundle 'Shougo/vimfiler'
     let atime = substitute(atime, '-', '/', 'g')
     try
       lcd `=vimfiler_current_dir`
-      let newtime = input(printf('New time: %s -> ', atime), '')
+      let newtime = input(printf('New time: %s -> ', atime))
       redraw
       if newtime == ''
         let newtime = atime
       endif
       let newtime = substitute(newtime, '\d\@<!\(\d\)$', '0\1', '')
-      let newtime = substitute(newtime , '\d\@<!\(\d\)\d\@!', '0\1', 'g')
+      let newtime = substitute(newtime, '\d\@<!\(\d\)\d\@!', '0\1', 'g')
       let newtime = substitute(newtime, ' ', '', 'g')
+      let newtime = substitute(newtime, '[ -]', '', 'g')
       if newtime =~? '^\d\+/\d\+/\d\+$' || len(newtime) <= 8
         let newtime .= '0000'
       endif
       let newtime = substitute(newtime, '\(\d\+:\d\+\):\(\d\+\)$', '\1.\2', '')
-      let newtime = substitute(newtime, '[/: -]', '', 'g')
+      let newtime = substitute(newtime, '[/:]', '', 'g')
       call system('touch -at '.newtime.' -mt '.newtime.' '.filepath)
     finally
       lcd `=current_dir`
@@ -294,7 +295,7 @@ NeoBundle 'Shougo/vimfiler'
     autocmd FileType vimfiler nmap <buffer> <C-r> <Plug>(vimfiler_redraw_screen)
     autocmd FileType vimfiler nmap <buffer> O <Plug>(vimfiler_sync_with_another_vimfiler)
     autocmd FileType vimfiler nmap <buffer><expr> e vimfiler#smart_cursor_map("\<Plug>(vimfiler_cd_file)", "\<Plug>(vimfiler_edit_file)")
-    autocmd FileType vimfiler nmap <buffer><expr> t <SID>touchmt()
+    autocmd FileType vimfiler nmap <buffer><expr> t <SID>changetime()
   augroup END
 NeoBundle 'Shougo/vinarise'
 endif
