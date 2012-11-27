@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/11/26 13:47:58.
+" - * Last Change: 2012/11/27 18:45:48.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -1067,6 +1067,9 @@ nnoremap ,sh i>\|sh\|<CR>\|\|<<ESC>O<ESC>
 nnoremap ,hs i>\|haskell\|<CR>\|\|<<ESC>O<ESC>
 " }}}
 
+" remove Icon\r file {{{
+silent call system('echo -e "Icon\\r" | xargs cat && echo -e "Icon\\r" | xargs rm')
+" }}}
 " }}} UTILITY
 
 " OTHERS {{{
