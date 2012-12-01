@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/11/27 18:45:48.
+" - * Last Change: 2012/12/01 04:15:24.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -1062,9 +1062,9 @@ endif
 " }}}
 
 " template for blog {{{
-nnoremap ,cpp i>\|cpp\|<CR>\|\|<<ESC>O<ESC>
-nnoremap ,sh i>\|sh\|<CR>\|\|<<ESC>O<ESC>
-nnoremap ,hs i>\|haskell\|<CR>\|\|<<ESC>O<ESC>
+nnoremap ,cpp i>\|cpp\|<CR>\|\|<<ESC>
+nnoremap ,sh i>\|sh\|<CR>\|\|<<ESC>
+nnoremap ,hs i>\|haskell\|<CR>\|\|<<ESC>
 " }}}
 
 " remove Icon\r file {{{
