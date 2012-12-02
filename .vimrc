@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/12/02 14:36:56.
+" - * Last Change: 2012/12/02 22:01:24.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -302,6 +302,7 @@ NeoBundle 'Shougo/vimfiler'
 NeoBundle 'Shougo/vinarise'
 endif
 NeoBundleLazy 'eagletmt/ghci-vim'
+  autocmd FileType haskell NeoBundleSource ghci-vim
   augroup Ghci
     autocmd!
     autocmd Filetype haskell nnoremap <Leader>l :GhciLoad<CR>
@@ -377,7 +378,9 @@ NeoBundle 'Shougo/vimshell'
 if executable('ghc-mod')
   " neocomplcache (neco-ghc) throws fatal error when ghc-mod is not found
 NeoBundleLazy 'neco-ghc'
+  autocmd FileType haskell NeoBundleSource neco-ghc
 NeoBundleLazy 'eagletmt/ghcmod-vim'
+  autocmd FileType haskell NeoBundleSource ghcmod-vim
   " --| Requirement: ghc-mod
   " --|  $ cabal install ghc-mod
 endif
@@ -443,6 +446,7 @@ NeoBundle 'rest.vim'
 NeoBundle 'VST'
 NeoBundle 'syntaxhaskell.vim'
 NeoBundle 'haskell.vim'
+NeoBundle 'vim-scripts/indenthaskell.vim'
 NeoBundle 'tpope/vim-markdown'
 NeoBundle 'haxe.vim'
 " }}}
