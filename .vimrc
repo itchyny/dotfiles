@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/12/01 04:15:24.
+" - * Last Change: 2012/12/02 14:36:56.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -200,6 +200,9 @@ NeoBundle 'thinca/vim-quickrun'
     let g:quickrun_config.gnuplot = {'command' : 'autognuplot'}
   elseif executable('gnuplot')
     let g:quickrun_config.gnuplot = {'command' : 'gnuplot'}
+  endif
+  if executable('bf')
+    let g:quickrun_config.bf = {'command': 'bf'}
   endif
   nnoremap <Leader>r :<C-u>QuickRun  <CR>
   nnoremap <Leader><Leader>r :<C-u>QuickRun >file:temp.dat<CR>
@@ -725,6 +728,9 @@ set showmatch
 set showtabline=1
 set previewheight=20
 set helplang=en
+set nospell
+  autocmd FileType tex setlocal spell
+  autocmd FileType md setlocal spell
 " }}}
 
 " Status line {{{
@@ -766,6 +772,7 @@ set autoread
 " Filetype {{{
 augroup Filetype
   autocmd!
+  autocmd BufNewFile,BufReadPost,BufEnter *.bf   setlocal filetype=bf
   autocmd BufNewFile,BufReadPost,BufEnter *.cls  setlocal filetype=tex
   autocmd BufNewFile,BufReadPost,BufEnter *.gnuplot setlocal filetype=gnuplot
   autocmd BufNewFile,BufReadPost,BufEnter *.hs   setlocal filetype=haskell
