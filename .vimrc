@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/12/02 22:01:24.
+" - * Last Change: 2012/12/09 10:38:52.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -552,7 +552,7 @@ let g:Powerline#Colorschemes#my#colorscheme = Pl#Colorscheme#Init([
     \ 'N': ['gray4'],
     \ }),
   \
-  \ Pl#Hi#Segments(['currenttag', 'fileformat', 'fileencoding', 'pwd', 'filetype', 'rvm:string', 'rvm:statusline', 'virtualenv:statusline', 'charcode', 'currhigroup'], {
+  \ Pl#Hi#Segments(['currenttag', 'fileformat', 'fileencoding', 'pwd', 'filetype', 'charcode', 'currhigroup'], {
     \ 'n': ['gray9', 'gray4'],
     \ }),
   \
@@ -574,43 +574,19 @@ let g:Powerline#Colorschemes#my#colorscheme = Pl#Colorscheme#Init([
     \ 'n': ['white', 'brightred', ['bold']],
     \ }),
   \
-  \ Pl#Hi#Segments(['gundo:static_str.name', 'command_t:static_str.name'], {
+  \ Pl#Hi#Segments(['gundo:static_str.name'], {
     \ 'n': ['white', 'mediumred', ['bold']],
     \ 'N': ['brightred', 'darkestred', ['bold']],
     \ }),
   \
-  \ Pl#Hi#Segments(['gundo:static_str.buffer', 'command_t:raw.line'], {
+  \ Pl#Hi#Segments(['gundo:static_str.buffer'], {
     \ 'n': ['white', 'darkred'],
     \ 'N': ['brightred', 'darkestred'],
     \ }),
   \
-  \ Pl#Hi#Segments(['gundo:SPLIT', 'command_t:SPLIT'], {
+  \ Pl#Hi#Segments(['gundo:SPLIT'], {
     \ 'n': ['white', 'gray2'],
     \ 'N': ['white', 'gray0'],
-    \ }),
-  \
-  \ Pl#Hi#Segments(['ctrlp:focus', 'ctrlp:byfname'], {
-    \ 'n': ['brightpurple', 'darkestpurple'],
-    \ }),
-  \
-  \ Pl#Hi#Segments(['ctrlp:prev', 'ctrlp:next', 'ctrlp:pwd'], {
-    \ 'n': ['white', 'mediumpurple'],
-    \ }),
-  \
-  \ Pl#Hi#Segments(['ctrlp:item'], {
-    \ 'n': ['darkestpurple', 'white', ['bold']],
-    \ }),
-  \
-  \ Pl#Hi#Segments(['ctrlp:marked'], {
-    \ 'n': ['brightestred', 'darkestpurple', ['bold']],
-    \ }),
-  \
-  \ Pl#Hi#Segments(['ctrlp:count'], {
-    \ 'n': ['darkestpurple', 'white'],
-    \ }),
-  \
-  \ Pl#Hi#Segments(['ctrlp:SPLIT'], {
-    \ 'n': ['white', 'darkestpurple'],
     \ }),
   \ ])
 let g:Powerline_colorscheme='my'
