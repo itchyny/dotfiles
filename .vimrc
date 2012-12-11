@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/12/11 10:11:35.
+" - * Last Change: 2012/12/11 10:16:36.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -1153,11 +1153,12 @@ vnoremap <C-q> <ESC><C-w>
 function! AutoClose()
   if &filetype == '' || &filetype == 'quickrun'
     silent execute 'q!'
+  elseif &modified
   else
     silent execute 'bd!'
   endif
 endfunction
-inoremap <silent> <C-w> :<C-u>call AutoClose()<CR>
+inoremap <silent> <C-w> <ESC>:<C-u>call AutoClose()<CR>
 nnoremap <silent> <C-w> :<C-u>call AutoClose()<CR>
 vnoremap <silent> <C-w> :<C-u>call AutoClose()<CR>
 
