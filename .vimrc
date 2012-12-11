@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/12/09 10:38:52.
+" - * Last Change: 2012/12/11 10:11:35.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -1150,9 +1150,16 @@ vnoremap <C-x> <C-w>x
 inoremap <C-q> <ESC><C-w>
 nnoremap <C-q> <C-w>
 vnoremap <C-q> <ESC><C-w>
-inoremap <C-w> <ESC>:<C-u>q<CR>
-nnoremap <C-w> :<C-u>q<CR>
-vnoremap <C-w> :<C-u>q<CR>
+function! AutoClose()
+  if &filetype == '' || &filetype == 'quickrun'
+    silent execute 'q!'
+  else
+    silent execute 'bd!'
+  endif
+endfunction
+inoremap <silent> <C-w> :<C-u>call AutoClose()<CR>
+nnoremap <silent> <C-w> :<C-u>call AutoClose()<CR>
+vnoremap <silent> <C-w> :<C-u>call AutoClose()<CR>
 
 " tab
 nnoremap <C-t> :<C-u>tabnew<CR>
