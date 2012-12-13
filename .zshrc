@@ -1,7 +1,7 @@
 # --------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2012/11/05 11:31:09.
+# - * Last Change: 2012/12/13 10:55:58.
 # --------------------------------------------------------------------------------------------------------------
 
 # history
@@ -55,6 +55,7 @@ setopt mark_dirs
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin
+zstyle ':completion:*' ignore-parents parent pwd ..
 
 # beep
 setopt no_beep
@@ -294,6 +295,10 @@ alias -s {gz,tgz,zip,lzh,bz2,tbz,Z,tar,arj,xz}=extract
 # https://github.com/zsh-users/zsh-syntax-highlighting
 [ -e ~/Dropbox/dotfiles/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && \
   source ~/Dropbox/dotfiles/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# https://github.com/zsh-users/zsh-completions.git
+[ -e ~/Dropbox/dotfiles/zsh-completion/src ] && \
+  fpath=(~/Dropbox/dotfiles/zsh-completions/src $fpath)
 
 [ -e ~/Dropbox ] && cd ~/Dropbox > /dev/null
 
