@@ -1,7 +1,7 @@
 # --------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2012/12/13 10:55:58.
+# - * Last Change: 2012/12/13 11:06:32.
 # --------------------------------------------------------------------------------------------------------------
 
 # history
@@ -44,6 +44,8 @@ esac
 
 # complement (use incr-0.2.zsh but rewrite 6 to 100 in limit-completion)
 autoload -Uz compinit; compinit
+[ -e ~/Dropbox/dotfiles/zsh-completions/src ] && \
+  fpath=(~/Dropbox/dotfiles/zsh-completions/src $fpath)
 LISTMAX=1000000
 fignore=(.o .dvi .aux .log .toc - \~)
 setopt auto_list
@@ -295,10 +297,6 @@ alias -s {gz,tgz,zip,lzh,bz2,tbz,Z,tar,arj,xz}=extract
 # https://github.com/zsh-users/zsh-syntax-highlighting
 [ -e ~/Dropbox/dotfiles/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && \
   source ~/Dropbox/dotfiles/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-# https://github.com/zsh-users/zsh-completions.git
-[ -e ~/Dropbox/dotfiles/zsh-completion/src ] && \
-  fpath=(~/Dropbox/dotfiles/zsh-completions/src $fpath)
 
 [ -e ~/Dropbox ] && cd ~/Dropbox > /dev/null
 
