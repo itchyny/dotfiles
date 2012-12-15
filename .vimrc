@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/12/11 14:59:56.
+" - * Last Change: 2012/12/16 01:57:46.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -1151,14 +1151,19 @@ inoremap <C-q> <ESC><C-w>
 nnoremap <C-q> <C-w>
 vnoremap <C-q> <ESC><C-w>
 function! AutoClose()
-  if (&filetype == '' && !&modified) || &filetype == 'quickrun'
-    silent execute 'q!'
-  elseif &modified
-  elseif &filetype == 'vimshell'
-    silent execute 'q'
-  else
-    silent execute 'bd!'
-  endif
+  try
+    if winwidth(0) < 120
+      silent execute 'q'
+    elseif (&filetype == '' && !&modified) || &filetype == 'quickrun'
+      silent execute 'q!'
+    elseif &modified
+    elseif &filetype == 'vimshell'
+      silent execute 'q'
+    else
+      silent execute 'bd!'
+    endif
+  catch 
+  endtry
 endfunction
 inoremap <silent> <C-w> <ESC>:<C-u>call AutoClose()<CR>
 nnoremap <silent> <C-w> :<C-u>call AutoClose()<CR>
