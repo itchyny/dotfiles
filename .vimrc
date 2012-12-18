@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/12/16 01:57:46.
+" - * Last Change: 2012/12/17 20:56:05.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -709,8 +709,15 @@ set showtabline=1
 set previewheight=20
 set helplang=en
 set nospell
-  autocmd FileType tex setlocal spell
-  autocmd FileType md setlocal spell
+  function! s:autospell()
+    if search("[^\x01-\x7e]", 'n') == 0
+      setlocal spell
+    else
+      setlocal nospell
+    endif
+  endfunction
+  autocmd FileType tex call <SID>autospell()
+  autocmd FileType md call <SID>autospell()
 " }}}
 
 " Status line {{{
