@@ -1,7 +1,7 @@
 # --------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2012/12/13 11:06:32.
+# - * Last Change: 2012/12/18 20:48:52.
 # --------------------------------------------------------------------------------------------------------------
 
 # history
@@ -44,8 +44,6 @@ esac
 
 # complement (use incr-0.2.zsh but rewrite 6 to 100 in limit-completion)
 autoload -Uz compinit; compinit
-[ -e ~/Dropbox/dotfiles/zsh-completions/src ] && \
-  fpath=(~/Dropbox/dotfiles/zsh-completions/src $fpath)
 LISTMAX=1000000
 fignore=(.o .dvi .aux .log .toc - \~)
 setopt auto_list
@@ -57,7 +55,6 @@ setopt mark_dirs
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin
-zstyle ':completion:*' ignore-parents parent pwd ..
 
 # beep
 setopt no_beep
