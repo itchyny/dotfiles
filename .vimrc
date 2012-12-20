@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/12/20 15:20:49.
+" - * Last Change: 2012/12/21 07:47:59.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -16,6 +16,11 @@ let s:nosudo = $SUDO_USER == ''
 augroup ESC
   autocmd!
 augroup END
+function! s:safeexecute(s)
+  if exists(a:s)
+    silent execute a:s
+  endif
+endfunction
 " }}}
 
 " Bundles {{{
@@ -305,9 +310,9 @@ NeoBundleLazy 'eagletmt/ghci-vim'
   autocmd FileType haskell NeoBundleSource ghci-vim
   augroup Ghci
     autocmd!
-    autocmd Filetype haskell nnoremap <Leader>l :GhciLoad<CR>
-    autocmd Filetype haskell nnoremap <Leader>i :GhciInfo<CR>
-    autocmd Filetype haskell nnoremap <Leader>t :GhciType<CR>
+    autocmd FileType haskell nnoremap <Leader>l <expr> call s:safeexecute(':GhciLoad')
+    autocmd FileType haskell nnoremap <Leader>i <expr> call s:safeexecute(':GhciInfo')
+    autocmd FileType haskell nnoremap <Leader>t <expr> call s:safeexecute(':GhciType')
   augroup END
 NeoBundle 'tyru/open-browser.vim'
   nmap <Leader>b <Plug>(openbrowser-smart-search)
@@ -394,8 +399,8 @@ NeoBundle 'tpope/vim-surround'
   let g:surround_{char2nr('$')} = '$\r$'
 NeoBundle 't9md/vim-surround_custom_mapping'
 NeoBundle 'tComment'
-  autocmd Filetype gnuplot call tcomment#DefineType('gnuplot', '# %s')
-  autocmd Filetype haxe call tcomment#DefineType('haxe', '// %s')
+  autocmd FileType gnuplot call tcomment#DefineType('gnuplot', '# %s')
+  autocmd FileType haxe call tcomment#DefineType('haxe', '// %s')
 NeoBundle 'Align'
 NeoBundle 'errormarker.vim'
 NeoBundle 'mattn/calendar-vim'
@@ -880,7 +885,7 @@ function! s:enter()
     silent call Pl#UpdateStatusline(1)
   endif
   if argc() == 0 && exists(':VimFiler')
-    silent execute('VimFiler -buffer-name=vimfiler')
+    silent execute 'VimFiler -buffer-name=vimfiler'
   endif
 endfunction
 autocmd VimEnter * call s:enter()
