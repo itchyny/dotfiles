@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/12/21 07:47:59.
+" - * Last Change: 2012/12/21 08:02:17.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -1163,9 +1163,10 @@ vnoremap <C-x> <C-w>x
 inoremap <C-q> <ESC><C-w>
 nnoremap <C-q> <C-w>
 vnoremap <C-q> <ESC><C-w>
+let s:winwid = winwidth(0)
 function! AutoClose()
   try
-    if winwidth(0) < 120
+    if winwidth(0) < 2 * s:winwid / 3
       silent execute 'q'
     elseif (&filetype == '' && !&modified) || &filetype == 'quickrun'
       silent execute 'q!'
