@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/12/21 11:07:56.
+" - * Last Change: 2012/12/21 11:09:09.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -26,7 +26,10 @@ function! s:safeexecute(s, ...)
     try
       silent execute a:s
     catch 
-      silent execute 'call '.a:s
+      try
+        silent execute 'call '.a:s
+      catch
+      endtry
     endtry
   endif
 endfunction
