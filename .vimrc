@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/12/21 11:09:09.
+" - * Last Change: 2012/12/21 13:45:37.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -20,7 +20,7 @@ function! s:safeexecute(s, ...)
   if a:0
     let check = a:1
   else
-    let check = substitute(a:s, ' .*', '', '')
+    let check = a:s
   endif
   if exists(check)
     try
@@ -895,7 +895,7 @@ map <LeftRelease> <Nop>
 function! s:enter()
   silent call s:safeexecute('Pl#UpdateStatusline(1)', 'g:Powerline_colorscheme')
   if argc() == 0
-    silent call s:safeexecute(':VimFiler -buffer-name=vimfiler')
+    silent call s:safeexecute(':VimFiler -buffer-name=vimfiler', ':VimFiler')
   endif
 endfunction
 autocmd VimEnter * call s:enter()
