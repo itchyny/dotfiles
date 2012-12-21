@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/12/21 08:02:17.
+" - * Last Change: 2012/12/21 11:07:56.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -16,9 +16,18 @@ let s:nosudo = $SUDO_USER == ''
 augroup ESC
   autocmd!
 augroup END
-function! s:safeexecute(s)
-  if exists(a:s)
-    silent execute a:s
+function! s:safeexecute(s, ...)
+  if a:0
+    let check = a:1
+  else
+    let check = substitute(a:s, ' .*', '', '')
+  endif
+  if exists(check)
+    try
+      silent execute a:s
+    catch 
+      silent execute 'call '.a:s
+    endtry
   endif
 endfunction
 " }}}
@@ -881,11 +890,9 @@ map <LeftRelease> <Nop>
 " --------------------------------------------------------------------------------------------------------------
 " On starting vim {{{
 function! s:enter()
-  if exists('g:Powerline_colorscheme')
-    silent call Pl#UpdateStatusline(1)
-  endif
-  if argc() == 0 && exists(':VimFiler')
-    silent execute 'VimFiler -buffer-name=vimfiler'
+  silent call s:safeexecute('Pl#UpdateStatusline(1)', 'g:Powerline_colorscheme')
+  if argc() == 0
+    silent call s:safeexecute(':VimFiler -buffer-name=vimfiler')
   endif
 endfunction
 autocmd VimEnter * call s:enter()
