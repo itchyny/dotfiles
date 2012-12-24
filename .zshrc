@@ -1,7 +1,7 @@
 # --------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2012/12/18 20:48:52.
+# - * Last Change: 2012/12/24 10:16:48.
 # --------------------------------------------------------------------------------------------------------------
 
 # history
@@ -71,6 +71,13 @@ setopt correct
 WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 setopt auto_cd
 setopt no_flow_control
+
+# integrate vim mode
+bindkey -v
+# http://blog-imgs-44.fc2.com/z/s/h/zshscreenvimvimpwget/zsh_vim_visualmode_osxver.txt
+[ -e ~/Dropbox/dotfiles/zsh_vim_visualmode_osxver ] && \
+  source ~/Dropbox/dotfiles/zsh_vim_visualmode_osxver
+bindkey "^W" backward-kill-word
 
 # export variables
 export LANG=ja_JP.UTF-8
