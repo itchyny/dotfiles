@@ -1,7 +1,7 @@
 # --------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2012/12/24 10:16:48.
+# - * Last Change: 2012/12/24 12:53:39.
 # --------------------------------------------------------------------------------------------------------------
 
 # history
@@ -301,6 +301,11 @@ alias -s {gz,tgz,zip,lzh,bz2,tbz,Z,tar,arj,xz}=extract
 # https://github.com/zsh-users/zsh-syntax-highlighting
 [ -e ~/Dropbox/dotfiles/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && \
   source ~/Dropbox/dotfiles/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# https://github.com/nakamuray/zaw
+[ -e ~/Dropbox/dotfiles/zaw/zaw.zsh ] && \
+  source ~/Dropbox/dotfiles/zaw/zaw.zsh && \
+  bindkey '^z' zaw-history
 
 [ -e ~/Dropbox ] && cd ~/Dropbox > /dev/null
 
