@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/12/30 09:28:32.
+" - * Last Change: 2012/12/30 09:48:11.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -467,6 +467,7 @@ NeoBundle 'haskell.vim'
 NeoBundle 'vim-scripts/indenthaskell.vim'
 NeoBundle 'tpope/vim-markdown'
 NeoBundle 'haxe.vim'
+NeoBundle 'motemen/hatena-vim'
 " }}}
 
 " Powerline {{{
@@ -852,8 +853,10 @@ set magic                   " パターン中で.[*の特殊文字を使用す�
 filetype plugin indent on
 set autoindent
   autocmd FileType tex setlocal noautoindent
+  autocmd FileType hatena setlocal noautoindent
 set smartindent
   autocmd FileType tex setlocal nosmartindent
+  autocmd FileType hatena setlocal nosmartindent
 set shiftwidth=2
   autocmd FileType markdown setlocal shiftwidth=4
 " }}}
