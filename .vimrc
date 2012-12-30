@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/12/23 12:40:39.
+" - * Last Change: 2012/12/30 09:28:32.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -736,6 +736,8 @@ set nospell
   endfunction
   autocmd FileType tex call <SID>autospell()
   autocmd FileType md call <SID>autospell()
+set modeline
+set modelines=1
 " }}}
 
 " Status line {{{
