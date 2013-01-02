@@ -1,7 +1,7 @@
 # --------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2012/12/24 12:53:39.
+# - * Last Change: 2013/01/02 10:13:15.
 # --------------------------------------------------------------------------------------------------------------
 
 # history
@@ -30,6 +30,7 @@ export TERM=xterm-256color
 
 # prompt
 setopt prompt_subst
+setopt interactive_comments
 PROMPT="%(?.%{$fg[green]%}.%{$fg[blue]%})%B%~$%b%{${reset_color}%} "
 PROMPT2="%{$bg[blue]%}%_>%{$reset_color%}%b "
 SPROMPT="%{$bg[red]%}%B%r is correct? [n,y,a,e]:%{${reset_color}%}%b "
