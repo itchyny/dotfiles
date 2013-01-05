@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/01/05 22:17:40.
+" - * Last Change: 2013/01/05 23:40:31.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -439,11 +439,11 @@ NeoBundle 'scrooloose/syntastic'
 NeoBundle 'mattn/zencoding-vim'
   let g:user_zen_expandabbr_key = '<c-e>'
   let g:user_zen_settings = { 'html' : { 'indentation' : '  ' }, }
-NeoBundle 'tsaleh/vim-matchit'
 NeoBundle 'JavaScript-syntax'
 NeoBundle 'itspriddle/vim-javascript-indent'
 NeoBundle 'JSON.vim'
 NeoBundle 'html5.vim'
+NeoBundle 'tsaleh/vim-matchit'
 NeoBundle 'gregsexton/MatchTag'
 NeoBundle 'matchit.zip'
 NeoBundle 'vimtaku/hl_matchit.vim.git'
@@ -1119,7 +1119,9 @@ nnoremap - <C-x>
 nnoremap [ zak
 nnoremap ] <S>j
 
-" indentation in visual mode
+" indentation
+nnoremap < <<
+nnoremap > >>
 vnoremap < <gv
 vnoremap > >gv|
 
