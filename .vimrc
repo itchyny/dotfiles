@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/01/05 23:42:08.
+" - * Last Change: 2013/01/06 00:15:27.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -717,16 +717,9 @@ else
 endif
 set shortmess+=I            " disable start up message
 set number
-  autocmd FileType vimshell setlocal nonumber
-  autocmd FileType vimcalc setlocal nonumber
-  autocmd FileType quickrun setlocal nonumber
-  autocmd FileType int-ghci setlocal nonumber
+  autocmd FileType vimshell,vimcalc,quickrun,int-ghci setlocal nonumber
 set cursorline
-  autocmd FileType calendar setlocal nocursorline
-  autocmd FileType vimcalc setlocal nocursorline
-  autocmd FileType vimshell setlocal nocursorline
-  autocmd FileType quickrun setlocal nocursorline
-  autocmd FileType int-ghci setlocal nocursorline
+  autocmd FileType calendar,vimcalc,vimshell,quickrun,int-ghci setlocal nocursorline
 set nocursorcolumn
 set showmatch
 set showtabline=1
@@ -740,8 +733,7 @@ set nospell
       setlocal nospell
     endif
   endfunction
-  autocmd FileType tex call <SID>autospell()
-  autocmd FileType md call <SID>autospell()
+  autocmd FileType tex,md call <SID>autospell()
 set modeline
 set modelines=1
 " }}}
@@ -788,19 +780,17 @@ augroup Filetype
   autocmd BufNewFile,BufReadPost,BufEnter *.bf   setlocal filetype=bf
   autocmd BufNewFile,BufReadPost,BufEnter *.cls  setlocal filetype=tex
   autocmd BufNewFile,BufReadPost,BufEnter *.gnuplot setlocal filetype=gnuplot
-  autocmd BufNewFile,BufReadPost,BufEnter *.hs   setlocal filetype=haskell
+  autocmd BufNewFile,BufReadPost,BufEnter *.hs,*.lhs,*.y setlocal filetype=haskell
   autocmd BufNewFile,BufReadPost,BufEnter *.hx   setlocal filetype=haxe
   autocmd BufNewFile,BufReadPost,BufEnter *.jade setlocal filetype=jade
   autocmd BufNewFile,BufReadPost,BufEnter *.json setlocal filetype=json
   autocmd BufNewFile,BufReadPost,BufEnter *.less setlocal filetype=less
-  autocmd BufNewFile,BufReadPost,BufEnter *.md   setlocal filetype=markdown
-  autocmd BufNewFile,BufReadPost,BufEnter *.mkd  setlocal filetype=markdown
+  autocmd BufNewFile,BufReadPost,BufEnter *.md,*.mkd setlocal filetype=markdown
   autocmd BufNewFile,BufReadPost,BufEnter *.qcl  setlocal filetype=qcl
   autocmd BufNewFile,BufReadPost,BufEnter *.r    setlocal filetype=r
   autocmd BufNewFile,BufReadPost,BufEnter *.roy  setlocal filetype=roy
   autocmd BufNewFile,BufReadPost,BufEnter *.rst  setlocal filetype=rest
   autocmd BufNewFile,BufReadPost,BufEnter *.tex  setlocal filetype=tex
-  autocmd BufNewFile,BufReadPost,BufEnter *.y    setlocal filetype=haskell
 augroup END
 " }}}
 
@@ -857,11 +847,9 @@ set magic                   " パターン中で.[*の特殊文字を使用す�
 " Indent {{{
 filetype plugin indent on
 set autoindent
-  autocmd FileType tex setlocal noautoindent
-  autocmd FileType hatena setlocal noautoindent
+  autocmd FileType tex,hatena setlocal noautoindent
 set smartindent
-  autocmd FileType tex setlocal nosmartindent
-  autocmd FileType hatena setlocal nosmartindent
+  autocmd FileType tex,hatena setlocal nosmartindent
 set shiftwidth=2
   autocmd FileType markdown setlocal shiftwidth=4
 " }}}
