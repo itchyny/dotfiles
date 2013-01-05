@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/01/06 02:29:37.
+" - * Last Change: 2013/01/06 02:41:44.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -142,7 +142,7 @@ NeoBundle 'Shougo/unite.vim'
   autocmd ESC FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
   highlight default link uniteSourcePrompt Identifier
   let s:startfiletypes = '.*\.\(exe\|png\|gif\|jpg\|jpeg\|bmp\|pdf\|mp3\|mp4\|avi\|mkv\)$'
-  call unite#custom_source('file', 'ignore_pattern', '.*\.\(o\|exe\|dll\|bak\|sw[po]\|hi\)$')
+  call unite#custom_source('file', 'ignore_pattern', '.*\.\(o\|exe\|dll\|bak\|sw[po]\|hi\|DS_Store\)$')
   let auto_open = {
         \ 'description' : 'edit or open files',
         \ 'is_selectable' : 1,
@@ -781,7 +781,7 @@ augroup Filetype
   autocmd BufNewFile,BufReadPost,BufEnter *.bf   setlocal filetype=bf
   autocmd BufNewFile,BufReadPost,BufEnter *.cls  setlocal filetype=tex
   autocmd BufNewFile,BufReadPost,BufEnter *.gnuplot setlocal filetype=gnuplot
-  autocmd BufNewFile,BufReadPost,BufEnter *.hs,*.lhs,*.y setlocal filetype=haskell
+  autocmd BufNewFile,BufReadPost,BufEnter *.hs,*.y setlocal filetype=haskell
   autocmd BufNewFile,BufReadPost,BufEnter *.hx   setlocal filetype=haxe
   autocmd BufNewFile,BufReadPost,BufEnter *.jade setlocal filetype=jade
   autocmd BufNewFile,BufReadPost,BufEnter *.json setlocal filetype=json
