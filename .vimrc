@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2012/12/30 09:48:11.
+" - * Last Change: 2013/01/05 18:45:12.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -140,6 +140,7 @@ NeoBundle 'Shougo/unite.vim'
   augroup END
   autocmd ESC FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
   autocmd ESC FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
+  highlight default link uniteSourcePrompt Identifier
   let s:startfiletypes = '\.*.\(exe\|png\|gif\|jpg\|jpeg\|bmp\|pdf\|mp3\|mp4\|avi\|mkv\)'
   let auto_open = {
         \ 'description' : 'edit or open files',
