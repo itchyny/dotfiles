@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/01/05 18:45:12.
+" - * Last Change: 2013/01/05 22:17:40.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -436,7 +436,6 @@ endif
 " Syntax {{{
 " --------------------------------------------------------------------------------------------------------------
 NeoBundle 'scrooloose/syntastic'
-" NeoBundle 'chikatoike/activefix.vim'
 NeoBundle 'mattn/zencoding-vim'
   let g:user_zen_expandabbr_key = '<c-e>'
   let g:user_zen_settings = { 'html' : { 'indentation' : '  ' }, }
@@ -446,6 +445,11 @@ NeoBundle 'itspriddle/vim-javascript-indent'
 NeoBundle 'JSON.vim'
 NeoBundle 'html5.vim'
 NeoBundle 'gregsexton/MatchTag'
+NeoBundle 'matchit.zip'
+NeoBundle 'vimtaku/hl_matchit.vim.git'
+  let g:hl_matchit_enable_on_vim_startup = 1
+  let g:hl_matchit_hl_groupname = 'MatchParen'
+  let g:hl_matchit_allow_ft_regexp = 'vim\|sh\|tex'
 NeoBundle 'wavded/vim-stylus'
 NeoBundle 'colorizer'
   augroup colorizer
