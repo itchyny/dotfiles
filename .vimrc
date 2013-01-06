@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/01/06 10:32:34.
+" - * Last Change: 2013/01/06 10:52:08.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -25,7 +25,7 @@ function! s:safeexecute(s, ...)
   if exists(check)
     try
       silent execute a:s
-    catch 
+    catch
       try
         silent execute 'call '.a:s
       catch
@@ -406,7 +406,7 @@ endif
 endif
 " }}}
 
-" Commenter / Utility ( "," ) {{{
+" Commenter / Utility / Matching ( "," ) {{{
 " --------------------------------------------------------------------------------------------------------------
 let mapleader = ","
 NeoBundle 'tpope/vim-surround'
@@ -421,7 +421,7 @@ NeoBundle 'mattn/calendar-vim'
   autocmd ESC FileType calendar nnoremap <silent> <buffer> <ESC><ESC> :<C-u>q<CR>
   nnoremap <Leader>c :<C-u>Calendar<CR>
 NeoBundle 'autodate.vim'
-  let g:autodate_format='%Y/%m/%d %H:%M:%S'
+  let g:autodate_format = '%Y/%m/%d %H:%M:%S'
 if has('python')
 NeoBundle 'sjl/gundo.vim'
   " --| Requirement: +python
@@ -433,6 +433,13 @@ NeoBundle 'sjl/gundo.vim'
 "   nnoremap <Leader>a :<C-u>Calc<CR>
 endif
 NeoBundle 'kana/vim-fakeclip'
+NeoBundle 'tsaleh/vim-matchit'
+NeoBundle 'gregsexton/MatchTag'
+NeoBundle 'matchit.zip'
+NeoBundle 'vimtaku/hl_matchit.vim.git'
+  let g:hl_matchit_enable_on_vim_startup = 1
+  let g:hl_matchit_hl_groupname = 'MatchParen'
+  let g:hl_matchit_allow_ft_regexp = 'vim\|sh\|tex'
 " }}}
 
 " Syntax {{{
@@ -445,13 +452,6 @@ NeoBundle 'JavaScript-syntax'
 NeoBundle 'itspriddle/vim-javascript-indent'
 NeoBundle 'JSON.vim'
 NeoBundle 'html5.vim'
-NeoBundle 'tsaleh/vim-matchit'
-NeoBundle 'gregsexton/MatchTag'
-NeoBundle 'matchit.zip'
-NeoBundle 'vimtaku/hl_matchit.vim.git'
-  let g:hl_matchit_enable_on_vim_startup = 1
-  let g:hl_matchit_hl_groupname = 'MatchParen'
-  let g:hl_matchit_allow_ft_regexp = 'vim\|sh\|tex'
 NeoBundle 'wavded/vim-stylus'
 NeoBundle 'colorizer'
   augroup colorizer
@@ -809,7 +809,7 @@ augroup Binary
   " autocmd BufWritePost $BINS call BinWritePost()
   " autocmd CursorHold $BINS call BinReHex()
   function! BinReadPost()
-    set filetype = xxd
+    set filetype=xxd
     " execute '%!xxd'
     " let &binary = 1
   endfunction
@@ -1118,8 +1118,6 @@ noremap <S-v> v
 noremap v <S-v>
 
 " easy copy, paste
-vnoremap <C-c> y
-inoremap <C-p> <ESC>:<C-u>set paste<CR>p:<C-u>set nopaste<CR>
 if s:ismac
   nmap <silent> \pp :r !pbpaste<CR><CR>
   nmap <silent> \pb :.w !pbcopy<CR><CR>
@@ -1132,7 +1130,7 @@ nnoremap ,<Space> ma:%s/  *$//<CR>`a<ESC>
 " selecting all
 nnoremap <C-a> gg<S-v><S-g>
 inoremap <C-a> <ESC>gg<S-v><S-g>
-vnoremap <C-a> gg<S-v><S-g>
+vnoremap <C-a> <ESC>gg<S-v><S-g>
 
 " smart Enter
 inoremap <silent> <expr> <CR> (pumvisible()?"\<ESC>o":"\<C-g>u\<CR>")
@@ -1188,7 +1186,7 @@ function! AutoClose()
     else
       silent execute 'bd!'
     endif
-  catch 
+  catch
   endtry
 endfunction
 inoremap <silent> <C-w> <ESC>:<C-u>call AutoClose()<CR>
