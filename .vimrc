@@ -1,7 +1,7 @@
 " ------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/01/06 11:21:11.
+" - * Last Change: 2013/01/06 11:28:42.
 " ------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -37,12 +37,13 @@ endfunction
 " }}}
 
 " Bundles {{{
-" neobundle {{{
-" ------------------------------------------------------------------------------------------------------------
 let $VIM = $HOME.'/.vim'
 let $BUNDLE = $VIM.'/bundle'
 let s:neobundle_dir = $BUNDLE.'/neobundle.vim'
 if !isdirectory(s:neobundle_dir)
+
+" neobundle {{{
+" ------------------------------------------------------------------------------------------------------------
   if executable('git')
     echo 'Initializing neobundle'
     execute '!mkdir -p '.$BUNDLE
@@ -630,6 +631,7 @@ endif
 
 " ENCODING {{{
 " ------------------------------------------------------------------------------------------------------------
+" SET {{{
 set encoding=utf-8
 set fenc=utf-8
 set fileencodings=utf-8,euc-jp,sjis,jis,iso-2022-jp,cp932,latin
@@ -640,6 +642,7 @@ set formatoptions+=mM       " 日本語の行の連結時には空白を入力�
 "   /bin/sh -c "VTE_CJK_WIDTH=1 terminator -m"
 "   /bin/sh -c "VTE_CJK_WIDTH=1 gnome-terminal --disable-factory"
 set ambiwidth=double
+" }}}
 
 " 書類を開くことができませんでした。テキストエンコーディング日本語(Mac OS)には対応していません。 {{{
 " http://d.hatena.ne.jp/uasi/20110523/1306079612
@@ -781,7 +784,9 @@ endif
 
 " FILE READING {{{
 " ------------------------------------------------------------------------------------------------------------
+" SET {{{
 set autoread
+" }}}
 
 " Filetype {{{
 augroup Filetype
@@ -1262,5 +1267,5 @@ map <S-q> <Nop>
 " |    .    | .vimrc              |   .zshrc    |                  |                   |                 |
 " +=========+=====================+=============+==================+===================+=================+
 " }}} REFERENCE TO KEY MAPPING
-"
+
 " vim:foldmethod=marker
