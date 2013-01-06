@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/01/06 02:41:44.
+" - * Last Change: 2013/01/06 10:32:34.
 " --------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -117,10 +117,10 @@ endif
 
 " Unite ( "," ) {{{
 " --------------------------------------------------------------------------------------------------------------
-let mapleader=","
+let mapleader = ","
 if s:nosudo
 NeoBundle 'Shougo/unite.vim'
-  let g:unite_enable_start_insert=1
+  let g:unite_enable_start_insert = 1
   nnoremap <C-u> :Unite<SPACE>
   nnoremap <silent><C-p> :Unite buffer -buffer-name=buffer<CR>
   nnoremap <silent><C-n> :Unite file/new directory/new -buffer-name=file/new,directory/new<CR>
@@ -180,7 +180,7 @@ endif
 
 " QuickRun / Filer / Outer world of Vim ( "\\" ) {{{
 " --------------------------------------------------------------------------------------------------------------
-let mapleader="\\"
+let mapleader = "\\"
 NeoBundle 'Shougo/vimproc', {
   \ 'build' : {
   \     'windows' : 'echo "Sorry, cannot update vimproc binary file in Windows."',
@@ -337,7 +337,7 @@ NeoBundle 'mattn/webapi-vim'
 
 " vimshell ( ";" ) {{{
 " --------------------------------------------------------------------------------------------------------------
-let mapleader=";"
+let mapleader = ";"
 if s:nosudo
 NeoBundle 'Shougo/vimshell'
 " --| Requirement: vimproc
@@ -408,7 +408,7 @@ endif
 
 " Commenter / Utility ( "," ) {{{
 " --------------------------------------------------------------------------------------------------------------
-let mapleader=","
+let mapleader = ","
 NeoBundle 'tpope/vim-surround'
   let g:surround_{char2nr('$')} = "$\r$" " for LaTeX
 NeoBundle 't9md/vim-surround_custom_mapping'
@@ -432,6 +432,7 @@ NeoBundle 'sjl/gundo.vim'
 "   autocmd ESC FileType vimcalc nnoremap <silent> <buffer> <ESC><ESC><ESC> :<C-u>q<CR>
 "   nnoremap <Leader>a :<C-u>Calc<CR>
 endif
+NeoBundle 'kana/vim-fakeclip'
 " }}}
 
 " Syntax {{{
@@ -488,7 +489,7 @@ try
 " --|  $ sudo cp ./Inconsolata-Powerline.otf /usr/share/fonts
 set guifont=Inconsolata_for_Powerline:h11:cANSI
 set guifontwide=MS_Gothic:h11:cSHIFTJIS
-let g:Powerline_symbols='fancy'
+let g:Powerline_symbols = 'fancy'
 let g:Powerline_mode_n = 'NORMAL'
 call Pl#Hi#Allocate({
   \ 'black'          : 16,
@@ -614,7 +615,7 @@ let g:Powerline#Colorschemes#my#colorscheme = Pl#Colorscheme#Init([
     \ 'N': ['white', 'gray0'],
     \ }),
   \ ])
-let g:Powerline_colorscheme='my'
+let g:Powerline_colorscheme = 'my'
 catch
 endtry
 " }}}
@@ -692,7 +693,7 @@ endif
 if has('autocmd')
   function! AU_ReCheck_FENC()
     if &fileencoding =~# 'iso-2022-jp' && search("[^\x01-\x7e]", 'n') == 0
-      let &fileencoding=&encoding
+      let &fileencoding = &encoding
     endif
   endfunction
   autocmd BufReadPost * call AU_ReCheck_FENC()
@@ -797,7 +798,7 @@ augroup END
 
 " Binary editor {{{
 " http://d.hatena.ne.jp/goth_wrist_cut/20090809/1249800323
-let $BINS='*.bin,*.exe,*.png,*.gif,*.jpg,*.jpeg,*.bmp,*.PNG,*.JPG,*.JPEG,*.BMP,*.ico,*.pdf,*.dvi,*.pyc,*.mp3'
+let $BINS = '*.bin,*.exe,*.png,*.gif,*.jpg,*.jpeg,*.bmp,*.PNG,*.JPG,*.JPEG,*.BMP,*.ico,*.pdf,*.dvi,*.pyc,*.mp3'
 augroup Binary
   autocmd!
   autocmd FileType xxd nnoremap <silent> <buffer> ,b :%!xxd <CR><CR>
@@ -808,7 +809,7 @@ augroup Binary
   " autocmd BufWritePost $BINS call BinWritePost()
   " autocmd CursorHold $BINS call BinReHex()
   function! BinReadPost()
-    set filetype=xxd
+    set filetype = xxd
     " execute '%!xxd'
     " let &binary = 1
   endfunction
