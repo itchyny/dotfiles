@@ -1,7 +1,7 @@
 " ------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/01/06 11:28:42.
+" - * Last Change: 2013/01/07 16:59:12.
 " ------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -143,7 +143,7 @@ NeoBundle 'Shougo/unite.vim'
   autocmd ESC FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
   autocmd ESC FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
   highlight default link uniteSourcePrompt Identifier
-  let s:startfiletypes = '.*\.\(exe\|png\|gif\|jpg\|jpeg\|bmp\|pdf\|mp3\|mp4\|avi\|mkv\)$'
+  let s:startfiletypes = '.*\.\(exe\|png\|gif\|jpg\|jpeg\|bmp\|eps\|pdf\|mp3\|mp4\|avi\|mkv\)$'
   call unite#custom_source('file', 'ignore_pattern', '.*\.\(o\|exe\|dll\|bak\|sw[po]\|hi\|DS_Store\)$')
   let auto_open = {
         \ 'description' : 'edit or open files',
@@ -1146,6 +1146,10 @@ vnoremap <C-a> <ESC>gg<S-v><S-g>
 
 " smart Enter
 inoremap <silent> <expr> <CR> (pumvisible()?"\<ESC>o":"\<C-g>u\<CR>")
+
+" split by 80 characters
+nnoremap <silent> ,80 :s/\(.\{80,80}\)/\1<c-v><Enter>/g<Enter><ESC>:<C-u>set nohlsearch<CR>
+vnoremap <silent> ,80 :s/\(.\{80,80}\)/\1<c-v><Enter>/g<Enter><ESC>:<C-u>set nohlsearch<CR>
 " }}}
 
 " file {{{
