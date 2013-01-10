@@ -1,7 +1,7 @@
 " ------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/01/10 17:20:44.
+" - * Last Change: 2013/01/10 20:43:26.
 " ------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -15,6 +15,9 @@ let s:ismac = !s:iswin && !s:iscygwin &&
       \ (has('mac') || has('macunix') || has('guimacvim') || system('uname') =~? '^darwin')
 let s:nosudo = $SUDO_USER == ''
 augroup ESC
+  autocmd!
+augroup END
+augroup SetLocal
   autocmd!
 augroup END
 function! s:safeexecute(s, ...)
@@ -147,7 +150,8 @@ NeoBundle 'Shougo/unite.vim'
   autocmd ESC FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
   highlight default link uniteSourcePrompt Identifier
   let s:startfiletypes = '.*\.\(exe\|png\|gif\|jpg\|jpeg\|bmp\|eps\|pdf\|mp3\|mp4\|avi\|mkv\)$'
-  call unite#custom_source('file', 'ignore_pattern', '.*\.\(o\|exe\|dll\|bak\|sw[po]\|hi\|DS_Store\)$')
+  call unite#custom_source('file', 'ignore_pattern'
+        \, '.*\.\(o\|exe\|dll\|bak\|sw[po]\|hi\|fff\|aux\|toc\|bbl\|blg\|DS_Store\)$')
   let auto_open = {
         \ 'description' : 'edit or open files',
         \ 'is_selectable' : 1,
@@ -732,9 +736,9 @@ else
 endif
 set shortmess+=I            " disable start up message
 set number
-  autocmd FileType vimshell,vimcalc,quickrun,int-ghci setlocal nonumber
+  autocmd SetLocal FileType vimshell,vimcalc,quickrun,int-ghci setlocal nonumber
 set cursorline
-  autocmd FileType calendar,vimcalc,vimshell,quickrun,int-ghci setlocal nocursorline
+  autocmd SetLocal FileType calendar,vimcalc,vimshell,quickrun,int-ghci setlocal nocursorline
 set nocursorcolumn
 set showmatch
 set showtabline=1
@@ -869,16 +873,16 @@ set magic                   " パターン中で.[*の特殊文字を使用す�
 " Indent {{{
 filetype plugin indent on
 set autoindent
-  autocmd FileType tex,hatena setlocal noautoindent
+  autocmd SetLocal FileType tex,hatena setlocal noautoindent
 set smartindent
-  autocmd FileType tex,hatena setlocal nosmartindent
+  autocmd SetLocal FileType tex,hatena setlocal nosmartindent
 set shiftwidth=2
-  autocmd FileType markdown setlocal shiftwidth=4
+  autocmd SetLocal FileType markdown setlocal shiftwidth=4
 " }}}
 
 " Special keys (tab, backspace) {{{
 set textwidth=0   " No auto breking line
-  autocmd FileType rest setlocal textwidth=50
+  autocmd SetLocal FileType rest setlocal textwidth=50
 set expandtab               " insert spaces with <Tab>
 set tabstop=2
 retab
