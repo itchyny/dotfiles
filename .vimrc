@@ -1,7 +1,7 @@
 " ------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/01/10 16:22:10.
+" - * Last Change: 2013/01/10 17:20:44.
 " ------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -109,6 +109,12 @@ NeoBundle 'Shougo/neosnippet'
   let g:neosnippet#snippets_directory = expand($VIM.'/snippets')
   imap <expr><TAB> neosnippet#expandable() ?
         \     "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+  " imap <expr><TAB> neosnippet#expandable() || neosnippet#jumpable() ?
+  " \ "\<Plug>(neosnippet_expand_or_jump)"
+  " \: pumvisible() ? "\<C-n>" : "\<TAB>"
+  " smap <expr><TAB> neosnippet#expandable() || neosnippet#jumpable() ?
+  " \ "\<Plug>(neosnippet_expand_or_jump)"
+  " \: "\<TAB>"
 NeoBundle 'ujihisa/neco-look'
   " --| Requirement: look commnad
 endif
@@ -413,8 +419,11 @@ NeoBundle 'tpope/vim-surround'
   let g:surround_{char2nr('$')} = "$\r$" " for LaTeX
 NeoBundle 't9md/vim-surround_custom_mapping'
 NeoBundle 'tComment'
-  autocmd FileType gnuplot call tcomment#DefineType('gnuplot', '# %s')
-  autocmd FileType haxe call tcomment#DefineType('haxe', '// %s')
+  augroup tComment
+    autocmd!
+    autocmd FileType gnuplot call tcomment#DefineType('gnuplot', '# %s')
+    autocmd FileType haxe call tcomment#DefineType('haxe', '// %s')
+  augroup END
 NeoBundle 'Align'
 NeoBundle 'errormarker.vim'
 NeoBundle 'mattn/calendar-vim'
@@ -636,7 +645,10 @@ set ambiwidth=double
 
 " 書類を開くことができませんでした。テキストエンコーディング日本語(Mac OS)には対応していません。 {{{
 " http://d.hatena.ne.jp/uasi/20110523/1306079612
-autocmd BufWritePost * call SetUTF8Xattr(escape(expand("<afile>"), "*[]?{}' "))
+augroup SetUTF8Xattr
+  autocmd!
+  autocmd BufWritePost * call SetUTF8Xattr(escape(expand("<afile>"), "*[]?{}' "))
+augroup END
 function! SetUTF8Xattr(file)
   let isutf8 = &fileencoding == "utf-8" || (&fileencoding == "" && &encoding == "utf-8")
   if s:ismac && isutf8
@@ -694,7 +706,10 @@ if has('autocmd')
       let &fileencoding = &encoding
     endif
   endfunction
-  autocmd BufReadPost * call AU_ReCheck_FENC()
+  augroup AU_ReCheck_FENC
+    autocmd!
+    autocmd BufReadPost * call AU_ReCheck_FENC()
+  augroup END
 endif
 " 改行コードの自動認識
 set fileformats=unix,dos,mac
@@ -733,7 +748,10 @@ set nospell
       setlocal nospell
     endif
   endfunction
-  autocmd FileType tex,md call <SID>autospell()
+  augroup autospell
+    autocmd!
+    autocmd FileType tex,md call <SID>autospell()
+  augroup END
 set modeline
 set modelines=1
 " }}}
@@ -900,8 +918,11 @@ function! s:enter()
     silent call s:safeexecute(':VimFiler -buffer-name=vimfiler', ':VimFiler')
   endif
 endfunction
-autocmd VimEnter * call s:enter()
-autocmd GUIEnter * simalt ~x
+augroup Enter
+  autocmd!
+  autocmd VimEnter * call s:enter()
+  autocmd GUIEnter * simalt ~x
+augroup END
 " }}}
 
 " Move to the directory for each buffer, current directory functions {{{
