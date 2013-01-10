@@ -1,7 +1,7 @@
 " ------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/01/10 15:03:43.
+" - * Last Change: 2013/01/10 15:44:07.
 " ------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -324,8 +324,7 @@ NeoBundle 'Shougo/vimfiler'
   augroup END
 NeoBundle 'Shougo/vinarise'
 endif
-NeoBundleLazy 'eagletmt/ghci-vim'
-  autocmd FileType haskell NeoBundleSource ghci-vim
+NeoBundle 'eagletmt/ghci-vim'
   augroup Ghci
     autocmd!
     autocmd FileType haskell nnoremap <Leader>l <expr> call s:safeexecute(':GhciLoad')
@@ -402,10 +401,8 @@ NeoBundle 'Shougo/vimshell'
   nnoremap <Leader>p :<C-u>VimShellInteractive python<CR>
 if executable('ghc-mod')
   " neocomplcache (neco-ghc) throws fatal error when ghc-mod is not found
-NeoBundleLazy 'neco-ghc'
-  autocmd FileType haskell NeoBundleSource neco-ghc
-NeoBundleLazy 'eagletmt/ghcmod-vim'
-  autocmd FileType haskell NeoBundleSource ghcmod-vim
+NeoBundle 'ujihisa/neco-ghc'
+NeoBundle 'eagletmt/ghcmod-vim'
   " --| Requirement: ghc-mod
   " --|  $ cabal install ghc-mod
 endif
@@ -464,14 +461,10 @@ NeoBundle 'colorizer'
     autocmd!
     autocmd BufNewFile,BufReadPost *.css ColorHighlight
   augroup END
-NeoBundleLazy 'groenewege/vim-less'
-  autocmd FileType less NeoBundleSource vim-less
-NeoBundleLazy 'less.vim'
-  autocmd FileType less NeoBundleSource less.vim
-NeoBundleLazy 'syntaxm4.vim'
-  autocmd FileType m4 NeoBundleSource syntaxm4.vim
-NeoBundleLazy 'vim-scripts/jade.vim'
-  autocmd FileType jade NeoBundleSource jade.vim
+NeoBundle 'groenewege/vim-less'
+NeoBundle 'less.vim'
+NeoBundle 'syntaxm4.vim'
+NeoBundle 'vim-scripts/jade.vim'
 NeoBundle 'vim-coffee-script'
 NeoBundle 'rest.vim'
 NeoBundle 'VST'
