@@ -1,7 +1,7 @@
 " ------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/01/11 12:39:47.
+" - * Last Change: 2013/01/11 22:38:13.
 " ------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -459,6 +459,11 @@ NeoBundle 'vimtaku/hl_matchit.vim.git'
 " Syntax {{{
 " ------------------------------------------------------------------------------------------------------------
 NeoBundle 'scrooloose/syntastic'
+  if s:ismac
+    let g:syntastic_error_symbol='✕'
+    let g:syntastic_warning_symbol='⚠'
+  endif
+  let g:syntastic_enable_highlighting = 0
 NeoBundle 'mattn/zencoding-vim'
   let g:user_zen_expandabbr_key = '<c-e>'
   let g:user_zen_settings = { 'html' : { 'indentation' : '  ' }, }
