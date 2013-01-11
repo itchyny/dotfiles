@@ -1,7 +1,7 @@
 " ------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/01/11 11:42:29.
+" - * Last Change: 2013/01/11 12:39:47.
 " ------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -645,6 +645,8 @@ set formatoptions+=mM       " 日本語の行の連結時には空白を入力�
 " Ubuntuでは, gnome-terminal, terminatorを以下のコマンドに貼り替えると解決する
 "   /bin/sh -c "VTE_CJK_WIDTH=1 terminator -m"
 "   /bin/sh -c "VTE_CJK_WIDTH=1 gnome-terminal --disable-factory"
+" MacのiTermでは, Profiles>Text>Double-Width Characters
+"                 >Treat ambiguous-width characters as double widthにチェック
 set ambiwidth=double
 " }}}
 
