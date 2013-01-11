@@ -1,7 +1,7 @@
 " ------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/01/11 09:40:29.
+" - * Last Change: 2013/01/11 09:49:14.
 " ------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -441,7 +441,7 @@ NeoBundle 'sjl/gundo.vim'
   nnoremap <Leader>g :<C-u>GundoToggle<CR>
   autocmd ESC FileType gundo nnoremap <silent> <buffer> <ESC><ESC> :<C-u>GundoToggle<CR>
 NeoBundle 'VimCalc'
-"   " --| Requirement: +python
+  " --| Requirement: +python
   autocmd ESC FileType vimcalc nnoremap <silent> <buffer> <ESC><ESC><ESC> :<C-u>q<CR>
   nnoremap <Leader>a :<C-u>Calc<CR>
 endif
