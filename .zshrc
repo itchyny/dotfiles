@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2013/01/06 11:30:07.
+# - * Last Change: 2013/01/11 11:38:30.
 # ------------------------------------------------------------------------------------------------------------
 
 # history
@@ -296,7 +296,7 @@ alias -s {gz,tgz,zip,lzh,bz2,tbz,Z,tar,arj,xz}=extract
   source ~/Dropbox/dotfiles/incr-0.2.zsh
 
 # https://github.com/zsh-users/zsh-history-substring-search
-[ -e ~/Dropbox/dotfiles/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && \
+[ -e ~/Dropbox/dotfiles/zsh-history-substring-search/zsh-history-substring-search.zsh  ] && \
   source ~/Dropbox/dotfiles/zsh-history-substring-search/zsh-history-substring-search.zsh
 
 # https://github.com/zsh-users/zsh-syntax-highlighting
