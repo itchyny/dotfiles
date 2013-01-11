@@ -1,7 +1,7 @@
 " ------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/01/11 22:38:13.
+" - * Last Change: 2013/01/12 00:07:10.
 " ------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -110,14 +110,12 @@ NeoBundle 'Shougo/neocomplcache'
   let g:neocomplcache_skip_auto_completion_time = "0.50"
 NeoBundle 'Shougo/neosnippet'
   let g:neosnippet#snippets_directory = expand($VIM.'/snippets')
-  imap <expr><TAB> neosnippet#expandable() ?
-        \     "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
-  " imap <expr><TAB> neosnippet#expandable() || neosnippet#jumpable() ?
-  " \ "\<Plug>(neosnippet_expand_or_jump)"
-  " \: pumvisible() ? "\<C-n>" : "\<TAB>"
-  " smap <expr><TAB> neosnippet#expandable() || neosnippet#jumpable() ?
-  " \ "\<Plug>(neosnippet_expand_or_jump)"
-  " \: "\<TAB>"
+  imap <expr><TAB> neosnippet#expandable() <Bar><Bar> neosnippet#jumpable() ?
+  \ "\<Plug>(neosnippet_expand_or_jump)"
+  \: pumvisible() ? "\<C-n>" : "\<TAB>"
+  smap <expr><TAB> neosnippet#expandable() <Bar><Bar> neosnippet#jumpable() ?
+  \ "\<Plug>(neosnippet_expand_or_jump)"
+  \: "\<TAB>"
 NeoBundle 'ujihisa/neco-look'
   " --| Requirement: look commnad
 endif
