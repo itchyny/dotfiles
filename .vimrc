@@ -1,7 +1,7 @@
 " ------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/01/12 23:39:20.
+" - * Last Change: 2013/01/13 00:03:23.
 " ------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -445,7 +445,6 @@ NeoBundle 'VimCalc'
   nnoremap <Leader>a :<C-u>Calc<CR>
 endif
 NeoBundle 'kana/vim-fakeclip'
-NeoBundle 'tsaleh/vim-matchit'
 NeoBundle 'gregsexton/MatchTag'
 NeoBundle 'matchit.zip'
 NeoBundle 'vimtaku/hl_matchit.vim.git'
