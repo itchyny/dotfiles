@@ -1,7 +1,7 @@
 " ------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/01/13 00:45:21.
+" - * Last Change: 2013/01/13 00:45:37.
 " ------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -1143,7 +1143,7 @@ nnoremap ] <S>j
 
 " indentation in visual mode
 vnoremap < <gv
-vnoremap > >gv|
+vnoremap > >gv
 
 " swap line/normal visual mode
 noremap <S-v> v
