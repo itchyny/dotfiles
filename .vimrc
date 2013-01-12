@@ -1,7 +1,7 @@
 " ------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/01/13 00:16:47.
+" - * Last Change: 2013/01/13 00:22:41.
 " ------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -325,7 +325,7 @@ NeoBundle 'Shougo/vimfiler'
     autocmd FileType vimfiler nmap <buffer> O <Plug>(vimfiler_sync_with_another_vimfiler)
     autocmd FileType vimfiler nmap <buffer><expr> e
           \ vimfiler#smart_cursor_map("\<Plug>(vimfiler_cd_file)", "\<Plug>(vimfiler_edit_file)")
-    autocmd FileType vimfiler nmap <buffer><expr> t s:changetime()
+    autocmd FileType vimfiler nmap <buffer><expr> t <SID>changetime()
   augroup END
 NeoBundle 'Shougo/vinarise'
 endif
