@@ -1,7 +1,7 @@
 " ------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/01/13 00:22:41.
+" - * Last Change: 2013/01/13 00:23:03.
 " ------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -806,7 +806,7 @@ set autoread
 " }}}
 
 " Filetype {{{
-augroup Filetype
+augroup SetLocalFiletype
   autocmd!
   autocmd BufNewFile,BufReadPost,BufEnter *.bf   setlocal filetype=bf
   autocmd BufNewFile,BufReadPost,BufEnter *.cls  setlocal filetype=tex
