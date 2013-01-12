@@ -1,7 +1,7 @@
 " ------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/01/12 23:26:14.
+" - * Last Change: 2013/01/12 23:26:31.
 " ------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -197,7 +197,7 @@ NeoBundle 'Shougo/vimproc', {
   \   },
   \ }
 NeoBundle 'thinca/vim-quickrun'
-  let g:quickrun_config = {'*': {'runmode': 'async:vimproc', 'split': 'vertical', 'into': 1}}
+  let g:quickrun_config = {'_': {'runmode': 'async:vimproc', 'split': 'vertical', 'into': 1}}
   if executable('node')
     let g:quickrun_config.javascript = {'command' : 'node'}
   endif
