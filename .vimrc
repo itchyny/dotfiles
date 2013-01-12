@@ -1,7 +1,7 @@
 " ------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/01/12 01:10:13.
+" - * Last Change: 2013/01/12 14:17:11.
 " ------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -1283,7 +1283,7 @@ map <S-q> <Nop>
 " |    n    | nautilus / Finder   |             |                  |                   | Unite file/new  |
 " |    o    | QuickRun <i >output |             |                  |    default        | Unite file      |
 " +---------+---------------------+-------------+------------------+-------------------+-----------------+
-" |    p    | paste (mac)         |   Python    |                  |                   | Unite buffer    |
+" |    p    |                     |   Python    |                  |                   | Unite buffer    |
 " |    q    |                     |             |                  |                   | <C-w>(default)  |
 " |    r    | QuickRun            |             |                  |    default        |  default        |
 " |    s    | OpenBrowser         |   VimShell  |                  |                   | :w<CR>          |
