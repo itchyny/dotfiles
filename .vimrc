@@ -1,7 +1,7 @@
 " ------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/01/13 00:45:37.
+" - * Last Change: 2013/01/13 00:46:21.
 " ------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -1173,8 +1173,8 @@ vnoremap <C-a> <ESC>gg<S-v><S-g>
 inoremap <silent> <expr> <CR> (pumvisible()?"\<ESC>o":"\<C-g>u\<CR>")
 
 " split by 80 characters
-nnoremap <silent> ,80 :s/\(.\{80,80}\)/\1<c-v><Enter>/g<Enter><ESC>:<C-u>set nohlsearch<CR>
-vnoremap <silent> ,80 :s/\(.\{80,80}\)/\1<c-v><Enter>/g<Enter><ESC>:<C-u>set nohlsearch<CR>
+nnoremap <silent> ,80 :s/\(.\{80}\)/\1<c-v><Enter>/g<Enter><ESC>:<C-u>set nohlsearch<CR>
+vnoremap <silent> ,80 :s/\(.\{80}\)/\1<c-v><Enter>/g<Enter><ESC>:<C-u>set nohlsearch<CR>
 " }}}
 
 " file {{{
