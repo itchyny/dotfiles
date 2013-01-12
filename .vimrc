@@ -1,7 +1,7 @@
 " ------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/01/12 00:07:10.
+" - * Last Change: 2013/01/12 01:10:13.
 " ------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -111,11 +111,11 @@ NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/neosnippet'
   let g:neosnippet#snippets_directory = expand($VIM.'/snippets')
   imap <expr><TAB> neosnippet#expandable() <Bar><Bar> neosnippet#jumpable() ?
-  \ "\<Plug>(neosnippet_expand_or_jump)"
-  \: pumvisible() ? "\<C-n>" : "\<TAB>"
+    \ "\<Plug>(neosnippet_expand_or_jump)"
+    \: pumvisible() ? "\<C-n>" : "\<TAB>"
   smap <expr><TAB> neosnippet#expandable() <Bar><Bar> neosnippet#jumpable() ?
-  \ "\<Plug>(neosnippet_expand_or_jump)"
-  \: "\<TAB>"
+    \ "\<Plug>(neosnippet_expand_or_jump)"
+    \: "\<TAB>"
 NeoBundle 'ujihisa/neco-look'
   " --| Requirement: look commnad
 endif
