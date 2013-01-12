@@ -1,7 +1,7 @@
 " ------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/01/13 00:46:21.
+" - * Last Change: 2013/01/13 00:57:14.
 " ------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -1143,7 +1143,7 @@ nnoremap ] <S>j
 
 " indentation in visual mode
 vnoremap < <gv
-vnoremap > >gv
+vnoremap > >gv|
 
 " swap line/normal visual mode
 noremap <S-v> v
@@ -1173,8 +1173,8 @@ vnoremap <C-a> <ESC>gg<S-v><S-g>
 inoremap <silent> <expr> <CR> (pumvisible()?"\<ESC>o":"\<C-g>u\<CR>")
 
 " split by 80 characters
-nnoremap <silent> ,80 :s/\(.\{80}\)/\1<c-v><Enter>/g<Enter><ESC>:<C-u>set nohlsearch<CR>
-vnoremap <silent> ,80 :s/\(.\{80}\)/\1<c-v><Enter>/g<Enter><ESC>:<C-u>set nohlsearch<CR>
+nnoremap <silent> ,80 :s/\(.\{80,80}\)/\1<c-v><Enter>/g<Enter><ESC>:<C-u>set nohlsearch<CR>
+vnoremap <silent> ,80 :s/\(.\{80,80}\)/\1<c-v><Enter>/g<Enter><ESC>:<C-u>set nohlsearch<CR>
 " }}}
 
 " file {{{
@@ -1218,18 +1218,18 @@ let s:winwid = winwidth(0)
 function! AutoClose()
   try
     if &filetype == 'quickrun'
-      silent execute 'q!'
+      silent q!
     elseif &filetype == 'gundo'
       silent call feedkeys('q')
     elseif winwidth(0) < 2 * s:winwid / 3
-      silent execute 'q'
+      silent q
     elseif &filetype == '' && !&modified
-      silent execute 'q!'
+      silent q!
     elseif &modified
     elseif &filetype == 'vimshell'
-      silent execute 'q'
+      silent q
     else
-      silent execute 'bd!'
+      silent bd!
     endif
   catch
   endtry
