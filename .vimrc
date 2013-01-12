@@ -1,7 +1,7 @@
 " ------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/01/12 18:06:04.
+" - * Last Change: 2013/01/12 23:26:14.
 " ------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -456,7 +456,7 @@ NeoBundle 'vimtaku/hl_matchit.vim.git'
 
 " Syntax {{{
 " ------------------------------------------------------------------------------------------------------------
-NeoBundle 'scrooloose/syntastic'
+" NeoBundle 'scrooloose/syntastic'
   if s:ismac
     let g:syntastic_error_symbol='✕'
     let g:syntastic_warning_symbol='⚠'
