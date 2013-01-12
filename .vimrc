@@ -1,7 +1,7 @@
 " ------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/01/12 23:34:48.
+" - * Last Change: 2013/01/12 23:39:20.
 " ------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -145,8 +145,7 @@ NeoBundle 'Shougo/unite.vim'
     autocmd FileType unite inoremap <silent> <buffer> <C-o> <Nop>
     autocmd FileType unite nmap <buffer> <C-a> <Plug>(unite_insert_enter)
   augroup END
-  autocmd ESC FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
-  autocmd ESC FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
+  autocmd ESC FileType unite nmap <silent> <buffer> <ESC><ESC> <Plug>(unite_exit)
   highlight default link uniteSourcePrompt Identifier
   let s:startfiletypes = '.*\.\(exe\|png\|gif\|jpg\|jpeg\|bmp\|eps\|pdf\|mp3\|mp4\|avi\|mkv\)$'
   call unite#custom_source('file', 'ignore_pattern'
