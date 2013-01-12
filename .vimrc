@@ -1,7 +1,7 @@
 " ------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/01/12 14:17:11.
+" - * Last Change: 2013/01/12 18:06:04.
 " ------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -1220,6 +1220,8 @@ function! AutoClose()
   try
     if &filetype == 'quickrun'
       silent execute 'q!'
+    elseif &filetype == 'gundo'
+      silent call feedkeys('q')
     elseif winwidth(0) < 2 * s:winwid / 3
       silent execute 'q'
     elseif &filetype == '' && !&modified
