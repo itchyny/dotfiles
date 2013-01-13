@@ -1,7 +1,7 @@
 " ------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/01/13 11:54:51.
+" - * Last Change: 2013/01/13 11:58:09.
 " ------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -823,43 +823,6 @@ augroup SetLocalFiletype
   autocmd BufNewFile,BufReadPost,BufEnter *.roy  setlocal filetype=roy
   autocmd BufNewFile,BufReadPost,BufEnter *.rst  setlocal filetype=rest
   autocmd BufNewFile,BufReadPost,BufEnter *.tex  setlocal filetype=tex
-augroup END
-" }}}
-
-" Binary editor {{{
-" http://d.hatena.ne.jp/goth_wrist_cut/20090809/1249800323
-let $BINS = '*.bin,*.exe,*.png,*.gif,*.jpg,*.jpeg,*.bmp,*.PNG,*.JPG,*.JPEG,*.BMP,*.ico,*.pdf,*.dvi,*.pyc,*.mp3'
-augroup Binary
-  autocmd!
-  autocmd FileType xxd nnoremap <silent> <buffer> ,b :%!xxd <CR><CR>
-  autocmd FileType xxd nnoremap <silent> <buffer> ,r :%!xxd -r <CR><CR>
-  autocmd BufReadPre $BINS let &binary = 1
-  autocmd BufReadPost $BINS call BinReadPost()
-  " autocmd BufWritePre $BINS call BinWritePre()
-  " autocmd BufWritePost $BINS call BinWritePost()
-  " autocmd CursorHold $BINS call BinReHex()
-  function! BinReadPost()
-    set filetype=xxd
-    " execute '%!xxd'
-    " let &binary = 1
-  endfunction
-  function! BinWritePre()
-    let s:saved_pos = getpos('.')
-    silent %!xxd -r
-  endfunction
-  function! BinWritePost()
-    silent %!xxd -g1
-    call setpos('.', s:saved_pos)
-    set nomod
-  endfunction
-  function! BinReHex()
-    let s:saved_pos = getpos('.')
-    let s:modified = &modified
-    silent %!xxd -r
-    silent %!xxd -g1
-    call setpos('.', s:saved_pos)
-    let &modified = s:modified
-  endfunction
 augroup END
 " }}}
 
