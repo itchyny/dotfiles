@@ -1,7 +1,7 @@
 " ------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/01/13 13:29:50.
+" - * Last Change: 2013/01/13 13:45:01.
 " ------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -1165,6 +1165,8 @@ vnoremap <C-x> <C-w>x
 inoremap <C-q> <ESC><C-w>
 nnoremap <C-q> <C-w>
 vnoremap <C-q> <ESC><C-w>
+
+" close buffer
 let s:winwid = winwidth(0)
 function! AutoClose()
   try
