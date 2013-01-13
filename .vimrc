@@ -1,7 +1,7 @@
 " ------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/01/13 00:57:14.
+" - * Last Change: 2013/01/13 11:41:28.
 " ------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -451,6 +451,7 @@ NeoBundle 'vimtaku/hl_matchit.vim.git'
   let g:hl_matchit_enable_on_vim_startup = 1
   let g:hl_matchit_hl_groupname = 'MatchParen'
   let g:hl_matchit_allow_ft_regexp = 'vim\|sh\|tex'
+NeoBundle 'thinca/vim-scouter'
 " }}}
 
 " Syntax {{{
@@ -1065,20 +1066,6 @@ function! TextEdit()
   endif
 endfunction
 nnoremap \g :call TextEdit()<CR>
-" }}}
-
-" 新型戦闘力計測器 {{{
-" http://d.hatena.ne.jp/thinca/20091031/1257001194
-function! Scouter(file, ...)
-  let pat = '^\s*$\|^\s*"'
-  let lines = readfile(a:file)
-  if !a:0 || !a:1
-    let lines = split(substitute(join(lines, "\n"), '\n\s*\\', '', 'g'), "\n")
-  endif
-  return len(filter(lines, 'v:val !~ pat'))
-endfunction
-command! -bar -bang -nargs=? -complete=file Scouter
-\        echo Scouter(empty(<q-args>) ? $MYVIMRC : expand(<q-args>), <bang>0)
 " }}}
 
 " view syntax name under cursor {{{
