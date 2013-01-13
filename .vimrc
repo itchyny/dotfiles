@@ -1,7 +1,7 @@
 " ------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/01/13 11:58:09.
+" - * Last Change: 2013/01/13 13:15:50.
 " ------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -809,20 +809,20 @@ set autoread
 " Filetype {{{
 augroup SetLocalFiletype
   autocmd!
-  autocmd BufNewFile,BufReadPost,BufEnter *.bf   setlocal filetype=bf
-  autocmd BufNewFile,BufReadPost,BufEnter *.cls  setlocal filetype=tex
-  autocmd BufNewFile,BufReadPost,BufEnter *.gnuplot setlocal filetype=gnuplot
-  autocmd BufNewFile,BufReadPost,BufEnter *.hs,*.y setlocal filetype=haskell
-  autocmd BufNewFile,BufReadPost,BufEnter *.hx   setlocal filetype=haxe
-  autocmd BufNewFile,BufReadPost,BufEnter *.jade setlocal filetype=jade
-  autocmd BufNewFile,BufReadPost,BufEnter *.json setlocal filetype=json
-  autocmd BufNewFile,BufReadPost,BufEnter *.less setlocal filetype=less
-  autocmd BufNewFile,BufReadPost,BufEnter *.md,*.mkd setlocal filetype=markdown
-  autocmd BufNewFile,BufReadPost,BufEnter *.qcl  setlocal filetype=qcl
-  autocmd BufNewFile,BufReadPost,BufEnter *.r    setlocal filetype=r
-  autocmd BufNewFile,BufReadPost,BufEnter *.roy  setlocal filetype=roy
-  autocmd BufNewFile,BufReadPost,BufEnter *.rst  setlocal filetype=rest
-  autocmd BufNewFile,BufReadPost,BufEnter *.tex  setlocal filetype=tex
+  autocmd BufNewFile,BufReadPost *.bf   setlocal filetype=bf
+  autocmd BufNewFile,BufReadPost *.cls  setlocal filetype=tex
+  autocmd BufNewFile,BufReadPost *.gnuplot setlocal filetype=gnuplot
+  autocmd BufNewFile,BufReadPost *.hs,*.y setlocal filetype=haskell
+  autocmd BufNewFile,BufReadPost *.hx   setlocal filetype=haxe
+  autocmd BufNewFile,BufReadPost *.jade setlocal filetype=jade
+  autocmd BufNewFile,BufReadPost *.json setlocal filetype=json
+  autocmd BufNewFile,BufReadPost *.less setlocal filetype=less
+  autocmd BufNewFile,BufReadPost *.md,*.mkd setlocal filetype=markdown
+  autocmd BufNewFile,BufReadPost *.qcl  setlocal filetype=qcl
+  autocmd BufNewFile,BufReadPost *.r    setlocal filetype=r
+  autocmd BufNewFile,BufReadPost *.roy  setlocal filetype=roy
+  autocmd BufNewFile,BufReadPost *.rst  setlocal filetype=rest
+  autocmd BufNewFile,BufReadPost *.tex  setlocal filetype=tex
 augroup END
 " }}}
 
