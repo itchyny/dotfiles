@@ -1,7 +1,7 @@
 " ------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/01/13 13:45:37.
+" - * Last Change: 2013/01/14 10:51:06.
 " ------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -174,11 +174,12 @@ NeoBundle 'Shougo/unite-build'
 NeoBundle 'unite-colorscheme'
 NeoBundle 'ujihisa/vim-ref'
 if executable('hoogle')
-NeoBundle 'ujihisa/ref-hoogle'
+NeoBundle 'eagletmt/unite-haddock'
+  call unite#custom_source('haddock,hoogle', 'max_candidates', 20)
+  nnoremap <Leader>h :<C-u>Unite hoogle -buffer-name=hoogle<CR>
   " --| Requirement: hoogle
   " --|   $ cabal install hoogle
   " --|   $ hoogle data
-  nnoremap <Leader>h :<C-u>Unite ref/hoogle -buffer-name=ref/hoogle<CR>
 endif
 NeoBundle 'h1mesuke/unite-outline'
 NeoBundle 'ujihisa/unite-haskellimport'
