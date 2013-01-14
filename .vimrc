@@ -1,7 +1,7 @@
 " ------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/01/14 10:51:06.
+" - * Last Change: 2013/01/14 10:51:35.
 " ------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -485,6 +485,7 @@ NeoBundle 'rest.vim'
 NeoBundle 'VST'
 NeoBundle 'syntaxhaskell.vim'
 NeoBundle 'haskell.vim'
+  let hs_highlight_boolean = 1
 NeoBundle 'vim-scripts/indenthaskell.vim'
 NeoBundle 'tpope/vim-markdown'
 NeoBundle 'haxe.vim'
