@@ -1,7 +1,7 @@
 " ------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/01/14 10:51:35.
+" - * Last Change: 2013/01/14 14:21:00.
 " ------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -144,6 +144,7 @@ NeoBundle 'Shougo/unite.vim'
     autocmd FileType unite inoremap <silent> <buffer> <C-z> <Nop>
     autocmd FileType unite inoremap <silent> <buffer> <C-o> <Nop>
     autocmd FileType unite nmap <buffer> <C-a> <Plug>(unite_insert_enter)
+    autocmd FileType unite imap <buffer> OB <Plug>(unite_select_next_line)
   augroup END
   autocmd ESC FileType unite nmap <silent> <buffer> <ESC><ESC> <Plug>(unite_exit)
   highlight default link uniteSourcePrompt Identifier
