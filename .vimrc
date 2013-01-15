@@ -1,7 +1,7 @@
 " ------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/01/15 17:47:48.
+" - * Last Change: 2013/01/15 21:39:58.
 " ------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -403,7 +403,7 @@ NeoBundle 'Shougo/vimshell'
   augroup END
   nnoremap <silent> <Leader><Leader>s :<C-u>VimShell -split<CR>
   nnoremap <silent> <Leader>s :<C-u>execute 'VimShellCreate '.<SID>current_directory_auto()<CR>
-  nnoremap <silent> <S-h> :<C-u>execute 'VimShellPop '.<SID>current_directory_auto()<CR>
+  nnoremap <silent> <S-h> :<C-u>execute 'VimShell -popup '.<SID>current_directory_auto()<CR>
   nnoremap <Leader>z :<C-u>VimShellInteractive zsh<CR>
   nnoremap <Leader>g :<C-u>VimShellInteractive ghci<CR>
   nnoremap <Leader>p :<C-u>VimShellInteractive python<CR>
