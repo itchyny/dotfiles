@@ -1,7 +1,7 @@
 " ------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/01/15 17:17:01.
+" - * Last Change: 2013/01/15 17:17:07.
 " ------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -1199,6 +1199,7 @@ vnoremap <silent> <C-w> :<C-u>call AutoClose()<CR>
 
 " tab
 nnoremap <C-t> :<C-u>tabnew<CR>
+inoremap <C-t> <ESC>:<C-u>tabnew<CR>
 inoremap <C-Left> <ESC>gT
 inoremap <C-Right> <ESC>gt
 nnoremap <C-Left> gT
