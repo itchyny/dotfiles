@@ -1,7 +1,7 @@
 " ------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/01/15 17:17:07.
+" - * Last Change: 2013/01/15 17:46:17.
 " ------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -1147,6 +1147,8 @@ nnoremap <silent> / :<C-u>set hlsearch<CR>/
 nnoremap <silent> ? :<C-u>set hlsearch<CR>?
 nnoremap <silent> * :<C-u>set hlsearch<CR>*
 nnoremap <silent> # :<C-u>set hlsearch<CR>#
+nnoremap <silent> ,n :<C-u>cn<CR>
+nnoremap <silent> ,p :<C-u>cp<CR>
 " }}}
 
 " Navigation {{{
