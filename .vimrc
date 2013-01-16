@@ -1,7 +1,7 @@
 " ------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/01/16 12:30:51.
+" - * Last Change: 2013/01/16 12:34:22.
 " ------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -866,6 +866,9 @@ retab
 set backspace=indent,eol,start
 " }}}
 
+" Sequencial keys {{{
+set timeoutlen=200
+" }}}
 
 " Clipboard {{{
 set clipboard=unnamed
@@ -1110,6 +1113,7 @@ noremap v <S-v>
 " easy copy, paste with clipboard
 if s:ismac
   nnoremap xp xp
+  nmap x "*dl
   vmap y "*y
   nmap y "*y
   nmap p "*p
