@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2013/01/11 11:38:30.
+# - * Last Change: 2013/01/17 13:55:29.
 # ------------------------------------------------------------------------------------------------------------
 
 # history
@@ -170,7 +170,7 @@ if [ `uname` = "Darwin" ]; then
   alias eog='open -a Preview'
   alias port-update='sudo port selfupdate && sudo port upgrade outdated'
   alias update='cabal-update && port-update'
-  alias eject='sudo diskutil unmount'
+  # alias eject='sudo diskutil unmount'
   pman () {
     man -t $@ | open -f -a /Applications/Preview.app
   }
@@ -181,7 +181,7 @@ elif [ `uname` = "Linux" ]; then
   alias pbcopy='xsel --clipboard --input'
   # alias pbcopy='xsel -i -b'
   # alias pbpaste='xsel -o -b'
-  alias eject='sudo eject'
+  # alias eject='sudo eject'
 fi
 alias chrome='google-chrome'
 function runcpp () { g++ -O3 $1; ./a.out; }
