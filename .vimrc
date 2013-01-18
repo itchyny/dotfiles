@@ -1,7 +1,7 @@
 " ------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/01/18 11:33:53.
+" - * Last Change: 2013/01/18 11:34:24.
 " ------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -405,12 +405,13 @@ NeoBundle 'Shougo/vimshell'
   nnoremap <silent> <Leader>s :<C-u>execute 'VimShellCreate '.<SID>current_directory_auto()<CR>
   nnoremap <silent> <S-h> :<C-u>execute 'VimShell -popup '.<SID>current_directory_auto()<CR>
   nnoremap <Leader>z :<C-u>VimShellInteractive zsh<CR>
-  nnoremap <Leader>g :<C-u>VimShellInteractive ghci<CR>
+  " nnoremap <Leader>g :<C-u>VimShellInteractive ghci<CR>
   nnoremap <Leader>p :<C-u>VimShellInteractive python<CR>
 if executable('ghc-mod')
   " neocomplcache (neco-ghc) throws fatal error when ghc-mod is not found
 NeoBundle 'ujihisa/neco-ghc'
 NeoBundle 'eagletmt/ghcmod-vim'
+  nnoremap <Leader>g :<C-u>GhcModCheckAsync<CR>
   " --| Requirement: ghc-mod
   " --|  $ cabal install ghc-mod
 endif
