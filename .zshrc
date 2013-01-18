@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2013/01/17 13:55:29.
+# - * Last Change: 2013/01/18 10:12:04.
 # ------------------------------------------------------------------------------------------------------------
 
 # history
@@ -290,6 +290,16 @@ function extract() {
   esac
 }
 alias -s {gz,tgz,zip,lzh,bz2,tbz,Z,tar,arj,xz}=extract
+
+download() {
+  if [[ $1 =~ ".*asx$" ]]; then
+    URL=`curl -s $1 | grep -i HREF | sed 's/.*="\(.*\)".*/\1/'`
+    FILENAME=`echo $URL | sed 's/.*\/\/\([a-z:0-9.\-]*\/\)*//' | sed 's/wsx/wmv/'`
+    mplayer $URL -dumpstream -dumpfile $FILENAME
+  else
+    wget $1
+  fi
+}
 
 # http://mimosa-pudica.net/zsh-incremental.html
 [ -e ~/Dropbox/dotfiles/incr-0.2.zsh ] && \
