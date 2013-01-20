@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2013/01/18 10:12:04.
+# - * Last Change: 2013/01/19 10:50:37.
 # ------------------------------------------------------------------------------------------------------------
 
 # history
@@ -215,6 +215,7 @@ alias mv='mv -i'
 alias crontab="EDITOR=\"$HOME/bin/vi\" crontab"
 alias wget="wget --user-agent='Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_2) AppleWebKit/537.4 (KHTML, like Gecko) Chrome/22.0.1229.94 Safari/537.4' "
 alias aspell="aspell -c -l en_US"
+alias nicovideo-dl="nicovideo-dl -n -t"
 # git
 alias am='git commit -am'
 alias gd='git diff'
