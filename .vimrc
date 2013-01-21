@@ -1,7 +1,7 @@
 " ------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/01/21 10:16:42.
+" - * Last Change: 2013/01/21 10:27:04.
 " ------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -740,9 +740,9 @@ set noshowmode " https://github.com/vim-jp/issues/issues/100
 " Main appearance {{{
 set list
 if s:iswin
-  set listchars=tab:^I,trail:-,extends:>,precedes:<,nbsp:%
+  set listchars=tab:^I,extends:>,precedes:<,nbsp:%
 else
-  set listchars=tab:▸\ ,trail:-,extends:»,precedes:«,nbsp:%
+  set listchars=tab:▸\ ,extends:»,precedes:«,nbsp:%
 endif
 set shortmess+=I            " disable start up message
 set number
