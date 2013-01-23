@@ -1,7 +1,7 @@
 " ------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/01/21 19:46:05.
+" - * Last Change: 2013/01/23 10:18:44.
 " ------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -459,7 +459,9 @@ NeoBundle 'thinca/vim-scouter'
 
 " Syntax {{{
 " ------------------------------------------------------------------------------------------------------------
-" NeoBundle 'scrooloose/syntastic'
+NeoBundle 'scrooloose/syntastic'
+  let g:syntastic_mode_map = { 'mode': 'passive',
+                             \ 'active_filetypes': ['c', 'cpp'] }
   if s:ismac
     let g:syntastic_error_symbol='✕'
     let g:syntastic_warning_symbol='⚠'
@@ -497,6 +499,7 @@ NeoBundle 'motemen/hatena-vim'
 " Powerline {{{
 " ------------------------------------------------------------------------------------------------------------
 NeoBundle 'Lokaltog/vim-powerline'
+" NeoBundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 try
 " --|  $ sudo apt-get install fontforge
 " --|  $ sudo apt-get install python-fontforge
@@ -760,6 +763,7 @@ set nospell
       setlocal spell
       call matchadd('SpellBad', '^\(\S\+ \)\{30,}\S\+[,.]\?$')
       call matchadd('SpellBad', '^\$')
+      call matchadd('SpellBad', '[fF]igure')
     else
       setlocal nospell
     endif
