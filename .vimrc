@@ -1,7 +1,7 @@
 " ------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/01/23 10:18:44.
+" - * Last Change: 2013/01/23 12:26:09.
 " ------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -1226,8 +1226,7 @@ vnoremap <C-Right> gt
 nnoremap <expr> gp '`['.strpart(getregtype(), 0, 1).'`]'
 
 " quit help with escapae key
-autocmd ESC FileType help nnoremap <silent> <buffer> <ESC><ESC> :<C-u>q<CR>
-autocmd ESC FileType qf nnoremap <silent> <buffer> <ESC><ESC> :<C-u>q<CR>
+autocmd ESC FileType help,qf nnoremap <silent> <buffer> <ESC><ESC> :<C-u>q<CR>
 
 " disable EX-mode
 map <S-q> <Nop>
