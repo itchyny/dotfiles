@@ -1,7 +1,7 @@
 " ------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/01/23 15:38:27.
+" - * Last Change: 2013/01/24 20:51:03.
 " ------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -763,8 +763,9 @@ set nospell
       setlocal spell
       call matchadd('SpellBad', '^\(\S\+ \)\{30,}\S\+[,.]\?$')
       call matchadd('SpellBad', '^\$')
-      call matchadd('SpellBad', '[fF]igure')
+      call matchadd('SpellBad', '\s[fF]igure')
       call matchadd('SpellBad', '\\ref{eq:')
+      call matchadd('SpellBad', '^\\end{align}')
     else
       setlocal nospell
     endif
