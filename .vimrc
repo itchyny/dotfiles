@@ -1,7 +1,7 @@
 " ------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/01/25 13:30:52.
+" - * Last Change: 2013/01/25 20:06:14.
 " ------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -245,7 +245,7 @@ NeoBundle 'Shougo/vimfiler'
   let g:vimfiler_as_default_explorer = 1
   let g:vimfiler_sort_type = 'TIME'
   let g:vimfiler_safe_mode_by_default = 0
-  if s:iswin
+  if s:iswin || !has('multi_byte')
     let g:vimfiler_tree_leaf_icon = '|'
     let g:vimfiler_tree_opened_icon = '-'
     let g:vimfiler_tree_closed_icon = '+'
@@ -255,7 +255,7 @@ NeoBundle 'Shougo/vimfiler'
     let g:vimfiler_tree_closed_icon = '▸'
   endif
   let g:vimfiler_file_icon = '-'
-  if s:ismac
+  if s:ismac && has('multi_byte')
     let g:vimfiler_readonly_file_icon = '✗'
     let g:vimfiler_marked_file_icon = '✓'
   else
@@ -459,6 +459,7 @@ NeoBundle 'thinca/vim-scouter'
 
 " Syntax {{{
 " ------------------------------------------------------------------------------------------------------------
+if has('multi_byte')
 NeoBundle 'scrooloose/syntastic'
   let g:syntastic_mode_map = { 'mode': 'passive',
                              \ 'active_filetypes': ['c', 'cpp'] }
@@ -467,6 +468,7 @@ NeoBundle 'scrooloose/syntastic'
     let g:syntastic_warning_symbol='⚠'
   endif
   let g:syntastic_enable_highlighting = 0
+endif
 NeoBundle 'mattn/zencoding-vim'
   let g:user_zen_expandabbr_key = '<c-e>'
   let g:user_zen_settings = { 'html' : { 'indentation' : '  ' }, }
@@ -509,7 +511,9 @@ try
 " --|  $ sudo cp ./Inconsolata-Powerline.otf /usr/share/fonts
 set guifont=Inconsolata_for_Powerline:h11:cANSI
 set guifontwide=MS_Gothic:h11:cSHIFTJIS
-let g:Powerline_symbols = 'fancy'
+if has('multi_byte')
+  let g:Powerline_symbols = 'fancy'
+endif
 let g:Powerline_mode_n = 'NORMAL'
 call Pl#Hi#Allocate({
   \ 'black'          : 16,
@@ -742,7 +746,7 @@ set noshowmode " https://github.com/vim-jp/issues/issues/100
 
 " Main appearance {{{
 set list
-if s:iswin
+if s:iswin || !has('multi_byte')
   set listchars=tab:^I,extends:>,precedes:<,nbsp:%
 else
   set listchars=tab:▸\ ,extends:»,precedes:«,nbsp:%
