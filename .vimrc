@@ -1,7 +1,7 @@
 " ------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/01/25 13:24:28.
+" - * Last Change: 2013/01/25 13:30:52.
 " ------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -772,7 +772,7 @@ set nospell
   endfunction
   augroup autospell
     autocmd!
-    autocmd FileType tex,md call s:autospell()
+    autocmd FileType tex,markdown call s:autospell()
   augroup END
 set modeline
 set modelines=1
