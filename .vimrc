@@ -1,7 +1,7 @@
 " ------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/01/25 10:29:10.
+" - * Last Change: 2013/01/25 13:24:28.
 " ------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -761,9 +761,9 @@ set nospell
   function! s:autospell()
     if search("[^\x01-\x7e]", 'n') == 0
       setlocal spell
-      call matchadd('SpellBad', '^\(\S\+ \)\{30,}\S\+[,.]\?$')
+      call matchadd('SpellBad', '^\(\S\+ \+\)\{30,}\S\+[,.]\?$')
       call matchadd('SpellBad', '^\$')
-      call matchadd('SpellBad', '\s[fF]igure')
+      call matchadd('SpellBad', '\s[fF]igure\>')
       call matchadd('SpellBad', '\\ref{eq:')
       call matchadd('SpellBad', '^\\end{align}')
     else
