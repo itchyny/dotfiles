@@ -1,7 +1,7 @@
 " ------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/01/24 20:51:03.
+" - * Last Change: 2013/01/25 10:29:10.
 " ------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -822,9 +822,6 @@ set autoread
 " Filetype {{{
 augroup SetLocalFiletype
   autocmd!
-  function! s:refiletype()
-    execute "setlocal filetype=".&filetype
-  endfunction
   autocmd BufNewFile,BufReadPost *.bf   setlocal filetype=bf
   autocmd BufNewFile,BufReadPost *.cls  setlocal filetype=tex
   autocmd BufNewFile,BufReadPost *.gnuplot setlocal filetype=gnuplot
@@ -839,7 +836,7 @@ augroup SetLocalFiletype
   autocmd BufNewFile,BufReadPost *.roy  setlocal filetype=roy
   autocmd BufNewFile,BufReadPost *.rst  setlocal filetype=rest
   autocmd BufNewFile,BufReadPost *.tex  setlocal filetype=tex
-  autocmd BufNewFile,BufReadPost * call s:refiletype()
+  autocmd BufNewFile,BufReadPost * execute "setlocal filetype=".&filetype
 augroup END
 " }}}
 
