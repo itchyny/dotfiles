@@ -1,7 +1,7 @@
 " ------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/01/25 20:06:14.
+" - * Last Change: 2013/01/26 04:20:11.
 " ------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -359,6 +359,7 @@ NeoBundle 'Shougo/vimshell'
   let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
   let g:vimshell_prompt = ' $ '
   let g:vimshell_disable_escape_highlight = 1
+  let g:vimshell_scrollback_limit = 5000
   augroup Vimshell
     autocmd!
     " for easy window moving, unmap C-[hjkl]
