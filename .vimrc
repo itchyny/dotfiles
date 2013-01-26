@@ -1,7 +1,7 @@
 " ------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/01/26 04:43:51.
+" - * Last Change: 2013/01/26 12:51:07.
 " ------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -917,7 +917,9 @@ endfunction
 augroup Enter
   autocmd!
   autocmd VimEnter * call s:enter()
-  autocmd GUIEnter * simalt ~x
+  if s:iswin
+    autocmd GUIEnter * simalt ~x
+  endif
 augroup END
 " }}}
 
@@ -1122,7 +1124,7 @@ noremap <S-v> v
 noremap v <S-v>
 
 " easy copy, paste with clipboard
-if s:ismac
+if s:ismac && !has('gui')
   nnoremap xp xp
   nmap x "*dl
   vmap y "*y
