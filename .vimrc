@@ -1,7 +1,7 @@
 " ------------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/01/26 12:51:07.
+" - * Last Change: 2013/01/26 12:55:26.
 " ------------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -511,7 +511,9 @@ try
 " --|  $ python ./fontpatcher ./Inconsolata.otf
 " --|  $ sudo cp ./Inconsolata-Powerline.otf /usr/share/fonts
 set guifont=Inconsolata_for_Powerline:h11:cANSI
-set guifontwide=MS_Gothic:h11:cSHIFTJIS
+if s:iswin
+  set guifontwide=MS_Gothic:h11:cSHIFTJIS
+endif
 if has('multi_byte')
   let g:Powerline_symbols = 'fancy'
 endif
