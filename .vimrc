@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/01/27 13:55:52.
+" - * Last Change: 2013/01/27 20:16:38.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -481,11 +481,6 @@ NeoBundle 'itspriddle/vim-javascript-indent'
 NeoBundle 'JSON.vim'
 NeoBundle 'html5.vim'
 NeoBundle 'wavded/vim-stylus'
-" NeoBundle 'colorizer'
-"   augroup colorizer
-"     autocmd!
-"     autocmd BufNewFile,BufReadPost *.css ColorHighlight
-"   augroup END
 NeoBundle 'groenewege/vim-less'
 NeoBundle 'less.vim'
 NeoBundle 'syntaxm4.vim'
