@@ -1,11 +1,11 @@
-" ------------------------------------------------------------------------------------------------------------
+" --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/01/26 12:55:26.
-" ------------------------------------------------------------------------------------------------------------
+" - * Last Change: 2013/01/27 13:55:52.
+" --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
-" ------------------------------------------------------------------------------------------------------------
+" --------------------------------------------------------------------------------------------------------
 set nocompatible
 filetype off
 scriptencoding utf-8
@@ -47,7 +47,7 @@ let s:neobundle_dir = $BUNDLE.'/neobundle.vim'
 if !isdirectory(s:neobundle_dir)
 
 " neobundle {{{
-" ------------------------------------------------------------------------------------------------------------
+" --------------------------------------------------------------------------------------------------------
   if executable('git')
     echo 'Initializing neobundle'
     execute '!mkdir -p '.$BUNDLE
@@ -62,7 +62,8 @@ if !isdirectory(s:neobundle_dir)
       if executable('llvm-gcc')
         execute '!cd '.$BUNDLE.'/vimproc && make -f make_mac.mak'
       elseif executable('gcc')
-        execute '!cd '.$BUNDLE.'/vimproc && gcc -O2 -W -Wall -Wno-unused -bundle -fPIC -arch x86_64 -arch '
+        execute '!cd '.$BUNDLE.'/vimproc && '
+              \.'gcc -O2 -W -Wall -Wno-unused -bundle -fPIC -arch x86_64 -arch '
               \.'i386 -o autoload/vimproc_mac.so autoload/proc.c -lutil'
       else
         echo 'gcc not found!'
@@ -88,7 +89,7 @@ NeoBundle 'Shougo/neobundle.vim'
 " }}}
 
 " Colorscheme {{{
-" ------------------------------------------------------------------------------------------------------------
+" --------------------------------------------------------------------------------------------------------
 try
 NeoBundle 'itchyny/landscape.vim'
   colorscheme landscape
@@ -99,7 +100,7 @@ NeoBundle 'xterm-color-table.vim'
 " }}}
 
 " Complement {{{
-" ------------------------------------------------------------------------------------------------------------
+" --------------------------------------------------------------------------------------------------------
 if s:nosudo
 NeoBundle 'Shougo/neocomplcache'
   let g:neocomplcache_enable_at_startup = 1
@@ -123,7 +124,7 @@ endif
 " }}}
 
 " Unite ( "," ) {{{
-" ------------------------------------------------------------------------------------------------------------
+" --------------------------------------------------------------------------------------------------------
 let mapleader = ","
 if s:nosudo
 NeoBundle 'Shougo/unite.vim'
@@ -188,7 +189,7 @@ endif
 " }}}
 
 " QuickRun / Filer / Outer world of Vim ( "\\" ) {{{
-" ------------------------------------------------------------------------------------------------------------
+" --------------------------------------------------------------------------------------------------------
 let mapleader = "\\"
 NeoBundle 'Shougo/vimproc', {
   \ 'build' : {
@@ -293,7 +294,8 @@ NeoBundle 'Shougo/vimfiler'
     endif
     let current_dir = getcwd()
     if s:usestatl
-      let atime = system('stat -lt "%Y/%m/%d %H:%M" "'.filepath."\" | awk {'print $6\" \"$7'} | tr -d '\\n'")
+      let atime = system('stat -lt "%Y/%m/%d %H:%M" "'.filepath
+            \."\" | awk {'print $6\" \"$7'} | tr -d '\\n'")
     else
       let atime = system('stat --printf "%y" "'.filepath."\" | sed -e 's/\\..*//'")
     endif
@@ -346,7 +348,7 @@ NeoBundle 'mattn/webapi-vim'
 " }}}
 
 " vimshell ( ";" ) {{{
-" ------------------------------------------------------------------------------------------------------------
+" --------------------------------------------------------------------------------------------------------
 let mapleader = ";"
 if s:nosudo
 NeoBundle 'Shougo/vimshell'
@@ -376,9 +378,13 @@ NeoBundle 'Shougo/vimshell'
     autocmd FileType vimshell inoremap <buffer> <C-k> <ESC><C-w>k
     autocmd FileType vimshell inoremap <buffer> <C-l> <ESC><C-w>l
     autocmd FileType vimshell inoremap <silent><buffer> __
-          \ <ESC>:call vimshell#execute('clear')<CR>:call vimshell#print_prompt()<CR>:call vimshell#start_insert()<CR>
+          \ <ESC>:call vimshell#execute('clear')<CR>
+          \:call vimshell#print_prompt()<CR>
+          \:call vimshell#start_insert()<CR>
     autocmd FileType vimshell inoremap <silent><buffer> ^
-          \ <ESC>:call vimshell#execute('cd ../')<CR>:call vimshell#print_prompt()<CR>:call vimshell#start_insert()<CR>
+          \ <ESC>:call vimshell#execute('cd ../')<CR>
+          \:call vimshell#print_prompt()<CR>
+          \:call vimshell#start_insert()<CR>
     " disable unexpected deleting
     autocmd FileType vimshell nnoremap <buffer> dj <Nop>
     autocmd FileType vimshell nnoremap <buffer> dk <Nop>
@@ -392,14 +398,11 @@ NeoBundle 'Shougo/vimshell'
     autocmd FileType vimshell vnoremap <buffer> y yGA
     autocmd FileType vimshell imap <buffer> <C-^> <ESC><C-^>
     " <Up><Down>の設定では効かないので, エスケープ文字で設定してます.
-    autocmd FileType vimshell inoremap <buffer> <expr><silent> OA unite#sources#vimshell_history#start_complete(!0)
-    autocmd FileType vimshell inoremap <buffer> <expr><silent> OB unite#sources#vimshell_history#start_complete(!0)
-    autocmd FileType vimshell nnoremap <buffer> <expr><silent> OA unite#sources#vimshell_history#start_complete(!0)
-    autocmd FileType vimshell nnoremap <buffer> <expr><silent> OB unite#sources#vimshell_history#start_complete(!0)
-    autocmd FileType vimshell inoremap <buffer> <expr><silent> <Up> unite#sources#vimshell_history#start_complete(!0)
-    autocmd FileType vimshell inoremap <buffer> <expr><silent> <Down> unite#sources#vimshell_history#start_complete(!0)
-    autocmd FileType vimshell nnoremap <buffer> <expr><silent> <Up> unite#sources#vimshell_history#start_complete(!0)
-    autocmd FileType vimshell nnoremap <buffer> <expr><silent> <Down> unite#sources#vimshell_history#start_complete(!0)
+    let s:start_complete = " unite#sources#vimshell_history#start_complete(!0)"
+    for s:key in ['<UP>', '<Down>', 'OA', 'OB']
+      execute "autocmd FileType vimshell inoremap <buffer> <expr><silent> ".s:key.s:start_complete
+      execute "autocmd FileType vimshell nnoremap <buffer> <expr><silent> ".s:key.s:start_complete
+    endfor
     autocmd FileType vimshell autocmd BufEnter * call vimshell#start_insert(1)
   augroup END
   nnoremap <silent> <Leader><Leader>s :<C-u>VimShell -split<CR>
@@ -420,7 +423,7 @@ endif
 " }}}
 
 " Commenter / Utility / Matching ( "," ) {{{
-" ------------------------------------------------------------------------------------------------------------
+" --------------------------------------------------------------------------------------------------------
 let mapleader = ","
 NeoBundle 'tpope/vim-surround'
   let g:surround_{char2nr('$')} = "$\r$" " for LaTeX
@@ -459,7 +462,7 @@ NeoBundle 'thinca/vim-scouter'
 " }}}
 
 " Syntax {{{
-" ------------------------------------------------------------------------------------------------------------
+" --------------------------------------------------------------------------------------------------------
 if has('multi_byte')
 NeoBundle 'scrooloose/syntastic'
   let g:syntastic_mode_map = { 'mode': 'passive',
@@ -478,11 +481,11 @@ NeoBundle 'itspriddle/vim-javascript-indent'
 NeoBundle 'JSON.vim'
 NeoBundle 'html5.vim'
 NeoBundle 'wavded/vim-stylus'
-NeoBundle 'colorizer'
-  augroup colorizer
-    autocmd!
-    autocmd BufNewFile,BufReadPost *.css ColorHighlight
-  augroup END
+" NeoBundle 'colorizer'
+"   augroup colorizer
+"     autocmd!
+"     autocmd BufNewFile,BufReadPost *.css ColorHighlight
+"   augroup END
 NeoBundle 'groenewege/vim-less'
 NeoBundle 'less.vim'
 NeoBundle 'syntaxm4.vim'
@@ -500,7 +503,7 @@ NeoBundle 'motemen/hatena-vim'
 " }}}
 
 " Powerline {{{
-" ------------------------------------------------------------------------------------------------------------
+" --------------------------------------------------------------------------------------------------------
 NeoBundle 'Lokaltog/vim-powerline'
 " NeoBundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 try
@@ -605,7 +608,8 @@ let g:Powerline#Colorschemes#my#colorscheme = Pl#Colorscheme#Init([
     \ 'N': ['gray4'],
     \ }),
   \
-  \ Pl#Hi#Segments(['currenttag', 'fileformat', 'fileencoding', 'pwd', 'filetype', 'charcode', 'currhigroup'], {
+  \ Pl#Hi#Segments(['currenttag', 'fileformat', 'fileencoding', 'pwd',
+  \'filetype', 'charcode', 'currhigroup'], {
     \ 'n': ['gray9', 'gray4'],
     \ }),
   \
@@ -651,7 +655,7 @@ endif
 " }}} Bundles
 
 " ENCODING {{{
-" ------------------------------------------------------------------------------------------------------------
+" --------------------------------------------------------------------------------------------------------
 " SET {{{
 set encoding=utf-8
 set fenc=utf-8
@@ -741,7 +745,7 @@ set fileformats=unix,dos,mac
 " }}} ENCODING
 
 " APPERANCE {{{
-" ------------------------------------------------------------------------------------------------------------
+" --------------------------------------------------------------------------------------------------------
 " Frame appearance {{{
 " set showcmd
 set noshowmode " https://github.com/vim-jp/issues/issues/100
@@ -804,8 +808,10 @@ endif
 " Statusline color {{{
 if !exists('g:Powerline_loaded')
 let s:hi_sl = 'highlight StatusLine '
-let s:hi_normal = s:hi_sl.'guifg=black guibg=blue gui=none ctermfg=black ctermbg=blue cterm=none'
-let s:hi_insert = s:hi_sl.'guifg=black guibg=darkmagenta gui=none ctermfg=black ctermbg=darkmagenta cterm=none'
+let s:hi_gui_common = 'guifg=black gui=none '
+let s:hi_cterm_common = 'ctermfg=black cterm=none '
+let s:hi_normal = s:hi_sl.s:hi_gui_common.s:hi_cterm_common.'guibg=blue ctermbg=blue'
+let s:hi_insert = s:hi_sl.s:hi_gui_common.s:hi_cterm_common.'guibg=darkmagenta ctermbg=darkmagenta'
 silent execute s:hi_normal
 augroup InsertStatus
   autocmd!
@@ -821,7 +827,7 @@ endif
 " }}} APPERANCE
 
 " FILE READING {{{
-" ------------------------------------------------------------------------------------------------------------
+" --------------------------------------------------------------------------------------------------------
 " SET {{{
 set autoread
 " }}}
@@ -850,7 +856,7 @@ augroup END
 " }}} FILE READING
 
 " EDIT {{{
-" ------------------------------------------------------------------------------------------------------------
+" --------------------------------------------------------------------------------------------------------
 " Search {{{
 set wrapscan
 set ignorecase
@@ -908,7 +914,7 @@ map <LeftRelease> <Nop>
 " }}} EDIT
 
 " UTILITY {{{
-" ------------------------------------------------------------------------------------------------------------
+" --------------------------------------------------------------------------------------------------------
 " On starting vim {{{
 function! s:enter()
   silent call s:safeexecute('Pl#UpdateStatusline(1)', 'g:Powerline_colorscheme')
@@ -1094,7 +1100,7 @@ endif
 " }}} UTILITY
 
 " OTHERS {{{
-" ------------------------------------------------------------------------------------------------------------
+" --------------------------------------------------------------------------------------------------------
 " Performance {{{
 set ttyfast
 " }}}
@@ -1106,7 +1112,7 @@ set wildmode=list:longest
 " }}} OTHERS
 
 " KEY MAPPING {{{
-" ------------------------------------------------------------------------------------------------------------
+" --------------------------------------------------------------------------------------------------------
 
 " edit {{{
 " Increment and decrement
@@ -1243,45 +1249,45 @@ map <S-q> <Nop>
 " }}} KEY MAPPING
 
 " REFERENCE TO KEY MAPPING {{{
-" ------------------------------------------------------------------------------------------------------------
+" --------------------------------------------------------------------------------------------------------
 " normal mode
-" +=========+=====================+=============+==================+===================+=================+
-" | Leader  |         \           |      ;      |        ,         |      <S-          |     <C-         |
-" |         | Outer world of Vim  |   vimshell  |     utility      |                   |                 |
-" +=========+=====================+=============+==================+===================+=================+
-" |    a    |                     |             | Calc             |    default        | gg<S-v><S-g>    |
-" |    b    | OpenBrowser         |             |                  | NeoBundleInstall! |  default        |
-" |    c    |                     |             | Calendar         |    default        |                 |
-" |    d    |                     |             |                  |    default        |                 |
-" |    e    | QuickRun <i         |             |                  |                   | zencoding       |
-" +---------+---------------------+-------------+------------------+-------------------+-----------------+
-" |    f    | VimFiler            |             |                  |                   |  default        |
-" |    g    | gedit / Textedit    |   Ghci      | GundoToggle      |    default        |                 |
-" |    h    |                     |             | Unite ref/hoogle |   VimshellPop     | <C-w>h          |
-" |    i    |                     |             |                  |    default        |                 |
-" |    j    |                     |             |                  |    default        | <C-w>j          |
-" +---------+---------------------+-------------+------------------+-------------------+-----------------+
-" |    k    |                     |             |                  |                   | <C-w>k          |
-" |    l    |                     |             |                  |                   | <C-w>l          |
-" |    m    |                     |             |                  |                   |                 |
-" |    n    | nautilus / Finder   |             |                  |                   | Unite file/new  |
-" |    o    | QuickRun <i >output |             |                  |    default        | Unite file      |
-" +---------+---------------------+-------------+------------------+-------------------+-----------------+
-" |    p    |                     |   Python    |                  |                   | Unite buffer    |
-" |    q    |                     |             |                  |                   | <C-w>(default)  |
-" |    r    | QuickRun            |             |                  |    default        |  default        |
-" |    s    | OpenBrowser         |   VimShell  |                  |                   | :w<CR>          |
-" |    t    |                     |             |                  |                   | tabnew          |
-" +---------+---------------------+-------------+------------------+-------------------+-----------------+
-" |    u    |                     |             |                  |                   | Unite           |
-" |    v    |                     |             |                  |    default        |  default        |
-" |    w    |                     |             |                  |                   | :q<CR> :bd<CR>  |
-" |    x    |                     |             |                  |                   |                 |
-" |    y    |                     |             |                  |                   |                 |
-" +---------+---------------------+-------------+------------------+-------------------+-----------------+
-" |    z    |                     |   zsh       |                  |                   | Unite file_mru  |
-" |    .    | .vimrc              |   .zshrc    |                  |                   |                 |
-" +=========+=====================+=============+==================+===================+=================+
+" +=========+=====================+==========+==================+===================+=================+
+" | Leader  |         \           |    ;     |        ,         |      <S-          |     <C-         |
+" |         | Outer world of Vim  | vimshell |     utility      |                   |                 |
+" +=========+=====================+==========+==================+===================+=================+
+" |    a    |                     |          | Calc             |    default        | gg<S-v><S-g>    |
+" |    b    | OpenBrowser         |          |                  | NeoBundleInstall! |  default        |
+" |    c    |                     |          | Calendar         |    default        |                 |
+" |    d    |                     |          |                  |    default        |                 |
+" |    e    | QuickRun <i         |          |                  |                   | zencoding       |
+" +---------+---------------------+----------+------------------+-------------------+-----------------+
+" |    f    | VimFiler            |          |                  |                   |  default        |
+" |    g    | gedit / Textedit    | Ghci     | GundoToggle      |    default        |                 |
+" |    h    |                     |          | Unite ref/hoogle |   VimshellPop     | <C-w>h          |
+" |    i    |                     |          |                  |    default        |                 |
+" |    j    |                     |          |                  |    default        | <C-w>j          |
+" +---------+---------------------+----------+------------------+-------------------+-----------------+
+" |    k    |                     |          |                  |                   | <C-w>k          |
+" |    l    |                     |          |                  |                   | <C-w>l          |
+" |    m    |                     |          |                  |                   |                 |
+" |    n    | nautilus / Finder   |          |                  |                   | Unite file/new  |
+" |    o    | QuickRun <i >output |          |                  |    default        | Unite file      |
+" +---------+---------------------+----------+------------------+-------------------+-----------------+
+" |    p    |                     | Python   |                  |                   | Unite buffer    |
+" |    q    |                     |          |                  |                   | <C-w>(default)  |
+" |    r    | QuickRun            |          |                  |    default        |  default        |
+" |    s    | OpenBrowser         | VimShell |                  |                   | :w<CR>          |
+" |    t    |                     |          |                  |                   | tabnew          |
+" +---------+---------------------+----------+------------------+-------------------+-----------------+
+" |    u    |                     |          |                  |                   | Unite           |
+" |    v    |                     |          |                  |    default        |  default        |
+" |    w    |                     |          |                  |                   | :q<CR> :bd<CR>  |
+" |    x    |                     |          |                  |                   |                 |
+" |    y    |                     |          |                  |                   |                 |
+" +---------+---------------------+----------+------------------+-------------------+-----------------+
+" |    z    |                     | zsh      |                  |                   | Unite file_mru  |
+" |    .    | .vimrc              | .zshrc   |                  |                   |                 |
+" +=========+=====================+==========+==================+===================+=================+
 " }}} REFERENCE TO KEY MAPPING
 
 " vim:foldmethod=marker
