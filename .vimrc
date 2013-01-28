@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/01/29 07:15:46.
+" - * Last Change: 2013/01/29 08:35:35.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -91,7 +91,7 @@ NeoBundle 'Shougo/neobundle.vim'
 " Colorscheme {{{
 " --------------------------------------------------------------------------------------------------------
 try
-NeoBundle 'itchyny/landscape.vim'
+NeoBundle 'itchyny/landscape.vim', {'type': 'nosync'}
   colorscheme landscape
 catch
 endtry
@@ -446,7 +446,7 @@ NeoBundle 'sjl/gundo.vim'
   " --| Requirement: +python
   nnoremap <Leader>g :<C-u>GundoToggle<CR>
   autocmd ESC FileType gundo nnoremap <silent> <buffer> <ESC><ESC> :<C-u>GundoToggle<CR>
-NeoBundle 'VimCalc'
+NeoBundle 'VimCalc', {'type': 'nosync'}
   " --| Requirement: +python
   autocmd ESC FileType vimcalc nnoremap <silent> <buffer> <ESC><ESC><ESC> :<C-u>q<CR>
   nnoremap <Leader>a :<C-u>Calc<CR>
