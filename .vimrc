@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/01/29 12:07:53.
+" - * Last Change: 2013/01/29 12:59:27.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -1205,6 +1205,8 @@ function! AutoClose()
       silent q!
     elseif &filetype == 'gundo'
       silent call feedkeys('q')
+    elseif expand('%:t') == '__XtermColorTable__'
+      silent bd!
     elseif winwidth(0) < 2 * s:winwid / 3
       silent q
     elseif &filetype == '' && !&modified
