@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/01/29 12:59:27.
+" - * Last Change: 2013/01/29 14:24:14.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -772,7 +772,7 @@ set nospell
       call matchadd('SpellBad', '\<figure..\?\\')
       call matchadd('SpellBad', '\\ref{eq:')
       call matchadd('SpellBad', '^\\end{align}')
-      call matchadd('SpellBad', '[^\~]\\ref')
+      call matchadd('SpellBad', '[^\~]\\\(eq\)\?ref')
     else
       setlocal nospell
     endif
