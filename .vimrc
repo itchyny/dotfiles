@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/01/29 14:24:14.
+" - * Last Change: 2013/01/29 23:15:19.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -129,6 +129,11 @@ let mapleader = ","
 if s:nosudo
 NeoBundle 'Shougo/unite.vim'
   let g:unite_enable_start_insert = 1
+  if s:ismac && has('multi_byte')
+    let g:unite_marked_icon = '✓'
+  else
+    let g:unite_marked_icon = 'v'
+  endif
   nnoremap <C-u> :Unite<SPACE>
   nnoremap <silent><C-p> :Unite buffer -buffer-name=buffer<CR>
   nnoremap <silent><C-n> :Unite file/new directory/new -buffer-name=file/new,directory/new<CR>
