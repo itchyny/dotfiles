@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/01/29 23:15:19.
+" - * Last Change: 2013/01/30 11:29:51.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -382,10 +382,6 @@ NeoBundle 'Shougo/vimshell'
     autocmd FileType vimshell inoremap <buffer> <C-j> <ESC><C-w>j
     autocmd FileType vimshell inoremap <buffer> <C-k> <ESC><C-w>k
     autocmd FileType vimshell inoremap <buffer> <C-l> <ESC><C-w>l
-    autocmd FileType vimshell inoremap <silent><buffer> __
-          \ <ESC>:call vimshell#execute('clear')<CR>
-          \:call vimshell#print_prompt()<CR>
-          \:call vimshell#start_insert()<CR>
     autocmd FileType vimshell inoremap <silent><buffer> ^
           \ <ESC>:call vimshell#execute('cd ../')<CR>
           \:call vimshell#print_prompt()<CR>
