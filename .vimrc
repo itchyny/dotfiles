@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/01/30 11:29:51.
+" - * Last Change: 2013/01/30 11:33:09.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -272,6 +272,7 @@ NeoBundle 'Shougo/vimfiler'
   nnoremap <silent> <Leader><Leader> :<C-u>VimFilerCurrentDir -buffer-name=vimfiler<CR>
   nnoremap <silent> @<Leader> :<C-u>VimFilerCurrentDir -buffer-name=vimfiler<CR>
   nnoremap <silent> @@ :<C-u>VimFilerCurrentDir -buffer-name=vimfiler<CR>
+  nnoremap <silent> s :<C-u>execute 'VimShellCreate '.<SID>current_directory_auto()<CR>
   let g:vimfiler_execute_file_list = { 'pdf': 'open', 'PDF': 'open',
                                      \ 'png': 'open', 'PNG': 'open',
                                      \ 'jpg': 'open', 'JPG': 'open',
