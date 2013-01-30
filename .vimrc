@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/01/30 11:33:09.
+" - * Last Change: 2013/01/30 11:44:42.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -770,6 +770,7 @@ set nospell
     if search("[^\x01-\x7e]", 'n') == 0
       setlocal spell
       call matchadd('SpellBad', '^\(\S\+ \+\)\{30,}\S\+[,.]\?$')
+      call matchadd('SpellBad', '\<a\> [aiueo]')
       call matchadd('SpellBad', '^\$')
       call matchadd('SpellBad', '\<figure..\?\\')
       call matchadd('SpellBad', '\\ref{eq:')
