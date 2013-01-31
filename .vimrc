@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/01/31 11:41:58.
+" - * Last Change: 2013/01/31 22:33:19.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -477,7 +477,7 @@ endif
 NeoBundle 'mattn/zencoding-vim'
   let g:user_zen_expandabbr_key = '<c-e>'
   let g:user_zen_settings = { 'html' : { 'indentation' : '  ' }, }
-NeoBundle 'JavaScript-syntax'
+" NeoBundle 'JavaScript-syntax'
 NeoBundle 'itspriddle/vim-javascript-indent'
 NeoBundle 'JSON.vim'
 NeoBundle 'html5.vim'
