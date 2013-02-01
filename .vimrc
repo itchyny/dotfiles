@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/02/01 10:27:56.
+" - * Last Change: 2013/02/01 12:52:33.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -267,10 +267,10 @@ NeoBundle 'Shougo/vimfiler'
     let g:vimfiler_readonly_file_icon = 'x'
     let g:vimfiler_marked_file_icon = 'v'
   endif
-  nnoremap <silent> <Leader>f :<C-u>VimFilerCurrentDir -buffer-name=vimfiler<CR>
-  nnoremap <silent> <Leader><Leader> :<C-u>VimFilerCurrentDir -buffer-name=vimfiler<CR>
-  nnoremap <silent> @<Leader> :<C-u>VimFilerCurrentDir -buffer-name=vimfiler<CR>
-  nnoremap <silent> @@ :<C-u>VimFilerCurrentDir -buffer-name=vimfiler<CR>
+  nnoremap <silent> <Leader>f :<C-u>VimFilerCurrentDir -buffer-name=vimfiler -auto-cd<CR>
+  nnoremap <silent> <Leader><Leader> :<C-u>VimFilerCurrentDir -buffer-name=vimfiler -auto-cd<CR>
+  nnoremap <silent> @<Leader> :<C-u>VimFilerCurrentDir -buffer-name=vimfiler -auto-cd<CR>
+  nnoremap <silent> @@ :<C-u>VimFilerCurrentDir -buffer-name=vimfiler -auto-cd<CR>
   nnoremap <silent> s :<C-u>execute 'VimShellCreate '.<SID>current_directory_auto()<CR>
   let g:vimfiler_execute_file_list = { 'pdf': 'open', 'PDF': 'open',
                                      \ 'png': 'open', 'PNG': 'open',
@@ -919,7 +919,7 @@ map <LeftRelease> <Nop>
 function! s:enter()
   silent call s:safeexecute('Pl#UpdateStatusline(1)', 'g:Powerline_colorscheme')
   if argc() == 0
-    silent call s:safeexecute(':VimFiler -buffer-name=vimfiler', ':VimFiler')
+    silent call s:safeexecute(':VimFiler -buffer-name=vimfiler -auto-cd', ':VimFiler')
   endif
 endfunction
 augroup Enter
@@ -964,7 +964,9 @@ function! s:current_directory_abbr()
 endfunction
 function! s:change_directory()
   try
-    execute ':lcd '.s:current_directory_auto()
+    if &filetype !=# 'vimfiler'
+      execute ':lcd '.s:current_directory_auto()
+    endif
   catch
   endtry
   return s:current_directory_abbr()
