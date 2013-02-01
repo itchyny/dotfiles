@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/02/01 10:19:15.
+" - * Last Change: 2013/02/01 10:19:27.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -495,6 +495,7 @@ NeoBundle 'vim-scripts/indenthaskell.vim'
 NeoBundle 'tpope/vim-markdown'
 NeoBundle 'haxe.vim'
 NeoBundle 'motemen/hatena-vim'
+  let g:hatena_upload_on_write = 0
 " }}}
 
 " Powerline {{{
