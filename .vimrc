@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/02/01 10:19:27.
+" - * Last Change: 2013/02/01 10:27:56.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -460,6 +460,7 @@ NeoBundle 'vimtaku/hl_matchit.vim.git'
   let g:hl_matchit_hl_groupname = 'MatchParen'
   let g:hl_matchit_allow_ft_regexp = 'vim\|sh\|tex'
 NeoBundle 'thinca/vim-scouter'
+NeoBundle 'motemen/git-vim'
 " }}}
 
 " Syntax {{{
@@ -496,6 +497,7 @@ NeoBundle 'tpope/vim-markdown'
 NeoBundle 'haxe.vim'
 NeoBundle 'motemen/hatena-vim'
   let g:hatena_upload_on_write = 0
+  let g:hatena_user = 'itchyny'
 " }}}
 
 " Powerline {{{
