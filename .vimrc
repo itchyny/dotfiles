@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/02/01 12:52:33.
+" - * Last Change: 2013/02/07 17:26:41.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -777,6 +777,8 @@ set nospell
       call matchadd('SpellBad', '\\ref{eq:')
       call matchadd('SpellBad', '^\\end{align}')
       call matchadd('SpellBad', '[^\~]\\\(eq\)\?ref')
+      call matchadd('SpellBad', 'does not [a-z]*s ')
+      call matchadd('SpellBad', 's [a-z][a-z]\+s ')
     else
       setlocal nospell
     endif
