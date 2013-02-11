@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/02/07 17:26:41.
+" - * Last Change: 2013/02/11 10:28:35.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -455,10 +455,6 @@ endif
 NeoBundle 'kana/vim-fakeclip'
 NeoBundle 'gregsexton/MatchTag'
 NeoBundle 'matchit.zip'
-NeoBundle 'vimtaku/hl_matchit.vim.git'
-  let g:hl_matchit_enable_on_vim_startup = 0
-  let g:hl_matchit_hl_groupname = 'MatchParen'
-  let g:hl_matchit_allow_ft_regexp = 'vim\|sh\|tex'
 NeoBundle 'thinca/vim-scouter'
 NeoBundle 'motemen/git-vim'
 " }}}
