@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2013/01/19 10:50:37.
+# - * Last Change: 2013/02/15 12:15:41.
 # ------------------------------------------------------------------------------------------------------------
 
 # history
@@ -297,6 +297,8 @@ download() {
     URL=`curl -s $1 | grep -i HREF | sed 's/.*="\(.*\)".*/\1/'`
     FILENAME=`echo $URL | sed 's/.*\/\/\([a-z:0-9.\-]*\/\)*//' | sed 's/wsx/wmv/'`
     mplayer $URL -dumpstream -dumpfile $FILENAME
+  elif [[ $1 =~ ".*nicovideo.*" ]]; then
+    nicovideo-dl -n -t $1
   else
     wget $1
   fi

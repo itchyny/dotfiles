@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/02/13 17:59:39.
+" - * Last Change: 2013/02/15 22:43:22.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -877,7 +877,18 @@ set shiftwidth=2
 " Special keys (tab, backspace) {{{
 set textwidth=0   " No auto breking line
   autocmd SetLocal FileType rest setlocal textwidth=50
-set expandtab               " insert spaces with <Tab>
+set expandtab
+  function! s:autotab()
+    if search('^\t\t.*\n\t\t.*\n\t\t', 'n') > 0
+      set noexpandtab
+    else
+      set expandtab
+    endif
+  endfunction
+  augroup autotab
+    autocmd!
+    autocmd FileType * call s:autotab()
+  augroup END
 set tabstop=2
 retab
 set backspace=indent,eol,start
