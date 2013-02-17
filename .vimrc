@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/02/15 22:43:22.
+" - * Last Change: 2013/02/18 00:29:31.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -453,8 +453,6 @@ NeoBundle 'VimCalc', {'type': 'nosync'}
   nnoremap <Leader>a :<C-u>Calc<CR>
 endif
 NeoBundle 'kana/vim-fakeclip'
-NeoBundle 'gregsexton/MatchTag'
-NeoBundle 'matchit.zip'
 NeoBundle 'thinca/vim-scouter'
 NeoBundle 'motemen/git-vim'
 " }}}
@@ -465,6 +463,7 @@ if has('multi_byte')
 NeoBundle 'scrooloose/syntastic'
   let g:syntastic_mode_map = { 'mode': 'passive',
                              \ 'active_filetypes': ['c', 'cpp'] }
+  let g:syntastic_echo_current_error = 0
   if s:ismac
     let g:syntastic_error_symbol='✕'
     let g:syntastic_warning_symbol='⚠'
@@ -759,6 +758,7 @@ set cursorline
   autocmd SetLocal FileType calendar,vimcalc,vimshell,quickrun,int-ghci setlocal nocursorline
 set nocursorcolumn
 set showmatch
+let loaded_matchparen = 0
 set showtabline=1
 set previewheight=20
 set helplang=en
