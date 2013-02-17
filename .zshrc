@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2013/02/17 17:23:07.
+# - * Last Change: 2013/02/17 23:53:49.
 # ------------------------------------------------------------------------------------------------------------
 
 # history
@@ -299,6 +299,8 @@ download() {
     mplayer $URL -dumpstream -dumpfile $FILENAME
   elif [[ $1 =~ ".*nicovideo.*" ]]; then
     nicovideo-dl -n -t $1
+  elif [[ $1 =~ ".*youtube.*" ]]; then
+    youtube-dl $1
   else
     wget $1
   fi
