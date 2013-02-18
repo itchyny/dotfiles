@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/02/18 00:29:31.
+" - * Last Change: 2013/02/18 01:25:45.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -453,6 +453,8 @@ NeoBundle 'VimCalc', {'type': 'nosync'}
   nnoremap <Leader>a :<C-u>Calc<CR>
 endif
 NeoBundle 'kana/vim-fakeclip'
+NeoBundle 'gregsexton/MatchTag'
+NeoBundle 'matchit.zip'
 NeoBundle 'thinca/vim-scouter'
 NeoBundle 'motemen/git-vim'
 " }}}
@@ -758,25 +760,27 @@ set cursorline
   autocmd SetLocal FileType calendar,vimcalc,vimshell,quickrun,int-ghci setlocal nocursorline
 set nocursorcolumn
 set showmatch
-let loaded_matchparen = 0
 set showtabline=1
 set previewheight=20
 set helplang=en
 set nospell
   function! s:autospell()
-    if search("[^\x01-\x7e]", 'n') == 0
-      setlocal spell
-      call matchadd('SpellBad', '^\(\S\+ \+\)\{30,}\S\+[,.]\?$')
-      call matchadd('SpellBad', '\<a\> [aiueo]')
-      call matchadd('SpellBad', '^\$')
-      call matchadd('SpellBad', '\<figure..\?\\')
-      call matchadd('SpellBad', '\\ref{eq:')
-      call matchadd('SpellBad', '^\\end{align}')
-      call matchadd('SpellBad', '[^\~]\\\(eq\)\?ref')
-      call matchadd('SpellBad', 'does not [a-z]*s ')
-      call matchadd('SpellBad', 's [a-z][a-z]\+s ')
-    else
-      setlocal nospell
+    if !exists('b:autospell_done')
+      if search("[^\x01-\x7e]", 'n') == 0
+        setlocal spell
+        call matchadd('SpellBad', '^\(\S\+ \+\)\{30,}\S\+[,.]\?$')
+        call matchadd('SpellBad', '\<a\> [aiueo]')
+        call matchadd('SpellBad', '^\$')
+        call matchadd('SpellBad', '\<figure..\?\\')
+        call matchadd('SpellBad', '\\ref{eq:')
+        call matchadd('SpellBad', '^\\end{align}')
+        call matchadd('SpellBad', '[^\~]\\\(eq\)\?ref')
+        call matchadd('SpellBad', 'does not [a-z]*s ')
+        call matchadd('SpellBad', 's [a-z][a-z]\+s ')
+      else
+        setlocal nospell
+      endif
+      let b:autospell_done = 1
     endif
   endfunction
   augroup autospell
