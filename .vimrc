@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/02/18 01:25:45.
+" - * Last Change: 2013/02/22 16:48:49.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -889,7 +889,7 @@ set expandtab
       set expandtab
     endif
   endfunction
-  augroup autotab
+  augroup Autotab
     autocmd!
     autocmd FileType * call s:autotab()
   augroup END
