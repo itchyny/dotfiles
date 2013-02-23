@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2013/02/17 23:53:49.
+# - * Last Change: 2013/02/23 08:42:27.
 # ------------------------------------------------------------------------------------------------------------
 
 # history
@@ -303,6 +303,23 @@ download() {
     youtube-dl $1
   else
     wget $1
+  fi
+}
+
+# http://blog.kamipo.net/entry/2013/02/20/122225
+function static_httpd {
+  if python -V 2>&1 | grep -qm1 'Python 3\.'; then
+    python -m http.server 5000
+  elif which python > /dev/null; then
+    python -m SimpleHTTPServer 5000
+  elif which ruby > /dev/null; then
+    ruby -rwebrick -e 'WEBrick::HTTPServer.new(:Port => 5000, :DocumentRoot => ".").start'
+  elif which plackup > /dev/null; then
+    plackup -MPlack::App::Directory -e 'Plack::App::Directory->new(root => ".")->to_app'
+  elif which php > /dev/null && php -v | grep -qm1 'PHP 5\.[45]\.'; then
+    php -S 0.0.0.0:5000
+  elif which erl > /dev/null; then
+    erl -eval 'inets:start(), inets:start(httpd, [{server_name, "httpd"}, {server_root, "."}, {document_root, "."}, {port, 5000}])'
   fi
 }
 
