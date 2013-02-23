@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2013/02/23 08:42:27.
+# - * Last Change: 2013/02/23 09:30:57.
 # ------------------------------------------------------------------------------------------------------------
 
 # history
@@ -292,7 +292,7 @@ function extract() {
 }
 alias -s {gz,tgz,zip,lzh,bz2,tbz,Z,tar,arj,xz}=extract
 
-download() {
+function download {
   if [[ $1 =~ ".*asx$" ]]; then
     URL=`curl -s $1 | grep -i HREF | sed 's/.*="\(.*\)".*/\1/'`
     FILENAME=`echo $URL | sed 's/.*\/\/\([a-z:0-9.\-]*\/\)*//' | sed 's/wsx/wmv/'`
@@ -307,19 +307,19 @@ download() {
 }
 
 # http://blog.kamipo.net/entry/2013/02/20/122225
-function static_httpd {
+function http {
   if python -V 2>&1 | grep -qm1 'Python 3\.'; then
-    python -m http.server 5000
+    python -m http.server 8000
   elif which python > /dev/null; then
-    python -m SimpleHTTPServer 5000
+    python -m SimpleHTTPServer 8000
   elif which ruby > /dev/null; then
-    ruby -rwebrick -e 'WEBrick::HTTPServer.new(:Port => 5000, :DocumentRoot => ".").start'
+    ruby -rwebrick -e 'WEBrick::HTTPServer.new(:Port => 8000, :DocumentRoot => ".").start'
   elif which plackup > /dev/null; then
     plackup -MPlack::App::Directory -e 'Plack::App::Directory->new(root => ".")->to_app'
   elif which php > /dev/null && php -v | grep -qm1 'PHP 5\.[45]\.'; then
-    php -S 0.0.0.0:5000
+    php -S 0.0.0.0:8000
   elif which erl > /dev/null; then
-    erl -eval 'inets:start(), inets:start(httpd, [{server_name, "httpd"}, {server_root, "."}, {document_root, "."}, {port, 5000}])'
+    erl -eval 'inets:start(), inets:start(httpd, [{server_name, "httpd"}, {server_root, "."}, {document_root, "."}, {port, 8000}])'
   fi
 }
 
