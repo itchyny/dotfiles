@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/02/22 16:48:49.
+" - * Last Change: 2013/02/24 19:30:49.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -404,7 +404,6 @@ NeoBundle 'Shougo/vimshell'
       execute "autocmd FileType vimshell inoremap <buffer> <expr><silent> ".s:key.s:start_complete
       execute "autocmd FileType vimshell nnoremap <buffer> <expr><silent> ".s:key.s:start_complete
     endfor
-    autocmd FileType vimshell autocmd BufEnter * call vimshell#start_insert(1)
   augroup END
   nnoremap <silent> <Leader><Leader>s :<C-u>VimShell -split<CR>
   nnoremap <silent> <Leader>s :<C-u>execute 'VimShellCreate '.<SID>current_directory_auto()<CR>
