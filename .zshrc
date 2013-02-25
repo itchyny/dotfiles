@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2013/02/23 09:30:57.
+# - * Last Change: 2013/02/25 11:22:50.
 # ------------------------------------------------------------------------------------------------------------
 
 # history
@@ -184,7 +184,7 @@ elif [ `uname` = "Linux" ]; then
   # alias eject='sudo eject'
 fi
 alias chrome='google-chrome'
-function runcpp () { g++ -O3 $1; ./a.out $2 $3 $4 $5 $6 $7 $8 $9; }
+function runcpp () { g++ -O2 $1; ./a.out $2 $3 $4 $5 $6 $7 $8 $9; }
 alias asm=runcpp
 # editor
 alias vi='vim'
