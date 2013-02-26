@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/02/26 11:39:56.
+" - * Last Change: 2013/02/26 12:13:01.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -762,6 +762,7 @@ set showmatch
 set showtabline=1
 set previewheight=20
 set helplang=en
+language C
 set nospell
   function! s:autospell()
     if !exists('b:autospell_done')
