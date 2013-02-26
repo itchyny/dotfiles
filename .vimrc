@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/02/26 12:13:01.
+" - * Last Change: 2013/02/26 12:30:31.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -456,6 +456,9 @@ NeoBundle 'gregsexton/MatchTag'
 NeoBundle 'matchit.zip'
 NeoBundle 'thinca/vim-scouter'
 NeoBundle 'motemen/git-vim'
+if exists('##InsertCharPre')
+  NeoBundle 'mattn/multi-vim'
+endif
 " }}}
 
 " Syntax {{{
