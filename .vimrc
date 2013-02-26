@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/02/26 13:07:55.
+" - * Last Change: 2013/02/26 23:40:12.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -511,7 +511,7 @@ try
 " --|  $ wget http://levien.com/type/myfonts/Inconsolata.otf
 " --|  $ python ./fontpatcher ./Inconsolata.otf
 " --|  $ sudo cp ./Inconsolata-Powerline.otf /usr/share/fonts
-set guifont=Inconsolata_for_Powerline:h11:cANSI
+set guifont=Inconsolata_for_Powerline:h16
 if s:iswin
   set guifontwide=MS_Gothic:h11:cSHIFTJIS
 endif
@@ -801,6 +801,13 @@ set nospell
   augroup END
 set modeline
 set modelines=1
+if has('conceal')
+  set concealcursor=nvc
+  augroup SetConceal
+    autocmd!
+    autocmd FileType vimfiler set concealcursor=nvc
+  augroup END
+endif
 " }}}
 
 " Status line {{{
