@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/02/26 13:04:48.
+" - * Last Change: 2013/02/26 13:07:55.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -458,6 +458,7 @@ NeoBundle 'thinca/vim-scouter'
 NeoBundle 'motemen/git-vim'
 if exists('##InsertCharPre')
   NeoBundle 'mattn/multi-vim'
+  nnoremap <Leader>m :<C-u>Multi<SPACE>
 endif
 " }}}
 
