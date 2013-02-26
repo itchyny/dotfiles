@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/02/24 20:58:25.
+" - * Last Change: 2013/02/26 11:39:56.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -902,14 +902,17 @@ set timeoutlen=500
 " }}}
 
 " Clipboard {{{
-set clipboard=unnamed
-set clipboard+=autoselect
+set clipboard=autoselect,unnamed,unnamedplus
 " }}}
 
 " IME {{{
 set iminsert=0
 set imsearch=-1
 " }}}
+
+" Increment {{{
+set nrformats-=ocral
+"}}}
 
 " Windows specific {{{
 if s:iswin
@@ -1145,20 +1148,6 @@ vnoremap > >gv|
 " swap line/normal visual mode
 noremap <S-v> v
 noremap v <S-v>
-
-" easy copy, paste with clipboard
-if s:ismac && !has('gui')
-  nnoremap xp xp
-  nmap x "*dl
-  vmap y "*y
-  nmap y "*y
-  nmap p "*p
-  nmap P "*P
-  vmap d "*d
-  nmap d "*d
-  vmap D "*D
-  nmap D "*D
-endif
 
 " remove spaces at the end of lines
 nnoremap ,<Space> ma:%s/  *$//<CR>`a<ESC>
