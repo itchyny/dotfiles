@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/02/26 23:40:12.
+" - * Last Change: 2013/02/27 00:07:08.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -129,6 +129,7 @@ let mapleader = ","
 if s:nosudo
 NeoBundle 'Shougo/unite.vim'
   let g:unite_enable_start_insert = 1
+  let g:unite_cursor_line_highlight = 'CursorLine'
   if s:ismac && has('multi_byte')
     let g:unite_marked_icon = '✓'
   else
