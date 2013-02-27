@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/02/27 22:11:07.
+" - * Last Change: 2013/02/27 22:52:17.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -1276,7 +1276,6 @@ autocmd ESC FileType help,qf nnoremap <silent> <buffer> <ESC><ESC> :<C-u>q<CR>
 map <S-q> <Nop>
 
 " move within insert mode
-" https://sites.google.com/site/fudist/Home/vim-nihongo-ban/tips/vim-key-emacs
 imap <expr><C-o> neosnippet#expandable_or_jumpable() ? "<TAB>" : "<ESC>o"
 imap <C-p> <Up>
 imap <C-n> <Down>
