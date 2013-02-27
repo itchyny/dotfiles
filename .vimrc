@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/02/27 18:41:47.
+" - * Last Change: 2013/02/27 20:43:39.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -508,7 +508,7 @@ try
 " --|  $ wget http://levien.com/type/myfonts/Inconsolata.otf
 " --|  $ python ./fontpatcher ./Inconsolata.otf
 " --|  $ sudo cp ./Inconsolata-Powerline.otf /usr/share/fonts
-set guifont=Inconsolata_for_Powerline:h16
+set guifont=Inconsolata_for_Powerline:h15
 if s:iswin
   set guifontwide=MS_Gothic:h11:cSHIFTJIS
 endif
@@ -1271,6 +1271,17 @@ autocmd ESC FileType help,qf nnoremap <silent> <buffer> <ESC><ESC> :<C-u>q<CR>
 
 " disable EX-mode
 map <S-q> <Nop>
+
+" move within insert mode
+" https://sites.google.com/site/fudist/Home/vim-nihongo-ban/tips/vim-key-emacs
+imap <expr><C-o> neosnippet#expandable_or_jumpable() ? "<TAB>" : "<ESC>o"
+imap <C-p> <Up>
+imap <C-n> <Down>
+imap <C-b> <Left>
+imap <C-f> <Right>
+imap <C-e> <End>
+imap <C-a> <Home>
+imap <C-d> <Del>
 " }}}
 
 " }}} KEY MAPPING
