@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2013/02/25 11:22:50.
+# - * Last Change: 2013/02/27 11:18:57.
 # ------------------------------------------------------------------------------------------------------------
 
 # history
@@ -254,23 +254,12 @@ esac
 
 # suffix alias according to file extension
 alias -s txt=cat
-alias -s tex=vi
-alias -s csv=vi
-alias -s js=vi
-alias -s css=vi
-alias -s less=vi
+alias -s {tex,csv,js,css,less}=vi
 alias -s html=chrome
 alias -s pdf=evince
-alias -s png=eog
-alias -s jpg=eog
-alias -s bmp=eog
-alias -s PNG=eog
-alias -s JPG=eog
-alias -s BMP=eog
-alias -s mp3=mplayer
-alias -s wav=mplayer
-alias -s cpp=runcpp
-alias -s c=runcpp
+alias -s {png,jpg,bmp,PNG,JPG,BMP}=eog
+alias -s {mp3,wav}=mplayer
+alias -s {c,cpp}=runcpp
 alias -s py=python
 alias -s hs=runhaskell
 alias -s s=runcpp
