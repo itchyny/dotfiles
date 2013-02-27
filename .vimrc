@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/02/27 20:43:39.
+" - * Last Change: 2013/02/27 22:11:07.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -93,6 +93,9 @@ NeoBundle 'Shougo/neobundle.vim'
 try
 NeoBundle 'itchyny/landscape.vim', {'type': 'nosync'}
   colorscheme landscape
+  let g:landscape_highlight_url = 1
+  let g:landscape_highlight_todo = 1
+  let g:landscape_highlight_full_space = 1
 catch
 endtry
 NeoBundle 'xterm-color-table.vim'
