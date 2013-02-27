@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/02/27 01:39:24.
+" - * Last Change: 2013/02/27 18:41:47.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -470,10 +470,6 @@ NeoBundle 'scrooloose/syntastic'
   let g:syntastic_mode_map = { 'mode': 'passive',
                              \ 'active_filetypes': ['c', 'cpp'] }
   let g:syntastic_echo_current_error = 0
-  if s:ismac
-    let g:syntastic_error_symbol='✕'
-    let g:syntastic_warning_symbol='⚠'
-  endif
   let g:syntastic_enable_highlighting = 0
 endif
 NeoBundle 'mattn/zencoding-vim'
