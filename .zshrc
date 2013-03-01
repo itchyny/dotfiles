@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2013/03/01 12:38:35.
+# - * Last Change: 2013/03/02 07:26:48.
 # ------------------------------------------------------------------------------------------------------------
 
 # history
@@ -146,7 +146,8 @@ function starteditor() {
   zle reset-prompt
 }
 zle -N starteditor
-bindkey '@' starteditor
+bindkey '^@' starteditor
+bindkey '^\^' starteditor
 
 function clean() {
   clear
