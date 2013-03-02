@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/02/27 22:52:35.
+" - * Last Change: 2013/03/02 16:34:59.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -511,7 +511,7 @@ try
 " --|  $ wget http://levien.com/type/myfonts/Inconsolata.otf
 " --|  $ python ./fontpatcher ./Inconsolata.otf
 " --|  $ sudo cp ./Inconsolata-Powerline.otf /usr/share/fonts
-set guifont=Inconsolata_for_Powerline:h15
+set guifont=Inconsolata\ for\ Powerline:h15
 if s:iswin
   set guifontwide=MS_Gothic:h11:cSHIFTJIS
 endif
