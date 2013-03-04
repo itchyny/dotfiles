@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/03/02 16:34:59.
+" - * Last Change: 2013/03/04 16:38:09.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -271,11 +271,12 @@ NeoBundle 'Shougo/vimfiler'
     let g:vimfiler_readonly_file_icon = 'x'
     let g:vimfiler_marked_file_icon = 'v'
   endif
-  nnoremap <silent> <Leader>f :<C-u>VimFilerCurrentDir -buffer-name=vimfiler -auto-cd<CR>
-  nnoremap <silent> <Leader><Leader> :<C-u>VimFilerCurrentDir -buffer-name=vimfiler -auto-cd<CR>
-  nnoremap <silent> @<Leader> :<C-u>VimFilerCurrentDir -buffer-name=vimfiler -auto-cd<CR>
-  nnoremap <silent> @@ :<C-u>VimFilerCurrentDir -buffer-name=vimfiler -auto-cd<CR>
-  nnoremap <silent> s :<C-u>execute 'VimShellCreate '.<SID>current_directory_auto()<CR>
+  nnoremap <silent> <Leader>f :<C-u>VimFilerBufferDir -buffer-name=vimfiler -auto-cd<CR>
+  nnoremap <silent> <Leader><Leader> :<C-u>VimFilerBufferDir -buffer-name=vimfiler -auto-cd<CR>
+  nnoremap <silent> @<Leader> :<C-u>VimFilerBufferDir -buffer-name=vimfiler -auto-cd<CR>
+  nnoremap <silent>@@ :<C-u>VimFilerBufferDir -buffer-name=vimfiler -auto-cd<CR>
+  " nnoremap <silent> s :<C-u>execute 'VimShellCreate '.<SID>current_directory_auto()<CR>
+  nnoremap <silent> s :<C-u>VimShellBufferDir<CR>
   let g:vimfiler_execute_file_list = { 'pdf': 'open', 'PDF': 'open',
                                      \ 'png': 'open', 'PNG': 'open',
                                      \ 'jpg': 'open', 'JPG': 'open',
@@ -410,8 +411,10 @@ NeoBundle 'Shougo/vimshell'
     endfor
   augroup END
   nnoremap <silent> <Leader><Leader>s :<C-u>VimShell -split<CR>
-  nnoremap <silent> <Leader>s :<C-u>execute 'VimShellCreate '.<SID>current_directory_auto()<CR>
-  nnoremap <silent> <S-h> :<C-u>execute 'VimShell -popup '.<SID>current_directory_auto()<CR>
+  " nnoremap <silent> <Leader>s :<C-u>execute 'VimShellCreate '.<SID>current_directory_auto()<CR>
+  " nnoremap <silent> <S-h> :<C-u>execute 'VimShell -popup '.<SID>current_directory_auto()<CR>
+  nnoremap <silent> <Leader>s :<C-u>VimShellBufferDir<CR>
+  nnoremap <silent> <S-h> :<C-u>VimShellBufferDir -popup<CR>
   nnoremap <Leader>z :<C-u>VimShellInteractive zsh<CR>
   " nnoremap <Leader>g :<C-u>VimShellInteractive ghci<CR>
   nnoremap <Leader>p :<C-u>VimShellInteractive python<CR>
