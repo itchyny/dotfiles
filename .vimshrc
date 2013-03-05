@@ -32,3 +32,5 @@ alias gd='git diff'
 alias gp='git push'
 alias ungzip='gzip -d'
 alias untar='tar xvf'
+alias http='python -m SimpleHTTPServer 8000'
+
