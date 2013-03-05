@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/03/04 22:10:33.
+" - * Last Change: 2013/03/05 10:54:54.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -464,6 +464,8 @@ NeoBundle 'kana/vim-fakeclip'
 NeoBundle 'gregsexton/MatchTag'
 NeoBundle 'matchit.zip'
 NeoBundle 'thinca/vim-scouter'
+NeoBundle 'thinca/vim-ambicmd'
+  cnoremap <expr><TAB> ambicmd#expand("\<SPACE>")
 NeoBundle 'motemen/git-vim'
 if exists('##InsertCharPre')
   NeoBundle 'mattn/multi-vim'
