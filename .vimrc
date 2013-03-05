@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/03/05 10:54:54.
+" - * Last Change: 2013/03/05 11:21:36.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -374,6 +374,7 @@ NeoBundle 'Shougo/vimshell'
   let g:vimshell_prompt = ' $ '
   let g:vimshell_disable_escape_highlight = 1
   let g:vimshell_scrollback_limit = 5000
+  let g:vimshell_disable_escape_highlight = 1
   augroup Vimshell
     autocmd!
     " for easy window moving, unmap C-[hjkl]
@@ -465,7 +466,7 @@ NeoBundle 'gregsexton/MatchTag'
 NeoBundle 'matchit.zip'
 NeoBundle 'thinca/vim-scouter'
 NeoBundle 'thinca/vim-ambicmd'
-  cnoremap <expr><TAB> ambicmd#expand("\<SPACE>")
+  cnoremap <expr><SPACE> ambicmd#expand("\<SPACE>")
 NeoBundle 'motemen/git-vim'
 if exists('##InsertCharPre')
   NeoBundle 'mattn/multi-vim'
