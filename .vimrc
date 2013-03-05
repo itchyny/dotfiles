@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/03/04 16:38:09.
+" - * Last Change: 2013/03/04 22:10:33.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -341,6 +341,8 @@ NeoBundle 'Shougo/vimfiler'
           \ vimfiler#smart_cursor_map("\<Plug>(vimfiler_cd_file)", "\<Plug>(vimfiler_edit_file)")
     autocmd FileType vimfiler nmap <buffer><expr> t <SID>changetime()
   augroup END
+NeoBundle 'itchyny/vimfiler-preview', {'type': 'nosync'}
+  let g:vimfiler_preview_action = 'auto preview'
 NeoBundle 'Shougo/vinarise'
 endif
 NeoBundle 'eagletmt/ghci-vim'
@@ -873,6 +875,7 @@ augroup SetLocalFiletype
   autocmd BufNewFile,BufReadPost *.roy  setlocal filetype=roy
   autocmd BufNewFile,BufReadPost *.rst  setlocal filetype=rest
   autocmd BufNewFile,BufReadPost *.tex  setlocal filetype=tex
+  autocmd BufNewFile,BufReadPost *.xxd setlocal filetype=xxd
   autocmd BufNewFile,BufReadPost * execute "setlocal filetype=".&filetype
 augroup END
 " }}}
