@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2013/03/02 07:26:48.
+# - * Last Change: 2013/03/06 15:01:36.
 # ------------------------------------------------------------------------------------------------------------
 
 # history
@@ -103,7 +103,9 @@ export PATH=$PATH:~/node_modules/node-dev/
 export PATH=$PATH:~/node_modules/nodester-cli/bin/
 export PATH=$PATH:~/node_modules/stylus/bin/
 
-# export http_proxy=http://proxy.kuins.net:8080/
+function proxy {
+  export http_proxy=http://proxy.kuins.net:8080/
+}
 
 # function
 function mkcd {
