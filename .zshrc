@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2013/03/06 15:01:36.
+# - * Last Change: 2013/03/06 15:03:31.
 # ------------------------------------------------------------------------------------------------------------
 
 # history
@@ -103,11 +103,11 @@ export PATH=$PATH:~/node_modules/node-dev/
 export PATH=$PATH:~/node_modules/nodester-cli/bin/
 export PATH=$PATH:~/node_modules/stylus/bin/
 
+# function
 function proxy {
   export http_proxy=http://proxy.kuins.net:8080/
 }
 
-# function
 function mkcd {
   if [ ! -n "$1" ]; then
     echo "Enter a directory name"
