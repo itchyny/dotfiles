@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/03/07 12:40:20.
+" - * Last Change: 2013/03/07 16:17:36.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -987,7 +987,7 @@ function! s:current_directory_escape()
   return s:directory_escape(s:current_directory_raw())
 endfunction
 function! s:current_directory_auto()
-  if &filetype ==# 'vimfiler'
+  if &filetype ==# 'vimfiler' && exists('b:vimfiler')
     return s:directory_escape(b:vimfiler.current_dir)
   else
     return s:current_directory_escape()
