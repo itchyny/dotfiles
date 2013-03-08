@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/03/07 16:17:36.
+" - * Last Change: 2013/03/08 10:13:29.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -176,8 +176,8 @@ NeoBundle 'Shougo/unite.vim'
     catch
     endtry
   endfunction
-  call unite#custom_action('file', 'auto open', auto_open)
-  call unite#custom_default_action('file', 'auto open')
+  call unite#custom_action('file', 'auto_open', auto_open)
+  call unite#custom_default_action('file', 'auto_open')
   unlet auto_open
 NeoBundle 'Shougo/unite-build'
   nnoremap <silent><F5> :<C-u>Unite build -buffer-name=build<CR>
