@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/03/08 10:13:29.
+" - * Last Change: 2013/03/08 10:26:58.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -342,7 +342,7 @@ NeoBundle 'Shougo/vimfiler'
     autocmd FileType vimfiler nmap <buffer><expr> t <SID>changetime()
   augroup END
 NeoBundle 'itchyny/vimfiler-preview', {'type': 'nosync'}
-  let g:vimfiler_preview_action = 'auto preview'
+  let g:vimfiler_preview_action = 'auto_preview'
 NeoBundle 'Shougo/vinarise'
 endif
 NeoBundle 'eagletmt/ghci-vim'
