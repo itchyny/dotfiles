@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/03/08 10:26:58.
+" - * Last Change: 2013/03/16 10:05:58.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -1005,7 +1005,7 @@ function! s:current_directory_abbr()
     endif
     let rawpath = s:substitute_path_slash(rawpath)
   endif
-  return substitute(substitute(substitute(path, rawpath, '.', ''), '^./', '', ''), '^.$', '', '')
+  return substitute(substitute(substitute(path, escape(rawpath, '~'), '.', ''), '^./', '', ''), '^.$', '', '')
 endfunction
 function! s:change_directory()
   try
