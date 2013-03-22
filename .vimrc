@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/03/20 22:06:06.
+" - * Last Change: 2013/03/22 22:04:22.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -813,6 +813,7 @@ set nospell
   augroup END
 set modeline
 set modelines=1
+set completeopt-=preview
 if has('conceal')
   set concealcursor=nvc
   augroup SetConceal
