@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/03/22 22:04:22.
+" - * Last Change: 2013/03/25 08:08:55.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -981,7 +981,7 @@ augroup END
 
 " Move to the directory for each buffer, current directory functions {{{
 function! s:directory_escape(directory)
-  return escape(a:directory, '*[]?{} ')
+  return escape(a:directory, '*[]? ')
 endfunction
 function! s:current_directory_raw()
   return substitute(expand('%:p:h'), '\*\(vinarise\|bitmapview\)\* - ', '', '')
