@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/04/28 12:16:30.
+" - * Last Change: 2013/04/28 17:12:33.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -512,7 +512,6 @@ NeoBundle 'syntaxm4.vim'
 NeoBundle 'vim-scripts/jade.vim'
 NeoBundle 'vim-coffee-script'
 NeoBundle 'rest.vim'
-NeoBundle 'VST'
 NeoBundle 'vim-scripts/indenthaskell.vim'
   let hs_highlight_boolean = 1
   let hs_highlight_types = 1
