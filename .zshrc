@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2013/03/18 09:24:20.
+# - * Last Change: 2013/04/28 12:13:16.
 # ------------------------------------------------------------------------------------------------------------
 
 # history
@@ -248,12 +248,30 @@ case "${OSTYPE}" in
   freebsd*|darwin*)
     alias ls='ls -wG'
     alias ll='ls -altrwG'
+    export os='mac'
     ;;
   *)
     alias ls='ls --color'
     alias ll='ls -altr --color'
+    export os='ubuntu'
     ;;
 esac
+function makevim() {
+  cd ~/Dropbox/cpp/vim/vim-$os/
+  hg pull
+  hg update
+  # make clean
+  CFLAGS="-O3" ./configure --with-features=huge\
+              --with-compiledby=itchyny\
+              --enable-pythoninterp=yes\
+              --enable-multibyte
+              #--with-lua-prefix=`dirname \`which lua\``
+              #--enable-perlinterp=yes\
+              #--enable-rubyinterp=yes\
+              #--enable-luainterp=yes\
+  make
+  sudo make install
+}
 
 # suffix alias according to file extension
 alias -s txt=cat

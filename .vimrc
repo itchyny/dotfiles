@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/03/25 22:12:30.
+" - * Last Change: 2013/04/28 12:16:30.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -97,6 +97,7 @@ NeoBundle 'itchyny/landscape.vim', {'type': 'nosync'}
   let g:landscape_highlight_todo = 1
   let g:landscape_highlight_full_space = 1
 catch
+  colorscheme wombat
 endtry
 NeoBundle 'xterm-color-table.vim'
   " http://www.vim.org/scripts/script.php?script_id=3412
@@ -111,7 +112,7 @@ NeoBundle 'Shougo/neocomplcache'
   let g:neocomplcache_enable_underbar_completion = 1
   let g:neocomplcache_enable_camel_case_completion = 1
   let g:neocomplcache_enable_cursor_hold_i = 0
-  let g:neocomplcache_max_list = 10
+  let g:neocomplcache_max_list = 20
   let g:neocomplcache_skip_auto_completion_time = "0.50"
   let g:neocomplcache_enable_auto_close_preview = 1
 NeoBundle 'Shougo/neosnippet'
@@ -134,6 +135,7 @@ if s:nosudo
 NeoBundle 'Shougo/unite.vim'
   let g:unite_enable_start_insert = 1
   let g:unite_cursor_line_highlight = 'CursorLine'
+  let g:unite_source_file_mru_limit = 500
   if s:ismac && has('multi_byte')
     let g:unite_marked_icon = '✓'
   else
@@ -354,9 +356,9 @@ NeoBundle 'eagletmt/ghci-vim'
     autocmd FileType haskell nnoremap <Leader>t <expr> call s:safeexecute(':GhciType')
   augroup END
 NeoBundle 'tyru/open-browser.vim'
-  nmap <Leader>b <Plug>(openbrowser-smart-search)
-  vmap <Leader>b <Plug>(openbrowser-smart-search)
-  nmap <Leader>s <Plug>(openbrowser-search)
+  nmap <silent> <Leader>b <Plug>(openbrowser-smart-search)
+  vmap <silent> <Leader>b <Plug>(openbrowser-smart-search)
+  nmap <silent> <Leader>s <Plug>(openbrowser-search)
 NeoBundle 'mattn/webapi-vim'
 " }}}
 
@@ -444,7 +446,9 @@ NeoBundle 'tComment'
     autocmd!
     autocmd FileType gnuplot call tcomment#DefineType('gnuplot', '# %s')
     autocmd FileType haxe call tcomment#DefineType('haxe', '// %s')
+    autocmd FileType meissa call tcomment#DefineType('meissa', '# %s')
   augroup END
+  nnoremap <silent> __ :TComment<CR>
 NeoBundle 'Align'
 NeoBundle 'errormarker.vim'
 NeoBundle 'mattn/calendar-vim'
@@ -469,12 +473,20 @@ NeoBundle 'thinca/vim-scouter'
 NeoBundle 'thinca/vim-ambicmd'
   cnoremap <expr><SPACE> ambicmd#expand("\<SPACE>")
 NeoBundle 'motemen/git-vim'
+NeoBundle 'terryma/vim-multiple-cursors'
+  let g:multi_cursor_use_default_mapping = 0
+  let g:multi_cursor_next_key = "\<C-g>"
+  let g:multi_cursor_prev_key = "\<C-y>"
+  let g:multi_cursor_skip_key = "\<C-x>"
+  let g:multi_cursor_exit_key = "\<Esc>"
+  let g:multi_cursor_quit_key = "\<Esc>"
 if exists('##InsertCharPre')
   NeoBundle 'mattn/multi-vim'
   nnoremap <Leader>m :<C-u>Multi<SPACE>
 endif
 NeoBundle 'itchyny/thumbnail.vim', {'type': 'nosync'}
   nnoremap <silent> <Leader>tb :<C-u>Thumbnail<CR>
+  let g:thumbnail_dev = 1
 NeoBundle 'vim-jp/vital.vim'
 " }}}
 
@@ -790,7 +802,7 @@ language C
 set nospell
   function! s:autospell()
     if !exists('b:autospell_done')
-      if search("[^\x01-\x7e]", 'n') == 0
+      if search("[^\x01-\x7e]", 'n') == 0 && line('$') > 5
         setlocal spell
         call matchadd('SpellBad', '^\(\S\+ \+\)\{30,}\S\+[,.]\?$')
         call matchadd('SpellBad', '\<a\> [aiueo]')
@@ -872,7 +884,7 @@ augroup SetLocalFiletype
   autocmd BufNewFile,BufReadPost *.bf   setlocal filetype=bf
   autocmd BufNewFile,BufReadPost *.cls  setlocal filetype=tex
   autocmd BufNewFile,BufReadPost *.gnuplot setlocal filetype=gnuplot
-  autocmd BufNewFile,BufReadPost *.hs,*.y setlocal filetype=haskell
+  autocmd BufNewFile,BufReadPost *.hs setlocal filetype=haskell
   autocmd BufNewFile,BufReadPost *.hx   setlocal filetype=haxe
   autocmd BufNewFile,BufReadPost *.jade setlocal filetype=jade
   autocmd BufNewFile,BufReadPost *.json setlocal filetype=json
@@ -883,6 +895,7 @@ augroup SetLocalFiletype
   autocmd BufNewFile,BufReadPost *.roy  setlocal filetype=roy
   autocmd BufNewFile,BufReadPost *.rst  setlocal filetype=rest
   autocmd BufNewFile,BufReadPost *.tex  setlocal filetype=tex
+  autocmd BufNewFile,BufReadPost *.meissa setlocal filetype=meissa
   autocmd BufNewFile,BufReadPost * execute "setlocal filetype=".&filetype
 augroup END
 " }}}
@@ -915,7 +928,7 @@ set textwidth=0   " No auto breking line
   autocmd SetLocal FileType rest setlocal textwidth=50
 set expandtab
   function! s:autotab()
-    if search('^\t\t.*\n\t\t.*\n\t\t', 'n') > 0
+    if search('^\t.*\n\t.*\n\t', 'n') > 0
       set noexpandtab
     else
       set expandtab
@@ -972,7 +985,7 @@ function! s:enter()
 endfunction
 augroup Enter
   autocmd!
-  autocmd VimEnter * call s:enter()
+  " autocmd VimEnter * call s:enter()
   if s:iswin
     autocmd GUIEnter * simalt ~x
   endif
@@ -1067,7 +1080,7 @@ function! AOJtemplate()
   call append(12, '  int i = 0, j = 0, k = 0, l = 0, m = 0, n = 0;')
   call append(13, '}')
 endfunction
-nnoremap ,,, :call AOJtemplate()<CR>zRjjjjjo
+nnoremap ,,, :set ft=c<CR>:call AOJtemplate()<CR>zRjjjjjo
 "}}}
 
 " GCJTemplate {{{
@@ -1291,13 +1304,14 @@ map <S-q> <Nop>
 
 " move within insert mode
 imap <expr><C-o> neosnippet#expandable_or_jumpable() ? "<TAB>" : "<ESC>o"
-imap <C-p> <Up>
-imap <C-n> <Down>
-imap <C-b> <Left>
-imap <C-f> <Right>
-imap <C-e> <End>
-imap <C-a> <Home>
-imap <C-d> <Del>
+imap <C-p> <Up><C-\>
+imap <C-n> <Down><C-\>
+imap <C-b> <Left><C-\>
+imap <C-f> <Right><C-\>
+imap <C-e> <End><C-\>
+imap <C-a> <Home><C-\>
+imap <C-d> <Del><C-\>
+imap <expr><C-\> pumvisible() ? "<ESC>a" : ""
 " }}}
 
 " }}} KEY MAPPING
