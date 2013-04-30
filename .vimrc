@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/04/28 17:12:33.
+" - * Last Change: 2013/04/30 10:31:26.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -449,6 +449,7 @@ NeoBundle 'tComment'
     autocmd FileType meissa call tcomment#DefineType('meissa', '# %s')
   augroup END
   nnoremap <silent> __ :TComment<CR>
+  vnoremap <silent> __ :TComment<CR>
 NeoBundle 'Align'
 NeoBundle 'errormarker.vim'
 NeoBundle 'mattn/calendar-vim'
