@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/04/30 10:31:26.
+" - * Last Change: 2013/04/30 23:37:17.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -132,10 +132,11 @@ endif
 " --------------------------------------------------------------------------------------------------------
 let mapleader = ","
 if s:nosudo
-NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/unite.vim', {'type': 'nosync'}
   let g:unite_enable_start_insert = 1
   let g:unite_cursor_line_highlight = 'CursorLine'
   let g:unite_source_file_mru_limit = 500
+  let g:unite_force_overwrite_statusline = 0
   if s:ismac && has('multi_byte')
     let g:unite_marked_icon = '✓'
   else
@@ -542,6 +543,7 @@ endif
 if has('multi_byte')
   let g:Powerline_symbols = 'fancy'
 endif
+let g:Powerline_theme = 'default'
 let g:Powerline_mode_n = 'NORMAL'
 call Pl#Hi#Allocate({
   \ 'black'          : 16,
@@ -602,7 +604,7 @@ let g:Powerline#Colorschemes#my#colorscheme = Pl#Colorscheme#Init([
     \ 's': ['white', 'gray5', ['bold']],
     \ }),
   \
-  \ Pl#Hi#Segments(['fileinfo', 'filename'], {
+  \ Pl#Hi#Segments(['fileinfo', 'filename', 'unite:status'], {
     \ 'i': ['white', 'darkestgreen', ['bold']],
     \ 'n': ['white', 'darkestcyan', ['bold']],
     \ 'v': ['white', 'darkestpurple', ['bold']],
