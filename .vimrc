@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/04/30 23:37:17.
+" - * Last Change: 2013/05/01 10:15:54.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -671,6 +671,32 @@ let g:Powerline#Colorschemes#my#colorscheme = Pl#Colorscheme#Init([
     \ }),
   \ ])
 let g:Powerline_colorscheme = 'my'
+" diff --git a/autoload/Powerline/Themes/default.vim b/autoload/Powerline/Themes/default.vim
+" index a97d5b9..71b2737 100644
+" --- a/autoload/Powerline/Themes/default.vim
+" +++ b/autoload/Powerline/Themes/default.vim
+" @@ -17,6 +17,16 @@ let g:Powerline#Themes#default#theme = Pl#Theme#Create(
+"  		\ , 'scrollpercent'
+"  		\ , 'lineinfo'
+"  	\ ),
+" +  \ Pl#Theme#Buffer('unite', ['match', 'any', [Pl#Match#Add('&ft', 'unite')]]
+" +		\ , 'paste_indicator'
+" +		\ , 'mode_indicator'
+" +    \ , "unite:status"
+" +    \ , Pl#Segment#Truncate()
+" +    \ , Pl#Segment#Split()
+" +    \ , 'filetype'
+" +		\ , 'scrollpercent'
+" +		\ , 'lineinfo'
+" +  \ ),
+"  	\
+"  	\ Pl#Theme#Buffer('command_t'
+"  		\ , ['static_str.name', 'Command-T']
+" autoload/Powerline?Segments/unite.vim
+" let g:Powerline#Segments#unite#segments = Pl#Segment#Init(["unite",
+" 	\ exists('g:loaded_unite') && g:loaded_unite == 1,
+" \	Pl#Segment#Create('status', '%{unite#get_status_string()}')
+" \])
 catch
 endtry
 " }}}
