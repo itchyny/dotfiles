@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/05/09 12:48:09.
+" - * Last Change: 2013/05/09 12:55:57.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -301,10 +301,10 @@ NeoBundle 'Shougo/vimfiler'
     let g:vimfiler_readonly_file_icon = 'x'
     let g:vimfiler_marked_file_icon = 'v'
   endif
-  nnoremap <silent> <Leader>f :<C-u>VimFilerBufferDir -buffer-name=vimfiler -auto-cd<CR>
-  nnoremap <silent> <Leader><Leader> :<C-u>VimFilerBufferDir -buffer-name=vimfiler -auto-cd<CR>
-  nnoremap <silent> @<Leader> :<C-u>VimFilerBufferDir -buffer-name=vimfiler -auto-cd<CR>
-  nnoremap <silent>@@ :<C-u>VimFilerBufferDir -buffer-name=vimfiler -auto-cd<CR>
+  nnoremap <silent> <Leader>f :<C-u>VimFilerBufferDir -status -buffer-name=vimfiler -auto-cd<CR>
+  nnoremap <silent> <Leader><Leader> :<C-u>VimFilerBufferDir -status -buffer-name=vimfiler -auto-cd<CR>
+  nnoremap <silent> @<Leader> :<C-u>VimFilerBufferDir -status -buffer-name=vimfiler -auto-cd<CR>
+  nnoremap <silent>@@ :<C-u>VimFilerBufferDir -status -buffer-name=vimfiler -auto-cd<CR>
   " nnoremap <silent> s :<C-u>execute 'VimShellCreate '.<SID>current_directory_auto()<CR>
   nnoremap <silent> s :<C-u>VimShellBufferDir<CR>
   let g:vimfiler_execute_file_list = { 'pdf': 'open', 'PDF': 'open',
@@ -859,7 +859,7 @@ map <LeftRelease> <Nop>
 function! s:enter()
   silent call s:safeexecute('Pl#UpdateStatusline(1)', 'g:Powerline_colorscheme')
   if argc() == 0
-    silent call s:safeexecute(':VimFiler -buffer-name=vimfiler -auto-cd', ':VimFiler')
+    silent call s:safeexecute(':VimFiler -status -buffer-name=vimfiler -auto-cd', ':VimFiler')
   endif
 endfunction
 augroup Enter
