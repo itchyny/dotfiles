@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/05/09 12:32:00.
+" - * Last Change: 2013/05/09 12:48:09.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -90,7 +90,7 @@ NeoBundle 'Shougo/neobundle.vim'
 
 " Powerline {{{
 " --------------------------------------------------------------------------------------------------------
-NeoBundle 'Lokaltog/vim-powerline'
+NeoBundle 'Lokaltog/vim-powerline', {'type': 'nosync'}
 " NeoBundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 try
 " --|  $ sudo apt-get install fontforge
@@ -107,8 +107,6 @@ if has('multi_byte')
   let g:Powerline_symbols = 'fancy'
 endif
 let g:Powerline_mode_n = 'NORMAL'
-let g:Powerline_theme = 'landscape'
-let g:Powerline_colorscheme = 'landscape'
 catch
 endtry
 " }}}
@@ -121,6 +119,8 @@ NeoBundle 'itchyny/landscape.vim', {'type': 'nosync'}
   let g:landscape_highlight_url = 1
   let g:landscape_highlight_todo = 1
   let g:landscape_highlight_full_space = 1
+  let g:Powerline_theme = 'landscape'
+  let g:Powerline_colorscheme = 'landscape'
 catch
   colorscheme wombat
 endtry
