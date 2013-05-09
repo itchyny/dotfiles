@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/05/08 23:36:02.
+" - * Last Change: 2013/05/09 10:08:49.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -86,6 +86,31 @@ call neobundle#rc(expand($BUNDLE))
 NeoBundle 'Shougo/neobundle.vim'
   " nnoremap <silent> <S-b><S-b> :<C-u>NeoBundleUpdate<CR>
   nnoremap <silent> <S-b><S-b> :<C-u>Unite neobundle/update<CR>
+" }}}
+
+" Powerline {{{
+" --------------------------------------------------------------------------------------------------------
+NeoBundle 'Lokaltog/vim-powerline'
+" NeoBundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+try
+" --|  $ sudo apt-get install fontforge
+" --|  $ sudo apt-get install python-fontforge
+" --|  $ cd ~/.vim/bundle/vim-powerline/fontpatcher
+" --|  $ wget http://levien.com/type/myfonts/Inconsolata.otf
+" --|  $ python ./fontpatcher ./Inconsolata.otf
+" --|  $ sudo cp ./Inconsolata-Powerline.otf /usr/share/fonts
+set guifont=Inconsolata\ for\ Powerline:h15
+if s:iswin
+  set guifontwide=MS_Gothic:h11:cSHIFTJIS
+endif
+if has('multi_byte')
+  let g:Powerline_symbols = 'fancy'
+endif
+let g:Powerline_mode_n = 'NORMAL'
+let g:Powerline_theme = 'landscape'
+let g:Powerline_colorscheme = 'landscape'
+catch
+endtry
 " }}}
 
 " Colorscheme {{{
@@ -524,182 +549,6 @@ NeoBundle 'haxe.vim'
 NeoBundle 'motemen/hatena-vim'
   let g:hatena_upload_on_write = 0
   let g:hatena_user = 'itchyny'
-" }}}
-
-" Powerline {{{
-" --------------------------------------------------------------------------------------------------------
-NeoBundle 'Lokaltog/vim-powerline'
-" NeoBundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
-try
-" --|  $ sudo apt-get install fontforge
-" --|  $ sudo apt-get install python-fontforge
-" --|  $ cd ~/.vim/bundle/vim-powerline/fontpatcher
-" --|  $ wget http://levien.com/type/myfonts/Inconsolata.otf
-" --|  $ python ./fontpatcher ./Inconsolata.otf
-" --|  $ sudo cp ./Inconsolata-Powerline.otf /usr/share/fonts
-set guifont=Inconsolata\ for\ Powerline:h15
-if s:iswin
-  set guifontwide=MS_Gothic:h11:cSHIFTJIS
-endif
-if has('multi_byte')
-  let g:Powerline_symbols = 'fancy'
-endif
-let g:Powerline_theme = 'default'
-let g:Powerline_mode_n = 'NORMAL'
-call Pl#Hi#Allocate({
-  \ 'black'          : 16,
-  \ 'white'          : 231,
-  \
-  \ 'darkestgreen'   : 22,
-  \ 'darkgreen'      : 28,
-  \
-  \ 'darkestcyan'    : 21,
-  \ 'mediumcyan'     : 117,
-  \
-  \ 'darkestblue'    : 24,
-  \ 'darkblue'       : 31,
-  \
-  \ 'darkestred'     : 52,
-  \ 'darkred'        : 88,
-  \ 'mediumred'      : 124,
-  \ 'brightred'      : 160,
-  \ 'brightestred'   : 196,
-  \
-  \ 'darkestyellow'  : 59,
-  \ 'darkyellow'     : 100,
-  \ 'darkestpurple'  : 57,
-  \ 'mediumpurple'   : 98,
-  \ 'brightpurple'   : 189,
-  \
-  \ 'brightorange'   : 208,
-  \ 'brightestorange': 214,
-  \
-  \ 'gray0'          : 233,
-  \ 'gray1'          : 235,
-  \ 'gray2'          : 236,
-  \ 'gray3'          : 239,
-  \ 'gray4'          : 240,
-  \ 'gray5'          : 241,
-  \ 'gray6'          : 244,
-  \ 'gray7'          : 245,
-  \ 'gray8'          : 247,
-  \ 'gray9'          : 250,
-  \ 'gray10'         : 252,
-  \ })
-" 'n': normal mode
-" 'i': insert mode
-" 'v': visual mode
-" 'r': replace mode
-" 'N': not active
-let g:Powerline#Colorschemes#my#colorscheme = Pl#Colorscheme#Init([
-  \ Pl#Hi#Segments(['SPLIT'], {
-    \ 'n': ['white', 'gray2'],
-    \ 'N': ['gray0', 'gray0'],
-    \ }),
-  \
-  \ Pl#Hi#Segments(['mode_indicator'], {
-    \ 'i': ['darkestgreen', 'white', ['bold']],
-    \ 'n': ['darkestcyan', 'white', ['bold']],
-    \ 'v': ['darkestpurple', 'white', ['bold']],
-    \ 'r': ['mediumred', 'white', ['bold']],
-    \ 's': ['white', 'gray5', ['bold']],
-    \ }),
-  \
-  \ Pl#Hi#Segments(['fileinfo', 'filename', 'unite:status'], {
-    \ 'i': ['white', 'darkestgreen', ['bold']],
-    \ 'n': ['white', 'darkestcyan', ['bold']],
-    \ 'v': ['white', 'darkestpurple', ['bold']],
-    \ 'r': ['white', 'mediumred', ['bold']],
-    \ 'N': ['gray0', 'gray2', ['bold']],
-    \ }),
-  \
-  \ Pl#Hi#Segments(['branch', 'scrollpercent', 'raw', 'filesize'], {
-    \ 'n': ['gray2', 'gray7'],
-    \ 'N': ['gray0', 'gray2'],
-    \ }),
-  \
-  \ Pl#Hi#Segments(['fileinfo.filepath', 'status'], {
-    \ 'n': ['gray10'],
-    \ 'N': ['gray5'],
-    \ }),
-  \
-  \ Pl#Hi#Segments(['static_str'], {
-    \ 'n': ['white', 'gray4'],
-    \ 'N': ['gray1', 'gray1'],
-    \ }),
-  \
-  \ Pl#Hi#Segments(['fileinfo.flags'], {
-    \ 'n': ['white'],
-    \ 'N': ['gray4'],
-    \ }),
-  \
-  \ Pl#Hi#Segments(['currenttag', 'fileformat', 'fileencoding', 'pwd',
-  \'filetype', 'charcode', 'currhigroup'], {
-    \ 'n': ['gray9', 'gray4'],
-    \ }),
-  \
-  \ Pl#Hi#Segments(['lineinfo'], {
-    \ 'n': ['gray2', 'gray10'],
-    \ 'N': ['gray2', 'gray4'],
-    \ }),
-  \
-  \ Pl#Hi#Segments(['errors'], {
-    \ 'n': ['white', 'gray2'],
-    \ }),
-  \
-  \ Pl#Hi#Segments(['lineinfo.line.tot'], {
-    \ 'n': ['gray2'],
-    \ 'N': ['gray2'],
-    \ }),
-  \
-  \ Pl#Hi#Segments(['paste_indicator', 'ws_marker'], {
-    \ 'n': ['white', 'brightred', ['bold']],
-    \ }),
-  \
-  \ Pl#Hi#Segments(['gundo:static_str.name'], {
-    \ 'n': ['white', 'mediumred', ['bold']],
-    \ 'N': ['brightred', 'darkestred', ['bold']],
-    \ }),
-  \
-  \ Pl#Hi#Segments(['gundo:static_str.buffer'], {
-    \ 'n': ['white', 'darkred'],
-    \ 'N': ['brightred', 'darkestred'],
-    \ }),
-  \
-  \ Pl#Hi#Segments(['gundo:SPLIT'], {
-    \ 'n': ['white', 'gray2'],
-    \ 'N': ['white', 'gray0'],
-    \ }),
-  \ ])
-let g:Powerline_colorscheme = 'my'
-" diff --git a/autoload/Powerline/Themes/default.vim b/autoload/Powerline/Themes/default.vim
-" index a97d5b9..71b2737 100644
-" --- a/autoload/Powerline/Themes/default.vim
-" +++ b/autoload/Powerline/Themes/default.vim
-" @@ -17,6 +17,16 @@ let g:Powerline#Themes#default#theme = Pl#Theme#Create(
-"  		\ , 'scrollpercent'
-"  		\ , 'lineinfo'
-"  	\ ),
-" +  \ Pl#Theme#Buffer('unite', ['match', 'any', [Pl#Match#Add('&ft', 'unite')]]
-" +		\ , 'paste_indicator'
-" +		\ , 'mode_indicator'
-" +    \ , "unite:status"
-" +    \ , Pl#Segment#Truncate()
-" +    \ , Pl#Segment#Split()
-" +    \ , 'filetype'
-" +		\ , 'scrollpercent'
-" +		\ , 'lineinfo'
-" +  \ ),
-"  	\
-"  	\ Pl#Theme#Buffer('command_t'
-"  		\ , ['static_str.name', 'Command-T']
-" autoload/Powerline?Segments/unite.vim
-" let g:Powerline#Segments#unite#segments = Pl#Segment#Init(["unite",
-" 	\ exists('g:loaded_unite') && g:loaded_unite == 1,
-" \	Pl#Segment#Create('status', '%{unite#get_status_string()}')
-" \])
-catch
-endtry
 " }}}
 
 endif
