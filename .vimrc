@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/05/09 12:55:57.
+" - * Last Change: 2013/05/10 18:00:56.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -140,6 +140,7 @@ NeoBundle 'Shougo/neocomplcache'
   let g:neocomplcache_max_list = 20
   let g:neocomplcache_skip_auto_completion_time = "0.50"
   let g:neocomplcache_enable_auto_close_preview = 1
+  let g:neocomplcache_auto_completion_start_length = 1
 NeoBundle 'Shougo/neosnippet'
   let g:neosnippet#snippets_directory = expand($VIM.'/snippets')
   imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
@@ -455,6 +456,7 @@ NeoBundle 'Shougo/vimshell'
 if executable('ghc-mod')
   " neocomplcache (neco-ghc) throws fatal error when ghc-mod is not found
 NeoBundle 'ujihisa/neco-ghc'
+  let g:necoghc_enable_detailed_browse = 1
 NeoBundle 'eagletmt/ghcmod-vim'
   nnoremap <Leader>g :<C-u>GhcModCheckAsync<CR>
   " --| Requirement: ghc-mod
