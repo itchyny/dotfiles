@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/05/10 20:42:23.
+" - * Last Change: 2013/05/10 21:47:57.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -140,7 +140,7 @@ NeoBundle 'Shougo/neocomplcache'
   let g:neocomplcache_max_list = 200
   let g:neocomplcache_skip_auto_completion_time = "0.50"
   let g:neocomplcache_enable_auto_close_preview = 1
-  let g:neocomplcache_auto_completion_start_length = 2
+  let g:neocomplcache_auto_completion_start_length = 1
   let g:neocomplcache_max_menu_width = 20
   let g:neocomplcache_max_keyword_width = 20
 NeoBundle 'Shougo/neosnippet'
