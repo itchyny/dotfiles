@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/05/10 21:47:57.
+" - * Last Change: 2013/05/13 09:55:24.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -137,7 +137,7 @@ NeoBundle 'Shougo/neocomplcache'
   let g:neocomplcache_enable_underbar_completion = 1
   let g:neocomplcache_enable_camel_case_completion = 1
   let g:neocomplcache_enable_cursor_hold_i = 0
-  let g:neocomplcache_max_list = 200
+  let g:neocomplcache_max_list = 300
   let g:neocomplcache_skip_auto_completion_time = "0.50"
   let g:neocomplcache_enable_auto_close_preview = 1
   let g:neocomplcache_auto_completion_start_length = 1
@@ -680,7 +680,8 @@ endif
 set showmatch
 set showtabline=1
 set previewheight=20
-set pumheight=15
+set pumheight=10
+set history=300
 set helplang=en
 language C
 set nospell
