@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/05/15 17:48:21.
+" - * Last Change: 2013/05/17 16:08:44.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -140,7 +140,7 @@ NeoBundle 'Shougo/neocomplcache'
   let g:neocomplcache_max_list = 350
   let g:neocomplcache_skip_auto_completion_time = "0.50"
   let g:neocomplcache_enable_auto_close_preview = 1
-  let g:neocomplcache_auto_completion_start_length = 2
+  let g:neocomplcache_auto_completion_start_length = 1
   let g:neocomplcache_max_menu_width = 20
   let g:neocomplcache_max_keyword_width = 50
 NeoBundle 'Shougo/neosnippet'
@@ -1098,6 +1098,9 @@ vnoremap <silent> ,80 :s/\(.\{80}\)/\1<c-v><Enter>/g<Enter><ESC>:<C-u>set nohlse
 
 " forward delete
 imap <C-x> <Del>
+
+" diff
+nnoremap ,d :<C-u>diffthis<CR>
 
 " }}}
 
