@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/05/17 16:08:44.
+" - * Last Change: 2013/05/18 07:23:25.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -1130,7 +1130,7 @@ inoremap <C-k> <ESC><C-w>k
 inoremap <C-l> <ESC><C-w>l
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
-nnoremap <C-m> <C-w>j
+nnoremap <expr><C-m> (bufname('%') ==# '[Command Line]') ? "<CR>" : "<C-w>j"
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 nnoremap <C-x> <C-w>x
