@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/05/18 07:23:25.
+" - * Last Change: 2013/05/20 11:09:33.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -119,6 +119,7 @@ NeoBundle 'itchyny/landscape.vim', {'type': 'nosync'}
   let g:landscape_highlight_url = 1
   let g:landscape_highlight_todo = 1
   let g:landscape_highlight_full_space = 1
+  " let g:landscape_highlight_url_filetype = {'thumbnail': 0}
   let g:Powerline_theme = 'landscape'
   let g:Powerline_colorscheme = 'landscape'
 catch

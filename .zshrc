@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2013/05/03 16:16:17.
+# - * Last Change: 2013/05/20 11:07:47.
 # ------------------------------------------------------------------------------------------------------------
 
 # history
@@ -271,6 +271,9 @@ function makevim() {
               #--enable-rubyinterp=yes\
               #--enable-luainterp=yes\
   make
+  ver=`vim --version | head -n 1 | sed -e 's/.*\([0-9][0-9]*\.[0-9][0-9]*\).*/\1/'`
+  ver=$ver.`vim --version | head -n 3 | tail -n 1 | sed -e 's/.*-\([0-9][0-9]*\).*/\1/'`
+  cp -n `which vim` ~/Dropbox/toplevel/vim/vim-$os/vim@$ver
   sudo make install
 }
 
