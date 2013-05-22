@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/05/20 11:09:33.
+" - * Last Change: 2013/05/22 10:19:37.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -555,6 +555,7 @@ NeoBundle 'haxe.vim'
 NeoBundle 'motemen/hatena-vim'
   let g:hatena_upload_on_write = 0
   let g:hatena_user = 'itchyny'
+NeoBundle 'Shougo/context_filetype.vim'
 " }}}
 
 endif
