@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/05/22 10:19:37.
+" - * Last Change: 2013/05/23 15:04:54.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -242,6 +242,9 @@ NeoBundle 'Shougo/vimproc', {
   \ }
 NeoBundle 'thinca/vim-quickrun'
   let g:quickrun_config = {'_': {'runner': 'vimproc', 'runner/vimproc/updatetime' : 60, 'split': 'vertical', 'into': 1}}
+  if executable('cat')
+    let g:quickrun_config.quickrun = {'command': 'cat'}
+  endif
   if executable('node')
     let g:quickrun_config.javascript = {'command' : 'node'}
   endif
@@ -533,9 +536,9 @@ NeoBundle 'scrooloose/syntastic'
   let g:syntastic_echo_current_error = 0
   let g:syntastic_enable_highlighting = 0
 endif
-NeoBundle 'mattn/zencoding-vim'
-  let g:user_zen_expandabbr_key = '<c-e>'
-  let g:user_zen_settings = { 'html' : { 'indentation' : '  ' }, }
+" NeoBundle 'mattn/zencoding-vim'
+"   let g:user_zen_expandabbr_key = '<c-e>'
+"   let g:user_zen_settings = { 'html' : { 'indentation' : '  ' }, }
 NeoBundle 'itspriddle/vim-javascript-indent'
 NeoBundle 'JSON.vim'
 NeoBundle 'html5.vim'
