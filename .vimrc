@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/05/23 15:04:54.
+" - * Last Change: 2013/05/25 01:00:34.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -314,16 +314,10 @@ NeoBundle 'Shougo/vimfiler'
   nnoremap <silent>@@ :<C-u>VimFilerBufferDir -status -buffer-name=vimfiler -auto-cd<CR>
   " nnoremap <silent> s :<C-u>execute 'VimShellCreate '.<SID>current_directory_auto()<CR>
   nnoremap <silent> s :<C-u>VimShellBufferDir<CR>
-  let g:vimfiler_execute_file_list = { 'pdf': 'open', 'PDF': 'open',
-                                     \ 'png': 'open', 'PNG': 'open',
-                                     \ 'jpg': 'open', 'JPG': 'open',
-                                     \ 'jpeg': 'open', 'JPEG': 'open',
-                                     \ 'gif': 'open', 'GIF': 'open',
-                                     \ 'bmp': 'open', 'BMP': 'open',
-                                     \ 'ico': 'open', 'ICO': 'open',
-                                     \ 'ppt': 'open', 'PPT': 'open',
-                                     \ 'html': 'open', 'HTML': 'open',
-                                     \ }
+  let g:vimfiler_execute_file_list = {}
+  for ft in split('pdf,png,jpg,jpeg,gif,bmp,ico,ppt,html', ',')
+    let g:vimfiler_execute_file_list[ft] = 'open'
+  endfor
   let s:usestatl = system('stat -l . > /dev/null 2>&1; echo $?') =~ '^0'
   function! s:changetime()
     let marked_files = vimfiler#get_marked_filenames()
@@ -558,7 +552,6 @@ NeoBundle 'haxe.vim'
 NeoBundle 'motemen/hatena-vim'
   let g:hatena_upload_on_write = 0
   let g:hatena_user = 'itchyny'
-NeoBundle 'Shougo/context_filetype.vim'
 " }}}
 
 endif
@@ -691,18 +684,14 @@ set helplang=en
 language C
 set nospell
   function! s:autospell()
+    let spellbads = [ '^\(\S\+ \+\)\{30,}\S\+[,.]\?$', '\<a\> [aiueo]', '^\$', '\<figure..\?\\', '\\ref{eq:'
+          \ , '^\\end{align}', '[^\~]\\\(eq\)\?ref', 'does not [a-z]*s ', 's [a-z][a-z]\+s ' ]
     if !exists('b:autospell_done')
       if search("[^\x01-\x7e]", 'n') == 0 && line('$') > 5
         setlocal spell
-        call matchadd('SpellBad', '^\(\S\+ \+\)\{30,}\S\+[,.]\?$')
-        call matchadd('SpellBad', '\<a\> [aiueo]')
-        call matchadd('SpellBad', '^\$')
-        call matchadd('SpellBad', '\<figure..\?\\')
-        call matchadd('SpellBad', '\\ref{eq:')
-        call matchadd('SpellBad', '^\\end{align}')
-        call matchadd('SpellBad', '[^\~]\\\(eq\)\?ref')
-        call matchadd('SpellBad', 'does not [a-z]*s ')
-        call matchadd('SpellBad', 's [a-z][a-z]\+s ')
+        for s in spellbads
+          call matchadd('SpellBad', s)
+        endfor
       else
         setlocal nospell
       endif
@@ -770,22 +759,12 @@ set autoread
 
 " Filetype {{{
 augroup SetLocalFiletype
+  let s:filetypes1 = map(split('bf,gnuplot,jade,json,less,r,roy,tex,meissa', ','), '[v:val, v:val]')
+  let s:filetypes2 = map(split('cls;tex,hs;haskell,hx;haxe,md;markdown', ','), 'split(v:val, ";")')
   autocmd!
-  autocmd BufNewFile,BufReadPost *.bf   setlocal filetype=bf
-  autocmd BufNewFile,BufReadPost *.cls  setlocal filetype=tex
-  autocmd BufNewFile,BufReadPost *.gnuplot setlocal filetype=gnuplot
-  autocmd BufNewFile,BufReadPost *.hs setlocal filetype=haskell
-  autocmd BufNewFile,BufReadPost *.hx   setlocal filetype=haxe
-  autocmd BufNewFile,BufReadPost *.jade setlocal filetype=jade
-  autocmd BufNewFile,BufReadPost *.json setlocal filetype=json
-  autocmd BufNewFile,BufReadPost *.less setlocal filetype=less
-  autocmd BufNewFile,BufReadPost *.md,*.mkd setlocal filetype=markdown
-  autocmd BufNewFile,BufReadPost *.qcl  setlocal filetype=qcl
-  autocmd BufNewFile,BufReadPost *.r    setlocal filetype=r
-  autocmd BufNewFile,BufReadPost *.roy  setlocal filetype=roy
-  autocmd BufNewFile,BufReadPost *.rst  setlocal filetype=rest
-  autocmd BufNewFile,BufReadPost *.tex  setlocal filetype=tex
-  autocmd BufNewFile,BufReadPost *.meissa setlocal filetype=meissa
+  for [ex, ft] in extend(s:filetypes1, s:filetypes2)
+    execute 'autocmd BufNewFile,BufReadPost *.' . ex . ' setlocal filetype=' . ft
+  endfor
   autocmd BufNewFile,BufReadPost * execute "setlocal filetype=".&filetype
 augroup END
 " }}}
