@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/05/25 02:19:39.
+" - * Last Change: 2013/05/27 15:33:37.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -516,7 +516,7 @@ if exists('##InsertCharPre')
   nnoremap <Leader>m :<C-u>Multi<SPACE>
 endif
 NeoBundle 'itchyny/thumbnail.vim', {'type': 'nosync'}
-  nnoremap <silent> <Leader>tb :<C-u>Thumbnail<CR>
+  nnoremap <silent> <Leader>t :<C-u>Thumbnail<CR>
 NeoBundle 'vim-jp/vital.vim'
 " }}}
 
