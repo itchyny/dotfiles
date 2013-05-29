@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/05/27 15:33:37.
+" - * Last Change: 2013/05/29 18:44:40.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -495,7 +495,7 @@ NeoBundle 'sjl/gundo.vim'
 NeoBundle 'VimCalc', {'type': 'nosync'}
   " --| Requirement: +python
   autocmd ESC FileType vimcalc nnoremap <silent> <buffer> <ESC><ESC><ESC> :<C-u>q<CR>
-  nnoremap <Leader>a :<C-u>Calc<CR>
+  nnoremap <silent> <Leader>a :<C-u>Calc<CR>
 endif
 NeoBundle 'kana/vim-fakeclip'
 NeoBundle 'gregsexton/MatchTag'
@@ -759,7 +759,7 @@ set autoread
 " Filetype {{{
 augroup SetLocalFiletype
   let s:filetypes1 = map(split('bf,gnuplot,jade,json,less,r,roy,tex,meissa', ','), '[v:val, v:val]')
-  let s:filetypes2 = map(split('cls;tex,hs;haskell,hx;haxe,md;markdown', ','), 'split(v:val, ";")')
+  let s:filetypes2 = map(split('cls;tex,hs;haskell,hx;haxe,md;markdown,cir;spice', ','), 'split(v:val, ";")')
   autocmd!
   for [ex, ft] in extend(s:filetypes1, s:filetypes2)
     execute 'autocmd BufNewFile,BufReadPost *.' . ex . ' setlocal filetype=' . ft
