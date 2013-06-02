@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/05/29 18:44:40.
+" - * Last Change: 2013/06/02 19:24:25.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -242,24 +242,13 @@ NeoBundle 'Shougo/vimproc', {
   \ }
 NeoBundle 'thinca/vim-quickrun'
   let g:quickrun_config = {'_': {'runner': 'vimproc', 'runner/vimproc/updatetime' : 60, 'split': 'vertical', 'into': 1}}
-  if executable('cat')
-    let g:quickrun_config.quickrun = {'command': 'cat'}
-  endif
-  if executable('node')
-    let g:quickrun_config.javascript = {'command' : 'node'}
-  endif
-  if executable('roy')
-    let g:quickrun_config.roy = {'command' : 'roy'}
-  endif
+  let s:quickrun_command_list = map(split(
+        \ 'quickrun;cat,javascript;node,roy;roy,qcl;qcl,haskell;runhaskell,bf;bf', ','), 'split(v:val, ";")')
+  for [ft, exe] in s:quickrun_command_list
+    execute printf('if executable("%s") | let g:quickrun_config.%s = {"command":"%s"} | endif', exe, ft, exe)
+  endfor
   if executable('pandoc')
     let g:quickrun_config.markdown = {'type' : 'markdown/pandoc', 'outputter': 'browser', 'cmdopt': '-s'}
-  endif
-  if executable('qcl')
-    let g:quickrun_config.qcl = {'command': 'qcl'}
-  endif
-  if executable('runhaskell')
-    let g:quickrun_config.haskell = {'command' : 'runhaskell'}
-    let g:quickrun_config.lhaskell = {'command' : 'runhaskell'}
   endif
   if executable('autolatex')
     let g:quickrun_config.tex = {'command' : 'autolatex'}
@@ -274,9 +263,6 @@ NeoBundle 'thinca/vim-quickrun'
     let g:quickrun_config.gnuplot = {'command' : 'autognuplot'}
   elseif executable('gnuplot')
     let g:quickrun_config.gnuplot = {'command' : 'gnuplot'}
-  endif
-  if executable('bf')
-    let g:quickrun_config.bf = {'command': 'bf'}
   endif
   nnoremap <Leader>r :<C-u>QuickRun  <CR>
   nnoremap <Leader><Leader>r :<C-u>QuickRun >file:temp.dat<CR>
@@ -379,9 +365,9 @@ endif
 NeoBundle 'eagletmt/ghci-vim'
   augroup Ghci
     autocmd!
-    autocmd FileType haskell nnoremap <Leader>l <expr> call s:safeexecute(':GhciLoad')
-    autocmd FileType haskell nnoremap <Leader>i <expr> call s:safeexecute(':GhciInfo')
-    autocmd FileType haskell nnoremap <Leader>t <expr> call s:safeexecute(':GhciType')
+    autocmd FileType haskell nnoremap <buffer> <Leader>l <expr> call s:safeexecute(':GhciLoad')
+    autocmd FileType haskell nnoremap <buffer> <Leader>i <expr> call s:safeexecute(':GhciInfo')
+    autocmd FileType haskell nnoremap <buffer> <Leader>t <expr> call s:safeexecute(':GhciType')
   augroup END
 NeoBundle 'tyru/open-browser.vim'
   nmap <silent> <Leader>b <Plug>(openbrowser-smart-search)
@@ -517,6 +503,11 @@ if exists('##InsertCharPre')
 endif
 NeoBundle 'itchyny/thumbnail.vim', {'type': 'nosync'}
   nnoremap <silent> <Leader>t :<C-u>Thumbnail<CR>
+  augroup ThumbnailKey
+    autocmd!
+    autocmd FileType thumbnail nmap <buffer> v <Plug>(thumbnail_start_line_visual)
+    autocmd FileType thumbnail nmap <buffer> V <Plug>(thumbnail_start_visual)
+  augroup END
 NeoBundle 'vim-jp/vital.vim'
 " }}}
 
@@ -1182,6 +1173,7 @@ imap <C-f> <Right><C-\>
 imap <C-e> <End><C-\>
 imap <C-a> <Home><C-\>
 imap <C-d> <Del><C-\>
+imap <C-h> <BS><C-\>
 imap <expr><C-\> pumvisible() ? "<ESC>a" : ""
 " }}}
 
