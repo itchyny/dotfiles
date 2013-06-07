@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2013/05/23 13:26:43.
+# - * Last Change: 2013/06/08 07:09:29.
 # ------------------------------------------------------------------------------------------------------------
 
 # history
@@ -262,14 +262,14 @@ function makevim() {
   hg pull
   hg update
   # make clean
-  CFLAGS="-O3" ./configure --with-features=huge\
-              --with-compiledby=itchyny\
-              --enable-pythoninterp=yes\
-              --enable-multibyte
-              #--with-lua-prefix=`dirname \`which lua\``
-              #--enable-perlinterp=yes\
-              #--enable-rubyinterp=yes\
-              #--enable-luainterp=yes\
+  # CFLAGS="-O3" ./configure --with-features=huge\
+  #             --with-compiledby=itchyny\
+  #             --enable-pythoninterp=yes\
+  #             --enable-multibyte
+  #             #--with-lua-prefix=`dirname \`which lua\``
+  #             #--enable-perlinterp=yes\
+  #             #--enable-rubyinterp=yes\
+  #             #--enable-luainterp=yes\
   make
   ver=`vim --version | head -n 1 | sed -e 's/.*\([0-9][0-9]*\.[0-9][0-9]*\).*/\1/'`
   ver=$ver.`vim --version | head -n 3 | tail -n 2 | tr -d '\n' | sed -e 's/.*-\([0-9][0-9]*\).*/\1/'`

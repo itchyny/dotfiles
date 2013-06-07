@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/06/05 07:30:36.
+" - * Last Change: 2013/06/08 08:03:40.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -119,7 +119,7 @@ NeoBundle 'itchyny/landscape.vim', {'type': 'nosync'}
   let g:landscape_highlight_url = 1
   let g:landscape_highlight_todo = 1
   let g:landscape_highlight_full_space = 1
-  " let g:landscape_highlight_url_filetype = {'thumbnail': 0}
+  let g:landscape_highlight_url_filetype = {'thumbnail': 0}
   let g:Powerline_theme = 'landscape'
   let g:Powerline_colorscheme = 'landscape'
 catch
@@ -507,6 +507,7 @@ NeoBundle 'itchyny/thumbnail.vim', {'type': 'nosync'}
     autocmd!
     autocmd FileType thumbnail nmap <buffer> v <Plug>(thumbnail_start_line_visual)
     autocmd FileType thumbnail nmap <buffer> V <Plug>(thumbnail_start_visual)
+    autocmd FileType thumbnail call clearmatches()
   augroup END
 NeoBundle 'vim-jp/vital.vim'
 " }}}
@@ -1027,6 +1028,9 @@ endif
 " Performance {{{
 set ttyfast
 set updatetime=300
+if exists('&regexpengine')
+  set regexpengine=1
+endif
 " }}}
 
 " Command line {{{
