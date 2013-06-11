@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/06/08 09:56:48.
+" - * Last Change: 2013/06/11 01:46:10.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -164,7 +164,7 @@ if s:nosudo
 NeoBundle 'Shougo/unite.vim', {'type': 'nosync'}
   let g:unite_enable_start_insert = 1
   let g:unite_cursor_line_highlight = 'CursorLine'
-  let g:unite_source_file_mru_limit = 500
+  let g:unite_source_file_mru_limit = 1000
   let g:unite_force_overwrite_statusline = 0
   if s:ismac && has('multi_byte')
     let g:unite_marked_icon = '✓'
@@ -1028,9 +1028,6 @@ endif
 " Performance {{{
 set ttyfast
 set updatetime=300
-if exists('&regexpengine')
-  set regexpengine=1
-endif
 " }}}
 
 " Command line {{{
