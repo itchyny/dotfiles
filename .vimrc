@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/06/13 01:34:41.
+" - * Last Change: 2013/06/13 08:15:56.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -1178,6 +1178,10 @@ inoremap <expr> <C-e> <SID>cancel_popup("\<End>")
 inoremap <expr> <C-a> <SID>cancel_popup("\<Home>")
 inoremap <expr> <C-d> <SID>cancel_popup("\<Del>")
 inoremap <expr> <C-h> <SID>cancel_popup("\<BS>")
+inoremap <expr> <Up> <SID>cancel_popup("\<Up>")
+inoremap <expr> <Down> <SID>cancel_popup("\<Down>")
+inoremap <expr> <Left> <SID>cancel_popup("\<Left>")
+inoremap <expr> <Right> <SID>cancel_popup("\<Right>")
 inoremap <C-_> <ESC>ugi
 function! s:goback_insert(key)
   return "gi" . a:key . neocomplcache#cancel_popup() 
