@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/06/12 15:50:13.
+" - * Last Change: 2013/06/12 16:55:15.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -1175,19 +1175,19 @@ imap <C-e> <End><C-\>
 imap <C-a> <Home><C-\>
 imap <C-d> <Del><C-\>
 imap <C-h> <BS><C-\>
-imap <expr><C-\> pumvisible() ? "<ESC>a" : ""
+imap <expr><C-\> neocomplcache#cancel_popup()
 augroup InsertLeaveColumn
   autocmd!
-  autocmd InsertLeave * let [g:col, g:line] = [col('.'), line('.')]
+  autocmd InsertLeave * let [g:col, g:line] = [col("'^"), line("'^")]
 augroup END
 let [g:col, g:line] = [1, 1]
-nmap <expr> OA (g:line > 1 ? "<Up>" : "") . (g:col <= 1 ? "i" : "a") . "<C-\>"
-nmap <expr> OB (g:line < line('$') ? "<Down>" : "") . (g:col <= 1 ? "i" : "a") . "<C-\>"
-nmap <expr> OC (g:col + 1 >= col('$') ? "" : "<Right>") . "a<C-\>"
-nmap <expr> OD (g:col <= 1 ? "i" : "<Left>a") . "<C-\>"
+nmap <expr> OA (g:line > 1 ? "\<Up>" : "") . (g:col <= 1 ? "i" : "a") . "\<C-\>"
+nmap <expr> OB (g:line < line('$') ? "\<Down>" : "") . (g:col <= 1 ? "i" : "a") . "\<C-\>"
+nmap <expr> OC (g:col >= col('$') <Bar><Bar> g:col <= 1 ? "" : "\<Right>") . "a<C-\>"
+nmap <expr> OD (g:col <= 2 ? "i" : "\<Left>a") . "\<C-\>"
 nmap OF <End>a<C-\>
 nmap OH <Home>i<C-\>
-nmap <expr> [3~ "<Del>" . (g:col <= 1 ? "i" : "a") . "<C-\>"
+nmap <expr> [3~ "\<Del>" . (g:col <= 1 ? "i" : "a") . "\<C-\>"
 " }}}
 
 " }}} KEY MAPPING
