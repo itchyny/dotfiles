@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/06/12 12:42:30.
+" - * Last Change: 2013/06/12 15:50:13.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -83,7 +83,7 @@ if !isdirectory(s:neobundle_dir)
 else
 execute 'set runtimepath+='.expand(s:neobundle_dir)
 call neobundle#rc(expand($BUNDLE))
-NeoBundle 'Shougo/neobundle.vim'
+NeoBundleFetch 'Shougo/neobundle.vim'
   " nnoremap <silent> <S-b><S-b> :<C-u>NeoBundleUpdate<CR>
   nnoremap <silent> <S-b><S-b> :<C-u>Unite neobundle/update<CR>
 " }}}
@@ -1183,7 +1183,7 @@ augroup END
 let [g:col, g:line] = [1, 1]
 nmap <expr> OA (g:line > 1 ? "<Up>" : "") . (g:col <= 1 ? "i" : "a") . "<C-\>"
 nmap <expr> OB (g:line < line('$') ? "<Down>" : "") . (g:col <= 1 ? "i" : "a") . "<C-\>"
-nmap <expr> OC (g:col > col('$') <Bar><Bar> g:col <= 1 ? "" : "<Right>") . "a<C-\>"
+nmap <expr> OC (g:col + 1 >= col('$') ? "" : "<Right>") . "a<C-\>"
 nmap <expr> OD (g:col <= 1 ? "i" : "<Left>a") . "<C-\>"
 nmap OF <End>a<C-\>
 nmap OH <Home>i<C-\>
