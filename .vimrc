@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/06/11 01:46:10.
+" - * Last Change: 2013/06/12 12:42:30.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -502,7 +502,7 @@ if exists('##InsertCharPre')
   nnoremap <Leader>m :<C-u>Multi<SPACE>
 endif
 NeoBundle 'itchyny/thumbnail.vim', {'type': 'nosync'}
-  nnoremap <silent> <Leader>t :<C-u>Thumbnail<CR>
+  nnoremap <silent> <Leader>t :<C-u>Thumbnail -here<CR>
   augroup ThumbnailKey
     autocmd!
     autocmd FileType thumbnail nmap <buffer> v <Plug>(thumbnail_start_line_visual)
@@ -1176,10 +1176,18 @@ imap <C-a> <Home><C-\>
 imap <C-d> <Del><C-\>
 imap <C-h> <BS><C-\>
 imap <expr><C-\> pumvisible() ? "<ESC>a" : ""
-nmap OA <Up>a<C-\>
-nmap OB <Down>a<C-\>
-nmap OC <Right>a<C-\>
-nmap OD <Left>a<C-\>
+augroup InsertLeaveColumn
+  autocmd!
+  autocmd InsertLeave * let [g:col, g:line] = [col('.'), line('.')]
+augroup END
+let [g:col, g:line] = [1, 1]
+nmap <expr> OA (g:line > 1 ? "<Up>" : "") . (g:col <= 1 ? "i" : "a") . "<C-\>"
+nmap <expr> OB (g:line < line('$') ? "<Down>" : "") . (g:col <= 1 ? "i" : "a") . "<C-\>"
+nmap <expr> OC (g:col > col('$') <Bar><Bar> g:col <= 1 ? "" : "<Right>") . "a<C-\>"
+nmap <expr> OD (g:col <= 1 ? "i" : "<Left>a") . "<C-\>"
+nmap OF <End>a<C-\>
+nmap OH <Home>i<C-\>
+nmap <expr> [3~ "<Del>" . (g:col <= 1 ? "i" : "a") . "<C-\>"
 " }}}
 
 " }}} KEY MAPPING
