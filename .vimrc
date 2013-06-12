@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/06/12 16:55:15.
+" - * Last Change: 2013/06/13 01:27:51.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -1167,27 +1167,29 @@ map <S-q> <Nop>
 
 " move within insert mode
 imap <expr><C-o> neosnippet#expandable_or_jumpable() ? "<TAB>" : "<ESC>o"
-imap <C-p> <Up><C-\>
-imap <C-n> <Down><C-\>
-imap <C-b> <Left><C-\>
-imap <C-f> <Right><C-\>
-imap <C-e> <End><C-\>
-imap <C-a> <Home><C-\>
-imap <C-d> <Del><C-\>
-imap <C-h> <BS><C-\>
-imap <expr><C-\> neocomplcache#cancel_popup()
-augroup InsertLeaveColumn
-  autocmd!
-  autocmd InsertLeave * let [g:col, g:line] = [col("'^"), line("'^")]
-augroup END
-let [g:col, g:line] = [1, 1]
-nmap <expr> OA (g:line > 1 ? "\<Up>" : "") . (g:col <= 1 ? "i" : "a") . "\<C-\>"
-nmap <expr> OB (g:line < line('$') ? "\<Down>" : "") . (g:col <= 1 ? "i" : "a") . "\<C-\>"
-nmap <expr> OC (g:col >= col('$') <Bar><Bar> g:col <= 1 ? "" : "\<Right>") . "a<C-\>"
-nmap <expr> OD (g:col <= 2 ? "i" : "\<Left>a") . "\<C-\>"
-nmap OF <End>a<C-\>
-nmap OH <Home>i<C-\>
-nmap <expr> [3~ "\<Del>" . (g:col <= 1 ? "i" : "a") . "\<C-\>"
+function! s:cancel_popup()
+  return neocomplcache#cancel_popup() 
+endfunction
+inoremap <expr> <C-p> "\<Up>".<SID>cancel_popup()
+inoremap <expr> <C-n> "\<Down>".<SID>cancel_popup()
+inoremap <expr> <C-b> "\<Left>".<SID>cancel_popup()
+inoremap <expr> <C-f> "\<Right>".<SID>cancel_popup()
+inoremap <expr> <C-e> "\<End>".<SID>cancel_popup()
+inoremap <expr> <C-a> "\<Home>".<SID>cancel_popup()
+inoremap <expr> <C-d> "\<Del>".<SID>cancel_popup()
+inoremap <expr> <C-h> "\<BS>".<SID>cancel_popup()
+function! s:goback_insert(key)
+  return "gi" . a:key . neocomplcache#cancel_popup() 
+endfunction
+nnoremap <expr> OA <SID>goback_insert("\<Up>")
+nnoremap <expr> OB <SID>goback_insert("\<Down>")
+nnoremap <expr> OC <SID>goback_insert("\<Right>")
+nnoremap <expr> OD <SID>goback_insert("\<Left>")
+nnoremap <expr> OF <SID>goback_insert("\<End>")
+nnoremap <expr> OH <SID>goback_insert("\<Home>")
+nnoremap <expr> [3~ <SID>goback_insert("\<Del>")
+nnoremap <expr> [5~ <SID>goback_insert("\<PageUp>")
+nnoremap <expr> [6~ <SID>goback_insert("\<PageDown>")
 " }}}
 
 " }}} KEY MAPPING
