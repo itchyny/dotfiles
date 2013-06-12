@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/06/13 08:15:56.
+" - * Last Change: 2013/06/13 08:56:24.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -1166,7 +1166,8 @@ autocmd ESC FileType help,qf nnoremap <silent> <buffer> <ESC><ESC> :<C-u>q<CR>
 map <S-q> <Nop>
 
 " move within insert mode
-imap <expr><C-o> neosnippet#expandable_or_jumpable() ? "<TAB>" : "<ESC>o"
+imap <expr><C-o> neosnippet#expandable_or_jumpable() ?
+      \ "\<Plug>(neosnippet_expand_or_jump)" : "\<ESC>o"
 function! s:cancel_popup(key)
   return a:key . neocomplcache#cancel_popup() 
 endfunction
