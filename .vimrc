@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/06/13 01:27:51.
+" - * Last Change: 2013/06/13 01:34:41.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -1167,17 +1167,18 @@ map <S-q> <Nop>
 
 " move within insert mode
 imap <expr><C-o> neosnippet#expandable_or_jumpable() ? "<TAB>" : "<ESC>o"
-function! s:cancel_popup()
-  return neocomplcache#cancel_popup() 
+function! s:cancel_popup(key)
+  return a:key . neocomplcache#cancel_popup() 
 endfunction
-inoremap <expr> <C-p> "\<Up>".<SID>cancel_popup()
-inoremap <expr> <C-n> "\<Down>".<SID>cancel_popup()
-inoremap <expr> <C-b> "\<Left>".<SID>cancel_popup()
-inoremap <expr> <C-f> "\<Right>".<SID>cancel_popup()
-inoremap <expr> <C-e> "\<End>".<SID>cancel_popup()
-inoremap <expr> <C-a> "\<Home>".<SID>cancel_popup()
-inoremap <expr> <C-d> "\<Del>".<SID>cancel_popup()
-inoremap <expr> <C-h> "\<BS>".<SID>cancel_popup()
+inoremap <expr> <C-p> <SID>cancel_popup("\<Up>")
+inoremap <expr> <C-n> <SID>cancel_popup("\<Down>")
+inoremap <expr> <C-b> <SID>cancel_popup("\<Left>")
+inoremap <expr> <C-f> <SID>cancel_popup("\<Right>")
+inoremap <expr> <C-e> <SID>cancel_popup("\<End>")
+inoremap <expr> <C-a> <SID>cancel_popup("\<Home>")
+inoremap <expr> <C-d> <SID>cancel_popup("\<Del>")
+inoremap <expr> <C-h> <SID>cancel_popup("\<BS>")
+inoremap <C-_> <ESC>ugi
 function! s:goback_insert(key)
   return "gi" . a:key . neocomplcache#cancel_popup() 
 endfunction
