@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/06/13 08:56:24.
+" - * Last Change: 2013/06/14 21:15:11.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -1169,7 +1169,7 @@ map <S-q> <Nop>
 imap <expr><C-o> neosnippet#expandable_or_jumpable() ?
       \ "\<Plug>(neosnippet_expand_or_jump)" : "\<ESC>o"
 function! s:cancel_popup(key)
-  return a:key . neocomplcache#cancel_popup() 
+  return a:key . neocomplcache#cancel_popup()
 endfunction
 inoremap <expr> <C-p> <SID>cancel_popup("\<Up>")
 inoremap <expr> <C-n> <SID>cancel_popup("\<Down>")
@@ -1183,9 +1183,9 @@ inoremap <expr> <Up> <SID>cancel_popup("\<Up>")
 inoremap <expr> <Down> <SID>cancel_popup("\<Down>")
 inoremap <expr> <Left> <SID>cancel_popup("\<Left>")
 inoremap <expr> <Right> <SID>cancel_popup("\<Right>")
-inoremap <C-_> <ESC>ugi
+inoremap <expr> <C-_> <SID>cancel_popup("\<ESC>ugi")
 function! s:goback_insert(key)
-  return "gi" . a:key . neocomplcache#cancel_popup() 
+  return "gi" . a:key . neocomplcache#cancel_popup()
 endfunction
 nnoremap <expr> OA <SID>goback_insert("\<Up>")
 nnoremap <expr> OB <SID>goback_insert("\<Down>")
