@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/06/16 08:38:20.
+" - * Last Change: 2013/06/16 08:38:44.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -189,6 +189,7 @@ NeoBundle 'Shougo/unite.vim', {'type': 'nosync'}
     autocmd FileType unite nmap <buffer> <C-a> <Plug>(unite_insert_enter)
     autocmd FileType unite nmap <buffer> OA <Plug>(unite_rotate_previous_source)
     autocmd FileType unite nnoremap <buffer> OB <Down>
+    autocmd FileType unite nmap <buffer> <Bs> <Plug>(unite_exit)
   augroup END
   autocmd ESC FileType unite nmap <silent> <buffer> <ESC><ESC> <Plug>(unite_exit)
   let s:startfiletypes = '.*\.\(exe\|png\|gif\|jpg\|jpeg\|bmp\|eps\|pdf\|mp3\|mp4\|avi\|mkv\)$'
