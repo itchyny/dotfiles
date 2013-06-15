@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/06/15 14:53:20.
+" - * Last Change: 2013/06/16 08:38:20.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -1049,6 +1049,10 @@ noremap v <S-v>
 
 " remove spaces at the end of lines
 nnoremap ,<Space> ma:%s/  *$//<CR>`a<ESC>
+augroup RemoveTrailingSpace
+  autocmd!
+  autocmd BufWritePre,FileWritePre * silent! %s/[\r \t]\+$//
+augroup END
 
 " selecting all
 nnoremap <C-a> gg<S-v><S-g>
