@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/06/15 14:39:25.
+" - * Last Change: 2013/06/15 14:53:20.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -352,12 +352,12 @@ NeoBundle 'Shougo/vimfiler'
     autocmd!
     autocmd FileType vimfiler nunmap <buffer> <C-l>
     autocmd FileType vimfiler nunmap <buffer> \
-    autocmd FileType vimfiler nmap <buffer> <C-l> <ESC><C-q>l
+    autocmd FileType vimfiler nnoremap <buffer> <C-l> <ESC><C-w>l
     autocmd FileType vimfiler nmap <buffer> <C-r> <Plug>(vimfiler_redraw_screen)
     autocmd FileType vimfiler nmap <buffer> O <Plug>(vimfiler_sync_with_another_vimfiler)
     autocmd FileType vimfiler nmap <buffer><expr> e
           \ vimfiler#smart_cursor_map("\<Plug>(vimfiler_cd_file)", "\<Plug>(vimfiler_edit_file)")
-    autocmd FileType vimfiler nmap <buffer><expr> t <SID>changetime()
+    autocmd FileType vimfiler nnoremap <buffer><expr> t <SID>changetime()
   augroup END
 NeoBundle 'itchyny/vimfiler-preview', {'type': 'nosync'}
   let g:vimfiler_preview_action = 'auto_preview'
@@ -1062,9 +1062,6 @@ inoremap <silent> <expr> <CR> (pumvisible()?"\<ESC>o":"\<C-g>u\<CR>")
 nnoremap <silent> ,80 :s/\(.\{80}\)/\1<c-v><Enter>/g<Enter><ESC>:<C-u>set nohlsearch<CR>
 vnoremap <silent> ,80 :s/\(.\{80}\)/\1<c-v><Enter>/g<Enter><ESC>:<C-u>set nohlsearch<CR>
 
-" forward delete
-imap <C-x> <Del>
-
 " diff
 nnoremap ,d :<C-u>diffthis<CR>
 
@@ -1169,6 +1166,7 @@ inoremap <expr> <C-f> <SID>cancel_popup("\<Right>")
 inoremap <expr> <C-e> <SID>cancel_popup("\<End>")
 inoremap <expr> <C-a> <SID>cancel_popup("\<Home>")
 inoremap <expr> <C-d> <SID>cancel_popup("\<Del>")
+inoremap <expr> <C-x> <SID>cancel_popup("\<Del>")
 inoremap <expr> <C-h> <SID>cancel_popup("\<BS>")
 inoremap <expr> <Up> <SID>cancel_popup("\<Up>")
 inoremap <expr> <Down> <SID>cancel_popup("\<Down>")
