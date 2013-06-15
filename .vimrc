@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/06/15 14:12:57.
+" - * Last Change: 2013/06/15 14:15:32.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -402,8 +402,8 @@ NeoBundle 'Shougo/vimshell'
     autocmd FileType vimshell iunmap <buffer> <C-w>
     autocmd FileType vimshell nunmap <buffer> <C-k>
     autocmd FileType vimshell nunmap <buffer> <C-l>
-    autocmd FileType vimshell nmap <buffer> <C-a> <Nop>
-    autocmd FileType vimshell nmap <buffer> <C-m> <ESC><C-q>j
+    autocmd FileType vimshell nnoremap <buffer> <C-a> <Nop>
+    autocmd FileType vimshell nnoremap <buffer> <C-m> <ESC><C-w>j
     autocmd FileType vimshell inoremap <buffer> <C-h> <ESC><C-w>h
     autocmd FileType vimshell inoremap <buffer> <C-j> <ESC><C-w>j
     autocmd FileType vimshell inoremap <buffer> <C-k> <ESC><C-w>k
@@ -414,7 +414,7 @@ NeoBundle 'Shougo/vimshell'
           \:call vimshell#start_insert()<CR>
     autocmd FileType vimshell vnoremap <buffer> a <ESC><ESC>GA
     autocmd FileType vimshell vnoremap <buffer> y yGA
-    autocmd FileType vimshell imap <buffer> <C-^> <ESC><C-^>
+    autocmd FileType vimshell inoremap <buffer> <C-^> <ESC><C-^>
     let s:start_complete = ' "\<ESC>GA" . unite#sources#vimshell_history#start_complete(!0)'
     for s:key in ['<UP>', '<Down>', 'OA', 'OB']
       execute "autocmd FileType vimshell inoremap <buffer> <expr><silent> ".s:key.s:start_complete
