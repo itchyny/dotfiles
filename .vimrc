@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/06/15 13:39:09.
+" - * Last Change: 2013/06/15 14:12:57.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -412,21 +412,11 @@ NeoBundle 'Shougo/vimshell'
           \ <ESC>:call vimshell#execute('cd ../')<CR>
           \:call vimshell#print_prompt()<CR>
           \:call vimshell#start_insert()<CR>
-    " disable unexpected deleting
-    autocmd FileType vimshell nnoremap <buffer> dj <Nop>
-    autocmd FileType vimshell nnoremap <buffer> dk <Nop>
-    autocmd FileType vimshell nnoremap <buffer> dg <Nop>
-    autocmd FileType vimshell vnoremap <buffer> dj <Nop>
-    autocmd FileType vimshell vnoremap <buffer> dk <Nop>
-    autocmd FileType vimshell vnoremap <buffer> dg <Nop>
-    autocmd FileType vimshell vnoremap <buffer> c <Nop>
-    autocmd FileType vimshell vnoremap <buffer> <delete> <Nop>
     autocmd FileType vimshell vnoremap <buffer> a <ESC><ESC>GA
     autocmd FileType vimshell vnoremap <buffer> y yGA
     autocmd FileType vimshell imap <buffer> <C-^> <ESC><C-^>
-    " <Up><Down>の設定では効かないので, エスケープ文字で設定してます.
-    let s:start_complete = " unite#sources#vimshell_history#start_complete(!0)"
-    for s:key in ['<UP>', '<Down>', 'OA', 'OB']
+    let s:start_complete = ' "\<ESC>GA" . unite#sources#vimshell_history#start_complete(!0)'
+    for s:key in ['<UP>', '<Down>', 'OA', 'OB']
       execute "autocmd FileType vimshell inoremap <buffer> <expr><silent> ".s:key.s:start_complete
       execute "autocmd FileType vimshell nnoremap <buffer> <expr><silent> ".s:key.s:start_complete
     endfor
