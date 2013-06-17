@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/06/17 13:09:12.
+" - * Last Change: 2013/06/17 13:17:19.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -669,7 +669,8 @@ language C
 set nospell
   function! s:autospell()
     let spellbads = [ '^\(\S\+ \+\)\{30,}\S\+[,.]\?$', '\<a\> [aiueo]', '^\$', '\<figure..\?\\', '\\ref{eq:'
-          \ , '^\\end{align}', '[^\~]\\\(eq\)\?ref', 'does not [a-z]*s ', 's [a-z][a-z]\+s ' ]
+          \ , '^\\end{align}', '[^\~]\\\(eq\)\?ref', 'does not [a-z]*s ', 's [a-z][a-z]\+s '
+          \ , '\<a \S\+s ']
     if !exists('b:autospell_done')
       if search("[^\x01-\x7e]", 'n') == 0 && line('$') > 5
         setlocal spell
@@ -1051,10 +1052,6 @@ noremap v <S-v>
 
 " remove spaces at the end of lines
 nnoremap ,<Space> ma:%s/  *$//<CR>`a<ESC>
-augroup RemoveTrailingSpace
-  autocmd!
-  autocmd BufWritePre,FileWritePre * silent! %s/[\r \t]\+$//
-augroup END
 
 " selecting all
 nnoremap <C-a> gg<S-v><S-g>
