@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/06/16 08:42:43.
+" - * Last Change: 2013/06/17 13:09:12.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -458,6 +458,7 @@ NeoBundle 'tComment'
   augroup END
   nnoremap <silent> __ :TComment<CR>
   vnoremap <silent> __ :TComment<CR>
+  let g:tcommentMapLeader1 = ''
 NeoBundle 'Align'
 NeoBundle 'errormarker.vim'
 NeoBundle 'mattn/calendar-vim'
