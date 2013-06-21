@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/06/17 13:17:19.
+" - * Last Change: 2013/06/21 10:44:05.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -463,7 +463,7 @@ NeoBundle 'Align'
 NeoBundle 'errormarker.vim'
 NeoBundle 'mattn/calendar-vim'
   autocmd ESC FileType calendar nnoremap <silent> <buffer> <ESC><ESC> :<C-u>q<CR>
-  nnoremap <Leader>c :<C-u>Calendar<CR>
+  nnoremap <silent> <Leader>c :<C-u>CalendarT<CR>
 NeoBundle 'autodate.vim'
   let g:autodate_format = '%Y/%m/%d %H:%M:%S'
 if has('python')
@@ -669,8 +669,7 @@ language C
 set nospell
   function! s:autospell()
     let spellbads = [ '^\(\S\+ \+\)\{30,}\S\+[,.]\?$', '\<a\> [aiueo]', '^\$', '\<figure..\?\\', '\\ref{eq:'
-          \ , '^\\end{align}', '[^\~]\\\(eq\)\?ref', 'does not [a-z]*s ', 's [a-z][a-z]\+s '
-          \ , '\<a \S\+s ']
+          \ , '^\\end{align}', '[^\~]\\\(eq\)\?ref', 'does not [a-z]*s ', 's [a-z][a-z]\+s ', '\<a \S\+s ']
     if !exists('b:autospell_done')
       if search("[^\x01-\x7e]", 'n') == 0 && line('$') > 5
         setlocal spell

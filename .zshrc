@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2013/06/15 08:46:44.
+# - * Last Change: 2013/06/18 06:18:14.
 # ------------------------------------------------------------------------------------------------------------
 
 # history
@@ -260,6 +260,8 @@ esac
 function configurevim() {
   cd ~/Dropbox/cpp/vim/vim-$os/
   rm -f src/auto/config.cache
+  # CFLAGS="-O3  -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=1"\
+  #             ./configure --with-features=huge\
   CFLAGS="-O3" ./configure --with-features=huge\
               --with-compiledby=itchyny\
               --enable-pythoninterp=yes\
