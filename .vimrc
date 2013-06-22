@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/06/22 13:32:13.
+" - * Last Change: 2013/06/22 23:32:30.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -653,6 +653,11 @@ set number
   autocmd SetLocal FileType vimshell,vimcalc,quickrun,int-ghci setlocal nonumber
 set cursorline
   autocmd SetLocal FileType calendar,vimcalc,vimshell,quickrun,int-ghci setlocal nocursorline
+  augroup CursorLine
+    autocmd!
+    autocmd WinLeave * setlocal nocursorline
+    autocmd WinEnter * setlocal cursorline
+  augroup END
 set nocursorcolumn
 " http://blog.remora.cx/2012/10/spotlight-cursor-line.html
 if &term =~ "screen"
