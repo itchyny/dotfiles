@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/06/21 10:44:05.
+" - * Last Change: 2013/06/22 13:32:13.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -464,6 +464,8 @@ NeoBundle 'errormarker.vim'
 NeoBundle 'mattn/calendar-vim'
   autocmd ESC FileType calendar nnoremap <silent> <buffer> <ESC><ESC> :<C-u>q<CR>
   nnoremap <silent> <Leader>c :<C-u>CalendarT<CR>
+  let g:calendar_keys = { 'goto_next_year': '<Down>', 'goto_prev_year': '<Up>'}
+  let calendar_no_mappings = 1
 NeoBundle 'autodate.vim'
   let g:autodate_format = '%Y/%m/%d %H:%M:%S'
 if has('python')
@@ -502,6 +504,7 @@ NeoBundle 'itchyny/thumbnail.vim', {'type': 'nosync'}
     autocmd FileType thumbnail nmap <buffer> V <Plug>(thumbnail_start_visual)
     autocmd FileType thumbnail call clearmatches()
   augroup END
+NeoBundle 'itchyny/zcalendar.vim', {'type': 'nosync'}
 NeoBundle 'vim-jp/vital.vim'
 " }}}
 
