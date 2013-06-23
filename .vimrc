@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/06/23 11:54:01.
+" - * Last Change: 2013/06/23 16:17:00.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -125,7 +125,7 @@ NeoBundle 'itchyny/landscape.vim', {'type': 'nosync'}
 catch
   colorscheme wombat
 endtry
-NeoBundle 'xterm-color-table.vim'
+NeoBundleLazy 'xterm-color-table.vim', {'autoload': {'commands': ['XtermColorTable']}}
   " http://www.vim.org/scripts/script.php?script_id=3412
 " }}}
 
@@ -278,7 +278,7 @@ NeoBundle 'thinca/vim-quickrun'
   autocmd ESC FileType quickrun nnoremap <silent> <buffer> <ESC><ESC><ESC> <ESC>:q<CR>
   autocmd ESC FileType quickrun vnoremap <silent> <buffer> <ESC><ESC><ESC> <ESC>:q<CR>
 if s:nosudo
-NeoBundle 'Shougo/vimfiler'
+NeoBundleLazy 'Shougo/vimfiler', {'autoload': {'commands': ['VimFiler', 'VimFilerBufferDir']}}
   let g:vimfiler_as_default_explorer = 1
   let g:vimfiler_sort_type = 'TIME'
   let g:vimfiler_safe_mode_by_default = 0
@@ -368,7 +368,7 @@ NeoBundle 'itchyny/vimfiler-preview', {'type': 'nosync'}
   let g:vimfiler_preview_action = 'auto_preview'
 NeoBundle 'Shougo/vinarise'
 endif
-NeoBundle 'eagletmt/ghci-vim'
+NeoBundleLazy 'eagletmt/ghci-vim', {'autoload': {'filetypes': ['haskell']}}
   augroup Ghci
     autocmd!
     autocmd FileType haskell nnoremap <buffer> <Leader>l <expr> call s:safeexecute(':GhciLoad')
@@ -463,7 +463,7 @@ NeoBundle 'tComment'
   nnoremap <silent> __ :TComment<CR>
   vnoremap <silent> __ :TComment<CR>
   let g:tcommentMapLeader1 = ''
-NeoBundle 'Align'
+NeoBundleLazy 'Align', {'autoload': {'commands': ['Align']}}
 NeoBundle 'errormarker.vim'
 NeoBundle 'mattn/calendar-vim'
   autocmd ESC FileType calendar nnoremap <silent> <buffer> <ESC><ESC> :<C-u>q<CR>
@@ -473,11 +473,11 @@ NeoBundle 'mattn/calendar-vim'
 NeoBundle 'autodate.vim'
   let g:autodate_format = '%Y/%m/%d %H:%M:%S'
 if has('python')
-NeoBundle 'sjl/gundo.vim'
+NeoBundleLazy 'sjl/gundo.vim', {'autoload': {'commands': ['GundoToggle']}}
   " --| Requirement: +python
   nnoremap <Leader>g :<C-u>GundoToggle<CR>
   autocmd ESC FileType gundo nnoremap <silent> <buffer> <ESC><ESC> :<C-u>GundoToggle<CR>
-NeoBundle 'VimCalc', {'type': 'nosync'}
+NeoBundleLazy 'VimCalc', {'type': 'nosync', 'autoload': {'commands': ['Calc']}}
   " --| Requirement: +python
   autocmd ESC FileType vimcalc nnoremap <silent> <buffer> <ESC><ESC><ESC> :<C-u>q<CR>
   nnoremap <silent> <Leader>a :<C-u>Calc<CR>
@@ -485,7 +485,7 @@ endif
 NeoBundle 'kana/vim-fakeclip'
 NeoBundle 'gregsexton/MatchTag'
 NeoBundle 'matchit.zip'
-NeoBundle 'thinca/vim-scouter'
+NeoBundleLazy 'thinca/vim-scouter', {'autoload': {'commands': ['Scouter']}}
 NeoBundle 'thinca/vim-ambicmd'
   cnoremap <expr><SPACE> ambicmd#expand("\<SPACE>")
 NeoBundle 'motemen/git-vim'
@@ -522,25 +522,25 @@ NeoBundle 'scrooloose/syntastic'
   let g:syntastic_echo_current_error = 0
   let g:syntastic_enable_highlighting = 0
 endif
-NeoBundle 'mattn/zencoding-vim'
+NeoBundleLazy 'mattn/zencoding-vim', {'autoload': {'filetypes': ['html']}}
   let g:user_zen_settings = { 'html' : { 'indentation' : '  ' }, }
-NeoBundle 'itspriddle/vim-javascript-indent'
-NeoBundle 'JSON.vim'
-NeoBundle 'html5.vim'
-NeoBundle 'wavded/vim-stylus'
-NeoBundle 'groenewege/vim-less'
-NeoBundle 'less.vim'
-NeoBundle 'syntaxm4.vim'
-NeoBundle 'vim-scripts/jade.vim'
-NeoBundle 'vim-coffee-script'
-NeoBundle 'rest.vim'
-NeoBundle 'vim-scripts/indenthaskell.vim'
+NeoBundleLazy 'itspriddle/vim-javascript-indent', {'autoload': {'filetypes': ['javascript']}}
+NeoBundleLazy 'JSON.vim', {'autoload': {'filetypes': ['json']}}
+NeoBundleLazy 'html5.vim', {'autoload': {'filetypes': ['html']}}
+NeoBundleLazy 'wavded/vim-stylus', {'autoload': {'filetypes': ['stylus']}}
+NeoBundleLazy 'groenewege/vim-less', {'autoload': {'filetypes': ['less']}}
+NeoBundleLazy 'less.vim', {'autoload': {'filetypes': ['less']}}
+NeoBundleLazy 'syntaxm4.vim', {'autoload': {'filetypes': ['m4']}}
+NeoBundleLazy 'vim-scripts/jade.vim', {'autoload': {'filetypes': ['jade']}}
+NeoBundleLazy 'vim-coffee-script', {'autoload': {'filetypes': ['coffee']}}
+NeoBundleLazy 'rest.vim', {'autoload': {'filetypes': ['rest']}}
+NeoBundleLazy 'vim-scripts/indenthaskell.vim', {'autoload': {'filetypes': ['haskell']}}
   let hs_highlight_boolean = 1
   let hs_highlight_types = 1
   let hs_highlight_more_types = 1
-NeoBundle 'tpope/vim-markdown'
-NeoBundle 'haxe.vim'
-NeoBundle 'motemen/hatena-vim'
+NeoBundleLazy 'tpope/vim-markdown', {'autoload': {'filetypes': ['m4']}}
+NeoBundleLazy 'haxe.vim', {'autoload': {'filetypes': ['haxe']}}
+NeoBundleLazy 'motemen/hatena-vim', {'autoload': {'filetypes': ['hatena']}}
   let g:hatena_upload_on_write = 0
   let g:hatena_user = 'itchyny'
 " }}}
@@ -660,7 +660,7 @@ set cursorline
   augroup CursorLine
     autocmd!
     autocmd WinLeave * setlocal nocursorline
-    autocmd WinEnter * setlocal cursorline
+    autocmd BufEnter,WinEnter * setlocal cursorline
   augroup END
 set nocursorcolumn
 " http://blog.remora.cx/2012/10/spotlight-cursor-line.html
@@ -755,7 +755,7 @@ set autoread
 
 " Filetype {{{
 augroup SetLocalFiletype
-  let s:filetypes1 = map(split('bf,gnuplot,jade,json,less,r,roy,tex,meissa', ','), '[v:val, v:val]')
+  let s:filetypes1 = map(split('bf,gnuplot,jade,json,less,r,roy,tex,meissa,coffee', ','), '[v:val, v:val]')
   let s:filetypes2 = map(split('cls;tex,hs;haskell,hx;haxe,md;markdown,cir;spice', ','), 'split(v:val, ";")')
   autocmd!
   for [ex, ft] in extend(s:filetypes1, s:filetypes2)
@@ -770,6 +770,7 @@ augroup END
 " EDIT {{{
 " --------------------------------------------------------------------------------------------------------
 " Search {{{
+set infercase
 set wrapscan
 set ignorecase
 set smartcase
