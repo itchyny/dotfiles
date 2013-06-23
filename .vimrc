@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/06/22 23:37:35.
+" - * Last Change: 2013/06/23 11:54:01.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -161,7 +161,7 @@ endif
 " --------------------------------------------------------------------------------------------------------
 let mapleader = ","
 if s:nosudo
-NeoBundle 'Shougo/unite.vim', {'type': 'nosync'}
+NeoBundle 'Shougo/unite.vim'
   let g:unite_enable_start_insert = 1
   let g:unite_cursor_line_highlight = 'CursorLine'
   let g:unite_source_file_mru_limit = 1000
@@ -266,6 +266,10 @@ NeoBundle 'thinca/vim-quickrun'
   elseif executable('gnuplot')
     let g:quickrun_config.gnuplot = {'command' : 'gnuplot'}
   endif
+  let g:quickrun_config.objc = {'command': 'llvm-gcc',
+        \ 'args': '-framework CoreServices -framework Foundation',
+        \ 'exec': ['%c %o %s -o %s:p:r', '%s:p:r %a'],
+        \ 'hook/sweep/files': '%S:p:r' }
   nnoremap <Leader>r :<C-u>QuickRun<CR>
   nnoremap <Leader><Leader>r :<C-u>QuickRun >file:temp.dat<CR>
   nnoremap <Leader>e :<C-u>QuickRun <i <CR>
@@ -505,6 +509,7 @@ NeoBundle 'itchyny/thumbnail.vim', {'type': 'nosync'}
     autocmd FileType thumbnail call clearmatches()
   augroup END
 NeoBundle 'itchyny/zcalendar.vim', {'type': 'nosync'}
+NeoBundle 'itchyny/dictionary.vim', {'type': 'nosync'}
 NeoBundle 'vim-jp/vital.vim'
 " }}}
 
