@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/06/24 17:45:08.
+" - * Last Change: 2013/06/26 01:19:45.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -510,6 +510,7 @@ NeoBundle 'itchyny/thumbnail.vim', {'type': 'nosync'}
   augroup END
 NeoBundle 'itchyny/zcalendar.vim', {'type': 'nosync'}
 NeoBundle 'itchyny/dictionary.vim', {'type': 'nosync'}
+  nnoremap <silent> <Leader>y :<C-u>Dictionary<CR>
 NeoBundle 'vim-jp/vital.vim'
 " }}}
 
