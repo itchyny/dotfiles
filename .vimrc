@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/06/23 16:17:00.
+" - * Last Change: 2013/06/24 17:45:08.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -756,7 +756,7 @@ set autoread
 " Filetype {{{
 augroup SetLocalFiletype
   let s:filetypes1 = map(split('bf,gnuplot,jade,json,less,r,roy,tex,meissa,coffee', ','), '[v:val, v:val]')
-  let s:filetypes2 = map(split('cls;tex,hs;haskell,hx;haxe,md;markdown,cir;spice', ','), 'split(v:val, ";")')
+  let s:filetypes2 = map(split('cls;tex,hs;haskell,hx;haxe,md;markdown,cir;spice,m;objc', ','), 'split(v:val, ";")')
   autocmd!
   for [ex, ft] in extend(s:filetypes1, s:filetypes2)
     execute 'autocmd BufNewFile,BufReadPost *.' . ex . ' setlocal filetype=' . ft
@@ -907,7 +907,7 @@ augroup END
 " Enable omni completation {{{
 augroup Omnifunc
   autocmd!
-  autocmd FileType c          setlocal omnifunc=ccomplete#Complete
+  autocmd FileType c,objc     setlocal omnifunc=ccomplete#Complete
   autocmd FileType css        setlocal omnifunc=csscomplete#CompleteCSS
   autocmd FileType html       setlocal omnifunc=htmlcomplete#CompleteTags
   autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
