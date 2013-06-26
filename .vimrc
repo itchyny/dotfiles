@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/06/26 15:16:26.
+" - * Last Change: 2013/06/26 15:28:04.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -144,6 +144,7 @@ NeoBundle 'Shougo/neocomplcache'
   let g:neocomplcache_auto_completion_start_length = 1
   let g:neocomplcache_max_menu_width = 20
   let g:neocomplcache_max_keyword_width = 50
+  let g:neocomplcache_enable_insert_char_pre = 1
   if !exists('g:neocomplcache_force_omni_patterns')
       let g:neocomplcache_force_omni_patterns = {}
   endif
@@ -1189,36 +1190,27 @@ map <S-q> <Nop>
 " move within insert mode
 imap <expr><C-o> neosnippet#expandable_or_jumpable() ?
       \ "\<Plug>(neosnippet_expand_or_jump)" : "\<ESC>o"
-function! s:cancel_popup(key)
-  return a:key . neocomplcache#cancel_popup()
-endfunction
-inoremap <expr> <C-p> <SID>cancel_popup("\<Up>")
-inoremap <expr> <C-n> <SID>cancel_popup("\<Down>")
-inoremap <expr> <C-b> <SID>cancel_popup("\<Left>")
-inoremap <expr> <C-f> <SID>cancel_popup("\<Right>")
-inoremap <expr> <C-e> <SID>cancel_popup("\<End>")
-inoremap <expr> <C-a> <SID>cancel_popup("\<Home>")
-inoremap <expr> <C-d> <SID>cancel_popup("\<Del>")
-inoremap <expr> <C-x> <SID>cancel_popup("\<Del>")
-inoremap <expr> <C-h> <SID>cancel_popup("\<BS>")
-inoremap <expr> <Up> <SID>cancel_popup("\<Up>")
-inoremap <expr> <Down> <SID>cancel_popup("\<Down>")
-inoremap <expr> <Left> <SID>cancel_popup("\<Left>")
-inoremap <expr> <Right> <SID>cancel_popup("\<Right>")
-inoremap <expr> <C-_> <SID>cancel_popup("\<ESC>ugi")
-inoremap <expr> <C-\> <SID>cancel_popup("\<ESC>ugi")
-function! s:goback_insert(key)
-  return "gi" . a:key . neocomplcache#cancel_popup()
-endfunction
-nnoremap <expr> OA <SID>goback_insert("\<Up>")
-nnoremap <expr> OB <SID>goback_insert("\<Down>")
-nnoremap <expr> OC <SID>goback_insert("\<Right>")
-nnoremap <expr> OD <SID>goback_insert("\<Left>")
-nnoremap <expr> OF <SID>goback_insert("\<End>")
-nnoremap <expr> OH <SID>goback_insert("\<Home>")
-nnoremap <expr> [3~ <SID>goback_insert("\<Del>")
-nnoremap <expr> [5~ <SID>goback_insert("\<PageUp>")
-nnoremap <expr> [6~ <SID>goback_insert("\<PageDown>")
+inoremap <C-p> <Up>
+inoremap <C-n> <Down>
+inoremap <C-b> <Left>
+inoremap <C-f> <Right>
+inoremap <C-e> <End>
+inoremap <C-a> <Home>
+inoremap <C-d> <Del>
+inoremap <C-x> <Del>
+inoremap <C-h> <BS>
+inoremap <Up> <Up>
+inoremap <C-_> <ESC>ugi
+inoremap <C-\> <ESC>ugi
+nnoremap OA gi<Up>
+nnoremap OB gi<Down>
+nnoremap OC gi<Right>
+nnoremap OD gi<Left>
+nnoremap OF gi<End>
+nnoremap OH gi<Home>
+nnoremap [3~ gi<Del>
+nnoremap [5~ gi<PageUp>
+nnoremap [6~ gi<PageDown>
 " }}}
 
 " }}} KEY MAPPING
