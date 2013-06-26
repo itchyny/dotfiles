@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/06/26 01:19:45.
+" - * Last Change: 2013/06/26 15:16:26.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -144,6 +144,18 @@ NeoBundle 'Shougo/neocomplcache'
   let g:neocomplcache_auto_completion_start_length = 1
   let g:neocomplcache_max_menu_width = 20
   let g:neocomplcache_max_keyword_width = 50
+  if !exists('g:neocomplcache_force_omni_patterns')
+      let g:neocomplcache_force_omni_patterns = {}
+  endif
+  let g:neocomplcache_force_overwrite_completefunc = 1
+  let g:neocomplcache_force_omni_patterns.c =
+              \ '[^.[:digit:] *\t]\%(\.\|->\)'
+  let g:neocomplcache_force_omni_patterns.cpp =
+              \ '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+  let g:neocomplcache_force_omni_patterns.objc =
+              \ '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+  let g:neocomplcache_force_omni_patterns.objcpp =
+              \ '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 NeoBundle 'Shougo/neosnippet'
   let g:neosnippet#snippets_directory = expand($VIM.'/snippets')
   imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
@@ -154,6 +166,10 @@ NeoBundle 'Shougo/neosnippet'
     \: "\<TAB>"
 NeoBundle 'ujihisa/neco-look'
   " --| Requirement: look commnad
+NeoBundle 'Rip-Rip/clang_complete'
+  let g:clang_complete_auto = 1
+  let g:clang_use_library = 1
+  let g:clang_auto_select = 0
 endif
 " }}}
 
@@ -509,6 +525,7 @@ NeoBundle 'itchyny/thumbnail.vim', {'type': 'nosync'}
     autocmd FileType thumbnail call clearmatches()
   augroup END
 NeoBundle 'itchyny/zcalendar.vim', {'type': 'nosync'}
+  nnoremap <silent> <Leader>z :<C-u>ZCalendar<CR>
 NeoBundle 'itchyny/dictionary.vim', {'type': 'nosync'}
   nnoremap <silent> <Leader>y :<C-u>Dictionary<CR>
 NeoBundle 'vim-jp/vital.vim'
@@ -908,7 +925,7 @@ augroup END
 " Enable omni completation {{{
 augroup Omnifunc
   autocmd!
-  autocmd FileType c,objc     setlocal omnifunc=ccomplete#Complete
+  autocmd FileType c          setlocal omnifunc=ccomplete#Complete
   autocmd FileType css        setlocal omnifunc=csscomplete#CompleteCSS
   autocmd FileType html       setlocal omnifunc=htmlcomplete#CompleteTags
   autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
