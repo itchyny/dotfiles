@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/06/26 15:28:04.
+" - * Last Change: 2013/06/26 16:06:25.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -517,6 +517,7 @@ if exists('##InsertCharPre')
   NeoBundle 'mattn/multi-vim'
   nnoremap <Leader>m :<C-u>Multi<SPACE>
 endif
+NeoBundle 'pasela/unite-webcolorname'
 NeoBundle 'itchyny/thumbnail.vim', {'type': 'nosync'}
   nnoremap <silent> <Leader>t :<C-u>Thumbnail -here<CR>
   augroup ThumbnailKey
