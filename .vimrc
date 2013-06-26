@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/06/26 16:06:25.
+" - * Last Change: 2013/06/26 20:59:14.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -167,10 +167,6 @@ NeoBundle 'Shougo/neosnippet'
     \: "\<TAB>"
 NeoBundle 'ujihisa/neco-look'
   " --| Requirement: look commnad
-NeoBundle 'Rip-Rip/clang_complete'
-  let g:clang_complete_auto = 1
-  let g:clang_use_library = 1
-  let g:clang_auto_select = 0
 endif
 " }}}
 
@@ -283,10 +279,9 @@ NeoBundle 'thinca/vim-quickrun'
   elseif executable('gnuplot')
     let g:quickrun_config.gnuplot = {'command' : 'gnuplot'}
   endif
-  let g:quickrun_config.objc = {'command': 'llvm-gcc',
-        \ 'args': '-framework CoreServices -framework Foundation',
-        \ 'exec': ['%c %o %s -o %s:p:r', '%s:p:r %a'],
-        \ 'hook/sweep/files': '%S:p:r' }
+  let g:quickrun_config.objc = {'command': 'cc',
+        \ 'exec': ['%c %s -o %s:p:r -framework Foundation', '%s:p:r %a', 'rm -f %s:p:r'],
+        \ 'tempfile': '{tempname()}.m'}
   nnoremap <Leader>r :<C-u>QuickRun<CR>
   nnoremap <Leader><Leader>r :<C-u>QuickRun >file:temp.dat<CR>
   nnoremap <Leader>e :<C-u>QuickRun <i <CR>
