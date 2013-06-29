@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/06/26 20:59:14.
+" - * Last Change: 2013/06/30 00:52:16.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -144,7 +144,8 @@ NeoBundle 'Shougo/neocomplcache'
   let g:neocomplcache_auto_completion_start_length = 1
   let g:neocomplcache_max_menu_width = 20
   let g:neocomplcache_max_keyword_width = 50
-  let g:neocomplcache_enable_insert_char_pre = 1
+  " let g:neocomplcache_enable_insert_char_pre = 1
+  let g:neocomplcache_context_filetype_lists = {}
   if !exists('g:neocomplcache_force_omni_patterns')
       let g:neocomplcache_force_omni_patterns = {}
   endif
@@ -282,6 +283,8 @@ NeoBundle 'thinca/vim-quickrun'
   let g:quickrun_config.objc = {'command': 'cc',
         \ 'exec': ['%c %s -o %s:p:r -framework Foundation', '%s:p:r %a', 'rm -f %s:p:r'],
         \ 'tempfile': '{tempname()}.m'}
+  let g:quickrun_config.spice = {'command': 'scad3.exe',
+        \ 'exec': ['%c -b %s:t'] }
   nnoremap <Leader>r :<C-u>QuickRun<CR>
   nnoremap <Leader><Leader>r :<C-u>QuickRun >file:temp.dat<CR>
   nnoremap <Leader>e :<C-u>QuickRun <i <CR>
@@ -471,6 +474,7 @@ NeoBundle 'tComment'
     autocmd FileType gnuplot call tcomment#DefineType('gnuplot', '# %s')
     autocmd FileType haxe call tcomment#DefineType('haxe', '// %s')
     autocmd FileType meissa call tcomment#DefineType('meissa', '# %s')
+    autocmd FileType spice call tcomment#DefineType('spice', '* %s')
   augroup END
   nnoremap <silent> __ :TComment<CR>
   vnoremap <silent> __ :TComment<CR>
@@ -792,6 +796,9 @@ set smartcase
 set incsearch
 set hlsearch
 set magic
+if exists('&regexpengine')
+  set regexpengine=1
+endif
 " }}}
 
 " Indent {{{
@@ -1078,7 +1085,7 @@ noremap <S-v> v
 noremap v <S-v>
 
 " remove spaces at the end of lines
-nnoremap ,<Space> ma:%s/  *$//<CR>`a<ESC>
+nnoremap ,<Space> ma:%s/  *$//<CR>`a<ESC>:nohlsearch<CR>
 
 " selecting all
 nnoremap <C-a> gg<S-v><S-g>
@@ -1164,6 +1171,9 @@ inoremap <silent> <C-w> <ESC>:<C-u>call AutoClose()<CR>
 nnoremap <silent> <C-w> :<C-u>call AutoClose()<CR>
 vnoremap <silent> <C-w> :<C-u>call AutoClose()<CR>
 
+" tag
+nnoremap <C-[> <C-t>
+
 " tab
 nnoremap <C-t> :<C-u>tabnew<CR>
 inoremap <C-t> <ESC>:<C-u>tabnew<CR>
@@ -1186,27 +1196,33 @@ map <S-q> <Nop>
 " move within insert mode
 imap <expr><C-o> neosnippet#expandable_or_jumpable() ?
       \ "\<Plug>(neosnippet_expand_or_jump)" : "\<ESC>o"
-inoremap <C-p> <Up>
-inoremap <C-n> <Down>
-inoremap <C-b> <Left>
-inoremap <C-f> <Right>
-inoremap <C-e> <End>
-inoremap <C-a> <Home>
-inoremap <C-d> <Del>
-inoremap <C-x> <Del>
-inoremap <C-h> <BS>
-inoremap <Up> <Up>
-inoremap <C-_> <ESC>ugi
-inoremap <C-\> <ESC>ugi
-nnoremap OA gi<Up>
-nnoremap OB gi<Down>
-nnoremap OC gi<Right>
-nnoremap OD gi<Left>
-nnoremap OF gi<End>
-nnoremap OH gi<Home>
-nnoremap [3~ gi<Del>
-nnoremap [5~ gi<PageUp>
-nnoremap [6~ gi<PageDown>
+function! s:cancel_popup(key)
+  return a:key . neocomplcache#cancel_popup()
+endfunction
+inoremap <expr> <C-p> <SID>cancel_popup("\<Up>")
+inoremap <expr> <C-n> <SID>cancel_popup("\<Down>")
+inoremap <expr> <C-b> <SID>cancel_popup("\<Left>")
+inoremap <expr> <C-f> <SID>cancel_popup("\<Right>")
+inoremap <expr> <C-e> <SID>cancel_popup("\<End>")
+inoremap <expr> <C-a> <SID>cancel_popup("\<Home>")
+inoremap <expr> <C-d> <SID>cancel_popup("\<Del>")
+inoremap <expr> <C-h> <SID>cancel_popup("\<BS>")
+inoremap <expr> <Up> <SID>cancel_popup("\<Up>")
+inoremap <expr> <Down> <SID>cancel_popup("\<Down>")
+inoremap <expr> <Left> <SID>cancel_popup("\<Left>")
+inoremap <expr> <Right> <SID>cancel_popup("\<Right>")
+function! s:goback_insert(key)
+  return "gi" . a:key . neocomplcache#cancel_popup()
+endfunction
+nnoremap <expr> OA <SID>goback_insert("\<Up>")
+nnoremap <expr> OB <SID>goback_insert("\<Down>")
+nnoremap <expr> OC <SID>goback_insert("\<Right>")
+nnoremap <expr> OD <SID>goback_insert("\<Left>")
+nnoremap <expr> OF <SID>goback_insert("\<End>")
+nnoremap <expr> OH <SID>goback_insert("\<Home>")
+nnoremap <expr> [3~ <SID>goback_insert("\<Del>")
+nnoremap <expr> [5~ <SID>goback_insert("\<PageUp>")
+nnoremap <expr> [6~ <SID>goback_insert("\<PageDown>")
 " }}}
 
 " }}} KEY MAPPING
@@ -1253,4 +1269,5 @@ nnoremap [6~ gi<PageDown>
 " +=========+=====================+==========+==================+===================+=================+
 " }}} REFERENCE TO KEY MAPPING
 
+  nnoremap <Leader>s :<C-u>call vimproc#system(printf('scad3.exe %s &', expand('%:t')))<CR>
 " vim:foldmethod=marker
