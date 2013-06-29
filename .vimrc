@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/06/30 00:52:16.
+" - * Last Change: 2013/06/30 00:55:25.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -1085,7 +1085,7 @@ noremap <S-v> v
 noremap v <S-v>
 
 " remove spaces at the end of lines
-nnoremap ,<Space> ma:%s/  *$//<CR>`a<ESC>:nohlsearch<CR>
+nnoremap ,<Space> ma:%s/  *$//<CR>`a<ESC>
 
 " selecting all
 nnoremap <C-a> gg<S-v><S-g>
