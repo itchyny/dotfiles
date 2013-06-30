@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2013/06/18 06:18:14.
+# - * Last Change: 2013/06/30 01:16:08.
 # ------------------------------------------------------------------------------------------------------------
 
 # history
@@ -97,11 +97,7 @@ export PATH=$PATH:~/Dropbox/js/jison/bin/
 export PATH=$PATH:~/Dropbox/js/narwhal/bin/
 export PATH=$PATH:~/Dropbox/js/roy/
 export PATH=$PATH:~/Library/Haskell/bin/
-export PATH=$PATH:~/node_modules/jade/bin/
-export PATH=$PATH:~/node_modules/less/bin/
-export PATH=$PATH:~/node_modules/node-dev/
-export PATH=$PATH:~/node_modules/nodester-cli/bin/
-export PATH=$PATH:~/node_modules/stylus/bin/
+export PATH=$PATH:~/.vim/bundle/dictionary.vim/plugin
 
 # function
 function proxy {
