@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/06/30 01:32:08.
+" - * Last Change: 2013/07/05 13:44:04.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -206,7 +206,7 @@ NeoBundle 'Shougo/unite.vim'
     autocmd FileType unite nmap <buffer> <Bs> <Plug>(unite_exit)
   augroup END
   autocmd ESC FileType unite nmap <silent> <buffer> <ESC><ESC> <Plug>(unite_exit)
-  let s:startfiletypes = '.*\.\(exe\|png\|gif\|jpg\|jpeg\|bmp\|eps\|pdf\|mp3\|mp4\|avi\|mkv\)$'
+  let s:startfiletypes = '.*\.\(exe\|png\|gif\|jpg\|jpeg\|bmp\|eps\|pdf\|mp3\|mp4\|avi\|mkv\|tiff\)$'
   call unite#custom_source('file', 'ignore_pattern'
         \, '.*\.\(o\|exe\|dll\|bak\|sw[po]\|hi\|fff\|aux\|toc\|bbl\|blg\|DS_Store\)$')
   let auto_open = {
@@ -257,7 +257,7 @@ NeoBundle 'Shougo/vimproc', {
   \   },
   \ }
 NeoBundle 'thinca/vim-quickrun'
-  let g:quickrun_config = {'_': {'runner': 'vimproc', 'runner/vimproc/updatetime' : 60, 'split': 'vertical', 'into': 1}}
+  let g:quickrun_config = {'_': {'runner': 'vimproc', 'runner/vimproc/updatetime': 60, 'split': 'vertical', 'into': 1}}
   let s:quickrun_command_list = map(split(
         \ 'quickrun;cat,javascript;node,roy;roy,qcl;qcl,haskell;runhaskell,bf;bf', ','), 'split(v:val, ";")')
   for [ft, exe] in s:quickrun_command_list
@@ -1268,6 +1268,5 @@ nnoremap <expr> [6~ <SID>goback_insert("\<PageDown>")
 " |    .    | .vimrc              | .zshrc   |                  |                   |                 |
 " +=========+=====================+==========+==================+===================+=================+
 " }}} REFERENCE TO KEY MAPPING
-
   nnoremap <Leader>s :<C-u>call vimproc#system(printf('scad3.exe %s &', expand('%:t')))<CR>
 " vim:foldmethod=marker
