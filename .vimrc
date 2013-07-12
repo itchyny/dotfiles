@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/07/05 13:44:04.
+" - * Last Change: 2013/07/12 17:05:23.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -180,6 +180,8 @@ NeoBundle 'Shougo/unite.vim'
   let g:unite_cursor_line_highlight = 'CursorLine'
   let g:unite_source_file_mru_limit = 1000
   let g:unite_force_overwrite_statusline = 0
+  let g:unite_source_grep_command = 'grep'
+  let g:unite_source_grep_default_opts = '-iHn'
   if s:ismac && has('multi_byte')
     let g:unite_marked_icon = '✓'
   else
@@ -395,6 +397,7 @@ NeoBundle 'tyru/open-browser.vim'
   vmap <silent> <Leader>b <Plug>(openbrowser-smart-search)
   nmap <silent> <Leader>s <Plug>(openbrowser-search)
 NeoBundle 'mattn/webapi-vim'
+NeoBundle 'mattn/googletasks-vim'
 " }}}
 
 " vimshell ( ";" ) {{{
@@ -1172,7 +1175,10 @@ nnoremap <silent> <C-w> :<C-u>call AutoClose()<CR>
 vnoremap <silent> <C-w> :<C-u>call AutoClose()<CR>
 
 " tag
-nnoremap <C-[> <C-t>
+augroup HelpTag
+  autocmd!
+  autocmd FileType help nnoremap <C-[> <C-t>
+augroup END
 
 " tab
 nnoremap <C-t> :<C-u>tabnew<CR>
