@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/07/15 00:46:02.
+" - * Last Change: 2013/07/15 00:49:13.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -673,7 +673,11 @@ set list
 if s:iswin || !has('multi_byte')
   set listchars=tab:^I,extends:>,precedes:<,nbsp:%
 else
-  set listchars=tab:▸\ ,extends:»,precedes:«,nbsp:%
+  try
+    set listchars=tab:▸\ ,extends:»,precedes:«,nbsp:%
+  catch
+    set listchars=tab:^I,extends:>,precedes:<,nbsp:%
+  endtry
 endif
 set shortmess+=I            " disable start up message
 set number
@@ -742,7 +746,10 @@ set statusline=%{expand('%:p:t')}\ %<[%{expand('%:p:h')}]%=\ %m%r%y%w[%{&fenc!='
 " }}}
 
 " Color {{{
-syntax enable
+try
+  syntax enable
+catch
+endtry
 set background=dark
 set synmaxcol=9999
 if !has('gui_running')
