@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/07/14 15:17:27.
+" - * Last Change: 2013/07/15 00:46:02.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -679,12 +679,13 @@ set shortmess+=I            " disable start up message
 set number
   autocmd SetLocal FileType vimshell,vimcalc,quickrun,int-ghci setlocal nonumber
 set cursorline
-  autocmd SetLocal FileType calendar,vimcalc,vimshell,quickrun,int-ghci setlocal nocursorline
   augroup CursorLine
     autocmd!
     autocmd WinLeave * setlocal nocursorline
     autocmd BufEnter,WinEnter * setlocal cursorline
   augroup END
+  autocmd SetLocal FileType calendar,vimcalc,vimshell,quickrun,int-ghci,cam setlocal nocursorline
+        \ | autocmd SetLocal BufEnter,WinEnter <buffer> setlocal nocursorline
 set nocursorcolumn
 " http://blog.remora.cx/2012/10/spotlight-cursor-line.html
 if &term =~ "screen"
