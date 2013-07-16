@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/07/16 20:20:13.
+" - * Last Change: 2013/07/16 20:32:39.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -210,8 +210,10 @@ NeoBundle 'Shougo/unite.vim'
   augroup END
   autocmd ESC FileType unite nmap <silent> <buffer> <ESC><ESC> <Plug>(unite_exit)
   let s:startfiletypes = '.*\.\(exe\|png\|gif\|jpg\|jpeg\|bmp\|eps\|pdf\|mp3\|mp4\|avi\|mkv\|tiff\)$'
-  call unite#custom_source('file', 'ignore_pattern'
-        \, '.*\.\(o\|exe\|dll\|bak\|sw[po]\|hi\|fff\|aux\|toc\|bbl\|blg\|DS_Store\)$')
+  if exists('*unite#custom_source')
+    call unite#custom_source('file', 'ignore_pattern'
+          \, '.*\.\(o\|exe\|dll\|bak\|sw[po]\|hi\|fff\|aux\|toc\|bbl\|blg\|DS_Store\)$')
+  endif
   let auto_open = {
         \ 'description' : 'edit or open files',
         \ 'is_selectable' : 1,
@@ -228,8 +230,12 @@ NeoBundle 'Shougo/unite.vim'
     catch
     endtry
   endfunction
-  call unite#custom_action('file', 'auto_open', auto_open)
-  call unite#custom_default_action('file', 'auto_open')
+  if exists('*unite#custom_action')
+    call unite#custom_action('file', 'auto_open', auto_open)
+  endif
+  if exists('*unite#custom_default_action')
+    call unite#custom_default_action('file', 'auto_open')
+  endif
   unlet auto_open
 NeoBundle 'Shougo/unite-build'
   nnoremap <silent><F5> :<C-u>Unite build -buffer-name=build<CR>
@@ -237,7 +243,9 @@ NeoBundle 'unite-colorscheme'
 NeoBundle 'ujihisa/vim-ref'
 if executable('hoogle')
 NeoBundle 'eagletmt/unite-haddock'
-  call unite#custom_source('haddock,hoogle', 'max_candidates', 20)
+  if exists('*unite#custom_source')
+    call unite#custom_source('haddock,hoogle', 'max_candidates', 20)
+  endif
   nnoremap <Leader>h :<C-u>Unite hoogle -buffer-name=hoogle<CR>
   " --| Requirement: hoogle
   " --|   $ cabal install hoogle
