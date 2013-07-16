@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2013/07/09 14:23:29.
+# - * Last Change: 2013/07/16 17:19:50.
 # ------------------------------------------------------------------------------------------------------------
 
 # history
@@ -97,7 +97,6 @@ export PATH=$PATH:~/Dropbox/js/jison/bin/
 export PATH=$PATH:~/Dropbox/js/narwhal/bin/
 export PATH=$PATH:~/Dropbox/js/roy/
 export PATH=$PATH:~/Library/Haskell/bin/
-export PATH=$PATH:~/.vim/bundle/dictionary.vim/plugin
 
 # function
 function proxy {
