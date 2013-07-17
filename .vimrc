@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/07/17 18:20:44.
+" - * Last Change: 2013/07/17 18:22:07.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -571,7 +571,6 @@ NeoBundleLazy 'vim-scripts/indenthaskell.vim', {'autoload': {'filetypes': ['hask
   let hs_highlight_types = 1
   let hs_highlight_more_types = 1
 NeoBundleLazy 'tpope/vim-markdown', {'autoload': {'filetypes': ['m4']}}
-NeoBundleLazy 'haxe.vim', {'autoload': {'filetypes': ['haxe']}}
 NeoBundleLazy 'motemen/hatena-vim', {'autoload': {'filetypes': ['hatena']}}
   let g:hatena_upload_on_write = 0
   let g:hatena_user = 'itchyny'
