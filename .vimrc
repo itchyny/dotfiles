@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/07/17 18:22:07.
+" - * Last Change: 2013/07/19 00:08:18.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -421,7 +421,7 @@ NeoBundle 'Shougo/vimshell'
   " let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
   " let g:vimshell_prompt = ' $ '
   let g:vimshell_prompt_expr = 'fnamemodify(getcwd(), ":~")." "'
-  let g:vimshell_prompt_pattern = '^[~/]\f* '
+  let g:vimshell_prompt_pattern = '\(^[~/]\f* \|^[a-zA-Z][a-zA-Z .0-9]\+> \)'
   let g:vimshell_disable_escape_highlight = 1
   let g:vimshell_scrollback_limit = 5000
   let g:vimshell_disable_escape_highlight = 1
