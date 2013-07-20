@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/07/20 22:15:35.
+" - * Last Change: 2013/07/20 22:15:45.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -9,6 +9,7 @@
 set nocompatible
 filetype off
 scriptencoding utf-8
+try | silent call system('uname') | catch | set shell=sh | endtry
 let s:isunix = has('unix')
 let s:iswin = has('win16') || has('win32') || has('win64')
 let s:iscygwin = has('win32unix')
