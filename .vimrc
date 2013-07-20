@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/07/21 01:41:32.
+" - * Last Change: 2013/07/21 08:57:31.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -145,7 +145,6 @@ NeoBundle 'Shougo/neocomplcache'
   let g:neocomplcache_auto_completion_start_length = 1
   let g:neocomplcache_max_menu_width = 20
   let g:neocomplcache_max_keyword_width = 50
-  " let g:neocomplcache_enable_insert_char_pre = 1
   let g:neocomplcache_context_filetype_lists = {}
   if !exists('g:neocomplcache_force_omni_patterns')
       let g:neocomplcache_force_omni_patterns = {}
