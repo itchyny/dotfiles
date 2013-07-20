@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/07/21 01:41:02.
+" - * Last Change: 2013/07/21 01:41:32.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -64,7 +64,7 @@ if !isdirectory(s:neobundle_dir)
         execute '!cd '.$BUNDLE.'/vimproc && make -f make_mac.mak'
       elseif executable('gcc')
         execute '!cd '.$BUNDLE.'/vimproc && '
-              \.'gcc -O2 -W -Wall -Wno-unused -bundle -fPIC -arch x86_64 -arch '
+              \.'gcc -O3 -W -Wall -Wno-unused -bundle -fPIC -arch x86_64 -arch '
               \.'i386 -o autoload/vimproc_mac.so autoload/proc.c -lutil'
       else
         echo 'gcc not found!'
