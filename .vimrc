@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/07/21 15:00:00.
+" - * Last Change: 2013/07/21 15:18:03.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -905,18 +905,18 @@ augroup END
 " }}}
 
 " Move to the directory for each buffer, current directory functions {{{
-function! s:directory_escape(directory)
-  return escape(a:directory, '*[]? ')
+function! s:escape(directory)
+  return escape(a:directory, '*[]()?! ')
 endfunction
 function! s:current_directory_raw()
   return substitute(expand('%:p:h'), '\*\(vinarise\|bitmapview\)\* - ', '', '')
 endfunction
 function! s:current_directory_escape()
-  return s:directory_escape(s:current_directory_raw())
+  return s:escape(s:current_directory_raw())
 endfunction
 function! s:current_directory_auto()
   if &filetype ==# 'vimfiler' && exists('b:vimfiler')
-    return s:directory_escape(b:vimfiler.current_dir)
+    return s:escape(b:vimfiler.current_dir)
   else
     return s:current_directory_escape()
   endif
@@ -1015,28 +1015,28 @@ nnoremap ,p :<C-u>call GCJ()<CR><S-g>
 " Open file explorer at current directory {{{
 function! Explorer()
   if s:ismac
-    silent execute '! open -a Finder .'
+    silent call system('open -a Finder . &')
   elseif s:iswin
-    silent execute '! start .'
+    silent call system('start . &')
   else
-    silent execute '! nautilus .'
+    silent call system('nautilus . &')
   endif
 endfunction
-nnoremap \n :call Explorer()<CR>
-nnoremap ge :call Explorer()<CR>
+nnoremap <silent> \n :call Explorer()<CR>
+nnoremap <silent> ge :call Explorer()<CR>
 " }}}
 
 " Quickly open with outer text editor {{{
 function! TextEdit()
   if s:ismac
-    silent execute '! open -a TextEdit %'
+    silent call system('open -a TextEdit ' . s:escape(expand('%:p')) . ' &')
   elseif s:iswin
-    silent execute '! notepad %'
+    silent call system('notepad ' . s:escape(expand('%:p')) . ' &')
   else
-    silent execute '! gedit %'
+    silent call system('gedit ' . s:escape(expand('%:p')) . ' &')
   endif
 endfunction
-nnoremap \g :call TextEdit()<CR>
+nnoremap <silent> \g :call TextEdit()<CR>
 " }}}
 
 " view syntax name under cursor {{{
