@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/07/21 15:18:03.
+" - * Last Change: 2013/07/21 18:01:14.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -1045,7 +1045,6 @@ function! Syntax()
 endfunction
 command! Syntax call Syntax()
 command! S call Syntax()
-nnoremap ss :Syntax<CR>
 " }}}
 
 " Quick open dot files {{{
