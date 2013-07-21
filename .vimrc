@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/07/21 14:42:06.
+" - * Last Change: 2013/07/21 15:00:00.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -1029,11 +1029,11 @@ nnoremap ge :call Explorer()<CR>
 " Quickly open with outer text editor {{{
 function! TextEdit()
   if s:ismac
-    execute '! open -a TextEdit %'
+    silent execute '! open -a TextEdit %'
   elseif s:iswin
     silent execute '! notepad %'
   else
-    execute '! gedit %'
+    silent execute '! gedit %'
   endif
 endfunction
 nnoremap \g :call TextEdit()<CR>
