@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/07/21 18:01:14.
+" - * Last Change: 2013/07/21 20:44:36.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -54,11 +54,7 @@ if !isdirectory(s:neobundle_dir)
     execute '!mkdir -p '.$BUNDLE
        \.' && git clone https://github.com/Shougo/neobundle.vim '.$BUNDLE.'/neobundle.vim'
        \.' && git clone https://github.com/Shougo/unite.vim '.$BUNDLE.'/unite.vim'
-       \.' && git clone https://github.com/Shougo/neocomplcache '.$BUNDLE.'/neocomplcache'
        \.' && git clone https://github.com/Shougo/vimproc '.$BUNDLE.'/vimproc'
-       \.' && git clone https://github.com/Shougo/vimfiler '.$BUNDLE.'/vimfiler'
-       \.' && git clone https://github.com/thinca/vim-quickrun '.$BUNDLE.'/vim-quickrun'
-       \.' && git clone https://github.com/Shougo/vimshell '.$BUNDLE.'/vimshell'
     if s:ismac
       if executable('llvm-gcc')
         execute '!cd '.$BUNDLE.'/vimproc && make -f make_mac.mak'
