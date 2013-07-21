@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/07/21 08:57:31.
+" - * Last Change: 2013/07/21 13:02:01.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -1011,11 +1011,11 @@ nnoremap ,p :<C-u>call GCJ()<CR><S-g>
 " Open file explorer at current directory {{{
 function! Explorer()
   if s:ismac
-    execute '! open -a Finder .'
+    silent execute '! open -a Finder .'
   elseif s:iswin
     silent execute '! start .'
   else
-    execute '! nautilus .'
+    silent execute '! nautilus .'
   endif
 endfunction
 nnoremap \n :call Explorer()<CR>
