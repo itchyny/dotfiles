@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/07/21 20:44:36.
+" - * Last Change: 2013/07/28 16:27:43.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -685,6 +685,9 @@ else
     set listchars=tab:▸\ ,extends:»,precedes:«,nbsp:%
   catch
     set listchars=tab:^I,extends:>,precedes:<,nbsp:%
+    let g:vimfiler_tree_leaf_icon = '|'
+    let g:vimfiler_tree_opened_icon = '-'
+    let g:vimfiler_tree_closed_icon = '+'
   endtry
 endif
 set shortmess+=I            " disable start up message
