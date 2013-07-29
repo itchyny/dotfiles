@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/07/28 16:27:43.
+" - * Last Change: 2013/07/29 15:54:41.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -720,7 +720,7 @@ language C
 set nospell
   function! s:autospell()
     let spellbads = [ '^\(\S\+ \+\)\{30,}\S\+[,.]\?$', '\<a\> [aiueo]', '^\$', '\<figure..\?\\', '\\ref{eq:'
-          \ , '^\\end{align}', '[^\~]\\\(eq\)\?ref', 'does not [a-z]*s ', 's [a-z][a-z]\+s ', '\<a \S\+s ']
+          \ , '^\\end{align}', '[^\~]\\\(eq\)\?ref\>', 'does not [a-z]*s ', 's [a-z][a-z]\+s ', '\<a \S\+s ']
     if !exists('b:autospell_done')
       if search("[^\x01-\x7e]", 'n') == 0 && line('$') > 5
         setlocal spell
