@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/07/29 15:54:41.
+" - * Last Change: 2013/08/01 18:15:23.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -828,6 +828,7 @@ endif
 filetype plugin indent on
 set autoindent
   autocmd SetLocal FileType tex,hatena setlocal noautoindent
+  let g:tex_indent_items=0
 set smartindent
   autocmd SetLocal FileType tex,hatena setlocal nosmartindent
 set shiftwidth=2
