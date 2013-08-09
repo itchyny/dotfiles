@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/08/10 08:44:48.
+" - * Last Change: 2013/08/10 08:55:00.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -133,9 +133,9 @@ NeoBundleLazy 'xterm-color-table.vim', {'autoload': {'commands': ['XtermColorTab
 " Complement {{{
 " --------------------------------------------------------------------------------------------------------
 if s:nosudo
-NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'Shougo/neocomplcache'
-if has('lua')
+if has('lua') && v:version > 703
+NeoBundle 'Shougo/neocomplete.vim'
   let g:neocomplete#enable_at_startup = 1
   let g:neocomplete#enable_smart_case = 1
   let g:neocomplete#enable_cursor_hold_i = 1
