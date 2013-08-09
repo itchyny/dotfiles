@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/08/10 08:56:04.
+" - * Last Change: 2013/08/10 08:58:19.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -204,6 +204,13 @@ NeoBundle 'Shougo/neosnippet'
     \: "\<TAB>"
 NeoBundle 'ujihisa/neco-look'
   " --| Requirement: look commnad
+else
+  function! s:cancel_popup(key)
+    return a:key . (pumvisible() ? "\<C-e>" : '')
+  endfunction
+  function! s:goback_insert(key)
+    return "gi" . a:key . (pumvisible() ? "\<C-e>" : '')
+  endfunction
 endif
 " }}}
 
