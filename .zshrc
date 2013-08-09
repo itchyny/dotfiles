@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2013/07/29 08:13:57.
+# - * Last Change: 2013/08/10 08:26:05.
 # ------------------------------------------------------------------------------------------------------------
 
 # history
@@ -258,14 +258,21 @@ function configurevim() {
   rm -f src/auto/config.cache
   # CFLAGS="-O3  -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=1"\
   #             ./configure --with-features=huge\
-  CFLAGS="-O3" ./configure --with-features=huge\
-              --with-compiledby=itchyny\
-              --enable-pythoninterp=yes\
-              --enable-multibyte
-              #--with-lua-prefix=`dirname \`which lua\``
-              #--enable-perlinterp=yes\
-              #--enable-rubyinterp=yes\
-              #--enable-luainterp=yes\
+  if which lua > /dev/null; then
+    CFLAGS="-O3" ./configure --with-features=huge\
+                --with-compiledby=itchyny\
+                --enable-pythoninterp=yes\
+                --with-lua-prefix=`dirname \`which lua\``\
+                --enable-luainterp=yes\
+                --enable-multibyte
+                #--enable-perlinterp=yes\
+                #--enable-rubyinterp=yes\
+  else
+    CFLAGS="-O3" ./configure --with-features=huge\
+                --with-compiledby=itchyny\
+                --enable-pythoninterp=yes\
+                --enable-multibyte
+  fi
 }
 function makevim() {
   cd ~/Dropbox/cpp/vim/vim-$os/

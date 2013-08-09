@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/08/07 21:21:19.
+" - * Last Change: 2013/08/10 08:44:48.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -133,7 +133,36 @@ NeoBundleLazy 'xterm-color-table.vim', {'autoload': {'commands': ['XtermColorTab
 " Complement {{{
 " --------------------------------------------------------------------------------------------------------
 if s:nosudo
+NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'Shougo/neocomplcache'
+if has('lua')
+  let g:neocomplete#enable_at_startup = 1
+  let g:neocomplete#enable_smart_case = 1
+  let g:neocomplete#enable_cursor_hold_i = 1
+  let g:neocomplete#max_list = 550
+  let g:neocomplete#skip_auto_completion_time = "0.50"
+  let g:neocomplete#enable_auto_close_preview = 1
+  let g:neocomplete#auto_completion_start_length = 1
+  let g:neocomplete#max_keyword_width = 50
+  if !exists('g:neocomplete#force_omni_input_patterns')
+      let g:neocomplete#force_omni_input_patterns = {}
+  endif
+  let g:neocomplete#force_overwrite_completefunc = 1
+  let g:neocomplete#force_omni_input_patterns.c =
+              \ '[^.[:digit:] *\t]\%(\.\|->\)'
+  let g:neocomplete#force_omni_input_patterns.cpp =
+              \ '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+  let g:neocomplete#force_omni_input_patterns.objc =
+              \ '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+  let g:neocomplete#force_omni_input_patterns.objcpp =
+              \ '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+  function! s:cancel_popup(key)
+    return a:key . neocomplete#cancel_popup()
+  endfunction
+  function! s:goback_insert(key)
+    return "gi" . a:key . neocomplete#cancel_popup()
+  endfunction
+else
   let g:neocomplcache_enable_at_startup = 1
   let g:neocomplcache_enable_smart_case = 1
   let g:neocomplcache_enable_underbar_completion = 1
@@ -158,6 +187,13 @@ NeoBundle 'Shougo/neocomplcache'
               \ '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
   let g:neocomplcache_force_omni_patterns.objcpp =
               \ '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+  function! s:cancel_popup(key)
+    return a:key . neocomplcache#cancel_popup()
+  endfunction
+  function! s:goback_insert(key)
+    return "gi" . a:key . neocomplcache#cancel_popup()
+  endfunction
+endif
 NeoBundle 'Shougo/neosnippet'
   let g:neosnippet#snippets_directory = expand($VIM.'/snippets')
   imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
@@ -1223,9 +1259,6 @@ map <S-q> <Nop>
 " move within insert mode
 imap <expr><C-o> neosnippet#expandable_or_jumpable() ?
       \ "\<Plug>(neosnippet_expand_or_jump)" : "\<ESC>o"
-function! s:cancel_popup(key)
-  return a:key . neocomplcache#cancel_popup()
-endfunction
 inoremap <expr> <C-p> <SID>cancel_popup("\<Up>")
 inoremap <expr> <C-n> <SID>cancel_popup("\<Down>")
 inoremap <expr> <C-b> <SID>cancel_popup("\<Left>")
@@ -1238,9 +1271,6 @@ inoremap <expr> <Up> <SID>cancel_popup("\<Up>")
 inoremap <expr> <Down> <SID>cancel_popup("\<Down>")
 inoremap <expr> <Left> <SID>cancel_popup("\<Left>")
 inoremap <expr> <Right> <SID>cancel_popup("\<Right>")
-function! s:goback_insert(key)
-  return "gi" . a:key . neocomplcache#cancel_popup()
-endfunction
 nnoremap <expr> OA <SID>goback_insert("\<Up>")
 nnoremap <expr> OB <SID>goback_insert("\<Down>")
 nnoremap <expr> OC <SID>goback_insert("\<Right>")
