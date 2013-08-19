@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/08/19 17:32:15.
+" - * Last Change: 2013/08/19 19:37:49.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -161,6 +161,9 @@ NeoBundle 'Shougo/neocomplete.vim'
   function! s:cancel_popup(key)
     return a:key . neocomplete#cancel_popup()
   endfunction
+  function! s:cancel_popup_reverse(key)
+    return neocomplete#cancel_popup() . a:key
+  endfunction
   function! s:goback_insert(key)
     return "gi" . a:key . neocomplete#cancel_popup()
   endfunction
@@ -192,6 +195,9 @@ else
   function! s:cancel_popup(key)
     return a:key . neocomplcache#cancel_popup()
   endfunction
+  function! s:cancel_popup_reverse(key)
+    return neocomplcache#cancel_popup() . a:key
+  endfunction
   function! s:goback_insert(key)
     return "gi" . a:key . neocomplcache#cancel_popup()
   endfunction
@@ -209,6 +215,9 @@ NeoBundle 'ujihisa/neco-look'
 else
   function! s:cancel_popup(key)
     return a:key . (pumvisible() ? "\<C-e>" : '')
+  endfunction
+  function! s:cancel_popup_reverse(key)
+    return (pumvisible() ? "\<C-e>" : '') . a:key
   endfunction
   function! s:goback_insert(key)
     return "gi" . a:key . (pumvisible() ? "\<C-e>" : '')
@@ -1282,6 +1291,7 @@ inoremap <expr> <C-e> <SID>cancel_popup("\<End>")
 inoremap <expr> <C-a> <SID>cancel_popup("\<Home>")
 inoremap <expr> <C-d> <SID>cancel_popup("\<Del>")
 inoremap <expr> <C-h> <SID>cancel_popup("\<BS>")
+inoremap <expr> <C-u> <SID>cancel_popup_reverse("\<C-u>")
 inoremap <expr> <Up> <SID>cancel_popup("\<Up>")
 inoremap <expr> <Down> <SID>cancel_popup("\<Down>")
 inoremap <expr> <Left> <SID>cancel_popup("\<Left>")
