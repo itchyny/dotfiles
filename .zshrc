@@ -91,6 +91,7 @@ export PATH=$PATH:/usr/local/bin/
 export PATH=$PATH:/usr/local/git/bin/
 export PATH=$PATH:/opt/local/bin/
 export PATH=$PATH:~/.cabal/bin/
+export PATH=$PATH:/usr/local/usr/local/bin/
 export PATH=~/Dropbox/bin/:$PATH
 export PATH=$PATH:~/Dropbox/js/coffee-script/bin/
 export PATH=$PATH:~/Dropbox/js/jison/bin/
