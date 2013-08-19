@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/08/19 19:38:15.
+" - * Last Change: 2013/08/19 21:45:34.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -592,6 +592,8 @@ NeoBundle 'pasela/unite-webcolorname'
 NeoBundle 'osyo-manga/vim-anzu'
   nmap n <Plug>(anzu-n-with-echo)
   nmap N <Plug>(anzu-N-with-echo)
+  let g:anzu_status_format = '%p (%i/%l)'
+  let g:anzu_no_match_word = ''
 NeoBundle 'itchyny/thumbnail.vim', {'type': 'nosync'}
   nnoremap <silent> <Leader>t :<C-u>Thumbnail -here<CR>
   augroup ThumbnailKey
