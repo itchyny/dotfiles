@@ -339,8 +339,10 @@ NeoBundle 'thinca/vim-quickrun'
   let g:quickrun_config.objc = {'command': 'cc',
         \ 'exec': ['%c %s -o %s:p:r -framework Foundation', '%s:p:r %a', 'rm -f %s:p:r'],
         \ 'tempfile': '{tempname()}.m'}
-  let g:quickrun_config.spice = {'command': 'scad3.exe',
-        \ 'exec': ['%c -b %s:t'] }
+  if executable('scad3.exe')
+    let g:quickrun_config.spice = {'command': 'scad3.exe',
+          \ 'exec': ['%c -b %s:t'] }
+  endif
   if executable('abcm2ps')
     let g:quickrun_config.abc = {'command': 'abcm2ps', 'exec': ['%c %s -O %s:p:r.ps', 'ps2pdf %s:p:r.ps', 'open %s:p:r.pdf']}
   endif
