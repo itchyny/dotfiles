@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/08/19 19:37:49.
+" - * Last Change: 2013/08/19 19:38:15.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -589,6 +589,9 @@ if exists('##InsertCharPre')
   nnoremap <Leader>m :<C-u>Multi<SPACE>
 endif
 NeoBundle 'pasela/unite-webcolorname'
+NeoBundle 'osyo-manga/vim-anzu'
+  nmap n <Plug>(anzu-n-with-echo)
+  nmap N <Plug>(anzu-N-with-echo)
 NeoBundle 'itchyny/thumbnail.vim', {'type': 'nosync'}
   nnoremap <silent> <Leader>t :<C-u>Thumbnail -here<CR>
   augroup ThumbnailKey
