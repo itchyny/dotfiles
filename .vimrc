@@ -341,6 +341,9 @@ NeoBundle 'thinca/vim-quickrun'
         \ 'tempfile': '{tempname()}.m'}
   let g:quickrun_config.spice = {'command': 'scad3.exe',
         \ 'exec': ['%c -b %s:t'] }
+  if executable('abcm2ps')
+    let g:quickrun_config.abc = {'command': 'abcm2ps', 'exec': ['%c %s -O %s:p:r.ps', 'ps2pdf %s:p:r.ps', 'open %s:p:r.pdf']}
+  endif
   nnoremap <Leader>r :<C-u>QuickRun<CR>
   nnoremap <Leader><Leader>r :<C-u>QuickRun >file:temp.dat<CR>
   nnoremap <Leader>e :<C-u>QuickRun <i <CR>
