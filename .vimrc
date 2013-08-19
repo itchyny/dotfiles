@@ -232,6 +232,7 @@ NeoBundle 'Shougo/unite.vim'
   else
     let g:unite_marked_icon = 'v'
   endif
+  let g:unite_candidate_icon = '-'
   nnoremap <C-u> :Unite<SPACE>
   nnoremap <silent><C-p> :Unite buffer -buffer-name=buffer<CR>
   nnoremap <silent><C-n> :Unite file/new directory/new -buffer-name=file/new,directory/new<CR>
