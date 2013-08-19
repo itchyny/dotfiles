@@ -141,7 +141,7 @@ NeoBundle 'Shougo/neocomplete.vim'
   let g:neocomplete#enable_at_startup = 1
   let g:neocomplete#enable_smart_case = 1
   " let g:neocomplete#enable_cursor_hold_i = 1
-  let g:neocomplete#max_list = 550
+  let g:neocomplete#max_list = 1000
   let g:neocomplete#skip_auto_completion_time = "0.50"
   let g:neocomplete#enable_auto_close_preview = 1
   let g:neocomplete#auto_completion_start_length = 1
