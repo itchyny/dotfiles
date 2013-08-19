@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/08/10 08:58:19.
+" - * Last Change: 2013/08/19 17:32:15.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -98,6 +98,8 @@ try
 " --|  $ sudo cp ./Inconsolata-Powerline.otf /usr/share/fonts
 if s:ismac
   set guifont=Inconsolata\ for\ Powerline:h15
+elseif s:iswin
+  set guifont=Inconsolata_for_Powerline:h13:cANSI
 else
   set guifont=Inconsolata\ for\ Powerline\ 12
 endif
