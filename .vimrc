@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/08/21 00:31:02.
+" - * Last Change: 2013/08/21 05:32:57.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -1235,7 +1235,7 @@ vnoremap <C-s> :<C-u>w<CR>
 " }}}
 
 " search {{{
-nnoremap <silent> <Esc><Esc> :<C-u>set nohlsearch<CR>
+nnoremap <silent> <Esc><Esc> :<C-u>set nohlsearch<CR>:<C-u>set nopaste<CR>
 nnoremap <silent> / :<C-u>set hlsearch<CR>/
 nnoremap <silent> ? :<C-u>set hlsearch<CR>?
 nnoremap <silent> * :<C-u>set hlsearch<CR>*
