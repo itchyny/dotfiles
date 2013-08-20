@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/08/20 21:24:05.
+" - * Last Change: 2013/08/20 23:20:24.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -106,7 +106,7 @@ NeoBundle 'bling/vim-airline', {'type': 'nosync'}
         \ '%{airline#extensions#branch#get_head()}' .
         \ '%{""!=airline#extensions#branch#get_head()?("  " . g:airline_left_alt_sep . " "):""}' .
         \ '%{airline#extensions#readonly#get_mark()}' .
-        \ '%t %M'
+        \ '%t%( %M%)'
   let g:airline_section_c = ''
   let s:sep = " %{get(g:, 'airline_right_alt_sep', '')} "
   let g:airline_section_x =
