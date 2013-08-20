@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/08/19 21:45:34.
+" - * Last Change: 2013/08/20 10:35:14.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -87,8 +87,26 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 " Powerline {{{
 " --------------------------------------------------------------------------------------------------------
-NeoBundle 'Lokaltog/vim-powerline', {'type': 'nosync'}
+" NeoBundle 'Lokaltog/vim-powerline', {'type': 'nosync'}
 " NeoBundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+NeoBundle 'bling/vim-airline'
+  let g:airline_left_sep = '⮀'
+  let g:airline_left_alt_sep = '⮁'
+  let g:airline_right_sep = '⮂'
+  let g:airline_right_alt_sep = '⮃'
+  let g:airline_branch_prefix = '⭠'
+  let g:airline_readonly_symbol = '⭤'
+  let g:airline_linecolumn_prefix = '⭡'
+  let g:airline_section_b = '%t'
+  let g:airline_section_c = ''
+  let s:sep = " %{get(g:, 'airline_right_alt_sep', '')} "
+  let g:airline_section_x =
+        \ "%{strlen(&fileformat)?&fileformat:''}".s:sep.
+        \ "%{strlen(&fenc)?&fenc:strlen(&enc)?&enc:''}".s:sep.
+        \ "%{strlen(&filetype)?&filetype:'no ft'}"
+  let g:airline_section_y = '%3p%%'
+  let g:airline_section_z = get(g:, 'airline_linecolumn_prefix', '').'%3l:%3c'
+  let g:airline_detect_whitespace = 0
 try
 " --|  $ sudo apt-get install fontforge
 " --|  $ sudo apt-get install python-fontforge
@@ -125,6 +143,7 @@ NeoBundle 'itchyny/landscape.vim', {'type': 'nosync'}
   let g:landscape_highlight_url_filetype = {'thumbnail': 0}
   let g:Powerline_theme = 'landscape'
   let g:Powerline_colorscheme = 'landscape'
+  let g:airline_theme = 'landscape'
 catch
   colorscheme wombat
 endtry
