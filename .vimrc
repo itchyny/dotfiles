@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/08/20 12:58:32.
+" - * Last Change: 2013/08/20 14:38:42.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -96,7 +96,7 @@ NeoBundle 'bling/vim-airline'
   let g:airline_right_alt_sep = '⮃'
   let g:airline_branch_prefix = '⭠'
   let g:airline_readonly_symbol = '⭤'
-  let g:airline_linecolumn_prefix = '⭡'
+  let g:airline_linecolumn_prefix = ''
   let g:airline_enable_branch = 0
   let g:airline_section_b = "%t%{&modified?' +':''}"
   let g:airline_section_c = ''
@@ -106,7 +106,7 @@ NeoBundle 'bling/vim-airline'
         \ "%{strlen(&fenc)?&fenc:strlen(&enc)?&enc:''}".s:sep.
         \ "%{strlen(&filetype)?&filetype:'no ft'}"
   let g:airline_section_y = '%3p%%'
-  let g:airline_section_z = get(g:, 'airline_linecolumn_prefix', '').'%3l:%3c'
+  let g:airline_section_z = get(g:, 'airline_linecolumn_prefix', '').'%3l:%-2v'
   let g:airline#extensions#whitespace#enabled = 0
   let g:airline#extensions#hunks#non_zero_only = 1
 try
