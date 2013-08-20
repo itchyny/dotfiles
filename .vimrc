@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/08/20 23:20:24.
+" - * Last Change: 2013/08/20 23:37:25.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -101,7 +101,7 @@ NeoBundle 'bling/vim-airline', {'type': 'nosync'}
   let g:airline#extensions#whitespace#enabled = 0
   let g:airline#extensions#branch#enabled = 0
   let g:airline#extensions#readonly#enabled = 0
-  let g:airline_section_b = "%t %M"
+  let g:airline_section_b = "%t%( %M%)"
   let g:airline_section_b =
         \ '%{airline#extensions#branch#get_head()}' .
         \ '%{""!=airline#extensions#branch#get_head()?("  " . g:airline_left_alt_sep . " "):""}' .
@@ -115,6 +115,13 @@ NeoBundle 'bling/vim-airline', {'type': 'nosync'}
         \ '%{strlen(&filetype)?&filetype:"no ft"}'
   let g:airline_section_y = '%3p%%'
   let g:airline_section_z = get(g:, 'airline_linecolumn_prefix', '').'%3l:%-2v'
+  function! airline#extensions#apply_left_override(section1, section2)
+    let w:airline_section_a = a:section1
+    let w:airline_section_b = a:section2
+    let w:airline_section_c = ''
+    let w:airline_render_left = 1
+    let w:airline_render_right = 1
+  endfunction
 try
 " --|  $ sudo apt-get install fontforge
 " --|  $ sudo apt-get install python-fontforge
