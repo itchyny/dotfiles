@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/08/20 16:53:28.
+" - * Last Change: 2013/08/20 21:06:47.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -89,29 +89,32 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " --------------------------------------------------------------------------------------------------------
 " NeoBundle 'Lokaltog/vim-powerline', {'type': 'nosync'}
 " NeoBundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
-NeoBundle 'bling/vim-airline'
+NeoBundle 'bling/vim-airline', {'type': 'nosync'}
   let g:airline_left_sep = '⮀'
   let g:airline_left_alt_sep = '⮁'
   let g:airline_right_sep = '⮂'
   let g:airline_right_alt_sep = '⮃'
   let g:airline_branch_prefix = '⭠ '
-  let g:airline_readonly_symbol = '⭤'
+  let g:airline_readonly_symbol = '⭤ '
   let g:airline_linecolumn_prefix = ''
-  let g:airline_enable_branch = 0
-  let g:airline_section_b = "%t%{&modified?' +':''}"
-  let g:airline_section_b = '%{airline#extensions#branch#get_head()}' .
-        \ "%{''!=airline#extensions#branch#get_head()?('  ' . g:airline_left_alt_sep . ' '):''}" .
-        \ "%t%{&modified?' +':''}"
+  let g:airline#extensions#hunks#non_zero_only = 1
+  let g:airline#extensions#whitespace#enabled = 0
+  let g:airline#extensions#branch#enabled = 0
+  let g:airline#extensions#readonly#enabled = 0
+  let g:airline_section_b = "%t %M"
+  let g:airline_section_b =
+        \ '%{airline#extensions#branch#get_head()}' .
+        \ '%{""!=airline#extensions#branch#get_head()?("  " . g:airline_left_alt_sep . " "):""}' .
+        \ '%{airline#extensions#readonly#get_mark()}' .
+        \ '%t %M'
   let g:airline_section_c = ''
   let s:sep = " %{get(g:, 'airline_right_alt_sep', '')} "
   let g:airline_section_x =
-        \ "%{strlen(&fileformat)?&fileformat:''}".s:sep.
-        \ "%{strlen(&fenc)?&fenc:&enc}".s:sep.
-        \ "%{strlen(&filetype)?&filetype:'no ft'}"
+        \ '%{strlen(&fileformat)?&fileformat:""}'.s:sep.
+        \ '%{strlen(&fenc)?&fenc:&enc}'.s:sep.
+        \ '%{strlen(&filetype)?&filetype:"no ft"}'
   let g:airline_section_y = '%3p%%'
   let g:airline_section_z = get(g:, 'airline_linecolumn_prefix', '').'%3l:%-2v'
-  let g:airline#extensions#whitespace#enabled = 0
-  let g:airline#extensions#hunks#non_zero_only = 1
 try
 " --|  $ sudo apt-get install fontforge
 " --|  $ sudo apt-get install python-fontforge
