@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/08/20 12:47:48.
+" - * Last Change: 2013/08/20 12:58:32.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -97,6 +97,7 @@ NeoBundle 'bling/vim-airline'
   let g:airline_branch_prefix = '⭠'
   let g:airline_readonly_symbol = '⭤'
   let g:airline_linecolumn_prefix = '⭡'
+  let g:airline_enable_branch = 0
   let g:airline_section_b = "%t%{&modified?' +':''}"
   let g:airline_section_c = ''
   let s:sep = " %{get(g:, 'airline_right_alt_sep', '')} "
@@ -614,6 +615,7 @@ NeoBundle 'osyo-manga/vim-anzu'
   nmap N <Plug>(anzu-N-with-echo)
   let g:anzu_status_format = '%p (%i/%l)'
   let g:anzu_no_match_word = ''
+NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'itchyny/thumbnail.vim', {'type': 'nosync'}
   nnoremap <silent> <Leader>t :<C-u>Thumbnail -here<CR>
   augroup ThumbnailKey
