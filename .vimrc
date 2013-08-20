@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/08/20 15:46:35.
+" - * Last Change: 2013/08/20 16:53:28.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -94,11 +94,14 @@ NeoBundle 'bling/vim-airline'
   let g:airline_left_alt_sep = '⮁'
   let g:airline_right_sep = '⮂'
   let g:airline_right_alt_sep = '⮃'
-  let g:airline_branch_prefix = '⭠'
+  let g:airline_branch_prefix = '⭠ '
   let g:airline_readonly_symbol = '⭤'
   let g:airline_linecolumn_prefix = ''
   let g:airline_enable_branch = 0
   let g:airline_section_b = "%t%{&modified?' +':''}"
+  let g:airline_section_b = '%{airline#extensions#branch#get_head()}' .
+        \ "%{''!=airline#extensions#branch#get_head()?('  ' . g:airline_left_alt_sep . ' '):''}" .
+        \ "%t%{&modified?' +':''}"
   let g:airline_section_c = ''
   let s:sep = " %{get(g:, 'airline_right_alt_sep', '')} "
   let g:airline_section_x =
