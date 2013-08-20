@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/08/20 21:06:47.
+" - * Last Change: 2013/08/20 21:24:05.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -95,7 +95,7 @@ NeoBundle 'bling/vim-airline', {'type': 'nosync'}
   let g:airline_right_sep = '⮂'
   let g:airline_right_alt_sep = '⮃'
   let g:airline_branch_prefix = '⭠ '
-  let g:airline_readonly_symbol = '⭤ '
+  let g:airline#extensions#readonly#symbol = '⭤ '
   let g:airline_linecolumn_prefix = ''
   let g:airline#extensions#hunks#non_zero_only = 1
   let g:airline#extensions#whitespace#enabled = 0
