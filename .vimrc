@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/08/20 15:24:12.
+" - * Last Change: 2013/08/20 15:46:35.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -801,7 +801,7 @@ set showmatch
 set showtabline=1
 set previewheight=20
 set pumheight=10
-set history=300
+set history=100
 set helplang=en
 language C
 set nospell
