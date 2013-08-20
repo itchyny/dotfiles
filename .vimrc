@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/08/21 05:32:57.
+" - * Last Change: 2013/08/21 08:05:28.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -121,7 +121,10 @@ NeoBundle 'bling/vim-airline', {'type': 'nosync'}
     let w:airline_render_left = 1
     let w:airline_render_right = 1
   endfunction
-  autocmd VimEnter * call add(g:airline_statusline_funcrefs, function('AirLineForce'))
+  augroup AirLineForce
+    autocmd!
+    autocmd VimEnter * call add(g:airline_statusline_funcrefs, function('AirLineForce'))
+  augroup END
 try
 " --|  $ sudo apt-get install fontforge
 " --|  $ sudo apt-get install python-fontforge
