@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/08/20 11:59:54.
+" - * Last Change: 2013/08/20 12:47:48.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -106,7 +106,7 @@ NeoBundle 'bling/vim-airline'
         \ "%{strlen(&filetype)?&filetype:'no ft'}"
   let g:airline_section_y = '%3p%%'
   let g:airline_section_z = get(g:, 'airline_linecolumn_prefix', '').'%3l:%3c'
-  let g:airline_detect_whitespace = 0
+  let g:airline#extensions#whitespace#enabled = 0
   let g:airline#extensions#hunks#non_zero_only = 1
 try
 " --|  $ sudo apt-get install fontforge
