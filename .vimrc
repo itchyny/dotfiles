@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/08/20 23:37:25.
+" - * Last Change: 2013/08/21 00:31:02.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -115,13 +115,13 @@ NeoBundle 'bling/vim-airline', {'type': 'nosync'}
         \ '%{strlen(&filetype)?&filetype:"no ft"}'
   let g:airline_section_y = '%3p%%'
   let g:airline_section_z = get(g:, 'airline_linecolumn_prefix', '').'%3l:%-2v'
-  function! airline#extensions#apply_left_override(section1, section2)
-    let w:airline_section_a = a:section1
-    let w:airline_section_b = a:section2
-    let w:airline_section_c = ''
+  let g:airline_inactive_collapse = 0
+  function! AirLineForce()
+    let g:airline_mode_map.__ = ''
     let w:airline_render_left = 1
     let w:airline_render_right = 1
   endfunction
+  autocmd VimEnter * call add(g:airline_statusline_funcrefs, function('AirLineForce'))
 try
 " --|  $ sudo apt-get install fontforge
 " --|  $ sudo apt-get install python-fontforge
