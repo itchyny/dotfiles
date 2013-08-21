@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/08/21 08:05:28.
+" - * Last Change: 2013/08/21 14:38:11.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -390,7 +390,11 @@ NeoBundle 'thinca/vim-quickrun'
           \ 'exec': ['%c -b %s:t'] }
   endif
   if executable('abcm2ps')
-    let g:quickrun_config.abc = {'command': 'abcm2ps', 'exec': ['%c %s -O %s:p:r.ps', 'ps2pdf %s:p:r.ps', 'open %s:p:r.pdf']}
+    let g:quickrun_config.abc = {'command': 'abcm2ps',
+          \ 'exec': ['%c %s -O %s:p:r.ps', 'ps2pdf %s:p:r.ps', 'open %s:p:r.pdf']}
+    if executable('abc2midi')
+      call extend(g:quickrun_config.abc.exec, ['abc2midi %s -o %s:p:r.mid', 'open %s:p:r.mid'])
+    endif
   endif
   nnoremap <Leader>r :<C-u>QuickRun<CR>
   nnoremap <Leader><Leader>r :<C-u>QuickRun >file:temp.dat<CR>
