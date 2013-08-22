@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/08/21 14:38:11.
+" - * Last Change: 2013/08/23 07:44:21.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -89,7 +89,56 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " --------------------------------------------------------------------------------------------------------
 " NeoBundle 'Lokaltog/vim-powerline', {'type': 'nosync'}
 " NeoBundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
-NeoBundle 'bling/vim-airline', {'type': 'nosync'}
+" NeoBundle 'bling/vim-airline', {'type': 'nosync'}
+NeoBundle 'itchyny/vim-lightline', {'type': 'nosync'}
+  let g:lightline = {
+        \ 'colorscheme': 'landscape',
+        \ 'mode_map': { 'c': 'NORMAL' },
+        \ 'active': {
+        \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ]
+        \ },
+        \ 'component_function': {
+        \   'modified': 'MyModified',
+        \   'readonly': 'MyReadonly',
+        \   'fugitive': 'MyFugitive',
+        \   'filename': 'MyFilename',
+        \   'fileformat': 'MyFileformat',
+        \   'filetype': 'MyFiletype',
+        \   'fileencoding': 'MyFileencoding',
+        \   'mode': 'MyMode',
+        \ },
+        \ 'separator': { 'left': '⮀', 'right': '⮂' },
+        \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
+        \ }
+  function! MyModified()
+    return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+  endfunction
+  function! MyReadonly()
+    return &ft !~? 'help\|vimfiler\|gundo' && &ro ? '⭤' : ''
+  endfunction
+  function! MyFilename()
+    return ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
+          \ (&ft == 'vimfiler' ? vimfiler#get_status_string() : 
+          \  &ft == 'unite' ? unite#get_status_string() : 
+          \  &ft == 'vimshell' ? substitute(b:vimshell.current_dir,expand('~'),'~','') : 
+          \ '' != expand('%t') ? expand('%t') : '[No Name]') .
+          \ ('' != MyModified() ? ' ' . MyModified() : '')
+  endfunction
+  function! MyFugitive()
+    return &ft !~? 'vimfiler\|gundo' && exists('*fugitive#head') && len(fugitive#head()) ? '⭠ '.fugitive#head() : ''
+  endfunction
+  function! MyFileformat()
+    return winwidth('.') > 60 ? &fileformat : ''
+  endfunction
+  function! MyFiletype()
+    return winwidth('.') > 60 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
+  endfunction
+  function! MyFileencoding()
+    return winwidth('.') > 60 ? (strlen(&fenc) ? &fenc : &enc) : ''
+  endfunction
+  function! MyMode()
+    return winwidth('.') > 60 ? lightline#mode() : ''
+  endfunction
   let g:airline_left_sep = '⮀'
   let g:airline_left_alt_sep = '⮁'
   let g:airline_right_sep = '⮂'
@@ -123,7 +172,10 @@ NeoBundle 'bling/vim-airline', {'type': 'nosync'}
   endfunction
   augroup AirLineForce
     autocmd!
-    autocmd VimEnter * call add(g:airline_statusline_funcrefs, function('AirLineForce'))
+    autocmd VimEnter * 
+          \ if exists('g:airline_statusline_funcrefs')
+          \|  call add(g:airline_statusline_funcrefs, function('AirLineForce'))
+          \|endif
   augroup END
 try
 " --|  $ sudo apt-get install fontforge
@@ -967,7 +1019,7 @@ set timeoutlen=500
 " }}}
 
 " Clipboard {{{
-set clipboard=autoselect,unnamed,unnamedplus
+set clipboard=unnamed,unnamedplus
 " }}}
 
 " IME {{{
