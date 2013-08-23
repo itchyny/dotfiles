@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/08/23 22:02:06.
+" - * Last Change: 2013/08/23 23:51:50.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -683,8 +683,8 @@ if exists('##InsertCharPre')
 endif
 NeoBundle 'pasela/unite-webcolorname'
 NeoBundle 'osyo-manga/vim-anzu'
-  nmap n <Plug>(anzu-n-with-echo)
-  nmap N <Plug>(anzu-N-with-echo)
+  nmap n <Plug>(anzu-n-with-echo)zv
+  nmap N <Plug>(anzu-N-with-echo)zv
   let g:anzu_status_format = '%p (%i/%l)'
   let g:anzu_no_match_word = ''
 NeoBundle 'tpope/vim-fugitive'
