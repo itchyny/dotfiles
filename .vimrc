@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/08/23 12:22:14.
+" - * Last Change: 2013/08/23 14:13:26.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -128,13 +128,13 @@ NeoBundle 'itchyny/vim-lightline', {'type': 'nosync'}
     return &ft !~? 'vimfiler\|gundo' && exists('*fugitive#head') && len(fugitive#head()) ? '⭠ '.fugitive#head() : ''
   endfunction
   function! MyFileformat()
-    return winwidth('.') > 60 ? &fileformat : ''
+    return winwidth('.') > 70 ? &fileformat : ''
   endfunction
   function! MyFiletype()
-    return winwidth('.') > 60 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
+    return winwidth('.') > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
   endfunction
   function! MyFileencoding()
-    return winwidth('.') > 60 ? (strlen(&fenc) ? &fenc : &enc) : ''
+    return winwidth('.') > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
   endfunction
   function! MyMode()
     return winwidth('.') > 60 ? lightline#mode() : ''
