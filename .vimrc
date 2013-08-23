@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/08/23 14:13:26.
+" - * Last Change: 2013/08/23 22:02:06.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -90,7 +90,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " NeoBundle 'Lokaltog/vim-powerline', {'type': 'nosync'}
 " NeoBundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 " NeoBundle 'bling/vim-airline', {'type': 'nosync'}
-NeoBundle 'itchyny/vim-lightline', {'type': 'nosync'}
+NeoBundle 'itchyny/lightline.vim', {'type': 'nosync'}
   let g:lightline = {
         \ 'colorscheme': 'landscape',
         \ 'mode_map': { 'c': 'NORMAL' },
