@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/08/23 07:44:21.
+" - * Last Change: 2013/08/23 12:22:14.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -165,7 +165,7 @@ NeoBundle 'itchyny/vim-lightline', {'type': 'nosync'}
   let g:airline_section_y = '%3p%%'
   let g:airline_section_z = get(g:, 'airline_linecolumn_prefix', '').'%3l:%-2v'
   let g:airline_inactive_collapse = 0
-  function! AirLineForce()
+  function! AirLineForce(...)
     let g:airline_mode_map.__ = ''
     let w:airline_render_left = 1
     let w:airline_render_right = 1
