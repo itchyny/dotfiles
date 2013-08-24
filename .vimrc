@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/08/24 12:59:33.
+" - * Last Change: 2013/08/24 13:35:07.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -126,7 +126,14 @@ NeoBundle 'itchyny/lightline.vim', {'type': 'nosync'}
           \ ('' != MyModified() ? ' ' . MyModified() : '')
   endfunction
   function! MyFugitive()
-    return &ft !~? 'vimfiler\|gundo' && exists('*fugitive#head') && len(fugitive#head()) ? '⭠ '.fugitive#head() : ''
+    try
+      if &ft !~? 'vimfiler\|gundo' && exists('*fugitive#head')
+        let _ = fugitive#head()
+        return strlen(_) ? '⭠ '._ : ''
+      endif
+    catch
+    endtry
+    return ''
   endfunction
   function! MyFileformat()
     return winwidth('.') > 70 ? &fileformat : ''
