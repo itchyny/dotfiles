@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/08/24 13:35:07.
+" - * Last Change: 2013/08/24 23:25:24.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -1024,7 +1024,10 @@ set timeoutlen=500
 " }}}
 
 " Clipboard {{{
-set clipboard=unnamed,unnamedplus
+try
+  set clipboard=unnamed,unnamedplus
+catch
+endtry
 " }}}
 
 " IME {{{
