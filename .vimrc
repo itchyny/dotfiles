@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/08/24 11:30:27.
+" - * Last Change: 2013/08/24 12:59:33.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -94,7 +94,8 @@ NeoBundle 'itchyny/lightline.vim', {'type': 'nosync'}
         \ 'colorscheme': 'landscape',
         \ 'mode_map': { 'c': 'NORMAL' },
         \ 'active': {
-        \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ]
+        \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ],
+        \   'right': [[ 'lineinfo', 'syntastic' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype']]
         \ },
         \ 'component_function': {
         \   'modified': 'MyModified',
@@ -105,6 +106,7 @@ NeoBundle 'itchyny/lightline.vim', {'type': 'nosync'}
         \   'filetype': 'MyFiletype',
         \   'fileencoding': 'MyFileencoding',
         \   'mode': 'MyMode',
+        \   'syntastic': 'SyntasticStatuslineFlag',
         \ },
         \ 'separator': { 'left': '⮀', 'right': '⮂' },
         \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
@@ -705,8 +707,7 @@ NeoBundle 'vim-jp/vital.vim'
 " --------------------------------------------------------------------------------------------------------
 if has('multi_byte')
 NeoBundle 'scrooloose/syntastic'
-  let g:syntastic_mode_map = { 'mode': 'passive',
-                             \ 'active_filetypes': ['c', 'cpp'] }
+  let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': ['c', 'cpp'] }
   let g:syntastic_echo_current_error = 0
   let g:syntastic_enable_highlighting = 0
 endif
