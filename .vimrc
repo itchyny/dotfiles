@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/08/23 23:51:50.
+" - * Last Change: 2013/08/24 11:30:27.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -9,12 +9,11 @@
 set nocompatible
 filetype off
 scriptencoding utf-8
-try | silent call system('uname') | catch | set shell=sh | endtry
+if !executable(&shell) | set shell=sh | endif
 let s:isunix = has('unix')
 let s:iswin = has('win16') || has('win32') || has('win64')
 let s:iscygwin = has('win32unix')
-let s:ismac = !s:iswin && !s:iscygwin &&
-      \ (has('mac') || has('macunix') || has('guimacvim') || system('uname') =~? '^darwin')
+let s:ismac = !s:iswin && !s:iscygwin && (has('mac') || has('macunix') || has('guimacvim') || system('uname') =~? '^darwin')
 let s:nosudo = $SUDO_USER == ''
 augroup ESC
   autocmd!
@@ -438,8 +437,7 @@ NeoBundle 'thinca/vim-quickrun'
         \ 'exec': ['%c %s -o %s:p:r -framework Foundation', '%s:p:r %a', 'rm -f %s:p:r'],
         \ 'tempfile': '{tempname()}.m'}
   if executable('scad3.exe')
-    let g:quickrun_config.spice = {'command': 'scad3.exe',
-          \ 'exec': ['%c -b %s:t'] }
+    let g:quickrun_config.spice = {'command': 'scad3.exe', 'exec': ['%c -b %s:t'] }
   endif
   if executable('abcm2ps')
     let g:quickrun_config.abc = {'command': 'abcm2ps',
@@ -487,7 +485,6 @@ NeoBundleLazy 'Shougo/vimfiler', {'autoload': {'commands': ['VimFiler', 'VimFile
   for ft in split('pdf,png,jpg,jpeg,gif,bmp,ico,ppt,html', ',')
     let g:vimfiler_execute_file_list[ft] = 'open'
   endfor
-  let s:usestatl = system('stat -l . > /dev/null 2>&1; echo $?') =~ '^0'
   function! s:changetime()
     let marked_files = vimfiler#get_marked_filenames()
     if !empty(marked_files)
@@ -503,7 +500,7 @@ NeoBundleLazy 'Shougo/vimfiler', {'autoload': {'commands': ['VimFiler', 'VimFile
       let vimfiler_current_dir = getcwd()
     endif
     let current_dir = getcwd()
-    if s:usestatl
+    if system('stat -l . > /dev/null 2>&1; echo $?') =~ '^0'
       let atime = system('stat -lt "%Y/%m/%d %H:%M" "'.filepath
             \."\" | awk {'print $6\" \"$7'} | tr -d '\\n'")
     else
@@ -1226,11 +1223,6 @@ nnoremap ,hs i>\|haskell\|<CR>\|\|<<ESC>
 nnoremap ,js i>\|javascript\|<CR>\|\|<<ESC>
 " }}}
 
-" remove Icon\r file {{{
-if s:ismac
-  silent call system('echo -e "Icon\\r" | xargs cat && echo -e "Icon\\r" | xargs rm')
-endif
-" }}}
 " }}} UTILITY
 
 " OTHERS {{{
