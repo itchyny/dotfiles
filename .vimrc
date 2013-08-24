@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/08/24 23:25:24.
+" - * Last Change: 2013/08/25 00:08:53.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -713,7 +713,7 @@ NeoBundle 'vim-jp/vital.vim'
 " Syntax {{{
 " --------------------------------------------------------------------------------------------------------
 if has('multi_byte')
-NeoBundle 'scrooloose/syntastic'
+NeoBundleLazy 'scrooloose/syntastic', {'autoload': {'filetypes': ['c', 'cpp']}}
   let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': ['c', 'cpp'] }
   let g:syntastic_echo_current_error = 0
   let g:syntastic_enable_highlighting = 0
