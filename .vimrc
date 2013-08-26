@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/08/25 00:09:28.
+" - * Last Change: 2013/08/26 20:07:24.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -136,16 +136,16 @@ NeoBundle 'itchyny/lightline.vim', {'type': 'nosync'}
     return ''
   endfunction
   function! MyFileformat()
-    return winwidth('.') > 70 ? &fileformat : ''
+    return &ft !~? 'vimfiler\|vimshell' && winwidth('.') > 70 ? &fileformat : ''
   endfunction
   function! MyFiletype()
-    return winwidth('.') > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
+    return &ft !~? 'vimfiler\|vimshell' && winwidth('.') > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
   endfunction
   function! MyFileencoding()
-    return winwidth('.') > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
+    return &ft !~? 'vimfiler\|vimshell' && winwidth('.') > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
   endfunction
   function! MyMode()
-    return winwidth('.') > 60 ? lightline#mode() : ''
+    return &ft !~? 'vimfiler\|vimshell' && winwidth('.') > 60 ? lightline#mode() : ''
   endfunction
   let g:airline_left_sep = '⮀'
   let g:airline_left_alt_sep = '⮁'
@@ -224,6 +224,9 @@ NeoBundle 'itchyny/landscape.vim', {'type': 'nosync'}
   let g:airline_theme = 'landscape'
 catch
   colorscheme wombat
+  if exists('g:lightline')
+    let g:lightline.colorscheme = 'wombat'
+  endif
 endtry
 NeoBundleLazy 'xterm-color-table.vim', {'autoload': {'commands': ['XtermColorTable']}}
   " http://www.vim.org/scripts/script.php?script_id=3412
