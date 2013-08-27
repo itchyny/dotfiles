@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/08/26 20:07:24.
+" - * Last Change: 2013/08/27 23:35:35.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -115,7 +115,7 @@ NeoBundle 'itchyny/lightline.vim', {'type': 'nosync'}
     return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
   endfunction
   function! MyReadonly()
-    return &ft !~? 'help\|vimfiler\|gundo' && &ro ? '⭤' : ''
+    return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? '⭤' : ''
   endfunction
   function! MyFilename()
     return ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
@@ -145,7 +145,26 @@ NeoBundle 'itchyny/lightline.vim', {'type': 'nosync'}
     return &ft !~? 'vimfiler\|vimshell' && winwidth('.') > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
   endfunction
   function! MyMode()
-    return &ft !~? 'vimfiler\|vimshell' && winwidth('.') > 60 ? lightline#mode() : ''
+    return winwidth('.') > 60 ? lightline#mode() : ''
+  endfunction
+  augroup LightLineColorscheme
+    autocmd!
+    autocmd ColorScheme * call s:lightline_update()
+  augroup END
+  function! s:lightline_update()
+    if !exists('g:loaded_lightline')
+      return
+    endif
+    try
+      if g:colors_name =~# 'wombat\|solarized\|landscape\|jellybeans\|Tomorrow'
+        let g:lightline.colorscheme = substitute(substitute(g:colors_name, '-', '_', 'g'), '256.*', '', '') .
+              \ (g:colors_name ==# 'solarized' ? '_' . &background : '')
+        call lightline#init()
+        call lightline#colorscheme()
+        call lightline#update()
+      endif
+    catch
+    endtry
   endfunction
   let g:airline_left_sep = '⮀'
   let g:airline_left_alt_sep = '⮁'
@@ -887,7 +906,7 @@ language C
 set nospell
   function! s:autospell()
     let spellbads = [ '^\(\S\+ \+\)\{30,}\S\+[,.]\?$', '\<a\> [aiueo]', '^\$', '\<figure..\?\\', '\\ref{eq:'
-          \ , '^\\end{align}', '[^\~]\\\(eq\)\?ref\>', 'does not [a-z]*s ', 's [a-z][a-z]\+s ', '\<a \S\+s ']
+          \ , '^\\end{align}', '[^\~]\\\(eq\)\?ref\>', 'does not [a-z]*s ', 's [a-z][a-z]\+s ', '\<a \S\+s ', 'in default']
     if !exists('b:autospell_done')
       if search("[^\x01-\x7e]", 'n') == 0 && line('$') > 5
         setlocal spell
