@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/08/28 10:56:43.
+" - * Last Change: 2013/08/28 12:46:15.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -792,7 +792,12 @@ augroup END
 function! SetUTF8Xattr(file)
   let isutf8 = &fileencoding == "utf-8" || (&fileencoding == "" && &encoding == "utf-8")
   if s:ismac && isutf8
-    call vimproc#system("xattr -w com.apple.TextEncoding 'utf-8;134217984' \"".a:file."\" &")
+    let c = "xattr -w com.apple.TextEncoding 'utf-8;134217984' \"".a:file."\" &"
+    if exists('vimproc#system')
+      call vimproc#system(c)
+    else
+      call system(c)
+    endif
   endif
 endfunction
 " }}}
