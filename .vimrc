@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/08/28 09:13:36.
+" - * Last Change: 2013/08/28 10:56:43.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -122,7 +122,7 @@ NeoBundle 'itchyny/lightline.vim', {'type': 'nosync'}
           \ (&ft == 'vimfiler' ? vimfiler#get_status_string() : 
           \  &ft == 'unite' ? unite#get_status_string() : 
           \  &ft == 'vimshell' ? substitute(b:vimshell.current_dir,expand('~'),'~','') : 
-          \ '' != expand('%t') ? expand('%t') : '[No Name]') .
+          \ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
           \ ('' != MyModified() ? ' ' . MyModified() : '')
   endfunction
   function! MyFugitive()
