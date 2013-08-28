@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/08/28 09:04:53.
+" - * Last Change: 2013/08/28 09:05:05.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -568,6 +568,7 @@ NeoBundleLazy 'Shougo/vimfiler', {'autoload': {'commands': ['VimFiler', 'VimFile
     autocmd FileType vimfiler nmap <buffer><expr> e
           \ vimfiler#smart_cursor_map("\<Plug>(vimfiler_cd_file)", "\<Plug>(vimfiler_edit_file)")
     autocmd FileType vimfiler nnoremap <buffer><expr> t <SID>changetime()
+    autocmd FileType vimfiler if filereadable("Icon\r") | silent call delete("Icon\r") | endif
   augroup END
 NeoBundle 'itchyny/vimfiler-preview', {'type': 'nosync'}
   let g:vimfiler_preview_action = 'auto_preview'
