@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/08/28 09:05:05.
+" - * Last Change: 2013/08/28 09:13:36.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -787,12 +787,12 @@ set ambiwidth=double
 " http://d.hatena.ne.jp/uasi/20110523/1306079612
 augroup SetUTF8Xattr
   autocmd!
-  " autocmd BufWritePost * call SetUTF8Xattr(escape(expand("<afile>"), "*[]?{}' "))
+  autocmd BufWritePost * call SetUTF8Xattr(escape(expand("<afile>"), "*[]?{}' "))
 augroup END
 function! SetUTF8Xattr(file)
   let isutf8 = &fileencoding == "utf-8" || (&fileencoding == "" && &encoding == "utf-8")
   if s:ismac && isutf8
-    call system("xattr -w com.apple.TextEncoding 'utf-8;134217984' \"".a:file."\"")
+    call vimproc#system("xattr -w com.apple.TextEncoding 'utf-8;134217984' \"".a:file."\" &")
   endif
 endfunction
 " }}}
