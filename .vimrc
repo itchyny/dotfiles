@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/08/29 17:15:45.
+" - * Last Change: 2013/08/29 21:35:04.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -88,7 +88,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " --------------------------------------------------------------------------------------------------------
 " NeoBundle 'Lokaltog/vim-powerline', {'type': 'nosync'}
 " NeoBundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
-" NeoBundle 'bling/vim-airline'
+NeoBundleLazy 'bling/vim-airline'
 NeoBundle 'itchyny/lightline.vim', {'type': 'nosync'}
   let g:lightline = {
         \ 'colorscheme': 'landscape',
@@ -784,7 +784,7 @@ NeoBundle 'kien/ctrlp.vim'
   let g:ctrlp_show_hidden = 1
   let g:ctrlp_max_depth = 5
   let g:ctrlp_max_files = 300
-  let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|dropbox.cache|DS_Store)$'
+  let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|dropbox.cache|DS_Store|swp)$'
   let g:ctrlp_use_caching = 1
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'scrooloose/nerdtree'
