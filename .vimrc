@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/08/29 16:09:50.
+" - * Last Change: 2013/08/29 17:15:45.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -454,6 +454,25 @@ NeoBundle 'Shougo/unite.vim'
     call unite#custom_default_action('file', 'auto_open')
   endif
   unlet auto_open
+  let eject = {
+        \ 'description': 'eject',
+        \ 'is_selectable': 0,
+        \ }
+  function! eject.func(candidate)
+    try
+      let c = (executable('eject') ? 'eject' : s:ismac ? 'diskutil umount' : '')
+      let d = ' ' . a:candidate.action__path . '&'
+      if strlen(c)
+        echo c . d
+        call system(c . d)
+      endif
+    catch
+    endtry
+  endfunction
+  if exists('*unite#custom_default_action')
+    call unite#custom_action('file', 'eject', eject)
+  endif
+  unlet eject
 NeoBundle 'Shougo/unite-build'
   nnoremap <silent><F5> :<C-u>Unite build -buffer-name=build<CR>
 NeoBundle 'unite-colorscheme'
