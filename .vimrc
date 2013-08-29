@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/08/28 12:46:15.
+" - * Last Change: 2013/08/29 11:46:12.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -88,13 +88,13 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " --------------------------------------------------------------------------------------------------------
 " NeoBundle 'Lokaltog/vim-powerline', {'type': 'nosync'}
 " NeoBundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
-" NeoBundle 'bling/vim-airline', {'type': 'nosync'}
+" NeoBundle 'bling/vim-airline'
 NeoBundle 'itchyny/lightline.vim', {'type': 'nosync'}
   let g:lightline = {
         \ 'colorscheme': 'landscape',
         \ 'mode_map': { 'c': 'NORMAL' },
         \ 'active': {
-        \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ],
+        \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ], ['ctrlpmark'] ],
         \   'right': [[ 'lineinfo', 'syntastic' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype']]
         \ },
         \ 'component_function': {
@@ -107,6 +107,7 @@ NeoBundle 'itchyny/lightline.vim', {'type': 'nosync'}
         \   'fileencoding': 'MyFileencoding',
         \   'mode': 'MyMode',
         \   'syntastic': 'SyntasticStatuslineFlag',
+        \   'ctrlpmark': 'CtrlPMark',
         \ },
         \ 'separator': { 'left': '⮀', 'right': '⮂' },
         \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
@@ -118,6 +119,17 @@ NeoBundle 'itchyny/lightline.vim', {'type': 'nosync'}
     return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? '⭤' : ''
   endfunction
   function! MyFilename()
+    if expand('%:t') == 'ControlP'
+      return g:lightline.ctrlp_prev . ' ' . g:lightline.subseparator.left . ' ' . 
+            \ g:lightline.ctrlp_item . ' ' . g:lightline.subseparator.left . ' ' .
+            \ g:lightline.ctrlp_next
+    endif
+    if expand('%:t') == '__Tagbar__'
+      return g:lightline.fname
+    endif
+    if expand('%:t') =~ '__Gundo'
+      return ''
+    endif
     return ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
           \ (&ft == 'vimfiler' ? vimfiler#get_status_string() : 
           \  &ft == 'unite' ? unite#get_status_string() : 
@@ -127,7 +139,7 @@ NeoBundle 'itchyny/lightline.vim', {'type': 'nosync'}
   endfunction
   function! MyFugitive()
     try
-      if &ft !~? 'vimfiler\|gundo' && exists('*fugitive#head')
+      if expand('%:t') !~? 'Tagbar\|Gundo' && &ft !~? 'vimfiler' && exists('*fugitive#head')
         let _ = fugitive#head()
         return strlen(_) ? '⭠ '._ : ''
       endif
@@ -145,7 +157,37 @@ NeoBundle 'itchyny/lightline.vim', {'type': 'nosync'}
     return &ft !~? 'vimfiler\|vimshell' && winwidth('.') > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
   endfunction
   function! MyMode()
-    return winwidth('.') > 60 ? lightline#mode() : ''
+    let fname = expand('%:t')
+    return fname == '__Tagbar__' ? 'Tagbar' :
+          \ fname == 'ControlP' ? 'CtrlP' :
+          \ fname == '__Gundo__' ? 'Gundo' :
+          \ fname == '__Gundo_Preview__' ? 'Gundo Preview' :
+          \ &ft == 'unite' ? 'Unite' :
+          \ &ft == 'vimfiler' ? 'VimFiler' :
+          \ &ft == 'vimshell' ? 'VimShell' :
+          \ winwidth('.') > 60 ? lightline#mode() : ''
+  endfunction
+  function! CtrlPMark()
+    return expand('%:t') =~ 'ControlP' ? g:lightline.ctrlp_marked : ''
+  endfunction
+  let g:ctrlp_status_func = {
+    \ 'main': 'Function_Name_1',
+    \ 'prog': 'Function_Name_2',
+    \ }
+  function! Function_Name_1(focus, byfname, regex, prev, item, next, marked)
+    let g:lightline.ctrlp_prev = a:prev
+    let g:lightline.ctrlp_item = a:item
+    let g:lightline.ctrlp_next = a:next
+    let g:lightline.ctrlp_marked = a:marked
+    return lightline#statusline(0)
+  endfunction
+  function! Function_Name_2(str)
+    return lightline#statusline(0)
+  endfunction
+  let g:tagbar_status_func = 'TagbarStatusFunc'
+  function! TagbarStatusFunc(current, sort, fname, ...) abort
+      let g:lightline.fname = a:fname
+    return lightline#statusline(0)
   endfunction
   augroup LightLineColorscheme
     autocmd!
@@ -181,7 +223,7 @@ NeoBundle 'itchyny/lightline.vim', {'type': 'nosync'}
   let g:airline_section_b =
         \ '%{airline#extensions#branch#get_head()}' .
         \ '%{""!=airline#extensions#branch#get_head()?("  " . g:airline_left_alt_sep . " "):""}' .
-        \ '%{airline#extensions#readonly#get_mark()}' .
+        \ '%{airline#parts#readonly()}' .
         \ '%t%( %M%)'
   let g:airline_section_c = ''
   let s:sep = " %{get(g:, 'airline_right_alt_sep', '')} "
@@ -717,6 +759,9 @@ NeoBundle 'osyo-manga/vim-anzu'
   let g:anzu_status_format = '%p (%i/%l)'
   let g:anzu_no_match_word = ''
 NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'kien/ctrlp.vim'
+  let g:ctrlp_show_hidden = 1
+NeoBundle 'majutsushi/tagbar'
 NeoBundle 'itchyny/thumbnail.vim', {'type': 'nosync'}
   nnoremap <silent> <Leader>t :<C-u>Thumbnail -here<CR>
   augroup ThumbnailKey
