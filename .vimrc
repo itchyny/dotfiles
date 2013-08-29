@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/08/29 12:50:53.
+" - * Last Change: 2013/08/29 13:28:41.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -139,7 +139,7 @@ NeoBundle 'itchyny/lightline.vim', {'type': 'nosync'}
   endfunction
   function! MyFugitive()
     try
-      if expand('%:t') !~? 'Tagbar\|Gundo' && &ft !~? 'vimfiler' && exists('*fugitive#head')
+      if expand('%:t') !~? 'Tagbar\|Gundo\|NERD' && &ft !~? 'vimfiler' && exists('*fugitive#head')
         let _ = fugitive#head()
         return strlen(_) ? '⭠ '._ : ''
       endif
