@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/08/29 11:46:12.
+" - * Last Change: 2013/08/29 12:16:09.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -120,20 +120,20 @@ NeoBundle 'itchyny/lightline.vim', {'type': 'nosync'}
   endfunction
   function! MyFilename()
     if expand('%:t') == 'ControlP'
-      return g:lightline.ctrlp_prev . ' ' . g:lightline.subseparator.left . ' ' . 
+      return g:lightline.ctrlp_prev . ' ' . g:lightline.subseparator.left . ' ' .
             \ g:lightline.ctrlp_item . ' ' . g:lightline.subseparator.left . ' ' .
             \ g:lightline.ctrlp_next
     endif
     if expand('%:t') == '__Tagbar__'
       return g:lightline.fname
     endif
-    if expand('%:t') =~ '__Gundo'
+    if expand('%:t') =~ '__Gundo\|NERD_tree'
       return ''
     endif
     return ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
-          \ (&ft == 'vimfiler' ? vimfiler#get_status_string() : 
-          \  &ft == 'unite' ? unite#get_status_string() : 
-          \  &ft == 'vimshell' ? substitute(b:vimshell.current_dir,expand('~'),'~','') : 
+          \ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
+          \  &ft == 'unite' ? unite#get_status_string() :
+          \  &ft == 'vimshell' ? substitute(b:vimshell.current_dir,expand('~'),'~','') :
           \ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
           \ ('' != MyModified() ? ' ' . MyModified() : '')
   endfunction
@@ -162,6 +162,7 @@ NeoBundle 'itchyny/lightline.vim', {'type': 'nosync'}
           \ fname == 'ControlP' ? 'CtrlP' :
           \ fname == '__Gundo__' ? 'Gundo' :
           \ fname == '__Gundo_Preview__' ? 'Gundo Preview' :
+          \ fname =~ 'NERD_tree' ? 'NERDTree' :
           \ &ft == 'unite' ? 'Unite' :
           \ &ft == 'vimfiler' ? 'VimFiler' :
           \ &ft == 'vimshell' ? 'VimShell' :
@@ -241,7 +242,7 @@ NeoBundle 'itchyny/lightline.vim', {'type': 'nosync'}
   endfunction
   augroup AirLineForce
     autocmd!
-    autocmd VimEnter * 
+    autocmd VimEnter *
           \ if exists('g:airline_statusline_funcrefs')
           \|  call add(g:airline_statusline_funcrefs, function('AirLineForce'))
           \|endif
@@ -762,6 +763,7 @@ NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'kien/ctrlp.vim'
   let g:ctrlp_show_hidden = 1
 NeoBundle 'majutsushi/tagbar'
+NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'itchyny/thumbnail.vim', {'type': 'nosync'}
   nnoremap <silent> <Leader>t :<C-u>Thumbnail -here<CR>
   augroup ThumbnailKey
