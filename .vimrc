@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/08/29 14:23:41.
+" - * Last Change: 2013/08/29 16:09:50.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -763,6 +763,10 @@ NeoBundle 'osyo-manga/vim-anzu'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'kien/ctrlp.vim'
   let g:ctrlp_show_hidden = 1
+  let g:ctrlp_max_depth = 5
+  let g:ctrlp_max_files = 300
+  let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|dropbox.cache|DS_Store)$'
+  let g:ctrlp_use_caching = 1
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'itchyny/thumbnail.vim', {'type': 'nosync'}
