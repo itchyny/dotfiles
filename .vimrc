@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/08/29 12:16:09.
+" - * Last Change: 2013/08/29 12:28:38.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -213,8 +213,7 @@ NeoBundle 'itchyny/lightline.vim', {'type': 'nosync'}
   let g:airline_left_alt_sep = '⮁'
   let g:airline_right_sep = '⮂'
   let g:airline_right_alt_sep = '⮃'
-  let g:airline_branch_prefix = '⭠ '
-  let g:airline#extensions#readonly#symbol = '⭤ '
+  let g:airline_symbols = { 'branch': '⭠', 'readonly': '⭤ ' }
   let g:airline_linecolumn_prefix = ''
   let g:airline#extensions#hunks#non_zero_only = 1
   let g:airline#extensions#whitespace#enabled = 0
