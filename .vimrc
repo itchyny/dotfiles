@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/08/29 13:28:41.
+" - * Last Change: 2013/08/29 14:14:38.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -159,7 +159,7 @@ NeoBundle 'itchyny/lightline.vim', {'type': 'nosync'}
   function! MyMode()
     let fname = expand('%:t')
     return fname == '__Tagbar__' ? 'Tagbar' :
-          \ fname == 'ControlP' ? 'CtrlP' :
+          \ fname == 'ControlP' ? 'CtrlP' . ' ' . g:lightline.subseparator.left . ' ' . g:lightline.ctrlp_item :
           \ fname == '__Gundo__' ? 'Gundo' :
           \ fname == '__Gundo_Preview__' ? 'Gundo Preview' :
           \ fname =~ 'NERD_tree' ? 'NERDTree' :
