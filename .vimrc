@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/08/29 12:28:38.
+" - * Last Change: 2013/08/29 12:50:53.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -172,17 +172,17 @@ NeoBundle 'itchyny/lightline.vim', {'type': 'nosync'}
     return expand('%:t') =~ 'ControlP' ? g:lightline.ctrlp_marked : ''
   endfunction
   let g:ctrlp_status_func = {
-    \ 'main': 'Function_Name_1',
-    \ 'prog': 'Function_Name_2',
+    \ 'main': 'CtrlPStatusFunc_1',
+    \ 'prog': 'CtrlPStatusFunc_2',
     \ }
-  function! Function_Name_1(focus, byfname, regex, prev, item, next, marked)
+  function! CtrlPStatusFunc_1(focus, byfname, regex, prev, item, next, marked)
     let g:lightline.ctrlp_prev = a:prev
     let g:lightline.ctrlp_item = a:item
     let g:lightline.ctrlp_next = a:next
     let g:lightline.ctrlp_marked = a:marked
     return lightline#statusline(0)
   endfunction
-  function! Function_Name_2(str)
+  function! CtrlPStatusFunc_2(str)
     return lightline#statusline(0)
   endfunction
   let g:tagbar_status_func = 'TagbarStatusFunc'
