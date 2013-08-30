@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/08/30 12:45:35.
+" - * Last Change: 2013/08/30 23:49:58.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -675,6 +675,12 @@ NeoBundleLazy 'Shougo/vimfiler', {'autoload': {'commands': ['VimFiler', 'VimFile
   augroup END
 NeoBundle 'itchyny/vimfiler-preview', {'type': 'nosync'}
   let g:vimfiler_preview_action = 'auto_preview'
+  let bundle = neobundle#get('vimfiler-preview')
+  function! bundle.hooks.on_post_source(bundle)
+    if exists('*unite#custom_action')
+      call unite#custom_action('file', 'auto_preview', g:vimfiler_preview)
+    endif
+  endfunction
 NeoBundle 'Shougo/vinarise'
 endif
 NeoBundleLazy 'eagletmt/ghci-vim', {'autoload': {'filetypes': ['haskell']}}
