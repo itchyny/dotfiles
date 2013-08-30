@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/08/29 21:42:06.
+" - * Last Change: 2013/08/30 11:53:30.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -119,20 +119,16 @@ NeoBundle 'itchyny/lightline.vim', {'type': 'nosync'}
     return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? '⭤' : ''
   endfunction
   function! MyFilename()
-    if expand('%:t') == 'ControlP'
-      return g:lightline.ctrlp_item
-    endif
-    if expand('%:t') == '__Tagbar__'
-      return g:lightline.fname
-    endif
-    if expand('%:t') =~ '__Gundo\|NERD_tree'
-      return ''
-    endif
-    return ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
-          \ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
-          \  &ft == 'unite' ? unite#get_status_string() :
-          \  &ft == 'vimshell' ? substitute(b:vimshell.current_dir,expand('~'),'~','') :
-          \ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
+    let fname = expand('%:t')
+    return fname == 'ControlP' ? g:lightline.ctrlp_item :
+          \ fname == '__Tagbar__' ? g:lightline.fname :
+          \ fname =~ '__Gundo\|NERD_tree' ? '' :
+          \ &ft == 'vimfiler' ? vimfiler#get_status_string() :
+          \ &ft == 'unite' ? unite#get_status_string() :
+          \ &ft == 'vimshell' ? substitute(b:vimshell.current_dir,expand('~'),'~','') :
+          \ &ft == 'dictionary' ? (exists('b:dictionary.input') ? b:dictionary.input : '') :
+          \ ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
+          \ ('' != fname ? fname : '[No Name]') .
           \ ('' != MyModified() ? ' ' . MyModified() : '')
   endfunction
   function! MyFugitive()
@@ -164,20 +160,26 @@ NeoBundle 'itchyny/lightline.vim', {'type': 'nosync'}
           \ &ft == 'unite' ? 'Unite' :
           \ &ft == 'vimfiler' ? 'VimFiler' :
           \ &ft == 'vimshell' ? 'VimShell' :
+          \ &ft == 'dictionary' ? 'Dictionary' :
           \ winwidth('.') > 60 ? lightline#mode() : ''
   endfunction
   function! CtrlPMark()
-    return expand('%:t') =~ 'ControlP' ?
-          \ g:lightline.ctrlp_prev . ' ' . g:lightline.subseparator.left . ' ' .
+    if expand('%:t') =~ 'ControlP'
+      call lightline#link('iR'[g:lightline.ctrlp_regex])
+      return g:lightline.ctrlp_prev . ' ' . g:lightline.subseparator.left . ' ' .
           \ g:lightline.ctrlp_item . ' ' . g:lightline.subseparator.left . ' ' .
           \ g:lightline.ctrlp_next . ' ' . g:lightline.subseparator.left . ' ' .
-          \ g:lightline.ctrlp_marked : ''
+          \ g:lightline.ctrlp_marked
+    else
+      return ''
+    endif
   endfunction
   let g:ctrlp_status_func = {
     \ 'main': 'CtrlPStatusFunc_1',
     \ 'prog': 'CtrlPStatusFunc_2',
     \ }
   function! CtrlPStatusFunc_1(focus, byfname, regex, prev, item, next, marked)
+    let g:lightline.ctrlp_regex = a:regex
     let g:lightline.ctrlp_prev = a:prev
     let g:lightline.ctrlp_item = a:item
     let g:lightline.ctrlp_next = a:next
@@ -286,7 +288,7 @@ NeoBundle 'itchyny/landscape.vim', {'type': 'nosync'}
   let g:Powerline_colorscheme = 'landscape'
   let g:airline_theme = 'landscape'
 catch
-  colorscheme wombat
+  colorscheme wombat256
   if exists('g:lightline')
     let g:lightline.colorscheme = 'wombat'
   endif
@@ -427,15 +429,11 @@ NeoBundle 'Shougo/unite.vim'
   augroup END
   autocmd ESC FileType unite nmap <silent> <buffer> <ESC><ESC> <Plug>(unite_exit)
   let s:startfiletypes = '.*\.\(exe\|png\|gif\|jpg\|jpeg\|bmp\|eps\|pdf\|mp3\|mp4\|avi\|mkv\|tiff\)$'
-  if exists('*unite#custom_source')
-    call unite#custom_source('file', 'ignore_pattern'
-          \, '.*\.\(o\|exe\|dll\|bak\|sw[po]\|hi\|fff\|aux\|toc\|bbl\|blg\|DS_Store\)$')
-  endif
-  let auto_open = {
+  let s:auto_open = {
         \ 'description' : 'edit or open files',
         \ 'is_selectable' : 1,
         \ }
-  function! auto_open.func(candidates)
+  function! s:auto_open.func(candidates)
     try
       for candidate in a:candidates
         if candidate.word =~? s:startfiletypes
@@ -447,18 +445,11 @@ NeoBundle 'Shougo/unite.vim'
     catch
     endtry
   endfunction
-  if exists('*unite#custom_action')
-    call unite#custom_action('file', 'auto_open', auto_open)
-  endif
-  if exists('*unite#custom_default_action')
-    call unite#custom_default_action('file', 'auto_open')
-  endif
-  unlet auto_open
-  let eject = {
+  let s:eject = {
         \ 'description': 'eject',
         \ 'is_selectable': 0,
         \ }
-  function! eject.func(candidate)
+  function! s:eject.func(candidate)
     try
       let c = (executable('eject') ? 'eject' : s:ismac ? 'diskutil umount' : '')
       let d = ' ' . a:candidate.action__path . '&'
@@ -469,19 +460,31 @@ NeoBundle 'Shougo/unite.vim'
     catch
     endtry
   endfunction
-  if exists('*unite#custom_default_action')
-    call unite#custom_action('file', 'eject', eject)
-  endif
-  unlet eject
+  let bundle = neobundle#get('unite.vim')
+  function! bundle.hooks.on_post_source(bundle)
+    if exists('*unite#custom_source')
+      call unite#custom_source('file', 'ignore_pattern'
+            \, '.*\.\(o\|exe\|dll\|bak\|sw[po]\|hi\|fff\|aux\|toc\|bbl\|blg\|DS_Store\)$')
+    endif
+    if exists('*unite#custom_action')
+      call unite#custom_action('file', 'auto_open', s:auto_open)
+    endif
+    if exists('*unite#custom_default_action')
+      call unite#custom_default_action('file', 'auto_open')
+    endif
+    if exists('*unite#custom_default_action')
+      call unite#custom_action('file', 'eject', s:eject)
+    endif
+    if exists('*unite#custom_source')
+      call unite#custom_source('haddock,hoogle', 'max_candidates', 20)
+    endif
+  endfunction
 NeoBundle 'Shougo/unite-build'
   nnoremap <silent><F5> :<C-u>Unite build -buffer-name=build<CR>
 NeoBundle 'unite-colorscheme'
 NeoBundle 'ujihisa/vim-ref'
 if executable('hoogle')
 NeoBundle 'eagletmt/unite-haddock'
-  if exists('*unite#custom_source')
-    call unite#custom_source('haddock,hoogle', 'max_candidates', 20)
-  endif
   nnoremap <Leader>h :<C-u>Unite hoogle -buffer-name=hoogle<CR>
   " --| Requirement: hoogle
   " --|   $ cabal install hoogle
@@ -738,7 +741,7 @@ NeoBundle 'tComment'
   let g:tcommentMapLeader1 = ''
 NeoBundleLazy 'Align', {'autoload': {'commands': ['Align']}}
 NeoBundle 'errormarker.vim'
-NeoBundle 'mattn/calendar-vim'
+NeoBundleLazy 'mattn/calendar-vim', {'autoload': {'commands': ['Calendar', 'CalendarH', 'CalendarT']}}
   autocmd ESC FileType calendar nnoremap <silent> <buffer> <ESC><ESC> :<C-u>q<CR>
   nnoremap <silent> <Leader>c :<C-u>CalendarT<CR>
   let g:calendar_keys = { 'goto_next_year': '<Down>', 'goto_prev_year': '<Up>'}
@@ -755,7 +758,7 @@ NeoBundleLazy 'VimCalc', {'type': 'nosync', 'autoload': {'commands': ['Calc']}}
   autocmd ESC FileType vimcalc nnoremap <silent> <buffer> <ESC><ESC><ESC> :<C-u>q<CR>
   nnoremap <silent> <Leader>a :<C-u>Calc<CR>
 endif
-NeoBundle 'kana/vim-fakeclip'
+NeoBundleLazy 'kana/vim-fakeclip'
 NeoBundle 'gregsexton/MatchTag'
 NeoBundle 'matchit.zip'
 NeoBundleLazy 'thinca/vim-scouter', {'autoload': {'commands': ['Scouter']}}
@@ -781,6 +784,7 @@ NeoBundle 'osyo-manga/vim-anzu'
   let g:anzu_no_match_word = ''
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'kien/ctrlp.vim'
+  let g:ctrlp_cmd = 'CtrlPMRUFiles'
   let g:ctrlp_show_hidden = 1
   let g:ctrlp_max_depth = 5
   let g:ctrlp_max_files = 300
@@ -789,9 +793,9 @@ NeoBundle 'kien/ctrlp.vim'
     \ 'file': '\v\.(exe|so|dll|swp|pdf|DS_Store)$',
     \ }
   let g:ctrlp_use_caching = 1
-NeoBundle 'majutsushi/tagbar'
-NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'itchyny/thumbnail.vim', {'type': 'nosync'}
+NeoBundleLazy 'majutsushi/tagbar', {'autoload': {'commands': ['Tagbar']}}
+NeoBundleLazy 'scrooloose/nerdtree', {'autoload': {'commands': ['NERDTree']}}
+NeoBundleLazy 'itchyny/thumbnail.vim', {'type': 'nosync', 'autoload': {'commands': ['Thumbnail']}}
   nnoremap <silent> <Leader>t :<C-u>Thumbnail -here<CR>
   augroup ThumbnailKey
     autocmd!
@@ -799,9 +803,9 @@ NeoBundle 'itchyny/thumbnail.vim', {'type': 'nosync'}
     autocmd FileType thumbnail nmap <buffer> V <Plug>(thumbnail_start_visual)
     autocmd FileType thumbnail call clearmatches()
   augroup END
-NeoBundle 'itchyny/zcalendar.vim', {'type': 'nosync'}
+NeoBundleLazy 'itchyny/zcalendar.vim', {'type': 'nosync', 'autoload': {'commands': ['ZCalendar']}}
   nnoremap <silent> <Leader>z :<C-u>ZCalendar<CR>
-NeoBundle 'itchyny/dictionary.vim', {'type': 'nosync'}
+NeoBundleLazy 'itchyny/dictionary.vim', {'type': 'nosync', 'autoload': {'commands': ['Dictionary']}}
   nnoremap <silent> <Leader>y :<C-u>Dictionary<CR>
   let g:dictionary_executable_path = '~/Dropbox/bin/'
 NeoBundle 'vim-jp/vital.vim'
@@ -1038,10 +1042,7 @@ set statusline=%{expand('%:p:t')}\ %<[%{expand('%:p:h')}]%=\ %m%r%y%w[%{&fenc!='
 " }}}
 
 " Color {{{
-try
-  syntax enable
-catch
-endtry
+syntax enable
 set background=dark
 set synmaxcol=9999
 if !has('gui_running')
