@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/08/30 23:49:58.
+" - * Last Change: 2013/08/31 02:10:49.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -37,6 +37,9 @@ function! s:safeexecute(s, ...)
       endtry
     endtry
   endif
+endfunction
+function! CompleteNothing(...)
+  return []
 endfunction
 " }}}
 
@@ -95,7 +98,7 @@ NeoBundle 'itchyny/lightline.vim', {'type': 'nosync'}
         \ 'mode_map': { 'c': 'NORMAL' },
         \ 'active': {
         \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ], ['ctrlpmark'] ],
-        \   'right': [[ 'lineinfo', 'syntastic' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype']]
+        \   'right': [ [ 'lineinfo', 'syntastic' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype'] ]
         \ },
         \ 'component_function': {
         \   'modified': 'MyModified',
@@ -293,7 +296,7 @@ catch
     let g:lightline.colorscheme = 'wombat'
   endif
 endtry
-NeoBundleLazy 'xterm-color-table.vim', {'autoload': {'commands': ['XtermColorTable']}}
+NeoBundleLazy 'xterm-color-table.vim', {'autoload': {'commands': [{'name': 'XtermColorTable', 'complete': 'customlist,CompleteNothing'}]}}
   " http://www.vim.org/scripts/script.php?script_id=3412
 " }}}
 
@@ -587,7 +590,7 @@ NeoBundle 'thinca/vim-quickrun'
   autocmd ESC FileType quickrun nnoremap <silent> <buffer> <ESC><ESC> <ESC>:q!<CR>
   autocmd ESC FileType quickrun vnoremap <silent> <buffer> <ESC><ESC> <ESC>:q!<CR>
 if s:nosudo
-NeoBundleLazy 'Shougo/vimfiler', {'autoload': {'commands': ['VimFiler', 'VimFilerBufferDir']}}
+NeoBundle 'Shougo/vimfiler'
   let g:vimfiler_as_default_explorer = 1
   let g:vimfiler_sort_type = 'TIME'
   let g:vimfiler_safe_mode_by_default = 0
@@ -782,7 +785,7 @@ NeoBundle 'tComment'
   nnoremap <silent> __ :TComment<CR>
   vnoremap <silent> __ :TComment<CR>
   let g:tcommentMapLeader1 = ''
-NeoBundleLazy 'Align', {'autoload': {'commands': ['Align']}}
+NeoBundleLazy 'Align', {'autoload': {'commands': [{'name': 'Align', 'complete': 'customlist,CompleteNothing'}]}}
 NeoBundle 'errormarker.vim'
 NeoBundleLazy 'mattn/calendar-vim', {'autoload': {'commands': ['Calendar', 'CalendarH', 'CalendarT']}}
   autocmd ESC FileType calendar nnoremap <silent> <buffer> <ESC><ESC> :<C-u>q<CR>
@@ -792,11 +795,11 @@ NeoBundleLazy 'mattn/calendar-vim', {'autoload': {'commands': ['Calendar', 'Cale
 NeoBundle 'autodate.vim'
   let g:autodate_format = '%Y/%m/%d %H:%M:%S'
 if has('python')
-NeoBundleLazy 'sjl/gundo.vim', {'autoload': {'commands': ['GundoToggle']}}
+NeoBundleLazy 'sjl/gundo.vim', {'autoload': {'commands': [{'name': 'GundoToggle', 'complete': 'customlist,CompleteNothing'}]}}
   " --| Requirement: +python
   nnoremap <Leader>g :<C-u>GundoToggle<CR>
   autocmd ESC FileType gundo nnoremap <silent> <buffer> <ESC><ESC> :<C-u>GundoToggle<CR>
-NeoBundleLazy 'VimCalc', {'type': 'nosync', 'autoload': {'commands': ['Calc']}}
+NeoBundleLazy 'VimCalc', {'type': 'nosync', 'autoload': {'commands': [{'name': 'Calc', 'complete': 'customlist,CompleteNothing'}]}}
   " --| Requirement: +python
   autocmd ESC FileType vimcalc nnoremap <silent> <buffer> <ESC><ESC><ESC> :<C-u>q<CR>
   nnoremap <silent> <Leader>a :<C-u>Calc<CR>
@@ -804,7 +807,7 @@ endif
 NeoBundleLazy 'kana/vim-fakeclip'
 NeoBundle 'gregsexton/MatchTag'
 NeoBundle 'matchit.zip'
-NeoBundleLazy 'thinca/vim-scouter', {'autoload': {'commands': ['Scouter']}}
+NeoBundleLazy 'thinca/vim-scouter', {'autoload': {'commands': [{'name': 'Scouter', 'complete': 'customlist,CompleteNothing'}]}}
 NeoBundle 'thinca/vim-ambicmd'
   cnoremap <expr><SPACE> ambicmd#expand("\<SPACE>")
 NeoBundle 'motemen/git-vim'
@@ -836,9 +839,9 @@ NeoBundle 'kien/ctrlp.vim'
     \ 'file': '\v\.(exe|so|dll|swp|pdf|DS_Store)$',
     \ }
   let g:ctrlp_use_caching = 1
-NeoBundleLazy 'majutsushi/tagbar', {'autoload': {'commands': ['Tagbar']}}
-NeoBundleLazy 'scrooloose/nerdtree', {'autoload': {'commands': ['NERDTree']}}
-NeoBundleLazy 'itchyny/thumbnail.vim', {'type': 'nosync', 'autoload': {'commands': ['Thumbnail']}}
+NeoBundleLazy 'majutsushi/tagbar', {'autoload': {'commands': [{'name': 'Tagbar', 'complete': 'customlist,CompleteNothing'}]}}
+NeoBundleLazy 'scrooloose/nerdtree', {'autoload': {'commands': [{'name': 'NERDTree', 'complete': 'dir'}]}}
+NeoBundleLazy 'itchyny/thumbnail.vim', {'type': 'nosync', 'autoload': {'commands': [{'name': 'Thumbnail', 'complete': 'customlist,thumbnail#complete'}]}}
   nnoremap <silent> <Leader>t :<C-u>Thumbnail -here<CR>
   augroup ThumbnailKey
     autocmd!
@@ -846,9 +849,9 @@ NeoBundleLazy 'itchyny/thumbnail.vim', {'type': 'nosync', 'autoload': {'commands
     autocmd FileType thumbnail nmap <buffer> V <Plug>(thumbnail_start_visual)
     autocmd FileType thumbnail call clearmatches()
   augroup END
-NeoBundleLazy 'itchyny/zcalendar.vim', {'type': 'nosync', 'autoload': {'commands': ['ZCalendar']}}
+NeoBundleLazy 'itchyny/zcalendar.vim', {'type': 'nosync', 'autoload': {'commands': [{'name': 'ZCalendar', 'complete': 'customlist,zcalendar#complete'}]}}
   nnoremap <silent> <Leader>z :<C-u>ZCalendar<CR>
-NeoBundleLazy 'itchyny/dictionary.vim', {'type': 'nosync', 'autoload': {'commands': ['Dictionary']}}
+NeoBundleLazy 'itchyny/dictionary.vim', {'type': 'nosync', 'autoload': {'commands': [{'name': 'Dictionary', 'complete': 'customlist,dictionary#complete'}]}}
   nnoremap <silent> <Leader>y :<C-u>Dictionary<CR>
   let g:dictionary_executable_path = '~/Dropbox/bin/'
 NeoBundle 'vim-jp/vital.vim'
