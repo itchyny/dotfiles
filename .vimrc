@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/08/30 12:43:43.
+" - * Last Change: 2013/08/30 12:45:35.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -643,7 +643,7 @@ NeoBundleLazy 'Shougo/vimfiler', {'autoload': {'commands': ['VimFiler', 'VimFile
     let atime = substitute(atime, '-', '/', 'g')
     try
       lcd `=vimfiler_current_dir`
-      let newtime = inputsecret(printf('New time: %s -> ', atime))
+      let newtime = input(printf('New time: %s -> ', atime))
       redraw
       if newtime == ''
         let newtime = atime
