@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/08/30 11:53:30.
+" - * Last Change: 2013/08/30 12:43:43.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -451,14 +451,51 @@ NeoBundle 'Shougo/unite.vim'
         \ }
   function! s:eject.func(candidate)
     try
-      let c = (executable('eject') ? 'eject' : s:ismac ? 'diskutil umount' : '')
-      let d = ' ' . a:candidate.action__path . '&'
+      let c = 'sudo ' . (executable('eject') ? 'eject' : s:ismac ? 'diskutil umount' : '')
+            \ . ' ' . a:candidate.action__path
       if strlen(c)
-        echo c . d
-        call system(c . d)
+        let s:eject.path = a:candidate.action__path
+        let s:eject.count = 0
+        augroup Eject
+          autocmd!
+          autocmd CursorHold,CursorHoldI * call s:eject.check(s:eject.path)
+        augroup END
+        let s:eject.proc = vimproc#pgroup_open(c)
+        call s:eject.proc.stdin.close()
+        call s:eject.proc.stderr.close()
       endif
     catch
     endtry
+  endfunction
+  function! s:eject.check(path)
+    if !isdirectory(a:path)
+      redraw | echo a:path . ' ejected... done'
+      try
+        call s:eject.proc.stdout.close()
+        call s:eject.proc.stderr.close()
+        call s:eject.proc.waitpid()
+      catch
+      endtry
+      augroup Eject
+        autocmd!
+      augroup END
+    elseif s:eject.count < 500
+      let result = split(s:eject.proc.stdout.read(), "\n")
+      if len(result) && result[0] =~? 'password'
+        augroup Eject
+          autocmd!
+        augroup END
+        let pass = inputsecret(result[0])
+        call s:eject.proc.stdin.write(pass)
+        augroup Eject
+          autocmd!
+          autocmd CursorHold,CursorHoldI * call s:eject.check(s:eject.path)
+        augroup END
+      else
+        let s:eject.count += 1
+        silent call feedkeys(mode() ==# 'i' ? "\<C-g>\<ESC>" : "g\<ESC>", 'n')
+      endif
+    endif
   endfunction
   let bundle = neobundle#get('unite.vim')
   function! bundle.hooks.on_post_source(bundle)
@@ -606,7 +643,7 @@ NeoBundleLazy 'Shougo/vimfiler', {'autoload': {'commands': ['VimFiler', 'VimFile
     let atime = substitute(atime, '-', '/', 'g')
     try
       lcd `=vimfiler_current_dir`
-      let newtime = input(printf('New time: %s -> ', atime))
+      let newtime = inputsecret(printf('New time: %s -> ', atime))
       redraw
       if newtime == ''
         let newtime = atime
