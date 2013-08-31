@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/08/31 02:10:49.
+" - * Last Change: 2013/08/31 19:29:42.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -89,8 +89,8 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 " Powerline {{{
 " --------------------------------------------------------------------------------------------------------
-" NeoBundle 'Lokaltog/vim-powerline', {'type': 'nosync'}
-" NeoBundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+NeoBundleLazy 'Lokaltog/vim-powerline', {'type': 'nosync'}
+NeoBundleLazy 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 NeoBundleLazy 'bling/vim-airline'
 NeoBundle 'itchyny/lightline.vim', {'type': 'nosync'}
   let g:lightline = {
@@ -116,10 +116,10 @@ NeoBundle 'itchyny/lightline.vim', {'type': 'nosync'}
         \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
         \ }
   function! MyModified()
-    return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+    return &ft =~ 'help' ? '' : &modified ? '+' : &modifiable ? '' : '-'
   endfunction
   function! MyReadonly()
-    return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? '⭤' : ''
+    return &ft !~? 'help' && &readonly ? '⭤' : ''
   endfunction
   function! MyFilename()
     let fname = expand('%:t')
@@ -169,10 +169,8 @@ NeoBundle 'itchyny/lightline.vim', {'type': 'nosync'}
   function! CtrlPMark()
     if expand('%:t') =~ 'ControlP'
       call lightline#link('iR'[g:lightline.ctrlp_regex])
-      return g:lightline.ctrlp_prev . ' ' . g:lightline.subseparator.left . ' ' .
-          \ g:lightline.ctrlp_item . ' ' . g:lightline.subseparator.left . ' ' .
-          \ g:lightline.ctrlp_next . ' ' . g:lightline.subseparator.left . ' ' .
-          \ g:lightline.ctrlp_marked
+      return lightline#concatenate([g:lightline.ctrlp_prev, g:lightline.ctrlp_item
+            \ , g:lightline.ctrlp_next], 0)
     else
       return ''
     endif
@@ -186,7 +184,6 @@ NeoBundle 'itchyny/lightline.vim', {'type': 'nosync'}
     let g:lightline.ctrlp_prev = a:prev
     let g:lightline.ctrlp_item = a:item
     let g:lightline.ctrlp_next = a:next
-    let g:lightline.ctrlp_marked = a:marked
     return lightline#statusline(0)
   endfunction
   function! CtrlPStatusFunc_2(str)
@@ -305,6 +302,7 @@ NeoBundleLazy 'xterm-color-table.vim', {'autoload': {'commands': [{'name': 'Xter
 if s:nosudo
 if has('lua') && v:version > 703
 NeoBundle 'Shougo/neocomplete.vim'
+NeoBundleLazy 'Shougo/neocomplcache'
   let g:neocomplete#enable_at_startup = 1
   let g:neocomplete#enable_smart_case = 1
   " let g:neocomplete#enable_cursor_hold_i = 1
@@ -336,6 +334,7 @@ NeoBundle 'Shougo/neocomplete.vim'
   endfunction
 else
 NeoBundle 'Shougo/neocomplcache'
+NeoBundleLazy 'Shougo/neocomplete.vim'
   let g:neocomplcache_enable_at_startup = 1
   let g:neocomplcache_enable_smart_case = 1
   let g:neocomplcache_enable_underbar_completion = 1
@@ -459,13 +458,15 @@ NeoBundle 'Shougo/unite.vim'
       if strlen(c)
         let s:eject.path = a:candidate.action__path
         let s:eject.count = 0
-        augroup Eject
-          autocmd!
-          autocmd CursorHold,CursorHoldI * call s:eject.check(s:eject.path)
-        augroup END
-        let s:eject.proc = vimproc#pgroup_open(c)
-        call s:eject.proc.stdin.close()
-        call s:eject.proc.stderr.close()
+        exe 'VimShellInteractive --split="split | resize 20" ' . c
+        " augroup Eject
+        "   autocmd!
+        "   autocmd CursorHold,CursorHoldI * call s:eject.check(s:eject.path)
+        " augroup END
+        " new
+        " let s:eject.proc = vimproc#pgroup_open(c)
+        " call s:eject.proc.stdin.close()
+        " call s:eject.proc.stderr.close()
       endif
     catch
     endtry
@@ -489,7 +490,7 @@ NeoBundle 'Shougo/unite.vim'
           autocmd!
         augroup END
         let pass = inputsecret(result[0])
-        call s:eject.proc.stdin.write(pass)
+        call s:eject.proc.stdin.write(pass . "\<NIL>")
         augroup Eject
           autocmd!
           autocmd CursorHold,CursorHoldI * call s:eject.check(s:eject.path)
@@ -810,7 +811,6 @@ NeoBundle 'matchit.zip'
 NeoBundleLazy 'thinca/vim-scouter', {'autoload': {'commands': [{'name': 'Scouter', 'complete': 'customlist,CompleteNothing'}]}}
 NeoBundle 'thinca/vim-ambicmd'
   cnoremap <expr><SPACE> ambicmd#expand("\<SPACE>")
-NeoBundle 'motemen/git-vim'
 NeoBundle 'terryma/vim-multiple-cursors'
   let g:multi_cursor_use_default_mapping = 0
   let g:multi_cursor_next_key = "\<C-g>"
