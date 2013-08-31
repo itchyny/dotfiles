@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/08/31 20:15:05.
+" - * Last Change: 2013/08/31 22:52:14.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -124,7 +124,7 @@ NeoBundle 'itchyny/lightline.vim', {'type': 'nosync'}
           \ &ft == 'dictionary' ? (exists('b:dictionary.input') ? b:dictionary.input : '') :
           \ (&readonly ? '⭤ ' : '') .
           \ ('' != fname ? fname : '[No Name]') .
-          \ (!&modified || !&modifiable ? (&modified ? ' +' : &modifiable ? '' : ' -')  : '')
+          \ (&modified ? ' +' : &modifiable ? '' : ' -')
   endfunction
   function! MyFugitive()
     try
