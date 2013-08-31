@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/08/31 19:29:42.
+" - * Last Change: 2013/08/31 20:15:05.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -101,8 +101,6 @@ NeoBundle 'itchyny/lightline.vim', {'type': 'nosync'}
         \   'right': [ [ 'lineinfo', 'syntastic' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype'] ]
         \ },
         \ 'component_function': {
-        \   'modified': 'MyModified',
-        \   'readonly': 'MyReadonly',
         \   'fugitive': 'MyFugitive',
         \   'filename': 'MyFilename',
         \   'fileformat': 'MyFileformat',
@@ -115,12 +113,6 @@ NeoBundle 'itchyny/lightline.vim', {'type': 'nosync'}
         \ 'separator': { 'left': '⮀', 'right': '⮂' },
         \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
         \ }
-  function! MyModified()
-    return &ft =~ 'help' ? '' : &modified ? '+' : &modifiable ? '' : '-'
-  endfunction
-  function! MyReadonly()
-    return &ft !~? 'help' && &readonly ? '⭤' : ''
-  endfunction
   function! MyFilename()
     let fname = expand('%:t')
     return fname == 'ControlP' ? g:lightline.ctrlp_item :
@@ -130,9 +122,9 @@ NeoBundle 'itchyny/lightline.vim', {'type': 'nosync'}
           \ &ft == 'unite' ? unite#get_status_string() :
           \ &ft == 'vimshell' ? substitute(b:vimshell.current_dir,expand('~'),'~','') :
           \ &ft == 'dictionary' ? (exists('b:dictionary.input') ? b:dictionary.input : '') :
-          \ ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
+          \ (&readonly ? '⭤ ' : '') .
           \ ('' != fname ? fname : '[No Name]') .
-          \ ('' != MyModified() ? ' ' . MyModified() : '')
+          \ (!&modified || !&modifiable ? (&modified ? ' +' : &modifiable ? '' : ' -')  : '')
   endfunction
   function! MyFugitive()
     try
