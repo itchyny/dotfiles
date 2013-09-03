@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/08/31 22:52:14.
+" - * Last Change: 2013/09/03 14:32:28.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -285,6 +285,7 @@ catch
     let g:lightline.colorscheme = 'wombat'
   endif
 endtry
+  let g:solarized_termcolors = 256
 NeoBundleLazy 'xterm-color-table.vim', {'autoload': {'commands': [{'name': 'XtermColorTable', 'complete': 'customlist,CompleteNothing'}]}}
   " http://www.vim.org/scripts/script.php?script_id=3412
 " }}}
@@ -515,6 +516,7 @@ NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/unite-build'
   nnoremap <silent><F5> :<C-u>Unite build -buffer-name=build<CR>
 NeoBundle 'unite-colorscheme'
+NeoBundle 'osyo-manga/unite-highlight'
 NeoBundle 'ujihisa/vim-ref'
 if executable('hoogle')
 NeoBundle 'eagletmt/unite-haddock'
