@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/09/03 14:32:28.
+" - * Last Change: 2013/09/07 23:16:28.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -44,7 +44,7 @@ endfunction
 " }}}
 
 " Bundles {{{
-let $VIM = $HOME.'/.vim'
+let $VIM = expand('~/.vim')
 let $BUNDLE = $VIM.'/bundle'
 let s:neobundle_dir = $BUNDLE.'/neobundle.vim'
 if !isdirectory(s:neobundle_dir)
@@ -80,7 +80,9 @@ if !isdirectory(s:neobundle_dir)
     echo 'git not found! Sorry, this .vimrc cannot be completely used without git.'
   endif
 else
-execute 'set runtimepath+='.expand(s:neobundle_dir)
+if has('vim_starting')
+  execute 'set runtimepath+='.expand(s:neobundle_dir)
+endif
 call neobundle#rc(expand($BUNDLE))
 NeoBundleFetch 'Shougo/neobundle.vim'
   " nnoremap <silent> <S-b><S-b> :<C-u>NeoBundleUpdate<CR>
@@ -97,8 +99,20 @@ NeoBundle 'itchyny/lightline.vim', {'type': 'nosync'}
         \ 'colorscheme': 'landscape',
         \ 'mode_map': { 'c': 'NORMAL' },
         \ 'active': {
-        \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ], ['ctrlpmark'] ],
-        \   'right': [ [ 'lineinfo', 'syntastic' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype'] ]
+        \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ], [ 'ctrlpmark' ] ],
+        \   'right': [ [ 'syntastic', 'lineinfo'], ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ]
+        \ },
+        \ 'inactive': {
+        \   'left': [ [ 'filename' ] ],
+        \   'right': [ [ 'lineinfo' ], [ 'percent' ] ]
+        \ },
+        \ 'tabline': {
+        \   'left': [ [ 'tabs' ] ],
+        \   'right': [ [ 'close' ] ]
+        \ },
+        \ 'tab': {
+        \   'active': [ 'tabnum', 'readonly', 'filename', 'modified' ],
+        \   'inactive': [ 'tabnum', 'readonly', 'filename', 'modified' ]
         \ },
         \ 'component_function': {
         \   'fugitive': 'MyFugitive',
@@ -107,12 +121,24 @@ NeoBundle 'itchyny/lightline.vim', {'type': 'nosync'}
         \   'filetype': 'MyFiletype',
         \   'fileencoding': 'MyFileencoding',
         \   'mode': 'MyMode',
-        \   'syntastic': 'SyntasticStatuslineFlag',
         \   'ctrlpmark': 'CtrlPMark',
+        \ },
+        \ 'component_expand': {
+        \   'fileformat': 'MyFileformat',
+        \   'fileencoding': 'MyFileencoding',
+        \   'syntastic': 'SyntasticStatuslineFlag',
+        \ },
+        \ 'component_type': {
+        \   'syntastic': 'error',
+        \ },
+        \ 'tab_component_function': {
+        \   'filename': 'MyTabFilename',
+        \   'readonly': 'MyTabReadonly',
         \ },
         \ 'separator': { 'left': '⮀', 'right': '⮂' },
         \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
         \ }
+  " unlet g:lightline
   function! MyFilename()
     let fname = expand('%:t')
     return fname == 'ControlP' ? g:lightline.ctrlp_item :
@@ -186,6 +212,26 @@ NeoBundle 'itchyny/lightline.vim', {'type': 'nosync'}
       let g:lightline.fname = a:fname
     return lightline#statusline(0)
   endfunction
+  function! MyTabReadonly(n)
+    let buflist = tabpagebuflist(a:n)
+    let winnr = tabpagewinnr(a:n)
+    return gettabwinvar(a:n, winnr, '&readonly') ? '⭤' : ''
+  endfunction
+  function! MyTabFilename(n)
+    let buflist = tabpagebuflist(a:n)
+    let winnr = tabpagewinnr(a:n)
+    let fname = expand("#".buflist[winnr - 1].":t")
+    let ft = gettabwinvar(a:n, winnr, '&filetype')
+    return fname == 'ControlP' ? 'CtrlP' :
+          \ fname == '__Tagbar__' ? 'Tagbar' :
+          \ fname =~ '__Gundo' ? 'Gundo' :
+          \ fname =~ 'NERD_tree' ? 'NERDtree' :
+          \ ft == 'vimfiler' ? 'VimFiler' :
+          \ ft == 'unite' ? 'Unite' :
+          \ ft == 'vimshell' ? 'VimShell' :
+          \ ft == 'dictionary' ? 'Dictionary' :
+          \ strlen(fname) ? fname : '[No Name]'
+  endfunction
   augroup LightLineColorscheme
     autocmd!
     autocmd ColorScheme * call s:lightline_update()
@@ -215,6 +261,7 @@ NeoBundle 'itchyny/lightline.vim', {'type': 'nosync'}
   let g:airline#extensions#whitespace#enabled = 0
   let g:airline#extensions#branch#enabled = 0
   let g:airline#extensions#readonly#enabled = 0
+  let g:airline#extensions#tabline#enabled = 1
   let g:airline_section_b = "%t%( %M%)"
   let g:airline_section_b =
         \ '%{airline#extensions#branch#get_head()}' .
@@ -265,29 +312,6 @@ endif
 let g:Powerline_mode_n = 'NORMAL'
 catch
 endtry
-" }}}
-
-" Colorscheme {{{
-" --------------------------------------------------------------------------------------------------------
-try
-NeoBundle 'itchyny/landscape.vim', {'type': 'nosync'}
-  colorscheme landscape
-  let g:landscape_highlight_url = 1
-  let g:landscape_highlight_todo = 1
-  let g:landscape_highlight_full_space = 1
-  let g:landscape_highlight_url_filetype = {'thumbnail': 0}
-  let g:Powerline_theme = 'landscape'
-  let g:Powerline_colorscheme = 'landscape'
-  let g:airline_theme = 'landscape'
-catch
-  colorscheme wombat256
-  if exists('g:lightline')
-    let g:lightline.colorscheme = 'wombat'
-  endif
-endtry
-  let g:solarized_termcolors = 256
-NeoBundleLazy 'xterm-color-table.vim', {'autoload': {'commands': [{'name': 'XtermColorTable', 'complete': 'customlist,CompleteNothing'}]}}
-  " http://www.vim.org/scripts/script.php?script_id=3412
 " }}}
 
 " Complement {{{
@@ -763,6 +787,29 @@ endif
 endif
 " }}}
 
+" Colorscheme {{{
+" --------------------------------------------------------------------------------------------------------
+try
+NeoBundle 'itchyny/landscape.vim', {'type': 'nosync'}
+  colorscheme landscape
+  let g:landscape_highlight_url = 1
+  let g:landscape_highlight_todo = 1
+  let g:landscape_highlight_full_space = 1
+  let g:landscape_highlight_url_filetype = {'thumbnail': 0}
+  let g:Powerline_theme = 'landscape'
+  let g:Powerline_colorscheme = 'landscape'
+  let g:airline_theme = 'landscape'
+catch
+  colorscheme wombat256
+  if exists('g:lightline')
+    let g:lightline.colorscheme = 'wombat'
+  endif
+endtry
+  let g:solarized_termcolors = 256
+NeoBundleLazy 'xterm-color-table.vim', {'autoload': {'commands': [{'name': 'XtermColorTable', 'complete': 'customlist,CompleteNothing'}]}}
+  " http://www.vim.org/scripts/script.php?script_id=3412
+" }}}
+
 " Commenter / Utility / Matching ( "," ) {{{
 " --------------------------------------------------------------------------------------------------------
 let mapleader = ","
@@ -855,9 +902,17 @@ NeoBundle 'vim-jp/vital.vim'
 " --------------------------------------------------------------------------------------------------------
 if has('multi_byte')
 NeoBundleLazy 'scrooloose/syntastic', {'autoload': {'filetypes': ['c', 'cpp']}}
-  let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': ['c', 'cpp'] }
+  let g:syntastic_mode_map = { 'mode': 'passive' }
   let g:syntastic_echo_current_error = 0
   let g:syntastic_enable_highlighting = 0
+  augroup AutoSyntastic
+    autocmd!
+    autocmd BufWritePost *.c,*.cpp call s:syntastic()
+  augroup END
+  function! s:syntastic()
+    SyntasticCheck
+    call lightline#update()
+  endfunction
 endif
 NeoBundleLazy 'mattn/zencoding-vim', {'autoload': {'filetypes': ['html']}}
   let g:user_zen_settings = { 'html' : { 'indentation' : '  ' }, }
@@ -879,6 +934,8 @@ NeoBundleLazy 'tpope/vim-markdown', {'autoload': {'filetypes': ['m4']}}
 NeoBundleLazy 'motemen/hatena-vim', {'autoload': {'filetypes': ['hatena']}}
   let g:hatena_upload_on_write = 0
   let g:hatena_user = 'itchyny'
+NeoBundleLazy 'motemen/hatena-vim', {'autoload': {'filetypes': ['hatena']}}
+NeoBundleLazy 'syngan/vim-vimlint', { 'depends' : 'ynkdir/vim-vimlparser', 'autoload' : { 'functions' : 'vimlint#vimlint'}}
 " }}}
 
 endif
@@ -1125,7 +1182,6 @@ augroup SetLocalFiletype
   for [ex, ft] in extend(s:filetypes1, s:filetypes2)
     execute 'autocmd BufNewFile,BufReadPost *.' . ex . ' setlocal filetype=' . ft
   endfor
-  autocmd BufNewFile,BufReadPost * execute "setlocal filetype=".&filetype
 augroup END
 " }}}
 
@@ -1203,10 +1259,17 @@ if s:iswin
 endif
 " }}}
 
-" Gui specific {{{
-map <LeftMouse> <Nop>
-map <RightMouse> <Nop>
-map <LeftRelease> <Nop>
+" Mouse {{{
+if has('mouse')
+  set mouse=a
+  if has('mouse_sgr')
+    set ttymouse=sgr
+  elseif v:version > 703 || v:version == 703 && has('patch632')
+    set ttymouse=sgr
+  else
+    set ttymouse=xterm2
+  endif
+endif
 " }}}
 
 " }}} EDIT
@@ -1403,6 +1466,7 @@ set updatetime=300
 
 " Command line {{{
 set wildmode=list:longest
+set wildignore+=*.sw?,*.bak,*.?~,*.??~,*.???~,*.~
 " }}}
 
 " }}} OTHERS
