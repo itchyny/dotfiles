@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/09/08 01:28:51.
+" - * Last Change: 2013/09/08 06:55:32.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -113,6 +113,9 @@ NeoBundle 'itchyny/lightline.vim', {'type': 'nosync'}
         \ 'tab': {
         \   'active': [ 'tabnum', 'readonly', 'filename', 'modified' ],
         \   'inactive': [ 'tabnum', 'readonly', 'filename', 'modified' ]
+        \ },
+        \ 'component': {
+        \   'close': printf('%%999X %s ', s:ismac && has('multi_byte') ? '✗' : 'x')
         \ },
         \ 'component_function': {
         \   'fugitive': 'MyFugitive',
