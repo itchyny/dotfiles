@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/09/07 23:16:28.
+" - * Last Change: 2013/09/08 01:28:51.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -141,7 +141,7 @@ NeoBundle 'itchyny/lightline.vim', {'type': 'nosync'}
   " unlet g:lightline
   function! MyFilename()
     let fname = expand('%:t')
-    return fname == 'ControlP' ? g:lightline.ctrlp_item :
+    let ret = fname == 'ControlP' ? g:lightline.ctrlp_item :
           \ fname == '__Tagbar__' ? g:lightline.fname :
           \ fname =~ '__Gundo\|NERD_tree' ? '' :
           \ &ft == 'vimfiler' ? vimfiler#get_status_string() :
@@ -151,6 +151,7 @@ NeoBundle 'itchyny/lightline.vim', {'type': 'nosync'}
           \ (&readonly ? '⭤ ' : '') .
           \ ('' != fname ? fname : '[No Name]') .
           \ (&modified ? ' +' : &modifiable ? '' : ' -')
+    return substitute(s:V.truncate_skipping(ret, winwidth(0) * 2 / 3, winwidth(0) / 2, ' .. '), '\s\+$', '', '')
   endfunction
   function! MyFugitive()
     try
@@ -859,10 +860,6 @@ NeoBundle 'terryma/vim-multiple-cursors'
   let g:multi_cursor_skip_key = "\<C-x>"
   let g:multi_cursor_exit_key = "\<Esc>"
   let g:multi_cursor_quit_key = "\<Esc>"
-if exists('##InsertCharPre')
-  NeoBundle 'mattn/multi-vim'
-  nnoremap <Leader>m :<C-u>Multi<SPACE>
-endif
 NeoBundle 'pasela/unite-webcolorname'
 NeoBundle 'osyo-manga/vim-anzu'
   nmap n <Plug>(anzu-n-with-echo)zv
@@ -896,6 +893,10 @@ NeoBundleLazy 'itchyny/dictionary.vim', {'type': 'nosync', 'autoload': {'command
   nnoremap <silent> <Leader>y :<C-u>Dictionary<CR>
   let g:dictionary_executable_path = '~/Dropbox/bin/'
 NeoBundle 'vim-jp/vital.vim'
+  let vital = neobundle#get('vital.vim')
+  function! vital.hooks.on_post_source(bundle)
+    let s:V = vital#of('vital')
+  endfunction
 " }}}
 
 " Syntax {{{
