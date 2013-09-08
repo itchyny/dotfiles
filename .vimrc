@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/09/08 06:55:32.
+" - * Last Change: 2013/09/08 16:12:55.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -89,6 +89,29 @@ NeoBundleFetch 'Shougo/neobundle.vim'
   nnoremap <silent> <S-b><S-b> :<C-u>Unite neobundle/update<CR>
 " }}}
 
+" Colorscheme {{{
+" --------------------------------------------------------------------------------------------------------
+try
+NeoBundle 'itchyny/landscape.vim', {'type': 'nosync'}
+  colorscheme landscape
+  let g:landscape_highlight_url = 1
+  let g:landscape_highlight_todo = 1
+  let g:landscape_highlight_full_space = 1
+  let g:landscape_highlight_url_filetype = {'thumbnail': 0}
+  let g:Powerline_theme = 'landscape'
+  let g:Powerline_colorscheme = 'landscape'
+  let g:airline_theme = 'landscape'
+catch
+  colorscheme wombat256
+  if exists('g:lightline')
+    let g:lightline.colorscheme = 'wombat'
+  endif
+endtry
+  let g:solarized_termcolors = 256
+NeoBundleLazy 'xterm-color-table.vim', {'autoload': {'commands': [{'name': 'XtermColorTable', 'complete': 'customlist,CompleteNothing'}]}}
+  " http://www.vim.org/scripts/script.php?script_id=3412
+" }}}
+
 " Powerline {{{
 " --------------------------------------------------------------------------------------------------------
 NeoBundleLazy 'Lokaltog/vim-powerline', {'type': 'nosync'}
@@ -138,9 +161,13 @@ NeoBundle 'itchyny/lightline.vim', {'type': 'nosync'}
         \   'filename': 'MyTabFilename',
         \   'readonly': 'MyTabReadonly',
         \ },
+        \ }
+  if !s:iswin
+    call extend(g:lightline, {
         \ 'separator': { 'left': '⮀', 'right': '⮂' },
         \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
-        \ }
+        \ })
+  endif
   " unlet g:lightline
   function! MyFilename()
     let fname = expand('%:t')
@@ -789,29 +816,6 @@ NeoBundle 'eagletmt/ghcmod-vim'
   " --|  $ cabal install ghc-mod
 endif
 endif
-" }}}
-
-" Colorscheme {{{
-" --------------------------------------------------------------------------------------------------------
-try
-NeoBundle 'itchyny/landscape.vim', {'type': 'nosync'}
-  colorscheme landscape
-  let g:landscape_highlight_url = 1
-  let g:landscape_highlight_todo = 1
-  let g:landscape_highlight_full_space = 1
-  let g:landscape_highlight_url_filetype = {'thumbnail': 0}
-  let g:Powerline_theme = 'landscape'
-  let g:Powerline_colorscheme = 'landscape'
-  let g:airline_theme = 'landscape'
-catch
-  colorscheme wombat256
-  if exists('g:lightline')
-    let g:lightline.colorscheme = 'wombat'
-  endif
-endtry
-  let g:solarized_termcolors = 256
-NeoBundleLazy 'xterm-color-table.vim', {'autoload': {'commands': [{'name': 'XtermColorTable', 'complete': 'customlist,CompleteNothing'}]}}
-  " http://www.vim.org/scripts/script.php?script_id=3412
 " }}}
 
 " Commenter / Utility / Matching ( "," ) {{{
@@ -1495,6 +1499,9 @@ vnoremap > >gv|
 noremap <S-v> v
 noremap v <S-v>
 
+" yank to the end of line
+nnoremap Y y$
+
 " remove spaces at the end of lines
 nnoremap ,<Space> ma:%s/  *$//<CR>`a<ESC>
 
@@ -1512,7 +1519,6 @@ vnoremap <silent> ,80 :s/\(.\{80}\)/\1<c-v><Enter>/g<Enter><ESC>:<C-u>set nohlse
 
 " diff
 nnoremap ,d :<C-u>diffthis<CR>
-
 " }}}
 
 " file {{{
@@ -1672,7 +1678,7 @@ nnoremap <expr> [6~ <SID>goback_insert("\<PageDown>")
 " |    v    |                     |          |                  |    default        |  default        |
 " |    w    |                     |          |                  |                   | :q<CR> :bd<CR>  |
 " |    x    |                     |          |                  |                   |                 |
-" |    y    |                     |          |                  |                   |                 |
+" |    y    |                     |          |                  |    y$             |                 |
 " +---------+---------------------+----------+------------------+-------------------+-----------------+
 " |    z    |                     | zsh      |                  |                   | Unite file_mru  |
 " |    .    | .vimrc              | .zshrc   |                  |                   |                 |
