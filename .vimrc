@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/09/08 16:12:55.
+" - * Last Change: 2013/09/12 21:26:23.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -9,6 +9,7 @@
 set nocompatible
 filetype off
 scriptencoding utf-8
+set encoding=utf-8
 if !executable(&shell) | set shell=sh | endif
 let s:isunix = has('unix')
 let s:iswin = has('win16') || has('win32') || has('win64')
@@ -103,9 +104,6 @@ NeoBundle 'itchyny/landscape.vim', {'type': 'nosync'}
   let g:airline_theme = 'landscape'
 catch
   colorscheme wombat256
-  if exists('g:lightline')
-    let g:lightline.colorscheme = 'wombat'
-  endif
 endtry
   let g:solarized_termcolors = 256
 NeoBundleLazy 'xterm-color-table.vim', {'autoload': {'commands': [{'name': 'XtermColorTable', 'complete': 'customlist,CompleteNothing'}]}}
@@ -138,7 +136,7 @@ NeoBundle 'itchyny/lightline.vim', {'type': 'nosync'}
         \   'inactive': [ 'tabnum', 'readonly', 'filename', 'modified' ]
         \ },
         \ 'component': {
-        \   'close': printf('%%999X %s ', s:ismac && has('multi_byte') ? '✗' : 'x')
+        \   'close': printf('%%999X %s ', has('multi_byte') ? "\u2717" : 'x'),
         \ },
         \ 'component_function': {
         \   'fugitive': 'MyFugitive',
@@ -161,13 +159,9 @@ NeoBundle 'itchyny/lightline.vim', {'type': 'nosync'}
         \   'filename': 'MyTabFilename',
         \   'readonly': 'MyTabReadonly',
         \ },
+        \ 'separator': { 'left': "\u2b80", 'right': "\u2b82" },
+        \ 'subseparator': { 'left': "\u2b81", 'right': "\u2b83" }
         \ }
-  if !s:iswin
-    call extend(g:lightline, {
-        \ 'separator': { 'left': '⮀', 'right': '⮂' },
-        \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
-        \ })
-  endif
   " unlet g:lightline
   function! MyFilename()
     let fname = expand('%:t')
@@ -178,7 +172,7 @@ NeoBundle 'itchyny/lightline.vim', {'type': 'nosync'}
           \ &ft == 'unite' ? unite#get_status_string() :
           \ &ft == 'vimshell' ? substitute(b:vimshell.current_dir,expand('~'),'~','') :
           \ &ft == 'dictionary' ? (exists('b:dictionary.input') ? b:dictionary.input : '') :
-          \ (&readonly ? '⭤ ' : '') .
+          \ (&readonly ? "\u2b64 " : '') .
           \ ('' != fname ? fname : '[No Name]') .
           \ (&modified ? ' +' : &modifiable ? '' : ' -')
     return substitute(s:V.truncate_skipping(ret, winwidth(0) * 2 / 3, winwidth(0) / 2, ' .. '), '\s\+$', '', '')
@@ -187,7 +181,7 @@ NeoBundle 'itchyny/lightline.vim', {'type': 'nosync'}
     try
       if expand('%:t') !~? 'Tagbar\|Gundo\|NERD' && &ft !~? 'vimfiler' && exists('*fugitive#head')
         let _ = fugitive#head()
-        return strlen(_) ? '⭠ '._ : ''
+        return strlen(_) ? "\u2b60 "._ : ''
       endif
     catch
     endtry
@@ -313,13 +307,12 @@ NeoBundle 'itchyny/lightline.vim', {'type': 'nosync'}
     let w:airline_render_left = 1
     let w:airline_render_right = 1
   endfunction
-  augroup AirLineForce
-    autocmd!
-    autocmd VimEnter *
-          \ if exists('g:airline_statusline_funcrefs')
-          \|  call add(g:airline_statusline_funcrefs, function('AirLineForce'))
-          \|endif
-  augroup END
+  let vital = neobundle#get('vim-airline')
+  function! vital.hooks.on_ource(bundle)
+    if exists('g:airline_statusline_funcrefs')
+      call add(g:airline_statusline_funcrefs, function('AirLineForce'))
+    endif
+  endfunction
 try
 " --|  $ sudo apt-get install fontforge
 " --|  $ sudo apt-get install python-fontforge
@@ -507,47 +500,9 @@ NeoBundle 'Shougo/unite.vim'
         let s:eject.path = a:candidate.action__path
         let s:eject.count = 0
         exe 'VimShellInteractive --split="split | resize 20" ' . c
-        " augroup Eject
-        "   autocmd!
-        "   autocmd CursorHold,CursorHoldI * call s:eject.check(s:eject.path)
-        " augroup END
-        " new
-        " let s:eject.proc = vimproc#pgroup_open(c)
-        " call s:eject.proc.stdin.close()
-        " call s:eject.proc.stderr.close()
       endif
     catch
     endtry
-  endfunction
-  function! s:eject.check(path)
-    if !isdirectory(a:path)
-      redraw | echo a:path . ' ejected... done'
-      try
-        call s:eject.proc.stdout.close()
-        call s:eject.proc.stderr.close()
-        call s:eject.proc.waitpid()
-      catch
-      endtry
-      augroup Eject
-        autocmd!
-      augroup END
-    elseif s:eject.count < 500
-      let result = split(s:eject.proc.stdout.read(), "\n")
-      if len(result) && result[0] =~? 'password'
-        augroup Eject
-          autocmd!
-        augroup END
-        let pass = inputsecret(result[0])
-        call s:eject.proc.stdin.write(pass . "\<NIL>")
-        augroup Eject
-          autocmd!
-          autocmd CursorHold,CursorHoldI * call s:eject.check(s:eject.path)
-        augroup END
-      else
-        let s:eject.count += 1
-        silent call feedkeys(mode() ==# 'i' ? "\<C-g>\<ESC>" : "g\<ESC>", 'n')
-      endif
-    endif
   endfunction
   let bundle = neobundle#get('unite.vim')
   function! bundle.hooks.on_post_source(bundle)
@@ -568,20 +523,20 @@ NeoBundle 'Shougo/unite.vim'
       call unite#custom_source('haddock,hoogle', 'max_candidates', 20)
     endif
   endfunction
-NeoBundle 'Shougo/unite-build'
+NeoBundleLazy 'Shougo/unite-build', {'autoload': {'unite_sources': ['build']}}
   nnoremap <silent><F5> :<C-u>Unite build -buffer-name=build<CR>
-NeoBundle 'unite-colorscheme'
-NeoBundle 'osyo-manga/unite-highlight'
-NeoBundle 'ujihisa/vim-ref'
+NeoBundleLazy 'unite-colorscheme', {'autoload': {'unite_sources': ['colorscheme']}}
+NeoBundleLazy 'osyo-manga/unite-highlight', {'autoload': {'unite_sources': ['highlight']}}
+NeoBundleLazy 'ujihisa/vim-ref'
 if executable('hoogle')
-NeoBundle 'eagletmt/unite-haddock'
+NeoBundleLazy 'eagletmt/unite-haddock', {'autoload': {'unite_sources': ['hoogle']}}
   nnoremap <Leader>h :<C-u>Unite hoogle -buffer-name=hoogle<CR>
   " --| Requirement: hoogle
   " --|   $ cabal install hoogle
   " --|   $ hoogle data
 endif
-NeoBundle 'h1mesuke/unite-outline'
-NeoBundle 'ujihisa/unite-haskellimport'
+NeoBundleLazy 'h1mesuke/unite-outline', {'autoload': {'unite_sources': ['outline']}}
+NeoBundleLazy 'ujihisa/unite-haskellimport', {'autoload': {'unite_sources': ['haskellimport']}}
 endif
 " }}}
 
@@ -748,7 +703,7 @@ NeoBundle 'tyru/open-browser.vim'
   vmap <silent> <Leader>b <Plug>(openbrowser-smart-search)
   nmap <silent> <Leader>s <Plug>(openbrowser-search)
 NeoBundle 'mattn/webapi-vim'
-NeoBundle 'mattn/googletasks-vim'
+NeoBundleLazy 'mattn/googletasks-vim', {'autoload': {'commands': [{'name': 'GoogleTasks', 'complete': 'customlist,CompleteNothing'}]}}
 " }}}
 
 " vimshell ( ";" ) {{{
@@ -765,7 +720,7 @@ NeoBundle 'Shougo/vimshell'
   " let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
   " let g:vimshell_prompt = ' $ '
   let g:vimshell_prompt_expr = 'escape(fnamemodify(getcwd(), ":~"), "\\[]()?! ")." "'
-  let g:vimshell_prompt_pattern = '\%(^[~/]\%(\f\|\\.\)* \|^[a-zA-Z][a-zA-Z .0-9]\+> \|^>>> \)'
+  let g:vimshell_prompt_pattern = (s:iswin ? '\%(^\f:' : '\%(^[~/]') . '\%(\f\|\\.\)* \|^[a-zA-Z][a-zA-Z .0-9]\+> \|^>>> \)'
   let g:vimshell_disable_escape_highlight = 1
   let g:vimshell_scrollback_limit = 5000
   let g:vimshell_disable_escape_highlight = 1
@@ -808,9 +763,9 @@ NeoBundle 'Shougo/vimshell'
   nnoremap <Leader>p :<C-u>VimShellInteractive python<CR>
 if executable('ghc-mod')
   " neocomplcache (neco-ghc) throws fatal error when ghc-mod is not found
-NeoBundle 'ujihisa/neco-ghc'
+NeoBundleLazy 'ujihisa/neco-ghc', {'autoload': {'filetypes': ['haskell']}}
   let g:necoghc_enable_detailed_browse = 1
-NeoBundle 'eagletmt/ghcmod-vim'
+NeoBundleLazy 'eagletmt/ghcmod-vim', {'autoload': {'filetypes': ['haskell']}}
   nnoremap <Leader>g :<C-u>GhcModCheckAsync<CR>
   " --| Requirement: ghc-mod
   " --|  $ cabal install ghc-mod
@@ -842,7 +797,7 @@ NeoBundleLazy 'mattn/calendar-vim', {'autoload': {'commands': ['Calendar', 'Cale
   nnoremap <silent> <Leader>c :<C-u>CalendarT<CR>
   let g:calendar_keys = { 'goto_next_year': '<Down>', 'goto_prev_year': '<Up>'}
   let calendar_no_mappings = 1
-NeoBundle 'autodate.vim'
+NeoBundleLazy 'autodate.vim', {'autoload': {'commands': ['Autodate', 'AutodateON', 'AutodateOFF']}}
   let g:autodate_format = '%Y/%m/%d %H:%M:%S'
 if has('python')
 NeoBundleLazy 'sjl/gundo.vim', {'autoload': {'commands': [{'name': 'GundoToggle', 'complete': 'customlist,CompleteNothing'}]}}
@@ -867,7 +822,7 @@ NeoBundle 'terryma/vim-multiple-cursors'
   let g:multi_cursor_skip_key = "\<C-x>"
   let g:multi_cursor_exit_key = "\<Esc>"
   let g:multi_cursor_quit_key = "\<Esc>"
-NeoBundle 'pasela/unite-webcolorname'
+NeoBundleLazy 'pasela/unite-webcolorname', {'autoload': {'unite_sources': ['webcolorname']}}
 NeoBundle 'osyo-manga/vim-anzu'
   nmap n <Plug>(anzu-n-with-echo)zv
   nmap N <Plug>(anzu-N-with-echo)zv
@@ -886,6 +841,7 @@ NeoBundle 'kien/ctrlp.vim'
   let g:ctrlp_use_caching = 1
 NeoBundleLazy 'majutsushi/tagbar', {'autoload': {'commands': [{'name': 'Tagbar', 'complete': 'customlist,CompleteNothing'}]}}
 NeoBundleLazy 'scrooloose/nerdtree', {'autoload': {'commands': [{'name': 'NERDTree', 'complete': 'dir'}]}}
+NeoBundleLazy 'mattn/benchvimrc-vim', {'autoload': {'commands': [{'name': 'BenchVimrc', 'complete': 'customlist,CompleteNothing'}]}}
 NeoBundleLazy 'itchyny/thumbnail.vim', {'type': 'nosync', 'autoload': {'commands': [{'name': 'Thumbnail', 'complete': 'customlist,thumbnail#complete'}]}}
   nnoremap <silent> <Leader>t :<C-u>Thumbnail -here<CR>
   augroup ThumbnailKey
