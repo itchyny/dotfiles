@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/09/12 21:26:23.
+" - * Last Change: 2013/09/18 11:41:31.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -188,13 +188,13 @@ NeoBundle 'itchyny/lightline.vim', {'type': 'nosync'}
     return ''
   endfunction
   function! MyFileformat()
-    return &ft !~? 'vimfiler\|vimshell' && winwidth('.') > 70 ? &fileformat : ''
+    return &ft !~? 'vimfiler\|vimshell' && winwidth(0) > 70 ? &fileformat : ''
   endfunction
   function! MyFiletype()
-    return &ft !~? 'vimfiler\|vimshell' && winwidth('.') > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
+    return &ft !~? 'vimfiler\|vimshell' && winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
   endfunction
   function! MyFileencoding()
-    return &ft !~? 'vimfiler\|vimshell' && winwidth('.') > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
+    return &ft !~? 'vimfiler\|vimshell' && winwidth(0) > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
   endfunction
   function! MyMode()
     let fname = expand('%:t')
@@ -207,13 +207,12 @@ NeoBundle 'itchyny/lightline.vim', {'type': 'nosync'}
           \ &ft == 'vimfiler' ? 'VimFiler' :
           \ &ft == 'vimshell' ? 'VimShell' :
           \ &ft == 'dictionary' ? 'Dictionary' :
-          \ winwidth('.') > 60 ? lightline#mode() : ''
+          \ winwidth(0) > 60 ? lightline#mode() : ''
   endfunction
   function! CtrlPMark()
     if expand('%:t') =~ 'ControlP'
       call lightline#link('iR'[g:lightline.ctrlp_regex])
-      return lightline#concatenate([g:lightline.ctrlp_prev, g:lightline.ctrlp_item
-            \ , g:lightline.ctrlp_next], 0)
+      return lightline#concatenate([g:lightline.ctrlp_prev, g:lightline.ctrlp_item, g:lightline.ctrlp_next], 0)
     else
       return ''
     endif
@@ -259,7 +258,7 @@ NeoBundle 'itchyny/lightline.vim', {'type': 'nosync'}
   endfunction
   augroup LightLineColorscheme
     autocmd!
-    autocmd ColorScheme * call s:lightline_update()
+    " autocmd ColorScheme * call s:lightline_update()
   augroup END
   function! s:lightline_update()
     if !exists('g:loaded_lightline')
@@ -495,7 +494,7 @@ NeoBundle 'Shougo/unite.vim'
   function! s:eject.func(candidate)
     try
       let c = 'sudo ' . (executable('eject') ? 'eject' : s:ismac ? 'diskutil umount' : '')
-            \ . ' ' . a:candidate.action__path
+            \ . ' "' . a:candidate.action__path . '"'
       if strlen(c)
         let s:eject.path = a:candidate.action__path
         let s:eject.count = 0
@@ -698,7 +697,7 @@ NeoBundleLazy 'eagletmt/ghci-vim', {'autoload': {'filetypes': ['haskell']}}
     autocmd FileType haskell nnoremap <buffer> <Leader>i <expr> call s:safeexecute(':GhciInfo')
     autocmd FileType haskell nnoremap <buffer> <Leader>t <expr> call s:safeexecute(':GhciType')
   augroup END
-NeoBundle 'tyru/open-browser.vim'
+NeoBundleLazy 'tyru/open-browser.vim', {'autoload' : {'mappings' : ['<Plug>(openbrowser-']}}
   nmap <silent> <Leader>b <Plug>(openbrowser-smart-search)
   vmap <silent> <Leader>b <Plug>(openbrowser-smart-search)
   nmap <silent> <Leader>s <Plug>(openbrowser-search)
@@ -791,13 +790,12 @@ NeoBundle 'tComment'
   vnoremap <silent> __ :TComment<CR>
   let g:tcommentMapLeader1 = ''
 NeoBundleLazy 'Align', {'autoload': {'commands': [{'name': 'Align', 'complete': 'customlist,CompleteNothing'}]}}
-NeoBundle 'errormarker.vim'
 NeoBundleLazy 'mattn/calendar-vim', {'autoload': {'commands': ['Calendar', 'CalendarH', 'CalendarT']}}
   autocmd ESC FileType calendar nnoremap <silent> <buffer> <ESC><ESC> :<C-u>q<CR>
   nnoremap <silent> <Leader>c :<C-u>CalendarT<CR>
   let g:calendar_keys = { 'goto_next_year': '<Down>', 'goto_prev_year': '<Up>'}
   let calendar_no_mappings = 1
-NeoBundleLazy 'autodate.vim', {'autoload': {'commands': ['Autodate', 'AutodateON', 'AutodateOFF']}}
+NeoBundle 'autodate.vim'
   let g:autodate_format = '%Y/%m/%d %H:%M:%S'
 if has('python')
 NeoBundleLazy 'sjl/gundo.vim', {'autoload': {'commands': [{'name': 'GundoToggle', 'complete': 'customlist,CompleteNothing'}]}}
@@ -823,7 +821,7 @@ NeoBundle 'terryma/vim-multiple-cursors'
   let g:multi_cursor_exit_key = "\<Esc>"
   let g:multi_cursor_quit_key = "\<Esc>"
 NeoBundleLazy 'pasela/unite-webcolorname', {'autoload': {'unite_sources': ['webcolorname']}}
-NeoBundle 'osyo-manga/vim-anzu'
+NeoBundleLazy 'osyo-manga/vim-anzu', {'autoload' : {'mappings' : ['<Plug>(anzu-']}}
   nmap n <Plug>(anzu-n-with-echo)zv
   nmap N <Plug>(anzu-N-with-echo)zv
   let g:anzu_status_format = '%p (%i/%l)'
@@ -865,7 +863,7 @@ NeoBundle 'vim-jp/vital.vim'
 " Syntax {{{
 " --------------------------------------------------------------------------------------------------------
 if has('multi_byte')
-NeoBundleLazy 'scrooloose/syntastic', {'autoload': {'filetypes': ['c', 'cpp']}}
+NeoBundleLazy 'scrooloose/syntastic', {'autoload': {'filetypes': ['c', 'cpp'], 'functions': ['SyntasticStatuslineFlag']}}
   let g:syntastic_mode_map = { 'mode': 'passive' }
   let g:syntastic_echo_current_error = 0
   let g:syntastic_enable_highlighting = 0
@@ -874,11 +872,11 @@ NeoBundleLazy 'scrooloose/syntastic', {'autoload': {'filetypes': ['c', 'cpp']}}
     autocmd BufWritePost *.c,*.cpp call s:syntastic()
   augroup END
   function! s:syntastic()
-    SyntasticCheck
-    call lightline#update()
+    if exists(':SyntasticCheck') | exec 'SyntasticCheck' | endif
+    if exists('*lightline#update') | call lightline#update() | endif
   endfunction
 endif
-NeoBundleLazy 'mattn/zencoding-vim', {'autoload': {'filetypes': ['html']}}
+NeoBundleLazy 'mattn/emmet-vim', {'autoload': {'filetypes': ['html']}}
   let g:user_zen_settings = { 'html' : { 'indentation' : '  ' }, }
 NeoBundleLazy 'itspriddle/vim-javascript-indent', {'autoload': {'filetypes': ['javascript']}}
 NeoBundleLazy 'JSON.vim', {'autoload': {'filetypes': ['json']}}
@@ -898,7 +896,6 @@ NeoBundleLazy 'tpope/vim-markdown', {'autoload': {'filetypes': ['m4']}}
 NeoBundleLazy 'motemen/hatena-vim', {'autoload': {'filetypes': ['hatena']}}
   let g:hatena_upload_on_write = 0
   let g:hatena_user = 'itchyny'
-NeoBundleLazy 'motemen/hatena-vim', {'autoload': {'filetypes': ['hatena']}}
 NeoBundleLazy 'syngan/vim-vimlint', { 'depends' : 'ynkdir/vim-vimlparser', 'autoload' : { 'functions' : 'vimlint#vimlint'}}
 " }}}
 
@@ -1146,7 +1143,11 @@ augroup SetLocalFiletype
   for [ex, ft] in extend(s:filetypes1, s:filetypes2)
     execute 'autocmd BufNewFile,BufReadPost *.' . ex . ' setlocal filetype=' . ft
   endfor
+  autocmd BufNewFile,BufReadPost,BufEnter,BufWrite * call s:filetype_hatena()
 augroup END
+function! s:filetype_hatena()
+  if getline(1)[:1] ==# '*[' | setlocal filetype=hatena | endif
+endfunction
 " }}}
 
 " }}} FILE READING
@@ -1220,19 +1221,6 @@ set nrformats-=ocral
 " Windows specific {{{
 if s:iswin
   set noswapfile
-endif
-" }}}
-
-" Mouse {{{
-if has('mouse')
-  set mouse=a
-  if has('mouse_sgr')
-    set ttymouse=sgr
-  elseif v:version > 703 || v:version == 703 && has('patch632')
-    set ttymouse=sgr
-  else
-    set ttymouse=xterm2
-  endif
 endif
 " }}}
 
@@ -1610,7 +1598,7 @@ nnoremap <expr> [6~ <SID>goback_insert("\<PageDown>")
 " |    b    | OpenBrowser         |          |                  | NeoBundleInstall! |  default        |
 " |    c    |                     |          | Calendar         |    default        |                 |
 " |    d    |                     |          |                  |    default        |                 |
-" |    e    | QuickRun <i         |          |                  |                   | zencoding       |
+" |    e    | QuickRun <i         |          |                  |                   |                 |
 " +---------+---------------------+----------+------------------+-------------------+-----------------+
 " |    f    | VimFiler            |          |                  |                   |  default        |
 " |    g    | gedit / Textedit    | Ghci     | GundoToggle      |    default        |                 |
@@ -1624,7 +1612,7 @@ nnoremap <expr> [6~ <SID>goback_insert("\<PageDown>")
 " |    n    | nautilus / Finder   |          |                  |                   | Unite file/new  |
 " |    o    | QuickRun <i >output |          |                  |    default        | Unite file      |
 " +---------+---------------------+----------+------------------+-------------------+-----------------+
-" |    p    |                     | Python   |                  |                   | Unite buffer    |
+" |    p    |                     | Python   |                  |                   | CtrlP           |
 " |    q    |                     |          |                  |                   | <C-w>(default)  |
 " |    r    | QuickRun            |          |                  |    default        |  default        |
 " |    s    | OpenBrowser         | VimShell |                  |                   | :w<CR>          |
