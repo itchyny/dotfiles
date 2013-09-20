@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/09/21 01:08:56.
+" - * Last Change: 2013/09/21 06:35:22.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -1458,6 +1458,9 @@ vnoremap <silent> ,80 :s/\(.\{80}\)/\1<c-v><Enter>/g<Enter><ESC>:<C-u>set nohlse
 
 " diff
 nnoremap ,d :<C-u>diffthis<CR>
+
+" undo filetype
+nnoremap <silent> <expr> u (line('$')==1&&getline(1)=='' ? ":setl filetype=\<CR>" : "u")
 " }}}
 
 " file {{{
