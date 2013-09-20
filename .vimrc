@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/09/21 00:18:18.
+" - * Last Change: 2013/09/21 01:07:26.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -22,23 +22,6 @@ augroup END
 augroup SetLocal
   autocmd!
 augroup END
-function! s:safeexecute(s, ...)
-  if a:0
-    let check = a:1
-  else
-    let check = a:s
-  endif
-  if exists(check)
-    try
-      silent execute a:s
-    catch
-      try
-        silent execute 'call '.a:s
-      catch
-      endtry
-    endtry
-  endif
-endfunction
 function! CompleteNothing(...)
   return []
 endfunction
@@ -699,12 +682,15 @@ NeoBundle 'itchyny/vimfiler-preview', {'type': 'nosync'}
 NeoBundle 'Shougo/vinarise'
 endif
 NeoBundleLazy 'eagletmt/ghci-vim', {'autoload': {'filetypes': ['haskell']}}
-  augroup Ghci
-    autocmd!
-    autocmd FileType haskell nnoremap <buffer> <Leader>l <expr> call s:safeexecute(':GhciLoad')
-    autocmd FileType haskell nnoremap <buffer> <Leader>i <expr> call s:safeexecute(':GhciInfo')
-    autocmd FileType haskell nnoremap <buffer> <Leader>t <expr> call s:safeexecute(':GhciType')
-  augroup END
+  let bundle = neobundle#get('ghci-vim')
+  function! bundle.hooks.on_post_source(bundle)
+    augroup Ghci
+      autocmd!
+      autocmd FileType haskell nnoremap <buffer> <Leader>l <expr> exec 'GhciLoad'
+      autocmd FileType haskell nnoremap <buffer> <Leader>i <expr> exec 'GhciInfo'
+      autocmd FileType haskell nnoremap <buffer> <Leader>t <expr> exec 'GhciType'
+    augroup END
+  endfunction
 NeoBundleLazy 'tyru/open-browser.vim', {'autoload' : {'mappings' : ['<Plug>(openbrowser-']}}
   nmap <silent> <Leader>b <Plug>(openbrowser-smart-search)
   vmap <silent> <Leader>b <Plug>(openbrowser-smart-search)
@@ -1240,9 +1226,8 @@ endif
 " --------------------------------------------------------------------------------------------------------
 " On starting vim {{{
 function! s:enter()
-  silent call s:safeexecute('Pl#UpdateStatusline(1)', 'g:Powerline_colorscheme')
   if argc() == 0
-    silent call s:safeexecute(':VimFiler -status -buffer-name=vimfiler -auto-cd', ':VimFiler')
+    silent exec ':VimFiler -status -buffer-name=vimfiler -auto-cd'
   endif
 endfunction
 augroup Enter
