@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/09/21 01:07:26.
+" - * Last Change: 2013/09/21 01:08:56.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -517,7 +517,6 @@ NeoBundleLazy 'Shougo/unite-build', {'autoload': {'unite_sources': ['build']}}
   nnoremap <silent><F5> :<C-u>Unite build -buffer-name=build<CR>
 NeoBundleLazy 'unite-colorscheme', {'autoload': {'unite_sources': ['colorscheme']}}
 NeoBundleLazy 'osyo-manga/unite-highlight', {'autoload': {'unite_sources': ['highlight']}}
-NeoBundleLazy 'ujihisa/vim-ref'
 if executable('hoogle')
 NeoBundleLazy 'eagletmt/unite-haddock', {'autoload': {'unite_sources': ['hoogle']}}
   nnoremap <Leader>h :<C-u>Unite hoogle -buffer-name=hoogle<CR>
