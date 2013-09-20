@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/09/20 23:49:58.
+" - * Last Change: 2013/09/21 00:18:18.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -1144,16 +1144,19 @@ set autoread
 
 " Filetype {{{
 augroup SetLocalFiletype
-  let s:filetypes1 = map(split('bf,gnuplot,jade,json,less,r,roy,tex,meissa,coffee', ','), '[v:val, v:val]')
-  let s:filetypes2 = map(split('cls;tex,hs;haskell,hx;haxe,md;markdown,cir;spice,asc;spice,m;objc', ','), 'split(v:val, ";")')
+  let filetypes1 = map(split('bf,gnuplot,jade,json,less,r,roy,tex,meissa,coffee', ','), '[v:val, v:val]')
+  let filetypes2 = map(split('cls;tex,hs;haskell,hx;haxe,md;markdown,cir;spice,asc;spice,m;objc', ','), 'split(v:val, ";")')
   autocmd!
-  for [ex, ft] in extend(s:filetypes1, s:filetypes2)
+  for [ex, ft] in extend(filetypes1, filetypes2)
     execute 'autocmd BufNewFile,BufReadPost *.' . ex . ' setlocal filetype=' . ft
   endfor
-  autocmd BufNewFile,BufReadPost,BufEnter,BufWrite * call s:filetype_hatena()
+  autocmd BufReadPost,BufWrite,CursorHold,CursorHoldI * call s:filetype()
 augroup END
-function! s:filetype_hatena()
-  if getline(1)[:1] ==# '*[' | setlocal filetype=hatena | endif
+function! s:filetype()
+  if &filetype != '' | return | endif
+  for [pat, ft] in map(split('*[;hatena,#include;c,\documentclass;tex,import;haskell', ','), 'split(v:val, ";")')
+    if getline(1)[:strlen(pat) - 1] ==# pat | exec 'setlocal filetype=' . ft | endif
+  endfor
 endfunction
 " }}}
 
