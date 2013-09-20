@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/09/21 06:39:57.
+" - * Last Change: 2013/09/21 06:42:31.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -327,7 +327,6 @@ NeoBundle 'Shougo/neocomplete.vim'
 NeoBundleLazy 'Shougo/neocomplcache'
   let g:neocomplete#enable_at_startup = 1
   let g:neocomplete#enable_smart_case = 1
-  " let g:neocomplete#enable_cursor_hold_i = 1
   let g:neocomplete#max_list = 1000
   let g:neocomplete#skip_auto_completion_time = "0.50"
   let g:neocomplete#enable_auto_close_preview = 1
@@ -609,7 +608,6 @@ NeoBundle 'Shougo/vimfiler'
   nnoremap <silent> <Leader><Leader> :<C-u>VimFilerBufferDir -status -buffer-name=vimfiler -auto-cd<CR>
   nnoremap <silent> @<Leader> :<C-u>VimFilerBufferDir -status -buffer-name=vimfiler -auto-cd<CR>
   nnoremap <silent>@@ :<C-u>VimFilerBufferDir -status -buffer-name=vimfiler -auto-cd<CR>
-  " nnoremap <silent> s :<C-u>execute 'VimShellCreate '.<SID>current_directory_auto()<CR>
   nnoremap <silent> s :<C-u>VimShellBufferDir<CR>
   let g:vimfiler_execute_file_list = {}
   for ft in split('pdf,png,jpg,jpeg,gif,bmp,ico,ppt,html', ',')
@@ -744,12 +742,9 @@ NeoBundle 'Shougo/vimshell'
     endfor
   augroup END
   nnoremap <silent> <Leader><Leader>s :<C-u>VimShell -split<CR>
-  " nnoremap <silent> <Leader>s :<C-u>execute 'VimShellCreate '.<SID>current_directory_auto()<CR>
-  " nnoremap <silent> <S-h> :<C-u>execute 'VimShell -popup '.<SID>current_directory_auto()<CR>
   nnoremap <silent> <Leader>s :<C-u>VimShellBufferDir<CR>
   nnoremap <silent> <S-h> :<C-u>VimShellBufferDir -popup<CR>
   nnoremap <Leader>z :<C-u>VimShellInteractive zsh<CR>
-  " nnoremap <Leader>g :<C-u>VimShellInteractive ghci<CR>
   nnoremap <Leader>p :<C-u>VimShellInteractive python<CR>
 if executable('ghc-mod')
   " neocomplcache (neco-ghc) throws fatal error when ghc-mod is not found
@@ -967,7 +962,6 @@ if has('iconv')
       let &fileencodings = &fileencodings .','. s:enc_euc
     endif
   endif
-  " 定数を処分
   unlet s:enc_euc
   unlet s:enc_jis
 endif
@@ -1548,7 +1542,7 @@ vnoremap <C-Right> gt
 " select last paste
 nnoremap <expr> gp '`['.strpart(getregtype(), 0, 1).'`]'
 
-" quit help with escapae key
+" quit help with escape key
 autocmd ESC FileType help,qf nnoremap <silent> <buffer> <expr> <ESC><ESC>
       \ &modifiable ? ":\<C-u>set nohlsearch\<CR>" : ":\<C-u>q\<CR>"
 
