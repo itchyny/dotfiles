@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/09/21 06:37:05.
+" - * Last Change: 2013/09/21 06:39:57.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -145,7 +145,6 @@ NeoBundle 'itchyny/lightline.vim', {'type': 'nosync'}
         \ 'separator': { 'left': "\u2b80", 'right': "\u2b82" },
         \ 'subseparator': { 'left': "\u2b81", 'right': "\u2b83" }
         \ }
-  " unlet g:lightline
   function! MyFilename()
     let fname = expand('%:t')
     let ret = fname == 'ControlP' ? g:lightline.ctrlp_item :
@@ -241,10 +240,10 @@ NeoBundle 'itchyny/lightline.vim', {'type': 'nosync'}
   endfunction
   augroup LightLineColorscheme
     autocmd!
-    " autocmd ColorScheme * call s:lightline_update()
+    autocmd ColorScheme * call s:lightline_update()
   augroup END
   function! s:lightline_update()
-    if !exists('g:loaded_lightline')
+    if !exists('g:loaded_lightline') || !exists('g:loaded_vimrc')
       return
     endif
     try
@@ -1584,6 +1583,10 @@ nnoremap <expr> [6~ <SID>goback_insert("\<PageDown>")
 " }}}
 
 " }}} KEY MAPPING
+
+" {{{ VIMRC LOADED
+let g:loaded_vimrc = 1
+" }}} VIMRC LOADED
 
 " REFERENCE TO KEY MAPPING {{{
 " --------------------------------------------------------------------------------------------------------
