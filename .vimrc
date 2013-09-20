@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/09/21 06:35:22.
+" - * Last Change: 2013/09/21 06:37:05.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -22,8 +22,8 @@ augroup END
 augroup SetLocal
   autocmd!
 augroup END
-function! CompleteNothing(...)
-  return []
+function! CompleteNothing(findstart, base)
+  return a:findstart ? -1 : []
 endfunction
 " }}}
 
