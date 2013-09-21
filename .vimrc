@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/09/21 06:42:31.
+" - * Last Change: 2013/09/21 10:05:06.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -704,7 +704,7 @@ NeoBundle 'Shougo/vimshell'
 " --| If you can't use sudo, do:
 " --|  $ sudo chmod 4755 /usr/bin/sudo
   let g:vimshell_interactive_update_time = 150
-  let g:vimshell_popup_command = 'split'
+  let g:vimshell_popup_command = 'top new'
   let g:vimshell_split_command = 'vsplit'
   " let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
   " let g:vimshell_prompt = ' $ '
