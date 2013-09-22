@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/09/21 10:05:06.
+" - * Last Change: 2013/09/22 16:51:36.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -422,16 +422,8 @@ NeoBundle 'Shougo/unite.vim'
   let g:unite_cursor_line_highlight = 'CursorLine'
   let g:unite_source_file_mru_limit = 1000
   let g:unite_force_overwrite_statusline = 0
-  if executable('ag')
-    let g:unite_source_grep_command = 'ag'
-    let g:unite_source_grep_default_opts =
-    \ '--line-numbers --nocolor --nogroup --hidden --ignore ' .
-    \  '''.hg'' --ignore ''.svn'' --ignore ''.git'''
-    let g:unite_source_grep_recursive_opt = ''
-  else
-    let g:unite_source_grep_command = 'grep'
-    let g:unite_source_grep_default_opts = '-iHn'
-  endif
+  let g:unite_source_grep_command = 'grep'
+  let g:unite_source_grep_default_opts = '-iHn'
   if s:ismac && has('multi_byte')
     let g:unite_marked_icon = '✓'
   else
