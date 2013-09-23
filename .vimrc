@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/09/24 01:07:03.
+" - * Last Change: 2013/09/24 01:40:36.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -425,6 +425,7 @@ NeoBundle 'Shougo/unite.vim'
   let g:unite_cursor_line_highlight = 'CursorLine'
   let g:unite_source_file_mru_limit = 1000
   let g:unite_source_file_mru_do_validate = 0
+  let g:unite_source_file_mru_filename_format = ':~'
   let g:unite_force_overwrite_statusline = 0
   let g:unite_data_directory = $CACHE.'/unite'
   let g:unite_source_grep_command = 'grep'
@@ -507,6 +508,10 @@ NeoBundle 'Shougo/unite.vim'
     if exists('*unite#custom_source')
       call unite#custom_source('haddock,hoogle', 'max_candidates', 20)
     endif
+    let path = expand('~')
+    for file in [$CACHE.'/unite/file_mru', $CACHE.'/unite/directory_mru']
+      silent call writefile(map(readfile(file), "substitute(v:val, '^/home/\\a\\+', path, '')"), file)
+    endfor
   endfunction
 NeoBundleLazy 'Shougo/unite-build', {'autoload': {'unite_sources': ['build']}}
   nnoremap <silent><F5> :<C-u>Unite build -buffer-name=build<CR>
@@ -830,13 +835,19 @@ NeoBundle 'kien/ctrlp.vim'
   let g:ctrlp_show_hidden = 1
   let g:ctrlp_max_depth = 5
   let g:ctrlp_max_files = 300
-  let g:ctrlp_mruf_max = 500
+  let g:ctrlp_mruf_max = 300
   let g:ctrlp_custom_ignore = {
     \ 'dir':  '\v[\/]\.(git|hg|svn)$',
     \ 'file': '\v\.(exe|so|dll|swp|pdf|DS_Store)$',
     \ }
   let g:ctrlp_use_caching = 1
   let g:ctrlp_cache_dir = $CACHE.'/ctrlp'
+  let bundle = neobundle#get('ctrlp.vim')
+  function! bundle.hooks.on_post_source(bundle)
+    let path = expand('~')
+    let file = g:ctrlp_cache_dir . '/mru/cache.txt'
+    silent call writefile(map(readfile(file), "substitute(v:val, '^/home/\\a\\+', path, '')"), file)
+  endfunction
 NeoBundleLazy 'majutsushi/tagbar', {'autoload': {'commands': [{'name': 'Tagbar', 'complete': 'customlist,CompleteNothing'}]}}
 NeoBundleLazy 'scrooloose/nerdtree', {'autoload': {'commands': [{'name': 'NERDTree', 'complete': 'dir'}]}}
 NeoBundleLazy 'mattn/benchvimrc-vim', {'autoload': {'commands': [{'name': 'BenchVimrc', 'complete': 'customlist,CompleteNothing'}]}}
