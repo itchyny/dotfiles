@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/09/22 16:51:36.
+" - * Last Change: 2013/09/23 17:22:27.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -573,6 +573,18 @@ NeoBundle 'thinca/vim-quickrun'
   nnoremap <Leader>o :<C-u>QuickRun <i >file:output<CR>
   autocmd ESC FileType quickrun nnoremap <silent> <buffer> <ESC><ESC> <ESC>:q!<CR>
   autocmd ESC FileType quickrun vnoremap <silent> <buffer> <ESC><ESC> <ESC>:q!<CR>
+  autocmd SetLocal FileType quickrun nnoremap <silent> <buffer> q :<C-u>bdelete!<CR>
+  let s:hook = {
+        \ 'name': 'myhook',
+        \ 'kind': 'hook',
+        \ }
+  function! s:hook.on_outputter_buffer_opened(...)
+    setlocal filetype=quickrun bufhidden=hide buftype=nofile noswapfile nobuflisted
+  endfunction
+  let bundle = neobundle#get('vim-quickrun')
+  function! bundle.hooks.on_post_source(bundle)
+    call quickrun#module#register(s:hook, 1)
+  endfunction
 if s:nosudo
 NeoBundle 'Shougo/vimfiler'
   let g:vimfiler_as_default_explorer = 1
