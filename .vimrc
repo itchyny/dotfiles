@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/09/24 00:27:02.
+" - * Last Change: 2013/09/24 00:36:32.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -723,6 +723,7 @@ NeoBundle 'Shougo/vimshell'
   let g:vimshell_disable_escape_highlight = 0
   let g:vimshell_force_overwrite_statusline = 0
   let g:vimshell_temporary_directory = $CACHE.'/vimshell'
+  let g:vimshell_vimshrc_path = expand('~/Dropbox/dotfiles/.vimshrc')
   augroup Vimshell
     autocmd!
     " for easy window moving, unmap C-[hjkl]
