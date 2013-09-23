@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/09/23 17:22:27.
+" - * Last Change: 2013/09/24 00:27:02.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -29,6 +29,7 @@ endfunction
 
 " Bundles {{{
 let $VIM = expand('~/.vim')
+let $CACHE = $VIM.'/.cache'
 let $BUNDLE = $VIM.'/bundle'
 let s:neobundle_dir = $BUNDLE.'/neobundle.vim'
 if !isdirectory(s:neobundle_dir)
@@ -332,6 +333,7 @@ NeoBundleLazy 'Shougo/neocomplcache'
   let g:neocomplete#enable_auto_close_preview = 1
   let g:neocomplete#auto_completion_start_length = 1
   let g:neocomplete#max_keyword_width = 50
+  let g:neocomplete#data_directory = $CACHE.'/neocomplete'
   if !exists('g:neocomplete#force_omni_input_patterns')
       let g:neocomplete#force_omni_input_patterns = {}
   endif
@@ -368,6 +370,7 @@ NeoBundleLazy 'Shougo/neocomplete.vim'
   let g:neocomplcache_max_menu_width = 20
   let g:neocomplcache_max_keyword_width = 50
   let g:neocomplcache_context_filetype_lists = {}
+  let g:neocomplcache_temporary_dir = $CACHE.'/neocomplcache'
   if !exists('g:neocomplcache_force_omni_patterns')
       let g:neocomplcache_force_omni_patterns = {}
   endif
@@ -422,6 +425,7 @@ NeoBundle 'Shougo/unite.vim'
   let g:unite_cursor_line_highlight = 'CursorLine'
   let g:unite_source_file_mru_limit = 1000
   let g:unite_force_overwrite_statusline = 0
+  let g:unite_data_directory = $CACHE.'/unite'
   let g:unite_source_grep_command = 'grep'
   let g:unite_source_grep_default_opts = '-iHn'
   if s:ismac && has('multi_byte')
@@ -591,6 +595,7 @@ NeoBundle 'Shougo/vimfiler'
   let g:vimfiler_sort_type = 'TIME'
   let g:vimfiler_safe_mode_by_default = 0
   let g:vimfiler_force_overwrite_statusline = 0
+  let g:vimfiler_data_directory = $CACHE.'/vimfiler'
   if s:iswin || !has('multi_byte')
     let g:vimfiler_tree_leaf_icon = '|'
     let g:vimfiler_tree_opened_icon = '-'
@@ -717,6 +722,7 @@ NeoBundle 'Shougo/vimshell'
   let g:vimshell_scrollback_limit = 5000
   let g:vimshell_disable_escape_highlight = 0
   let g:vimshell_force_overwrite_statusline = 0
+  let g:vimshell_temporary_directory = $CACHE.'/vimshell'
   augroup Vimshell
     autocmd!
     " for easy window moving, unmap C-[hjkl]
@@ -822,11 +828,13 @@ NeoBundle 'kien/ctrlp.vim'
   let g:ctrlp_show_hidden = 1
   let g:ctrlp_max_depth = 5
   let g:ctrlp_max_files = 300
+  let g:ctrlp_mruf_max = 500
   let g:ctrlp_custom_ignore = {
     \ 'dir':  '\v[\/]\.(git|hg|svn)$',
     \ 'file': '\v\.(exe|so|dll|swp|pdf|DS_Store)$',
     \ }
   let g:ctrlp_use_caching = 1
+  let g:ctrlp_cache_dir = $CACHE.'/ctrlp'
 NeoBundleLazy 'majutsushi/tagbar', {'autoload': {'commands': [{'name': 'Tagbar', 'complete': 'customlist,CompleteNothing'}]}}
 NeoBundleLazy 'scrooloose/nerdtree', {'autoload': {'commands': [{'name': 'NERDTree', 'complete': 'dir'}]}}
 NeoBundleLazy 'mattn/benchvimrc-vim', {'autoload': {'commands': [{'name': 'BenchVimrc', 'complete': 'customlist,CompleteNothing'}]}}
