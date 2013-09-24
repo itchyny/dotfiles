@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/09/24 11:57:27.
+" - * Last Change: 2013/09/24 13:59:58.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -1107,10 +1107,11 @@ augroup SetLocalFiletype
   autocmd BufReadPost,BufWrite,CursorHold,CursorHoldI * call s:filetype()
 augroup END
 function! s:filetype()
-  if &filetype != '' | return | endif
+  let newft = ''
   for [pat, ft] in map(split('*[;hatena,#include;c,\documentclass;tex,import;haskell', ','), 'split(v:val, ";")')
-    if getline(1)[:strlen(pat) - 1] ==# pat | exec 'setlocal filetype=' . ft | endif
+    if getline(1)[:strlen(pat) - 1] ==# pat | let newft = ft | endif
   endfor
+  if newft != '' && (&filetype == '' || &filetype == newft)  | exec 'setlocal filetype=' . newft | endif
 endfunction
 " }}}
 
