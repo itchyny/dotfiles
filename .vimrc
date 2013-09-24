@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/09/24 11:17:20.
+" - * Last Change: 2013/09/24 11:57:27.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -83,9 +83,6 @@ NeoBundle 'itchyny/landscape.vim', {'type': 'nosync'}
   let g:landscape_highlight_todo = 1
   let g:landscape_highlight_full_space = 1
   let g:landscape_highlight_url_filetype = {'thumbnail': 0}
-  let g:Powerline_theme = 'landscape'
-  let g:Powerline_colorscheme = 'landscape'
-  let g:airline_theme = 'landscape'
 catch
   colorscheme wombat256
 endtry
@@ -94,11 +91,8 @@ NeoBundleLazy 'xterm-color-table.vim', {'autoload': {'commands': [{'name': 'Xter
   " http://www.vim.org/scripts/script.php?script_id=3412
 " }}}
 
-" Powerline {{{
+" Lightline {{{
 " --------------------------------------------------------------------------------------------------------
-NeoBundleLazy 'Lokaltog/vim-powerline', {'type': 'nosync'}
-NeoBundleLazy 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
-NeoBundleLazy 'bling/vim-airline'
 NeoBundle 'itchyny/lightline.vim', {'type': 'nosync'}
   let g:lightline = {
         \ 'colorscheme': 'landscape',
@@ -258,43 +252,6 @@ NeoBundle 'itchyny/lightline.vim', {'type': 'nosync'}
     catch
     endtry
   endfunction
-  let g:airline_left_sep = '⮀'
-  let g:airline_left_alt_sep = '⮁'
-  let g:airline_right_sep = '⮂'
-  let g:airline_right_alt_sep = '⮃'
-  let g:airline_symbols = { 'branch': '⭠', 'readonly': '⭤ ' }
-  let g:airline_linecolumn_prefix = ''
-  let g:airline#extensions#hunks#non_zero_only = 1
-  let g:airline#extensions#whitespace#enabled = 0
-  let g:airline#extensions#branch#enabled = 0
-  let g:airline#extensions#readonly#enabled = 0
-  let g:airline#extensions#tabline#enabled = 1
-  let g:airline_section_b = "%t%( %M%)"
-  let g:airline_section_b =
-        \ '%{airline#extensions#branch#get_head()}' .
-        \ '%{""!=airline#extensions#branch#get_head()?("  " . g:airline_left_alt_sep . " "):""}' .
-        \ '%{airline#parts#readonly()}' .
-        \ '%t%( %M%)'
-  let g:airline_section_c = ''
-  let s:sep = " %{get(g:, 'airline_right_alt_sep', '')} "
-  let g:airline_section_x =
-        \ '%{strlen(&fileformat)?&fileformat:""}'.s:sep.
-        \ '%{strlen(&fenc)?&fenc:&enc}'.s:sep.
-        \ '%{strlen(&filetype)?&filetype:"no ft"}'
-  let g:airline_section_y = '%3p%%'
-  let g:airline_section_z = get(g:, 'airline_linecolumn_prefix', '').'%3l:%-2v'
-  let g:airline_inactive_collapse = 0
-  function! AirLineForce(...)
-    let g:airline_mode_map.__ = ''
-    let w:airline_render_left = 1
-    let w:airline_render_right = 1
-  endfunction
-  let vital = neobundle#get('vim-airline')
-  function! vital.hooks.on_ource(bundle)
-    if exists('g:airline_statusline_funcrefs')
-      call add(g:airline_statusline_funcrefs, function('AirLineForce'))
-    endif
-  endfunction
 try
 " --|  $ sudo apt-get install fontforge
 " --|  $ sudo apt-get install python-fontforge
@@ -312,10 +269,6 @@ endif
 if s:iswin
   set guifontwide=MS_Gothic:h11:cSHIFTJIS
 endif
-if has('multi_byte')
-  let g:Powerline_symbols = 'fancy'
-endif
-let g:Powerline_mode_n = 'NORMAL'
 catch
 endtry
 " }}}
@@ -1119,7 +1072,6 @@ endif
 " }}}
 
 " Statusline color {{{
-if !exists('g:Powerline_loaded')
 let s:hi_sl = 'highlight StatusLine '
 let s:hi_gui_common = 'guifg=black gui=none '
 let s:hi_cterm_common = 'ctermfg=black cterm=none '
@@ -1131,7 +1083,6 @@ augroup InsertStatus
   autocmd InsertEnter * execute s:hi_insert
   autocmd InsertLeave * execute s:hi_normal
 augroup END
-endif
 if has('unix') && !has('gui_running')
   " ESC後にすぐ反映されない対策(実際これいる)
   inoremap <silent> <ESC> <ESC>
