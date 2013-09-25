@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/09/24 13:59:58.
+" - * Last Change: 2013/09/25 17:46:23.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -448,18 +448,14 @@ NeoBundle 'Shougo/unite.vim'
     if exists('*unite#custom_source')
       call unite#custom_source('file', 'ignore_pattern'
             \, '.*\.\(o\|exe\|dll\|bak\|sw[po]\|hi\|fff\|aux\|toc\|bbl\|blg\|DS_Store\)$')
+      call unite#custom_source('haddock,hoogle', 'max_candidates', 20)
     endif
     if exists('*unite#custom_action')
       call unite#custom_action('file', 'auto_open', s:auto_open)
+      call unite#custom_action('file', 'eject', s:eject)
     endif
     if exists('*unite#custom_default_action')
       call unite#custom_default_action('file', 'auto_open')
-    endif
-    if exists('*unite#custom_default_action')
-      call unite#custom_action('file', 'eject', s:eject)
-    endif
-    if exists('*unite#custom_source')
-      call unite#custom_source('haddock,hoogle', 'max_candidates', 20)
     endif
     let path = expand('~')
     for file in [$CACHE.'/unite/file_mru', $CACHE.'/unite/directory_mru']
