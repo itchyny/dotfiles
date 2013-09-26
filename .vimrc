@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/09/25 17:46:23.
+" - * Last Change: 2013/09/27 08:46:29.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -275,7 +275,6 @@ endtry
 
 " Complement {{{
 " --------------------------------------------------------------------------------------------------------
-if s:nosudo
 if has('lua') && v:version > 703
 NeoBundle 'Shougo/neocomplete.vim'
 NeoBundleLazy 'Shougo/neocomplcache'
@@ -356,17 +355,6 @@ NeoBundle 'Shougo/neosnippet'
     \: "\<TAB>"
 NeoBundle 'ujihisa/neco-look'
   " --| Requirement: look commnad
-else
-  function! s:cancel_popup(key)
-    return a:key . (pumvisible() ? "\<C-e>" : '')
-  endfunction
-  function! s:cancel_popup_reverse(key)
-    return (pumvisible() ? "\<C-e>" : '') . a:key
-  endfunction
-  function! s:goback_insert(key)
-    return "gi" . a:key . (pumvisible() ? "\<C-e>" : '')
-  endfunction
-endif
 " }}}
 
 " Unite ( "," ) {{{
@@ -572,7 +560,6 @@ NeoBundle 'Shougo/vimfiler'
   nnoremap <silent> <Leader><Leader> :<C-u>VimFilerBufferDir -status -buffer-name=vimfiler -auto-cd<CR>
   nnoremap <silent> @<Leader> :<C-u>VimFilerBufferDir -status -buffer-name=vimfiler -auto-cd<CR>
   nnoremap <silent>@@ :<C-u>VimFilerBufferDir -status -buffer-name=vimfiler -auto-cd<CR>
-  nnoremap <silent> s :<C-u>VimShellBufferDir<CR>
   let g:vimfiler_execute_file_list = {}
   for ft in split('pdf,png,jpg,jpeg,gif,bmp,ico,ppt,html', ',')
     let g:vimfiler_execute_file_list[ft] = 'open'
@@ -662,7 +649,6 @@ NeoBundleLazy 'mattn/googletasks-vim', {'autoload': {'commands': [{'name': 'Goog
 " vimshell ( ";" ) {{{
 " --------------------------------------------------------------------------------------------------------
 let mapleader = ";"
-if s:nosudo
 NeoBundle 'Shougo/vimshell'
 " --| Requirement: vimproc
 " --| If you can't use sudo, do:
@@ -712,6 +698,7 @@ NeoBundle 'Shougo/vimshell'
   nnoremap <silent> <S-h> :<C-u>VimShellBufferDir -popup<CR>
   nnoremap <Leader>z :<C-u>VimShellInteractive zsh<CR>
   nnoremap <Leader>p :<C-u>VimShellInteractive python<CR>
+  nnoremap <silent> s :<C-u>VimShellBufferDir<CR>
 if executable('ghc-mod')
   " neocomplcache (neco-ghc) throws fatal error when ghc-mod is not found
 NeoBundleLazy 'ujihisa/neco-ghc', {'autoload': {'filetypes': ['haskell']}}
@@ -720,7 +707,6 @@ NeoBundleLazy 'eagletmt/ghcmod-vim', {'autoload': {'filetypes': ['haskell']}}
   nnoremap <Leader>g :<C-u>GhcModCheckAsync<CR>
   " --| Requirement: ghc-mod
   " --|  $ cabal install ghc-mod
-endif
 endif
 " }}}
 
@@ -789,6 +775,7 @@ NeoBundle 'kien/ctrlp.vim'
     \ 'dir':  '\v[\/]\.(git|hg|svn)$',
     \ 'file': '\v\.(exe|so|dll|swp|pdf|DS_Store)$',
     \ }
+  let g:ctrlp_open_new_file = 'r'
   let g:ctrlp_use_caching = 1
   let g:ctrlp_cache_dir = $CACHE.'/ctrlp'
   let bundle = neobundle#get('ctrlp.vim')
