@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/09/27 08:46:29.
+" - * Last Change: 2013/09/28 23:37:53.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -1369,6 +1369,10 @@ set vb t_vb=
 " Command line {{{
 set wildmode=list:longest
 set wildignore+=*.sw?,*.bak,*.?~,*.??~,*.???~,*.~
+let s:cmdlist = 'vps;vsp,vp;vsp,nbi;NeoBundleInstall,nbc;NeoBundleClean,di;Dictionary<SPACE>-cursor-word'
+for [s:cmd, s:exp] in map(split(s:cmdlist, ','), 'split(v:val, ";")')
+  exec 'cabbrev <expr> '.s:cmd.' (getcmdtype() == ":" && getcmdline() ==# "'.s:cmd.'") ? "'.s:exp.'" : "'.s:cmd.'"'
+endfor
 " }}}
 
 " }}} OTHERS
