@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/09/29 00:12:16.
+" - * Last Change: 2013/09/29 00:29:29.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -405,11 +405,7 @@ NeoBundle 'Shougo/unite.vim'
   function! s:auto_open.func(candidates)
     try
       for candidate in a:candidates
-        if candidate.word =~? s:startfiletypes
-          call unite#take_action('start', candidate)
-        else
-          call unite#take_action('open', candidate)
-        endif
+        call unite#take_action(candidate.word =~? s:startfiletypes ? 'start' : 'open', candidate)
       endfor
     catch
     endtry
