@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/09/29 01:03:02.
+" - * Last Change: 2013/09/29 01:05:24.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -1083,9 +1083,6 @@ set smartcase
 set incsearch
 set hlsearch
 set magic
-if exists('&regexpengine')
-  set regexpengine=1
-endif
 " }}}
 
 " Indent {{{
