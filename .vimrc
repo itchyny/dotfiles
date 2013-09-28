@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/09/29 00:55:37.
+" - * Last Change: 2013/09/29 01:03:02.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -1238,25 +1238,6 @@ endfunction
 nnoremap <silent> <S-F5> :<C-u>call Automake()<CR>
 " }}}
 
-" AOJ template {{{
-function! AOJtemplate()
-  call append( 0, '#include <cstdio>')
-  call append( 1, '#include <iostream>')
-  call append( 2, '#include <cmath>')
-  call append( 3, '#include <stack>')
-  call append( 4, '#include <vector>')
-  call append( 5, '#include <algorithm>')
-  call append( 6, '#include <string>')
-  call append( 8, 'typedef long long ll;')
-  call append( 9, 'using namespace std;')
-  call append(10, '')
-  call append(11, 'int main () {')
-  call append(12, '  int i = 0, j = 0, k = 0, l = 0, m = 0, n = 0;')
-  call append(13, '}')
-endfunction
-nnoremap ,,, :set ft=c<CR>:call AOJtemplate()<CR>zRjjjjjo
-"}}}
-
 " GCJTemplate {{{
 function! GCJ()
   call append( 0, 'main = interact $ format . map solve . parseInput')
@@ -1276,13 +1257,7 @@ nnoremap ,p :<C-u>call GCJ()<CR><S-g>
 
 " Open file explorer at current directory {{{
 function! Explorer()
-  if s:ismac
-    silent call system('open -a Finder . &')
-  elseif s:iswin
-    silent call system('start . &')
-  else
-    silent call system('nautilus . &')
-  endif
+  silent call system((s:ismac ? 'open -a Finder' : s:iswin ? 'start' : 'nautilus') .'. &')
 endfunction
 nnoremap <silent> \n :call Explorer()<CR>
 nnoremap <silent> ge :call Explorer()<CR>
@@ -1290,13 +1265,7 @@ nnoremap <silent> ge :call Explorer()<CR>
 
 " Quickly open with outer text editor {{{
 function! TextEdit()
-  if s:ismac
-    silent call system('open -a TextEdit ' . s:escape(expand('%:p')) . ' &')
-  elseif s:iswin
-    silent call system('notepad ' . s:escape(expand('%:p')) . ' &')
-  else
-    silent call system('gedit ' . s:escape(expand('%:p')) . ' &')
-  endif
+  silent call system((s:ismac ? 'open -a TextEdit ' : s:iswin ? 'notepad ' : 'gedit ') . s:escape(expand('%:p')) . ' &')
 endfunction
 nnoremap <silent> \g :call TextEdit()<CR>
 " }}}
