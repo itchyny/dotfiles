@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/09/28 23:37:53.
+" - * Last Change: 2013/09/29 00:12:03.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -353,8 +353,7 @@ NeoBundle 'Shougo/neosnippet'
   smap <expr><TAB> neosnippet#expandable() <Bar><Bar> neosnippet#jumpable() ?
     \ "\<Plug>(neosnippet_expand_or_jump)"
     \: "\<TAB>"
-NeoBundle 'ujihisa/neco-look'
-  " --| Requirement: look commnad
+NeoBundle 'ujihisa/neco-look', {'disabled': !executable('look')}
 " }}}
 
 " Unite ( "," ) {{{
@@ -454,13 +453,11 @@ NeoBundleLazy 'Shougo/unite-build', {'autoload': {'unite_sources': ['build']}}
   nnoremap <silent><F5> :<C-u>Unite build -buffer-name=build<CR>
 NeoBundleLazy 'unite-colorscheme', {'autoload': {'unite_sources': ['colorscheme']}}
 NeoBundleLazy 'osyo-manga/unite-highlight', {'autoload': {'unite_sources': ['highlight']}}
-if executable('hoogle')
-NeoBundleLazy 'eagletmt/unite-haddock', {'autoload': {'unite_sources': ['hoogle']}}
+NeoBundleLazy 'eagletmt/unite-haddock', {'autoload': {'unite_sources': ['hoogle']}, 'disabled': !executable('hoogle')}
   nnoremap <Leader>h :<C-u>Unite hoogle -buffer-name=hoogle<CR>
   " --| Requirement: hoogle
   " --|   $ cabal install hoogle
   " --|   $ hoogle data
-endif
 NeoBundleLazy 'h1mesuke/unite-outline', {'autoload': {'unite_sources': ['outline']}}
 NeoBundleLazy 'ujihisa/unite-haskellimport', {'autoload': {'unite_sources': ['haskellimport']}}
 endif
@@ -699,15 +696,12 @@ NeoBundle 'Shougo/vimshell'
   nnoremap <Leader>z :<C-u>VimShellInteractive zsh<CR>
   nnoremap <Leader>p :<C-u>VimShellInteractive python<CR>
   nnoremap <silent> s :<C-u>VimShellBufferDir<CR>
-if executable('ghc-mod')
-  " neocomplcache (neco-ghc) throws fatal error when ghc-mod is not found
-NeoBundleLazy 'ujihisa/neco-ghc', {'autoload': {'filetypes': ['haskell']}}
+NeoBundleLazy 'ujihisa/neco-ghc', {'autoload': {'filetypes': ['haskell']}, 'disabled': !executable('ghc-mod')}
   let g:necoghc_enable_detailed_browse = 1
-NeoBundleLazy 'eagletmt/ghcmod-vim', {'autoload': {'filetypes': ['haskell']}}
+NeoBundleLazy 'eagletmt/ghcmod-vim', {'autoload': {'filetypes': ['haskell']}, 'disabled': !executable('ghc-mod')}
   nnoremap <Leader>g :<C-u>GhcModCheckAsync<CR>
   " --| Requirement: ghc-mod
   " --|  $ cabal install ghc-mod
-endif
 " }}}
 
 " Commenter / Utility / Matching ( "," ) {{{
@@ -735,16 +729,12 @@ NeoBundleLazy 'mattn/calendar-vim', {'autoload': {'commands': ['Calendar', 'Cale
   let calendar_no_mappings = 1
 NeoBundle 'autodate.vim'
   let g:autodate_format = '%Y/%m/%d %H:%M:%S'
-if has('python')
-NeoBundleLazy 'sjl/gundo.vim', {'autoload': {'commands': [{'name': 'GundoToggle', 'complete': 'customlist,CompleteNothing'}]}}
-  " --| Requirement: +python
+NeoBundleLazy 'sjl/gundo.vim', {'autoload': {'commands': [{'name': 'GundoToggle', 'complete': 'customlist,CompleteNothing'}]}, 'disabled': !has('python')}
   nnoremap <Leader>g :<C-u>GundoToggle<CR>
   autocmd ESC FileType gundo nnoremap <silent> <buffer> <ESC><ESC> :<C-u>GundoToggle<CR>
-NeoBundleLazy 'VimCalc', {'type': 'nosync', 'autoload': {'commands': [{'name': 'Calc', 'complete': 'customlist,CompleteNothing'}]}}
-  " --| Requirement: +python
+NeoBundleLazy 'VimCalc', {'type': 'nosync', 'autoload': {'commands': [{'name': 'Calc', 'complete': 'customlist,CompleteNothing'}]}, 'disabled': !has('python')}
   autocmd ESC FileType vimcalc nnoremap <silent> <buffer> <ESC><ESC><ESC> :<C-u>q<CR>
   nnoremap <silent> <Leader>a :<C-u>Calc<CR>
-endif
 NeoBundleLazy 'kana/vim-fakeclip'
 NeoBundle 'gregsexton/MatchTag'
 NeoBundle 'matchit.zip'
@@ -809,7 +799,6 @@ NeoBundle 'vim-jp/vital.vim'
 
 " Syntax {{{
 " --------------------------------------------------------------------------------------------------------
-if has('multi_byte')
 NeoBundleLazy 'scrooloose/syntastic', {'autoload': {'filetypes': ['c', 'cpp'], 'functions': ['SyntasticStatuslineFlag']}}
   let g:syntastic_mode_map = { 'mode': 'passive' }
   let g:syntastic_echo_current_error = 0
@@ -822,7 +811,6 @@ NeoBundleLazy 'scrooloose/syntastic', {'autoload': {'filetypes': ['c', 'cpp'], '
     if exists(':SyntasticCheck') | exec 'SyntasticCheck' | endif
     if exists('*lightline#update') | call lightline#update() | endif
   endfunction
-endif
 NeoBundleLazy 'mattn/emmet-vim', {'autoload': {'filetypes': ['html']}}
   let g:user_zen_settings = { 'html' : { 'indentation' : '  ' }, }
 NeoBundleLazy 'itspriddle/vim-javascript-indent', {'autoload': {'filetypes': ['javascript']}}
