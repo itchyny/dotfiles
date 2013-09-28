@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/09/29 00:12:03.
+" - * Last Change: 2013/09/29 00:12:16.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -1528,6 +1528,14 @@ nnoremap <expr> OH <SID>goback_insert("\<Home>")
 nnoremap <expr> [3~ <SID>goback_insert("\<Del>")
 nnoremap <expr> [5~ <SID>goback_insert("\<PageUp>")
 nnoremap <expr> [6~ <SID>goback_insert("\<PageDown>")
+
+" navigation in command line
+cnoremap <C-a> <Home>
+cnoremap <C-e> <End>
+cnoremap <C-b> <Left>
+cnoremap <C-f> <Right>
+cnoremap <C-d> <Del>
+cnoremap <C-h> <BS>
 " }}}
 
 " }}} KEY MAPPING
