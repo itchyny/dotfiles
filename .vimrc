@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/09/30 13:38:42.
+" - * Last Change: 2013/09/30 13:38:52.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -746,6 +746,10 @@ NeoBundle 'terryma/vim-multiple-cursors'
   let g:multi_cursor_skip_key = "\<C-x>"
   let g:multi_cursor_exit_key = "\<Esc>"
   let g:multi_cursor_quit_key = "\<Esc>"
+NeoBundle 'Lokaltog/vim-easymotion'
+  let g:EasyMotion_leader_key = '<Leader>'
+  let g:EasyMotion_keys = 'asdfwertxcvuiopbnmhjkl'
+  let g:EasyMotion_do_shade = 0
 NeoBundleLazy 'pasela/unite-webcolorname', {'autoload': {'unite_sources': ['webcolorname']}}
 NeoBundleLazy 'osyo-manga/vim-anzu', {'autoload' : {'mappings' : ['<Plug>(anzu-']}}
   nmap n <Plug>(anzu-n-with-echo)zv
