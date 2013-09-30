@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/09/29 01:27:59.
+" - * Last Change: 2013/09/30 13:38:42.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -99,7 +99,7 @@ NeoBundle 'itchyny/lightline.vim', {'type': 'nosync'}
         \ 'mode_map': { 'c': 'NORMAL' },
         \ 'active': {
         \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ], [ 'ctrlpmark' ] ],
-        \   'right': [ [ 'syntastic', 'lineinfo'], ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ]
+        \   'right': [ [ 'syntastic_error', 'syntastic_warning', 'lineinfo'], ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ]
         \ },
         \ 'inactive': {
         \   'left': [ [ 'filename' ] ],
@@ -128,10 +128,12 @@ NeoBundle 'itchyny/lightline.vim', {'type': 'nosync'}
         \ 'component_expand': {
         \   'fileformat': 'MyFileformat',
         \   'fileencoding': 'MyFileencoding',
-        \   'syntastic': 'SyntasticStatuslineFlag',
+        \   'syntastic_error': 'SyntasticStatuslineFlagError',
+        \   'syntastic_warning': 'SyntasticStatuslineFlagWarning',
         \ },
         \ 'component_type': {
-        \   'syntastic': 'error',
+        \   'syntastic_error': 'error',
+        \   'syntastic_warning': 'warning',
         \ },
         \ 'tab_component_function': {
         \   'filename': 'MyTabFilename',
@@ -232,6 +234,18 @@ NeoBundle 'itchyny/lightline.vim', {'type': 'nosync'}
           \ ft == 'vimshell' ? 'VimShell' :
           \ ft == 'dictionary' ? 'Dictionary' :
           \ strlen(fname) ? fname : '[No Name]'
+  endfunction
+  function! SyntasticStatuslineFlagError()
+    if exists('b:syntastic_loclist') && len(b:syntastic_loclist.errors())
+      return substitute(substitute(b:syntastic_loclist.errors()[0].text, '%', '%%', 'g'), '\[.\{-}\]', '', 'g')
+    endif
+    return ''
+  endfunction
+  function! SyntasticStatuslineFlagWarning()
+    if exists('b:syntastic_loclist') && len(b:syntastic_loclist.warnings()) && !len(b:syntastic_loclist.errors())
+      return substitute(substitute(b:syntastic_loclist.warnings()[0].text, '%', '%%', 'g'), '\[.\{-}\]', '', 'g')
+    endif
+    return ''
   endfunction
   augroup LightLineColorscheme
     autocmd!
