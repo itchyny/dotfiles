@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/09/30 13:38:52.
+" - * Last Change: 2013/09/30 23:09:14.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -750,6 +750,15 @@ NeoBundle 'Lokaltog/vim-easymotion'
   let g:EasyMotion_leader_key = '<Leader>'
   let g:EasyMotion_keys = 'asdfwertxcvuiopbnmhjkl'
   let g:EasyMotion_do_shade = 0
+  let g:EasyMotion_do_mapping = 0
+  nnoremap <silent> <Leader>f :<C-u>call EasyMotion#F(0, 0)<CR>
+  nnoremap <silent> <Leader>F :<C-u>call EasyMotion#F(0, 1)<CR>
+  nnoremap <silent> <Leader>e :<C-u>call EasyMotion#E(0, 0)<CR>
+  nnoremap <silent> <Leader>E :<C-u>call EasyMotion#E(0, 1)<CR>
+  nnoremap <silent> <Leader>w :<C-u>call EasyMotion#WB(0, 0)<CR>
+  nnoremap <silent> <Leader>W :<C-u>call EasyMotion#WBW(0, 1)<CR>
+  nnoremap <silent> <Leader>j :<C-u>call EasyMotion#JK(0, 0)<CR>
+  nnoremap <silent> <Leader>k :<C-u>call EasyMotion#JK(0, 1)<CR>
 NeoBundleLazy 'pasela/unite-webcolorname', {'autoload': {'unite_sources': ['webcolorname']}}
 NeoBundleLazy 'osyo-manga/vim-anzu', {'autoload' : {'mappings' : ['<Plug>(anzu-']}}
   nmap n <Plug>(anzu-n-with-echo)zv
