@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/01 17:02:51.
+" - * Last Change: 2013/10/01 19:55:33.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -1179,10 +1179,10 @@ set imsearch=-1
 set nrformats-=ocral
 "}}}
 
-" Windows specific {{{
-if s:iswin
-  set noswapfile
-endif
+" Generated files {{{
+set swapfile
+set nobackup
+set viminfo=
 " }}}
 
 " }}} EDIT
