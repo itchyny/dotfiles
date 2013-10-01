@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/01 14:55:55.
+" - * Last Change: 2013/10/01 17:02:51.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -126,8 +126,6 @@ NeoBundle 'itchyny/lightline.vim', {'type': 'nosync'}
         \   'ctrlpmark': 'CtrlPMark',
         \ },
         \ 'component_expand': {
-        \   'fileformat': 'MyFileformat',
-        \   'fileencoding': 'MyFileencoding',
         \   'syntastic_error': 'SyntasticStatuslineFlagError',
         \   'syntastic_warning': 'SyntasticStatuslineFlagWarning',
         \ },
@@ -795,7 +793,11 @@ NeoBundle 'basyura/TweetVim'
   let g:tweetvim_display_icon = 1
   let g:tweetvim_display_source = 1
   let g:tweetvim_display_time = 1
+  let g:tweetvim_display_username = 0
   let g:tweetvim_include_rts = 1
+  let g:tweetvim_expand_t_co = 1
+  let g:tweetvim_async_post = 1
+  let g:tweetvim_open_say_cmd = 'below split'
   let g:tweetvim_config_dir = $CACHE.'/tweetvim'
 NeoBundleLazy 'itchyny/thumbnail.vim', {'type': 'nosync', 'autoload': {'commands': [{'name': 'Thumbnail', 'complete': 'customlist,thumbnail#complete'}]}}
   nnoremap <silent> <Leader>t :<C-u>Thumbnail -here<CR>
