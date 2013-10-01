@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/01 21:59:33.
+" - * Last Change: 2013/10/01 22:15:18.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -761,6 +761,7 @@ NeoBundleLazy 'pasela/unite-webcolorname', {'autoload': {'unite_sources': ['webc
 NeoBundleLazy 'osyo-manga/vim-anzu', {'autoload' : {'mappings' : ['<Plug>(anzu-']}}
   nmap n <Plug>(anzu-n-with-echo)zv
   nmap N <Plug>(anzu-N-with-echo)zv
+  nnoremap * :<C-u>set hlsearch<CR>:<C-u>call feedkeys("\<Plug>(anzu-star-with-echo)zv", 'm')<CR>
   let g:anzu_status_format = '%p (%i/%l)'
   let g:anzu_no_match_word = ''
 NeoBundle 'tpope/vim-fugitive'
@@ -1413,7 +1414,7 @@ vnoremap <C-s> :<C-u>w<CR>
 nnoremap <silent> <Esc><Esc> :<C-u>set nohlsearch<CR>:<C-u>set nopaste<CR>
 nnoremap <silent> / :<C-u>set hlsearch<CR>/
 nnoremap <silent> ? :<C-u>set hlsearch<CR>?
-nnoremap <silent> * :<C-u>set hlsearch<CR>*
+" nnoremap <silent> * :<C-u>set hlsearch<CR>*
 nnoremap <silent> # :<C-u>set hlsearch<CR>#
 nnoremap <silent> ,n :<C-u>cn<CR>
 nnoremap <silent> ,p :<C-u>cp<CR>
