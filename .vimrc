@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/09/30 23:09:14.
+" - * Last Change: 2013/10/01 14:44:09.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -634,7 +634,7 @@ NeoBundleLazy 'eagletmt/ghci-vim', {'autoload': {'filetypes': ['haskell']}}
       autocmd FileType haskell nnoremap <buffer> <Leader>t <expr> exec 'GhciType'
     augroup END
   endfunction
-NeoBundleLazy 'tyru/open-browser.vim', {'autoload' : {'mappings' : ['<Plug>(openbrowser-']}}
+NeoBundle 'tyru/open-browser.vim', {'autoload' : {'mappings' : ['<Plug>(openbrowser-']}}
   nmap <silent> <Leader>b <Plug>(openbrowser-smart-search)
   vmap <silent> <Leader>b <Plug>(openbrowser-smart-search)
   nmap <silent> <Leader>s <Plug>(openbrowser-search)
@@ -788,6 +788,15 @@ NeoBundle 'kien/ctrlp.vim'
 NeoBundleLazy 'majutsushi/tagbar', {'autoload': {'commands': [{'name': 'Tagbar', 'complete': 'customlist,CompleteNothing'}]}}
 NeoBundleLazy 'scrooloose/nerdtree', {'autoload': {'commands': [{'name': 'NERDTree', 'complete': 'dir'}]}}
 NeoBundleLazy 'mattn/benchvimrc-vim', {'autoload': {'commands': [{'name': 'BenchVimrc', 'complete': 'customlist,CompleteNothing'}]}}
+NeoBundle 'basyura/bitly.vim'
+NeoBundle 'basyura/twibill.vim'
+NeoBundle 'basyura/TweetVim'
+  let g:tweetvim_display_separator = 0
+  let g:tweetvim_display_icon = 1
+  let g:tweetvim_display_source = 1
+  let g:tweetvim_display_time = 1
+  let g:tweetvim_include_rts = 1
+  let g:tweetvim_config_dir = $CACHE.'/tweetvim'
 NeoBundleLazy 'itchyny/thumbnail.vim', {'type': 'nosync', 'autoload': {'commands': [{'name': 'Thumbnail', 'complete': 'customlist,thumbnail#complete'}]}}
   nnoremap <silent> <Leader>t :<C-u>Thumbnail -here<CR>
   augroup ThumbnailKey
@@ -1338,7 +1347,7 @@ set vb t_vb=
 " Command line {{{
 set wildmode=list:longest
 set wildignore+=*.sw?,*.bak,*.?~,*.??~,*.???~,*.~
-let s:cmdlist = 'vps;vsp,vp;vsp,nbi;NeoBundleInstall,nbc;NeoBundleClean,di;Dictionary<SPACE>-cursor-word'
+let s:cmdlist = 'vps;vsp,vp;vsp,nbi;NeoBundleInstall,nbc;NeoBundleClean,di;Dictionary<SPACE>-cursor-word,tvs;TweetVimSay,tvus;TweetVimUserStream'
 for [s:cmd, s:exp] in map(split(s:cmdlist, ','), 'split(v:val, ";")')
   exec 'cabbrev <expr> '.s:cmd.' (getcmdtype() == ":" && getcmdline() ==# "'.s:cmd.'") ? "'.s:exp.'" : "'.s:cmd.'"'
 endfor
