@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/02 01:01:43.
+" - * Last Change: 2013/10/03 12:00:32.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -808,8 +808,8 @@ NeoBundleLazy 'itchyny/thumbnail.vim', {'type': 'nosync', 'autoload': {'commands
     autocmd FileType thumbnail nmap <buffer> V <Plug>(thumbnail_start_visual)
     autocmd FileType thumbnail call clearmatches()
   augroup END
-NeoBundleLazy 'itchyny/zcalendar.vim', {'type': 'nosync', 'autoload': {'commands': [{'name': 'ZCalendar', 'complete': 'customlist,zcalendar#complete'}]}}
-  nnoremap <silent> <Leader>z :<C-u>ZCalendar<CR>
+NeoBundleLazy 'itchyny/calen.vim', {'type': 'nosync', 'autoload': {'commands': [{'name': 'Calen', 'complete': 'customlist,calen'}]}}
+  nnoremap <silent> <Leader>z :<C-u>Calen<CR>
 NeoBundleLazy 'itchyny/dictionary.vim', {'type': 'nosync', 'autoload': {'commands': [{'name': 'Dictionary', 'complete': 'customlist,dictionary#complete'}]}}
   nnoremap <silent> <Leader>y :<C-u>Dictionary<CR>
   let g:dictionary_executable_path = '~/Dropbox/bin/'
