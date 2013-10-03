@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/03 12:00:32.
+" - * Last Change: 2013/10/04 00:15:55.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -32,6 +32,7 @@ let $VIM = expand('~/.vim')
 let $CACHE = $VIM.'/.cache'
 let $BUNDLE = $VIM.'/bundle'
 let s:neobundle_dir = $BUNDLE.'/neobundle.vim'
+if filereadable($VIM.'/.vimrc.secret') | source $VIM/.vimrc.secret | endif
 if !isdirectory(s:neobundle_dir)
 
 " neobundle {{{
