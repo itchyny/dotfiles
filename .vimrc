@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/04 00:31:54.
+" - * Last Change: 2013/10/04 11:30:38.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -1293,6 +1293,23 @@ function! GCJ()
   call append(11, 'solve (x:_) =')
 endfunction
 nnoremap ,p :<C-u>call GCJ()<CR><S-g>
+" }}}
+
+" Vim script header {{{
+function! Header()
+  let filename = substitute(expand('%:p'), expand('~/Dropbox/.vim/bundle/').'[^/]\+/', '', '')
+  let s = []
+  call add(s, '" ' . repeat('=', 77))
+  call add(s, '" ' . 'Filename: ' . filename)
+  call add(s, '" ' . 'Version: 0.0')
+  call add(s, '" ' . 'Author: itchyny')
+  call add(s, '" ' . 'License: MIT License')
+  call add(s, '" ' . 'Last Change: .')
+  call add(s, '" ' . repeat('=', 77))
+  call add(s, '')
+  call append(0, s)
+endfunction
+command! Header call Header()
 " }}}
 
 " Open file explorer at current directory {{{
