@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/05 17:59:46.
+" - * Last Change: 2013/10/06 01:30:21.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -659,6 +659,7 @@ NeoBundle 'Shougo/vimshell'
   let g:vimshell_disable_escape_highlight = 0
   let g:vimshell_force_overwrite_statusline = 0
   let g:vimshell_temporary_directory = $CACHE.'/vimshell'
+  let g:vimshell_max_command_history = 1000000
   let g:vimshell_vimshrc_path = expand('~/Dropbox/dotfiles/.vimshrc')
   augroup Vimshell
     autocmd!
@@ -1004,7 +1005,7 @@ else
 endif
 set shortmess+=I            " disable start up message
 set number
-  autocmd SetLocal FileType vimshell,vimcalc,quickrun,int-ghci setlocal nonumber
+  autocmd SetLocal FileType vimshell,vimcalc,quickrun,int-ghci setlocal nonumber buftype=nofile
 set cursorline
   augroup CursorLine
     autocmd!
