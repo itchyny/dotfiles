@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/04 11:30:38.
+" - * Last Change: 2013/10/05 17:59:46.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -796,11 +796,33 @@ NeoBundle 'basyura/TweetVim'
   let g:tweetvim_display_source = 1
   let g:tweetvim_display_time = 1
   let g:tweetvim_display_username = 0
+  let g:tweetvim_align_right = 1
   let g:tweetvim_include_rts = 1
   let g:tweetvim_expand_t_co = 1
   let g:tweetvim_async_post = 1
   let g:tweetvim_open_say_cmd = 'below split'
   let g:tweetvim_config_dir = $CACHE.'/tweetvim'
+  function! TweetVim_say()
+    for w in range(1, winnr('$'))
+      if bufname(winbufnr(w)) =~ 'tweetvim_say'
+        execute w 'wincmd w'
+        return
+      endif
+    endfor
+    silent TweetVimSay
+  endfunction
+  augroup TweetVim
+    autocmd!
+    autocmd FileType tweetvim nmap <buffer> h <Plug>(tweetvim_action_user_timeline)
+    autocmd FileType tweetvim nmap <buffer> l <Plug>(tweetvim_action_open_links)
+    autocmd FileType tweetvim nmap <buffer> f <Plug>(tweetvim_action_favorite)
+    autocmd FileType tweetvim nmap <buffer> <CR> <Plug>(tweetvim_action_reply)
+    autocmd FileType tweetvim nmap <silent> <buffer> q :<C-u>bdelete!<CR>
+    autocmd FileType tweetvim nmap <silent> <buffer> <Tab> :<C-u>call TweetVim_say()<CR>
+    autocmd FileType tweetvim_say imap <silent> <buffer> <CR> <ESC><CR>
+    autocmd FileType tweetvim_say inoremap <silent> <buffer> <Tab> <ESC>:<C-u>wincmd p<CR>
+    autocmd FileType tweetvim_say nnoremap <silent> <buffer> <Tab> :<C-u>wincmd p<CR>
+  augroup END
 NeoBundleLazy 'itchyny/thumbnail.vim', {'type': 'nosync', 'autoload': {'commands': [{'name': 'Thumbnail', 'complete': 'customlist,thumbnail#complete'}]}}
   nnoremap <silent> <Leader>t :<C-u>Thumbnail -here<CR>
   augroup ThumbnailKey
@@ -1145,9 +1167,9 @@ set textwidth=0   " No auto breking line
 set expandtab
   function! s:autotab()
     if search('^\t.*\n\t.*\n\t', 'n') > 0
-      set noexpandtab
+      setlocal noexpandtab
     else
-      set expandtab
+      setlocal expandtab
     endif
   endfunction
   augroup Autotab
