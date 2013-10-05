@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/06 02:27:51.
+" - * Last Change: 2013/10/06 02:47:35.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -1321,7 +1321,7 @@ nnoremap ,p :<C-u>call GCJ()<CR><S-g>
 " Vim script header {{{
 function! Header()
   let filename = substitute(expand('%:p'), expand('~/Dropbox/.vim/bundle/').'[^/]\+/', '', '')
-  let s = []
+  let [s, f] = [[], []]
   call add(s, '" ' . repeat('=', 77))
   call add(s, '" ' . 'Filename: ' . filename)
   call add(s, '" ' . 'Author: itchyny')
@@ -1333,10 +1333,12 @@ function! Header()
     call add(s, 'let s:save_cpo = &cpo')
     call add(s, 'set cpo&vim')
     call add(s, '')
-    call add(s, 'let &cpo = s:save_cpo')
-    call add(s, 'unlet s:save_cpo')
+    if getline(line('$')) != '' | call add(f, '') | endif
+    call add(f, 'let &cpo = s:save_cpo')
+    call add(f, 'unlet s:save_cpo')
   endif
-  call setline(1, s)
+  call append(0, s)
+  call append(line('$'), f)
 endfunction
 command! Header call Header()
 " }}}
