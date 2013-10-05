@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/06 01:33:57.
+" - * Last Change: 2013/10/06 02:24:09.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -1324,7 +1324,6 @@ function! Header()
   let s = []
   call add(s, '" ' . repeat('=', 77))
   call add(s, '" ' . 'Filename: ' . filename)
-  call add(s, '" ' . 'Version: 0.0')
   call add(s, '" ' . 'Author: itchyny')
   call add(s, '" ' . 'License: MIT License')
   call add(s, '" ' . 'Last Change: .')
