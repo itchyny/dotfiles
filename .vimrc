@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/06 01:30:21.
+" - * Last Change: 2013/10/06 01:33:57.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -1330,7 +1330,14 @@ function! Header()
   call add(s, '" ' . 'Last Change: .')
   call add(s, '" ' . repeat('=', 77))
   call add(s, '')
-  call append(0, s)
+  if !search('save_cpo')
+    call add(s, 'let s:save_cpo = &cpo')
+    call add(s, 'set cpo&vim')
+    call add(s, '')
+    call add(s, 'let &cpo = s:save_cpo')
+    call add(s, 'unlet s:save_cpo')
+  endif
+  call setline(1, s)
 endfunction
 command! Header call Header()
 " }}}
