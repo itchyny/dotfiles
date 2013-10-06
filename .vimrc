@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/06 22:06:08.
+" - * Last Change: 2013/10/07 02:39:04.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -1002,6 +1002,9 @@ else
     let g:vimfiler_tree_opened_icon = '-'
     let g:vimfiler_tree_closed_icon = '+'
   endtry
+endif
+if exists('&breakindent')
+  set breakindent
 endif
 set shortmess+=I            " disable start up message
 set number
