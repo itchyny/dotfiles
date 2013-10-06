@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/06 11:45:37.
+" - * Last Change: 2013/10/06 22:06:08.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -1207,7 +1207,7 @@ set nrformats-=ocral
 " Generated files {{{
 set swapfile
 set nobackup
-set viminfo=
+set viminfo='1000,:1000,n$CACHE/.viminfo
 " }}}
 
 " }}} EDIT
@@ -1321,24 +1321,28 @@ nnoremap ,p :<C-u>call GCJ()<CR><S-g>
 " Vim script header {{{
 function! Header()
   let filename = substitute(expand('%:p'), expand('~/Dropbox/.vim/bundle/').'[^/]\+/', '', '')
-  let [s, f] = [[], []]
-  call add(s, '" ' . repeat('=', 77))
-  call add(s, '" ' . 'Filename: ' . filename)
-  call add(s, '" ' . 'Author: itchyny')
-  call add(s, '" ' . 'License: MIT License')
-  call add(s, '" ' . 'Last Change: .')
-  call add(s, '" ' . repeat('=', 77))
-  call add(s, '')
-  if !search('save_cpo')
-    call add(s, 'let s:save_cpo = &cpo')
-    call add(s, 'set cpo&vim')
+  if search(repeat('=', 77))
+    call setline(search('" Filename:'), '" ' . 'Filename: ' . filename)
+  else
+    let [s, f] = [[], []]
+    call add(s, '" ' . repeat('=', 77))
+    call add(s, '" ' . 'Filename: ' . filename)
+    call add(s, '" ' . 'Author: itchyny')
+    call add(s, '" ' . 'License: MIT License')
+    call add(s, '" ' . 'Last Change: .')
+    call add(s, '" ' . repeat('=', 77))
     call add(s, '')
-    if getline(line('$')) != '' | call add(f, '') | endif
-    call add(f, 'let &cpo = s:save_cpo')
-    call add(f, 'unlet s:save_cpo')
+    if !search('save_cpo')
+      call add(s, 'let s:save_cpo = &cpo')
+      call add(s, 'set cpo&vim')
+      call add(s, '')
+      if getline(line('$')) != '' | call add(f, '') | endif
+      call add(f, 'let &cpo = s:save_cpo')
+      call add(f, 'unlet s:save_cpo')
+    endif
+    call append(0, s)
+    call append(line('$'), f)
   endif
-  call append(0, s)
-  call append(line('$'), f)
 endfunction
 command! Header call Header()
 " }}}
