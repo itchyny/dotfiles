@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/07 13:07:27.
+" - * Last Change: 2013/10/07 22:08:18.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -1133,7 +1133,7 @@ augroup SetLocalFiletype
 augroup END
 function! s:filetype()
   let newft = ''
-  for [pat, ft] in map(split('*[;hatena,#include;c,\documentclass;tex,import;haskell,main =;haskell', ','), 'split(v:val, ";")')
+  for [pat, ft] in map(split('*[;hatena,#include;c,\documentclass;tex,import;haskell,main =;haskell,diff --;diff', ','), 'split(v:val, ";")')
     if getline(1)[:strlen(pat) - 1] ==# pat | let newft = ft | endif
   endfor
   if newft != '' && (&filetype == '' || &filetype == newft)  | exec 'setlocal filetype=' . newft | endif
