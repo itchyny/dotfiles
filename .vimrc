@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/10 14:35:56.
+" - * Last Change: 2013/10/10 14:36:13.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -1352,7 +1352,7 @@ command! Header call Header()
 
 " Open file explorer at current directory {{{
 function! Explorer()
-  silent call system((s:ismac ? 'open -a Finder' : s:iswin ? 'start' : 'nautilus') .'. &')
+  silent call system((s:ismac ? 'open -a Finder' : s:iswin ? 'start' : 'nautilus') .' . &')
 endfunction
 nnoremap <silent> \n :call Explorer()<CR>
 nnoremap <silent> ge :call Explorer()<CR>
