@@ -1,11 +1,11 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2013/10/05 18:00:17.
+# - * Last Change: 2013/10/10 18:18:56.
 # ------------------------------------------------------------------------------------------------------------
 
 # history
-HISTFILE=~/Dropbox/dotfiles/.histfile
+HISTFILE=~/Dropbox/.files/.histfile
 HISTSIZE=10000000
 SAVEHIST=10000000
 setopt append_history
@@ -76,8 +76,8 @@ setopt no_flow_control
 # integrate vim mode
 bindkey -v
 # http://blog-imgs-44.fc2.com/z/s/h/zshscreenvimvimpwget/zsh_vim_visualmode_osxver.txt
-[ -e ~/Dropbox/dotfiles/zsh_vim_visualmode_osxver ] && \
-  source ~/Dropbox/dotfiles/zsh_vim_visualmode_osxver
+[ -e ~/Dropbox/.files/zsh_vim_visualmode_osxver ] && \
+  source ~/Dropbox/.files/zsh_vim_visualmode_osxver
 bindkey "^W" backward-kill-word
 
 # export variables
@@ -369,20 +369,20 @@ function http {
 
 bindkey '^m' do_enter
 # http://mimosa-pudica.net/zsh-incremental.html
-[ -e ~/Dropbox/dotfiles/incr-0.2.zsh ] && \
-  source ~/Dropbox/dotfiles/incr-0.2.zsh
+[ -e ~/Dropbox/.files/incr-0.2.zsh ] && \
+  source ~/Dropbox/.files/incr-0.2.zsh
 
 # https://github.com/zsh-users/zsh-history-substring-search
-[ -e ~/Dropbox/dotfiles/zsh-history-substring-search/zsh-history-substring-search.zsh  ] && \
-  source ~/Dropbox/dotfiles/zsh-history-substring-search/zsh-history-substring-search.zsh
+[ -e ~/Dropbox/.files/zsh-history-substring-search/zsh-history-substring-search.zsh  ] && \
+  source ~/Dropbox/.files/zsh-history-substring-search/zsh-history-substring-search.zsh
 
 # https://github.com/zsh-users/zsh-syntax-highlighting
-[ -e ~/Dropbox/dotfiles/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && \
-  source ~/Dropbox/dotfiles/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+[ -e ~/Dropbox/.files/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && \
+  source ~/Dropbox/.files/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # https://github.com/nakamuray/zaw
-[ -e ~/Dropbox/dotfiles/zaw/zaw.zsh ] && \
-  source ~/Dropbox/dotfiles/zaw/zaw.zsh && \
+[ -e ~/Dropbox/.files/zaw/zaw.zsh ] && \
+  source ~/Dropbox/.files/zaw/zaw.zsh && \
   bindkey '^z' zaw-history
 
 [ -e ~/Dropbox ] && cd ~/Dropbox > /dev/null

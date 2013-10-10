@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/10 17:47:39.
+" - * Last Change: 2013/10/10 18:21:18.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -660,7 +660,7 @@ NeoBundle 'Shougo/vimshell'
   let g:vimshell_force_overwrite_statusline = 0
   let g:vimshell_temporary_directory = $CACHE.'/vimshell'
   let g:vimshell_max_command_history = 1000000
-  let g:vimshell_vimshrc_path = expand('~/Dropbox/dotfiles/.vimshrc')
+  let g:vimshell_vimshrc_path = expand('~/Dropbox/.files/.vimshrc')
   augroup Vimshell
     autocmd!
     " for easy window moving, unmap C-[hjkl]
@@ -1374,13 +1374,13 @@ command! S call Syntax()
 " }}}
 
 " Quick open dot files {{{
-if filereadable(expand('~/Dropbox/dotfiles/.vimrc'))
-  nnoremap \. :e ~/Dropbox/dotfiles/.vimrc<CR>
+if filereadable(expand('~/Dropbox/.files/.vimrc'))
+  nnoremap \. :e ~/Dropbox/.files/.vimrc<CR>
 elseif filereadable(expand('~/.vimrc'))
   nnoremap \. :e ~/.vimrc<CR>
 endif
-if filereadable(expand('~/Dropbox/dotfiles/.zshrc'))
-  nnoremap ;. :e ~/Dropbox/dotfiles/.zshrc<CR>
+if filereadable(expand('~/Dropbox/.files/.zshrc'))
+  nnoremap ;. :e ~/Dropbox/.files/.zshrc<CR>
 elseif filereadable(expand('~/.zshrc'))
   nnoremap ;. :e ~/.zshrc<CR>
 endif
