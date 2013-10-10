@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/10 14:36:13.
+" - * Last Change: 2013/10/10 17:47:39.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -520,13 +520,13 @@ NeoBundle 'thinca/vim-quickrun'
       call extend(g:quickrun_config.abc.exec, ['abc2midi %s -o %s:p:r.mid', 'open %s:p:r.mid'])
     endif
   endif
-  nnoremap <Leader>r :<C-u>QuickRun -outputter/buffer/name "%{'[quickrun output '.tabpagenr().']'}"<CR>
+  nnoremap <Leader>r :<C-u>QuickRun -outputter/buffer/name "%{'[quickrun output'.(tabpagenr()>1?' '.tabpagenr():'').']'}"<CR>
   nnoremap <Leader><Leader>r :<C-u>QuickRun >file:temp.dat<CR>
   nnoremap <Leader>e :<C-u>QuickRun <i <CR>
   nnoremap <Leader>o :<C-u>QuickRun <i >file:output<CR>
   autocmd ESC FileType quickrun nnoremap <silent> <buffer> <ESC><ESC> <ESC>:q!<CR>
   autocmd ESC FileType quickrun vnoremap <silent> <buffer> <ESC><ESC> <ESC>:q!<CR>
-  autocmd SetLocal FileType quickrun nnoremap <silent> <buffer> q :<C-u>quit!<CR>
+  autocmd SetLocal FileType quickrun nnoremap <silent> <buffer> q :<C-u>bdelete!<CR>
 if s:nosudo
 NeoBundle 'Shougo/vimfiler'
   let g:vimfiler_as_default_explorer = 1
@@ -835,7 +835,7 @@ NeoBundleLazy 'itchyny/thumbnail.vim', {'type': 'nosync', 'autoload': {'commands
 NeoBundleLazy 'itchyny/calen.vim', {'type': 'nosync', 'autoload': {'commands': [{'name': 'Calen', 'complete': 'customlist,calen#complete'}]}}
   nnoremap <silent> <Leader>z :<C-u>Calen -here<CR>
 NeoBundleLazy 'itchyny/dictionary.vim', {'type': 'nosync', 'autoload': {'commands': [{'name': 'Dictionary', 'complete': 'customlist,dictionary#complete'}]}}
-  nnoremap <silent> <Leader>y :<C-u>Dictionary<CR>
+  nnoremap <silent> <Leader>y :<C-u>Dictionary -search<CR>
   let g:dictionary_executable_path = '~/Dropbox/bin/'
 NeoBundle 'vim-jp/vital.vim'
   let vital = neobundle#get('vital.vim')
