@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/10 01:26:34.
+" - * Last Change: 2013/10/10 14:35:56.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -520,13 +520,13 @@ NeoBundle 'thinca/vim-quickrun'
       call extend(g:quickrun_config.abc.exec, ['abc2midi %s -o %s:p:r.mid', 'open %s:p:r.mid'])
     endif
   endif
-  nnoremap <Leader>r :<C-u>QuickRun<CR>
+  nnoremap <Leader>r :<C-u>QuickRun -outputter/buffer/name "%{'[quickrun output '.tabpagenr().']'}"<CR>
   nnoremap <Leader><Leader>r :<C-u>QuickRun >file:temp.dat<CR>
   nnoremap <Leader>e :<C-u>QuickRun <i <CR>
   nnoremap <Leader>o :<C-u>QuickRun <i >file:output<CR>
   autocmd ESC FileType quickrun nnoremap <silent> <buffer> <ESC><ESC> <ESC>:q!<CR>
   autocmd ESC FileType quickrun vnoremap <silent> <buffer> <ESC><ESC> <ESC>:q!<CR>
-  autocmd SetLocal FileType quickrun nnoremap <silent> <buffer> q :<C-u>bdelete!<CR>
+  autocmd SetLocal FileType quickrun nnoremap <silent> <buffer> q :<C-u>quit!<CR>
 if s:nosudo
 NeoBundle 'Shougo/vimfiler'
   let g:vimfiler_as_default_explorer = 1
