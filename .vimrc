@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/10 18:21:18.
+" - * Last Change: 2013/10/11 14:07:57.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -220,10 +220,17 @@ NeoBundle 'itchyny/lightline.vim', {'type': 'nosync'}
     return gettabwinvar(a:n, winnr, '&readonly') ? '⭤' : ''
   endfunction
   function! MyTabFilename(n)
-    let buflist = tabpagebuflist(a:n)
-    let winnr = tabpagewinnr(a:n)
-    let fname = expand("#".buflist[winnr - 1].":t")
-    let ft = gettabwinvar(a:n, winnr, '&filetype')
+    let bufnr = tabpagebuflist(a:n)[tabpagewinnr(a:n) - 1]
+    let bufname = expand('#' . bufnr . ':t')
+    let buffullname = expand('#' . bufnr . ':p')
+    let bufnrs = filter(range(1, bufnr('$')), 'v:val != bufnr && len(bufname(v:val)) && bufexists(v:val) && buflisted(v:val)')
+    let i = index(map(copy(bufnrs), 'expand("#" . v:val . ":t")'), bufname)
+    let ft = gettabwinvar(a:n, tabpagewinnr(a:n), '&filetype')
+    if strlen(bufname) && i >= 0 && map(bufnrs, 'expand("#" . v:val . ":p")')[i] != buffullname
+      let fname = substitute(buffullname, '.*/\([^/]\+/\)', '\1', '')
+    else
+      let fname = bufname
+    endif
     return fname == 'ControlP' ? 'CtrlP' :
           \ fname == '__Tagbar__' ? 'Tagbar' :
           \ fname =~ '__Gundo' ? 'Gundo' :
@@ -232,6 +239,8 @@ NeoBundle 'itchyny/lightline.vim', {'type': 'nosync'}
           \ ft == 'unite' ? 'Unite' :
           \ ft == 'vimshell' ? 'VimShell' :
           \ ft == 'dictionary' ? 'Dictionary' :
+          \ ft == 'calen' ? 'Calen' :
+          \ ft == 'thumbnail' ? 'Thumbnail' :
           \ strlen(fname) ? fname : '[No Name]'
   endfunction
   function! SyntasticStatuslineFlagError()
