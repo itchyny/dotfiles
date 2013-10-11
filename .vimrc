@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/11 14:08:18.
+" - * Last Change: 2013/10/11 14:08:52.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -543,6 +543,7 @@ NeoBundle 'Shougo/vimfiler'
   let g:vimfiler_safe_mode_by_default = 0
   let g:vimfiler_force_overwrite_statusline = 0
   let g:vimfiler_data_directory = $CACHE.'/vimfiler'
+  let g:vimfiler_draw_files_limit = 1000
   if s:iswin || !has('multi_byte')
     let g:vimfiler_tree_leaf_icon = '|'
     let g:vimfiler_tree_opened_icon = '-'
