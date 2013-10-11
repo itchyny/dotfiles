@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/11 14:07:57.
+" - * Last Change: 2013/10/11 14:08:18.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -844,7 +844,7 @@ NeoBundleLazy 'itchyny/thumbnail.vim', {'type': 'nosync', 'autoload': {'commands
 NeoBundleLazy 'itchyny/calen.vim', {'type': 'nosync', 'autoload': {'commands': [{'name': 'Calen', 'complete': 'customlist,calen#complete'}]}}
   nnoremap <silent> <Leader>z :<C-u>Calen -here<CR>
 NeoBundleLazy 'itchyny/dictionary.vim', {'type': 'nosync', 'autoload': {'commands': [{'name': 'Dictionary', 'complete': 'customlist,dictionary#complete'}]}}
-  nnoremap <silent> <Leader>y :<C-u>Dictionary -search<CR>
+  nnoremap <silent> <Leader>y :<C-u>Dictionary -no-duplicate<CR>
   let g:dictionary_executable_path = '~/Dropbox/bin/'
 NeoBundle 'vim-jp/vital.vim'
   let vital = neobundle#get('vital.vim')
