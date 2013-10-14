@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/11 14:08:52.
+" - * Last Change: 2013/10/14 23:38:40.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -529,7 +529,7 @@ NeoBundle 'thinca/vim-quickrun'
       call extend(g:quickrun_config.abc.exec, ['abc2midi %s -o %s:p:r.mid', 'open %s:p:r.mid'])
     endif
   endif
-  nnoremap <Leader>r :<C-u>QuickRun -outputter/buffer/name "%{'[quickrun output'.(tabpagenr()>1?' '.tabpagenr():'').']'}"<CR>
+  nnoremap <Leader>r :<C-u>QuickRun -outputter/buffer/name "[quickrun output%{tabpagenr()>1?' '.tabpagenr():''}]"<CR>
   nnoremap <Leader><Leader>r :<C-u>QuickRun >file:temp.dat<CR>
   nnoremap <Leader>e :<C-u>QuickRun <i <CR>
   nnoremap <Leader>o :<C-u>QuickRun <i >file:output<CR>
