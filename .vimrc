@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/14 23:38:59.
+" - * Last Change: 2013/10/17 13:10:05.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -845,7 +845,7 @@ NeoBundleLazy 'itchyny/thumbnail.vim', {'type': 'nosync', 'autoload': {'commands
     autocmd FileType thumbnail nmap <buffer> V <Plug>(thumbnail_start_visual)
     autocmd FileType thumbnail call clearmatches()
   augroup END
-NeoBundleLazy 'itchyny/calen.vim', {'type': 'nosync', 'autoload': {'commands': [{'name': 'Calen', 'complete': 'customlist,calen#complete'}]}}
+NeoBundleLazy 'itchyny/calen.vim', {'type': 'nosync', 'autoload': {'commands': [{'name': 'Calen', 'complete': 'customlist,calen#argument#complete'}]}}
   nnoremap <silent> <Leader>z :<C-u>Calen -here<CR>
 NeoBundleLazy 'itchyny/dictionary.vim', {'type': 'nosync', 'autoload': {'commands': [{'name': 'Dictionary', 'complete': 'customlist,dictionary#complete'}]}}
   nnoremap <silent> <Leader>y :<C-u>Dictionary -no-duplicate<CR>
