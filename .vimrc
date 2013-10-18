@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/17 13:10:05.
+" - * Last Change: 2013/10/18 10:57:24.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -538,7 +538,6 @@ NeoBundle 'thinca/vim-quickrun'
   nnoremap <Leader>o :<C-u>QuickRun <i >file:output<CR>
   autocmd ESC FileType quickrun nnoremap <silent> <buffer> <ESC><ESC> <ESC>:q!<CR>
   autocmd ESC FileType quickrun vnoremap <silent> <buffer> <ESC><ESC> <ESC>:q!<CR>
-  autocmd SetLocal FileType quickrun nnoremap <silent> <buffer> q :<C-u>bdelete!<CR>
 if s:nosudo
 NeoBundle 'Shougo/vimfiler'
   let g:vimfiler_as_default_explorer = 1
