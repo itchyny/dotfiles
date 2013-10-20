@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/21 07:45:08.
+" - * Last Change: 2013/10/21 08:51:40.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -151,6 +151,7 @@ NeoBundle 'itchyny/lightline.vim', {'type': 'nosync'}
           \ &ft == 'vimshell' ? substitute(b:vimshell.current_dir,expand('~'),'~','') :
           \ &ft == 'dictionary' ? (exists('b:dictionary.input') ? b:dictionary.input : '') :
           \ &ft == 'calen' ? join(calen#day#today().get_ymd(), '/') :
+          \ &ft == 'thumbnail' ? 'Thumbnail' :
           \ (&readonly ? "\u2b64 " : '') .
           \ ('' != fname ? fname : '[No Name]') .
           \ (&modified ? ' +' : &modifiable ? '' : ' -')
