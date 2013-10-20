@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/18 10:57:48.
+" - * Last Change: 2013/10/21 07:45:08.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -257,25 +257,6 @@ NeoBundle 'itchyny/lightline.vim', {'type': 'nosync'}
       return substitute(substitute(b:syntastic_loclist.warnings()[0].text, '%', '%%', 'g'), '\[.\{-}\]', '', 'g')
     endif
     return ''
-  endfunction
-  augroup LightLineColorscheme
-    autocmd!
-    autocmd ColorScheme * call s:lightline_update()
-  augroup END
-  function! s:lightline_update()
-    if !exists('g:loaded_lightline') || !exists('g:loaded_vimrc')
-      return
-    endif
-    try
-      if g:colors_name =~# 'wombat\|solarized\|landscape\|jellybeans\|Tomorrow'
-        let g:lightline.colorscheme = substitute(substitute(g:colors_name, '-', '_', 'g'), '256.*', '', '') .
-              \ (g:colors_name ==# 'solarized' ? '_' . &background : '')
-        call lightline#init()
-        call lightline#colorscheme()
-        call lightline#update()
-      endif
-    catch
-    endtry
   endfunction
 try
 " --|  $ sudo apt-get install fontforge
