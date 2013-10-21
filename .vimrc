@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/21 08:51:40.
+" - * Last Change: 2013/10/21 14:22:23.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -514,10 +514,10 @@ NeoBundle 'thinca/vim-quickrun'
       call extend(g:quickrun_config.abc.exec, ['abc2midi %s -o %s:p:r.mid', 'open %s:p:r.mid'])
     endif
   endif
-  nnoremap <Leader>r :<C-u>QuickRun -outputter/buffer/name "[quickrun output%{tabpagenr()>1?' '.tabpagenr():''}]"<CR>
-  nnoremap <Leader><Leader>r :<C-u>QuickRun >file:temp.dat<CR>
-  nnoremap <Leader>e :<C-u>QuickRun <i <CR>
-  nnoremap <Leader>o :<C-u>QuickRun <i >file:output<CR>
+  nnoremap <silent> <Leader>r :<C-u>QuickRun -outputter/buffer/name "[quickrun output%{tabpagenr()>1?' '.tabpagenr():''}]"<CR>
+  nnoremap <silent> <Leader><Leader>r :<C-u>QuickRun >file:temp.dat<CR>
+  nnoremap <silent> <Leader>e :<C-u>QuickRun <i <CR>
+  nnoremap <silent> <Leader>o :<C-u>QuickRun <i >file:output<CR>
   autocmd ESC FileType quickrun nnoremap <silent> <buffer> <ESC><ESC> <ESC>:q!<CR>
   autocmd ESC FileType quickrun vnoremap <silent> <buffer> <ESC><ESC> <ESC>:q!<CR>
 if s:nosudo
