@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/21 14:22:23.
+" - * Last Change: 2013/10/22 10:17:02.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -1085,7 +1085,7 @@ set statusline=%{expand('%:p:t')}\ %<[%{expand('%:p:h')}]%=\ %m%r%y%w[%{&fenc!='
 " Color {{{
 syntax enable
 set background=dark
-set synmaxcol=9999
+set synmaxcol=300
 if !has('gui_running')
   set t_Co=256
 endif
