@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/22 10:17:02.
+" - * Last Change: 2013/10/26 00:39:07.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -828,7 +828,7 @@ NeoBundleLazy 'itchyny/thumbnail.vim', {'type': 'nosync', 'autoload': {'commands
   augroup END
 NeoBundleLazy 'itchyny/calen.vim', {'type': 'nosync', 'autoload': {'commands': [{'name': 'Calen', 'complete': 'customlist,calen#argument#complete'}]}}
   nnoremap <silent> <Leader>z :<C-u>Calen -here<CR>
-  let g:calen_frame_type = 'unicode'
+  let g:calen_frame = 'unicode'
 NeoBundleLazy 'itchyny/dictionary.vim', {'type': 'nosync', 'autoload': {'commands': [{'name': 'Dictionary', 'complete': 'customlist,dictionary#complete'}]}}
   nnoremap <silent> <Leader>y :<C-u>Dictionary -no-duplicate<CR>
   let g:dictionary_executable_path = '~/Dropbox/bin/'
