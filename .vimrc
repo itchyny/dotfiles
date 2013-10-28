@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/27 16:54:33.
+" - * Last Change: 2013/10/28 12:07:02.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -1585,12 +1585,23 @@ cnoremap <C-h> <BS>
 cnoremap <expr> } <SID>range_paragraph('}')
 cnoremap <expr> { <SID>range_paragraph('{')
 function! s:range_paragraph(motion)
-  if mode() == 'c' && getcmdtype() == ':' && getcmdline() =~# '^\d*$'
+  if mode() == 'c' && getcmdtype() == ':'
     let pat = a:motion == '}' ? '/^$/' : '?^$?'
     let forward = a:motion == '}'
-    let reppat = repeat(pat, max([getcmdline(), 1]))
-    let range = forward ? '.,' . reppat : reppat . ',.'
-    return repeat("\<BS>", len(getcmdline())) . range
+    let bs = repeat("\<BS>", len(getcmdline()))
+    if getcmdline() =~# '^\d*$'
+      let reppat = repeat(pat, max([getcmdline(), 1]))
+      let range = forward ? '.,' . reppat : reppat . ',.'
+      return bs . range
+    elseif getcmdline() =~# '^\.,\(/\^\$/\)\+$'
+      let range = forward ? getcmdline() . pat : substitute(getcmdline(), '/\^\$/', '', '')
+      return bs . (range == '.,' ? '' : range)
+    elseif getcmdline() =~# '^\(?\^\$?\)\+,\.$'
+      let range = !forward ? pat . getcmdline() : substitute(getcmdline(), '?\^\$?', '', '')
+      return bs . (range == ',.' ? '' : range)
+    else
+      return a:motion
+    endif
   else
     return a:motion
   endif
