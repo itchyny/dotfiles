@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/28 12:07:02.
+" - * Last Change: 2013/10/28 23:11:22.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -1124,9 +1124,9 @@ augroup SetLocalFiletype
   for [ex, ft] in extend(filetypes1, filetypes2)
     execute 'autocmd BufNewFile,BufReadPost *.' . ex . ' setlocal filetype=' . ft
   endfor
-  autocmd BufReadPost,BufWrite,CursorHold,CursorHoldI * call s:filetype()
+  autocmd BufReadPost,BufWrite,CursorHold,CursorHoldI * call s:auto_filetype()
 augroup END
-function! s:filetype()
+function! s:auto_filetype()
   let newft = ''
   for [pat, ft] in map(split('*[;hatena,#include;c,\documentclass;tex,import;haskell,main =;haskell,diff --;diff', ','), 'split(v:val, ";")')
     if getline(1)[:strlen(pat) - 1] ==# pat | let newft = ft | endif
