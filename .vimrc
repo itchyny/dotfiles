@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/29 10:29:24.
+" - * Last Change: 2013/10/29 14:26:32.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -1606,7 +1606,17 @@ function! s:range_paragraph(motion)
     return a:motion
   endif
 endfunction
-" }}}
+
+" improve cmdline-ranges: :gg, :G
+cnoremap <expr> g <SID>range('g', 'g')
+cnoremap <expr> G <SID>range('G', '')
+function! s:range(motion, prev)
+  if mode() == 'c' && getcmdtype() == ':' && getcmdline() ==# a:prev
+    return repeat("\<BS>", len(a:prev)) . (a:motion ==# 'G' ? '.,$' : '1,.')
+  else
+    return a:motion
+  endif
+endfunction
 
 " }}} KEY MAPPING
 
