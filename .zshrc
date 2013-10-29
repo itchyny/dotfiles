@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2013/10/10 18:18:56.
+# - * Last Change: 2013/10/29 14:09:44.
 # ------------------------------------------------------------------------------------------------------------
 
 # history
@@ -100,10 +100,6 @@ export PATH=$PATH:~/Dropbox/js/roy/
 export PATH=$PATH:~/Library/Haskell/bin/
 
 # function
-function proxy {
-  export http_proxy=http://proxy.kuins.net:8080/
-}
-
 function mkcd {
   if [ ! -n "$1" ]; then
     echo "Enter a directory name"
