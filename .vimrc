@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/29 14:26:32.
+" - * Last Change: 2013/10/29 14:29:06.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -1612,7 +1612,7 @@ cnoremap <expr> g <SID>range('g', 'g')
 cnoremap <expr> G <SID>range('G', '')
 function! s:range(motion, prev)
   if mode() == 'c' && getcmdtype() == ':' && getcmdline() ==# a:prev
-    return repeat("\<BS>", len(a:prev)) . (a:motion ==# 'G' ? '.,$' : '1,.')
+    return repeat("\<BS>", len(getcmdline())) . (a:motion ==# 'G' ? '.,$' : '1,.')
   else
     return a:motion
   endif
