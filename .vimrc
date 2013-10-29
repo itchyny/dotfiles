@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/28 23:11:22.
+" - * Last Change: 2013/10/29 09:58:59.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -1205,7 +1205,7 @@ set nrformats-=ocral
 " Generated files {{{
 set swapfile
 set nobackup
-set viminfo='1000,:1000,n$CACHE/.viminfo
+set viminfo='1000,:1000,@10,<10,s100,n$CACHE/.viminfo
 " }}}
 
 " }}} EDIT
