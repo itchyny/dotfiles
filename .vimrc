@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/29 14:29:06.
+" - * Last Change: 2013/10/29 14:30:48.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -1608,11 +1608,11 @@ function! s:range_paragraph(motion)
 endfunction
 
 " improve cmdline-ranges: :gg, :G
-cnoremap <expr> g <SID>range('g', 'g')
-cnoremap <expr> G <SID>range('G', '')
-function! s:range(motion, prev)
+cnoremap <expr> g <SID>range('g', 'g', '1,.')
+cnoremap <expr> G <SID>range('G', '', '.,$')
+function! s:range(motion, prev, range)
   if mode() == 'c' && getcmdtype() == ':' && getcmdline() ==# a:prev
-    return repeat("\<BS>", len(getcmdline())) . (a:motion ==# 'G' ? '.,$' : '1,.')
+    return repeat("\<BS>", len(getcmdline())) . a:range
   else
     return a:motion
   endif
