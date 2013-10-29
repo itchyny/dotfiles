@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/30 07:33:40.
+" - * Last Change: 2013/10/30 07:41:33.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -150,7 +150,7 @@ NeoBundle 'itchyny/lightline.vim', {'type': 'nosync'}
           \ &ft == 'unite' ? unite#get_status_string() :
           \ &ft == 'vimshell' ? substitute(b:vimshell.current_dir,expand('~'),'~','') :
           \ &ft == 'dictionary' ? (exists('b:dictionary.input') ? b:dictionary.input : '') :
-          \ &ft == 'calen' ? join(calen#day#today().get_ymd(), '/') :
+          \ &ft == 'calendar' ? join(calendar#day#today().get_ymd(), '/') :
           \ &ft == 'thumbnail' ? 'Thumbnail' :
           \ (&readonly ? "\u2b64 " : '') .
           \ ('' != fname ? fname : '[No Name]') .
@@ -187,7 +187,7 @@ NeoBundle 'itchyny/lightline.vim', {'type': 'nosync'}
           \ &ft == 'vimfiler' ? 'VimFiler' :
           \ &ft == 'vimshell' ? 'VimShell' :
           \ &ft == 'dictionary' ? 'Dictionary' :
-          \ &ft == 'calen' ? 'Calen' :
+          \ &ft == 'calendar' ? 'Calendar' :
           \ &ft == 'thumbnail' ? 'Thumbnail' :
           \ winwidth(0) > 60 ? lightline#mode() : ''
   endfunction
@@ -243,7 +243,7 @@ NeoBundle 'itchyny/lightline.vim', {'type': 'nosync'}
           \ ft == 'unite' ? 'Unite' :
           \ ft == 'vimshell' ? 'VimShell' :
           \ ft == 'dictionary' ? 'Dictionary' :
-          \ ft == 'calen' ? 'Calen' :
+          \ ft == 'calendar' ? 'Calendar' :
           \ ft == 'thumbnail' ? 'Thumbnail' :
           \ strlen(fname) ? fname : '[No Name]'
   endfunction
