@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/29 14:30:48.
+" - * Last Change: 2013/10/29 17:04:15.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -1572,7 +1572,9 @@ nnoremap <expr> OH <SID>goback_insert("\<Home>")
 nnoremap <expr> [3~ <SID>goback_insert("\<Del>")
 nnoremap <expr> [5~ <SID>goback_insert("\<PageUp>")
 nnoremap <expr> [6~ <SID>goback_insert("\<PageDown>")
+" }}}
 
+" command line {{{
 " navigation in command line
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
@@ -1588,17 +1590,17 @@ function! s:range_paragraph(motion)
   if mode() == 'c' && getcmdtype() == ':'
     let pat = a:motion == '}' ? '/^$/' : '?^$?'
     let forward = a:motion == '}'
-    let bs = repeat("\<BS>", len(getcmdline()))
+    let endcu = "\<End>\<C-u>"
     if getcmdline() =~# '^\d*$'
       let reppat = repeat(pat, max([getcmdline(), 1]))
       let range = forward ? '.,' . reppat : reppat . ',.'
-      return bs . range
+      return endcu . range
     elseif getcmdline() =~# '^\.,\(/\^\$/\)\+$'
       let range = forward ? getcmdline() . pat : substitute(getcmdline(), '/\^\$/', '', '')
-      return bs . (range == '.,' ? '' : range)
+      return endcu . (range == '.,' ? '' : range)
     elseif getcmdline() =~# '^\(?\^\$?\)\+,\.$'
       let range = !forward ? pat . getcmdline() : substitute(getcmdline(), '?\^\$?', '', '')
-      return bs . (range == ',.' ? '' : range)
+      return endcu . (range == ',.' ? '' : range)
     else
       return a:motion
     endif
@@ -1612,12 +1614,12 @@ cnoremap <expr> g <SID>range('g', 'g', '1,.')
 cnoremap <expr> G <SID>range('G', '', '.,$')
 function! s:range(motion, prev, range)
   if mode() == 'c' && getcmdtype() == ':' && getcmdline() ==# a:prev
-    return repeat("\<BS>", len(getcmdline())) . a:range
+    return "\<End>\<C-u>" . a:range
   else
     return a:motion
   endif
 endfunction
-
+" }}}
 " }}} KEY MAPPING
 
 " {{{ VIMRC LOADED
