@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/30 07:07:30.
+" - * Last Change: 2013/10/30 07:33:40.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -821,9 +821,9 @@ NeoBundleLazy 'itchyny/thumbnail.vim', {'type': 'nosync', 'autoload': {'commands
     autocmd FileType thumbnail nmap <buffer> V <Plug>(thumbnail_start_visual)
     autocmd FileType thumbnail call clearmatches()
   augroup END
-NeoBundleLazy 'itchyny/calen.vim', {'type': 'nosync', 'autoload': {'commands': [{'name': 'Calen', 'complete': 'customlist,calen#argument#complete'}]}}
-  nnoremap <silent> <Leader>z :<C-u>Calen -here<CR>
-  let g:calen_frame = 'unicode'
+NeoBundleLazy 'itchyny/calendar.vim', {'type': 'nosync', 'autoload': {'commands': [{'name': 'Calendar', 'complete': 'customlist,calendar#argument#complete'}]}}
+  nnoremap <silent> <Leader>z :<C-u>Calendar -here<CR>
+  let g:calendar_frame = 'unicode'
 NeoBundleLazy 'itchyny/dictionary.vim', {'type': 'nosync', 'autoload': {'commands': [{'name': 'Dictionary', 'complete': 'customlist,dictionary#complete'}]}}
   nnoremap <silent> <Leader>y :<C-u>Dictionary -no-duplicate<CR>
   let g:dictionary_executable_path = '~/Dropbox/bin/'
