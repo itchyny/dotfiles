@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/29 17:14:32.
+" - * Last Change: 2013/10/30 07:07:30.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -714,11 +714,6 @@ NeoBundle 'tComment'
   vnoremap <silent> __ :TComment<CR>
   let g:tcommentMapLeader1 = ''
 NeoBundleLazy 'Align', {'autoload': {'commands': [{'name': 'Align', 'complete': 'customlist,CompleteNothing'}]}}
-NeoBundleLazy 'mattn/calendar-vim', {'autoload': {'commands': ['Calendar', 'CalendarH', 'CalendarT']}}
-  autocmd ESC FileType calendar nnoremap <silent> <buffer> <ESC><ESC> :<C-u>q<CR>
-  nnoremap <silent> <Leader>c :<C-u>CalendarT<CR>
-  let g:calendar_keys = { 'goto_next_year': '<Down>', 'goto_prev_year': '<Up>'}
-  let calendar_no_mappings = 1
 NeoBundle 'autodate.vim'
   let g:autodate_format = '%Y/%m/%d %H:%M:%S'
 NeoBundleLazy 'sjl/gundo.vim', {'autoload': {'commands': [{'name': 'GundoToggle', 'complete': 'customlist,CompleteNothing'}]}, 'disabled': !has('python')}
