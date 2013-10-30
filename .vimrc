@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/31 00:59:10.
+" - * Last Change: 2013/10/31 01:01:34.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -481,8 +481,6 @@ NeoBundle 'Shougo/vimfiler'
   endif
   nnoremap <silent> <Leader>f :<C-u>VimFilerBufferDir -status -buffer-name=vimfiler -auto-cd<CR>
   nnoremap <silent> <Leader><Leader> :<C-u>VimFilerBufferDir -status -buffer-name=vimfiler -auto-cd<CR>
-  nnoremap <silent> @<Leader> :<C-u>VimFilerBufferDir -status -buffer-name=vimfiler -auto-cd<CR>
-  nnoremap <silent>@@ :<C-u>VimFilerBufferDir -status -buffer-name=vimfiler -auto-cd<CR>
   let g:vimfiler_execute_file_list = {}
   for ft in split('pdf,png,jpg,jpeg,gif,bmp,ico,ppt,html', ',')
     let g:vimfiler_execute_file_list[ft] = 'open'
