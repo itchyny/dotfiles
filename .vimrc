@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/30 16:36:44.
+" - * Last Change: 2013/10/30 17:54:00.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -722,8 +722,6 @@ NeoBundleLazy 'kana/vim-fakeclip'
 NeoBundle 'gregsexton/MatchTag'
 NeoBundle 'matchit.zip'
 NeoBundleLazy 'thinca/vim-scouter', {'autoload': {'commands': [{'name': 'Scouter', 'complete': 'customlist,CompleteNothing'}]}}
-NeoBundle 'thinca/vim-ambicmd'
-  cnoremap <expr><SPACE> ambicmd#expand("\<SPACE>")
 NeoBundle 'terryma/vim-multiple-cursors'
   let g:multi_cursor_use_default_mapping = 0
   let g:multi_cursor_next_key = "\<C-g>"
