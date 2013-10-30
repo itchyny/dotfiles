@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/31 00:56:46.
+" - * Last Change: 2013/10/31 00:59:10.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -327,12 +327,10 @@ NeoBundle 'Shougo/unite.vim'
   let g:unite_enable_start_insert = 1
   let g:unite_cursor_line_highlight = 'CursorLine'
   let g:unite_source_file_mru_limit = 1000
-  let g:unite_source_file_mru_do_validate = 0
+  let g:unite_source_mru_do_validate = 0
   let g:unite_source_file_mru_filename_format = ':~'
   let g:unite_force_overwrite_statusline = 0
   let g:unite_data_directory = $CACHE.'/unite'
-  let g:unite_source_grep_command = 'grep'
-  let g:unite_source_grep_default_opts = '-iHn'
   let g:unite_marked_icon = s:ismac && has('multi_byte') ? '✓' : 'v'
   let g:unite_candidate_icon = '-'
   nnoremap <C-u> :Unite<SPACE>
