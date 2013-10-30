@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/30 21:57:45.
+" - * Last Change: 2013/10/30 22:06:29.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -379,8 +379,9 @@ NeoBundle 'Shougo/unite.vim'
         \ }
   function! s:eject.func(candidate)
     try
-      let c = 'sudo ' . (executable('eject') ? 'eject' : s:ismac ? 'diskutil umount' : '') . ' "' . a:candidate.action__path . '"'
-      if strlen(a:candidate.action__path)
+      let cmd = executable('eject') ? 'eject' : executable('diskutil') ? 'diskutil umount' : ''
+      let c = 'sudo ' . cmd . ' "' . a:candidate.action__path . '"'
+      if strlen(cmd)
         let s:eject.path = a:candidate.action__path
         let s:eject.count = 0
         exe 'VimShellInteractive --split="15split" ' . c
