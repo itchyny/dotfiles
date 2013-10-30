@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/30 22:43:16.
+" - * Last Change: 2013/10/30 22:47:01.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -1317,12 +1317,6 @@ augroup END
 " tab
 nnoremap <C-t> :<C-u>tabnew<CR>
 inoremap <C-t> <ESC>:<C-u>tabnew<CR>
-inoremap <C-Left> <ESC>gT
-inoremap <C-Right> <ESC>gt
-nnoremap <C-Left> gT
-nnoremap <C-Right> gt
-vnoremap <C-Left> gT
-vnoremap <C-Right> gt
 
 " select last paste
 nnoremap <expr> gp '`['.strpart(getregtype(), 0, 1).'`]'
