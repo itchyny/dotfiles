@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/30 21:41:33.
+" - * Last Change: 2013/10/30 21:43:18.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -530,7 +530,6 @@ NeoBundleLazy 'eagletmt/ghci-vim', {'autoload': {'filetypes': ['haskell']}}
 NeoBundle 'tyru/open-browser.vim'
   nmap <silent> <Leader>b <Plug>(openbrowser-smart-search)
   vmap <silent> <Leader>b <Plug>(openbrowser-smart-search)
-  nmap <silent> <Leader>s <Plug>(openbrowser-search)
 NeoBundle 'mattn/webapi-vim'
 NeoBundleLazy 'mattn/googletasks-vim', {'autoload': {'commands': [{'name': 'GoogleTasks', 'complete': 'customlist,CompleteNothing'}]}}
 " }}}
