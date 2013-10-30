@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/30 21:09:07.
+" - * Last Change: 2013/10/30 21:10:51.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -357,9 +357,6 @@ NeoBundle 'Shougo/neosnippet'
   imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
     \ "\<Plug>(neosnippet_expand_or_jump)"
     \: pumvisible() ? "\<C-n>" : "\<TAB>"
-  smap <expr><TAB> neosnippet#expandable() <Bar><Bar> neosnippet#jumpable() ?
-    \ "\<Plug>(neosnippet_expand_or_jump)"
-    \: "\<TAB>"
 NeoBundle 'ujihisa/neco-look', {'disabled': !executable('look')}
 " }}}
 
