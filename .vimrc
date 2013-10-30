@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/30 10:58:11.
+" - * Last Change: 2013/10/30 16:14:03.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -447,10 +447,6 @@ NeoBundle 'Shougo/unite.vim'
     if exists('*unite#custom_default_action')
       call unite#custom_default_action('file', 'auto_open')
     endif
-    let path = expand('~')
-    for file in [$CACHE.'/unite/file_mru', $CACHE.'/unite/directory_mru']
-      silent call writefile(map(readfile(file), "substitute(v:val, '^/home/\\a\\+', path, '')"), file)
-    endfor
   endfunction
 NeoBundleLazy 'Shougo/unite-build', {'autoload': {'unite_sources': ['build']}}
   nnoremap <silent><F5> :<C-u>Unite build -buffer-name=build<CR>
