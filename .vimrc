@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/31 00:00:11.
+" - * Last Change: 2013/10/31 00:27:38.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -333,11 +333,7 @@ NeoBundle 'Shougo/unite.vim'
   let g:unite_data_directory = $CACHE.'/unite'
   let g:unite_source_grep_command = 'grep'
   let g:unite_source_grep_default_opts = '-iHn'
-  if s:ismac && has('multi_byte')
-    let g:unite_marked_icon = '✓'
-  else
-    let g:unite_marked_icon = 'v'
-  endif
+  let g:unite_marked_icon = s:ismac && has('multi_byte') ? '✓' : 'v'
   let g:unite_candidate_icon = '-'
   nnoremap <C-u> :Unite<SPACE>
   nnoremap <silent><C-p> :Unite buffer -buffer-name=buffer<CR>
@@ -348,10 +344,6 @@ NeoBundle 'Shougo/unite.vim'
   nnoremap <silent><S-l> :Unite line -buffer-name=line<CR>
   augroup Unite
     autocmd!
-    autocmd FileType unite nnoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
-    autocmd FileType unite inoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
-    autocmd FileType unite nnoremap <silent> <buffer> <expr> <C-k> unite#do_action('vsplit')
-    autocmd FileType unite inoremap <silent> <buffer> <expr> <C-k> unite#do_action('vsplit')
     autocmd FileType unite inoremap <silent> <buffer> <C-z> <Nop>
     autocmd FileType unite inoremap <silent> <buffer> <C-o> <Nop>
     autocmd FileType unite nmap <buffer> <C-a> <Plug>(unite_insert_enter)
