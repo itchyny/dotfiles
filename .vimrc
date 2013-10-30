@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/30 20:36:32.
+" - * Last Change: 2013/10/30 20:46:05.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -425,10 +425,10 @@ NeoBundle 'Shougo/unite.vim'
     try
       let c = 'sudo ' . (executable('eject') ? 'eject' : s:ismac ? 'diskutil umount' : '')
             \ . ' "' . a:candidate.action__path . '"'
-      if strlen(c)
+      if strlen(a:candidate.action__path)
         let s:eject.path = a:candidate.action__path
         let s:eject.count = 0
-        exe 'VimShellInteractive --split="split | resize 20" ' . c
+        exe 'VimShellInteractive --split="15split" ' . c
       endif
     catch
     endtry
@@ -1128,14 +1128,8 @@ set viminfo='100,:1000,@10,<10,s100,n$CACHE/.viminfo
 " UTILITY {{{
 " --------------------------------------------------------------------------------------------------------
 " On starting vim {{{
-function! s:enter()
-  if argc() == 0
-    silent exec ':VimFiler -status -buffer-name=vimfiler -auto-cd'
-  endif
-endfunction
 augroup Enter
   autocmd!
-  " autocmd VimEnter * call s:enter()
   if s:iswin
     autocmd GUIEnter * simalt ~x
   endif
