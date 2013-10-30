@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/30 21:05:35.
+" - * Last Change: 2013/10/30 21:07:18.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -1017,12 +1017,13 @@ set autoread
 
 " Filetype {{{
 augroup SetLocalFiletype
-  let filetypes1 = map(split('bf,gnuplot,jade,json,less,r,roy,tex,meissa,coffee', ','), '[v:val, v:val]')
-  let filetypes2 = map(split('cls;tex,hs;haskell,hx;haxe,md;markdown,cir;spice,asc;spice,m;objc', ','), 'split(v:val, ";")')
+  let s:filetypes1 = map(split('bf,gnuplot,jade,json,less,r,roy,tex,meissa,coffee', ','), '[v:val, v:val]')
+  let s:filetypes2 = map(split('cls;tex,hs;haskell,hx;haxe,md;markdown,cir;spice,asc;spice,m;objc', ','), 'split(v:val, ";")')
   autocmd!
-  for [ex, ft] in extend(filetypes1, filetypes2)
+  for [ex, ft] in extend(s:filetypes1, s:filetypes2)
     execute 'autocmd BufNewFile,BufReadPost *.' . ex . ' setlocal filetype=' . ft
   endfor
+  unlet s:filetypes1 s:filetypes2
   autocmd BufReadPost,BufWrite,CursorHold,CursorHoldI * call s:auto_filetype()
 augroup END
 function! s:auto_filetype()
