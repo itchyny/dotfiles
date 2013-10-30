@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/30 21:44:30.
+" - * Last Change: 2013/10/30 21:49:43.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -148,7 +148,11 @@ NeoBundle 'itchyny/lightline.vim', {'type': 'nosync'}
           \ (&readonly ? "\u2b64 " : '') .
           \ ('' != fname ? fname : '[No Name]') .
           \ (&modified ? ' +' : &modifiable ? '' : ' -')
-    return substitute(s:V.truncate_skipping(ret, winwidth(0) * 2 / 3, winwidth(0) / 2, ' .. '), '\s\+$', '', '')
+    if exists('s:Vital')
+      return substitute(s:Vital.truncate_skipping(ret, winwidth(0) * 2 / 3, winwidth(0) / 2, ' .. '), '\s\+$', '', '')
+    else
+      return ret
+    endif
   endfunction
   function! MyFugitive()
     try
@@ -675,7 +679,7 @@ NeoBundleLazy 'itchyny/dictionary.vim', {'type': 'nosync', 'autoload': {'command
 NeoBundle 'vim-jp/vital.vim'
   let vital = neobundle#get('vital.vim')
   function! vital.hooks.on_post_source(bundle)
-    let s:V = vital#of('vital')
+    let s:Vital = vital#of('vital')
   endfunction
 " }}}
 
