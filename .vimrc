@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/30 21:32:48.
+" - * Last Change: 2013/10/30 21:41:33.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -182,10 +182,7 @@ NeoBundle 'itchyny/lightline.vim', {'type': 'nosync'}
       return ''
     endif
   endfunction
-  let g:ctrlp_status_func = {
-    \ 'main': 'CtrlPStatusFunc_1',
-    \ 'prog': 'CtrlPStatusFunc_2',
-    \ }
+  let g:ctrlp_status_func = { 'main': 'CtrlPStatusFunc_1', 'prog': 'CtrlPStatusFunc_2' }
   function! CtrlPStatusFunc_1(focus, byfname, regex, prev, item, next, marked)
     let g:lightline.ctrlp_regex = a:regex
     let g:lightline.ctrlp_prev = a:prev
@@ -265,14 +262,10 @@ NeoBundleLazy 'Shougo/neocomplcache'
       let g:neocomplete#force_omni_input_patterns = {}
   endif
   let g:neocomplete#force_overwrite_completefunc = 1
-  let g:neocomplete#force_omni_input_patterns.c =
-              \ '[^.[:digit:] *\t]\%(\.\|->\)'
-  let g:neocomplete#force_omni_input_patterns.cpp =
-              \ '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-  let g:neocomplete#force_omni_input_patterns.objc =
-              \ '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-  let g:neocomplete#force_omni_input_patterns.objcpp =
-              \ '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+  let g:neocomplete#force_omni_input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
+  let g:neocomplete#force_omni_input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+  let g:neocomplete#force_omni_input_patterns.objc = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+  let g:neocomplete#force_omni_input_patterns.objcpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
   function! s:cancel_popup(key)
     return a:key . neocomplete#cancel_popup()
   endfunction
@@ -302,14 +295,10 @@ NeoBundleLazy 'Shougo/neocomplete.vim'
       let g:neocomplcache_force_omni_patterns = {}
   endif
   let g:neocomplcache_force_overwrite_completefunc = 1
-  let g:neocomplcache_force_omni_patterns.c =
-              \ '[^.[:digit:] *\t]\%(\.\|->\)'
-  let g:neocomplcache_force_omni_patterns.cpp =
-              \ '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-  let g:neocomplcache_force_omni_patterns.objc =
-              \ '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-  let g:neocomplcache_force_omni_patterns.objcpp =
-              \ '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+  let g:neocomplcache_force_omni_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
+  let g:neocomplcache_force_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+  let g:neocomplcache_force_omni_patterns.objc = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+  let g:neocomplcache_force_omni_patterns.objcpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
   function! s:cancel_popup(key)
     return a:key . neocomplcache#cancel_popup()
   endfunction
@@ -322,9 +311,7 @@ NeoBundleLazy 'Shougo/neocomplete.vim'
 endif
 NeoBundle 'Shougo/neosnippet'
   let g:neosnippet#snippets_directory = expand($VIM.'/snippets')
-  imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-    \ "\<Plug>(neosnippet_expand_or_jump)"
-    \: pumvisible() ? "\<C-n>" : "\<TAB>"
+  imap <expr><TAB> neosnippet#expandable_or_jumpable() ?  "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
 NeoBundle 'ujihisa/neco-look', {'disabled': !executable('look')}
 " }}}
 
@@ -388,8 +375,7 @@ NeoBundle 'Shougo/unite.vim'
         \ }
   function! s:eject.func(candidate)
     try
-      let c = 'sudo ' . (executable('eject') ? 'eject' : s:ismac ? 'diskutil umount' : '')
-            \ . ' "' . a:candidate.action__path . '"'
+      let c = 'sudo ' . (executable('eject') ? 'eject' : s:ismac ? 'diskutil umount' : '') . ' "' . a:candidate.action__path . '"'
       if strlen(a:candidate.action__path)
         let s:eject.path = a:candidate.action__path
         let s:eject.count = 0
@@ -401,8 +387,7 @@ NeoBundle 'Shougo/unite.vim'
   let bundle = neobundle#get('unite.vim')
   function! bundle.hooks.on_post_source(bundle)
     if exists('*unite#custom_source')
-      call unite#custom_source('file', 'ignore_pattern'
-            \, '.*\.\(o\|exe\|dll\|bak\|sw[po]\|hi\|fff\|aux\|toc\|bbl\|blg\|DS_Store\)$')
+      call unite#custom_source('file', 'ignore_pattern', '.*\.\(o\|exe\|dll\|bak\|sw[po]\|hi\|fff\|aux\|toc\|bbl\|blg\|DS_Store\)$')
       call unite#custom_source('haddock,hoogle', 'max_candidates', 20)
     endif
     if exists('*unite#custom_action')
@@ -440,8 +425,7 @@ NeoBundle 'Shougo/vimproc', {
   \ }
 NeoBundle 'thinca/vim-quickrun'
   let g:quickrun_config = {'_': {'runner': 'vimproc', 'runner/vimproc/updatetime': 60, 'split': 'vertical', 'into': 1}}
-  let s:quickrun_command_list = map(split(
-        \ 'quickrun;cat,javascript;node,roy;roy,qcl;qcl,haskell;runhaskell,bf;bf', ','), 'split(v:val, ";")')
+  let s:quickrun_command_list = map(split('quickrun;cat,javascript;node,roy;roy,qcl;qcl,haskell;runhaskell,bf;bf', ','), 'split(v:val, ";")')
   for [ft, exe] in s:quickrun_command_list
     execute printf('if executable("%s") | let g:quickrun_config.%s = {"command":"%s"} | endif', exe, ft, exe)
   endfor
@@ -454,23 +438,19 @@ NeoBundle 'thinca/vim-quickrun'
     let g:quickrun_config.tex = {'command' : 'platex'}
   endif
   if executable('man')
-    let g:quickrun_config.nroff = {'command': 'man',
-          \ 'args': " -P cat | tr '\b' '\1' | sed -e 's/.\1//g'", 'filetype': 'man'}
+    let g:quickrun_config.nroff = {'command': 'man', 'args': " -P cat | tr '\b' '\1' | sed -e 's/.\1//g'", 'filetype': 'man'}
   endif
   if executable('autognuplot')
     let g:quickrun_config.gnuplot = {'command' : 'autognuplot'}
   elseif executable('gnuplot')
     let g:quickrun_config.gnuplot = {'command' : 'gnuplot'}
   endif
-  let g:quickrun_config.objc = {'command': 'cc',
-        \ 'exec': ['%c %s -o %s:p:r -framework Foundation', '%s:p:r %a', 'rm -f %s:p:r'],
-        \ 'tempfile': '{tempname()}.m'}
+  let g:quickrun_config.objc = {'command': 'cc', 'exec': ['%c %s -o %s:p:r -framework Foundation', '%s:p:r %a', 'rm -f %s:p:r'], 'tempfile': '{tempname()}.m'}
   if executable('scad3.exe')
     let g:quickrun_config.spice = {'command': 'scad3.exe', 'exec': ['%c -b %s:t'] }
   endif
   if executable('abcm2ps')
-    let g:quickrun_config.abc = {'command': 'abcm2ps',
-          \ 'exec': ['%c %s -O %s:p:r.ps', 'ps2pdf %s:p:r.ps', 'open %s:p:r.pdf']}
+    let g:quickrun_config.abc = {'command': 'abcm2ps', 'exec': ['%c %s -O %s:p:r.ps', 'ps2pdf %s:p:r.ps', 'open %s:p:r.pdf']}
     if executable('abc2midi')
       call extend(g:quickrun_config.abc.exec, ['abc2midi %s -o %s:p:r.mid', 'open %s:p:r.mid'])
     endif
@@ -521,8 +501,7 @@ NeoBundle 'Shougo/vimfiler'
     autocmd FileType vimfiler nnoremap <buffer> <C-l> <ESC><C-w>l
     autocmd FileType vimfiler nmap <buffer> <C-r> <Plug>(vimfiler_redraw_screen)
     autocmd FileType vimfiler nmap <buffer> O <Plug>(vimfiler_sync_with_another_vimfiler)
-    autocmd FileType vimfiler nmap <buffer><expr> e
-          \ vimfiler#smart_cursor_map("\<Plug>(vimfiler_cd_file)", "\<Plug>(vimfiler_edit_file)")
+    autocmd FileType vimfiler nmap <buffer><expr> e vimfiler#smart_cursor_map("\<Plug>(vimfiler_cd_file)", "\<Plug>(vimfiler_edit_file)")
     autocmd FileType vimfiler nnoremap <buffer><silent> t :<C-u>call vimfiler#mappings#do_action('change_time')<CR>
     autocmd FileType vimfiler if filereadable("Icon\r") | silent call delete("Icon\r") | endif
   augroup END
@@ -588,10 +567,7 @@ NeoBundle 'Shougo/vimshell'
     autocmd FileType vimshell inoremap <buffer> <C-j> <ESC><C-w>j
     autocmd FileType vimshell inoremap <buffer> <C-k> <ESC><C-w>k
     autocmd FileType vimshell inoremap <buffer> <C-l> <ESC><C-w>l
-    autocmd FileType vimshell inoremap <silent><buffer> ^
-          \ <ESC>:call vimshell#execute('cd ../')<CR>
-          \:call vimshell#print_prompt()<CR>
-          \:call vimshell#start_insert()<CR>
+    autocmd FileType vimshell inoremap <silent><buffer> ^ <ESC>:call vimshell#execute('cd ../')<CR>:call vimshell#print_prompt()<CR>:call vimshell#start_insert()<CR>
     autocmd FileType vimshell vnoremap <buffer> a <ESC><ESC>GA
     autocmd FileType vimshell vnoremap <buffer> y yGA
     autocmd FileType vimshell inoremap <buffer> <C-^> <ESC><C-^>
@@ -672,10 +648,7 @@ NeoBundle 'kien/ctrlp.vim'
   let g:ctrlp_max_depth = 5
   let g:ctrlp_max_files = 300
   let g:ctrlp_mruf_max = 300
-  let g:ctrlp_custom_ignore = {
-    \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-    \ 'file': '\v\.(exe|so|dll|swp|pdf|DS_Store)$',
-    \ }
+  let g:ctrlp_custom_ignore = { 'dir': '\v[\/]\.(git|hg|svn)$', 'file': '\v\.(exe|so|dll|swp|pdf|DS_Store)$', }
   let g:ctrlp_open_new_file = 'r'
   let g:ctrlp_use_caching = 1
   let g:ctrlp_cache_dir = $CACHE.'/ctrlp'
@@ -1364,8 +1337,7 @@ autocmd ESC FileType help,qf nnoremap <silent> <buffer> <expr> <ESC><ESC>
 map <S-q> <Nop>
 
 " move within insert mode
-imap <expr><C-o> neosnippet#expandable_or_jumpable() ?
-      \ "\<Plug>(neosnippet_expand_or_jump)" : "\<ESC>o"
+imap <expr><C-o> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<ESC>o"
 inoremap <expr> <C-p> <SID>cancel_popup("\<Up>")
 inoremap <expr> <C-n> <SID>cancel_popup("\<Down>")
 inoremap <expr> <C-b> <SID>cancel_popup("\<Left>")
