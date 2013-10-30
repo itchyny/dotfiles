@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/31 01:34:08.
+" - * Last Change: 2013/10/31 08:52:09.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -874,7 +874,7 @@ set statusline=%{expand('%:p:t')}\ %<[%{expand('%:p:h')}]%=\ %m%r%y%w[%{&fenc!='
 syntax enable
 set background=dark
 set synmaxcol=300
-  au Filetype cam setlocal synmaxcol=3000
+  autocmd SetLocal Filetype cam setlocal synmaxcol=3000
 if !has('gui_running') | set t_Co=256 | endif
 " }}}
 
