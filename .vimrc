@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/31 01:01:34.
+" - * Last Change: 2013/10/31 01:29:38.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -350,47 +350,6 @@ NeoBundle 'Shougo/unite.vim'
     autocmd FileType unite nmap <buffer> <Bs> <Plug>(unite_exit)
   augroup END
   autocmd ESC FileType unite nmap <silent> <buffer> <ESC><ESC> <Plug>(unite_exit)
-  let s:startfiletypes = '.*\.\(exe\|png\|gif\|jpg\|jpeg\|bmp\|eps\|pdf\|mp3\|mp4\|avi\|mkv\|tiff\)$'
-  let s:auto_open = {
-        \ 'description' : 'edit or open files',
-        \ 'is_selectable' : 1,
-        \ }
-  function! s:auto_open.func(candidates)
-    try
-      for candidate in a:candidates
-        call unite#take_action(candidate.word =~? s:startfiletypes ? 'start' : 'open', candidate)
-      endfor
-    catch
-    endtry
-  endfunction
-  let s:eject = {
-        \ 'description': 'eject',
-        \ 'is_selectable': 0,
-        \ }
-  function! s:eject.func(candidate)
-    try
-      let cmd = executable('eject') ? 'eject' : executable('diskutil') ? 'diskutil umount' : ''
-      if strlen(cmd)
-        let c = 'sudo ' . cmd . ' "' . a:candidate.action__path . '"'
-        exe 'VimShellInteractive --split="15split" ' . c
-      endif
-    catch
-    endtry
-  endfunction
-  let bundle = neobundle#get('unite.vim')
-  function! bundle.hooks.on_post_source(bundle)
-    if exists('*unite#custom_source')
-      call unite#custom_source('file', 'ignore_pattern', '.*\.\(o\|exe\|dll\|bak\|sw[po]\|hi\|fff\|aux\|toc\|bbl\|blg\|DS_Store\)$')
-      call unite#custom_source('haddock,hoogle', 'max_candidates', 20)
-    endif
-    if exists('*unite#custom_action')
-      call unite#custom_action('file', 'auto_open', s:auto_open)
-      call unite#custom_action('file', 'eject', s:eject)
-    endif
-    if exists('*unite#custom_default_action')
-      call unite#custom_default_action('file', 'auto_open')
-    endif
-  endfunction
 NeoBundleLazy 'Shougo/unite-build', {'autoload': {'unite_sources': ['build']}}
   nnoremap <silent><F5> :<C-u>Unite build -buffer-name=build<CR>
 NeoBundleLazy 'unite-colorscheme', {'autoload': {'unite_sources': ['colorscheme']}}
@@ -402,6 +361,27 @@ NeoBundleLazy 'eagletmt/unite-haddock', {'autoload': {'unite_sources': ['hoogle'
   " --|   $ hoogle data
 NeoBundleLazy 'h1mesuke/unite-outline', {'autoload': {'unite_sources': ['outline']}}
 NeoBundleLazy 'ujihisa/unite-haskellimport', {'autoload': {'unite_sources': ['haskellimport']}}
+NeoBundle 'itchyny/unite-eject', {'type': 'nosync'}
+NeoBundle 'itchyny/unite-auto-open', {'type': 'nosync'}
+NeoBundle 'itchyny/unite-changetime', {'type': 'nosync'}
+NeoBundle 'itchyny/vimfiler-preview', {'type': 'nosync'}
+  let g:vimfiler_preview_action = 'auto_preview'
+  let bundle = neobundle#get('unite.vim')
+  function! bundle.hooks.on_post_source(bundle)
+    if exists('*unite#custom_source')
+      call unite#custom_source('file', 'ignore_pattern', '.*\.\(o\|exe\|dll\|bak\|sw[po]\|hi\|fff\|aux\|toc\|bbl\|blg\|DS_Store\)$')
+      call unite#custom_source('haddock,hoogle', 'max_candidates', 20)
+    endif
+    if exists('*unite#custom_action')
+      call unite#custom_action('file', 'eject', g:unite_eject)
+      call unite#custom_action('file', 'auto_open', g:unite_auto_open)
+      call unite#custom_action('file', 'change_time', g:unite_changetime)
+      call unite#custom_action('file', 'auto_preview', g:vimfiler_preview)
+    endif
+    if exists('*unite#custom_default_action')
+      call unite#custom_default_action('file', 'auto_open')
+    endif
+  endfunction
 endif
 " }}}
 
@@ -496,16 +476,6 @@ NeoBundle 'Shougo/vimfiler'
     autocmd FileType vimfiler nnoremap <buffer><silent> t :<C-u>call vimfiler#mappings#do_action('change_time')<CR>
     autocmd FileType vimfiler if filereadable("Icon\r") | silent call delete("Icon\r") | endif
   augroup END
-NeoBundle 'itchyny/unite-changetime', {'type': 'nosync'}
-NeoBundle 'itchyny/vimfiler-preview', {'type': 'nosync'}
-  let g:vimfiler_preview_action = 'auto_preview'
-  let bundle = neobundle#get('vimfiler-preview')
-  function! bundle.hooks.on_post_source(bundle)
-    if exists('*unite#custom_action')
-      call unite#custom_action('file', 'auto_preview', g:vimfiler_preview)
-      call unite#custom_action('file', 'change_time', g:unite_changetime)
-    endif
-  endfunction
 NeoBundle 'Shougo/vinarise'
 endif
 NeoBundleLazy 'eagletmt/ghci-vim', {'autoload': {'filetypes': ['haskell']}}
@@ -910,6 +880,7 @@ set statusline=%{expand('%:p:t')}\ %<[%{expand('%:p:h')}]%=\ %m%r%y%w[%{&fenc!='
 syntax enable
 set background=dark
 set synmaxcol=300
+  au Filetype cam setlocal synmaxcol=3000
 if !has('gui_running') | set t_Co=256 | endif
 " }}}
 
