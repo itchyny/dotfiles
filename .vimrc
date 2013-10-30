@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/30 21:02:21.
+" - * Last Change: 2013/10/30 21:05:35.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -1168,15 +1168,12 @@ augroup END
 
 " Enable omni completation {{{
 augroup Omnifunc
+  let s:omnifunc = map(split('c;ccomplete#Complete,css;csscomplete#CompleteCSS,html;htmlcomplete#CompleteTags,javascript;javascriptcomplete#CompleteJS,php;phpcomplete#CompletePHP,python;pythoncomplete#Complete,xml;xmlcomplete#CompleteTags,haskell;necoghc#omnifunc', ','), 'split(v:val, ";")')
   autocmd!
-  autocmd FileType c          setlocal omnifunc=ccomplete#Complete
-  autocmd FileType css        setlocal omnifunc=csscomplete#CompleteCSS
-  autocmd FileType html       setlocal omnifunc=htmlcomplete#CompleteTags
-  autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-  autocmd FileType php        setlocal omnifunc=phpcomplete#CompletePHP
-  autocmd FileType python     setlocal omnifunc=pythoncomplete#Complete
-  autocmd FileType xml        setlocal omnifunc=xmlcomplete#CompleteTags
-  autocmd FileType haskell    setlocal omnifunc=necoghc#omnifunc
+  for [ft, omnif] in s:omnifunc
+    exec 'autocmd FileType ' . ft . ' setlocal omnifunc=' . omnif
+  endfor
+  unlet s:omnifunc
 augroup END
 setlocal omnifunc=syntaxcomplete#Complete
 " }}}
