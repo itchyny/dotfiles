@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/30 21:43:18.
+" - * Last Change: 2013/10/30 21:44:30.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -522,9 +522,9 @@ NeoBundleLazy 'eagletmt/ghci-vim', {'autoload': {'filetypes': ['haskell']}}
   function! bundle.hooks.on_post_source(bundle)
     augroup Ghci
       autocmd!
-      autocmd FileType haskell nnoremap <buffer> <Leader>l <expr> exec 'GhciLoad'
-      autocmd FileType haskell nnoremap <buffer> <Leader>i <expr> exec 'GhciInfo'
-      autocmd FileType haskell nnoremap <buffer> <Leader>t <expr> exec 'GhciType'
+      autocmd FileType haskell nnoremap <buffer> <Leader>l GhciLoad
+      autocmd FileType haskell nnoremap <buffer> <Leader>i GhciInfo
+      autocmd FileType haskell nnoremap <buffer> <Leader>t GhciType
     augroup END
   endfunction
 NeoBundle 'tyru/open-browser.vim'
