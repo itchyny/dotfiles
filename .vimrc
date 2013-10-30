@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/31 01:32:51.
+" - * Last Change: 2013/10/31 01:34:08.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -1105,7 +1105,6 @@ function! Explorer()
   silent call system((s:ismac ? 'open -a Finder' : s:iswin ? 'start' : 'nautilus') .' . &')
 endfunction
 nnoremap <silent> \n :call Explorer()<CR>
-nnoremap <silent> ge :call Explorer()<CR>
 " }}}
 
 " Quickly open with outer text editor {{{
