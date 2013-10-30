@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/30 20:57:58.
+" - * Last Change: 2013/10/30 21:02:21.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -1190,23 +1190,6 @@ function! Automake()
   endif
 endfunction
 nnoremap <silent> <S-F5> :<C-u>call Automake()<CR>
-" }}}
-
-" GCJTemplate {{{
-function! GCJ()
-  call append( 0, 'main = interact $ format . map solve . parseInput')
-  call append( 1, '')
-  call append( 2, 'parseInput = tail . map (map read . words :: String -> [Int]) . lines')
-  call append( 3, '')
-  call append( 4, 'format :: (Show a) => [a] -> String')
-  call append( 5, 'format = unlines . map f . zip [1..]')
-  call append( 6, '  where s x | ((==''"'') . head . show) x = init $ tail $ show x')
-  call append( 8, '            | otherwise                   = show x')
-  call append( 9, '        f x = "Case #" ++ show (fst x) ++ ": " ++ s (snd x)')
-  call append(10, '')
-  call append(11, 'solve (x:_) =')
-endfunction
-nnoremap ,p :<C-u>call GCJ()<CR><S-g>
 " }}}
 
 " Vim script header {{{
