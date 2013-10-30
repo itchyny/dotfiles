@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/31 01:32:16.
+" - * Last Change: 2013/10/31 01:32:51.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -573,7 +573,6 @@ NeoBundleLazy 'sjl/gundo.vim', {'autoload': {'commands': [{'name': 'GundoToggle'
 NeoBundleLazy 'VimCalc', {'type': 'nosync', 'autoload': {'commands': [{'name': 'Calc', 'complete': 'customlist,CompleteNothing'}]}, 'disabled': !has('python')}
   autocmd ESC FileType vimcalc nnoremap <silent> <buffer> <ESC><ESC><ESC> :<C-u>q<CR>
   nnoremap <silent> <Leader>a :<C-u>Calc<CR>
-NeoBundleLazy 'kana/vim-fakeclip'
 NeoBundle 'gregsexton/MatchTag'
 NeoBundle 'matchit.zip'
 NeoBundleLazy 'thinca/vim-scouter', {'autoload': {'commands': [{'name': 'Scouter', 'complete': 'customlist,CompleteNothing'}]}}
