@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/30 21:08:15.
+" - * Last Change: 2013/10/30 21:09:07.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -1236,7 +1236,6 @@ nnoremap <silent> \g :call TextEdit()<CR>
 function! Syntax()
   :echo synIDattr(synID(line('.'), col('.'), 0), 'name')
 endfunction
-command! Syntax call Syntax()
 command! S call Syntax()
 " }}}
 
