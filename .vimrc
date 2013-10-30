@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/30 22:26:15.
+" - * Last Change: 2013/10/30 22:36:25.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -675,6 +675,11 @@ NeoBundle 'itchyny/calendar.vim', {'type': 'nosync'}
 NeoBundleLazy 'itchyny/dictionary.vim', {'type': 'nosync', 'autoload': {'commands': [{'name': 'Dictionary', 'complete': 'customlist,dictionary#complete'}]}}
   nnoremap <silent> <Leader>y :<C-u>Dictionary -no-duplicate<CR>
   let g:dictionary_executable_path = '~/Dropbox/bin/'
+NeoBundle 'itchyny/vim-cmdline-ranges'
+  cmap } <Plug>(cmdline-ranges-})
+  cmap { <Plug>(cmdline-ranges-{)
+  cmap g <Plug>(cmdline-ranges-g)
+  cmap G <Plug>(cmdline-ranges-G)
 NeoBundle 'vim-jp/vital.vim'
   let vital = neobundle#get('vital.vim')
   function! vital.hooks.on_post_source(bundle)
@@ -1363,44 +1368,6 @@ cnoremap <C-b> <Left>
 cnoremap <C-f> <Right>
 cnoremap <C-d> <Del>
 cnoremap <C-h> <BS>
-
-" improve cmdline-ranges: :[num]{, :[num]}
-cnoremap <expr> } <SID>range_paragraph('}')
-cnoremap <expr> { <SID>range_paragraph('{')
-function! s:range_paragraph(motion)
-  if mode() == 'c' && getcmdtype() == ':'
-    let pat = a:motion == '}' ? '/^$/' : '?^$?'
-    let forward = a:motion == '}'
-    let endcu = "\<End>\<C-u>"
-    if getcmdline() =~# '^\d*$'
-      let reppat = repeat(pat, max([getcmdline(), 1]))
-      let range = forward ? '.,' . reppat : reppat . ',.'
-      return endcu . range
-    elseif getcmdline() =~# '^\.,\(/\^\$/\)\+$'
-      let range = forward ? getcmdline() . pat : substitute(getcmdline(), '/\^\$/', '', '')
-      return endcu . (range == '.,' ? '' : range)
-    elseif getcmdline() =~# '^\(?\^\$?\)\+,\.$'
-      let range = !forward ? pat . getcmdline() : substitute(getcmdline(), '?\^\$?', '', '')
-      return endcu . (range == ',.' ? '' : range)
-    else
-      return a:motion
-    endif
-  else
-    return a:motion
-  endif
-endfunction
-
-" improve cmdline-ranges: :gg, :G
-cnoremap <expr> g <SID>range('g', 'g', '1,.')
-cnoremap <expr> G <SID>range('G', '', '.,$')
-function! s:range(motion, prev, range)
-  if mode() == 'c' && getcmdtype() == ':' && getcmdline() ==# a:prev
-    return "\<End>\<C-u>" . a:range
-  else
-    return a:motion
-  endif
-endfunction
-" }}}
 " }}} KEY MAPPING
 
 " REFERENCE TO KEY MAPPING {{{
