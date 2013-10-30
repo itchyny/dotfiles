@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/30 20:46:05.
+" - * Last Change: 2013/10/30 20:46:51.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -1325,10 +1325,6 @@ endfor
 " Increment and decrement
 nnoremap + <C-a>
 nnoremap - <C-x>
-
-" fold by indentation
-nnoremap [ zak
-nnoremap ] <S>j
 
 " indentation in visual mode
 vnoremap < <gv
