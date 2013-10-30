@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/30 21:12:01.
+" - * Last Change: 2013/10/30 21:24:56.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -77,16 +77,12 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 " Colorscheme {{{
 " --------------------------------------------------------------------------------------------------------
-try
 NeoBundle 'itchyny/landscape.vim', {'type': 'nosync'}
   colorscheme landscape
   let g:landscape_highlight_url = 1
   let g:landscape_highlight_todo = 1
   let g:landscape_highlight_full_space = 0
   let g:landscape_highlight_url_filetype = {'thumbnail': 0}
-catch
-  colorscheme wombat256
-endtry
   let g:solarized_termcolors = 256
 NeoBundleLazy 'xterm-color-table.vim', {'autoload': {'commands': [{'name': 'XtermColorTable', 'complete': 'customlist,CompleteNothing'}]}}
   " http://www.vim.org/scripts/script.php?script_id=3412
@@ -144,8 +140,7 @@ NeoBundle 'itchyny/lightline.vim', {'type': 'nosync'}
   function! MyFilename()
     let fname = expand('%:t')
     let ret = fname == 'ControlP' ? g:lightline.ctrlp_item :
-          \ fname == '__Tagbar__' ? g:lightline.fname :
-          \ fname =~ '__Gundo\|NERD_tree' ? '' :
+          \ fname =~ '__Gundo' ? '' :
           \ &ft == 'vimfiler' ? vimfiler#get_status_string() :
           \ &ft == 'unite' ? unite#get_status_string() :
           \ &ft == 'vimshell' ? substitute(b:vimshell.current_dir,expand('~'),'~','') :
@@ -159,7 +154,7 @@ NeoBundle 'itchyny/lightline.vim', {'type': 'nosync'}
   endfunction
   function! MyFugitive()
     try
-      if expand('%:t') !~? 'Tagbar\|Gundo\|NERD' && &ft !~? 'vimfiler' && exists('*fugitive#head')
+      if expand('%:t') !~? 'Gundo' && &ft !~? 'vimfiler' && exists('*fugitive#head')
         let _ = fugitive#head()
         return strlen(_) ? "\u2b60 "._ : ''
       endif
@@ -176,20 +171,10 @@ NeoBundle 'itchyny/lightline.vim', {'type': 'nosync'}
   function! MyFileencoding()
     return &ft !~? 'vimfiler\|vimshell' && winwidth(0) > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
   endfunction
+  let s:fname_map = { 'ControlP': 'CtrlP', '__Gundo__': 'Gundo', '__Gundo_Preview__': 'Gundo Preview'}
+  let s:ft_map = { 'unite': 'Unite', 'vimfiler': 'VimFiler', 'vimshell': 'VimShell', 'dictionary': 'Dictionary', 'calendar': 'Calendar', 'thumbnail': 'Thumbnail' }
   function! MyMode()
-    let fname = expand('%:t')
-    return fname == '__Tagbar__' ? 'Tagbar' :
-          \ fname == 'ControlP' ? 'CtrlP' :
-          \ fname == '__Gundo__' ? 'Gundo' :
-          \ fname == '__Gundo_Preview__' ? 'Gundo Preview' :
-          \ fname =~ 'NERD_tree' ? 'NERDTree' :
-          \ &ft == 'unite' ? 'Unite' :
-          \ &ft == 'vimfiler' ? 'VimFiler' :
-          \ &ft == 'vimshell' ? 'VimShell' :
-          \ &ft == 'dictionary' ? 'Dictionary' :
-          \ &ft == 'calendar' ? 'Calendar' :
-          \ &ft == 'thumbnail' ? 'Thumbnail' :
-          \ winwidth(0) > 60 ? lightline#mode() : ''
+    return get(s:fname_map, expand('%:t'), get(s:ft_map, &ft, winwidth(0) > 60 ? lightline#mode() : ''))
   endfunction
   function! CtrlPMark()
     if expand('%:t') =~ 'ControlP'
@@ -213,11 +198,6 @@ NeoBundle 'itchyny/lightline.vim', {'type': 'nosync'}
   function! CtrlPStatusFunc_2(str)
     return lightline#statusline(0)
   endfunction
-  let g:tagbar_status_func = 'TagbarStatusFunc'
-  function! TagbarStatusFunc(current, sort, fname, ...) abort
-      let g:lightline.fname = a:fname
-    return lightline#statusline(0)
-  endfunction
   function! MyTabReadonly(n)
     let buflist = tabpagebuflist(a:n)
     let winnr = tabpagewinnr(a:n)
@@ -235,17 +215,7 @@ NeoBundle 'itchyny/lightline.vim', {'type': 'nosync'}
     else
       let fname = bufname
     endif
-    return fname == 'ControlP' ? 'CtrlP' :
-          \ fname == '__Tagbar__' ? 'Tagbar' :
-          \ fname =~ '__Gundo' ? 'Gundo' :
-          \ fname =~ 'NERD_tree' ? 'NERDtree' :
-          \ ft == 'vimfiler' ? 'VimFiler' :
-          \ ft == 'unite' ? 'Unite' :
-          \ ft == 'vimshell' ? 'VimShell' :
-          \ ft == 'dictionary' ? 'Dictionary' :
-          \ ft == 'calendar' ? 'Calendar' :
-          \ ft == 'thumbnail' ? 'Thumbnail' :
-          \ strlen(fname) ? fname : '[No Name]'
+    return get(s:fname_map, fname, get(s:ft_map, ft, strlen(fname) ? fname : '[No Name]'))
   endfunction
   function! SyntasticStatuslineFlagError()
     if exists('b:syntastic_loclist') && len(b:syntastic_loclist.errors())
@@ -883,7 +853,6 @@ set fileformats=unix,dos,mac
 " APPERANCE {{{
 " --------------------------------------------------------------------------------------------------------
 " Frame appearance {{{
-" set showcmd
 set noshowmode " https://github.com/vim-jp/issues/issues/100
 " }}}
 
@@ -974,8 +943,7 @@ endif
 
 " Status line {{{
 set laststatus=2
-set statusline=%{expand('%:p:t')}\ %<[%{expand('%:p:h')}]%=\ %m%r%y%w[%{&fenc!=''?&fenc:&enc}]
-      \[%{&ff}][%3l,%3c,%3p][%{strftime(\"%m/%d\ %H:%M\")}]
+set statusline=%{expand('%:p:t')}\ %<[%{expand('%:p:h')}]%=\ %m%r%y%w[%{&fenc!=''?&fenc:&enc}][%{&ff}][%3l,%3c,%3p]
 " }}}
 
 " Color {{{
@@ -1085,11 +1053,6 @@ if exists('&clipboard')
     set clipboard+=unnamedplus
   endif
 endif
-" }}}
-
-" IME {{{
-set iminsert=0
-set imsearch=-1
 " }}}
 
 " Increment {{{
