@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/30 07:41:33.
+" - * Last Change: 2013/10/30 10:58:11.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -778,41 +778,6 @@ NeoBundle 'kien/ctrlp.vim'
 NeoBundleLazy 'majutsushi/tagbar', {'autoload': {'commands': [{'name': 'Tagbar', 'complete': 'customlist,CompleteNothing'}]}}
 NeoBundleLazy 'scrooloose/nerdtree', {'autoload': {'commands': [{'name': 'NERDTree', 'complete': 'dir'}]}}
 NeoBundleLazy 'mattn/benchvimrc-vim', {'autoload': {'commands': [{'name': 'BenchVimrc', 'complete': 'customlist,CompleteNothing'}]}}
-NeoBundle 'basyura/bitly.vim'
-NeoBundle 'basyura/twibill.vim'
-NeoBundle 'basyura/TweetVim'
-  let g:tweetvim_display_separator = 0
-  let g:tweetvim_display_icon = 1
-  let g:tweetvim_display_source = 1
-  let g:tweetvim_display_time = 1
-  let g:tweetvim_display_username = 0
-  let g:tweetvim_align_right = 1
-  let g:tweetvim_include_rts = 1
-  let g:tweetvim_expand_t_co = 1
-  let g:tweetvim_async_post = 1
-  let g:tweetvim_open_say_cmd = 'below split'
-  let g:tweetvim_config_dir = $CACHE.'/tweetvim'
-  function! TweetVim_say()
-    for w in range(1, winnr('$'))
-      if bufname(winbufnr(w)) =~ 'tweetvim_say'
-        execute w 'wincmd w'
-        return
-      endif
-    endfor
-    silent TweetVimSay
-  endfunction
-  augroup TweetVim
-    autocmd!
-    autocmd FileType tweetvim nmap <buffer> h <Plug>(tweetvim_action_user_timeline)
-    autocmd FileType tweetvim nmap <buffer> l <Plug>(tweetvim_action_open_links)
-    autocmd FileType tweetvim nmap <buffer> f <Plug>(tweetvim_action_favorite)
-    autocmd FileType tweetvim nmap <buffer> <CR> <Plug>(tweetvim_action_reply)
-    autocmd FileType tweetvim nmap <silent> <buffer> q :<C-u>bdelete!<CR>
-    autocmd FileType tweetvim nmap <silent> <buffer> <Tab> :<C-u>call TweetVim_say()<CR>
-    autocmd FileType tweetvim_say imap <silent> <buffer> <CR> <ESC><CR>
-    autocmd FileType tweetvim_say inoremap <silent> <buffer> <Tab> <ESC>:<C-u>wincmd p<CR>
-    autocmd FileType tweetvim_say nnoremap <silent> <buffer> <Tab> :<C-u>wincmd p<CR>
-  augroup END
 NeoBundleLazy 'itchyny/thumbnail.vim', {'type': 'nosync', 'autoload': {'commands': [{'name': 'Thumbnail', 'complete': 'customlist,thumbnail#complete'}]}}
   nnoremap <silent> <Leader>t :<C-u>Thumbnail -here<CR>
   augroup ThumbnailKey
@@ -1396,7 +1361,7 @@ set vb t_vb=
 " Command line {{{
 set wildmode=list:longest
 set wildignore+=*.sw?,*.bak,*.?~,*.??~,*.???~,*.~
-let s:cmdlist = 'vps;vsp,vp;vsp,nbi;NeoBundleInstall,nbc;NeoBundleClean,nbd;NeoBundleDocs,di;Dictionary<SPACE>-cursor-word,tvs;TweetVimSay,tvus;TweetVimUserStream,qa1;qa!,q1;q!,nvew;vnew'
+let s:cmdlist = 'vps;vsp,vp;vsp,nbi;NeoBundleInstall,nbc;NeoBundleClean,nbd;NeoBundleDocs,di;Dictionary<SPACE>-cursor-word,qa1;qa!,q1;q!,nvew;vnew'
 for [s:cmd, s:exp] in map(split(s:cmdlist, ','), 'split(v:val, ";")')
   exec 'cabbrev <expr> '.s:cmd.' (getcmdtype() == ":" && getcmdline() ==# "'.s:cmd.'") ? "'.s:exp.'" : "'.s:cmd.'"'
 endfor
