@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/30 16:15:47.
+" - * Last Change: 2013/10/30 16:36:44.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -782,7 +782,7 @@ NeoBundleLazy 'itchyny/thumbnail.vim', {'type': 'nosync', 'autoload': {'commands
     autocmd FileType thumbnail nmap <buffer> V <Plug>(thumbnail_start_visual)
     autocmd FileType thumbnail call clearmatches()
   augroup END
-NeoBundleLazy 'itchyny/calendar.vim', {'type': 'nosync', 'autoload': {'commands': [{'name': 'Calendar', 'complete': 'customlist,calendar#argument#complete'}]}}
+NeoBundle 'itchyny/calendar.vim', {'type': 'nosync'}
   nnoremap <silent> <Leader>z :<C-u>Calendar -here<CR>
   let g:calendar_frame = 'unicode'
 NeoBundleLazy 'itchyny/dictionary.vim', {'type': 'nosync', 'autoload': {'commands': [{'name': 'Dictionary', 'complete': 'customlist,dictionary#complete'}]}}
@@ -794,6 +794,7 @@ NeoBundle 'vim-jp/vital.vim'
     let s:V = vital#of('vital')
   endfunction
 " }}}
+
 
 " Syntax {{{
 " --------------------------------------------------------------------------------------------------------
