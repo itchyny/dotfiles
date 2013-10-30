@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/30 20:50:27.
+" - * Last Change: 2013/10/30 20:52:49.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -922,13 +922,7 @@ set cursorline
         \ | autocmd SetLocal BufEnter,WinEnter <buffer> setlocal nocursorline
 set nocursorcolumn
 " http://blog.remora.cx/2012/10/spotlight-cursor-line.html
-if &term =~ "screen"
-  let &t_SI = "\eP\e]50;CursorShape=1\x7\e\\"
-  let &t_EI = "\eP\e]50;CursorShape=0\x7\e\\"
-elseif &term =~ "xterm"
-  let &t_SI = "\e]50;CursorShape=1\x7"
-  let &t_EI = "\e]50;CursorShape=0\x7"
-endif
+let [&t_SI,&t_EI] = ["\e]50;CursorShape=1\x7","\e]50;CursorShape=0\x7"]
 set showmatch
 set showtabline=1
 set previewheight=20
