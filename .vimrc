@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/31 01:31:50.
+" - * Last Change: 2013/10/31 01:32:16.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -591,12 +591,8 @@ NeoBundle 'Lokaltog/vim-easymotion'
   let g:EasyMotion_do_mapping = 0
   nnoremap <silent> <Leader>f :<C-u>call EasyMotion#F(0, 0)<CR>
   nnoremap <silent> <Leader>F :<C-u>call EasyMotion#F(0, 1)<CR>
-  nnoremap <silent> <Leader>e :<C-u>call EasyMotion#E(0, 0)<CR>
-  nnoremap <silent> <Leader>E :<C-u>call EasyMotion#E(0, 1)<CR>
   nnoremap <silent> <Leader>w :<C-u>call EasyMotion#WB(0, 0)<CR>
   nnoremap <silent> <Leader>W :<C-u>call EasyMotion#WBW(0, 1)<CR>
-  nnoremap <silent> <Leader>j :<C-u>call EasyMotion#JK(0, 0)<CR>
-  nnoremap <silent> <Leader>k :<C-u>call EasyMotion#JK(0, 1)<CR>
 NeoBundleLazy 'pasela/unite-webcolorname', {'autoload': {'unite_sources': ['webcolorname']}}
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'kien/ctrlp.vim'
