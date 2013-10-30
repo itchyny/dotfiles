@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/30 20:48:22.
+" - * Last Change: 2013/10/30 20:50:27.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -613,7 +613,6 @@ NeoBundle 'Shougo/vimshell'
   let g:vimshell_vimshrc_path = expand('~/Dropbox/.files/.vimshrc')
   augroup Vimshell
     autocmd!
-    " for easy window moving, unmap C-[hjkl]
     autocmd FileType vimshell iunmap <buffer> <C-h>
     autocmd FileType vimshell iunmap <buffer> <C-k>
     autocmd FileType vimshell iunmap <buffer> <C-l>
