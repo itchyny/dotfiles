@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/30 21:07:18.
+" - * Last Change: 2013/10/30 21:08:15.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -1023,7 +1023,6 @@ augroup SetLocalFiletype
   for [ex, ft] in extend(s:filetypes1, s:filetypes2)
     execute 'autocmd BufNewFile,BufReadPost *.' . ex . ' setlocal filetype=' . ft
   endfor
-  unlet s:filetypes1 s:filetypes2
   autocmd BufReadPost,BufWrite,CursorHold,CursorHoldI * call s:auto_filetype()
 augroup END
 function! s:auto_filetype()
@@ -1174,7 +1173,6 @@ augroup Omnifunc
   for [ft, omnif] in s:omnifunc
     exec 'autocmd FileType ' . ft . ' setlocal omnifunc=' . omnif
   endfor
-  unlet s:omnifunc
 augroup END
 setlocal omnifunc=syntaxcomplete#Complete
 " }}}
