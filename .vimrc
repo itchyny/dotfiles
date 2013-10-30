@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/30 22:07:17.
+" - * Last Change: 2013/10/30 22:26:15.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -1265,22 +1265,13 @@ nnoremap <silent> ,p :<C-u>cp<CR>
 " Navigation {{{
 " window
 " <C-j> doesn't work, without the setting of <C-m>
-inoremap <C-h> <ESC><C-w>h
-inoremap <C-j> <ESC><C-w>j
-inoremap <C-k> <ESC><C-w>k
-inoremap <C-l> <ESC><C-w>l
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
+for k in ['h', 'j', 'k', 'l', 'x']
+  let l = k == 'j' ? 'm' : k
+  if l == k | exec 'inoremap <C-' . l . '> <ESC><C-w>' . k | endif
+  exec 'nnoremap <C-' . l . '> <C-w>' . k
+  exec 'vnoremap <C-' . l . '> <C-w>' . k
+endfor
 nnoremap <expr><C-m> (bufname('%') ==# '[Command Line]') ? "<CR>" : "<C-w>j"
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
-nnoremap <C-x> <C-w>x
-vnoremap <C-h> <C-w>h
-vnoremap <C-j> <C-w>j
-vnoremap <C-m> <C-w>j
-vnoremap <C-k> <C-w>k
-vnoremap <C-l> <C-w>l
-vnoremap <C-x> <C-w>x
 inoremap <C-q> <ESC><C-w>
 nnoremap <C-q> <C-w>
 vnoremap <C-q> <ESC><C-w>
