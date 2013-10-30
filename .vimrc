@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/30 21:10:51.
+" - * Last Change: 2013/10/30 21:12:01.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -719,8 +719,6 @@ NeoBundle 'kien/ctrlp.vim'
     let file = g:ctrlp_cache_dir . '/mru/cache.txt'
     silent call writefile(map(readfile(file), "substitute(v:val, '^/home/\\a\\+', path, '')"), file)
   endfunction
-NeoBundleLazy 'majutsushi/tagbar', {'autoload': {'commands': [{'name': 'Tagbar', 'complete': 'customlist,CompleteNothing'}]}}
-NeoBundleLazy 'scrooloose/nerdtree', {'autoload': {'commands': [{'name': 'NERDTree', 'complete': 'dir'}]}}
 NeoBundleLazy 'mattn/benchvimrc-vim', {'autoload': {'commands': [{'name': 'BenchVimrc', 'complete': 'customlist,CompleteNothing'}]}}
 NeoBundleLazy 'itchyny/thumbnail.vim', {'type': 'nosync', 'autoload': {'commands': [{'name': 'Thumbnail', 'complete': 'customlist,thumbnail#complete'}]}}
   nnoremap <silent> <Leader>t :<C-u>Thumbnail -here<CR>
