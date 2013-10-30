@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/30 22:47:01.
+" - * Last Change: 2013/10/31 00:00:11.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -72,7 +72,7 @@ endif
 call neobundle#rc(expand($BUNDLE))
 NeoBundleFetch 'Shougo/neobundle.vim'
   " nnoremap <silent> <S-b><S-b> :<C-u>NeoBundleUpdate<CR>
-  nnoremap <silent> <S-b><S-b> :<C-u>Unite neobundle/update<CR>
+  nnoremap <silent> <S-b><S-b> :<C-u>Unite neobundle/update -log<CR>
 " }}}
 
 " Colorscheme {{{
