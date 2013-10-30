@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/30 16:14:03.
+" - * Last Change: 2013/10/30 16:15:47.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -623,7 +623,7 @@ NeoBundleLazy 'eagletmt/ghci-vim', {'autoload': {'filetypes': ['haskell']}}
       autocmd FileType haskell nnoremap <buffer> <Leader>t <expr> exec 'GhciType'
     augroup END
   endfunction
-NeoBundle 'tyru/open-browser.vim', {'autoload' : {'mappings' : ['<Plug>(openbrowser-']}}
+NeoBundle 'tyru/open-browser.vim'
   nmap <silent> <Leader>b <Plug>(openbrowser-smart-search)
   vmap <silent> <Leader>b <Plug>(openbrowser-smart-search)
   nmap <silent> <Leader>s <Plug>(openbrowser-search)
