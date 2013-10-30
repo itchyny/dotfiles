@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/30 17:54:00.
+" - * Last Change: 2013/10/30 20:36:32.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -549,48 +549,6 @@ NeoBundle 'Shougo/vimfiler'
   for ft in split('pdf,png,jpg,jpeg,gif,bmp,ico,ppt,html', ',')
     let g:vimfiler_execute_file_list[ft] = 'open'
   endfor
-  function! s:changetime()
-    let marked_files = vimfiler#get_marked_filenames()
-    if !empty(marked_files)
-      return
-    endif
-    let file = vimfiler#get_file()
-    if empty(file)
-      return
-    endif
-    let filepath = file.action__path
-    let vimfiler_current_dir = get(unite#get_context(), 'vimfiler__current_directory', '')
-    if vimfiler_current_dir == ''
-      let vimfiler_current_dir = getcwd()
-    endif
-    let current_dir = getcwd()
-    if system('stat -l . > /dev/null 2>&1; echo $?') =~ '^0'
-      let atime = system('stat -lt "%Y/%m/%d %H:%M" "'.filepath
-            \."\" | awk {'print $6\" \"$7'} | tr -d '\\n'")
-    else
-      let atime = system('stat --printf "%y" "'.filepath."\" | sed -e 's/\\..*//'")
-    endif
-    let atime = substitute(atime, '-', '/', 'g')
-    try
-      lcd `=vimfiler_current_dir`
-      let newtime = input(printf('New time: %s -> ', atime))
-      redraw
-      if newtime == ''
-        let newtime = atime
-      endif
-      let newtime = substitute(newtime, '\d\@<!\(\d\)$', '0\1', '')
-      let newtime = substitute(newtime, '\d\@<!\(\d\)\d\@!', '0\1', 'g')
-      let newtime = substitute(newtime, '[ -]', '', 'g')
-      if newtime =~? '^\d\+/\d\+/\d\+$' || len(newtime) <= 8
-        let newtime .= '0000'
-      endif
-      let newtime = substitute(newtime, '\(\d\+:\d\+\):\(\d\+\)$', '\1.\2', '')
-      let newtime = substitute(newtime, '[/:]', '', 'g')
-      call system('touch -at '.newtime.' -mt '.newtime.' "'.filepath.'"')
-    finally
-      lcd `=current_dir`
-    endtry
-  endfunction
   augroup Vimfiler
     autocmd!
     autocmd FileType vimfiler nunmap <buffer> <C-l>
@@ -600,15 +558,17 @@ NeoBundle 'Shougo/vimfiler'
     autocmd FileType vimfiler nmap <buffer> O <Plug>(vimfiler_sync_with_another_vimfiler)
     autocmd FileType vimfiler nmap <buffer><expr> e
           \ vimfiler#smart_cursor_map("\<Plug>(vimfiler_cd_file)", "\<Plug>(vimfiler_edit_file)")
-    autocmd FileType vimfiler nnoremap <buffer><expr> t <SID>changetime()
+    autocmd FileType vimfiler nnoremap <buffer><silent> t :<C-u>call vimfiler#mappings#do_action('change_time')<CR>
     autocmd FileType vimfiler if filereadable("Icon\r") | silent call delete("Icon\r") | endif
   augroup END
+NeoBundle 'itchyny/unite-changetime', {'type': 'nosync'}
 NeoBundle 'itchyny/vimfiler-preview', {'type': 'nosync'}
   let g:vimfiler_preview_action = 'auto_preview'
   let bundle = neobundle#get('vimfiler-preview')
   function! bundle.hooks.on_post_source(bundle)
     if exists('*unite#custom_action')
       call unite#custom_action('file', 'auto_preview', g:vimfiler_preview)
+      call unite#custom_action('file', 'change_time', g:unite_changetime)
     endif
   endfunction
 NeoBundle 'Shougo/vinarise'
