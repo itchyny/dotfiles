@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/30 20:46:51.
+" - * Last Change: 2013/10/30 20:47:40.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -1339,11 +1339,6 @@ nnoremap Y y$
 
 " remove spaces at the end of lines
 nnoremap ,<Space> ma:%s/  *$//<CR>`a<ESC>
-
-" selecting all
-nnoremap <C-a> gg<S-v><S-g>
-inoremap <C-a> <ESC>gg<S-v><S-g>
-vnoremap <C-a> <ESC>gg<S-v><S-g>
 
 " smart Enter
 inoremap <silent> <expr> <CR> (pumvisible()?"\<ESC>o":"\<C-g>u\<CR>")
