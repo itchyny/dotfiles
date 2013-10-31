@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/31 13:32:43.
+" - * Last Change: 2013/10/31 13:34:49.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -82,13 +82,6 @@ NeoBundleLazy 'xterm-color-table.vim', {'autoload': {'commands': [{'name': 'Xter
 NeoBundle 'itchyny/lightline.vim', {'type': 'nosync'}
 NeoBundle 'itchyny/lightline-powerful', {'type': 'nosync'}
   let g:lightline = {'colorscheme': 'landscape'}
-try
-" --|  $ sudo apt-get install fontforge
-" --|  $ sudo apt-get install python-fontforge
-" --|  $ cd ~/.vim/bundle/vim-powerline/fontpatcher
-" --|  $ wget http://levien.com/type/myfonts/Inconsolata.otf
-" --|  $ python ./fontpatcher ./Inconsolata.otf
-" --|  $ sudo cp ./Inconsolata-Powerline.otf /usr/share/fonts
 if s:ismac
   set guifont=Inconsolata\ for\ Powerline:h15
 elseif s:iswin
@@ -99,8 +92,6 @@ endif
 if s:iswin
   set guifontwide=MS_Gothic:h11:cSHIFTJIS
 endif
-catch
-endtry
 " }}}
 
 " Complement {{{
