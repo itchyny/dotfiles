@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/11/01 00:47:45.
+" - * Last Change: 2013/11/01 01:16:30.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -481,7 +481,8 @@ NeoBundleLazy 'syngan/vim-vimlint', { 'depends' : 'ynkdir/vim-vimlparser', 'auto
 endif
 " }}} Bundles
 
-" SET {{{
+" ENCODING {{{
+" --------------------------------------------------------------------------------------------------------
 set encoding=utf-8
 set fenc=utf-8
 set fileencodings=utf-8,euc-jp,sjis,jis,iso-2022-jp,cp932,latin
@@ -493,22 +494,6 @@ set formatoptions+=mM       " 日本語の行の連結時には空白を入力�
 "   /bin/sh -c "VTE_CJK_WIDTH=1 gnome-terminal --disable-factory"
 " MacのiTermでは, Profiles>Text>Double-Width Characters>Treat ambiguous-width characters as double widthにチェック
 set ambiwidth=double
-" }}}
-
-" 書類を開くことができませんでした。テキストエンコーディング日本語(Mac OS)には対応していません。 {{{
-" http://d.hatena.ne.jp/uasi/20110523/1306079612
-autocmd Vimrc BufWritePost * call SetUTF8Xattr(escape(expand("<afile>"), "*[]?{}' "))
-function! SetUTF8Xattr(file)
-  let isutf8 = &fileencoding == "utf-8" || (&fileencoding == "" && &encoding == "utf-8")
-  if s:ismac && isutf8
-    let c = "xattr -w com.apple.TextEncoding 'utf-8;134217984' \"".a:file."\" &"
-    if exists('vimproc#system')
-      call vimproc#system(c)
-    else
-      call system(c)
-    endif
-  endif
-endfunction
 " }}}
 
 " APPERANCE {{{
