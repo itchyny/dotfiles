@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/31 12:02:11.
+" - * Last Change: 2013/10/31 12:11:16.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -21,9 +21,6 @@ augroup END
 augroup SetLocal
   autocmd!
 augroup END
-function! CompleteNothing(findstart, base)
-  return a:findstart ? -1 : []
-endfunction
 " }}}
 
 " Bundles {{{
@@ -82,7 +79,7 @@ NeoBundle 'itchyny/landscape.vim', {'type': 'nosync'}
   let g:landscape_highlight_todo = 1
   let g:landscape_highlight_full_space = 0
   let g:landscape_highlight_url_filetype = {'thumbnail': 0}
-NeoBundleLazy 'xterm-color-table.vim', {'autoload': {'commands': [{'name': 'XtermColorTable', 'complete': 'customlist,CompleteNothing'}]}}
+NeoBundleLazy 'xterm-color-table.vim', {'autoload': {'commands': [{'name': 'XtermColorTable'}]}}
 " }}}
 
 " Lightline {{{
@@ -354,7 +351,7 @@ NeoBundle 'tyru/open-browser.vim'
   nmap <silent> <Leader>b <Plug>(openbrowser-smart-search)
   vmap <silent> <Leader>b <Plug>(openbrowser-smart-search)
 NeoBundle 'mattn/webapi-vim'
-NeoBundleLazy 'mattn/googletasks-vim', {'autoload': {'commands': [{'name': 'GoogleTasks', 'complete': 'customlist,CompleteNothing'}]}}
+NeoBundleLazy 'mattn/googletasks-vim', {'autoload': {'commands': [{'name': 'GoogleTasks'}]}}
 " }}}
 
 " vimshell ( ";" ) {{{
@@ -426,18 +423,18 @@ NeoBundle 'tComment'
   nnoremap <silent> __ :TComment<CR>
   vnoremap <silent> __ :TComment<CR>
   let g:tcommentMapLeader1 = ''
-NeoBundleLazy 'Align', {'autoload': {'commands': [{'name': 'Align', 'complete': 'customlist,CompleteNothing'}]}}
+NeoBundleLazy 'Align', {'autoload': {'commands': [{'name': 'Align'}]}}
 NeoBundle 'autodate.vim'
   let g:autodate_format = '%Y/%m/%d %H:%M:%S'
-NeoBundleLazy 'sjl/gundo.vim', {'autoload': {'commands': [{'name': 'GundoToggle', 'complete': 'customlist,CompleteNothing'}]}, 'disabled': !has('python')}
+NeoBundleLazy 'sjl/gundo.vim', {'autoload': {'commands': [{'name': 'GundoToggle'}]}, 'disabled': !has('python')}
   nnoremap <Leader>g :<C-u>GundoToggle<CR>
   autocmd ESC FileType gundo nnoremap <silent> <buffer> <ESC><ESC> :<C-u>GundoToggle<CR>
-NeoBundleLazy 'VimCalc', {'type': 'nosync', 'autoload': {'commands': [{'name': 'Calc', 'complete': 'customlist,CompleteNothing'}]}, 'disabled': !has('python')}
+NeoBundleLazy 'VimCalc', {'type': 'nosync', 'autoload': {'commands': [{'name': 'Calc'}]}, 'disabled': !has('python')}
   autocmd ESC FileType vimcalc nnoremap <silent> <buffer> <ESC><ESC><ESC> :<C-u>q<CR>
   nnoremap <silent> <Leader>a :<C-u>Calc<CR>
 NeoBundle 'gregsexton/MatchTag'
 NeoBundle 'matchit.zip'
-NeoBundleLazy 'thinca/vim-scouter', {'autoload': {'commands': [{'name': 'Scouter', 'complete': 'customlist,CompleteNothing'}]}}
+NeoBundleLazy 'thinca/vim-scouter', {'autoload': {'commands': [{'name': 'Scouter'}]}}
 NeoBundle 'terryma/vim-multiple-cursors'
   let g:multi_cursor_use_default_mapping = 0
   let g:multi_cursor_next_key = "\<C-g>"
