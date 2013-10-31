@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/31 08:52:09.
+" - * Last Change: 2013/10/31 12:02:11.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -9,7 +9,6 @@
 set nocompatible
 filetype off
 scriptencoding utf-8
-set encoding=utf-8
 if !executable(&shell) | set shell=sh | endif
 let s:isunix = has('unix')
 let s:iswin = has('win16') || has('win32') || has('win64')
@@ -89,145 +88,8 @@ NeoBundleLazy 'xterm-color-table.vim', {'autoload': {'commands': [{'name': 'Xter
 " Lightline {{{
 " --------------------------------------------------------------------------------------------------------
 NeoBundle 'itchyny/lightline.vim', {'type': 'nosync'}
-  let g:lightline = {
-        \ 'colorscheme': 'landscape',
-        \ 'mode_map': { 'c': 'NORMAL' },
-        \ 'active': {
-        \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ], [ 'ctrlpmark' ] ],
-        \   'right': [ [ 'syntastic_error', 'syntastic_warning', 'lineinfo'], ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ]
-        \ },
-        \ 'inactive': {
-        \   'left': [ [ 'filename' ] ],
-        \   'right': [ [ 'lineinfo' ], [ 'percent' ] ]
-        \ },
-        \ 'tabline': {
-        \   'left': [ [ 'tabs' ] ],
-        \   'right': [ [ 'close' ] ]
-        \ },
-        \ 'tab': {
-        \   'active': [ 'tabnum', 'readonly', 'filename', 'modified' ],
-        \   'inactive': [ 'tabnum', 'readonly', 'filename', 'modified' ]
-        \ },
-        \ 'component': {
-        \   'close': printf('%%999X %s ', has('multi_byte') ? "\u2717" : 'x'),
-        \ },
-        \ 'component_function': {
-        \   'fugitive': 'MyFugitive',
-        \   'filename': 'MyFilename',
-        \   'fileformat': 'MyFileformat',
-        \   'filetype': 'MyFiletype',
-        \   'fileencoding': 'MyFileencoding',
-        \   'mode': 'MyMode',
-        \   'ctrlpmark': 'CtrlPMark',
-        \ },
-        \ 'component_expand': {
-        \   'syntastic_error': 'SyntasticStatuslineFlagError',
-        \   'syntastic_warning': 'SyntasticStatuslineFlagWarning',
-        \ },
-        \ 'component_type': {
-        \   'syntastic_error': 'error',
-        \   'syntastic_warning': 'warning',
-        \ },
-        \ 'tab_component_function': {
-        \   'filename': 'MyTabFilename',
-        \   'readonly': 'MyTabReadonly',
-        \ },
-        \ 'separator': { 'left': "\u2b80", 'right': "\u2b82" },
-        \ 'subseparator': { 'left': "\u2b81", 'right': "\u2b83" }
-        \ }
-  function! MyFilename()
-    let fname = expand('%:t')
-    let ret = fname == 'ControlP' ? g:lightline.ctrlp_item :
-          \ fname =~ '__Gundo' ? '' :
-          \ &ft == 'vimfiler' ? vimfiler#get_status_string() :
-          \ &ft == 'unite' ? unite#get_status_string() :
-          \ &ft == 'vimshell' ? substitute(b:vimshell.current_dir,expand('~'),'~','') :
-          \ &ft == 'dictionary' ? (exists('b:dictionary.input') ? b:dictionary.input : '') :
-          \ &ft == 'calendar' ? join(calendar#day#today().get_ymd(), '/') :
-          \ &ft == 'thumbnail' ? 'Thumbnail' :
-          \ (&readonly ? "\u2b64 " : '') .
-          \ ('' != fname ? fname : '[No Name]') .
-          \ (&modified ? ' +' : &modifiable ? '' : ' -')
-    if exists('s:Vital')
-      return substitute(s:Vital.truncate_skipping(ret, winwidth(0) * 2 / 3, winwidth(0) / 2, ' .. '), '\s\+$', '', '')
-    else
-      return ret
-    endif
-  endfunction
-  function! MyFugitive()
-    try
-      if expand('%:t') !~? 'Gundo' && &ft !~? 'vimfiler' && exists('*fugitive#head')
-        let _ = fugitive#head()
-        return strlen(_) ? "\u2b60 "._ : ''
-      endif
-    catch
-    endtry
-    return ''
-  endfunction
-  function! MyFileformat()
-    return &ft !~? 'vimfiler\|vimshell' && winwidth(0) > 70 ? &fileformat : ''
-  endfunction
-  function! MyFiletype()
-    return &ft !~? 'vimfiler\|vimshell' && winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
-  endfunction
-  function! MyFileencoding()
-    return &ft !~? 'vimfiler\|vimshell' && winwidth(0) > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
-  endfunction
-  let s:fname_map = { 'ControlP': 'CtrlP', '__Gundo__': 'Gundo', '__Gundo_Preview__': 'Gundo Preview'}
-  let s:ft_map = { 'unite': 'Unite', 'vimfiler': 'VimFiler', 'vimshell': 'VimShell', 'dictionary': 'Dictionary', 'calendar': 'Calendar', 'thumbnail': 'Thumbnail' }
-  function! MyMode()
-    return get(s:fname_map, expand('%:t'), get(s:ft_map, &ft, winwidth(0) > 60 ? lightline#mode() : ''))
-  endfunction
-  function! CtrlPMark()
-    if expand('%:t') =~ 'ControlP'
-      call lightline#link('iR'[g:lightline.ctrlp_regex])
-      return lightline#concatenate([g:lightline.ctrlp_prev, g:lightline.ctrlp_item, g:lightline.ctrlp_next], 0)
-    else
-      return ''
-    endif
-  endfunction
-  let g:ctrlp_status_func = { 'main': 'CtrlPStatusFunc_1', 'prog': 'CtrlPStatusFunc_2' }
-  function! CtrlPStatusFunc_1(focus, byfname, regex, prev, item, next, marked)
-    let g:lightline.ctrlp_regex = a:regex
-    let g:lightline.ctrlp_prev = a:prev
-    let g:lightline.ctrlp_item = a:item
-    let g:lightline.ctrlp_next = a:next
-    return lightline#statusline(0)
-  endfunction
-  function! CtrlPStatusFunc_2(str)
-    return lightline#statusline(0)
-  endfunction
-  function! MyTabReadonly(n)
-    let buflist = tabpagebuflist(a:n)
-    let winnr = tabpagewinnr(a:n)
-    return gettabwinvar(a:n, winnr, '&readonly') ? '⭤' : ''
-  endfunction
-  function! MyTabFilename(n)
-    let bufnr = tabpagebuflist(a:n)[tabpagewinnr(a:n) - 1]
-    let bufname = expand('#' . bufnr . ':t')
-    let buffullname = expand('#' . bufnr . ':p')
-    let bufnrs = filter(range(1, bufnr('$')), 'v:val != bufnr && len(bufname(v:val)) && bufexists(v:val) && buflisted(v:val)')
-    let i = index(map(copy(bufnrs), 'expand("#" . v:val . ":t")'), bufname)
-    let ft = gettabwinvar(a:n, tabpagewinnr(a:n), '&filetype')
-    if strlen(bufname) && i >= 0 && map(bufnrs, 'expand("#" . v:val . ":p")')[i] != buffullname
-      let fname = substitute(buffullname, '.*/\([^/]\+/\)', '\1', '')
-    else
-      let fname = bufname
-    endif
-    return get(s:fname_map, fname, get(s:ft_map, ft, strlen(fname) ? fname : '[No Name]'))
-  endfunction
-  function! SyntasticStatuslineFlagError()
-    if exists('b:syntastic_loclist') && len(b:syntastic_loclist.errors())
-      return substitute(substitute(b:syntastic_loclist.errors()[0].text, '%', '%%', 'g'), '\[.\{-}\]', '', 'g')
-    endif
-    return ''
-  endfunction
-  function! SyntasticStatuslineFlagWarning()
-    if exists('b:syntastic_loclist') && len(b:syntastic_loclist.warnings()) && !len(b:syntastic_loclist.errors())
-      return substitute(substitute(b:syntastic_loclist.warnings()[0].text, '%', '%%', 'g'), '\[.\{-}\]', '', 'g')
-    endif
-    return ''
-  endfunction
+NeoBundle 'itchyny/lightline-powerful', {'type': 'nosync'}
+  let g:lightline = {'colorscheme': 'landscape'}
 try
 " --|  $ sudo apt-get install fontforge
 " --|  $ sudo apt-get install python-fontforge
