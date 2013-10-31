@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/31 12:27:19.
+" - * Last Change: 2013/10/31 12:32:53.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -495,20 +495,14 @@ NeoBundleLazy 'scrooloose/syntastic', {'autoload': {'filetypes': ['c', 'cpp'], '
   let g:syntastic_mode_map = { 'mode': 'passive' }
   let g:syntastic_echo_current_error = 0
   let g:syntastic_enable_highlighting = 0
-  augroup AutoSyntastic
-    autocmd!
-    autocmd BufWritePost *.c,*.cpp call s:syntastic()
-  augroup END
+  autocmd Vimrc BufWritePost *.c,*.cpp call s:syntastic()
   function! s:syntastic()
     if exists(':SyntasticCheck') | exec 'SyntasticCheck' | endif
     if exists('*lightline#update') | call lightline#update() | endif
   endfunction
 NeoBundleLazy 'mattn/emmet-vim', {'autoload': {'filetypes': ['html']}}
   let g:user_emmet_settings = { 'indentation' : '  ' }
-  augroup Emmet
-    autocmd!
-    autocmd FileType html,css imap <tab> <plug>(EmmetExpandAbbr)
-  augroup END
+  autocmd Vimrc FileType html,css imap <tab> <plug>(EmmetExpandAbbr)
 NeoBundleLazy 'itspriddle/vim-javascript-indent', {'autoload': {'filetypes': ['javascript']}}
 NeoBundleLazy 'JSON.vim', {'autoload': {'filetypes': ['json']}}
 NeoBundleLazy 'html5.vim', {'autoload': {'filetypes': ['html']}}
@@ -551,10 +545,7 @@ set ambiwidth=double
 
 " 書類を開くことができませんでした。テキストエンコーディング日本語(Mac OS)には対応していません。 {{{
 " http://d.hatena.ne.jp/uasi/20110523/1306079612
-augroup SetUTF8Xattr
-  autocmd!
-  autocmd BufWritePost * call SetUTF8Xattr(escape(expand("<afile>"), "*[]?{}' "))
-augroup END
+autocmd Vimrc BufWritePost * call SetUTF8Xattr(escape(expand("<afile>"), "*[]?{}' "))
 function! SetUTF8Xattr(file)
   let isutf8 = &fileencoding == "utf-8" || (&fileencoding == "" && &encoding == "utf-8")
   if s:ismac && isutf8
@@ -616,10 +607,7 @@ if has('autocmd')
       let &fileencoding = &encoding
     endif
   endfunction
-  augroup AU_ReCheck_FENC
-    autocmd!
-    autocmd BufReadPost * call AU_ReCheck_FENC()
-  augroup END
+  autocmd Vimrc BufReadPost * call AU_ReCheck_FENC()
 endif
 " 改行コードの自動認識
 set fileformats=unix,dos,mac
@@ -653,11 +641,8 @@ set shortmess+=I            " disable start up message
 set number
   autocmd Vimrc FileType vimshell,vimcalc,quickrun,int-ghci setlocal nonumber buftype=nofile
 set cursorline
-  augroup CursorLine
-    autocmd!
-    autocmd WinLeave * setlocal nocursorline
-    autocmd BufEnter,WinEnter * setlocal cursorline
-  augroup END
+  autocmd Vimrc WinLeave * setlocal nocursorline
+  autocmd Vimrc BufEnter,WinEnter * setlocal cursorline
   autocmd Vimrc FileType calendar,vimcalc,vimshell,quickrun,int-ghci,cam setlocal nocursorline
         \ | autocmd Vimrc BufEnter,WinEnter <buffer> setlocal nocursorline
 set nocursorcolumn
@@ -700,20 +685,14 @@ set nospell
       let b:autospell_done = 1
     endif
   endfunction
-  augroup autospell
-    autocmd!
-    autocmd FileType tex,markdown call s:autospell()
-    autocmd BufWritePost * call s:myspell()
-  augroup END
+  autocmd Vimrc FileType tex,markdown call s:autospell()
+  autocmd Vimrc BufWritePost * call s:myspell()
 set modeline
 set modelines=1
 set completeopt-=preview
 if has('conceal')
   set concealcursor=nvc
-  augroup SetConceal
-    autocmd!
-    autocmd FileType vimfiler set concealcursor=nvc
-  augroup END
+  autocmd Vimrc FileType vimfiler set concealcursor=nvc
 endif
 " }}}
 
@@ -737,11 +716,8 @@ let s:hi_cterm_common = 'ctermfg=black cterm=none '
 let s:hi_normal = s:hi_sl.s:hi_gui_common.s:hi_cterm_common.'guibg=blue ctermbg=blue'
 let s:hi_insert = s:hi_sl.s:hi_gui_common.s:hi_cterm_common.'guibg=darkmagenta ctermbg=darkmagenta'
 silent execute s:hi_normal
-augroup InsertStatus
-  autocmd!
-  autocmd InsertEnter * execute s:hi_insert
-  autocmd InsertLeave * execute s:hi_normal
-augroup END
+autocmd Vimrc InsertEnter * execute s:hi_insert
+autocmd Vimrc InsertLeave * execute s:hi_normal
 if has('unix') && !has('gui_running')
   " ESC後にすぐ反映されない対策(実際これいる)
   inoremap <silent> <ESC> <ESC>
@@ -763,7 +739,7 @@ augroup SetLocalFiletype
   for [ex, ft] in extend(s:filetypes1, s:filetypes2)
     execute 'autocmd BufNewFile,BufReadPost *.' . ex . ' setlocal filetype=' . ft
   endfor
-  autocmd BufReadPost,BufWrite,CursorHold,CursorHoldI * call s:auto_filetype()
+  autocmd Vimrc BufReadPost,BufWrite,CursorHold,CursorHoldI * call s:auto_filetype()
 augroup END
 function! s:auto_filetype()
   let newft = ''
@@ -810,10 +786,7 @@ set expandtab
       setlocal expandtab
     endif
   endfunction
-  augroup Autotab
-    autocmd!
-    autocmd FileType * call s:autotab()
-  augroup END
+  autocmd Vimrc FileType * call s:autotab()
 set tabstop=2
 retab
 set backspace=indent,eol,start
@@ -847,12 +820,9 @@ set viminfo='10,/10,:1000,<10,@10,s10,n$CACHE/.viminfo
 " UTILITY {{{
 " --------------------------------------------------------------------------------------------------------
 " On starting vim {{{
-augroup Enter
-  autocmd!
-  if s:iswin
-    autocmd GUIEnter * simalt ~x
-  endif
-augroup END
+if s:iswin
+  autocmd Vimrc GUIEnter * simalt ~x
+endif
 " }}}
 
 " Move to the directory for each buffer, current directory functions {{{
@@ -895,10 +865,7 @@ function! s:change_directory()
   endtry
   return s:current_directory_abbr()
 endfunction
-augroup ChangeDirectory
-  autocmd!
-  autocmd BufEnter * call s:change_directory()
-augroup END
+autocmd Vimrc BufEnter * call s:change_directory()
 " }}}
 
 " Enable omni completation {{{
@@ -1109,10 +1076,7 @@ nnoremap <silent> <C-w> :<C-u>call AutoClose()<CR>
 vnoremap <silent> <C-w> :<C-u>call AutoClose()<CR>
 
 " tag
-augroup HelpTag
-  autocmd!
-  autocmd FileType help nnoremap <C-[> <C-t>
-augroup END
+autocmd Vimrc FileType help nnoremap <C-[> <C-t>
 
 " tab
 nnoremap <C-t> :<C-u>tabnew<CR>
