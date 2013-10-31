@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/11/01 01:16:30.
+" - * Last Change: 2013/11/01 01:33:30.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -730,35 +730,6 @@ function! Automake()
   endif
 endfunction
 nnoremap <silent> <S-F5> :<C-u>call Automake()<CR>
-" }}}
-
-" Vim script header {{{
-function! Header()
-  let filename = substitute(expand('%:p'), '.*/.vim/bundle/[^/]\+/', '', '')
-  if search(repeat('=', 77))
-    call setline(search('" Filename:'), '" ' . 'Filename: ' . filename)
-  else
-    let [s, f] = [[], []]
-    call add(s, '" ' . repeat('=', 77))
-    call add(s, '" ' . 'Filename: ' . filename)
-    call add(s, '" ' . 'Author: itchyny')
-    call add(s, '" ' . 'License: MIT License')
-    call add(s, '" ' . 'Last Change: .')
-    call add(s, '" ' . repeat('=', 77))
-    call add(s, '')
-    if !search('save_cpo')
-      call add(s, 'let s:save_cpo = &cpo')
-      call add(s, 'set cpo&vim')
-      call add(s, '')
-      if getline(line('$')) != '' | call add(f, '') | endif
-      call add(f, 'let &cpo = s:save_cpo')
-      call add(f, 'unlet s:save_cpo')
-    endif
-    call append(0, s)
-    call append(line('$'), f)
-  endif
-endfunction
-command! Header call Header()
 " }}}
 
 " Open file explorer at current directory {{{
