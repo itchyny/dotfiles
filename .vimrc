@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/31 12:32:53.
+" - * Last Change: 2013/10/31 12:39:16.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -64,7 +64,6 @@ if has('vim_starting')
 endif
 call neobundle#rc(expand($BUNDLE))
 NeoBundleFetch 'Shougo/neobundle.vim'
-  " nnoremap <silent> <S-b><S-b> :<C-u>NeoBundleUpdate<CR>
   nnoremap <silent> <S-b><S-b> :<C-u>Unite neobundle/update -log<CR>
 " }}}
 
@@ -119,7 +118,7 @@ NeoBundleLazy 'Shougo/neocomplcache'
   let g:neocomplete#max_keyword_width = 50
   let g:neocomplete#data_directory = $CACHE.'/neocomplete'
   if !exists('g:neocomplete#force_omni_input_patterns')
-      let g:neocomplete#force_omni_input_patterns = {}
+    let g:neocomplete#force_omni_input_patterns = {}
   endif
   let g:neocomplete#force_overwrite_completefunc = 1
   let g:neocomplete#force_omni_input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
@@ -152,7 +151,7 @@ NeoBundleLazy 'Shougo/neocomplete.vim'
   let g:neocomplcache_context_filetype_lists = {}
   let g:neocomplcache_temporary_dir = $CACHE.'/neocomplcache'
   if !exists('g:neocomplcache_force_omni_patterns')
-      let g:neocomplcache_force_omni_patterns = {}
+    let g:neocomplcache_force_omni_patterns = {}
   endif
   let g:neocomplcache_force_overwrite_completefunc = 1
   let g:neocomplcache_force_omni_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
