@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/31 12:39:16.
+" - * Last Change: 2013/10/31 12:39:37.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -73,7 +73,6 @@ NeoBundle 'itchyny/landscape.vim', {'type': 'nosync'}
   colorscheme landscape
   let g:landscape_highlight_url = 1
   let g:landscape_highlight_todo = 1
-  let g:landscape_highlight_full_space = 0
   let g:landscape_highlight_url_filetype = {'thumbnail': 0}
 NeoBundleLazy 'xterm-color-table.vim', {'autoload': {'commands': [{'name': 'XtermColorTable'}]}}
 " }}}
