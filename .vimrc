@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/31 15:42:31.
+" - * Last Change: 2013/10/31 15:48:37.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -16,21 +16,20 @@ let s:iscygwin = has('win32unix')
 let s:ismac = !s:iswin && !s:iscygwin && (has('mac') || has('macunix') || has('guimacvim') || system('uname') =~? '^darwin')
 let s:fancy = s:ismac && has('multi_byte')
 let s:nosudo = $SUDO_USER == ''
+let $VIM = expand('~/.vim')
+let $CACHE = $VIM.'/.cache'
+let $BUNDLE = $VIM.'/bundle'
+let s:neobundle_dir = $BUNDLE.'/neobundle.vim'
+if filereadable($VIM.'/.vimrc.secret') | source $VIM/.vimrc.secret | endif
 augroup Vimrc
   autocmd!
 augroup END
 " }}}
 
 " Bundles {{{
-let $VIM = expand('~/.vim')
-let $CACHE = $VIM.'/.cache'
-let $BUNDLE = $VIM.'/bundle'
-let s:neobundle_dir = $BUNDLE.'/neobundle.vim'
-if filereadable($VIM.'/.vimrc.secret') | source $VIM/.vimrc.secret | endif
-if !isdirectory(s:neobundle_dir)
-
 " neobundle {{{
 " --------------------------------------------------------------------------------------------------------
+if !isdirectory(s:neobundle_dir)
   if executable('git')
     echo 'Initializing neobundle'
     exec '!mkdir -p '.$BUNDLE.' && git clone https://github.com/Shougo/neobundle.vim '.s:neobundle_dir
@@ -847,7 +846,7 @@ nnoremap <silent> <S-F5> :<C-u>call Automake()<CR>
 
 " Vim script header {{{
 function! Header()
-  let filename = substitute(expand('%:p'), expand('~/Dropbox/.vim/bundle/').'[^/]\+/', '', '')
+  let filename = substitute(expand('%:p'), '.*/.vim/bundle/[^/]\+/', '', '')
   if search(repeat('=', 77))
     call setline(search('" Filename:'), '" ' . 'Filename: ' . filename)
   else
