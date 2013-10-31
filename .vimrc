@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/31 12:11:16.
+" - * Last Change: 2013/10/31 12:23:35.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -15,10 +15,7 @@ let s:iswin = has('win16') || has('win32') || has('win64')
 let s:iscygwin = has('win32unix')
 let s:ismac = !s:iswin && !s:iscygwin && (has('mac') || has('macunix') || has('guimacvim') || system('uname') =~? '^darwin')
 let s:nosudo = $SUDO_USER == ''
-augroup ESC
-  autocmd!
-augroup END
-augroup SetLocal
+augroup Vimrc
   autocmd!
 augroup END
 " }}}
@@ -208,7 +205,7 @@ NeoBundle 'Shougo/unite.vim'
     autocmd FileType unite nnoremap <buffer> OB <Down>
     autocmd FileType unite nmap <buffer> <Bs> <Plug>(unite_exit)
   augroup END
-  autocmd ESC FileType unite nmap <silent> <buffer> <ESC><ESC> <Plug>(unite_exit)
+  autocmd Vimrc FileType unite nmap <silent> <buffer> <ESC><ESC> <Plug>(unite_exit)
 NeoBundleLazy 'Shougo/unite-build', {'autoload': {'unite_sources': ['build']}}
   nnoremap <silent><F5> :<C-u>Unite build -buffer-name=build<CR>
 NeoBundleLazy 'unite-colorscheme', {'autoload': {'unite_sources': ['colorscheme']}}
@@ -291,8 +288,8 @@ NeoBundle 'thinca/vim-quickrun'
   nnoremap <silent> <Leader><Leader>r :<C-u>QuickRun >file:temp.dat<CR>
   nnoremap <silent> <Leader>e :<C-u>QuickRun <i <CR>
   nnoremap <silent> <Leader>o :<C-u>QuickRun <i >file:output<CR>
-  autocmd ESC FileType quickrun nnoremap <silent> <buffer> <ESC><ESC> <ESC>:q!<CR>
-  autocmd ESC FileType quickrun vnoremap <silent> <buffer> <ESC><ESC> <ESC>:q!<CR>
+  autocmd Vimrc FileType quickrun nnoremap <silent> <buffer> <ESC><ESC> <ESC>:q!<CR>
+  autocmd Vimrc FileType quickrun vnoremap <silent> <buffer> <ESC><ESC> <ESC>:q!<CR>
 if s:nosudo
 NeoBundle 'Shougo/vimfiler'
   let g:vimfiler_as_default_explorer = 1
@@ -428,9 +425,9 @@ NeoBundle 'autodate.vim'
   let g:autodate_format = '%Y/%m/%d %H:%M:%S'
 NeoBundleLazy 'sjl/gundo.vim', {'autoload': {'commands': [{'name': 'GundoToggle'}]}, 'disabled': !has('python')}
   nnoremap <Leader>g :<C-u>GundoToggle<CR>
-  autocmd ESC FileType gundo nnoremap <silent> <buffer> <ESC><ESC> :<C-u>GundoToggle<CR>
+  autocmd Vimrc FileType gundo nnoremap <silent> <buffer> <ESC><ESC> :<C-u>GundoToggle<CR>
 NeoBundleLazy 'VimCalc', {'type': 'nosync', 'autoload': {'commands': [{'name': 'Calc'}]}, 'disabled': !has('python')}
-  autocmd ESC FileType vimcalc nnoremap <silent> <buffer> <ESC><ESC><ESC> :<C-u>q<CR>
+  autocmd Vimrc FileType vimcalc nnoremap <silent> <buffer> <ESC><ESC><ESC> :<C-u>q<CR>
   nnoremap <silent> <Leader>a :<C-u>Calc<CR>
 NeoBundle 'gregsexton/MatchTag'
 NeoBundle 'matchit.zip'
@@ -658,15 +655,15 @@ if exists('&breakindent')
 endif
 set shortmess+=I            " disable start up message
 set number
-  autocmd SetLocal FileType vimshell,vimcalc,quickrun,int-ghci setlocal nonumber buftype=nofile
+  autocmd Vimrc FileType vimshell,vimcalc,quickrun,int-ghci setlocal nonumber buftype=nofile
 set cursorline
   augroup CursorLine
     autocmd!
     autocmd WinLeave * setlocal nocursorline
     autocmd BufEnter,WinEnter * setlocal cursorline
   augroup END
-  autocmd SetLocal FileType calendar,vimcalc,vimshell,quickrun,int-ghci,cam setlocal nocursorline
-        \ | autocmd SetLocal BufEnter,WinEnter <buffer> setlocal nocursorline
+  autocmd Vimrc FileType calendar,vimcalc,vimshell,quickrun,int-ghci,cam setlocal nocursorline
+        \ | autocmd Vimrc BufEnter,WinEnter <buffer> setlocal nocursorline
 set nocursorcolumn
 " http://blog.remora.cx/2012/10/spotlight-cursor-line.html
 let [&t_SI,&t_EI] = ["\e]50;CursorShape=1\x7","\e]50;CursorShape=0\x7"]
@@ -733,7 +730,7 @@ set statusline=%{expand('%:p:t')}\ %<[%{expand('%:p:h')}]%=\ %m%r%y%w[%{&fenc!='
 syntax enable
 set background=dark
 set synmaxcol=300
-  autocmd SetLocal Filetype cam setlocal synmaxcol=3000
+  autocmd Vimrc Filetype cam setlocal synmaxcol=3000
 if !has('gui_running') | set t_Co=256 | endif
 " }}}
 
@@ -798,17 +795,17 @@ set magic
 " Indent {{{
 filetype plugin indent on
 set autoindent
-  autocmd SetLocal FileType tex,hatena setlocal noautoindent
+  autocmd Vimrc FileType tex,hatena setlocal noautoindent
   let g:tex_indent_items=0
 set smartindent
-  autocmd SetLocal FileType tex,hatena setlocal nosmartindent
+  autocmd Vimrc FileType tex,hatena setlocal nosmartindent
 set shiftwidth=2
-  autocmd SetLocal FileType markdown setlocal shiftwidth=4
+  autocmd Vimrc FileType markdown setlocal shiftwidth=4
 " }}}
 
 " Special keys (tab, backspace) {{{
 set textwidth=0   " No auto breking line
-  autocmd SetLocal FileType rest setlocal textwidth=50
+  autocmd Vimrc FileType rest setlocal textwidth=50
 set expandtab
   function! s:autotab()
     if search('^\t.*\n\t.*\n\t', 'n') > 0
@@ -1129,7 +1126,7 @@ inoremap <C-t> <ESC>:<C-u>tabnew<CR>
 nnoremap <expr> gp '`['.strpart(getregtype(), 0, 1).'`]'
 
 " quit help with escape key
-autocmd ESC FileType help,qf nnoremap <silent> <buffer> <expr> <ESC><ESC>
+autocmd Vimrc FileType help,qf nnoremap <silent> <buffer> <expr> <ESC><ESC>
       \ &modifiable ? ":\<C-u>set nohlsearch\<CR>" : ":\<C-u>q\<CR>"
 
 " disable EX-mode
