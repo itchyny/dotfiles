@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/31 15:51:18.
+" - * Last Change: 2013/10/31 16:40:23.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -673,7 +673,6 @@ silent execute s:hi_normal
 autocmd Vimrc InsertEnter * execute s:hi_insert
 autocmd Vimrc InsertLeave * execute s:hi_normal
 if has('unix') && !has('gui_running')
-  " ESC後にすぐ反映されない対策(実際これいる)
   inoremap <silent> <ESC> <ESC>
 endif
 " }}}
