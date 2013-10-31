@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/11/01 00:11:37.
+" - * Last Change: 2013/11/01 00:14:16.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -776,7 +776,7 @@ endif
 " }}}
 
 " Move to the directory each buffer {{{
-autocmd Vimrc BufEnter * try | lcd `=expand('%:p:h')` | catch | endtry
+autocmd Vimrc BufEnter * silent! lcd `=expand('%:p:h')`
 " }}}
 
 " Enable omni completation {{{
