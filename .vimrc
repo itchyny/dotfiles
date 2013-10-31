@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/31 22:24:52.
+" - * Last Change: 2013/11/01 00:11:37.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -339,8 +339,6 @@ NeoBundle 'Shougo/vimshell'
     autocmd FileType vimshell inoremap <buffer> <C-k> <ESC><C-w>k
     autocmd FileType vimshell inoremap <buffer> <C-l> <ESC><C-w>l
     autocmd FileType vimshell inoremap <silent><buffer> ^ <ESC>:call vimshell#execute('cd ../')<CR>:call vimshell#print_prompt()<CR>:call vimshell#start_insert()<CR>
-    autocmd FileType vimshell vnoremap <buffer> a <ESC><ESC>GA
-    autocmd FileType vimshell vnoremap <buffer> y yGA
     autocmd FileType vimshell inoremap <buffer> <C-^> <ESC><C-^>
     let s:start_complete = ' "\<ESC>GA" . unite#sources#vimshell_history#start_complete(!0)'
     for s:key in ['<UP>', '<Down>', 'OA', 'OB']
