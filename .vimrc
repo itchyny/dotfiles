@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/31 15:29:06.
+" - * Last Change: 2013/10/31 15:41:57.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -14,6 +14,7 @@ let s:isunix = has('unix')
 let s:iswin = has('win16') || has('win32') || has('win64')
 let s:iscygwin = has('win32unix')
 let s:ismac = !s:iswin && !s:iscygwin && (has('mac') || has('macunix') || has('guimacvim') || system('uname') =~? '^darwin')
+let s:fancy = s:ismac && has('multi_byte')
 let s:nosudo = $SUDO_USER == ''
 augroup Vimrc
   autocmd!
@@ -154,7 +155,7 @@ NeoBundle 'Shougo/unite.vim'
   let g:unite_source_file_mru_filename_format = ':~'
   let g:unite_force_overwrite_statusline = 0
   let g:unite_data_directory = $CACHE.'/unite'
-  let g:unite_marked_icon = s:ismac && has('multi_byte') ? '✓' : 'v'
+  let g:unite_marked_icon = s:fancy ? '✓' : 'v'
   let g:unite_candidate_icon = '-'
   nnoremap <C-u> :Unite<SPACE>
   nnoremap <silent><C-p> :Unite buffer -buffer-name=buffer<CR>
@@ -265,23 +266,12 @@ NeoBundle 'Shougo/vimfiler'
   let g:vimfiler_force_overwrite_statusline = 0
   let g:vimfiler_data_directory = $CACHE.'/vimfiler'
   let g:vimfiler_draw_files_limit = 1000
-  if s:iswin || !has('multi_byte')
-    let g:vimfiler_tree_leaf_icon = '|'
-    let g:vimfiler_tree_opened_icon = '-'
-    let g:vimfiler_tree_closed_icon = '+'
-  else
-    let g:vimfiler_tree_leaf_icon = ' '
-    let g:vimfiler_tree_opened_icon = '▾'
-    let g:vimfiler_tree_closed_icon = '▸'
-  endif
+  let g:vimfiler_tree_leaf_icon = s:fancy ? ' ' : '|'
+  let g:vimfiler_tree_opened_icon = s:fancy ? '▾' : '-'
+  let g:vimfiler_tree_closed_icon = s:fancy ? '▸' : '+'
   let g:vimfiler_file_icon = '-'
-  if s:ismac && has('multi_byte')
-    let g:vimfiler_readonly_file_icon = '✗'
-    let g:vimfiler_marked_file_icon = '✓'
-  else
-    let g:vimfiler_readonly_file_icon = 'x'
-    let g:vimfiler_marked_file_icon = 'v'
-  endif
+  let g:vimfiler_readonly_file_icon = s:fancy ? '✗' : 'x'
+  let g:vimfiler_marked_file_icon = s:fancy ? '✓' : 'v'
   nnoremap <silent> <Leader>f :<C-u>VimFilerBufferDir -status -buffer-name=vimfiler -auto-cd<CR>
   nnoremap <silent> <Leader><Leader> :<C-u>VimFilerBufferDir -status -buffer-name=vimfiler -auto-cd<CR>
   let g:vimfiler_execute_file_list = {}
@@ -587,7 +577,7 @@ set noshowmode " https://github.com/vim-jp/issues/issues/100
 
 " Main appearance {{{
 set list
-if s:iswin || !has('multi_byte')
+if !s:fancy
   set listchars=tab:^I,extends:>,precedes:<,nbsp:%
 else
   try
