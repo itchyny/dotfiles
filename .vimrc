@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/31 16:40:23.
+" - * Last Change: 2013/10/31 20:50:40.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -993,6 +993,10 @@ for k in ['h', 'j', 'k', 'l', 'x']
   if l == k && k != 'x' | exec 'inoremap <C-' . l . '> <ESC><C-w>' . k | endif
   exec 'nnoremap <C-' . l . '> <C-w>' . k
   exec 'vnoremap <C-' . l . '> <C-w>' . k
+  if l != k
+    exec 'nnoremap <C-' . k . '> <C-w>' . k
+    exec 'vnoremap <C-' . k . '> <C-w>' . k
+  endif
 endfor
 nnoremap <expr><C-m> (bufname('%') ==# '[Command Line]') ? "<CR>" : "<C-w>j"
 inoremap <C-q> <ESC><C-w>
