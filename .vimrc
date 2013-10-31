@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/31 12:39:37.
+" - * Last Change: 2013/10/31 13:27:50.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -253,8 +253,8 @@ NeoBundle 'Shougo/vimproc', {
 NeoBundle 'thinca/vim-quickrun'
   let g:quickrun_config = {'_': {'runner': 'vimproc', 'runner/vimproc/updatetime': 60, 'split': 'vertical', 'into': 1}}
   let s:quickrun_command_list = map(split('quickrun;cat,javascript;node,roy;roy,qcl;qcl,haskell;runhaskell,bf;bf', ','), 'split(v:val, ";")')
-  for [ft, exe] in s:quickrun_command_list
-    execute printf('if executable("%s") | let g:quickrun_config.%s = {"command":"%s"} | endif', exe, ft, exe)
+  for [s:ft, s:exe] in s:quickrun_command_list
+    execute printf('if executable("%s") | let g:quickrun_config.%s = {"command":"%s"} | endif', s:exe, s:ft, s:exe)
   endfor
   if executable('pandoc')
     let g:quickrun_config.markdown = {'type' : 'markdown/pandoc', 'outputter': 'browser', 'cmdopt': '-s'}
@@ -316,8 +316,8 @@ NeoBundle 'Shougo/vimfiler'
   nnoremap <silent> <Leader>f :<C-u>VimFilerBufferDir -status -buffer-name=vimfiler -auto-cd<CR>
   nnoremap <silent> <Leader><Leader> :<C-u>VimFilerBufferDir -status -buffer-name=vimfiler -auto-cd<CR>
   let g:vimfiler_execute_file_list = {}
-  for ft in split('pdf,png,jpg,jpeg,gif,bmp,ico,ppt,html', ',')
-    let g:vimfiler_execute_file_list[ft] = 'open'
+  for s:ft in split('pdf,png,jpg,jpeg,gif,bmp,ico,ppt,html', ',')
+    let g:vimfiler_execute_file_list[s:ft] = 'open'
   endfor
   augroup Vimfiler
     autocmd!
@@ -734,8 +734,8 @@ augroup SetLocalFiletype
   let s:filetypes1 = map(split('bf,gnuplot,jade,json,less,r,roy,tex,meissa,coffee', ','), '[v:val, v:val]')
   let s:filetypes2 = map(split('cls;tex,hs;haskell,hx;haxe,md;markdown,cir;spice,asc;spice,m;objc', ','), 'split(v:val, ";")')
   autocmd!
-  for [ex, ft] in extend(s:filetypes1, s:filetypes2)
-    execute 'autocmd BufNewFile,BufReadPost *.' . ex . ' setlocal filetype=' . ft
+  for [s:ex, s:ft] in extend(s:filetypes1, s:filetypes2)
+    execute 'autocmd BufNewFile,BufReadPost *.' . s:ex . ' setlocal filetype=' . s:ft
   endfor
   autocmd Vimrc BufReadPost,BufWrite,CursorHold,CursorHoldI * call s:auto_filetype()
 augroup END
@@ -870,8 +870,8 @@ autocmd Vimrc BufEnter * call s:change_directory()
 augroup Omnifunc
   let s:omnifunc = map(split('c;ccomplete#Complete,css;csscomplete#CompleteCSS,html;htmlcomplete#CompleteTags,javascript;javascriptcomplete#CompleteJS,php;phpcomplete#CompletePHP,python;pythoncomplete#Complete,xml;xmlcomplete#CompleteTags,haskell;necoghc#omnifunc', ','), 'split(v:val, ";")')
   autocmd!
-  for [ft, omnif] in s:omnifunc
-    exec 'autocmd FileType ' . ft . ' setlocal omnifunc=' . omnif
+  for [s:ft, s:omnif] in s:omnifunc
+    exec 'autocmd FileType ' . s:ft . ' setlocal omnifunc=' . s:omnif
   endfor
 augroup END
 setlocal omnifunc=syntaxcomplete#Complete
