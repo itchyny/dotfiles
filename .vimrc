@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/31 13:27:50.
+" - * Last Change: 2013/10/31 13:32:43.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -599,14 +599,12 @@ if has('iconv')
   unlet s:enc_jis
 endif
 " 日本語を含まない場合は fileencoding に encoding を使うようにする
-if has('autocmd')
-  function! AU_ReCheck_FENC()
-    if &fileencoding =~# 'iso-2022-jp' && search("[^\x01-\x7e]", 'n') == 0
-      let &fileencoding = &encoding
-    endif
-  endfunction
-  autocmd Vimrc BufReadPost * call AU_ReCheck_FENC()
-endif
+function! AU_ReCheck_FENC()
+  if &fileencoding =~# 'iso-2022-jp' && search("[^\x01-\x7e]", 'n') == 0
+    let &fileencoding = &encoding
+  endif
+endfunction
+autocmd Vimrc BufReadPost * call AU_ReCheck_FENC()
 " 改行コードの自動認識
 set fileformats=unix,dos,mac
 " }}}
