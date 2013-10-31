@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/31 13:55:49.
+" - * Last Change: 2013/10/31 15:21:52.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -32,29 +32,7 @@ if !isdirectory(s:neobundle_dir)
 " --------------------------------------------------------------------------------------------------------
   if executable('git')
     echo 'Initializing neobundle'
-    execute '!mkdir -p '.$BUNDLE
-       \.' && git clone https://github.com/Shougo/neobundle.vim '.$BUNDLE.'/neobundle.vim'
-       \.' && git clone https://github.com/Shougo/unite.vim '.$BUNDLE.'/unite.vim'
-       \.' && git clone https://github.com/Shougo/vimproc '.$BUNDLE.'/vimproc'
-    if s:ismac
-      if executable('llvm-gcc')
-        execute '!cd '.$BUNDLE.'/vimproc && make -f make_mac.mak'
-      elseif executable('gcc')
-        execute '!cd '.$BUNDLE.'/vimproc && '
-              \.'gcc -O3 -W -Wall -Wno-unused -bundle -fPIC -arch x86_64 -arch '
-              \.'i386 -o autoload/vimproc_mac.so autoload/proc.c -lutil'
-      else
-        echo 'gcc not found!'
-      endif
-    elseif s:iswin
-      echo 'access https://github.com/Shougo/vimproc/downloads to get dll'
-    else
-      if executable('gcc')
-        execute '!cd '.$BUNDLE.'/vimproc && make -f make_unix.mak'
-      else
-        echo 'gcc not found!'
-      endif
-    endif
+    exec '!mkdir -p '.$BUNDLE.' && git clone https://github.com/Shougo/neobundle.vim '.s:neobundle_dir
   else
     echo 'git not found! Sorry, this .vimrc cannot be completely used without git.'
   endif
