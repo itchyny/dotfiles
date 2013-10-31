@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/31 15:25:37.
+" - * Last Change: 2013/10/31 15:29:06.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -1004,7 +1004,7 @@ nnoremap <silent> ,p :<C-u>cp<CR>
 " <C-j> doesn't work, without the setting of <C-m>
 for k in ['h', 'j', 'k', 'l', 'x']
   let l = k == 'j' ? 'm' : k
-  if l == k | exec 'inoremap <C-' . l . '> <ESC><C-w>' . k | endif
+  if l == k && k != 'x' | exec 'inoremap <C-' . l . '> <ESC><C-w>' . k | endif
   exec 'nnoremap <C-' . l . '> <C-w>' . k
   exec 'vnoremap <C-' . l . '> <C-w>' . k
 endfor
