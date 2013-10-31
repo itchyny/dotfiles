@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/10/31 22:03:38.
+" - * Last Change: 2013/10/31 22:24:52.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -31,7 +31,6 @@ augroup END
 " --------------------------------------------------------------------------------------------------------
 if !isdirectory(s:neobundle_dir)
   if executable('git')
-    echo 'Initializing neobundle'
     exec '!mkdir -p '.$BUNDLE.' && git clone https://github.com/Shougo/neobundle.vim '.s:neobundle_dir
   else
     echo 'git not found! Sorry, this .vimrc cannot be completely used without git.'
@@ -160,7 +159,7 @@ NeoBundle 'Shougo/unite.vim'
   nnoremap <silent><C-p> :Unite buffer -buffer-name=buffer<CR>
   nnoremap <silent><C-n> :Unite file/new directory/new -buffer-name=file/new,directory/new<CR>
   nnoremap <silent><S-k> :Unite output:message -buffer-name=output<CR>
-  nnoremap <silent><C-o> :execute 'Unite file:'.<SID>change_directory().' file/new -buffer-name=file'<CR>
+  nnoremap <silent><C-o> :Unite file file/new -buffer-name=file<CR>
   nnoremap <silent><C-z> :Unite file_mru -buffer-name=file_mru<CR>
   nnoremap <silent><S-l> :Unite line -buffer-name=line<CR>
   augroup Unite
@@ -778,47 +777,8 @@ if s:iswin
 endif
 " }}}
 
-" Move to the directory for each buffer, current directory functions {{{
-function! s:escape(directory)
-  return escape(a:directory, '*[]()?! ')
-endfunction
-function! s:current_directory_raw()
-  return substitute(expand('%:p:h'), '\*\(vinarise\|bitmapview\)\* - ', '', '')
-endfunction
-function! s:current_directory_escape()
-  return s:escape(s:current_directory_raw())
-endfunction
-function! s:current_directory_auto()
-  if &filetype ==# 'vimfiler' && exists('b:vimfiler')
-    return s:escape(b:vimfiler.current_dir)
-  else
-    return s:current_directory_escape()
-  endif
-endfunction
-function! s:substitute_path_slash(path)
-  return substitute(a:path, '\\', '/', 'g')
-endfunction
-function! s:current_directory_abbr()
-  let path = s:current_directory_auto()
-  let rawpath = s:current_directory_escape()
-  if s:iswin
-    if &filetype !=# 'vimfiler'
-      let path = s:substitute_path_slash(path)
-    endif
-    let rawpath = s:substitute_path_slash(rawpath)
-  endif
-  return substitute(substitute(substitute(path, escape(rawpath, '~'), '.', ''), '^./', '', ''), '^.$', '', '')
-endfunction
-function! s:change_directory()
-  try
-    if &filetype !=# 'vimfiler'
-      execute ':lcd '.s:current_directory_auto()
-    endif
-  catch
-  endtry
-  return s:current_directory_abbr()
-endfunction
-autocmd Vimrc BufEnter * call s:change_directory()
+" Move to the directory each buffer {{{
+autocmd Vimrc BufEnter * try | lcd `=expand('%:p:h')` | catch | endtry
 " }}}
 
 " Enable omni completation {{{
