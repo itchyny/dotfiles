@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/11/05 08:01:48.
+" - * Last Change: 2013/11/05 08:02:25.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -892,9 +892,7 @@ nnoremap <expr> OH <SID>goback_insert("\<Home>")
 nnoremap <expr> [3~ <SID>goback_insert("\<Del>")
 nnoremap <expr> [5~ <SID>goback_insert("\<PageUp>")
 nnoremap <expr> [6~ <SID>goback_insert("\<PageDown>")
-" }}}
 
-" command line {{{
 " navigation in command line
 cnoremap <C-a> <Home>
 cnoremap <C-b> <Left>
