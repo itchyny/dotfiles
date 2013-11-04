@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/11/04 23:58:14.
+" - * Last Change: 2013/11/05 01:20:51.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -732,10 +732,7 @@ nnoremap <silent> \g :call TextEdit()<CR>
 " }}}
 
 " view syntax name under cursor {{{
-function! Syntax()
-  :echo synIDattr(synID(line('.'), col('.'), 0), 'name')
-endfunction
-command! S call Syntax()
+command! S echo synIDattr(synID(line('.'), col('.'), 0), 'name')
 " }}}
 
 " Quick open dot files {{{
