@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/11/05 02:35:41.
+" - * Last Change: 2013/11/05 02:36:05.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -59,16 +59,8 @@ NeoBundleLazy 'xterm-color-table.vim', {'autoload': {'commands': [{'name': 'Xter
 NeoBundle 'itchyny/lightline.vim', {'type': 'nosync'}
 NeoBundle 'itchyny/lightline-powerful', {'type': 'nosync'}
   let g:lightline = {'colorscheme': 'landscape','mode_map':{'c': 'NORMAL'}}
-  if s:ismac
-    set guifont=Inconsolata\ for\ Powerline:h15
-  elseif s:iswin
-    set guifont=Inconsolata_for_Powerline:h13:cANSI
-  else
-    set guifont=Inconsolata\ for\ Powerline\ 12
-  endif
-  if s:iswin
-    set guifontwide=MS_Gothic:h11:cSHIFTJIS
-  endif
+  exec 'set guifont=' . substitute('Inconsolata for Powerline', ' ', s:iswin ? '_' : '\\ ', 'g') . (s:ismac ? ':h15' : s:iswin ?  ':h13:cANSI' : '\ 12')
+  if s:iswin | set guifontwide=MS_Gothic:h11:cSHIFTJIS | endif
 " }}}
 
 " Complement {{{
