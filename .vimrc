@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/11/04 18:16:05.
+" - * Last Change: 2013/11/04 09:47:34.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -427,7 +427,7 @@ NeoBundle 'itchyny/calendar.vim', {'type': 'nosync'}
 NeoBundleLazy 'itchyny/dictionary.vim', {'type': 'nosync', 'autoload': {'commands': [{'name': 'Dictionary', 'complete': 'customlist,dictionary#complete'}]}}
   nnoremap <silent> <Leader>y :<C-u>Dictionary -no-duplicate<CR>
   let g:dictionary_executable_path = '~/Dropbox/bin/'
-NeoBundle 'itchyny/vim-cmdline-ranges', {'type': 'nosync'}
+NeoBundle 'itchyny/vim-cmdline-ranges'
   cmap j <Plug>(cmdline-ranges-j)
   cmap k <Plug>(cmdline-ranges-k)
   cmap } <Plug>(cmdline-ranges-})
