@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/11/01 21:27:03.
+" - * Last Change: 2013/11/04 09:33:30.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -385,13 +385,6 @@ NeoBundleLazy 'VimCalc', {'type': 'nosync', 'autoload': {'commands': [{'name': '
 NeoBundle 'gregsexton/MatchTag'
 NeoBundle 'matchit.zip'
 NeoBundleLazy 'thinca/vim-scouter', {'autoload': {'commands': [{'name': 'Scouter'}]}}
-NeoBundle 'terryma/vim-multiple-cursors'
-  let g:multi_cursor_use_default_mapping = 0
-  let g:multi_cursor_next_key = "\<C-g>"
-  let g:multi_cursor_prev_key = "\<C-y>"
-  let g:multi_cursor_skip_key = "\<C-x>"
-  let g:multi_cursor_exit_key = "\<Esc>"
-  let g:multi_cursor_quit_key = "\<Esc>"
 NeoBundle 'Lokaltog/vim-easymotion'
   let g:EasyMotion_leader_key = '<Leader>'
   let g:EasyMotion_keys = 'asdfwertxcvuiopbnmhjkl'
