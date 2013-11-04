@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/11/04 22:22:55.
+" - * Last Change: 2013/11/04 22:38:24.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -434,6 +434,7 @@ NeoBundle 'itchyny/vim-cmdline-ranges', {'type': 'nosync'}
   cmap { <Plug>(cmdline-ranges-{)
   cmap g <Plug>(cmdline-ranges-g)
   cmap G <Plug>(cmdline-ranges-G)
+  cmap % <Plug>(cmdline-ranges-%)
 NeoBundle 'vim-jp/vital.vim'
 " }}}
 
