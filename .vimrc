@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/11/05 02:36:05.
+" - * Last Change: 2013/11/05 08:01:48.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -897,11 +897,8 @@ nnoremap <expr> [6~ <SID>goback_insert("\<PageDown>")
 " command line {{{
 " navigation in command line
 cnoremap <C-a> <Home>
-cnoremap <C-e> <End>
 cnoremap <C-b> <Left>
 cnoremap <C-f> <Right>
-cnoremap <C-d> <Del>
-cnoremap <C-h> <BS>
 " }}}
 " }}} KEY MAPPING
 
