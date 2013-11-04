@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/11/05 01:26:30.
+" - * Last Change: 2013/11/05 02:35:41.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -173,7 +173,6 @@ NeoBundle 'Shougo/unite.vim'
     autocmd FileType unite nnoremap <buffer> OB <Down>
     autocmd FileType unite nmap <buffer> <Bs> <Plug>(unite_exit)
   augroup END
-  autocmd Vimrc FileType unite nmap <silent> <buffer> <ESC><ESC> <Plug>(unite_exit)
 NeoBundleLazy 'Shougo/unite-build', {'autoload': {'unite_sources': ['build']}}
   nnoremap <silent><F5> :<C-u>Unite build -buffer-name=build<CR>
 NeoBundleLazy 'unite-colorscheme', {'autoload': {'unite_sources': ['colorscheme']}}
@@ -256,8 +255,6 @@ NeoBundle 'thinca/vim-quickrun'
   nnoremap <silent> <Leader><Leader>r :<C-u>QuickRun >file:temp.dat<CR>
   nnoremap <silent> <Leader>e :<C-u>QuickRun <i <CR>
   nnoremap <silent> <Leader>o :<C-u>QuickRun <i >file:output<CR>
-  autocmd Vimrc FileType quickrun nnoremap <silent> <buffer> <ESC><ESC> <ESC>:q!<CR>
-  autocmd Vimrc FileType quickrun vnoremap <silent> <buffer> <ESC><ESC> <ESC>:q!<CR>
 if s:nosudo
 NeoBundle 'Shougo/vimfiler'
   let g:vimfiler_as_default_explorer = 1
@@ -380,9 +377,7 @@ NeoBundle 'autodate.vim'
   let g:autodate_format = '%Y/%m/%d %H:%M:%S'
 NeoBundleLazy 'sjl/gundo.vim', {'autoload': {'commands': [{'name': 'GundoToggle'}]}, 'disabled': !has('python')}
   nnoremap <Leader>g :<C-u>GundoToggle<CR>
-  autocmd Vimrc FileType gundo nnoremap <silent> <buffer> <ESC><ESC> :<C-u>GundoToggle<CR>
 NeoBundleLazy 'VimCalc', {'type': 'nosync', 'autoload': {'commands': [{'name': 'Calc'}]}, 'disabled': !has('python')}
-  autocmd Vimrc FileType vimcalc nnoremap <silent> <buffer> <ESC><ESC><ESC> :<C-u>q<CR>
   nnoremap <silent> <Leader>a :<C-u>Calc<CR>
 NeoBundle 'gregsexton/MatchTag'
 NeoBundle 'matchit.zip'
@@ -878,10 +873,6 @@ inoremap <C-t> <ESC>:<C-u>tabnew<CR>
 
 " select last paste
 nnoremap <expr> gp '`['.strpart(getregtype(), 0, 1).'`]'
-
-" quit help with escape key
-autocmd Vimrc FileType help,qf nnoremap <silent> <buffer> <expr> <ESC><ESC>
-      \ &modifiable ? ":\<C-u>set nohlsearch\<CR>" : ":\<C-u>q\<CR>"
 
 " disable EX-mode
 map <S-q> <Nop>
