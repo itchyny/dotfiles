@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/11/05 01:21:14.
+" - * Last Change: 2013/11/05 01:25:43.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -138,6 +138,7 @@ endif
 NeoBundle 'Shougo/neosnippet'
   let g:neosnippet#snippets_directory = expand($VIM.'/snippets')
   imap <expr><TAB> neosnippet#expandable_or_jumpable() ?  "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+  imap <expr><C-o> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<ESC>o"
 NeoBundle 'ujihisa/neco-look', {'disabled': !executable('look')}
 " }}}
 
@@ -885,7 +886,6 @@ autocmd Vimrc FileType help,qf nnoremap <silent> <buffer> <expr> <ESC><ESC>
 map <S-q> <Nop>
 
 " move within insert mode
-imap <expr><C-o> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<ESC>o"
 inoremap <expr> <C-p> <SID>cancel_popup("\<Up>")
 inoremap <expr> <C-n> <SID>cancel_popup("\<Down>")
 inoremap <expr> <C-b> <SID>cancel_popup("\<Left>")
