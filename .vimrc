@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/11/05 23:35:46.
+" - * Last Change: 2013/11/05 23:37:01.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -763,8 +763,6 @@ endfor
 
 " KEY MAPPING {{{
 " --------------------------------------------------------------------------------------------------------
-
-" edit {{{
 " Increment and decrement
 nnoremap + <C-a>
 nnoremap - <C-x>
@@ -792,25 +790,20 @@ vnoremap <silent> ,80 :s/\(.\{80}\)/\1<c-v><Enter>/g<Enter><ESC>:<C-u>set nohlse
 
 " diff
 nnoremap ,d :<C-u>diffthis<CR>
-" }}}
 
-" file {{{
 " save
 nnoremap <C-s> :<C-u>w<CR>
 inoremap <C-s> <ESC>:<C-u>w<CR>
 vnoremap <C-s> :<C-u>w<CR>
-" }}}
 
-" search {{{
+" search
 nnoremap <silent> <Esc><Esc> :<C-u>set nohlsearch<CR>:<C-u>set nopaste<CR>
 nnoremap <silent> / :<C-u>set hlsearch<CR>/
 nnoremap <silent> ? :<C-u>set hlsearch<CR>?
 nnoremap <silent> * :<C-u>set hlsearch<CR>*
 nnoremap <silent> # :<C-u>set hlsearch<CR>#
-" }}}
 
-" Navigation {{{
-" window
+" navigate window
 " <C-j> doesn't work, without the setting of <C-m>
 for k in ['h', 'j', 'k', 'l', 'x']
   let l = k == 'j' ? 'm' : k
@@ -893,7 +886,6 @@ nnoremap <expr> [6~ <SID>goback_insert("\<PageDown>")
 cnoremap <C-a> <Home>
 cnoremap <C-b> <Left>
 cnoremap <C-f> <Right>
-" }}}
 " }}} KEY MAPPING
 
 " vim:foldmethod=marker
