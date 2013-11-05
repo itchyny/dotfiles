@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/11/05 08:02:25.
+" - * Last Change: 2013/11/05 23:35:46.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -604,7 +604,6 @@ function! s:auto_filetype()
   if newft != '' && (&filetype == '' || &filetype == newft)  | exec 'setlocal filetype=' . newft | endif
 endfunction
 " }}}
-
 " }}} FILE READING
 
 " EDIT {{{
@@ -669,7 +668,6 @@ set swapfile
 set nobackup
 set viminfo='10,/10,:1000,<10,@10,s10,n$CACHE/.viminfo
 " }}}
-
 " }}} EDIT
 
 " UTILITY {{{
@@ -743,7 +741,6 @@ nnoremap ,sh i>\|sh\|<CR>\|\|<<ESC>
 nnoremap ,hs i>\|haskell\|<CR>\|\|<<ESC>
 nnoremap ,js i>\|javascript\|<CR>\|\|<<ESC>
 " }}}
-
 " }}} UTILITY
 
 " OTHERS {{{
@@ -762,7 +759,6 @@ for [s:cmd, s:exp] in map(split(s:cmdlist, ','), 'split(v:val, ";")')
   exec 'cabbrev <expr> '.s:cmd.' (getcmdtype() == ":" && getcmdline() ==# "'.s:cmd.'") ? "'.s:exp.'" : "'.s:cmd.'"'
 endfor
 " }}}
-
 " }}} OTHERS
 
 " KEY MAPPING {{{
