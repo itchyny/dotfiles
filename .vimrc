@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/11/05 23:37:01.
+" - * Last Change: 2013/11/06 11:18:07.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -84,15 +84,6 @@ NeoBundleLazy 'Shougo/neocomplcache'
   let g:neocomplete#force_omni_input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
   let g:neocomplete#force_omni_input_patterns.objc = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
   let g:neocomplete#force_omni_input_patterns.objcpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-  function! s:cancel_popup(key)
-    return a:key . neocomplete#cancel_popup()
-  endfunction
-  function! s:cancel_popup_reverse(key)
-    return neocomplete#cancel_popup() . a:key
-  endfunction
-  function! s:goback_insert(key)
-    return "gi" . a:key . neocomplete#cancel_popup()
-  endfunction
 else
 NeoBundle 'Shougo/neocomplcache'
 NeoBundleLazy 'Shougo/neocomplete.vim'
@@ -117,15 +108,6 @@ NeoBundleLazy 'Shougo/neocomplete.vim'
   let g:neocomplcache_force_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
   let g:neocomplcache_force_omni_patterns.objc = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
   let g:neocomplcache_force_omni_patterns.objcpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-  function! s:cancel_popup(key)
-    return a:key . neocomplcache#cancel_popup()
-  endfunction
-  function! s:cancel_popup_reverse(key)
-    return neocomplcache#cancel_popup() . a:key
-  endfunction
-  function! s:goback_insert(key)
-    return "gi" . a:key . neocomplcache#cancel_popup()
-  endfunction
 endif
 NeoBundle 'Shougo/neosnippet'
   let g:neosnippet#snippets_directory = expand($VIM.'/snippets')
@@ -417,6 +399,7 @@ NeoBundleLazy 'itchyny/dictionary.vim', {'type': 'nosync', 'autoload': {'command
   nnoremap <silent> <Leader>y :<C-u>Dictionary -no-duplicate<CR>
   let g:dictionary_executable_path = '~/Dropbox/bin/'
 NeoBundle 'itchyny/vim-cmdline-ranges', {'type': 'nosync'}
+NeoBundle 'itchyny/vim-insert-mode-motion', {'type': 'nosync'}
 NeoBundle 'vim-jp/vital.vim'
 " }}}
 
@@ -857,30 +840,6 @@ nnoremap <expr> gp '`['.strpart(getregtype(), 0, 1).'`]'
 
 " disable EX-mode
 map <S-q> <Nop>
-
-" move within insert mode
-inoremap <expr> <C-p> <SID>cancel_popup("\<Up>")
-inoremap <expr> <C-n> <SID>cancel_popup("\<Down>")
-inoremap <expr> <C-b> <SID>cancel_popup("\<Left>")
-inoremap <expr> <C-f> <SID>cancel_popup("\<Right>")
-inoremap <expr> <C-e> <SID>cancel_popup("\<End>")
-inoremap <expr> <C-a> <SID>cancel_popup("\<Home>")
-inoremap <expr> <C-d> <SID>cancel_popup("\<Del>")
-inoremap <expr> <C-h> <SID>cancel_popup("\<BS>")
-inoremap <expr> <C-u> <SID>cancel_popup_reverse("\<C-u>")
-inoremap <expr> <Up> <SID>cancel_popup("\<Up>")
-inoremap <expr> <Down> <SID>cancel_popup("\<Down>")
-inoremap <expr> <Left> <SID>cancel_popup("\<Left>")
-inoremap <expr> <Right> <SID>cancel_popup("\<Right>")
-nnoremap <expr> OA <SID>goback_insert("\<Up>")
-nnoremap <expr> OB <SID>goback_insert("\<Down>")
-nnoremap <expr> OC <SID>goback_insert("\<Right>")
-nnoremap <expr> OD <SID>goback_insert("\<Left>")
-nnoremap <expr> OF <SID>goback_insert("\<End>")
-nnoremap <expr> OH <SID>goback_insert("\<Home>")
-nnoremap <expr> [3~ <SID>goback_insert("\<Del>")
-nnoremap <expr> [5~ <SID>goback_insert("\<PageUp>")
-nnoremap <expr> [6~ <SID>goback_insert("\<PageDown>")
 
 " navigation in command line
 cnoremap <C-a> <Home>
