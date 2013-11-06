@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/11/06 11:35:34.
+" - * Last Change: 2013/11/06 22:19:14.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -342,15 +342,6 @@ NeoBundleLazy 'VimCalc', {'type': 'nosync', 'autoload': {'commands': [{'name': '
 NeoBundle 'gregsexton/MatchTag'
 NeoBundle 'matchit.zip'
 NeoBundleLazy 'thinca/vim-scouter', {'autoload': {'commands': [{'name': 'Scouter'}]}}
-NeoBundle 'Lokaltog/vim-easymotion'
-  let g:EasyMotion_leader_key = '<Leader>'
-  let g:EasyMotion_keys = 'asdfwertxcvuiopbnmhjkl'
-  let g:EasyMotion_do_shade = 0
-  let g:EasyMotion_do_mapping = 0
-  nnoremap <silent> <Leader>f :<C-u>call EasyMotion#F(0, 0)<CR>
-  nnoremap <silent> <Leader>F :<C-u>call EasyMotion#F(0, 1)<CR>
-  nnoremap <silent> <Leader>w :<C-u>call EasyMotion#WB(0, 0)<CR>
-  nnoremap <silent> <Leader>W :<C-u>call EasyMotion#WBW(0, 1)<CR>
 NeoBundleLazy 'pasela/unite-webcolorname', {'autoload': {'unite_sources': ['webcolorname']}}
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'kien/ctrlp.vim'
