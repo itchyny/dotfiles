@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/11/06 11:24:08.
+" - * Last Change: 2013/11/06 11:35:34.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -372,12 +372,9 @@ NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'banyan/recognize_charcode.vim'
 NeoBundleLazy 'itchyny/thumbnail.vim', {'type': 'nosync', 'autoload': {'commands': [{'name': 'Thumbnail', 'complete': 'customlist,thumbnail#complete'}]}}
   nnoremap <silent> <Leader>t :<C-u>Thumbnail -here<CR>
-  augroup ThumbnailKey
-    autocmd!
-    autocmd FileType thumbnail nmap <buffer> v <Plug>(thumbnail_start_line_visual)
-    autocmd FileType thumbnail nmap <buffer> V <Plug>(thumbnail_start_visual)
-    autocmd FileType thumbnail call clearmatches()
-  augroup END
+  autocmd Vimrc FileType thumbnail nmap <buffer> v <Plug>(thumbnail_start_line_visual)
+  autocmd Vimrc FileType thumbnail nmap <buffer> V <Plug>(thumbnail_start_visual)
+  autocmd Vimrc FileType thumbnail call clearmatches()
 NeoBundle 'itchyny/calendar.vim', {'type': 'nosync'}
   nnoremap <silent> <Leader>z :<C-u>Calendar -here<CR>
   let g:calendar_frame = 'unicode'
