@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/11/06 22:19:14.
+" - * Last Change: 2013/11/06 22:29:41.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -374,6 +374,9 @@ NeoBundleLazy 'itchyny/dictionary.vim', {'type': 'nosync', 'autoload': {'command
   let g:dictionary_executable_path = '~/Dropbox/bin/'
 NeoBundle 'itchyny/vim-cmdline-ranges', {'type': 'nosync'}
 NeoBundle 'itchyny/vim-insert-mode-motion', {'type': 'nosync'}
+NeoBundle 'itchyny/vim-spellbad-pattern', {'type': 'nosync'}
+  let g:spellbad_pattern = [ '^\(\S\+ \+\)\{30,}\S\+[,.]\?$', '\<a\> [aiueo]', '^\$', '\<figure..\?\\', '\\ref{eq:'
+        \ , '^\\end{align}', '[^\~]\\\(eq\)\?ref\>', 'does not [a-z]*s ', 's [a-z][a-z]\+s ', '\<a \S\+s ', 'in default']
 NeoBundle 'vim-jp/vital.vim'
 " }}}
 
@@ -469,37 +472,7 @@ set history=1000
 set helplang=en
 language C
 set nospell
-  function! s:myspell()
-    if !exists('b:myspell_done') || b:myspell_done != &l:spell
-      if &l:spell
-        let spellbads = [ '^\(\S\+ \+\)\{30,}\S\+[,.]\?$', '\<a\> [aiueo]', '^\$', '\<figure..\?\\', '\\ref{eq:'
-              \ , '^\\end{align}', '[^\~]\\\(eq\)\?ref\>', 'does not [a-z]*s ', 's [a-z][a-z]\+s ', '\<a \S\+s ', 'in default']
-        let b:myspell_id = []
-        for s in spellbads
-          call add(b:myspell_id, matchadd('SpellBad', s))
-        endfor
-      elseif exists('b:myspell_id')
-        for i in b:myspell_id
-          call matchdelete(i)
-        endfor
-        unlet b:myspell_id
-      endif
-      let b:myspell_done = &l:spell
-    endif
-  endfunction
-  function! s:autospell()
-    if !exists('b:autospell_done')
-      if search("[^\x01-\x7e]", 'n') == 0 && line('$') > 5
-        setlocal spell
-        call s:myspell()
-      else
-        setlocal nospell
-      endif
-      let b:autospell_done = 1
-    endif
-  endfunction
-  autocmd Vimrc FileType tex,markdown call s:autospell()
-  autocmd Vimrc BufWritePost * call s:myspell()
+  autocmd Vimrc FileType tex,markdown exec 'setl ' . (search("[^\x01-\x7e]", 'n') == 0 && line('$') > 5 ? '' : 'no') . 'spell'
 set modeline
 set modelines=1
 set completeopt-=preview
