@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/11/06 11:18:07.
+" - * Last Change: 2013/11/06 11:24:08.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -76,14 +76,7 @@ NeoBundleLazy 'Shougo/neocomplcache'
   let g:neocomplete#auto_completion_start_length = 1
   let g:neocomplete#max_keyword_width = 50
   let g:neocomplete#data_directory = $CACHE.'/neocomplete'
-  if !exists('g:neocomplete#force_omni_input_patterns')
-    let g:neocomplete#force_omni_input_patterns = {}
-  endif
   let g:neocomplete#force_overwrite_completefunc = 1
-  let g:neocomplete#force_omni_input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
-  let g:neocomplete#force_omni_input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-  let g:neocomplete#force_omni_input_patterns.objc = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-  let g:neocomplete#force_omni_input_patterns.objcpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 else
 NeoBundle 'Shougo/neocomplcache'
 NeoBundleLazy 'Shougo/neocomplete.vim'
@@ -100,14 +93,7 @@ NeoBundleLazy 'Shougo/neocomplete.vim'
   let g:neocomplcache_max_keyword_width = 50
   let g:neocomplcache_context_filetype_lists = {}
   let g:neocomplcache_temporary_dir = $CACHE.'/neocomplcache'
-  if !exists('g:neocomplcache_force_omni_patterns')
-    let g:neocomplcache_force_omni_patterns = {}
-  endif
   let g:neocomplcache_force_overwrite_completefunc = 1
-  let g:neocomplcache_force_omni_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
-  let g:neocomplcache_force_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-  let g:neocomplcache_force_omni_patterns.objc = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-  let g:neocomplcache_force_omni_patterns.objcpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 endif
 NeoBundle 'Shougo/neosnippet'
   let g:neosnippet#snippets_directory = expand($VIM.'/snippets')
