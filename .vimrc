@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/11/07 14:10:18.
+" - * Last Change: 2013/11/07 17:34:46.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -68,6 +68,8 @@ NeoBundle 'itchyny/lightline-powerful', {'type': 'nosync'}
 if has('lua') && v:version > 703
 NeoBundle 'Shougo/neocomplete.vim'
 NeoBundleLazy 'Shougo/neocomplcache'
+  let g:neocomplete#enable_cursor_hold_i = 1
+  let g:neocomplete#cursor_hold_i_time = 50
   let g:neocomplete#enable_at_startup = 1
   let g:neocomplete#enable_smart_case = 1
   let g:neocomplete#max_list = 1000
