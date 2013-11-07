@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/11/06 22:29:41.
+" - * Last Change: 2013/11/07 14:10:18.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -376,7 +376,7 @@ NeoBundle 'itchyny/vim-cmdline-ranges', {'type': 'nosync'}
 NeoBundle 'itchyny/vim-insert-mode-motion', {'type': 'nosync'}
 NeoBundle 'itchyny/vim-spellbad-pattern', {'type': 'nosync'}
   let g:spellbad_pattern = [ '^\(\S\+ \+\)\{30,}\S\+[,.]\?$', '\<a\> [aiueo]', '^\$', '\<figure..\?\\', '\\ref{eq:'
-        \ , '^\\end{align}', '[^\~]\\\(eq\)\?ref\>', 'does not [a-z]*s ', 's [a-z][a-z]\+s ', '\<a \S\+s ', 'in default']
+        \ , '^\\end{align}', '[^\~]\\\(eq\)\?ref\>', 'does not [a-z]*s\>', 's [a-z][a-z]\+s\>', '\<a \S\+s\>', 'in default']
 NeoBundle 'vim-jp/vital.vim'
 " }}}
 
