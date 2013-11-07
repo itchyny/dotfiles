@@ -1,11 +1,10 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/11/07 17:34:46.
+" - * Last Change: 2013/11/08 00:52:59.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
-" --------------------------------------------------------------------------------------------------------
 set nocompatible
 filetype off
 scriptencoding utf-8
@@ -28,7 +27,6 @@ augroup END
 
 " Bundles {{{
 " neobundle {{{
-" --------------------------------------------------------------------------------------------------------
 if !isdirectory(s:neobundle_dir)
   if executable('git')
     exec '!mkdir -p '.$BUNDLE.' && git clone https://github.com/Shougo/neobundle.vim '.s:neobundle_dir
@@ -45,7 +43,6 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " }}}
 
 " Colorscheme {{{
-" --------------------------------------------------------------------------------------------------------
 NeoBundle 'itchyny/landscape.vim', {'type': 'nosync'}
   colorscheme landscape
   let g:landscape_highlight_url = 1
@@ -55,7 +52,6 @@ NeoBundleLazy 'xterm-color-table.vim', {'autoload': {'commands': [{'name': 'Xter
 " }}}
 
 " Lightline {{{
-" --------------------------------------------------------------------------------------------------------
 NeoBundle 'itchyny/lightline.vim', {'type': 'nosync'}
 NeoBundle 'itchyny/lightline-powerful', {'type': 'nosync'}
   let g:lightline = {'colorscheme': 'landscape','mode_map':{'c': 'NORMAL'}}
@@ -64,7 +60,6 @@ NeoBundle 'itchyny/lightline-powerful', {'type': 'nosync'}
 " }}}
 
 " Complement {{{
-" --------------------------------------------------------------------------------------------------------
 if has('lua') && v:version > 703
 NeoBundle 'Shougo/neocomplete.vim'
 NeoBundleLazy 'Shougo/neocomplcache'
@@ -106,7 +101,6 @@ NeoBundle 'ujihisa/neco-look', {'disabled': !executable('look')}
 " }}}
 
 " Unite ( "," ) {{{
-" --------------------------------------------------------------------------------------------------------
 let mapleader = ","
 if s:nosudo
 NeoBundle 'Shougo/unite.vim'
@@ -171,7 +165,6 @@ endif
 " }}}
 
 " QuickRun / Filer / Outer world of Vim ( "\\" ) {{{
-" --------------------------------------------------------------------------------------------------------
 let mapleader = "\\"
 NeoBundle 'Shougo/vimproc', {
   \ 'build' : {
@@ -268,7 +261,6 @@ NeoBundleLazy 'mattn/googletasks-vim', {'autoload': {'commands': [{'name': 'Goog
 " }}}
 
 " vimshell ( ";" ) {{{
-" --------------------------------------------------------------------------------------------------------
 let mapleader = ";"
 NeoBundle 'Shougo/vimshell'
 " --| Requirement: vimproc
@@ -319,7 +311,6 @@ NeoBundleLazy 'eagletmt/ghcmod-vim', {'autoload': {'filetypes': ['haskell']}, 'd
 " }}}
 
 " Commenter / Utility / Matching ( "," ) {{{
-" --------------------------------------------------------------------------------------------------------
 let mapleader = ","
 NeoBundle 'tpope/vim-surround'
   let g:surround_{char2nr('$')} = "$\r$" " for LaTeX
@@ -383,7 +374,6 @@ NeoBundle 'vim-jp/vital.vim'
 " }}}
 
 " Syntax {{{
-" --------------------------------------------------------------------------------------------------------
 NeoBundleLazy 'scrooloose/syntastic', {'autoload': {'filetypes': ['c', 'cpp'], 'functions': ['SyntasticStatuslineFlag']}}
   let g:syntastic_mode_map = { 'mode': 'passive' }
   let g:syntastic_echo_current_error = 0
@@ -421,7 +411,6 @@ endif
 " }}} Bundles
 
 " ENCODING {{{
-" --------------------------------------------------------------------------------------------------------
 set encoding=utf-8
 set fenc=utf-8
 set fileencodings=utf-8,euc-jp,sjis,jis,iso-2022-jp,cp932,latin
@@ -436,7 +425,6 @@ set ambiwidth=double
 " }}}
 
 " APPERANCE {{{
-" --------------------------------------------------------------------------------------------------------
 " Frame appearance {{{
 set noshowmode " https://github.com/vim-jp/issues/issues/100
 " }}}
@@ -513,7 +501,6 @@ endif
 " }}} APPERANCE
 
 " FILE READING {{{
-" --------------------------------------------------------------------------------------------------------
 " SET {{{
 set autoread
 " }}}
@@ -539,7 +526,6 @@ endfunction
 " }}} FILE READING
 
 " EDIT {{{
-" --------------------------------------------------------------------------------------------------------
 " Search {{{
 set infercase
 set wrapscan
@@ -603,7 +589,6 @@ set viminfo='10,/10,:1000,<10,@10,s10,n$CACHE/.viminfo
 " }}} EDIT
 
 " UTILITY {{{
-" --------------------------------------------------------------------------------------------------------
 " On starting vim {{{
 if s:iswin
   autocmd Vimrc GUIEnter * simalt ~x
@@ -676,7 +661,6 @@ nnoremap ,js i>\|javascript\|<CR>\|\|<<ESC>
 " }}} UTILITY
 
 " OTHERS {{{
-" --------------------------------------------------------------------------------------------------------
 " Performance {{{
 set ttyfast
 set updatetime=300
@@ -694,7 +678,6 @@ endfor
 " }}} OTHERS
 
 " KEY MAPPING {{{
-" --------------------------------------------------------------------------------------------------------
 " Increment and decrement
 nnoremap + <C-a>
 nnoremap - <C-x>
