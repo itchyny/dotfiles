@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/11/08 00:52:59.
+" - * Last Change: 2013/11/09 02:35:41.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -516,6 +516,7 @@ augroup SetLocalFiletype
   autocmd Vimrc BufReadPost,BufWrite,CursorHold,CursorHoldI * call s:auto_filetype()
 augroup END
 function! s:auto_filetype()
+  if line('.') > 5 | return | endif
   let newft = ''
   for [pat, ft] in map(split('*[;hatena,#include;c,\documentclass;tex,import;haskell,main =;haskell,diff --;diff', ','), 'split(v:val, ";")')
     if getline(1)[:strlen(pat) - 1] ==# pat | let newft = ft | endif
