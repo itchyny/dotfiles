@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/11/10 12:00:11.
+" - * Last Change: 2013/11/10 23:52:53.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -63,15 +63,13 @@ NeoBundle 'itchyny/lightline-powerful', {'type': 'nosync'}
 if has('lua') && v:version > 703
 NeoBundle 'Shougo/neocomplete.vim'
 NeoBundleLazy 'Shougo/neocomplcache'
+  let g:neocomplete#enable_at_startup = 1
   let g:neocomplete#enable_cursor_hold_i = 1
   let g:neocomplete#cursor_hold_i_time = 50
-  let g:neocomplete#enable_at_startup = 1
   let g:neocomplete#enable_smart_case = 1
   let g:neocomplete#max_list = 1000
   let g:neocomplete#skip_auto_completion_time = "0.50"
-  let g:neocomplete#enable_auto_close_preview = 1
   let g:neocomplete#auto_completion_start_length = 1
-  let g:neocomplete#max_keyword_width = 50
   let g:neocomplete#data_directory = $CACHE.'/neocomplete'
   let g:neocomplete#force_overwrite_completefunc = 1
 else
@@ -81,14 +79,9 @@ NeoBundleLazy 'Shougo/neocomplete.vim'
   let g:neocomplcache_enable_smart_case = 1
   let g:neocomplcache_enable_underbar_completion = 1
   let g:neocomplcache_enable_camel_case_completion = 1
-  let g:neocomplcache_enable_cursor_hold_i = 0
   let g:neocomplcache_max_list = 350
   let g:neocomplcache_skip_auto_completion_time = "0.50"
-  let g:neocomplcache_enable_auto_close_preview = 1
   let g:neocomplcache_auto_completion_start_length = 1
-  let g:neocomplcache_max_menu_width = 20
-  let g:neocomplcache_max_keyword_width = 50
-  let g:neocomplcache_context_filetype_lists = {}
   let g:neocomplcache_temporary_dir = $CACHE.'/neocomplcache'
   let g:neocomplcache_force_overwrite_completefunc = 1
 endif
