@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/11/14 12:41:42.
+" - * Last Change: 2013/11/15 18:41:40.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -637,13 +637,6 @@ if filereadable(expand('~/Dropbox/.files/.zshrc'))
 elseif filereadable(expand('~/.zshrc'))
   nnoremap ;. :e ~/.zshrc<CR>
 endif
-" }}}
-
-" template for blog {{{
-nnoremap ,cpp i>\|cpp\|<CR>\|\|<<ESC>
-nnoremap ,sh i>\|sh\|<CR>\|\|<<ESC>
-nnoremap ,hs i>\|haskell\|<CR>\|\|<<ESC>
-nnoremap ,js i>\|javascript\|<CR>\|\|<<ESC>
 " }}}
 " }}} UTILITY
 
