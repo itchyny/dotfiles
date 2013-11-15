@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/11/15 19:33:56.
+" - * Last Change: 2013/11/15 20:08:35.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -625,16 +625,8 @@ command! S echo synIDattr(synID(line('.'), col('.'), 0), 'name')
 " }}}
 
 " Quick open dot files {{{
-if filereadable(expand('~/Dropbox/.files/.vimrc'))
-  nnoremap \. :e ~/Dropbox/.files/.vimrc<CR>
-elseif filereadable(expand('~/.vimrc'))
-  nnoremap \. :e ~/.vimrc<CR>
-endif
-if filereadable(expand('~/Dropbox/.files/.zshrc'))
-  nnoremap ;. :e ~/Dropbox/.files/.zshrc<CR>
-elseif filereadable(expand('~/.zshrc'))
-  nnoremap ;. :e ~/.zshrc<CR>
-endif
+exec 'nnoremap \. :e ~/' . (filereadable(expand('~/Dropbox/.files/.vimrc')) ? 'Dropbox/.files/' : '') . '.vimrc<CR>'
+exec 'nnoremap ;. :e ~/' . (filereadable(expand('~/Dropbox/.files/.zshrc')) ? 'Dropbox/.files/' : '') . '.zshrc<CR>'
 " }}}
 " }}} UTILITY
 
