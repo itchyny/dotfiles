@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/11/16 01:17:52.
+" - * Last Change: 2013/11/16 01:22:19.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -105,7 +105,6 @@ NeoBundle 'Shougo/unite.vim'
   let g:unite_data_directory = $CACHE.'/unite'
   let g:unite_marked_icon = s:fancy ? '✓' : 'v'
   let g:unite_candidate_icon = '-'
-  nnoremap <C-u> :Unite<SPACE>
   nnoremap <silent><C-p> :Unite buffer -buffer-name=buffer<CR>
   nnoremap <silent><C-n> :Unite file/new directory/new -buffer-name=file/new,directory/new<CR>
   nnoremap <silent><S-k> :Unite output:message -buffer-name=output<CR>
