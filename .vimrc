@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/11/16 07:48:45.
+" - * Last Change: 2013/11/16 08:14:13.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -386,18 +386,14 @@ NeoBundleLazy 'vim-scripts/indenthaskell.vim', {'autoload': {'filetypes': ['hask
   let hs_highlight_more_types = 1
 NeoBundleLazy 'tpope/vim-markdown', {'autoload': {'filetypes': ['m4']}}
 NeoBundleLazy 'motemen/hatena-vim', {'autoload': {'filetypes': ['hatena']}}
-  let g:hatena_upload_on_write = 0
-  let g:hatena_user = 'itchyny'
 NeoBundleLazy 'syngan/vim-vimlint', { 'depends' : 'ynkdir/vim-vimlparser', 'autoload' : { 'functions' : 'vimlint#vimlint'}}
 " }}}
 endif
 " }}} Bundles
 
 " ENCODING {{{
-set encoding=utf-8
-set fenc=utf-8
-set fileencodings=utf-8,euc-jp,sjis,jis,iso-2022-jp,cp932,latin
-set formatoptions+=mM       " 日本語の行の連結時には空白を入力しない
+set encoding=utf-8 fenc=utf-8 fileencodings=utf-8,euc-jp,sjis,jis,iso-2022-jp,cp932,latin
+set formatoptions+=mM
 " ☆や□や○の文字があってもカーソル位置がずれないようにする
 " ambiwidthの設定のみでは, 解決しない場合がある
 " Ubuntuでは, gnome-terminal, terminatorを以下のコマンドに貼り替えると解決する
@@ -408,7 +404,7 @@ set ambiwidth=double
 " }}}
 
 " APPERANCE {{{
-" Main appearance {{{
+" Main appearance
 set list
 if !s:fancy
   set listchars=tab:^I,extends:>,precedes:<,nbsp:%
@@ -422,7 +418,7 @@ else
     let g:vimfiler_tree_closed_icon = '+'
   endtry
 endif
-set shortmess+=I            " disable start up message
+set shortmess+=I
 set number
   autocmd Vimrc FileType vimshell,vimcalc,quickrun,int-ghci setlocal nonumber buftype=nofile
 set cursorline
@@ -434,7 +430,6 @@ set nocursorcolumn
 let [&t_SI,&t_EI] = ["\e]50;CursorShape=1\x7","\e]50;CursorShape=0\x7"]
 set showmatch
 set showtabline=1
-set previewheight=20
 set pumheight=10
 set history=1000
 set helplang=en
@@ -450,26 +445,22 @@ if has('conceal')
   autocmd Vimrc FileType vimfiler set concealcursor=nvc
 endif
 set noshowmode
-" }}}
 
-" Status line {{{
+" Status line
 set laststatus=2
 set statusline=%{expand('%:p:t')}\ %<[%{expand('%:p:h')}]%=\ %m%r%y%w[%{&fenc!=''?&fenc:&enc}][%{&ff}][%3l,%3c,%3p]
-" }}}
 
-" Color {{{
+" Color
 syntax enable
 set background=dark
 if !has('gui_running') | set t_Co=256 | endif
-" }}}
 " }}} APPERANCE
 
 " FILE READING {{{
-" SET {{{
+" Set
 set autoread
-" }}}
 
-" Filetype {{{
+" Filetype
 augroup SetLocalFiletype
   let s:filetypes1 = map(split('bf,gnuplot,jade,json,less,r,roy,tex,meissa,coffee', ','), '[v:val, v:val]')
   let s:filetypes2 = map(split('cls;tex,hs;haskell,hx;haxe,md;markdown,cir;spice,asc;spice,m;objc', ','), 'split(v:val, ";")')
@@ -487,76 +478,50 @@ function! s:auto_filetype()
   endfor
   if newft != '' && (&filetype == '' || &filetype == newft)  | exec 'setlocal filetype=' . newft | endif
 endfunction
-" }}}
 " }}} FILE READING
 
 " EDIT {{{
-" Search {{{
-set infercase
-set wrapscan
-set ignorecase
-set smartcase
-set incsearch
-set nohlsearch
-set magic
-" }}}
+" Search
+set infercase wrapscan ignorecase smartcase incsearch nohlsearch magic
 
-" Indent {{{
+" Indent
 filetype plugin indent on
-set autoindent
-  autocmd Vimrc FileType tex,hatena setlocal noautoindent
+set smartindent autoindent shiftwidth=2
+  autocmd Vimrc FileType tex,hatena setlocal nosmartindent noautoindent
   let g:tex_indent_items=0
-set smartindent
-  autocmd Vimrc FileType tex,hatena setlocal nosmartindent
-set shiftwidth=2
-  autocmd Vimrc FileType markdown setlocal shiftwidth=4
-" }}}
 
-" Special keys (tab, backspace) {{{
-set textwidth=0   " No auto breking line
-  autocmd Vimrc FileType rest setlocal textwidth=50
-set expandtab
+" Special keys (tab, backspace)
+set textwidth=0 expandtab tabstop=2 backspace=indent,eol,start
   autocmd Vimrc FileType * exec 'setl ' . (search('^\t.*\n\t.*\n\t', 'n') > 0 ? 'no' : '') . 'expandtab'
-set tabstop=2
-set backspace=indent,eol,start
-" }}}
 
-" Sequencial keys {{{
+" Sequencial keys
 set timeoutlen=500
-" }}}
 
-" Clipboard {{{
+" Clipboard
 if exists('&clipboard')
   set clipboard=unnamed
   if has('unnamedplus')
     set clipboard+=unnamedplus
   endif
 endif
-" }}}
 
-" Increment {{{
+" Increment
 set nrformats-=ocral
-"}}}
 
-" Generated files {{{
-set swapfile
-set nobackup
-set viminfo='10,/10,:1000,<10,@10,s10,n$CACHE/.viminfo
-" }}}
+" Generated files
+set swapfile nobackup viminfo='10,/10,:1000,<10,@10,s10,n$CACHE/.viminfo
 " }}} EDIT
 
 " UTILITY {{{
-" On starting vim {{{
+" On starting vim
 if s:iswin
   autocmd Vimrc GUIEnter * simalt ~x
 endif
-" }}}
 
-" Move to the directory each buffer {{{
+" Move to the directory each buffer
 autocmd Vimrc BufEnter * silent! lcd `=expand('%:p:h')`
-" }}}
 
-" Enable omni completation {{{
+" Enable omni completation
 augroup Omnifunc
   let s:omnifunc = map(split('c;ccomplete#Complete,css;csscomplete#CompleteCSS,html;htmlcomplete#CompleteTags,javascript;javascriptcomplete#CompleteJS,php;phpcomplete#CompletePHP,python;pythoncomplete#Complete,xml;xmlcomplete#CompleteTags,haskell;necoghc#omnifunc', ','), 'split(v:val, ";")')
   autocmd!
@@ -565,47 +530,40 @@ augroup Omnifunc
   endfor
 augroup END
 setlocal omnifunc=syntaxcomplete#Complete
-" }}}
 
-" Open file explorer at current directory {{{
+" Open file explorer at current directory
 function! Explorer()
   silent call system((s:ismac ? 'open -a Finder' : s:iswin ? 'start' : 'nautilus') .' . &')
 endfunction
 nnoremap <silent> \n :call Explorer()<CR>
-" }}}
 
-" Quickly open with outer text editor {{{
+" Quickly open with outer text editor
 function! TextEdit()
   silent call system((s:ismac ? 'open -a TextEdit ' : s:iswin ? 'notepad ' : 'gedit ') . fnameescape(expand('%:p')) . ' &')
 endfunction
 nnoremap <silent> \g :call TextEdit()<CR>
-" }}}
 
-" view syntax name under cursor {{{
+" view syntax name under cursor
 command! S echo synIDattr(synID(line('.'), col('.'), 0), 'name')
-" }}}
 
-" Quick open dot files {{{
+" Quick open dot files
 exec 'nnoremap \. :e ~/' . (filereadable(expand('~/Dropbox/.files/.vimrc')) ? 'Dropbox/.files/' : '') . '.vimrc<CR>'
 exec 'nnoremap ;. :e ~/' . (filereadable(expand('~/Dropbox/.files/.zshrc')) ? 'Dropbox/.files/' : '') . '.zshrc<CR>'
-" }}}
 " }}} UTILITY
 
 " OTHERS {{{
-" Performance {{{
+" Performance
 set ttyfast
 set updatetime=300
 set vb t_vb=
-" }}}
 
-" Command line {{{
+" Command line
 set wildmode=list:longest
 set wildignore+=*.sw?,*.bak,*.?~,*.??~,*.???~,*.~
 let s:cmdlist = 'vps;vsp,vp;vsp,nbi;NeoBundleInstall,nbc;NeoBundleClean,nbd;NeoBundleDocs,di;Dictionary<SPACE>-cursor-word,aoff;AutodateOFF,aon;AutodateON,qa1;qa!,q1;q!,nvew;vnew'
 for [s:cmd, s:exp] in map(split(s:cmdlist, ','), 'split(v:val, ";")')
   exec 'cabbrev <expr> '.s:cmd.' (getcmdtype() == ":" && getcmdline() ==# "'.s:cmd.'") ? "'.s:exp.'" : "'.s:cmd.'"'
 endfor
-" }}}
 " }}} OTHERS
 
 " KEY MAPPING {{{
