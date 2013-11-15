@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/11/16 01:39:40.
+" - * Last Change: 2013/11/16 07:48:45.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -518,7 +518,6 @@ set textwidth=0   " No auto breking line
 set expandtab
   autocmd Vimrc FileType * exec 'setl ' . (search('^\t.*\n\t.*\n\t', 'n') > 0 ? 'no' : '') . 'expandtab'
 set tabstop=2
-retab
 set backspace=indent,eol,start
 " }}}
 
