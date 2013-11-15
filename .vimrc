@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/11/15 20:08:35.
+" - * Last Change: 2013/11/16 01:14:30.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -593,17 +593,6 @@ augroup Omnifunc
   endfor
 augroup END
 setlocal omnifunc=syntaxcomplete#Complete
-" }}}
-
-" Make with S-F5 key (user omake) {{{
-function! Automake()
-  if filereadable('OMakefile') && executable('omake')
-    execute '!omake'
-  elseif filereadable('Makefile') || filereadable('makefile')
-    execute '!make all'
-  endif
-endfunction
-nnoremap <silent> <S-F5> :<C-u>call Automake()<CR>
 " }}}
 
 " Open file explorer at current directory {{{
