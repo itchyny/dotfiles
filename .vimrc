@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/11/15 18:45:16.
+" - * Last Change: 2013/11/15 19:33:56.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -19,7 +19,6 @@ let $VIM = expand('~/.vim')
 let $CACHE = $VIM.'/.cache'
 let $BUNDLE = $VIM.'/bundle'
 let s:neobundle_dir = $BUNDLE.'/neobundle.vim'
-if filereadable($VIM.'/.vimrc.secret') | source $VIM/.vimrc.secret | endif
 augroup Vimrc
   autocmd!
 augroup END
