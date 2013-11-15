@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/11/16 01:36:16.
+" - * Last Change: 2013/11/16 01:39:40.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -408,10 +408,6 @@ set ambiwidth=double
 " }}}
 
 " APPERANCE {{{
-" Frame appearance {{{
-set noshowmode " https://github.com/vim-jp/issues/issues/100
-" }}}
-
 " Main appearance {{{
 set list
 if !s:fancy
@@ -435,7 +431,6 @@ set cursorline
   autocmd Vimrc FileType calendar,vimcalc,vimshell,quickrun,int-ghci,cam setlocal nocursorline
         \ | autocmd Vimrc BufEnter,WinEnter <buffer> setlocal nocursorline
 set nocursorcolumn
-" http://blog.remora.cx/2012/10/spotlight-cursor-line.html
 let [&t_SI,&t_EI] = ["\e]50;CursorShape=1\x7","\e]50;CursorShape=0\x7"]
 set showmatch
 set showtabline=1
@@ -454,6 +449,7 @@ if has('conceal')
   set concealcursor=nvc
   autocmd Vimrc FileType vimfiler set concealcursor=nvc
 endif
+set noshowmode
 " }}}
 
 " Status line {{{
