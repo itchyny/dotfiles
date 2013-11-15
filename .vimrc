@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/11/16 01:14:30.
+" - * Last Change: 2013/11/16 01:17:52.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -391,7 +391,6 @@ NeoBundleLazy 'motemen/hatena-vim', {'autoload': {'filetypes': ['hatena']}}
   let g:hatena_user = 'itchyny'
 NeoBundleLazy 'syngan/vim-vimlint', { 'depends' : 'ynkdir/vim-vimlparser', 'autoload' : { 'functions' : 'vimlint#vimlint'}}
 " }}}
-
 endif
 " }}} Bundles
 
@@ -467,20 +466,6 @@ set statusline=%{expand('%:p:t')}\ %<[%{expand('%:p:h')}]%=\ %m%r%y%w[%{&fenc!='
 syntax enable
 set background=dark
 if !has('gui_running') | set t_Co=256 | endif
-" }}}
-
-" Statusline color {{{
-let s:hi_sl = 'highlight StatusLine '
-let s:hi_gui_common = 'guifg=black gui=none '
-let s:hi_cterm_common = 'ctermfg=black cterm=none '
-let s:hi_normal = s:hi_sl.s:hi_gui_common.s:hi_cterm_common.'guibg=blue ctermbg=blue'
-let s:hi_insert = s:hi_sl.s:hi_gui_common.s:hi_cterm_common.'guibg=darkmagenta ctermbg=darkmagenta'
-silent execute s:hi_normal
-autocmd Vimrc InsertEnter * execute s:hi_insert
-autocmd Vimrc InsertLeave * execute s:hi_normal
-if has('unix') && !has('gui_running')
-  inoremap <silent> <ESC> <ESC>
-endif
 " }}}
 " }}} APPERANCE
 
@@ -637,6 +622,11 @@ endfor
 " }}} OTHERS
 
 " KEY MAPPING {{{
+" Escape key
+if has('unix') && !has('gui_running')
+  inoremap <silent> <ESC> <ESC>
+endif
+
 " Increment and decrement
 nnoremap + <C-a>
 nnoremap - <C-x>
