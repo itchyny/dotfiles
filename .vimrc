@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/11/16 01:22:19.
+" - * Last Change: 2013/11/16 01:36:16.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -520,14 +520,7 @@ set shiftwidth=2
 set textwidth=0   " No auto breking line
   autocmd Vimrc FileType rest setlocal textwidth=50
 set expandtab
-  function! s:autotab()
-    if search('^\t.*\n\t.*\n\t', 'n') > 0
-      setlocal noexpandtab
-    else
-      setlocal expandtab
-    endif
-  endfunction
-  autocmd Vimrc FileType * call s:autotab()
+  autocmd Vimrc FileType * exec 'setl ' . (search('^\t.*\n\t.*\n\t', 'n') > 0 ? 'no' : '') . 'expandtab'
 set tabstop=2
 retab
 set backspace=indent,eol,start
