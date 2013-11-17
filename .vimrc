@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/11/17 15:32:39.
+" - * Last Change: 2013/11/17 18:55:46.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -285,7 +285,7 @@ NeoBundle 'Shougo/vimshell'
   nnoremap <silent> <Leader>s :<C-u>VimShellBufferDir<CR>
   nnoremap <silent> <S-h> :<C-u>VimShellBufferDir -popup<CR>
   nnoremap <silent> s :<C-u>VimShellBufferDir<CR>
-NeoBundleLazy 'ujihisa/neco-ghc', {'autoload': {'filetypes': ['haskell']}, 'disabled': !executable('ghc-mod')}
+NeoBundleLazy 'eagletmt/neco-ghc', {'autoload': {'filetypes': ['haskell']}, 'disabled': !executable('ghc-mod')}
   let g:necoghc_enable_detailed_browse = 1
 NeoBundleLazy 'eagletmt/ghcmod-vim', {'autoload': {'filetypes': ['haskell']}, 'disabled': !executable('ghc-mod')}
   nnoremap <Leader>g :<C-u>GhcModCheckAsync<CR>
