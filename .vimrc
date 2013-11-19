@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/11/18 11:57:35.
+" - * Last Change: 2013/11/19 13:12:00.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -38,7 +38,7 @@ if has('vim_starting')
 endif
 call neobundle#rc(expand($BUNDLE))
 NeoBundleFetch 'Shougo/neobundle.vim'
-  nnoremap <silent> <S-b><S-b> :<C-u>Unite neobundle/update -log<CR>
+  nnoremap <silent> BB :<C-u>Unite neobundle/update -log<CR>
 " }}}
 
 " Colorscheme {{{
@@ -283,7 +283,7 @@ NeoBundle 'Shougo/vimshell'
     endfor
   augroup END
   nnoremap <silent> <Leader>s :<C-u>VimShellBufferDir<CR>
-  nnoremap <silent> <S-h> :<C-u>VimShellBufferDir -popup<CR>
+  nnoremap <silent> H :<C-u>VimShellBufferDir -popup<CR>
   nnoremap <silent> s :<C-u>VimShellBufferDir<CR>
 NeoBundleLazy 'eagletmt/neco-ghc', {'autoload': {'filetypes': ['haskell']}, 'disabled': !executable('ghc-mod')}
   let g:necoghc_enable_detailed_browse = 1
@@ -580,8 +580,8 @@ vnoremap < <gv
 vnoremap > >gv|
 
 " swap line/normal visual mode
-noremap <S-v> v
-noremap v <S-v>
+noremap V v
+noremap v V
 
 " yank to the end of line
 nnoremap Y y$
@@ -664,7 +664,7 @@ inoremap <C-t> <ESC>:<C-u>tabnew<CR>
 nnoremap <expr> gp '`['.strpart(getregtype(), 0, 1).'`]'
 
 " disable EX-mode
-map <S-q> <Nop>
+map Q <Nop>
 
 " navigation in command line
 cnoremap <C-a> <Home>
