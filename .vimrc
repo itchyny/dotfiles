@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/11/20 07:20:03.
+" - * Last Change: 2013/11/23 23:16:01.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -628,7 +628,7 @@ let s:winwid = winwidth(0)
 function! AutoClose()
   try
     if &filetype == 'quickrun'
-      silent bd!
+      silent bw!
     elseif &filetype == 'gundo'
       silent call feedkeys('q')
     elseif expand('%:t') == '__XtermColorTable__'
