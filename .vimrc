@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/11/23 23:16:01.
+" - * Last Change: 2013/11/23 23:16:25.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -295,7 +295,7 @@ NeoBundleLazy 'eagletmt/ghcmod-vim', {'autoload': {'filetypes': ['haskell']}, 'd
 
 " Commenter / Utility / Matching ( "," ) {{{
 let mapleader = ","
-NeoBundle 'tpope/vim-surround'
+NeoBundle 'anyakichi/vim-surround'
   let g:surround_{char2nr('$')} = "$\r$" " for LaTeX
 NeoBundle 'tComment'
   augroup tComment
