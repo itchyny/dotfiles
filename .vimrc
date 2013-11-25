@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/11/25 11:29:51.
+" - * Last Change: 2013/11/25 12:36:41.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -245,7 +245,7 @@ NeoBundle 'mattn/webapi-vim'
 
 " vimshell ( ";" ) {{{
 let mapleader = ";"
-NeoBundle 'Shougo/vimshell'
+NeoBundle 'Shougo/vimshell.vim'
 " --| Requirement: vimproc
 " --| If you can't use sudo, do:
 " --|  $ sudo chmod 4755 /usr/bin/sudo
