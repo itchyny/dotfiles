@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/11/25 19:38:12.
+" - * Last Change: 2013/11/27 14:11:15.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -63,8 +63,6 @@ if has('lua') && v:version > 703
 NeoBundle 'Shougo/neocomplete.vim'
 NeoBundleLazy 'Shougo/neocomplcache'
   let g:neocomplete#enable_at_startup = 1
-  let g:neocomplete#enable_cursor_hold_i = 1
-  let g:neocomplete#cursor_hold_i_time = 50
   let g:neocomplete#enable_smart_case = 1
   let g:neocomplete#max_list = 1000
   let g:neocomplete#skip_auto_completion_time = "0.50"
