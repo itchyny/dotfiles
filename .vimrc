@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/11/27 14:11:15.
+" - * Last Change: 2013/11/29 17:09:38.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -38,7 +38,7 @@ if has('vim_starting')
 endif
 call neobundle#rc(expand($BUNDLE))
 NeoBundleFetch 'Shougo/neobundle.vim'
-  nnoremap <silent> BB :<C-u>Unite neobundle/update -log<CR>
+  nnoremap <silent> BB :<C-u>Unite neobundle/update -log -no-start-insert<CR>
 " }}}
 
 " Colorscheme {{{
