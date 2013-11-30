@@ -279,7 +279,6 @@ function configurevim() {
                 --enable-pythoninterp=yes\
                 --with-lua-prefix=`dirname \`which lua\``\
                 --enable-luainterp=yes\
-                --with-luajit\
                 --enable-multibyte
                 #--enable-perlinterp=yes\
                 #--enable-rubyinterp=yes\
