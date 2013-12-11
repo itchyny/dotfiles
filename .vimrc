@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/12/11 18:37:57.
+" - * Last Change: 2013/12/11 18:38:23.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -191,7 +191,7 @@ NeoBundle 'thinca/vim-quickrun'
   nnoremap <silent> <Leader>r :<C-u>QuickRun -outputter/buffer/name "[quickrun output%{tabpagenr()>1?' '.tabpagenr():''}]"<CR>
   nnoremap <silent> <Leader><Leader>r :<C-u>QuickRun >file:temp.dat<CR>
   nnoremap <silent> <Leader>e :<C-u>QuickRun <i <CR>
-  nnoremap <silent> <Leader>o :<C-u>QuickRun <i >file:output<CR>
+  nnoremap <silent> <Leader>o :<C-u>execute "QuickRun " . (filereadable("i") ? "<i " : "") . ">file:output"<CR>
 if s:nosudo
 NeoBundle 'Shougo/vimfiler'
   let g:vimfiler_as_default_explorer = 1
