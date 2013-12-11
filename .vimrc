@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/12/10 01:23:58.
+" - * Last Change: 2013/12/11 18:37:57.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -65,7 +65,7 @@ NeoBundleLazy 'Shougo/neocomplcache'
   let g:neocomplete#enable_at_startup = 1
   let g:neocomplete#enable_smart_case = 1
   let g:neocomplete#max_list = 1000
-  let g:neocomplete#skip_auto_completion_time = "0.50"
+  let g:neocomplete#skip_auto_completion_time = "0.30"
   let g:neocomplete#auto_completion_start_length = 1
   let g:neocomplete#data_directory = $CACHE.'/neocomplete'
   let g:neocomplete#force_overwrite_completefunc = 1
