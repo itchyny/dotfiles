@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/12/11 18:38:23.
+" - * Last Change: 2013/12/18 22:24:35.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -206,6 +206,7 @@ NeoBundle 'Shougo/vimfiler'
   let g:vimfiler_file_icon = '-'
   let g:vimfiler_readonly_file_icon = s:fancy ? '✗' : 'x'
   let g:vimfiler_marked_file_icon = s:fancy ? '✓' : 'v'
+  let g:loaded_netrwPlugin = 1
   nnoremap <silent> <Leader>f :<C-u>VimFilerBufferDir -status -buffer-name=vimfiler -auto-cd<CR>
   nnoremap <silent> <Leader><Leader> :<C-u>VimFilerBufferDir -status -buffer-name=vimfiler -auto-cd<CR>
   let g:vimfiler_execute_file_list = {}
