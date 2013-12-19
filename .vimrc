@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/12/18 22:24:35.
+" - * Last Change: 2013/12/19 14:28:25.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -625,7 +625,6 @@ nnoremap <C-q> <C-w>
 vnoremap <C-q> <ESC><C-w>
 
 " close buffer
-let s:winwid = winwidth(0)
 function! AutoClose()
   try
     if &filetype == 'quickrun'
@@ -634,7 +633,7 @@ function! AutoClose()
       silent call feedkeys('q')
     elseif expand('%:t') == '__XtermColorTable__'
       silent bd!
-    elseif winwidth(0) < 2 * s:winwid / 3
+    elseif len(filter(range(1, winnr('$')), 'winbufnr(v:val) == winbufnr(0)')) > 1
       silent q
     elseif &filetype == '' && !&modified
       silent q!
