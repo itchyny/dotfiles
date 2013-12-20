@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2013/11/30 00:43:48.
+# - * Last Change: 2013/12/20 10:04:45.
 # ------------------------------------------------------------------------------------------------------------
 
 # history
@@ -227,7 +227,7 @@ alias music='mplayer -lavdopts threads=2 -loop 0 -shuffle -geometry 50%:50%'
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
-alias crontab="EDITOR=\"$HOME/bin/vi\" crontab"
+alias crontab="EDITOR=\"$HOME/Dropbox/bin/vi\" crontab"
 alias wget="wget --user-agent='Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_2) AppleWebKit/537.17 (KHTML, like Gecko) Chrome/24.0.1312.57 Safari/537.17' "
 alias aspell="aspell -c -l en_US"
 alias nicovideo-dl="nicovideo-dl -n -t"
