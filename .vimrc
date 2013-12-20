@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/12/19 22:47:28.
+" - * Last Change: 2013/12/21 00:21:14.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -640,7 +640,7 @@ function! AutoClose()
     elseif &filetype == '' && !&modified
       silent q!
     elseif &modified
-    elseif &filetype == 'vimshell'
+    elseif &filetype == 'vimshell' || &filetype == 'vimfiler'
       silent q
     else
       silent bd!
