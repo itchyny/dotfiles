@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2013/12/20 10:04:45.
+# - * Last Change: 2013/12/21 23:04:29.
 # ------------------------------------------------------------------------------------------------------------
 
 # history
@@ -341,6 +341,8 @@ function download {
     nicovideo-dl -n -t $1
   elif [[ $1 =~ ".*youtube.*" ]]; then
     youtube-dl $1
+  elif [[ $1 =~ ".*github.*" ]]; then
+    git clone $1
   else
     wget --no-check-certificate $1
   fi
