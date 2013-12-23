@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/12/22 22:12:30.
+" - * Last Change: 2013/12/23 09:32:54.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -560,7 +560,7 @@ set vb t_vb=
 " Command line
 set wildmode=list:longest
 set wildignore+=*.sw?,*.bak,*.?~,*.??~,*.???~,*.~
-let s:cmdlist = 'vps;vsp,vp;vsp,nbi;NeoBundleInstall,nbc;NeoBundleClean,nbd;NeoBundleDocs,di;Dictionary<SPACE>-cursor-word,aoff;AutodateOFF,aon;AutodateON,qa1;qa!,q1;q!,nvew;vnew'
+let s:cmdlist = 'vps;vsp,vp;vsp,nbi;NeoBundleInstall,nbc;NeoBundleClean,nbd;NeoBundleDocs,di;Dictionary<SPACE>-cursor-word<SPACE>-no-duplicate,aoff;AutodateOFF,aon;AutodateON,qa1;qa!,q1;q!,nvew;vnew'
 for [s:cmd, s:exp] in map(split(s:cmdlist, ','), 'split(v:val, ";")')
   exec 'cabbrev <expr> '.s:cmd.' (getcmdtype() == ":" && getcmdline() ==# "'.s:cmd.'") ? "'.s:exp.'" : "'.s:cmd.'"'
 endfor
