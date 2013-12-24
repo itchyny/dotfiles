@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/12/24 17:13:04.
+" - * Last Change: 2013/12/24 17:13:29.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -432,7 +432,6 @@ set showtabline=1
 set pumheight=10
 set history=1000
 set helplang=en
-language C
 set nospell
   autocmd Vimrc FileType tex,markdown,help exec 'setl ' . (&bt !=# 'help' && search("[^\x01-\x7e]", 'n') == 0 && line('$') > 5 ? '' : 'no') . 'spell'
 set modeline
