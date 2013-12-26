@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/12/26 11:43:50.
+" - * Last Change: 2013/12/26 15:12:23.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -585,7 +585,7 @@ noremap v V
 nnoremap Y y$
 
 " remove spaces at the end of lines
-nnoremap ,<Space> ma:%s/  *$//e<CR>`a<ESC>
+nnoremap ,<Space> ma:%s/\s\+$//e<CR>`a<ESC>
 
 " smart Enter
 inoremap <silent> <expr> <CR> (pumvisible()?"\<ESC>o":"\<C-g>u\<CR>")
