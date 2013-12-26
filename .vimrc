@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/12/24 17:17:28.
+" - * Last Change: 2013/12/26 11:43:50.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -470,7 +470,7 @@ augroup END
 function! s:auto_filetype()
   if line('.') > 5 | return | endif
   let newft = ''
-  for [pat, ft] in map(split('*[;hatena,#include;c,\documentclass;tex,import;haskell,main =;haskell,diff --;diff', ','), 'split(v:val, ";")')
+  for [pat, ft] in map(split('*[;hatena,#include;c,\documentclass;tex,import;haskell,main =;haskell,diff --;diff,{ ;vim', ','), 'split(v:val, ";")')
     if getline(1)[:strlen(pat) - 1] ==# pat | let newft = ft | endif
   endfor
   if newft != '' && (&filetype == '' || &filetype == newft)  | exec 'setlocal filetype=' . newft | endif
