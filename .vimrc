@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/12/26 15:12:23.
+" - * Last Change: 2013/12/26 23:21:32.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -442,6 +442,7 @@ if has('conceal')
   autocmd Vimrc FileType vimfiler set concealcursor=nvc
 endif
 set noshowmode
+set iminsert=0
 
 " Status line
 set laststatus=2
