@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/12/28 20:03:41.
+" - * Last Change: 2013/12/29 10:44:47.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -69,6 +69,7 @@ NeoBundleLazy 'Shougo/neocomplcache'
   let g:neocomplete#auto_completion_start_length = 1
   let g:neocomplete#data_directory = $CACHE.'/neocomplete'
   let g:neocomplete#force_overwrite_completefunc = 1
+  let g:neocomplete#ignore_source_files = [ 'member.vim', 'tag.vim', 'dictionary.vim', 'include.vim' ]
 else
 NeoBundle 'Shougo/neocomplcache'
 NeoBundleLazy 'Shougo/neocomplete.vim'
