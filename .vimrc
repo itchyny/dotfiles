@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/12/29 10:44:47.
+" - * Last Change: 2013/12/31 14:05:27.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -338,6 +338,7 @@ NeoBundle 'kien/ctrlp.vim'
     silent call writefile(map(readfile(file), "substitute(v:val, '^/home/\\a\\+', path, '')"), file)
   endfunction
 NeoBundle 'thinca/vim-prettyprint'
+NeoBundle 'tyru/capture.vim'
 NeoBundle 'banyan/recognize_charcode.vim'
 NeoBundleLazy 'itchyny/thumbnail.vim', {'type': 'nosync', 'autoload': {'commands': [{'name': 'Thumbnail', 'complete': 'customlist,thumbnail#complete'}]}}
   nnoremap <silent> <Leader>t :<C-u>Thumbnail -here<CR>
