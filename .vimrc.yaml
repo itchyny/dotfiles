@@ -192,7 +192,7 @@ plugin:
     script: |
       nnoremap <silent> <Leader>f :<C-u>VimFilerBufferDir -status -buffer-name=vimfiler -auto-cd<CR>
       nnoremap <silent> <Leader><Leader> :<C-u>VimFilerBufferDir -status -buffer-name=vimfiler -auto-cd<CR>
-  Shougo/vinarise:
+  Shougo/vinarise.vim:
     mapleader: \
     loadbefore:
       - vimfiler
