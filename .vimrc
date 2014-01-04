@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2013/12/31 14:05:27.
+" - * Last Change: 2014/01/04 22:34:13.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -130,6 +130,8 @@ NeoBundleLazy 'eagletmt/unite-haddock', {'autoload': {'unite_sources': ['hoogle'
   " --|   $ hoogle data
 NeoBundleLazy 'h1mesuke/unite-outline', {'autoload': {'unite_sources': ['outline']}}
 NeoBundleLazy 'ujihisa/unite-haskellimport', {'autoload': {'unite_sources': ['haskellimport']}}
+NeoBundleLazy 'pasela/unite-webcolorname', {'autoload': {'unite_sources': ['webcolorname']}}
+NeoBundleLazy 'rhysd/codic-vim-with-unite', {'autoload': {'unite_sources': ['codic']}}
 NeoBundle 'itchyny/unite-eject', {'type': 'nosync'}
 NeoBundle 'itchyny/unite-auto-open', {'type': 'nosync'}
 NeoBundle 'itchyny/unite-changetime', {'type': 'nosync'}
@@ -319,7 +321,6 @@ NeoBundleLazy 'VimCalc', {'type': 'nosync', 'autoload': {'commands': [{'name': '
 NeoBundle 'gregsexton/MatchTag'
 NeoBundle 'matchit.zip'
 NeoBundleLazy 'thinca/vim-scouter', {'autoload': {'commands': [{'name': 'Scouter'}]}}
-NeoBundleLazy 'pasela/unite-webcolorname', {'autoload': {'unite_sources': ['webcolorname']}}
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'kien/ctrlp.vim'
   let g:ctrlp_cmd = 'CtrlPMRUFiles'
