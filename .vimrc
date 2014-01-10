@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/01/07 06:41:57.
+" - * Last Change: 2014/01/10 12:53:48.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -349,6 +349,11 @@ NeoBundle 'itchyny/calendar.vim', {'type': 'nosync'}
   let g:calendar_views = [ 'year', 'month', 'day_3', 'clock' ]
   let g:calendar_google_calendar = 1
   let g:calendar_google_task = 1
+  augroup CalendarKey
+    autocmd!
+    autocmd FileType calendar nunmap <buffer> <C-h>
+    autocmd FileType calendar nunmap <buffer> <C-l>
+  augroup END
 NeoBundleLazy 'itchyny/dictionary.vim', {'type': 'nosync', 'autoload': {'commands': [{'name': 'Dictionary', 'complete': 'customlist,dictionary#complete'}]}}
   nnoremap <silent> <Leader>y :<C-u>Dictionary -no-duplicate<CR>
   let g:dictionary_executable_path = '~/Dropbox/bin/'
