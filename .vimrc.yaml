@@ -390,6 +390,11 @@ plugin:
     beforeScript: |
       let g:tcommentMapLeader1 = ''
       let g:tcommentMapLeader2 = ''
+  sk1418/QFGrep:
+    beforeScript: |
+      let g:QFG_hi_prompt = 'NONE'
+      let g:QFG_hi_info = 'NONE'
+      let g:QFG_hi_error = 'NONE'
   autodate.vim:
     beforeScript: |
       let g:autodate_format = '%Y/%m/%d %H:%M:%S'
