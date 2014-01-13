@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/01/13 16:31:46.
+" - * Last Change: 2014/01/13 17:17:28.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -84,6 +84,7 @@ NeoBundleLazy 'Shougo/neocomplete.vim'
   let g:neocomplcache_force_overwrite_completefunc = 1
 endif
 NeoBundle 'Shougo/neosnippet'
+NeoBundle 'Shougo/neosnippet-snippets'
   let g:neosnippet#snippets_directory = expand($VIM.'/snippets')
   imap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
   smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
