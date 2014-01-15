@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/01/13 23:28:09.
+" - * Last Change: 2014/01/15 13:54:00.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -614,7 +614,7 @@ inoremap <C-s> <ESC>:<C-u>w<CR>
 vnoremap <C-s> :<C-u>w<CR>
 
 " search
-autocmd Vimrc BufEnter * 
+autocmd Vimrc BufEnter *
       \   if expand('%:p:t') !~# 'calendar'
       \ |   nnoremap <buffer><silent> <Esc><Esc> :<C-u>set nohlsearch nopaste<CR>
       \ | endif
