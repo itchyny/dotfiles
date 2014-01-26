@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2014/01/25 16:55:01.
+# - * Last Change: 2014/01/26 21:02:50.
 # ------------------------------------------------------------------------------------------------------------
 
 # history
@@ -222,8 +222,8 @@ alias z='zsh'
 alias d='download'
 # default option
 alias mpg123='mpg123 -zC'
-alias mplayer='mplayer -subdelay 100000 -fs -geometry 50%:50% -volume 5'
-alias music='mplayer -lavdopts threads=2 -loop 0 -shuffle -geometry 50%:50%'
+alias mplayer='mplayer -subdelay 100000 -fs -geometry 50%:50%'
+alias music='mplayer -lavdopts threads=2 -loop 0 -shuffle -geometry 50%:50% -volume 5'
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
