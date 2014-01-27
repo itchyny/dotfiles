@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/01/15 16:51:36.
+" - * Last Change: 2014/01/27 11:11:59.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -98,7 +98,7 @@ if s:nosudo
 NeoBundle 'Shougo/unite.vim'
   let g:unite_enable_start_insert = 1
   let g:unite_cursor_line_highlight = 'CursorLine'
-  let g:unite_source_file_mru_limit = 1000
+  let g:unite_source_file_mru_limit = 100
   let g:unite_source_mru_do_validate = 0
   let g:unite_source_file_mru_filename_format = ':~'
   let g:unite_force_overwrite_statusline = 0
