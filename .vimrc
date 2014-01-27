@@ -98,9 +98,7 @@ if s:nosudo
 NeoBundle 'Shougo/unite.vim'
   let g:unite_enable_start_insert = 1
   let g:unite_cursor_line_highlight = 'CursorLine'
-  let g:unite_source_file_mru_limit = 1000
-  let g:unite_source_mru_do_validate = 0
-  let g:unite_source_file_mru_filename_format = ':~'
+  let g:loaded_unite_source_mru = 1
   let g:unite_force_overwrite_statusline = 0
   let g:unite_data_directory = $CACHE.'/unite'
   let g:unite_marked_icon = s:fancy ? '✓' : 'v'
@@ -109,7 +107,6 @@ NeoBundle 'Shougo/unite.vim'
   nnoremap <silent><C-n> :Unite file/new directory/new -buffer-name=file/new,directory/new<CR>
   nnoremap <silent><S-k> :Unite output:message -buffer-name=output<CR>
   nnoremap <silent><C-o> :Unite file file/new -buffer-name=file<CR>
-  nnoremap <silent><C-z> :Unite file_mru -buffer-name=file_mru<CR>
   nnoremap <silent><S-l> :Unite line -buffer-name=line<CR>
   augroup Unite
     autocmd!
