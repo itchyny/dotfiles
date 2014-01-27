@@ -98,7 +98,7 @@ if s:nosudo
 NeoBundle 'Shougo/unite.vim'
   let g:unite_enable_start_insert = 1
   let g:unite_cursor_line_highlight = 'CursorLine'
-  let g:loaded_unite_source_mru = 1
+  let g:unite_source_file_mru_limit = 1000
   let g:unite_source_mru_do_validate = 0
   let g:unite_source_file_mru_filename_format = ':~'
   let g:unite_force_overwrite_statusline = 0
