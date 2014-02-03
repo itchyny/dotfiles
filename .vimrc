@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/02/02 00:31:22.
+" - * Last Change: 2014/02/03 15:07:00.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -92,7 +92,7 @@ NeoBundle 'ujihisa/neco-look', {'disabled': !executable('look')}
 " }}}
 
 " Unite ( "," ) {{{
-let mapleader = ","
+let g:mapleader = ","
 if s:nosudo
 NeoBundle 'Shougo/unite.vim'
   let g:unite_enable_start_insert = 1
@@ -134,8 +134,8 @@ NeoBundle 'itchyny/unite-auto-open', {'type': 'nosync'}
 NeoBundle 'itchyny/unite-changetime', {'type': 'nosync'}
 NeoBundle 'itchyny/vimfiler-preview', {'type': 'nosync'}
   let g:vimfiler_preview_action = 'auto_preview'
-  let bundle = neobundle#get('unite.vim')
-  function! bundle.hooks.on_post_source(bundle)
+  let s:bundle = neobundle#get('unite.vim')
+  function! s:bundle.hooks.on_post_source(bundle)
     if exists('*unite#custom_source')
       call unite#custom_source('file', 'ignore_pattern', '.*\.\(o\|exe\|dll\|bak\|sw[po]\|hi\|fff\|aux\|toc\|bbl\|blg\|DS_Store\)$')
       call unite#custom_source('haddock,hoogle', 'max_candidates', 20)
@@ -154,7 +154,7 @@ endif
 " }}}
 
 " QuickRun / Filer / Outer world of Vim ( "\\" ) {{{
-let mapleader = "\\"
+let g:mapleader = "\\"
 NeoBundle 'Shougo/vimproc', { 'build' : { 'others' : 'make' } }
 NeoBundle 'thinca/vim-quickrun'
   let g:quickrun_config = {'_': {'runner': 'vimproc', 'runner/vimproc/updatetime': 60, 'split': 'vertical', 'into': 1}}
@@ -227,8 +227,8 @@ NeoBundle 'Shougo/vimfiler'
 NeoBundle 'Shougo/vinarise'
 endif
 NeoBundleLazy 'eagletmt/ghci-vim', {'autoload': {'filetypes': ['haskell']}}
-  let bundle = neobundle#get('ghci-vim')
-  function! bundle.hooks.on_post_source(bundle)
+  let s:bundle = neobundle#get('ghci-vim')
+  function! s:bundle.hooks.on_post_source(bundle)
     augroup Ghci
       autocmd!
       autocmd FileType haskell nnoremap <buffer> <Leader>l GhciLoad
@@ -243,7 +243,7 @@ NeoBundle 'mattn/webapi-vim'
 " }}}
 
 " vimshell ( ";" ) {{{
-let mapleader = ";"
+let g:mapleader = ";"
 NeoBundle 'Shougo/vimshell.vim'
 " --| Requirement: vimproc
 " --| If you can't use sudo, do:
@@ -294,7 +294,7 @@ NeoBundleLazy 'eagletmt/ghcmod-vim', {'autoload': {'filetypes': ['haskell']}, 'd
 " }}}
 
 " Commenter / Utility / Matching ( "," ) {{{
-let mapleader = ","
+let g:mapleader = ","
 NeoBundle 'tpope/vim-surround'
   let g:surround_{char2nr('$')} = "$\r$" " for LaTeX
 NeoBundle 'tComment'
@@ -329,8 +329,8 @@ NeoBundle 'kien/ctrlp.vim'
   let g:ctrlp_open_new_file = 'r'
   let g:ctrlp_use_caching = 1
   let g:ctrlp_cache_dir = $CACHE.'/ctrlp'
-  let bundle = neobundle#get('ctrlp.vim')
-  function! bundle.hooks.on_post_source(bundle)
+  let s:bundle = neobundle#get('ctrlp.vim')
+  function! s:bundle.hooks.on_post_source(bundle)
     let path = expand('~')
     let file = g:ctrlp_cache_dir . '/mru/cache.txt'
     silent call writefile(map(readfile(file), "substitute(v:val, '^/home/\\a\\+', path, '')"), file)
@@ -386,9 +386,9 @@ NeoBundleLazy 'vim-scripts/jade.vim', {'autoload': {'filetypes': ['jade']}}
 NeoBundleLazy 'vim-coffee-script', {'autoload': {'filetypes': ['coffee']}}
 NeoBundleLazy 'rest.vim', {'autoload': {'filetypes': ['rest']}}
 NeoBundleLazy 'vim-scripts/indenthaskell.vim', {'autoload': {'filetypes': ['haskell']}}
-  let hs_highlight_boolean = 1
-  let hs_highlight_types = 1
-  let hs_highlight_more_types = 1
+  let g:hs_highlight_boolean = 1
+  let g:hs_highlight_types = 1
+  let g:hs_highlight_more_types = 1
 NeoBundleLazy 'tpope/vim-markdown', {'autoload': {'filetypes': ['m4']}}
 NeoBundleLazy 'motemen/hatena-vim', {'autoload': {'filetypes': ['hatena']}}
 NeoBundleLazy 'syngan/vim-vimlint', { 'depends' : 'ynkdir/vim-vimlparser', 'autoload' : { 'functions' : 'vimlint#vimlint'}}
@@ -623,13 +623,13 @@ nnoremap <silent> # :<C-u>set hlsearch<CR>#
 
 " navigate window
 " <C-j> doesn't work, without the setting of <C-m>
-for k in ['h', 'j', 'k', 'l', 'x']
-  let l = k == 'j' ? 'm' : k
-  if l == k && k != 'x' | exec 'inoremap <C-' . l . '> <ESC><C-w>' . k | endif
-  exec 'nnoremap <C-' . l . '> <C-w>' . k
-  exec 'vnoremap <C-' . l . '> <C-w>' . k
-  exec 'nnoremap <C-' . k . '> <C-w>' . k
-  exec 'vnoremap <C-' . k . '> <C-w>' . k
+for s:k in ['h', 'j', 'k', 'l', 'x']
+  let s:l = s:k == 'j' ? 'm' : s:k
+  if s:l == s:k && s:k != 'x' | exec 'inoremap <C-' . s:l . '> <ESC><C-w>' . s:k | endif
+  exec 'nnoremap <C-' . s:l . '> <C-w>' . s:k
+  exec 'vnoremap <C-' . s:l . '> <C-w>' . s:k
+  exec 'nnoremap <C-' . s:k . '> <C-w>' . s:k
+  exec 'vnoremap <C-' . s:k . '> <C-w>' . s:k
 endfor
 nnoremap <expr><C-m> (bufname('%') ==# '[Command Line]') ? "<CR>" : "<C-w>j"
 inoremap <C-q> <ESC><C-w>
