@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/01/27 22:43:52.
+" - * Last Change: 2014/01/31 20:53:57.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -343,7 +343,7 @@ NeoBundleLazy 'itchyny/thumbnail.vim', {'type': 'nosync', 'autoload': {'commands
   nnoremap <silent> <Leader>t :<C-u>Thumbnail -here<CR>
 NeoBundle 'itchyny/calendar.vim', {'type': 'nosync'}
   nnoremap <silent> <Leader>z :<C-u>Calendar -here<CR>
-  let g:calendar_cache_directory = $CACHE.'/calendar.vim'
+  let g:calendar_cache_directory = $CACHE.'/calendar'
   let g:calendar_views = [ 'year', 'month', 'day_3', 'clock' ]
   let g:calendar_google_calendar = 1
   let g:calendar_google_task = 1
