@@ -1,11 +1,10 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/01/31 20:53:57.
+" - * Last Change: 2014/02/04 00:26:20.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
-set nocompatible
 filetype off
 scriptencoding utf-8
 if !executable(&shell) | set shell=sh | endif
