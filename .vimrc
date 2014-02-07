@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/02/03 15:07:00.
+" - * Last Change: 2014/02/07 15:45:46.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -136,19 +136,13 @@ NeoBundle 'itchyny/vimfiler-preview', {'type': 'nosync'}
   let g:vimfiler_preview_action = 'auto_preview'
   let s:bundle = neobundle#get('unite.vim')
   function! s:bundle.hooks.on_post_source(bundle)
-    if exists('*unite#custom_source')
-      call unite#custom_source('file', 'ignore_pattern', '.*\.\(o\|exe\|dll\|bak\|sw[po]\|hi\|fff\|aux\|toc\|bbl\|blg\|DS_Store\)$')
-      call unite#custom_source('haddock,hoogle', 'max_candidates', 20)
-    endif
-    if exists('*unite#custom_action')
-      call unite#custom_action('file', 'eject', g:unite_eject)
-      call unite#custom_action('file', 'auto_open', g:unite_auto_open)
-      call unite#custom_action('file', 'change_time', g:unite_changetime)
-      call unite#custom_action('file', 'auto_preview', g:vimfiler_preview)
-    endif
-    if exists('*unite#custom_default_action')
-      call unite#custom_default_action('file', 'auto_open')
-    endif
+    call unite#custom_source('file', 'ignore_pattern', '.*\.\(o\|exe\|dll\|bak\|sw[po]\|hi\|fff\|aux\|toc\|bbl\|blg\|DS_Store\)$')
+    call unite#custom_source('haddock,hoogle', 'max_candidates', 20)
+    call unite#custom_action('file', 'eject', g:unite_eject)
+    call unite#custom_action('file', 'auto_open', g:unite_auto_open)
+    call unite#custom_action('file', 'change_time', g:unite_changetime)
+    call unite#custom_action('file', 'auto_preview', g:vimfiler_preview)
+    call unite#custom_default_action('file', 'auto_open')
   endfunction
 endif
 " }}}
