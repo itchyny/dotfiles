@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/02/07 15:45:46.
+" - * Last Change: 2014/02/09 10:08:46.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -69,6 +69,11 @@ NeoBundleLazy 'Shougo/neocomplcache'
   let g:neocomplete#data_directory = $CACHE.'/neocomplete'
   let g:neocomplete#force_overwrite_completefunc = 1
   let g:neocomplete#ignore_source_files = [ 'member.vim', 'tag.vim', 'dictionary.vim', 'include.vim' ]
+  if !exists('g:neocomplete#force_omni_input_patterns')
+    let g:neocomplete#force_omni_input_patterns = {}
+  endif
+  let g:neocomplete#force_omni_input_patterns.python =
+        \ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
 else
 NeoBundle 'Shougo/neocomplcache'
 NeoBundleLazy 'Shougo/neocomplete.vim'
@@ -370,6 +375,10 @@ NeoBundleLazy 'mattn/emmet-vim', {'autoload': {'filetypes': ['html']}}
   let g:user_emmet_settings = { 'indentation' : '  ' }
   autocmd Vimrc FileType html,css imap <tab> emmet#expandAbbrIntelligent("\<tab>")
 NeoBundleLazy 'itspriddle/vim-javascript-indent', {'autoload': {'filetypes': ['javascript']}}
+NeoBundleLazy 'davidhalter/jedi-vim', {'autoload': {'filetypes': ['python']}}
+  let g:jedi#auto_vim_configuration = 0
+  let g:jedi#popup_select_first = 0
+  let g:jedi#completions_enabled = 0
 NeoBundleLazy 'elzr/vim-json', {'autoload': {'filetypes': ['json']}}
 NeoBundleLazy 'html5.vim', {'autoload': {'filetypes': ['html']}}
 NeoBundleLazy 'wavded/vim-stylus', {'autoload': {'filetypes': ['stylus']}}
@@ -521,7 +530,7 @@ autocmd Vimrc BufEnter * silent! lcd `=expand('%:p:h')`
 
 " Enable omni completation
 augroup Omnifunc
-  let s:omnifunc = map(split('c;ccomplete#Complete,css;csscomplete#CompleteCSS,html;htmlcomplete#CompleteTags,javascript;javascriptcomplete#CompleteJS,php;phpcomplete#CompletePHP,python;pythoncomplete#Complete,xml;xmlcomplete#CompleteTags,haskell;necoghc#omnifunc', ','), 'split(v:val, ";")')
+  let s:omnifunc = map(split('c;ccomplete#Complete,css;csscomplete#CompleteCSS,html;htmlcomplete#CompleteTags,javascript;javascriptcomplete#CompleteJS,php;phpcomplete#CompletePHP,xml;xmlcomplete#CompleteTags,haskell;necoghc#omnifunc,python;jedi#completions', ','), 'split(v:val, ";")')
   autocmd!
   for [s:ft, s:omnif] in s:omnifunc
     exec 'autocmd FileType ' . s:ft . ' setlocal omnifunc=' . s:omnif
