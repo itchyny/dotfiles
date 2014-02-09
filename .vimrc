@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/02/09 10:08:46.
+" - * Last Change: 2014/02/09 10:09:05.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -469,7 +469,7 @@ set autoread
 
 " Filetype
 augroup SetLocalFiletype
-  let s:filetypes1 = map(split('bf,gnuplot,jade,json,less,r,roy,tex,meissa,coffee', ','), '[v:val, v:val]')
+  let s:filetypes1 = map(split('bf,gnuplot,jade,json,less,r,roy,tex,meissa,coffee,stl', ','), '[v:val, v:val]')
   let s:filetypes2 = map(split('cls;tex,hs;haskell,hx;haxe,md;markdown,cir;spice,asc;spice,m;objc', ','), 'split(v:val, ";")')
   autocmd!
   for [s:ex, s:ft] in extend(s:filetypes1, s:filetypes2)
