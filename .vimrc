@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/02/09 10:09:05.
+" - * Last Change: 2014/02/11 22:15:33.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -28,8 +28,6 @@ augroup END
 if !isdirectory(s:neobundle_dir)
   if executable('git')
     exec '!mkdir -p '.$BUNDLE.' && git clone https://github.com/Shougo/neobundle.vim '.s:neobundle_dir
-  else
-    echo 'git not found! Sorry, this .vimrc cannot be completely used without git.'
   endif
 else
 if has('vim_starting')
@@ -127,9 +125,6 @@ NeoBundleLazy 'unite-colorscheme', {'autoload': {'unite_sources': ['colorscheme'
 NeoBundleLazy 'osyo-manga/unite-highlight', {'autoload': {'unite_sources': ['highlight']}}
 NeoBundleLazy 'eagletmt/unite-haddock', {'autoload': {'unite_sources': ['hoogle']}, 'disabled': !executable('hoogle')}
   nnoremap <Leader>h :<C-u>Unite hoogle -buffer-name=hoogle<CR>
-  " --| Requirement: hoogle
-  " --|   $ cabal install hoogle
-  " --|   $ hoogle data
 NeoBundleLazy 'h1mesuke/unite-outline', {'autoload': {'unite_sources': ['outline']}}
 NeoBundleLazy 'ujihisa/unite-haskellimport', {'autoload': {'unite_sources': ['haskellimport']}}
 NeoBundleLazy 'pasela/unite-webcolorname', {'autoload': {'unite_sources': ['webcolorname']}}
@@ -244,9 +239,6 @@ NeoBundle 'mattn/webapi-vim'
 " vimshell ( ";" ) {{{
 let g:mapleader = ";"
 NeoBundle 'Shougo/vimshell.vim'
-" --| Requirement: vimproc
-" --| If you can't use sudo, do:
-" --|  $ sudo chmod 4755 /usr/bin/sudo
   let g:vimshell_interactive_update_time = 150
   let g:vimshell_popup_command = 'top new'
   let g:vimshell_split_command = 'vsplit'
@@ -288,8 +280,6 @@ NeoBundleLazy 'eagletmt/neco-ghc', {'autoload': {'filetypes': ['haskell']}, 'dis
   let g:necoghc_enable_detailed_browse = 1
 NeoBundleLazy 'eagletmt/ghcmod-vim', {'autoload': {'filetypes': ['haskell']}, 'disabled': !executable('ghc-mod')}
   nnoremap <Leader>g :<C-u>GhcModCheckAsync<CR>
-  " --| Requirement: ghc-mod
-  " --|  $ cabal install ghc-mod
 " }}}
 
 " Commenter / Utility / Matching ( "," ) {{{
