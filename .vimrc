@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/02/11 22:15:33.
+" - * Last Change: 2014/02/11 22:19:06.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -56,9 +56,9 @@ NeoBundle 'itchyny/lightline-powerful', {'type': 'nosync'}
 " }}}
 
 " Complement {{{
+NeoBundle 'Shougo/neocomplete.vim', {'disabled': !(has('lua') && v:version > 703)}
+NeoBundle 'Shougo/neocomplcache', {'disabled': has('lua') && v:version > 703}
 if has('lua') && v:version > 703
-NeoBundle 'Shougo/neocomplete.vim'
-NeoBundleLazy 'Shougo/neocomplcache'
   let g:neocomplete#enable_at_startup = 1
   let g:neocomplete#enable_smart_case = 1
   let g:neocomplete#max_list = 1000
@@ -73,8 +73,6 @@ NeoBundleLazy 'Shougo/neocomplcache'
   let g:neocomplete#force_omni_input_patterns.python =
         \ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
 else
-NeoBundle 'Shougo/neocomplcache'
-NeoBundleLazy 'Shougo/neocomplete.vim'
   let g:neocomplcache_enable_at_startup = 1
   let g:neocomplcache_enable_smart_case = 1
   let g:neocomplcache_enable_underbar_completion = 1
@@ -392,12 +390,6 @@ endif
 " ENCODING {{{
 set encoding=utf-8 fenc=utf-8 fileencodings=utf-8,euc-jp,sjis,jis,iso-2022-jp,cp932,latin
 set formatoptions+=mM
-" ☆や□や○の文字があってもカーソル位置がずれないようにする
-" ambiwidthの設定のみでは, 解決しない場合がある
-" Ubuntuでは, gnome-terminal, terminatorを以下のコマンドに貼り替えると解決する
-"   /bin/sh -c "VTE_CJK_WIDTH=1 terminator -m"
-"   /bin/sh -c "VTE_CJK_WIDTH=1 gnome-terminal --disable-factory"
-" MacのiTermでは, Profiles>Text>Double-Width Characters>Treat ambiguous-width characters as double widthにチェック
 set ambiwidth=double
 " }}}
 
