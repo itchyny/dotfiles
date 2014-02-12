@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/02/11 22:19:06.
+" - * Last Change: 2014/02/12 11:23:17.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -110,7 +110,6 @@ NeoBundle 'Shougo/unite.vim'
   nnoremap <silent><S-l> :Unite line -buffer-name=line<CR>
   augroup Unite
     autocmd!
-    autocmd FileType unite inoremap <silent> <buffer> <C-z> <Nop>
     autocmd FileType unite inoremap <silent> <buffer> <C-o> <Nop>
     autocmd FileType unite nmap <buffer> <C-a> <Plug>(unite_insert_enter)
     autocmd FileType unite nmap <buffer> OA <Plug>(unite_rotate_previous_source)
