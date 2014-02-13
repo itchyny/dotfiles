@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/02/13 23:56:18.
+" - * Last Change: 2014/02/14 00:49:51.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -129,17 +129,11 @@ NeoBundleLazy 'rhysd/codic-vim-with-unite', {'autoload': {'unite_sources': ['cod
 NeoBundle 'itchyny/unite-eject', {'type': 'nosync'}
 NeoBundle 'itchyny/unite-auto-open', {'type': 'nosync'}
 NeoBundle 'itchyny/unite-changetime', {'type': 'nosync'}
-NeoBundle 'itchyny/vimfiler-preview', {'type': 'nosync'}
-  let g:vimfiler_preview_action = 'auto_preview'
+NeoBundle 'itchyny/unite-preview', {'type': 'nosync'}
   let s:bundle = neobundle#get('unite.vim')
   function! s:bundle.hooks.on_post_source(bundle)
     call unite#custom_source('file', 'ignore_pattern', '.*\.\(o\|exe\|dll\|bak\|sw[po]\|hi\|fff\|aux\|toc\|bbl\|blg\|DS_Store\)$')
     call unite#custom_source('haddock,hoogle', 'max_candidates', 20)
-    call unite#custom_action('file', 'eject', g:unite_eject)
-    call unite#custom_action('file', 'auto_open', g:unite_auto_open)
-    call unite#custom_action('file', 'change_time', g:unite_changetime)
-    call unite#custom_action('file', 'auto_preview', g:vimfiler_preview)
-    call unite#custom_default_action('file', 'auto_open')
   endfunction
 endif
 " }}}
