@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/02/12 11:23:17.
+" - * Last Change: 2014/02/13 23:56:18.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -345,6 +345,9 @@ NeoBundle 'itchyny/vim-insert-mode-motion', {'type': 'nosync'}
 NeoBundle 'itchyny/vim-spellbad-pattern', {'type': 'nosync'}
   let g:spellbad_pattern = [ '\<a\> [aiueo]', '^\$', '\<figure..\?\\', '\\ref{eq:'
         \ , '^\\end{align}', '[^\~]\\\(eq\)\?ref\>', 'does not [a-z]*s\>', 's [a-z][a-z]\+s\>', '\<a \S\+s\>', 'in default']
+NeoBundle 'itchyny/vim-closebuffer', {'type': 'nosync'}
+  map <C-w> <Plug>(closebuffer)
+  imap <C-w> <Plug>(closebuffer)
 NeoBundle 'vim-jp/vital.vim'
 " }}}
 
@@ -619,32 +622,6 @@ nnoremap <expr><C-m> (bufname('%') ==# '[Command Line]') ? "<CR>" : "<C-w>j"
 inoremap <C-q> <ESC><C-w>
 nnoremap <C-q> <C-w>
 vnoremap <C-q> <ESC><C-w>
-
-" close buffer
-function! AutoClose()
-  try
-    if &filetype == 'quickrun'
-      silent bw!
-    elseif &filetype == 'gundo'
-      silent call feedkeys('q')
-    elseif expand('%:t') == '__XtermColorTable__'
-      silent bd!
-    elseif len(filter(range(1, winnr('$')), 'winbufnr(v:val) == winbufnr(0)')) > 1
-      silent q
-    elseif &filetype == '' && !&modified
-      silent q!
-    elseif &modified
-    elseif &filetype == 'vimshell' || &filetype == 'vimfiler' || &filetype == 'calendar'
-      silent q
-    else
-      silent bd!
-    endif
-  catch
-  endtry
-endfunction
-inoremap <silent> <C-w> <ESC>:<C-u>call AutoClose()<CR>
-nnoremap <silent> <C-w> :<C-u>call AutoClose()<CR>
-vnoremap <silent> <C-w> :<C-u>call AutoClose()<CR>
 
 " tag
 autocmd Vimrc FileType help nnoremap <C-[> <C-t>
