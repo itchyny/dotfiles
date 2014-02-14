@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/02/14 00:49:51.
+" - * Last Change: 2014/02/14 09:35:15.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -10,8 +10,7 @@ scriptencoding utf-8
 if !executable(&shell) | set shell=sh | endif
 let s:isunix = has('unix')
 let s:iswin = has('win16') || has('win32') || has('win64')
-let s:iscygwin = has('win32unix')
-let s:ismac = !s:iswin && !s:iscygwin && (has('mac') || has('macunix') || has('guimacvim') || system('uname') =~? '^darwin')
+let s:ismac = !s:iswin && !has('win32unix') && (has('mac') || has('macunix') || has('guimacvim'))
 let s:fancy = s:ismac && has('multi_byte')
 let s:nosudo = $SUDO_USER == ''
 let $VIM = expand('~/.vim')
