@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/02/15 17:23:19.
+" - * Last Change: 2014/02/15 18:34:18.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -211,15 +211,12 @@ NeoBundle 'Shougo/vimfiler'
 NeoBundle 'Shougo/vinarise'
 endif
 NeoBundleLazy 'eagletmt/ghci-vim', {'autoload': {'filetypes': ['haskell']}}
-  let s:bundle = neobundle#get('ghci-vim')
-  function! s:bundle.hooks.on_post_source(bundle)
-    augroup Ghci
-      autocmd!
-      autocmd FileType haskell nnoremap <buffer> <Leader>l GhciLoad
-      autocmd FileType haskell nnoremap <buffer> <Leader>i GhciInfo
-      autocmd FileType haskell nnoremap <buffer> <Leader>t GhciType
-    augroup END
-  endfunction
+  augroup Ghci
+    autocmd!
+    autocmd FileType haskell nnoremap <buffer> <Leader>l GhciLoad
+    autocmd FileType haskell nnoremap <buffer> <Leader>i GhciInfo
+    autocmd FileType haskell nnoremap <buffer> <Leader>t GhciType
+  augroup END
 NeoBundle 'tyru/open-browser.vim'
   nmap <silent> <Leader>b <Plug>(openbrowser-smart-search)
   vmap <silent> <Leader>b <Plug>(openbrowser-smart-search)
@@ -308,12 +305,8 @@ NeoBundle 'kien/ctrlp.vim'
   let g:ctrlp_open_new_file = 'r'
   let g:ctrlp_use_caching = 1
   let g:ctrlp_cache_dir = $CACHE.'/ctrlp'
-  let s:bundle = neobundle#get('ctrlp.vim')
-  function! s:bundle.hooks.on_post_source(bundle)
-    let path = expand('~')
-    let file = g:ctrlp_cache_dir . '/mru/cache.txt'
-    silent call writefile(map(readfile(file), "substitute(v:val, '^/home/\\a\\+', path, '')"), file)
-  endfunction
+  let s:_ctrlp_cache = g:ctrlp_cache_dir . '/mru/cache.txt'
+  silent call writefile(map(readfile(s:_ctrlp_cache), "substitute(v:val, '^/home/\\a\\+', $HOME, '')"), s:_ctrlp_cache)
 NeoBundle 'thinca/vim-prettyprint'
 NeoBundle 'tyru/capture.vim'
 NeoBundle 'banyan/recognize_charcode.vim'
