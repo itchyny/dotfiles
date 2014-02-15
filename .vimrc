@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/02/15 18:34:18.
+" - * Last Change: 2014/02/15 23:36:46.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -349,7 +349,7 @@ NeoBundleLazy 'scrooloose/syntastic', {'autoload': {'filetypes': ['c', 'cpp'], '
   endfunction
 NeoBundleLazy 'mattn/emmet-vim', {'autoload': {'filetypes': ['html']}}
   let g:user_emmet_settings = { 'indentation' : '  ' }
-  autocmd Vimrc FileType html,css imap <tab> emmet#expandAbbrIntelligent("\<tab>")
+  autocmd Vimrc FileType html imap <silent> <tab> <plug>(EmmetExpandAbbr)
 NeoBundleLazy 'itspriddle/vim-javascript-indent', {'autoload': {'filetypes': ['javascript']}}
 NeoBundleLazy 'davidhalter/jedi-vim', {'autoload': {'filetypes': ['python']}}
   let g:jedi#auto_vim_configuration = 0
