@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/02/14 09:35:15.
+" - * Last Change: 2014/02/15 17:23:19.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -513,7 +513,6 @@ augroup Omnifunc
     exec 'autocmd FileType ' . s:ft . ' setlocal omnifunc=' . s:omnif
   endfor
 augroup END
-setlocal omnifunc=syntaxcomplete#Complete
 
 " Open file explorer at current directory
 function! Explorer()
