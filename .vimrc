@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/02/16 10:42:33.
+" - * Last Change: 2014/02/16 20:44:04.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -412,10 +412,7 @@ augroup END
 exec 'nnoremap <silent> \n :<C-u>silent call system("' (s:ismac ? 'open -a Finder' : s:iswin ? 'start' : 'nautilus') '.&")<CR>'
 
 " Text editor
-function! TextEdit()
-  exec 'silent call system("' (s:ismac ? 'open -a TextEdit ' : s:iswin ? 'notepad ' : 'gedit ') fnameescape(expand('%:p')) ' &")'
-endfunction
-nnoremap <silent> \g :<C-u>call TextEdit()<CR>
+exec 'nnoremap <silent> \g :<C-u>exec ''silent call system("' (s:ismac ? 'open -a TextEdit' : s:iswin ? 'notepad' : 'gedit') ' ''  fnameescape(expand(''%:p'')) '' &")''<CR>'
 
 " View syntax name under cursor
 command! S echo synIDattr(synID(line('.'), col('.'), 0), 'name')
