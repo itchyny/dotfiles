@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/02/16 10:17:27.
+" - * Last Change: 2014/02/16 10:42:33.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -486,8 +486,8 @@ inoremap <C-s> <ESC>:<C-u>w<CR>
 vnoremap <C-s> :<C-u>w<CR>
 
 " search
-autocmd BufEnter,WinEnter * nnoremap <buffer> <Esc><Esc> :<C-u>set nohlsearch nopaste<CR>
-autocmd BufEnter,WinEnter [calendar* nunmap <buffer> <Esc><Esc>
+autocmd Vimrc BufEnter,WinEnter * nnoremap <buffer> <Esc><Esc> :<C-u>set nohlsearch nopaste<CR>
+autocmd Vimrc BufEnter,WinEnter [calendar* nunmap <buffer> <Esc><Esc>
 nnoremap <silent> / :<C-u>set hlsearch<CR>/
 nnoremap <silent> ? :<C-u>set hlsearch<CR>?
 nnoremap <silent> * :<C-u>set hlsearch<CR>*
@@ -529,4 +529,5 @@ cnoremap <C-a> <Home>
 cnoremap <C-b> <Left>
 cnoremap <C-f> <Right>
 " }}} KEY MAPPING
+
 " vim:foldmethod=marker
