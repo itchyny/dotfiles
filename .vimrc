@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/02/15 23:36:46.
+" - * Last Change: 2014/02/16 10:17:27.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -23,7 +23,7 @@ augroup END
 " }}}
 
 " Bundles {{{
-" neobundle {{{
+" neobundle
 if !isdirectory(s:neobundle_dir)
   if executable('git')
     exec '!mkdir -p '.$BUNDLE.' && git clone https://github.com/Shougo/neobundle.vim '.s:neobundle_dir
@@ -35,29 +35,24 @@ endif
 call neobundle#rc(expand($BUNDLE))
 NeoBundleFetch 'Shougo/neobundle.vim'
   nnoremap <silent> BB :<C-u>Unite neobundle/update -log -no-start-insert<CR>
-" }}}
 
-" Colorscheme {{{
+" Colorscheme
 NeoBundle 'itchyny/landscape.vim', {'type': 'nosync'}
   colorscheme landscape
   let g:landscape_highlight_url = 1
   let g:landscape_highlight_todo = 1
   let g:landscape_highlight_url_filetype = {'thumbnail': 0}
 NeoBundleLazy 'xterm-color-table.vim', {'autoload': {'commands': [{'name': 'XtermColorTable'}]}}
-" }}}
 
-" Lightline {{{
+" Lightline
 NeoBundle 'itchyny/lightline.vim', {'type': 'nosync'}
 NeoBundle 'itchyny/lightline-powerful', {'type': 'nosync'}
   let g:lightline = {'colorscheme': 'landscape','mode_map':{'c': 'NORMAL'}}
   exec 'set guifont=' . substitute('Inconsolata for Powerline', ' ', s:iswin ? '_' : '\\ ', 'g') . (s:ismac ? ':h15' : s:iswin ?  ':h13:cANSI' : '\ 12')
   if s:iswin | set guifontwide=MS_Gothic:h11:cSHIFTJIS | endif
-" }}}
 
-" Complement {{{
+" Complement
 NeoBundle 'Shougo/neocomplete.vim', {'disabled': !(has('lua') && v:version > 703)}
-NeoBundle 'Shougo/neocomplcache', {'disabled': has('lua') && v:version > 703}
-if has('lua') && v:version > 703
   let g:neocomplete#enable_at_startup = 1
   let g:neocomplete#enable_smart_case = 1
   let g:neocomplete#max_list = 1000
@@ -66,22 +61,8 @@ if has('lua') && v:version > 703
   let g:neocomplete#data_directory = $CACHE.'/neocomplete'
   let g:neocomplete#force_overwrite_completefunc = 1
   let g:neocomplete#ignore_source_files = [ 'member.vim', 'tag.vim', 'dictionary.vim', 'include.vim' ]
-  if !exists('g:neocomplete#force_omni_input_patterns')
-    let g:neocomplete#force_omni_input_patterns = {}
-  endif
-  let g:neocomplete#force_omni_input_patterns.python =
-        \ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
-else
-  let g:neocomplcache_enable_at_startup = 1
-  let g:neocomplcache_enable_smart_case = 1
-  let g:neocomplcache_enable_underbar_completion = 1
-  let g:neocomplcache_enable_camel_case_completion = 1
-  let g:neocomplcache_max_list = 350
-  let g:neocomplcache_skip_auto_completion_time = "0.50"
-  let g:neocomplcache_auto_completion_start_length = 1
-  let g:neocomplcache_temporary_dir = $CACHE.'/neocomplcache'
-  let g:neocomplcache_force_overwrite_completefunc = 1
-endif
+  let g:neocomplete#force_omni_input_patterns = get(g:, 'neocomplete#force_omni_input_patterns', {})
+  let g:neocomplete#force_omni_input_patterns.python = '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
   let g:neosnippet#snippets_directory = expand($VIM.'/snippets')
@@ -89,9 +70,8 @@ NeoBundle 'Shougo/neosnippet-snippets'
   smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
   imap <expr><C-o> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<ESC>o"
 NeoBundle 'ujihisa/neco-look', {'disabled': !executable('look')}
-" }}}
 
-" Unite ( "," ) {{{
+" Unite ( "," )
 let g:mapleader = ","
 if s:nosudo
 NeoBundle 'Shougo/unite.vim'
@@ -135,9 +115,8 @@ NeoBundle 'itchyny/unite-preview', {'type': 'nosync'}
     call unite#custom_source('haddock,hoogle', 'max_candidates', 20)
   endfunction
 endif
-" }}}
 
-" QuickRun / Filer / Outer world of Vim ( "\\" ) {{{
+" QuickRun / Filer / Outer world of Vim ( "\\" )
 let g:mapleader = "\\"
 NeoBundle 'Shougo/vimproc', { 'build' : { 'others' : 'make' } }
 NeoBundle 'thinca/vim-quickrun'
@@ -221,9 +200,8 @@ NeoBundle 'tyru/open-browser.vim'
   nmap <silent> <Leader>b <Plug>(openbrowser-smart-search)
   vmap <silent> <Leader>b <Plug>(openbrowser-smart-search)
 NeoBundle 'mattn/webapi-vim'
-" }}}
 
-" vimshell ( ";" ) {{{
+" vimshell ( ";" )
 let g:mapleader = ";"
 NeoBundle 'Shougo/vimshell.vim'
   let g:vimshell_interactive_update_time = 150
@@ -267,9 +245,8 @@ NeoBundleLazy 'eagletmt/neco-ghc', {'autoload': {'filetypes': ['haskell']}, 'dis
   let g:necoghc_enable_detailed_browse = 1
 NeoBundleLazy 'eagletmt/ghcmod-vim', {'autoload': {'filetypes': ['haskell']}, 'disabled': !executable('ghc-mod')}
   nnoremap <Leader>g :<C-u>GhcModCheckAsync<CR>
-" }}}
 
-" Commenter / Utility / Matching ( "," ) {{{
+" Commenter / Utility / Matching ( "," )
 let g:mapleader = ","
 NeoBundle 'tpope/vim-surround'
   let g:surround_{char2nr('$')} = "$\r$" " for LaTeX
@@ -335,9 +312,8 @@ NeoBundle 'itchyny/vim-closebuffer', {'type': 'nosync'}
   map <C-w> <Plug>(closebuffer)
   imap <C-w> <Plug>(closebuffer)
 NeoBundle 'vim-jp/vital.vim'
-" }}}
 
-" Syntax {{{
+" Syntax
 NeoBundleLazy 'scrooloose/syntastic', {'autoload': {'filetypes': ['c', 'cpp'], 'functions': ['SyntasticStatuslineFlag']}}
   let g:syntastic_mode_map = { 'mode': 'passive' }
   let g:syntastic_echo_current_error = 0
@@ -371,71 +347,84 @@ NeoBundleLazy 'vim-scripts/indenthaskell.vim', {'autoload': {'filetypes': ['hask
 NeoBundleLazy 'tpope/vim-markdown', {'autoload': {'filetypes': ['m4']}}
 NeoBundleLazy 'motemen/hatena-vim', {'autoload': {'filetypes': ['hatena']}}
 NeoBundleLazy 'syngan/vim-vimlint', { 'depends' : 'ynkdir/vim-vimlparser', 'autoload' : { 'functions' : 'vimlint#vimlint'}}
-" }}}
 endif
 " }}} Bundles
 
-" ENCODING {{{
-set encoding=utf-8 fenc=utf-8 fileencodings=utf-8,euc-jp,sjis,jis,iso-2022-jp,cp932,latin
-set formatoptions+=mM
-set ambiwidth=double
-" }}}
+" Setting {{{
+filetype plugin indent on
+syntax enable
 
-" APPERANCE {{{
-" Main appearance
-set list
-if !s:fancy
-  set listchars=tab:^I,extends:>,precedes:<,nbsp:%
-else
-  try
-    set listchars=tab:▸\ ,extends:»,precedes:«,nbsp:%
-  catch
-    set listchars=tab:^I,extends:>,precedes:<,nbsp:%
-    let g:vimfiler_tree_leaf_icon = '|'
-    let g:vimfiler_tree_opened_icon = '-'
-    let g:vimfiler_tree_closed_icon = '+'
-  endtry
-endif
-set shortmess+=I
-set number
-  autocmd Vimrc FileType vimshell,vimcalc,quickrun,int-ghci setlocal nonumber buftype=nofile
-set cursorline
-  autocmd Vimrc WinLeave * setlocal nocursorline
-  autocmd Vimrc BufEnter,WinEnter * setlocal cursorline
-  autocmd Vimrc FileType calendar,vimcalc,vimshell,quickrun,int-ghci,cam setlocal nocursorline
-        \ | autocmd Vimrc BufEnter,WinEnter <buffer> setlocal nocursorline
-set nocursorcolumn
+" Option
+try
+  set list listchars=tab:▸\ ,extends:»,precedes:«,nbsp:%
+catch
+  set list listchars=tab:^I,extends:>,precedes:<,nbsp:%
+  let g:vimfiler_tree_leaf_icon = '|'
+  let g:vimfiler_tree_opened_icon = '-'
+  let g:vimfiler_tree_closed_icon = '+'
+endtry
+set number cursorline nocursorcolumn
+  autocmd Vimrc FileType vimshell,vimcalc,quickrun setlocal nonumber
+  autocmd Vimrc FileType vimcalc,vimshell,quickrun,cam setlocal nocursorline
 let [&t_SI,&t_EI] = ["\e]50;CursorShape=1\x7","\e]50;CursorShape=0\x7"]
-set showmatch
-set showtabline=1
-set pumheight=10
-set history=1000
-set helplang=en
+set showmatch noshowmode shortmess+=I pumheight=10 completeopt-=preview autoread
+set history=1000 viminfo='10,/10,:500,<10,@10,s10,n$CACHE/.viminfo spellfile=$CACHE/.spellfile.add
 set nospell
   autocmd Vimrc FileType tex,markdown,help exec 'setl ' . (&bt !=# 'help' && search("[^\x01-\x7e]", 'n') == 0 && line('$') > 5 ? '' : 'no') . 'spell'
-set modeline
-set modelines=1
-set completeopt-=preview
 if has('conceal')
   set concealcursor=nvc
   autocmd Vimrc FileType vimfiler set concealcursor=nvc
 endif
-set noshowmode
-set iminsert=0
-
-" Status line
-set laststatus=2
-set statusline=%{expand('%:p:t')}\ %<[%{expand('%:p:h')}]%=\ %m%r%y%w[%{&fenc!=''?&fenc:&enc}][%{&ff}][%3l,%3c,%3p]
-
-" Color
-syntax enable
+set infercase wrapscan ignorecase smartcase incsearch nohlsearch magic
+set laststatus=2 showtabline=1 statusline=%{expand('%:p:t')}\ %<[%{expand('%:p:h')}]%=\ %m%r%y%w[%{&fenc!=''?&fenc:&enc}][%{&ff}][%3l,%3c,%3p]
 set background=dark
 if !has('gui_running') | set t_Co=256 | endif
-" }}} APPERANCE
+set encoding=utf-8 fenc=utf-8 fileencodings=utf-8,euc-jp,sjis,jis,iso-2022-jp,cp932,latin formatoptions+=mM ambiwidth=double
+set smartindent autoindent shiftwidth=2
+  autocmd Vimrc FileType tex,hatena setlocal nosmartindent noautoindent
+  let g:tex_indent_items=0
+set textwidth=0 expandtab tabstop=2 backspace=indent,eol,start nrformats-=ocral
+  autocmd Vimrc FileType * exec 'setl ' . (search('^\t.*\n\t.*\n\t', 'n') > 0 ? 'no' : '') . 'expandtab'
+if exists('&clipboard')
+  set clipboard=unnamed
+  if has('unnamedplus') | set clipboard+=unnamedplus | endif
+endif
+set swapfile nobackup updatetime=300 timeoutlen=500 ttyfast vb t_vb= wildignore+=*.sw?,*.bak,*.?~,*.??~,*.???~,*.~ wildmode=list:longest
 
-" FILE READING {{{
-" Set
-set autoread
+" Maximize the window
+if s:iswin
+  autocmd Vimrc GUIEnter * simalt ~x
+endif
+
+" Move to the directory each buffer
+autocmd Vimrc BufEnter * silent! lcd `=expand('%:p:h')`
+
+" Omni completation
+augroup Omnifunc
+  let s:omnifunc = map(split('c;ccomplete#Complete,css;csscomplete#CompleteCSS,html;htmlcomplete#CompleteTags,javascript;javascriptcomplete#CompleteJS,php;phpcomplete#CompletePHP,xml;xmlcomplete#CompleteTags,haskell;necoghc#omnifunc,python;jedi#completions', ','), 'split(v:val, ";")')
+  autocmd!
+  for [s:ft, s:omnif] in s:omnifunc
+    exec 'autocmd FileType ' . s:ft . ' setlocal omnifunc=' . s:omnif
+  endfor
+augroup END
+
+" Explorer
+exec 'nnoremap <silent> \n :<C-u>silent call system("' (s:ismac ? 'open -a Finder' : s:iswin ? 'start' : 'nautilus') '.&")<CR>'
+
+" Text editor
+function! TextEdit()
+  exec 'silent call system("' (s:ismac ? 'open -a TextEdit ' : s:iswin ? 'notepad ' : 'gedit ') fnameescape(expand('%:p')) ' &")'
+endfunction
+nnoremap <silent> \g :<C-u>call TextEdit()<CR>
+
+" View syntax name under cursor
+command! S echo synIDattr(synID(line('.'), col('.'), 0), 'name')
+
+" Command line
+let s:cmdlist = 'vps;vsp,vp;vsp,nbi;NeoBundleInstall,nbc;NeoBundleClean,nbd;NeoBundleDocs,di;Dictionary<SPACE>-cursor-word<SPACE>-no-duplicate,aoff;AutodateOFF,aon;AutodateON,qa1;qa!,q1;q!,nvew;vnew'
+for [s:cmd, s:exp] in map(split(s:cmdlist, ','), 'split(v:val, ";")')
+  exec 'cabbrev <expr> '.s:cmd.' (getcmdtype() == ":" && getcmdline() ==# "'.s:cmd.'") ? "'.s:exp.'" : "'.s:cmd.'"'
+endfor
 
 " Filetype
 augroup SetLocalFiletype
@@ -445,7 +434,7 @@ augroup SetLocalFiletype
   for [s:ex, s:ft] in extend(s:filetypes1, s:filetypes2)
     execute 'autocmd BufNewFile,BufReadPost *.' . s:ex . ' setlocal filetype=' . s:ft
   endfor
-  autocmd Vimrc BufReadPost,BufWrite,CursorHold,CursorHoldI * call s:auto_filetype()
+  autocmd Vimrc CursorHold,CursorHoldI * call s:auto_filetype()
 augroup END
 function! s:auto_filetype()
   if line('.') > 5 | return | endif
@@ -455,92 +444,7 @@ function! s:auto_filetype()
   endfor
   if newft != '' && (&filetype == '' || &filetype == newft)  | exec 'setlocal filetype=' . newft | endif
 endfunction
-" }}} FILE READING
-
-" EDIT {{{
-" Search
-set infercase wrapscan ignorecase smartcase incsearch nohlsearch magic
-
-" Indent
-filetype plugin indent on
-set smartindent autoindent shiftwidth=2
-  autocmd Vimrc FileType tex,hatena setlocal nosmartindent noautoindent
-  let g:tex_indent_items=0
-
-" Special keys (tab, backspace)
-set textwidth=0 expandtab tabstop=2 backspace=indent,eol,start
-  autocmd Vimrc FileType * exec 'setl ' . (search('^\t.*\n\t.*\n\t', 'n') > 0 ? 'no' : '') . 'expandtab'
-
-" Sequencial keys
-set timeoutlen=500
-
-" Clipboard
-if exists('&clipboard')
-  set clipboard=unnamed
-  if has('unnamedplus')
-    set clipboard+=unnamedplus
-  endif
-endif
-
-" Increment
-set nrformats-=ocral
-
-" Generated files
-set swapfile nobackup viminfo='10,/10,:500,<10,@10,s10,n$CACHE/.viminfo spellfile=$CACHE/.spellfile.add
-" }}} EDIT
-
-" UTILITY {{{
-" On starting vim
-if s:iswin
-  autocmd Vimrc GUIEnter * simalt ~x
-endif
-
-" Move to the directory each buffer
-autocmd Vimrc BufEnter * silent! lcd `=expand('%:p:h')`
-
-" Enable omni completation
-augroup Omnifunc
-  let s:omnifunc = map(split('c;ccomplete#Complete,css;csscomplete#CompleteCSS,html;htmlcomplete#CompleteTags,javascript;javascriptcomplete#CompleteJS,php;phpcomplete#CompletePHP,xml;xmlcomplete#CompleteTags,haskell;necoghc#omnifunc,python;jedi#completions', ','), 'split(v:val, ";")')
-  autocmd!
-  for [s:ft, s:omnif] in s:omnifunc
-    exec 'autocmd FileType ' . s:ft . ' setlocal omnifunc=' . s:omnif
-  endfor
-augroup END
-
-" Open file explorer at current directory
-function! Explorer()
-  silent call system((s:ismac ? 'open -a Finder' : s:iswin ? 'start' : 'nautilus') .' . &')
-endfunction
-nnoremap <silent> \n :call Explorer()<CR>
-
-" Quickly open with outer text editor
-function! TextEdit()
-  silent call system((s:ismac ? 'open -a TextEdit ' : s:iswin ? 'notepad ' : 'gedit ') . fnameescape(expand('%:p')) . ' &')
-endfunction
-nnoremap <silent> \g :call TextEdit()<CR>
-
-" view syntax name under cursor
-command! S echo synIDattr(synID(line('.'), col('.'), 0), 'name')
-
-" Quick open dot files
-exec 'nnoremap \. :e ~/' . (filereadable(expand('~/Dropbox/.files/.vimrc')) ? 'Dropbox/.files/' : '') . '.vimrc<CR>'
-exec 'nnoremap ;. :e ~/' . (filereadable(expand('~/Dropbox/.files/.zshrc')) ? 'Dropbox/.files/' : '') . '.zshrc<CR>'
-" }}} UTILITY
-
-" OTHERS {{{
-" Performance
-set ttyfast
-set updatetime=300
-set vb t_vb=
-
-" Command line
-set wildmode=list:longest
-set wildignore+=*.sw?,*.bak,*.?~,*.??~,*.???~,*.~
-let s:cmdlist = 'vps;vsp,vp;vsp,nbi;NeoBundleInstall,nbc;NeoBundleClean,nbd;NeoBundleDocs,di;Dictionary<SPACE>-cursor-word<SPACE>-no-duplicate,aoff;AutodateOFF,aon;AutodateON,qa1;qa!,q1;q!,nvew;vnew'
-for [s:cmd, s:exp] in map(split(s:cmdlist, ','), 'split(v:val, ";")')
-  exec 'cabbrev <expr> '.s:cmd.' (getcmdtype() == ":" && getcmdline() ==# "'.s:cmd.'") ? "'.s:exp.'" : "'.s:cmd.'"'
-endfor
-" }}} OTHERS
+" }}}
 
 " KEY MAPPING {{{
 " Escape key
@@ -582,19 +486,14 @@ inoremap <C-s> <ESC>:<C-u>w<CR>
 vnoremap <C-s> :<C-u>w<CR>
 
 " search
-function! s:esc()
-  if expand('%:p:t') !~# '^\[calendar'
-    nnoremap <buffer><silent> <Esc><Esc> :<C-u>set nohlsearch nopaste<CR>
-  endif
-endfunction
-autocmd Vimrc BufEnter,WinEnter * call s:esc()
+autocmd BufEnter,WinEnter * nnoremap <buffer> <Esc><Esc> :<C-u>set nohlsearch nopaste<CR>
+autocmd BufEnter,WinEnter [calendar* nunmap <buffer> <Esc><Esc>
 nnoremap <silent> / :<C-u>set hlsearch<CR>/
 nnoremap <silent> ? :<C-u>set hlsearch<CR>?
 nnoremap <silent> * :<C-u>set hlsearch<CR>*
 nnoremap <silent> # :<C-u>set hlsearch<CR>#
 
 " navigate window
-" <C-j> doesn't work, without the setting of <C-m>
 for s:k in ['h', 'j', 'k', 'l', 'x']
   let s:l = s:k == 'j' ? 'm' : s:k
   if s:l == s:k && s:k != 'x' | exec 'inoremap <C-' . s:l . '> <ESC><C-w>' . s:k | endif
@@ -607,6 +506,10 @@ nnoremap <expr><C-m> (bufname('%') ==# '[Command Line]') ? "<CR>" : "<C-w>j"
 inoremap <C-q> <ESC><C-w>
 nnoremap <C-q> <C-w>
 vnoremap <C-q> <ESC><C-w>
+
+" Open dot files
+exec 'nnoremap \. :e ~/' . (filereadable(expand('~/Dropbox/.files/.vimrc')) ? 'Dropbox/.files/' : '') . '.vimrc<CR>'
+exec 'nnoremap ;. :e ~/' . (filereadable(expand('~/Dropbox/.files/.zshrc')) ? 'Dropbox/.files/' : '') . '.zshrc<CR>'
 
 " tag
 autocmd Vimrc FileType help nnoremap <C-[> <C-t>
@@ -626,5 +529,4 @@ cnoremap <C-a> <Home>
 cnoremap <C-b> <Left>
 cnoremap <C-f> <Right>
 " }}} KEY MAPPING
-
 " vim:foldmethod=marker
