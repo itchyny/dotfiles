@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/02/16 20:44:04.
+" - * Last Change: 2014/02/16 21:19:07.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -290,7 +290,7 @@ NeoBundle 'banyan/recognize_charcode.vim'
 NeoBundleLazy 'itchyny/thumbnail.vim', {'type': 'nosync', 'autoload': {'commands': [{'name': 'Thumbnail', 'complete': 'customlist,thumbnail#complete'}]}}
   nnoremap <silent> <Leader>t :<C-u>Thumbnail -here<CR>
 NeoBundle 'itchyny/calendar.vim', {'type': 'nosync'}
-  nnoremap <silent> <Leader>z :<C-u>Calendar -here<CR>
+  map <silent> <Leader>z <Plug>(calendar)
   let g:calendar_cache_directory = $CACHE.'/calendar'
   let g:calendar_views = [ 'year', 'month', 'day_3', 'clock' ]
   let g:calendar_google_calendar = 1
