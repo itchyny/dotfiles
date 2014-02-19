@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/02/18 20:00:37.
+" - * Last Change: 2014/02/19 08:39:14.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -74,7 +74,7 @@ NeoBundle 'ujihisa/neco-look', {'disabled': !executable('look')}
 " Unite ( "," )
 let g:mapleader = ","
 if s:nosudo
-NeoBundle 'Shougo/unite.vim'
+NeoBundleLazy 'Shougo/unite.vim', {'autoload': {'commands': 'Unite'}}
   let g:unite_enable_start_insert = 1
   let g:unite_cursor_line_highlight = 'CursorLine'
   let g:loaded_unite_source_mru = 1
@@ -105,21 +105,22 @@ NeoBundleLazy 'h1mesuke/unite-outline', {'autoload': {'unite_sources': ['outline
 NeoBundleLazy 'ujihisa/unite-haskellimport', {'autoload': {'unite_sources': ['haskellimport']}}
 NeoBundleLazy 'pasela/unite-webcolorname', {'autoload': {'unite_sources': ['webcolorname']}}
 NeoBundleLazy 'rhysd/codic-vim-with-unite', {'autoload': {'unite_sources': ['codic']}}
-NeoBundle 'itchyny/unite-eject', {'type': 'nosync'}
-NeoBundle 'itchyny/unite-auto-open', {'type': 'nosync'}
-NeoBundle 'itchyny/unite-changetime', {'type': 'nosync'}
-NeoBundle 'itchyny/unite-preview', {'type': 'nosync'}
+NeoBundleLazy 'itchyny/unite-eject', {'type': 'nosync'}
+NeoBundleLazy 'itchyny/unite-auto-open', {'type': 'nosync'}
+NeoBundleLazy 'itchyny/unite-changetime', {'type': 'nosync'}
+NeoBundleLazy 'itchyny/unite-preview', {'type': 'nosync'}
   let s:bundle = neobundle#get('unite.vim')
   function! s:bundle.hooks.on_post_source(bundle)
     call unite#custom_source('file', 'ignore_pattern', '.*\.\(o\|exe\|dll\|bak\|sw[po]\|hi\|fff\|aux\|toc\|bbl\|blg\|DS_Store\)$')
     call unite#custom_source('haddock,hoogle', 'max_candidates', 20)
+    call neobundle#source(['unite-eject', 'unite-auto-open', 'unite-changetime', 'unite-preview'])
   endfunction
 endif
 
 " QuickRun / Filer / Outer world of Vim ( "\\" )
 let g:mapleader = "\\"
 NeoBundle 'Shougo/vimproc', { 'build' : { 'others' : 'make' } }
-NeoBundle 'thinca/vim-quickrun'
+NeoBundleLazy 'thinca/vim-quickrun', {'autoload': {'commands': 'QuickRun', 'mappings': '<Plug>(quickrun)'}}
   let g:quickrun_config = {'_': {'runner': 'vimproc', 'runner/vimproc/updatetime': 60, 'split': 'vertical', 'into': 1}}
   let s:quickrun_command_list = map(split('quickrun;cat,javascript;node,roy;roy,qcl;qcl,haskell;runhaskell,bf;bf', ','), 'split(v:val, ";")')
   for [s:ft, s:exe] in s:quickrun_command_list
@@ -156,7 +157,7 @@ NeoBundle 'thinca/vim-quickrun'
   nnoremap <silent> <Leader>e :<C-u>QuickRun <i <CR>
   nnoremap <silent> <Leader>o :<C-u>execute "QuickRun " . (filereadable("i") ? "<i " : "") . ">file:output"<CR>
 if s:nosudo
-NeoBundle 'Shougo/vimfiler'
+NeoBundleLazy 'Shougo/vimfiler', {'autoload': {'commands': ['VimFiler', 'VimFilerBufferDir']}, 'depends' : ['unite.vim', 'vinarise']}
   let g:vimfiler_as_default_explorer = 1
   let g:vimfiler_sort_type = 'TIME'
   let g:vimfiler_safe_mode_by_default = 0
@@ -187,7 +188,7 @@ NeoBundle 'Shougo/vimfiler'
     autocmd FileType vimfiler nnoremap <buffer><silent> t :<C-u>call vimfiler#mappings#do_action('change_time')<CR>
     autocmd FileType vimfiler if filereadable("Icon\r") | silent call delete("Icon\r") | endif
   augroup END
-NeoBundle 'Shougo/vinarise'
+NeoBundleLazy 'Shougo/vinarise'
 endif
 NeoBundleLazy 'eagletmt/ghci-vim', {'autoload': {'filetypes': ['haskell']}}
   augroup Ghci
@@ -196,14 +197,14 @@ NeoBundleLazy 'eagletmt/ghci-vim', {'autoload': {'filetypes': ['haskell']}}
     autocmd FileType haskell nnoremap <buffer> <Leader>i GhciInfo
     autocmd FileType haskell nnoremap <buffer> <Leader>t GhciType
   augroup END
-NeoBundle 'tyru/open-browser.vim'
+NeoBundleLazy 'tyru/open-browser.vim', {'autoload': {'mappings': '<Plug>(openbrowser-'}}
   nmap <silent> <Leader>b <Plug>(openbrowser-smart-search)
   vmap <silent> <Leader>b <Plug>(openbrowser-smart-search)
-NeoBundle 'mattn/webapi-vim'
+NeoBundleLazy 'mattn/webapi-vim'
 
 " vimshell ( ";" )
 let g:mapleader = ";"
-NeoBundle 'Shougo/vimshell.vim'
+NeoBundleLazy 'Shougo/vimshell.vim', {'autoload': {'commands': ['VimShell', 'VimShellBufferDir']}}
   let g:vimshell_interactive_update_time = 150
   let g:vimshell_popup_command = 'top new'
   let g:vimshell_split_command = 'vsplit'
@@ -272,8 +273,8 @@ NeoBundle 'gregsexton/MatchTag'
 NeoBundle 'matchit.zip'
 NeoBundleLazy 'thinca/vim-scouter', {'autoload': {'commands': [{'name': 'Scouter'}]}}
 NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'kien/ctrlp.vim'
-  let g:ctrlp_cmd = 'CtrlPMRUFiles'
+NeoBundleLazy 'kien/ctrlp.vim', {'autoload': {'commands': 'CtrlPMRUFiles'}}
+  nnoremap <silent> <C-p> :<C-u>CtrlPMRUFiles<CR>
   let g:ctrlp_show_hidden = 1
   let g:ctrlp_max_depth = 5
   let g:ctrlp_max_files = 300
@@ -284,12 +285,12 @@ NeoBundle 'kien/ctrlp.vim'
   let g:ctrlp_cache_dir = $CACHE.'/ctrlp'
   let s:_ctrlp_cache = g:ctrlp_cache_dir . '/mru/cache.txt'
   silent call writefile(map(readfile(s:_ctrlp_cache), "substitute(v:val, '^/home/\\a\\+', $HOME, '')"), s:_ctrlp_cache)
-NeoBundle 'thinca/vim-prettyprint'
-NeoBundle 'tyru/capture.vim'
+NeoBundleLazy 'thinca/vim-prettyprint', {'autoload': {'commands': [{'name': 'PrettyPrint', 'complete': 'expression'}, {'name': 'PP', 'complete': 'expression'}]}}
+NeoBundleLazy 'tyru/capture.vim', {'autoload': {'commands': [{'name': 'Capture', 'complete': 'command'}]}}
 NeoBundle 'banyan/recognize_charcode.vim'
 NeoBundleLazy 'itchyny/thumbnail.vim', {'type': 'nosync', 'autoload': {'commands': [{'name': 'Thumbnail', 'complete': 'customlist,thumbnail#complete'}]}}
   nnoremap <silent> <Leader>t :<C-u>Thumbnail -here<CR>
-NeoBundle 'itchyny/calendar.vim', {'type': 'nosync'}
+NeoBundleLazy 'itchyny/calendar.vim', {'type': 'nosync', 'autoload': {'commands': [{'name': 'Calendar', 'complete': 'customlist,calendar#argument#complete'}], 'mappings': '<Plug>(calendar)'}}
   map <silent> <Leader>z <Plug>(calendar)
   let g:calendar_cache_directory = $CACHE.'/calendar'
   let g:calendar_views = [ 'year', 'month', 'day_3', 'clock' ]
@@ -304,14 +305,14 @@ NeoBundleLazy 'itchyny/dictionary.vim', {'type': 'nosync', 'autoload': {'command
   nnoremap <silent> <Leader>y :<C-u>Dictionary -no-duplicate<CR>
   let g:dictionary_executable_path = '~/Dropbox/bin/'
 NeoBundle 'itchyny/vim-cmdline-ranges', {'type': 'nosync'}
-NeoBundle 'itchyny/vim-insert-mode-motion', {'type': 'nosync'}
+NeoBundleLazy 'itchyny/vim-insert-mode-motion', {'type': 'nosync', 'autoload': { 'insert': 1 }}
 NeoBundle 'itchyny/vim-spellbad-pattern', {'type': 'nosync'}
   let g:spellbad_pattern = [ '\<a\> [aiueo]', '^\$', '\<figure..\?\\', '\\ref{eq:'
         \ , '^\\end{align}', '[^\~]\\\(eq\)\?ref\>', 'does not [a-z]*s\>', 's [a-z][a-z]\+s\>', '\<a \S\+s\>', 'in default']
-NeoBundle 'itchyny/vim-closebuffer', {'type': 'nosync'}
+NeoBundleLazy 'itchyny/vim-closebuffer', {'type': 'nosync', 'autoload': {'mappings': '<Plug>(closebuffer)', 'insert': 1 }}
   map <C-w> <Plug>(closebuffer)
   imap <C-w> <Plug>(closebuffer)
-NeoBundle 'vim-jp/vital.vim'
+NeoBundleLazy 'vim-jp/vital.vim'
 
 " Syntax
 NeoBundleLazy 'scrooloose/syntastic', {'autoload': {'filetypes': ['c', 'cpp'], 'functions': ['SyntasticStatuslineFlag']}}
