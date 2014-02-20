@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/02/20 14:18:49.
+" - * Last Change: 2014/02/20 23:41:16.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -275,6 +275,7 @@ NeoBundleLazy 'thinca/vim-scouter', {'autoload': {'commands': [{'name': 'Scouter
 NeoBundle 'tpope/vim-fugitive'
 NeoBundleLazy 'kien/ctrlp.vim', {'autoload': {'commands': 'CtrlPMRUFiles'}}
   nnoremap <silent> <C-p> :<C-u>CtrlPMRUFiles<CR>
+  let g:ctrlp_cmd = 'CtrlPMRUFiles'
   let g:ctrlp_show_hidden = 1
   let g:ctrlp_max_depth = 5
   let g:ctrlp_max_files = 300
