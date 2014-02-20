@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/02/19 08:39:14.
+" - * Last Change: 2014/02/20 14:18:49.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -204,7 +204,7 @@ NeoBundleLazy 'mattn/webapi-vim'
 
 " vimshell ( ";" )
 let g:mapleader = ";"
-NeoBundleLazy 'Shougo/vimshell.vim', {'autoload': {'commands': ['VimShell', 'VimShellBufferDir']}}
+NeoBundleLazy 'Shougo/vimshell.vim', {'autoload': {'commands': ['VimShell', 'VimShellBufferDir', 'VimShellPop']}}
   let g:vimshell_interactive_update_time = 150
   let g:vimshell_popup_command = 'top new'
   let g:vimshell_split_command = 'vsplit'
