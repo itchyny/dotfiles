@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/02/20 23:41:16.
+" - * Last Change: 2014/02/21 00:03:12.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -493,18 +493,14 @@ nnoremap <silent> * :<C-u>set hlsearch<CR>*
 nnoremap <silent> # :<C-u>set hlsearch<CR>#
 
 " navigate window
-for s:k in ['h', 'j', 'k', 'l', 'x']
-  let s:l = s:k == 'j' ? 'm' : s:k
-  if s:l == s:k && s:k != 'x' | exec 'inoremap <C-' . s:l . '> <ESC><C-w>' . s:k | endif
-  exec 'nnoremap <C-' . s:l . '> <C-w>' . s:k
-  exec 'vnoremap <C-' . s:l . '> <C-w>' . s:k
-  exec 'nnoremap <C-' . s:k . '> <C-w>' . s:k
-  exec 'vnoremap <C-' . s:k . '> <C-w>' . s:k
-endfor
+nnoremap <C-h> <C-w>h
+nnoremap <C-m> <C-w>j
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+nnoremap <C-x> <C-w>x
 nnoremap <expr><C-m> (bufname('%') ==# '[Command Line]') ? "<CR>" : "<C-w>j"
-inoremap <C-q> <ESC><C-w>
 nnoremap <C-q> <C-w>
-vnoremap <C-q> <ESC><C-w>
 
 " Open dot files
 exec 'nnoremap \. :e ~/' . (filereadable(expand('~/Dropbox/.files/.vimrc')) ? 'Dropbox/.files/' : '') . '.vimrc<CR>'
