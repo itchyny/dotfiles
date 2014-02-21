@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/02/21 00:03:12.
+" - * Last Change: 2014/02/21 09:23:58.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -122,36 +122,16 @@ let g:mapleader = "\\"
 NeoBundle 'Shougo/vimproc', { 'build' : { 'others' : 'make' } }
 NeoBundleLazy 'thinca/vim-quickrun', {'autoload': {'commands': 'QuickRun', 'mappings': '<Plug>(quickrun)'}}
   let g:quickrun_config = {'_': {'runner': 'vimproc', 'runner/vimproc/updatetime': 60, 'split': 'vertical', 'into': 1}}
-  let s:quickrun_command_list = map(split('quickrun;cat,javascript;node,roy;roy,qcl;qcl,haskell;runhaskell,bf;bf', ','), 'split(v:val, ";")')
-  for [s:ft, s:exe] in s:quickrun_command_list
-    execute printf('if executable("%s") | let g:quickrun_config.%s = {"command":"%s"} | endif', s:exe, s:ft, s:exe)
+  for [s:ft, s:exe] in map(split('quickrun;cat,javascript;node,roy;roy,qcl;qcl,haskell;runhaskell,bf;bf', ','), 'split(v:val, ";")')
+    let g:quickrun_config[s:ft] = {'command': s:exe}
   endfor
-  if executable('pandoc')
-    let g:quickrun_config.markdown = {'type' : 'markdown/pandoc', 'outputter': 'browser', 'cmdopt': '-s'}
-  endif
-  if executable('autolatex')
-    let g:quickrun_config.tex = {'command' : 'autolatex'}
-  elseif executable('platex')
-    let g:quickrun_config.tex = {'command' : 'platex'}
-  endif
-  if executable('man')
-    let g:quickrun_config.nroff = {'command': 'man', 'args': " -P cat | tr '\b' '\1' | sed -e 's/.\1//g'", 'filetype': 'man'}
-  endif
-  if executable('autognuplot')
-    let g:quickrun_config.gnuplot = {'command' : 'autognuplot'}
-  elseif executable('gnuplot')
-    let g:quickrun_config.gnuplot = {'command' : 'gnuplot'}
-  endif
+  let g:quickrun_config.markdown = {'type' : 'markdown/pandoc', 'outputter': 'browser', 'cmdopt': '-s'}
+  let g:quickrun_config.tex = {'command' : executable('autolatex') ? 'autolatex' : executable('platex') ? 'platex' : ''}
+  let g:quickrun_config.nroff = {'command': 'man', 'args': " -P cat | tr '\b' '\1' | sed -e 's/.\1//g'", 'filetype': 'man'}
+  let g:quickrun_config.gnuplot = {'command' : executable('autognuplot') ? 'autognuplot' : executable('gnuplot') ? 'gnuplot' : ''}
   let g:quickrun_config.objc = {'command': 'cc', 'exec': ['%c %s -o %s:p:r -framework Foundation', '%s:p:r %a', 'rm -f %s:p:r'], 'tempfile': '{tempname()}.m'}
-  if executable('scad3.exe')
-    let g:quickrun_config.spice = {'command': 'scad3.exe', 'exec': ['%c -b %s:t'] }
-  endif
-  if executable('abcm2ps')
-    let g:quickrun_config.abc = {'command': 'abcm2ps', 'exec': ['%c %s -O %s:p:r.ps', 'ps2pdf %s:p:r.ps', 'open %s:p:r.pdf']}
-    if executable('abc2midi')
-      call extend(g:quickrun_config.abc.exec, ['abc2midi %s -o %s:p:r.mid', 'open %s:p:r.mid'])
-    endif
-  endif
+  let g:quickrun_config.spice = {'command': 'scad3.exe', 'exec': ['%c -b %s:t'] }
+  let g:quickrun_config.abc = {'command': 'abcm2ps', 'exec': extend(['%c %s -O %s:p:r.ps', 'ps2pdf %s:p:r.ps', 'open %s:p:r.pdf'], executable('abc2midi') ? ['abc2midi %s -o %s:p:r.mid', 'open %s:p:r.mid'] : [])}
   nnoremap <silent> <Leader>r :<C-u>QuickRun -outputter/buffer/name "[quickrun output%{tabpagenr()>1?' '.tabpagenr():''}]"<CR>
   nnoremap <silent> <Leader><Leader>r :<C-u>QuickRun >file:temp.dat<CR>
   nnoremap <silent> <Leader>e :<C-u>QuickRun <i <CR>
