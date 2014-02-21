@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/02/21 10:25:25.
+" - * Last Change: 2014/02/22 00:19:39.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -77,7 +77,6 @@ if s:nosudo
 NeoBundleLazy 'Shougo/unite.vim', {'autoload': {'commands': 'Unite'}}
   let g:unite_enable_start_insert = 1
   let g:unite_cursor_line_highlight = 'CursorLine'
-  let g:loaded_unite_source_mru = 1
   let g:unite_force_overwrite_statusline = 0
   let g:unite_data_directory = $CACHE.'/unite'
   let g:unite_marked_icon = s:fancy ? '✓' : 'v'
