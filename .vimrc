@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/02/21 09:23:58.
+" - * Last Change: 2014/02/21 09:27:59.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -150,7 +150,6 @@ NeoBundleLazy 'Shougo/vimfiler', {'autoload': {'commands': ['VimFiler', 'VimFile
   let g:vimfiler_file_icon = '-'
   let g:vimfiler_readonly_file_icon = s:fancy ? '✗' : 'x'
   let g:vimfiler_marked_file_icon = s:fancy ? '✓' : 'v'
-  let g:loaded_netrwPlugin = 1
   nnoremap <silent> <Leader>f :<C-u>VimFilerBufferDir -status -buffer-name=vimfiler -auto-cd<CR>
   nnoremap <silent> <Leader><Leader> :<C-u>VimFilerBufferDir -status -buffer-name=vimfiler -auto-cd<CR>
   let g:vimfiler_execute_file_list = {}
@@ -335,6 +334,13 @@ endif
 " Setting {{{
 filetype plugin indent on
 syntax enable
+
+" Default plugin
+let g:loaded_netrwPlugin = 1
+let g:loaded_2html_plugin = 1
+let g:loaded_rrhelper = 1
+let g:loaded_getscriptPlugin = 1
+let g:loaded_vimballPlugin = 1
 
 " Option
 try
