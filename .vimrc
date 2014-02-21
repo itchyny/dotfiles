@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/02/21 09:31:37.
+" - * Last Change: 2014/02/21 10:25:25.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -87,14 +87,15 @@ NeoBundleLazy 'Shougo/unite.vim', {'autoload': {'commands': 'Unite'}}
   nnoremap <silent><S-k> :Unite output:message -buffer-name=output<CR>
   nnoremap <silent><C-o> :Unite file file/new -buffer-name=file<CR>
   nnoremap <silent><S-l> :Unite line -buffer-name=line<CR>
-  augroup Unite
-    autocmd!
-    autocmd FileType unite inoremap <silent> <buffer> <C-o> <Nop>
-    autocmd FileType unite nmap <buffer> <C-a> <Plug>(unite_insert_enter)
-    autocmd FileType unite nmap <buffer> OA <Plug>(unite_rotate_previous_source)
-    autocmd FileType unite nnoremap <buffer> OB <Down>
-    autocmd FileType unite nmap <buffer> <Bs> <Plug>(unite_exit)
-  augroup END
+  function! s:unite()
+    inoremap <silent> <buffer> <C-z> <Nop>
+    inoremap <silent> <buffer> <C-o> <Nop>
+    nmap <buffer> <C-a> <Plug>(unite_insert_enter)
+    nmap <buffer> OA <Plug>(unite_rotate_previous_source)
+    nnoremap <buffer> OB <Down>
+    nmap <buffer> <BS> <Plug>(unite_exit)
+  endfunction
+  autocmd Vimrc FileType unite call s:unite()
 NeoBundleLazy 'Shougo/unite-build', {'autoload': {'unite_sources': ['build']}}
   nnoremap <silent><F5> :<C-u>Unite build -buffer-name=build<CR>
 NeoBundleLazy 'unite-colorscheme', {'autoload': {'unite_sources': ['colorscheme']}}
@@ -156,26 +157,19 @@ NeoBundleLazy 'Shougo/vimfiler', {'autoload': {'commands': ['VimFiler', 'VimFile
   for s:ft in split('pdf,png,jpg,jpeg,gif,bmp,ico,ppt,html', ',')
     let g:vimfiler_execute_file_list[s:ft] = 'open'
   endfor
-  augroup Vimfiler
-    autocmd!
-    autocmd FileType vimfiler nunmap <buffer> <C-l>
-    autocmd FileType vimfiler nunmap <buffer> \
-    autocmd FileType vimfiler nnoremap <buffer> <C-l> <ESC><C-w>l
-    autocmd FileType vimfiler nmap <buffer> <C-r> <Plug>(vimfiler_redraw_screen)
-    autocmd FileType vimfiler nmap <buffer> O <Plug>(vimfiler_sync_with_another_vimfiler)
-    autocmd FileType vimfiler nmap <buffer><expr> e vimfiler#smart_cursor_map("\<Plug>(vimfiler_cd_file)", "\<Plug>(vimfiler_edit_file)")
-    autocmd FileType vimfiler nnoremap <buffer><silent> t :<C-u>call vimfiler#mappings#do_action('change_time')<CR>
-    autocmd FileType vimfiler if filereadable("Icon\r") | silent call delete("Icon\r") | endif
-  augroup END
+  function! s:vimfiler()
+    nunmap <buffer> <C-l>
+    nunmap <buffer> \
+    nnoremap <buffer> <C-l> <ESC><C-w>l
+    nmap <buffer> <C-r> <Plug>(vimfiler_redraw_screen)
+    nmap <buffer> O <Plug>(vimfiler_sync_with_another_vimfiler)
+    nmap <buffer><expr> e vimfiler#smart_cursor_map("\<Plug>(vimfiler_cd_file)", "\<Plug>(vimfiler_edit_file)")
+    nnoremap <buffer><silent> t :<C-u>call vimfiler#mappings#do_action('change_time')<CR>
+    if filereadable("Icon\r") | silent call delete("Icon\r") | endif
+  endfunction
+  autocmd Vimrc FileType vimfiler call s:vimfiler()
 NeoBundleLazy 'Shougo/vinarise'
 endif
-NeoBundleLazy 'eagletmt/ghci-vim', {'autoload': {'filetypes': ['haskell']}}
-  augroup Ghci
-    autocmd!
-    autocmd FileType haskell nnoremap <buffer> <Leader>l GhciLoad
-    autocmd FileType haskell nnoremap <buffer> <Leader>i GhciInfo
-    autocmd FileType haskell nnoremap <buffer> <Leader>t GhciType
-  augroup END
 NeoBundleLazy 'tyru/open-browser.vim', {'autoload': {'mappings': '<Plug>(openbrowser-'}}
   nmap <silent> <Leader>b <Plug>(openbrowser-smart-search)
   vmap <silent> <Leader>b <Plug>(openbrowser-smart-search)
@@ -195,49 +189,53 @@ NeoBundleLazy 'Shougo/vimshell.vim', {'autoload': {'commands': ['VimShell', 'Vim
   let g:vimshell_temporary_directory = $CACHE.'/vimshell'
   let g:vimshell_max_command_history = 1000000
   let g:vimshell_vimshrc_path = expand('~/Dropbox/.files/.vimshrc')
-  augroup Vimshell
-    autocmd!
-    autocmd FileType vimshell iunmap <buffer> <C-h>
-    autocmd FileType vimshell iunmap <buffer> <C-k>
-    autocmd FileType vimshell iunmap <buffer> <C-l>
-    autocmd FileType vimshell iunmap <buffer> <C-w>
-    autocmd FileType vimshell nunmap <buffer> <C-k>
-    autocmd FileType vimshell nunmap <buffer> <C-l>
-    autocmd FileType vimshell nnoremap <buffer> <C-a> <Nop>
-    autocmd FileType vimshell nnoremap <buffer> <C-m> <ESC><C-w>j
-    autocmd FileType vimshell inoremap <buffer> <C-h> <ESC><C-w>h
-    autocmd FileType vimshell inoremap <buffer> <C-j> <ESC><C-w>j
-    autocmd FileType vimshell inoremap <buffer> <C-k> <ESC><C-w>k
-    autocmd FileType vimshell inoremap <buffer> <C-l> <ESC><C-w>l
-    autocmd FileType vimshell inoremap <silent><buffer> ^ <ESC>:call vimshell#execute('cd ../')<CR>:call vimshell#print_prompt()<CR>:call vimshell#start_insert()<CR>
-    autocmd FileType vimshell inoremap <buffer> <C-^> <ESC><C-^>
-    autocmd FileType vimshell imap <buffer><C-g> <Plug>(vimshell_history_neocomplete)
+  function! s:vimshell()
+    iunmap <buffer> <C-h>
+    iunmap <buffer> <C-k>
+    iunmap <buffer> <C-l>
+    iunmap <buffer> <C-w>
+    nunmap <buffer> <C-k>
+    nunmap <buffer> <C-l>
+    nnoremap <buffer> <C-a> <Nop>
+    nnoremap <buffer> <C-m> <ESC><C-w>j
+    inoremap <buffer> <C-h> <ESC><C-w>h
+    inoremap <buffer> <C-j> <ESC><C-w>j
+    inoremap <buffer> <C-k> <ESC><C-w>k
+    inoremap <buffer> <C-l> <ESC><C-w>l
+    inoremap <silent><buffer> ^ <ESC>:call vimshell#execute('cd ../')<CR>:call vimshell#print_prompt()<CR>:call vimshell#start_insert()<CR>
+    inoremap <buffer> <C-^> <ESC><C-^>
+    imap <buffer> <C-g> <Plug>(vimshell_history_neocomplete)
     let s:start_complete = ' "\<ESC>GA" . unite#sources#vimshell_history#start_complete(!0)'
     for s:key in ['<UP>', '<Down>', 'OA', 'OB']
-      execute "autocmd FileType vimshell inoremap <buffer> <expr><silent> ".s:key.s:start_complete
-      execute "autocmd FileType vimshell nnoremap <buffer> <expr><silent> ".s:key.s:start_complete
+      execute 'inoremap <buffer> <expr><silent> '.s:key.s:start_complete
+      execute 'nnoremap <buffer> <expr><silent> '.s:key.s:start_complete
     endfor
-  augroup END
+  endfunction
+  autocmd Vimrc FileType vimshell call s:vimshell()
   nnoremap <silent> <Leader>s :<C-u>VimShellBufferDir<CR>
   nnoremap <silent> H :<C-u>VimShellBufferDir -popup<CR>
   nnoremap <silent> s :<C-u>VimShellBufferDir<CR>
 NeoBundleLazy 'eagletmt/neco-ghc', {'autoload': {'filetypes': ['haskell']}, 'disabled': !executable('ghc-mod')}
   let g:necoghc_enable_detailed_browse = 1
+NeoBundleLazy 'eagletmt/ghci-vim', {'autoload': {'filetypes': ['haskell']}}
 NeoBundleLazy 'eagletmt/ghcmod-vim', {'autoload': {'filetypes': ['haskell']}, 'disabled': !executable('ghc-mod')}
-  nnoremap <Leader>g :<C-u>GhcModCheckAsync<CR>
+  function! s:haskell()
+    nnoremap <buffer> <Leader>l :<C-u>GhciLoad<CR>
+    nnoremap <buffer> <Leader>i :<C-u>GhciInfo<CR>
+    nnoremap <buffer> <Leader>t :<C-u>GhciType<CR>
+    nnoremap <buffer> <Leader>g :<C-u>GhcModCheckAsync<CR>
+  endfunction
+  autocmd Vimrc FileType haskell call s:haskell()
 
 " Commenter / Utility / Matching ( "," )
 let g:mapleader = ","
 NeoBundle 'tpope/vim-surround'
   let g:surround_{char2nr('$')} = "$\r$" " for LaTeX
 NeoBundle 'tComment'
-  augroup tComment
-    autocmd!
-    autocmd FileType gnuplot call tcomment#DefineType('gnuplot', '# %s')
-    autocmd FileType haxe call tcomment#DefineType('haxe', '// %s')
-    autocmd FileType meissa call tcomment#DefineType('meissa', '# %s')
-    autocmd FileType spice call tcomment#DefineType('spice', '* %s')
-  augroup END
+  autocmd Vimrc FileType gnuplot call tcomment#DefineType('gnuplot', '# %s')
+  autocmd Vimrc FileType haxe call tcomment#DefineType('haxe', '// %s')
+  autocmd Vimrc FileType meissa call tcomment#DefineType('meissa', '# %s')
+  autocmd Vimrc FileType spice call tcomment#DefineType('spice', '* %s')
   nnoremap <silent> __ :TComment<CR>
   vnoremap <silent> __ :TComment<CR>
   let g:tcommentMapLeader1 = ''
@@ -276,11 +274,11 @@ NeoBundleLazy 'itchyny/calendar.vim', {'type': 'nosync', 'autoload': {'commands'
   let g:calendar_views = [ 'year', 'month', 'day_3', 'clock' ]
   let g:calendar_google_calendar = 1
   let g:calendar_google_task = 1
-  augroup CalendarKey
-    autocmd!
-    autocmd FileType calendar nunmap <buffer> <C-h>
-    autocmd FileType calendar nunmap <buffer> <C-l>
-  augroup END
+  function! s:calendar()
+    nunmap <buffer> <C-h>
+    nunmap <buffer> <C-l>
+  endfunction
+  autocmd Vimrc FileType calendar call s:calendar()
 NeoBundleLazy 'itchyny/dictionary.vim', {'type': 'nosync', 'autoload': {'commands': [{'name': 'Dictionary', 'complete': 'customlist,dictionary#complete'}]}}
   nnoremap <silent> <Leader>y :<C-u>Dictionary -no-duplicate<CR>
   let g:dictionary_executable_path = '~/Dropbox/bin/'
@@ -388,13 +386,10 @@ endif
 autocmd Vimrc BufEnter * silent! lcd `=expand('%:p:h')`
 
 " Omni completation
-augroup Omnifunc
-  let s:omnifunc = map(split('c;ccomplete#Complete,css;csscomplete#CompleteCSS,html;htmlcomplete#CompleteTags,javascript;javascriptcomplete#CompleteJS,php;phpcomplete#CompletePHP,xml;xmlcomplete#CompleteTags,haskell;necoghc#omnifunc,python;jedi#completions', ','), 'split(v:val, ";")')
-  autocmd!
-  for [s:ft, s:omnif] in s:omnifunc
-    exec 'autocmd FileType ' . s:ft . ' setlocal omnifunc=' . s:omnif
-  endfor
-augroup END
+let s:omnifunc = map(split('c;ccomplete#Complete,css;csscomplete#CompleteCSS,html;htmlcomplete#CompleteTags,javascript;javascriptcomplete#CompleteJS,php;phpcomplete#CompletePHP,xml;xmlcomplete#CompleteTags,haskell;necoghc#omnifunc,python;jedi#completions', ','), 'split(v:val, ";")')
+for [s:ft, s:omnif] in s:omnifunc
+  exec 'autocmd Vimrc FileType ' . s:ft . ' setlocal omnifunc=' . s:omnif
+endfor
 
 " Explorer
 exec 'nnoremap <silent> \n :<C-u>silent call system("' (s:ismac ? 'open -a Finder' : s:iswin ? 'start' : 'nautilus') '.&")<CR>'
@@ -412,15 +407,12 @@ for [s:cmd, s:exp] in map(split(s:cmdlist, ','), 'split(v:val, ";")')
 endfor
 
 " Filetype
-augroup SetLocalFiletype
-  let s:filetypes1 = map(split('bf,gnuplot,jade,json,less,r,roy,tex,meissa,coffee,stl', ','), '[v:val, v:val]')
-  let s:filetypes2 = map(split('cls;tex,hs;haskell,hx;haxe,md;markdown,cir;spice,asc;spice,m;objc', ','), 'split(v:val, ";")')
-  autocmd!
-  for [s:ex, s:ft] in extend(s:filetypes1, s:filetypes2)
-    execute 'autocmd BufNewFile,BufReadPost *.' . s:ex . ' setlocal filetype=' . s:ft
-  endfor
-  autocmd Vimrc CursorHold,CursorHoldI * call s:auto_filetype()
-augroup END
+let s:filetypes1 = map(split('bf,gnuplot,jade,json,less,r,roy,tex,meissa,coffee,stl', ','), '[v:val, v:val]')
+let s:filetypes2 = map(split('cls;tex,hs;haskell,hx;haxe,md;markdown,cir;spice,asc;spice,m;objc', ','), 'split(v:val, ";")')
+for [s:ex, s:ft] in extend(s:filetypes1, s:filetypes2)
+  execute 'autocmd Vimrc BufNewFile,BufReadPost *.' . s:ex . ' setlocal filetype=' . s:ft
+endfor
+autocmd Vimrc CursorHold,CursorHoldI * call s:auto_filetype()
 function! s:auto_filetype()
   if line('.') > 5 | return | endif
   let newft = ''
