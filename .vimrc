@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/02/21 09:27:59.
+" - * Last Change: 2014/02/21 09:31:37.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -30,9 +30,9 @@ if !isdirectory(s:neobundle_dir)
   endif
 else
 if has('vim_starting')
-  execute 'set runtimepath+='.expand(s:neobundle_dir)
+  execute 'set runtimepath+='.s:neobundle_dir
 endif
-call neobundle#rc(expand($BUNDLE))
+call neobundle#rc($BUNDLE)
 NeoBundleFetch 'Shougo/neobundle.vim'
   nnoremap <silent> BB :<C-u>Unite neobundle/update -log -no-start-insert<CR>
 
@@ -65,7 +65,7 @@ NeoBundle 'Shougo/neocomplete.vim', {'disabled': !(has('lua') && v:version > 703
   let g:neocomplete#force_omni_input_patterns.python = '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
-  let g:neosnippet#snippets_directory = expand($VIM.'/snippets')
+  let g:neosnippet#snippets_directory = $VIM.'/snippets'
   imap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
   smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
   imap <expr><C-o> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<ESC>o"
