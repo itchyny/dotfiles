@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/02/23 20:25:17.
+" - * Last Change: 2014/02/24 10:59:26.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -235,9 +235,7 @@ NeoBundle 'tComment'
   autocmd Vimrc FileType haxe call tcomment#DefineType('haxe', '// %s')
   autocmd Vimrc FileType meissa call tcomment#DefineType('meissa', '# %s')
   autocmd Vimrc FileType spice call tcomment#DefineType('spice', '* %s')
-  nnoremap <silent> __ :TComment<CR>
-  vnoremap <silent> __ :TComment<CR>
-  let g:tcommentMapLeader1 = ''
+  let g:tcommentMapLeader1 = '_'
 NeoBundleLazy 'Align', {'autoload': {'commands': [{'name': 'Align'}]}}
 NeoBundle 'autodate.vim'
   let g:autodate_format = '%Y/%m/%d %H:%M:%S'
