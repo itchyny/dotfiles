@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/02/22 18:01:59.
+" - * Last Change: 2014/02/23 20:25:17.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -357,10 +357,7 @@ set showmatch noshowmode shortmess+=I pumheight=10 completeopt-=preview autoread
 set history=1000 viminfo='10,/10,:500,<10,@10,s10,n$CACHE/.viminfo spellfile=$CACHE/.spellfile.add
 set nospell
   autocmd Vimrc FileType tex,markdown,help exec 'setl ' . (&bt !=# 'help' && search("[^\x01-\x7e]", 'n') == 0 && line('$') > 5 ? '' : 'no') . 'spell'
-if has('conceal')
-  set concealcursor=nvc
-  autocmd Vimrc FileType vimfiler set concealcursor=nvc
-endif
+if has('conceal') | set concealcursor=nvc | endif
 set infercase wrapscan ignorecase smartcase incsearch nohlsearch magic
 set laststatus=2 showtabline=1 statusline=%{expand('%:p:t')}\ %<[%{expand('%:p:h')}]%=\ %m%r%y%w[%{&fenc!=''?&fenc:&enc}][%{&ff}][%3l,%3c,%3p]
 set background=dark
