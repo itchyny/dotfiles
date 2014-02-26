@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2014/02/26 15:41:20.
+# - * Last Change: 2014/02/26 16:40:13.
 # ------------------------------------------------------------------------------------------------------------
 
 # history
@@ -271,8 +271,6 @@ function makevim() {
   cd ~/Dropbox/cpp/vim/vim-$os/
   hg pull
   hg update
-  # make clean
-  # configurevim
   make
   ver=`vim --version | head -n 1 | sed -e 's/.*\([0-9][0-9]*\.[0-9][0-9]*\).*/\1/'`
   ver=$ver.`vim --version | head -n 3 | tail -n 2 | tr -d '\n' | sed -e 's/.*-\([0-9][0-9]*\).*/\1/'`
