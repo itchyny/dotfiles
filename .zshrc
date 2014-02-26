@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2014/02/24 23:53:34.
+# - * Last Change: 2014/02/26 15:41:20.
 # ------------------------------------------------------------------------------------------------------------
 
 # history
@@ -253,8 +253,6 @@ esac
 function configurevim() {
   cd ~/Dropbox/cpp/vim/vim-$os/
   rm -f src/auto/config.cache
-  # CFLAGS="-O3  -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=1"\
-  #             ./configure --with-features=huge\
   if which lua > /dev/null; then
     CFLAGS="-O3" ./configure --with-features=huge\
                 --with-compiledby=itchyny\
@@ -262,8 +260,6 @@ function configurevim() {
                 --with-lua-prefix=`dirname \`which lua\``\
                 --enable-luainterp=yes\
                 --enable-multibyte
-                #--enable-perlinterp=yes\
-                #--enable-rubyinterp=yes\
   else
     CFLAGS="-O3" ./configure --with-features=huge\
                 --with-compiledby=itchyny\
