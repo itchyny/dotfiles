@@ -1,14 +1,13 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/02/27 17:34:57.
+" - * Last Change: 2014/02/27 20:37:18.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
 filetype off
 scriptencoding utf-8
 if !executable(&shell) | set shell=sh | endif
-let s:isunix = has('unix')
 let s:iswin = has('win16') || has('win32') || has('win64')
 let s:ismac = !s:iswin && !has('win32unix') && (has('mac') || has('macunix') || has('guimacvim'))
 let s:fancy = s:ismac && has('multi_byte')
