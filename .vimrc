@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/02/27 15:45:30.
+" - * Last Change: 2014/02/27 17:34:57.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -164,7 +164,7 @@ NeoBundleLazy 'Shougo/vimfiler', {'autoload': {'commands': ['VimFiler', 'VimFile
     nmap <buffer> O <Plug>(vimfiler_sync_with_another_vimfiler)
     nmap <buffer><expr> e vimfiler#smart_cursor_map("\<Plug>(vimfiler_cd_file)", "\<Plug>(vimfiler_edit_file)")
     nnoremap <buffer><silent> t :<C-u>call vimfiler#mappings#do_action('change_time')<CR>
-    if filereadable("Icon\r") | silent call delete("Icon\r") | endif
+    silent! call delete("Icon\r")
   endfunction
   autocmd Vimrc FileType vimfiler call s:vimfiler()
 NeoBundleLazy 'Shougo/vinarise'
