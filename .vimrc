@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/02/27 22:49:57.
+" - * Last Change: 2014/03/01 15:59:00.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -352,7 +352,7 @@ set number cursorline nocursorcolumn
           \ | autocmd Vimrc BufEnter,WinEnter <buffer> setlocal nocursorline
 let [&t_SI,&t_EI] = ["\e]50;CursorShape=1\x7","\e]50;CursorShape=0\x7"]
 set showmatch noshowmode shortmess+=I pumheight=10 completeopt-=preview autoread
-set history=1000 viminfo='10,/10,:500,<10,@10,s10,n$CACHE/.viminfo spellfile=$CACHE/.spellfile.add
+set history=1000 viminfo='10,/10,:500,<10,@10,s10,n$CACHE/.viminfo directory=$CACHE/.swp spellfile=$CACHE/.spellfile.add
 set nospell
   autocmd Vimrc FileType tex,markdown,help exec 'setl ' . (&bt !=# 'help' && search("[^\x01-\x7e]", 'n') == 0 && line('$') > 5 ? '' : 'no') . 'spell'
 if has('conceal') | set concealcursor=nvc | endif
