@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/03/01 21:15:30.
+" - * Last Change: 2014/03/02 03:31:13.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -264,8 +264,8 @@ NeoBundleLazy 'kien/ctrlp.vim', {'autoload': {'commands': 'CtrlPMRUFiles'}}
 NeoBundleLazy 'thinca/vim-prettyprint', {'autoload': {'commands': [{'name': 'PrettyPrint', 'complete': 'expression'}, {'name': 'PP', 'complete': 'expression'}]}}
 NeoBundleLazy 'tyru/capture.vim', {'autoload': {'commands': [{'name': 'Capture', 'complete': 'command'}]}}
 NeoBundle 'banyan/recognize_charcode.vim'
-NeoBundleLazy 'itchyny/thumbnail.vim', {'type': 'nosync', 'autoload': {'commands': [{'name': 'Thumbnail', 'complete': 'customlist,thumbnail#complete'}]}}
-  nnoremap <silent> <Leader>t :<C-u>Thumbnail -here<CR>
+NeoBundleLazy 'itchyny/thumbnail.vim', {'type': 'nosync', 'autoload': {'commands': [{'name': 'Thumbnail', 'complete': 'customlist,thumbnail#complete'}], 'mappings': '<Plug>(thumbnail)'}}
+  map <silent> <Leader>t <Plug>(thumbnail)
 NeoBundleLazy 'itchyny/calendar.vim', {'type': 'nosync', 'autoload': {'commands': [{'name': 'Calendar', 'complete': 'customlist,calendar#argument#complete'}], 'mappings': '<Plug>(calendar)'}}
   map <silent> <Leader>z <Plug>(calendar)
   let g:calendar_cache_directory = $CACHE.'/calendar'
