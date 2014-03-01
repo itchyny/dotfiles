@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/03/01 16:24:08.
+" - * Last Change: 2014/03/01 20:53:01.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -121,9 +121,10 @@ let g:mapleader = "\\"
 NeoBundle 'Shougo/vimproc', { 'build' : { 'others' : 'make' } }
 NeoBundleLazy 'thinca/vim-quickrun', {'autoload': {'commands': 'QuickRun', 'mappings': '<Plug>(quickrun)'}}
   let g:quickrun_config = {'_': {'runner': 'vimproc', 'runner/vimproc/updatetime': 60, 'split': 'vertical', 'into': 1}}
-  for [s:ft, s:exe] in map(split('quickrun;cat,javascript;node,roy;roy,qcl;qcl,haskell;runhaskell,bf;bf', ','), 'split(v:val, ";")')
+  for [s:ft, s:exe] in map(split('quickrun;cat,javascript;node,roy;roy,qcl;qcl,bf;bf', ','), 'split(v:val, ";")')
     let g:quickrun_config[s:ft] = {'command': s:exe}
   endfor
+  let g:quickrun_config.haskell = {'command': 'runhaskell', 'cmdopt': "-Wall"}
   let g:quickrun_config.markdown = {'type' : 'markdown/pandoc', 'outputter': 'browser', 'cmdopt': '-s'}
   let g:quickrun_config.tex = {'command' : executable('autolatex') ? 'autolatex' : executable('platex') ? 'platex' : ''}
   let g:quickrun_config.nroff = {'command': 'man', 'args': " -P cat | tr '\b' '\1' | sed -e 's/.\1//g'", 'filetype': 'man'}
