@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2014/02/26 16:40:13.
+# - * Last Change: 2014/03/01 21:31:31.
 # ------------------------------------------------------------------------------------------------------------
 
 # history
@@ -157,7 +157,7 @@ function chpwd() { ls }
 stty -ixon -ixoff
 
 # alias
-alias cabal-update='sudo cabal update && sudo cabal install cabal-install && sudo cabal update'
+alias cabal-update='sudo cabal update && sudo cabal install cabal-install'
 if [ `uname` = "Darwin" ]; then
   alias google-chrome='open -a Google\ Chrome'
   alias evince='open -a Preview'
@@ -165,7 +165,6 @@ if [ `uname` = "Darwin" ]; then
   alias eog='open -a Preview'
   alias port-update='sudo port selfupdate && sudo port upgrade outdated'
   alias update='cabal-update && port-update'
-  # alias eject='sudo diskutil unmount'
   pman () {
     man -t $@ | open -f -a /Applications/Preview.app
   }
@@ -174,9 +173,6 @@ elif [ `uname` = "Linux" ]; then
   alias update='cabal-update && apt-get-update'
   alias open='gnome-open'
   alias pbcopy='xsel --clipboard --input'
-  # alias pbcopy='xsel -i -b'
-  # alias pbpaste='xsel -o -b'
-  # alias eject='sudo eject'
 fi
 alias chrome='google-chrome'
 function runc () { gcc -O3 $1 && shift && ./a.out $@; rm -f ./a.out }
