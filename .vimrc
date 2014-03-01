@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/03/01 15:59:00.
+" - * Last Change: 2014/03/01 16:24:08.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -290,11 +290,11 @@ NeoBundleLazy 'itchyny/vim-closebuffer', {'type': 'nosync', 'autoload': {'mappin
 NeoBundleLazy 'vim-jp/vital.vim'
 
 " Syntax
-NeoBundleLazy 'scrooloose/syntastic', {'autoload': {'filetypes': ['c', 'cpp'], 'functions': ['SyntasticStatuslineFlag']}}
+NeoBundleLazy 'scrooloose/syntastic', {'autoload': {'filetypes': ['c', 'cpp', 'haskell'], 'functions': ['SyntasticStatuslineFlag']}}
   let g:syntastic_mode_map = { 'mode': 'passive' }
   let g:syntastic_echo_current_error = 0
   let g:syntastic_enable_highlighting = 0
-  autocmd Vimrc BufWritePost *.c,*.cpp call s:syntastic()
+  autocmd Vimrc BufWritePost *.c,*.cpp,*.hs call s:syntastic()
   function! s:syntastic()
     if exists(':SyntasticCheck') | exec 'SyntasticCheck' | endif
     if exists('*lightline#update') | call lightline#update() | endif
