@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/03/02 10:16:08.
+" - * Last Change: 2014/03/02 17:13:34.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -170,7 +170,7 @@ NeoBundleLazy 'Shougo/vimfiler', {'autoload': {'commands': ['VimFiler', 'VimFile
   autocmd Vimrc FileType vimfiler call s:vimfiler()
 NeoBundleLazy 'Shougo/vinarise'
 endif
-NeoBundleLazy 'tyru/open-browser.vim', {'autoload': {'mappings': '<Plug>(openbrowser-'}}
+NeoBundleLazy 'tyru/open-browser.vim', {'autoload': {'mappings': '<Plug>(openbrowser-', 'function_prefix': 'openbrowser'}}
   nmap <silent> <Leader>b <Plug>(openbrowser-smart-search)
   vmap <silent> <Leader>b <Plug>(openbrowser-smart-search)
 NeoBundleLazy 'mattn/webapi-vim'
