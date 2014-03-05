@@ -498,5 +498,6 @@ cnoremap <C-a> <Home>
 cnoremap <C-b> <Left>
 cnoremap <C-f> <Right>
 " }}} KEY MAPPING
+NeoBundle 'wildfire.vim'
 
 " vim:foldmethod=marker
