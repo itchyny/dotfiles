@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2014/03/01 21:31:31.
+# - * Last Change: 2014/03/05 18:35:09.
 # ------------------------------------------------------------------------------------------------------------
 
 # history
@@ -272,6 +272,12 @@ function makevim() {
   ver=$ver.`vim --version | head -n 3 | tail -n 2 | tr -d '\n' | sed -e 's/.*-\([0-9][0-9]*\).*/\1/'`
   cp -n `which vim` ~/Dropbox/cpp/vim/backup/vim-$os/vim@$ver
   sudo make install
+}
+function makenvim() {
+  cd ~/Dropbox/cpp/vim/neovim/
+  git pull
+  make cmake
+  make
 }
 
 # suffix alias according to file extension
