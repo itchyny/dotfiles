@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/03/02 17:13:34.
+" - * Last Change: 2014/03/06 10:25:35.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -498,6 +498,5 @@ cnoremap <C-a> <Home>
 cnoremap <C-b> <Left>
 cnoremap <C-f> <Right>
 " }}} KEY MAPPING
-NeoBundle 'wildfire.vim'
 
 " vim:foldmethod=marker
