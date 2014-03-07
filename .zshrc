@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2014/03/05 21:08:56.
+# - * Last Change: 2014/03/07 08:57:16.
 # ------------------------------------------------------------------------------------------------------------
 
 # history
@@ -346,13 +346,15 @@ function http {
 [ -e ~/Dropbox/.files/incr-0.2.zsh ] && \
   source ~/Dropbox/.files/incr-0.2.zsh
 
-# https://github.com/zsh-users/zsh-history-substring-search
-[ -e ~/Dropbox/.files/zsh-history-substring-search/zsh-history-substring-search.zsh  ] && \
-  source ~/Dropbox/.files/zsh-history-substring-search/zsh-history-substring-search.zsh
-
 # https://github.com/zsh-users/zsh-syntax-highlighting
 [ -e ~/Dropbox/.files/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && \
   source ~/Dropbox/.files/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# https://github.com/zsh-users/zsh-history-substring-search
+[ -e ~/Dropbox/.files/zsh-history-substring-search/zsh-history-substring-search.zsh  ] && \
+  source ~/Dropbox/.files/zsh-history-substring-search/zsh-history-substring-search.zsh
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
 
 # https://github.com/nakamuray/zaw
 [ -e ~/Dropbox/.files/zaw/zaw.zsh ] && \
