@@ -1,0 +1,503 @@
+config: {}
+plugin:
+  itchyny/landscape.vim:
+    sync: false
+    beforeScript:
+      - "let g:landscape_highlight_url = 1"
+      - "let g:landscape_highlight_todo = 1"
+      - "let g:landscape_highlight_url_filetype = {'thumbnail': 0}"
+    afterScript:
+      - "colorscheme landscape"
+  itchyny/lightline.vim:
+    sync: false
+    script:
+      - "let g:lightline = {'colorscheme': 'landscape','mode_map':{'c': 'NORMAL'}}"
+      - "exec 'set guifont=' . substitute('Inconsolata for Powerline', ' ', g:iswin ? '_' : '\\\\ ', 'g') . (g:ismac ? ':h15' : g:iswin ?  ':h13:cANSI' : '\\ 12')"
+      - "if g:iswin | set guifontwide=MS_Gothic:h11:cSHIFTJIS | endif"
+    dependedby:
+      - "lightline-powerful"
+  itchyny/lightline-powerful:
+    sync: false
+    dependon:
+      - "lightline"
+  itchyny/vim-spellbad-pattern:
+    sync: false
+    script:
+      - "let g:spellbad_pattern = [ '\\<a\\> [aiueo]', '^\\$', '\\<figure..\\?\\\\', '\\\\ref{eq:', '^\\\\end{align}', '[^\\~]\\\\\\(eq\\)\\?ref\\>', 'does not [a-z]*s\\>', 's [a-z][a-z]\\+s\\>', '\\<a \\S\\+s\\>', 'in default']"
+  itchyny/calendar.vim:
+    sync: false
+    mapleader: ","
+    command: "Calendar"
+    mapping: "<Plug>(calendar)"
+    script:
+      - "map <silent> <Leader>z <Plug>(calendar)"
+    beforeScript:
+      - "let g:calendar_cache_directory = $CACHE.'/calendar'"
+      - "let g:calendar_views = [ 'year', 'month', 'day_3', 'clock' ]"
+      - "let g:calendar_google_calendar = 1"
+      - "let g:calendar_google_task = 1"
+  itchyny/thumbnail.vim:
+    sync: false
+    mapleader: ","
+    command: "Thumbnail"
+    mapping: "<Plug>(thumbnail)"
+    script:
+      - "map <silent> <Leader>t <Plug>(thumbnail)"
+  itchyny/dictionary.vim:
+    sync: false
+    mapleader: ","
+    command: "Dictionary"
+    mapping: "<Plug>(dictionary)"
+    script:
+      - "nnoremap <silent> <Leader>y :<C-u>Dictionary -no-duplicate<CR>"
+    beforeScript:
+      - "let g:dictionary_executable_path = '~/Dropbox/bin/'"
+    dependon:
+      - "vimproc"
+  itchyny/vim-closebuffer:
+    sync: false
+    mapping: "<Plug>(closebuffer)"
+    insert: true
+    script:
+      - "map <C-w> <Plug>(closebuffer)"
+      - "imap <C-w> <Plug>(closebuffer)"
+  itchyny/vim-external:
+    sync: false
+    mapleader: "\\"
+    mappings:
+      - "<Plug>(external-editor)"
+      - "<Plug>(external-explorer)"
+    script:
+      - "map <Leader>g <Plug>(external-editor)"
+      - "map <Leader>n <Plug>(external-explorer)"
+  itchyny/vim-insert-mode-motion:
+    sync: false
+    insert: true
+  itchyny/vim-cmdline-ranges:
+    sync: false
+  Shougo/neocomplete.vim:
+    enable: "has('lua') && v:version > 703"
+    beforeScript:
+      - "let g:neocomplete#enable_at_startup = 1"
+      - "let g:neocomplete#enable_smart_case = 1"
+      - "let g:neocomplete#max_list = 1000"
+      - "let g:neocomplete#skip_auto_completion_time = '0.20'"
+      - "let g:neocomplete#auto_completion_start_length = 1"
+      - "let g:neocomplete#data_directory = $CACHE.'/neocomplete'"
+      - "let g:neocomplete#force_overwrite_completefunc = 1"
+      - "let g:neocomplete#ignore_source_files = [ 'member.vim', 'tag.vim', 'dictionary.vim', 'include.vim' ]"
+      - "let g:neocomplete#force_omni_input_patterns = get(g:, 'neocomplete#force_omni_input_patterns', {})"
+      - "let g:neocomplete#force_omni_input_patterns.python = '\\%([^. \\t]\\.\\|^\\s*@\\|^\\s*from\\s.\\+import \\|^\\s*from \\|^\\s*import \\)\\w*'"
+  Shougo/neosnippet:
+    script:
+      - "let g:neosnippet#snippets_directory = $VIM.'/snippets'"
+      - "imap <expr><TAB> neosnippet#expandable_or_jumpable() ? \"\\<Plug>(neosnippet_expand_or_jump)\" : pumvisible() ? \"\\<C-n>\" : \"\\<TAB>\""
+      - "smap <expr><TAB> neosnippet#expandable_or_jumpable() ? \"\\<Plug>(neosnippet_expand_or_jump)\" : \"\\<TAB>\""
+      - "imap <expr><C-o> neosnippet#expandable_or_jumpable() ? \"\\<Plug>(neosnippet_expand_or_jump)\" : \"\\<ESC>o\""
+  Shougo/neosnippet-snippets: {}
+  Shougo/vimproc:
+    build: "make"
+  thinca/vim-quickrun:
+    command: "QuickRun"
+    mapping: "<Plug>(quickrun)"
+    mapleader: "\\"
+    beforeScript:
+      - "let g:quickrun_config = {'_': {'runner': 'vimproc', 'runner/vimproc/updatetime': 60, 'split': 'vertical', 'into': 1}}"
+      - "for [s:ft, s:exe] in [['quickrun', 'cat'], ['javascript', 'node'], ['roy', 'roy'], ['qcl', 'qcl'], ['bf', 'bf']]"
+      - "  let g:quickrun_config[s:ft] = {'command': s:exe}"
+      - "endfor"
+      - "let g:quickrun_config.haskell = {'command': 'runhaskell', 'cmdopt': '-Wall'}"
+      - "let g:quickrun_config.markdown = {'type' : 'markdown/pandoc', 'outputter': 'browser', 'cmdopt': '-s'}"
+      - "let g:quickrun_config.rst = {'command' : 'pandoc', 'exec': '%c --from=rst --to=html %o %s %a', 'outputter': 'browser', 'cmdopt': '-s'}"
+      - "let g:quickrun_config.tex = {'command' : executable('autolatex') ? 'autolatex' : executable('platex') ? 'platex' : ''}"
+      - "let g:quickrun_config.nroff = {'command': 'man', 'args': \" -P cat | tr '\\b' '\\1' | sed -e 's/.\\1//g'\", 'filetype': 'man'}"
+      - "let g:quickrun_config.gnuplot = {'command' : executable('autognuplot') ? 'autognuplot' : executable('gnuplot') ? 'gnuplot' : ''}"
+      - "let g:quickrun_config.objc = {'command': 'cc', 'exec': ['%c %s -o %s:p:r -framework Foundation', '%s:p:r %a', 'rm -f %s:p:r'], 'tempfile': '{tempname()}.m'}"
+      - "let g:quickrun_config.spice = {'command': 'scad3.exe', 'exec': ['%c -b %s:t'] }"
+      - "let g:quickrun_config.abc = {'command': 'abcm2ps', 'exec': extend(['%c %s -O %s:p:r.ps', 'ps2pdf %s:p:r.ps', 'open %s:p:r.pdf'], executable('abc2midi') ? ['abc2midi %s -o %s:p:r.mid', 'open %s:p:r.mid'] : [])}"
+    script:
+      - "nnoremap <silent> <Leader>r :<C-u>QuickRun -outputter/buffer/name \"[quickrun output%{tabpagenr()>1?' '.tabpagenr():''}]\"<CR>"
+      - "nnoremap <silent> <Leader><Leader>r :<C-u>QuickRun >file:temp.dat<CR>"
+      - "nnoremap <silent> <Leader>e :<C-u>QuickRun <i <CR>"
+      - "nnoremap <silent> <Leader>o :<C-u>execute 'QuickRun ' . (filereadable('i') ? '<i ' : '') . '>file:output'<CR>"
+  Shougo/vimfiler:
+    mapleader: "\\"
+    commands:
+      - "VimFiler"
+      - "VimFilerBufferDir"
+    dependon:
+      - "unite"
+      - "vinarise"
+    beforeScript:
+      - "let g:vimfiler_as_default_explorer = 1"
+      - "let g:vimfiler_sort_type = 'TIME'"
+      - "let g:vimfiler_safe_mode_by_default = 0"
+      - "let g:vimfiler_force_overwrite_statusline = 0"
+      - "let g:vimfiler_data_directory = $CACHE.'/vimfiler'"
+      - "let g:vimfiler_draw_files_limit = 1000"
+      - "let g:vimfiler_ignore_pattern = '^\\.\\%([^v]\\|v[^i]\\|vi[^m]\\)\\|\\.\\%(o\\|hi\\)$\\|^dist$\\|^\\%(score\\|font\\|tex\\|graphviz\\|scheme\\|ANTLER\\|procon\\|pl\\|old_project\\|kmc\\|html\\|rst\\|eclipse\\|rubik\\|coq\\|r\\|antlr\\|ltspice\\)$'"
+      - "let g:vimfiler_tree_leaf_icon = g:fancy ? ' ' : '|'"
+      - "let g:vimfiler_tree_opened_icon = g:fancy ? '▾' : '-'"
+      - "let g:vimfiler_tree_closed_icon = g:fancy ? '▸' : '+'"
+      - "let g:vimfiler_file_icon = '-'"
+      - "let g:vimfiler_readonly_file_icon = g:fancy ? '✗' : 'x'"
+      - "let g:vimfiler_marked_file_icon = g:fancy ? '✓' : 'v'"
+      - "let g:vimfiler_execute_file_list = eval('{'.join(map(split('pdf,png,jpg,jpeg,gif,bmp,ico,ppt,html', ','), '''\"''.v:val.''\":\"open\"'''), ',').'}')"
+    script:
+      - "nnoremap <silent> <Leader>f :<C-u>VimFilerBufferDir -status -buffer-name=vimfiler -auto-cd<CR>"
+      - "nnoremap <silent> <Leader><Leader> :<C-u>VimFilerBufferDir -status -buffer-name=vimfiler -auto-cd<CR>"
+  Shougo/vinarise:
+    mapleader: "\\"
+    loadbefore:
+      - "vimfiler"
+  Shougo/unite.vim:
+    command: Unite
+    mapleader: ","
+    beforeScript:
+      - "let g:unite_enable_start_insert = 1"
+      - "let g:unite_cursor_line_highlight = 'CursorLine'"
+      - "let g:unite_force_overwrite_statusline = 0"
+      - "let g:unite_data_directory = $CACHE.'/unite'"
+      - "let g:unite_marked_icon = g:fancy ? '✓' : 'v'"
+      - "let g:unite_candidate_icon = '-'"
+    script:
+      - "nnoremap <silent><C-n> :Unite file/new directory/new -buffer-name=file/new,directory/new<CR>"
+      - "nnoremap <silent><S-k> :Unite output:message -buffer-name=output<CR>"
+      - "nnoremap <silent><C-o> :Unite file file/new -buffer-name=file<CR>"
+      - "nnoremap <silent><S-l> :Unite line -buffer-name=line<CR>"
+    dependedby:
+      - "unite-build"
+      - "unite-colorscheme"
+      - "unite-highlight"
+      - "unite-haddock"
+      - "unite-outline"
+      - "unite-haskellimport"
+      - "unite-webcolorname"
+      - "codic-vim-with-unite"
+      - "unite-eject"
+      - "unite-auto-open"
+      - "unite-changetime"
+      - "unite-preview"
+  Shougo/unite-build:
+    loadafter:
+      - unite
+  ujihisa/unite-colorscheme:
+    loadafter:
+      - unite
+  osyo-manga/unite-highlight:
+    loadafter:
+      - unite
+  eagletmt/unite-haddock:
+    loadafter:
+      - unite
+    mapleader: ","
+    enable: "executable('hoogle')"
+    script:
+      - "nnoremap <Leader>h :<C-u>Unite hoogle -buffer-name=hoogle<CR>"
+  h1mesuke/unite-outline:
+    loadafter:
+      - unite
+  ujihisa/unite-haskellimport:
+    loadafter:
+      - unite
+  pasela/unite-webcolorname:
+    loadafter:
+      - unite
+  rhysd/codic-vim-with-unite:
+    loadafter:
+      - unite
+  itchyny/unite-eject:
+    loadafter:
+      - unite
+    sync: false
+  itchyny/unite-auto-open:
+    loadafter:
+      - unite
+    sync: false
+  itchyny/unite-changetime:
+    loadafter:
+      - unite
+    sync: false
+  itchyny/unite-preview:
+    loadafter:
+      - unite
+    sync: false
+  tyru/open-browser.vim:
+    mapping: "<Plug>(openbrowser-smart-search)"
+    function: "openbrowser"
+    mapleader: "\\"
+    script:
+      - "map <silent> <Leader>b <Plug>(openbrowser-smart-search)"
+  Shougo/vimshell.vim:
+    commands:
+      - "VimShell"
+      - "VimShellBufferDir"
+      - "VimShellPop"
+    function: "vimshell"
+    mapleader: ";"
+    beforeScript:
+      - "let g:vimshell_interactive_update_time = 150"
+      - "let g:vimshell_popup_command = 'top new'"
+      - "let g:vimshell_split_command = 'vsplit'"
+      - "let g:vimshell_prompt_expr = 'escape(fnamemodify(getcwd(), \":~\"), \"\\\\[]()?! \").\" \"'"
+      - "let g:vimshell_prompt_pattern = (has('win16') || has('win32') || has('win64') ? '\\%(^\\f:' : '\\%(^[~/]') . '\\%(\\f\\|\\\\.\\)* \\|^[*a-zA-Z][a-zA-Z .0-9]\\+> \\|^>>> \\)'"
+      - "let g:vimshell_scrollback_limit = 1000000000"
+      - "let g:vimshell_disable_escape_highlight = 0"
+      - "let g:vimshell_force_overwrite_statusline = 0"
+      - "let g:vimshell_temporary_directory = $CACHE.'/vimshell'"
+      - "let g:vimshell_max_command_history = 1000000"
+      - "let g:vimshell_vimshrc_path = expand('~/Dropbox/.files/.vimshrc')"
+    script:
+      - "nnoremap <silent> <Leader>s :<C-u>VimShellBufferDir<CR>"
+      - "nnoremap <silent> H :<C-u>VimShellBufferDir -popup<CR>"
+      - "nnoremap <silent> s :<C-u>VimShellBufferDir<CR>"
+  ujihisa/neco-look:
+    enable: "executable('look')"
+  Align:
+    command: "Align"
+  VimCalc:
+    command: "Calc"
+    mapleader: ","
+    enable: "has('python')"
+    script:
+      - "nnoremap <silent> <Leader>a :<C-u>Calc<CR>"
+  sjl/gundo.vim:
+    mapleader: ","
+    command: "GundoToggle"
+    enable: "has('python')"
+    script:
+      - "nnoremap <Leader>g :<C-u>GundoToggle<CR>"
+  xterm-color-table.vim:
+    command: "XtermColorTable"
+  thinca/vim-scouter:
+    command: "Scouter"
+  thinca/vim-prettyprint:
+    commands:
+      - "PrettyPrint"
+      - "PP"
+  tyru/capture.vim:
+    command: "Capture"
+    complete: "command"
+  kien/ctrlp.vim:
+    command: "CtrlPMRUFiles"
+    script:
+      - "nnoremap <silent> <C-p> :<C-u>CtrlPMRUFiles<CR>"
+    beforeScript:
+      - "let g:ctrlp_cmd = 'CtrlPMRUFiles'"
+      - "let g:ctrlp_show_hidden = 1"
+      - "let g:ctrlp_max_depth = 5"
+      - "let g:ctrlp_max_files = 300"
+      - "let g:ctrlp_mruf_max = 300"
+      - "let g:ctrlp_custom_ignore = { 'dir': '\\v[\\/]\\.(git|hg|svn)$', 'file': '\\v\\.(exe|so|dll|swp|pdf|DS_Store)$', }"
+      - "let g:ctrlp_open_new_file = 'r'"
+      - "let g:ctrlp_use_caching = 1"
+      - "let g:ctrlp_cache_dir = $CACHE.'/ctrlp'"
+      - "let s:_ctrlp_cache = g:ctrlp_cache_dir . '/mru/cache.txt'"
+      - "silent call writefile(map(readfile(s:_ctrlp_cache), \"substitute(v:val, '^/home/\\\\a\\\\+', $HOME, '')\"), s:_ctrlp_cache)"
+  tpope/vim-surround:
+    beforeScript:
+      - "let g:surround_{char2nr('$')} = \"$\\r$\""
+  tComment:
+    command: TComment
+    script:
+      - "nnoremap <silent> __ :TComment<CR>"
+      - "vnoremap <silent> __ :TComment<CR>"
+    beforeScript:
+      - "let g:tcommentMapLeader1 = ''"
+      - "let g:tcommentMapLeader2 = ''"
+  autodate.vim:
+    beforeScript:
+      - "let g:autodate_format = '%Y/%m/%d %H:%M:%S'"
+  gregsexton/MatchTag: {}
+  matchit.zip: {}
+  tpope/vim-fugitive: {}
+  banyan/recognize_charcode.vim: {}
+  motemen/hatena-vim:
+    filetype: "hatena"
+  eagletmt/ghci-vim:
+    filetype: "haskell"
+    enable: "executable('ghc')"
+    commands:
+      - "GhciQuit"
+      - "GhciType"
+      - "GhciInfo"
+      - "GhciLoad"
+      - "GhciModule"
+      - "GhciSend"
+  eagletmt/ghcmod-vim:
+    filetype: "haskell"
+    enable: "executable('ghc') && executable('ghc-mod')"
+    commands:
+      - "GhcModDiagnostics"
+      - "GhcModType"
+      - "GhcModTypeInsert"
+      - "GhcModInfo"
+      - "GhcModTypeClear"
+      - "GhcModInfoPreview"
+      - "GhcModCheck"
+      - "GhcModLint"
+      - "GhcModCheckAsync"
+      - "GhcModLintAsync"
+      - "GhcModCheckAndLintAsync"
+      - "GhcModExpand"
+  eagletmt/neco-ghc:
+    filetype: "haskell"
+    enable: "executable('ghc') && executable('ghc-mod')"
+    beforeScript:
+      - "let g:necoghc_enable_detailed_browse = 1"
+  ynkdir/vim-vimlparser:
+    loadbefore:
+      - "vimlint"
+    dependedby:
+      - "vimlint"
+  syngan/vim-vimlint:
+    function: "vimlint"
+    dependon:
+      - "vimlparser"
+  scrooloose/syntastic:
+    filetypes:
+      - "c"
+      - "cpp"
+      - "haskell"
+    function: "SyntasticStatuslineFlag"
+    beforeScript:
+      - "let g:syntastic_mode_map = { 'mode': 'passive' }"
+      - "let g:syntastic_echo_current_error = 0"
+      - "let g:syntastic_enable_highlighting = 0"
+    script:
+      - "autocmd Vimrc BufWritePost *.c,*.cpp,*.hs call s:syntastic()"
+      - "function! s:syntastic()"
+      - "  if exists(':SyntasticCheck') | exec 'SyntasticCheck' | endif"
+      - "  if exists('*lightline#update') | call lightline#update() | endif"
+      - "endfunction"
+  Shougo/vimproc.vim:
+    dependedby:
+      - "dictionary"
+    loadbefore:
+      - "dictionary"
+  indenthaskell.vim:
+    filetype: "haskell"
+  elzr/vim-json:
+    filetype: "json"
+  html5.vim:
+    filetype: "html"
+  mattn/emmet-vim:
+    filetype: "html"
+    beforeScript:
+      - "let g:user_emmet_settings = { 'indentation' : '  ' }"
+    afterScript:
+      - "imap <buffer><silent> <tab> <plug>(emmet-expand-abbr)"
+  wavded/vim-stylus:
+    filetype: "stylus"
+  groenewege/vim-less:
+    filetype: "less"
+  tpope/vim-haml:
+    filetype: "haml"
+  syntaxm4.vim:
+    filetype: "m4"
+  jade.vim:
+    filetype: "jade"
+  vim-coffee-script:
+    filetype: "coffee"
+  rest.vim:
+    filetype: "rest"
+  tpope/vim-markdown:
+    filetype: "m4"
+  davidhalter/jedi-vim:
+    filetype: "python"
+    beforeScript:
+      - "let g:jedi#auto_vim_configuration = 0"
+      - "let g:jedi#popup_select_first = 0"
+      - "let g:jedi#completions_enabled = 0"
+  itspriddle/vim-javascript-indent:
+    filetype: "javascript"
+
+beforeScript:
+  - "let g:iswin = has('win16') || has('win32') || has('win64')"
+  - "let g:ismac = !g:iswin && !has('win32unix') && (has('mac') || has('macunix') || has('guimacvim'))"
+  - "let g:fancy = g:ismac && has('multi_byte')"
+  - ""
+  - "let g:loaded_netrwPlugin = 1"
+  - "let g:loaded_2html_plugin = 1"
+  - "let g:loaded_rrhelper = 1"
+  - "let g:loaded_getscriptPlugin = 1"
+  - "let g:loaded_vimballPlugin = 1"
+  - ""
+  - "let g:hs_highlight_boolean = 1"
+  - "let g:hs_highlight_types = 1"
+  - "let g:hs_highlight_more_types = 1"
+
+afterScript:
+  - "let g:mapleader = ','"
+
+filetypeScript:
+  c:
+    - "setl ofu=ccomplete#Complete"
+  html:
+    - "setl ofu=htmlcomplete#CompleteTags"
+  css:
+    - "setl ofu=csscomplete#CompleteCSS"
+  javascript:
+    - "setl ofu=javascriptcomplete#CompleteJS"
+  php:
+    - "setl ofu=phpcomplete#CompletePHP"
+  xml:
+    - "setl ofu=xmlcomplete#CompleteTags"
+  python:
+    - "setl ofu=jedi#completions"
+  unite:
+    - "inoremap <silent> <buffer> <C-z> <Nop>"
+    - "inoremap <silent> <buffer> <C-o> <Nop>"
+    - "nmap <buffer> <C-a> <Plug>(unite_insert_enter)"
+    - "nmap <buffer> OA <Plug>(unite_rotate_previous_source)"
+    - "nnoremap <buffer> OB <Down>"
+    - "nmap <buffer> <BS> <Plug>(unite_exit)"
+  vimfiler:
+    - "nunmap <buffer> <C-l>"
+    - "nunmap <buffer> \\"
+    - "nnoremap <buffer> <C-l> <ESC><C-w>l"
+    - "nmap <buffer> <C-r> <Plug>(vimfiler_redraw_screen)"
+    - "nmap <buffer> O <Plug>(vimfiler_sync_with_another_vimfiler)"
+    - "nmap <buffer><expr> e vimfiler#smart_cursor_map(\"\\<Plug>(vimfiler_cd_file)\", \"\\<Plug>(vimfiler_edit_file)\")"
+    - "nnoremap <buffer><silent> t :<C-u>call vimfiler#mappings#do_action('change_time')<CR>"
+    - "silent! call delete(\"Icon\\r\")"
+  vimshell:
+    - "iunmap <buffer> <C-h>"
+    - "iunmap <buffer> <C-k>"
+    - "iunmap <buffer> <C-l>"
+    - "iunmap <buffer> <C-w>"
+    - "nunmap <buffer> <C-k>"
+    - "nunmap <buffer> <C-l>"
+    - "nnoremap <buffer> <C-a> <Nop>"
+    - "nnoremap <buffer> <C-m> <ESC><C-w>j"
+    - "inoremap <buffer> <C-h> <ESC><C-w>h"
+    - "inoremap <buffer> <C-j> <ESC><C-w>j"
+    - "inoremap <buffer> <C-k> <ESC><C-w>k"
+    - "inoremap <buffer> <C-l> <ESC><C-w>l"
+    - "inoremap <silent><buffer> ^ <ESC>:call vimshell#execute('cd ../')<CR>:call vimshell#print_prompt()<CR>:call vimshell#start_insert()<CR>"
+    - "inoremap <buffer> <C-^> <ESC><C-^>"
+    - "imap <buffer> <C-g> <Plug>(vimshell_history_neocomplete)"
+    - "let s:start_complete = ' \"\\<ESC>GA\" . unite#sources#vimshell_history#start_complete(!0)'"
+    - "for s:key in ['<UP>', '<Down>', 'OA', 'OB']"
+    - "  execute 'inoremap <buffer> <expr><silent> '.s:key.s:start_complete"
+    - "  execute 'nnoremap <buffer> <expr><silent> '.s:key.s:start_complete"
+    - "endfor"
+  calendar:
+    - "nunmap <buffer> <C-h>"
+    - "nunmap <buffer> <C-l>"
+  haskell:
+    - "setl ofu=necoghc#omnifunc"
+    - "nnoremap <buffer> <Leader>l :<C-u>GhciLoad<CR>"
+    - "nnoremap <buffer> <Leader>i :<C-u>GhciInfo<CR>"
+    - "nnoremap <buffer> <Leader>t :<C-u>GhciType<CR>"
+    - "nnoremap <buffer> <Leader>g :<C-u>GhcModCheckAsync<CR>"
+  gnuplot:
+    - "call tcomment#DefineType('gnuplot', '# %s')"
+  haxe:
+    - "call tcomment#DefineType('haxe', '// %s')"
+  meissa:
+    - "call tcomment#DefineType('meissa', '# %s')"
+  spice:
+    - "call tcomment#DefineType('spice', '* %s')"
+  help:
+    - "nnoremap <buffer> <C-[> <C-t>"
