@@ -402,7 +402,7 @@ plugin:
   rest.vim:
     filetype: "rest"
   tpope/vim-markdown:
-    filetype: "m4"
+    filetype: "markdown"
   davidhalter/jedi-vim:
     filetype: "python"
     beforeScript:
