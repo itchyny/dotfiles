@@ -1,13 +1,12 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/03/15 23:53:05.
+" - * Last Change: 2014/03/16 01:01:00.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
 filetype off
 scriptencoding utf-8
-let s:nosudo = $SUDO_USER == ''
 let $VIM = expand('~/.vim')
 let $CACHE = $VIM.'/.cache'
 augroup Vimrc

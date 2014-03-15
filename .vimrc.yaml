@@ -193,7 +193,7 @@ plugin:
     mapleader: ","
     enable: "executable('hoogle')"
     script:
-      - "nnoremap <Leader>h :<C-u>Unite hoogle -buffer-name=hoogle<CR>"
+      - "nnoremap <silent> <Leader>h :<C-u>Unite hoogle -buffer-name=hoogle<CR>"
   h1mesuke/unite-outline:
     loadafter:
       - unite
