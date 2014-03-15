@@ -1,15 +1,12 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/03/14 23:51:04.
+" - * Last Change: 2014/03/15 18:45:20.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
 filetype off
 scriptencoding utf-8
-let s:iswin = has('win16') || has('win32') || has('win64')
-let s:ismac = !s:iswin && !has('win32unix') && (has('mac') || has('macunix') || has('guimacvim'))
-let s:fancy = s:ismac && has('multi_byte')
 let s:nosudo = $SUDO_USER == ''
 let $VIM = expand('~/.vim')
 let $CACHE = $VIM.'/.cache'
@@ -61,7 +58,7 @@ endif
 set swapfile nobackup updatetime=300 timeoutlen=500 ttyfast vb t_vb= wildignore+=*.sw?,*.bak,*.?~,*.??~,*.???~,*.~,*.o,*.hi wildmode=list:longest
 
 " Maximize the window
-if s:iswin
+if has('win16') || has('win32') || has('win64')
   autocmd Vimrc GUIEnter * simalt ~x
 endif
 
