@@ -95,8 +95,6 @@ plugin:
       - "smap <expr><TAB> neosnippet#expandable_or_jumpable() ? \"\\<Plug>(neosnippet_expand_or_jump)\" : \"\\<TAB>\""
       - "imap <expr><C-o> neosnippet#expandable_or_jumpable() ? \"\\<Plug>(neosnippet_expand_or_jump)\" : \"\\<ESC>o\""
   Shougo/neosnippet-snippets: {}
-  Shougo/vimproc:
-    build: "make"
   thinca/vim-quickrun:
     command: "QuickRun"
     mapping: "<Plug>(quickrun)"
@@ -124,7 +122,14 @@ plugin:
     mapleader: "\\"
     commands:
       - "VimFiler"
+      - "VimFilerDouble"
+      - "VimFilerCurrentDir"
       - "VimFilerBufferDir"
+      - "VimFilerCreate"
+      - "VimFilerSimple"
+      - "VimFilerSplit"
+      - "VimFilerTab"
+      - "VimFilerExplorer"
     dependon:
       - "unite"
       - "vinarise"
@@ -151,7 +156,16 @@ plugin:
     loadbefore:
       - "vimfiler"
   Shougo/unite.vim:
-    command: Unite
+    commands:
+      - "Unite"
+      - "UniteWithCurrentDir"
+      - "UniteWithBufferDir"
+      - "UniteWithProjectDir"
+      - "UniteWithCursorWord"
+      - "UniteWithInput"
+      - "UniteWithInputDirectory"
+      - "UniteResume"
+      - "UniteClose"
     mapleader: ","
     beforeScript:
       - "let g:unite_enable_start_insert = 1"
@@ -231,10 +245,20 @@ plugin:
   Shougo/vimshell.vim:
     commands:
       - "VimShell"
-      - "VimShellBufferDir"
+      - "VimShellCreate"
       - "VimShellPop"
+      - "VimShellTab"
+      - "VimShellCurrentDir"
+      - "VimShellBufferDir"
+      - "VimShellExecute"
+      - "VimShellInteractive"
+      - "VimShellTerminal"
+      - "VimShellSendString"
+      - "VimShellSendBuffer"
     function: "vimshell"
     mapleader: ";"
+    dependon:
+      - "vimproc"
     beforeScript:
       - "let g:vimshell_interactive_update_time = 150"
       - "let g:vimshell_popup_command = 'top new'"
@@ -371,9 +395,9 @@ plugin:
       - "  if exists('*lightline#update') | call lightline#update() | endif"
       - "endfunction"
   Shougo/vimproc.vim:
-    dependedby:
-      - "dictionary"
+    build: "make"
     loadbefore:
+      - "vimshell"
       - "dictionary"
   indenthaskell.vim:
     filetype: "haskell"
