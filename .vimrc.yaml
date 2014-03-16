@@ -131,6 +131,7 @@ plugin:
       - "VimFilerTab"
       - "VimFilerExplorer"
     dependon:
+      - "vimproc"
       - "unite"
       - "vinarise"
     beforeScript:
@@ -351,6 +352,8 @@ plugin:
   eagletmt/ghcmod-vim:
     filetype: "haskell"
     enable: "executable('ghc') && executable('ghc-mod')"
+    dependon:
+      - "vimproc"
     commands:
       - "GhcModDiagnostics"
       - "GhcModType"
@@ -397,6 +400,8 @@ plugin:
   Shougo/vimproc.vim:
     build: "make"
     loadbefore:
+      - "ghcmod"
+      - "vimfiler"
       - "vimshell"
       - "dictionary"
   indenthaskell.vim:
