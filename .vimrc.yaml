@@ -195,47 +195,47 @@ plugin:
       - "unite-preview"
   Shougo/unite-build:
     loadafter:
-      - unite
+      - "unite"
   ujihisa/unite-colorscheme:
     loadafter:
-      - unite
+      - "unite"
   osyo-manga/unite-highlight:
     loadafter:
-      - unite
+      - "unite"
   eagletmt/unite-haddock:
     loadafter:
-      - unite
+      - "unite"
     mapleader: ","
     enable: "executable('hoogle')"
     script:
       - "nnoremap <silent> <Leader>h :<C-u>Unite hoogle -buffer-name=hoogle<CR>"
   h1mesuke/unite-outline:
     loadafter:
-      - unite
+      - "unite"
   ujihisa/unite-haskellimport:
     loadafter:
-      - unite
+      - "unite"
   pasela/unite-webcolorname:
     loadafter:
-      - unite
+      - "unite"
   rhysd/codic-vim-with-unite:
     loadafter:
-      - unite
+      - "unite"
   itchyny/unite-eject:
     loadafter:
-      - unite
+      - "unite"
     sync: false
   itchyny/unite-auto-open:
     loadafter:
-      - unite
+      - "unite"
     sync: false
   itchyny/unite-changetime:
     loadafter:
-      - unite
+      - "unite"
     sync: false
   itchyny/unite-preview:
     loadafter:
-      - unite
+      - "unite"
     sync: false
   tyru/open-browser.vim:
     mapping: "<Plug>(openbrowser-smart-search)"
@@ -323,7 +323,7 @@ plugin:
     beforeScript:
       - "let g:surround_{char2nr('$')} = \"$\\r$\""
   tComment:
-    command: TComment
+    command: "TComment"
     script:
       - "nnoremap <silent> __ :TComment<CR>"
       - "vnoremap <silent> __ :TComment<CR>"
