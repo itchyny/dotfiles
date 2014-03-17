@@ -63,7 +63,7 @@ plugin:
       imap <C-w> <Plug>(closebuffer)
   itchyny/vim-external:
     sync: false
-    mapleader: "\\"
+    mapleader: \
     mappings:
       - <Plug>(external-editor)
       - <Plug>(external-explorer)
@@ -98,7 +98,7 @@ plugin:
   thinca/vim-quickrun:
     command: QuickRun
     mapping: <Plug>(quickrun)
-    mapleader: "\\"
+    mapleader: \
     beforeScript: |
       let g:quickrun_config = {'_': {'runner': 'vimproc', 'runner/vimproc/updatetime': 60, 'split': 'vertical', 'into': 1}}
       for [s:ft, s:exe] in [['quickrun', 'cat'], ['javascript', 'node'], ['roy', 'roy'], ['qcl', 'qcl'], ['bf', 'bf']]
@@ -119,7 +119,7 @@ plugin:
       nnoremap <silent> <Leader>e :<C-u>QuickRun <i <CR>
       nnoremap <silent> <Leader>o :<C-u>execute 'QuickRun ' . (filereadable('i') ? '<i ' : '') . '>file:output'<CR>
   Shougo/vimfiler:
-    mapleader: "\\"
+    mapleader: \
     commands:
       - VimFiler
       - VimFilerDouble
@@ -153,7 +153,7 @@ plugin:
       nnoremap <silent> <Leader>f :<C-u>VimFilerBufferDir -status -buffer-name=vimfiler -auto-cd<CR>
       nnoremap <silent> <Leader><Leader> :<C-u>VimFilerBufferDir -status -buffer-name=vimfiler -auto-cd<CR>
   Shougo/vinarise:
-    mapleader: "\\"
+    mapleader: \
     loadbefore:
       - vimfiler
   Shougo/unite.vim:
@@ -240,7 +240,7 @@ plugin:
   tyru/open-browser.vim:
     mapping: <Plug>(openbrowser-smart-search)
     function: openbrowser
-    mapleader: "\\"
+    mapleader: \
     script: |
       map <silent> <Leader>b <Plug>(openbrowser-smart-search)
   Shougo/vimshell.vim:
@@ -257,7 +257,7 @@ plugin:
       - VimShellSendString
       - VimShellSendBuffer
     function: vimshell
-    mapleader: ";"
+    mapleader: ;
     dependon:
       - vimproc
     beforeScript: |
@@ -468,13 +468,13 @@ beforeScript: |
   let g:iswin = has('win16') || has('win32') || has('win64')
   let g:ismac = !g:iswin && !has('win32unix') && (has('mac') || has('macunix') || has('guimacvim'))
   let g:fancy = g:ismac && has('multi_byte')
-  
+
   let g:loaded_netrwPlugin = 1
   let g:loaded_2html_plugin = 1
   let g:loaded_rrhelper = 1
   let g:loaded_getscriptPlugin = 1
   let g:loaded_vimballPlugin = 1
-  
+
   let g:hs_highlight_boolean = 1
   let g:hs_highlight_types = 1
   let g:hs_highlight_more_types = 1
