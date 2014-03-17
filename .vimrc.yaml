@@ -28,7 +28,7 @@ plugin:
     sync: false
     mapleader: ","
     command: Calendar
-    mapping: "<Plug>(calendar)"
+    mapping: <Plug>(calendar)
     script: |
       map <silent> <Leader>z <Plug>(calendar)
     beforeScript: |
@@ -40,14 +40,14 @@ plugin:
     sync: false
     mapleader: ","
     command: Thumbnail
-    mapping: "<Plug>(thumbnail)"
+    mapping: <Plug>(thumbnail)
     script: |
       map <silent> <Leader>t <Plug>(thumbnail)
   itchyny/dictionary.vim:
     sync: false
     mapleader: ","
     command: Dictionary
-    mapping: "<Plug>(dictionary)"
+    mapping: <Plug>(dictionary)
     script: |
       nnoremap <silent> <Leader>y :<C-u>Dictionary -no-duplicate<CR>
     beforeScript: |
@@ -56,7 +56,7 @@ plugin:
       - vimproc
   itchyny/vim-closebuffer:
     sync: false
-    mapping: "<Plug>(closebuffer)"
+    mapping: <Plug>(closebuffer)
     insert: true
     script: |
       map <C-w> <Plug>(closebuffer)
@@ -65,8 +65,8 @@ plugin:
     sync: false
     mapleader: "\\"
     mappings:
-      - "<Plug>(external-editor)"
-      - "<Plug>(external-explorer)"
+      - <Plug>(external-editor)
+      - <Plug>(external-explorer)
     script: |
       map <Leader>g <Plug>(external-editor)
       map <Leader>n <Plug>(external-explorer)
@@ -97,7 +97,7 @@ plugin:
   Shougo/neosnippet-snippets: {}
   thinca/vim-quickrun:
     command: QuickRun
-    mapping: "<Plug>(quickrun)"
+    mapping: <Plug>(quickrun)
     mapleader: "\\"
     beforeScript: |
       let g:quickrun_config = {'_': {'runner': 'vimproc', 'runner/vimproc/updatetime': 60, 'split': 'vertical', 'into': 1}}
@@ -238,8 +238,8 @@ plugin:
       - unite
     sync: false
   tyru/open-browser.vim:
-    mapping: "<Plug>(openbrowser-smart-search)"
-    function: "openbrowser"
+    mapping: <Plug>(openbrowser-smart-search)
+    function: openbrowser
     mapleader: "\\"
     script: |
       map <silent> <Leader>b <Plug>(openbrowser-smart-search)
@@ -256,7 +256,7 @@ plugin:
       - VimShellTerminal
       - VimShellSendString
       - VimShellSendBuffer
-    function: "vimshell"
+    function: vimshell
     mapleader: ";"
     dependon:
       - vimproc
@@ -409,7 +409,7 @@ plugin:
       - c
       - cpp
       - haskell
-    function: "SyntasticStatuslineFlag"
+    function: SyntasticStatuslineFlag
     beforeScript: |
       let g:syntastic_mode_map = { 'mode': 'passive' }
       let g:syntastic_echo_current_error = 0
