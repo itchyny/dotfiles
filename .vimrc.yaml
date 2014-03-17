@@ -2,12 +2,12 @@ config: {}
 plugin:
   itchyny/landscape.vim:
     sync: false
-    beforeScript:
-      - "let g:landscape_highlight_url = 1"
-      - "let g:landscape_highlight_todo = 1"
-      - "let g:landscape_highlight_url_filetype = {'thumbnail': 0}"
-    afterScript:
-      - "colorscheme landscape"
+    beforeScript: |
+      let g:landscape_highlight_url = 1
+      let g:landscape_highlight_todo = 1
+      let g:landscape_highlight_url_filetype = {'thumbnail': 0}
+    afterScript: |
+      colorscheme landscape
   itchyny/lightline.vim:
     sync: false
     script:
@@ -31,11 +31,11 @@ plugin:
     mapping: "<Plug>(calendar)"
     script:
       - "map <silent> <Leader>z <Plug>(calendar)"
-    beforeScript:
-      - "let g:calendar_cache_directory = $CACHE.'/calendar'"
-      - "let g:calendar_views = [ 'year', 'month', 'day_3', 'clock' ]"
-      - "let g:calendar_google_calendar = 1"
-      - "let g:calendar_google_task = 1"
+    beforeScript: |
+      let g:calendar_cache_directory = $CACHE.'/calendar'
+      let g:calendar_views = [ 'year', 'month', 'day_3', 'clock' ]
+      let g:calendar_google_calendar = 1
+      let g:calendar_google_task = 1
   itchyny/thumbnail.vim:
     sync: false
     mapleader: ","
@@ -50,8 +50,8 @@ plugin:
     mapping: "<Plug>(dictionary)"
     script:
       - "nnoremap <silent> <Leader>y :<C-u>Dictionary -no-duplicate<CR>"
-    beforeScript:
-      - "let g:dictionary_executable_path = '~/Dropbox/bin/'"
+    beforeScript: |
+      let g:dictionary_executable_path = '~/Dropbox/bin/'
     dependon:
       - "vimproc"
   itchyny/vim-closebuffer:
@@ -78,16 +78,16 @@ plugin:
   Shougo/neocomplete.vim:
     enable: "has('lua') && v:version > 703"
     beforeScript:
-      - "let g:neocomplete#enable_at_startup = 1"
-      - "let g:neocomplete#enable_smart_case = 1"
-      - "let g:neocomplete#max_list = 1000"
-      - "let g:neocomplete#skip_auto_completion_time = '0.20'"
-      - "let g:neocomplete#auto_completion_start_length = 1"
-      - "let g:neocomplete#data_directory = $CACHE.'/neocomplete'"
-      - "let g:neocomplete#force_overwrite_completefunc = 1"
-      - "let g:neocomplete#ignore_source_files = [ 'member.vim', 'tag.vim', 'dictionary.vim', 'include.vim' ]"
-      - "let g:neocomplete#force_omni_input_patterns = get(g:, 'neocomplete#force_omni_input_patterns', {})"
-      - "let g:neocomplete#force_omni_input_patterns.python = '\\%([^. \\t]\\.\\|^\\s*@\\|^\\s*from\\s.\\+import \\|^\\s*from \\|^\\s*import \\)\\w*'"
+      let g:neocomplete#enable_at_startup = 1
+      let g:neocomplete#enable_smart_case = 1
+      let g:neocomplete#max_list = 1000
+      let g:neocomplete#skip_auto_completion_time = '0.20'
+      let g:neocomplete#auto_completion_start_length = 1
+      let g:neocomplete#data_directory = $CACHE.'/neocomplete'
+      let g:neocomplete#force_overwrite_completefunc = 1
+      let g:neocomplete#ignore_source_files = [ 'member.vim', 'tag.vim', 'dictionary.vim', 'include.vim' ]
+      let g:neocomplete#force_omni_input_patterns = get(g:, 'neocomplete#force_omni_input_patterns', {})
+      let g:neocomplete#force_omni_input_patterns.python = '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
   Shougo/neosnippet:
     script:
       - "let g:neosnippet#snippets_directory = $VIM.'/snippets'"
@@ -99,20 +99,20 @@ plugin:
     command: "QuickRun"
     mapping: "<Plug>(quickrun)"
     mapleader: "\\"
-    beforeScript:
-      - "let g:quickrun_config = {'_': {'runner': 'vimproc', 'runner/vimproc/updatetime': 60, 'split': 'vertical', 'into': 1}}"
-      - "for [s:ft, s:exe] in [['quickrun', 'cat'], ['javascript', 'node'], ['roy', 'roy'], ['qcl', 'qcl'], ['bf', 'bf']]"
-      - "  let g:quickrun_config[s:ft] = {'command': s:exe}"
-      - "endfor"
-      - "let g:quickrun_config.haskell = {'command': 'runhaskell', 'cmdopt': '-Wall'}"
-      - "let g:quickrun_config.markdown = {'type' : 'markdown/pandoc', 'outputter': 'browser', 'cmdopt': '-s'}"
-      - "let g:quickrun_config.rst = {'command' : 'pandoc', 'exec': '%c --from=rst --to=html %o %s %a', 'outputter': 'browser', 'cmdopt': '-s'}"
-      - "let g:quickrun_config.tex = {'command' : executable('autolatex') ? 'autolatex' : executable('platex') ? 'platex' : ''}"
-      - "let g:quickrun_config.nroff = {'command': 'man', 'args': \" -P cat | tr '\\b' '\\1' | sed -e 's/.\\1//g'\", 'filetype': 'man'}"
-      - "let g:quickrun_config.gnuplot = {'command' : executable('autognuplot') ? 'autognuplot' : executable('gnuplot') ? 'gnuplot' : ''}"
-      - "let g:quickrun_config.objc = {'command': 'cc', 'exec': ['%c %s -o %s:p:r -framework Foundation', '%s:p:r %a', 'rm -f %s:p:r'], 'tempfile': '{tempname()}.m'}"
-      - "let g:quickrun_config.spice = {'command': 'scad3.exe', 'exec': ['%c -b %s:t'] }"
-      - "let g:quickrun_config.abc = {'command': 'abcm2ps', 'exec': extend(['%c %s -O %s:p:r.ps', 'ps2pdf %s:p:r.ps', 'open %s:p:r.pdf'], executable('abc2midi') ? ['abc2midi %s -o %s:p:r.mid', 'open %s:p:r.mid'] : [])}"
+    beforeScript: |
+      let g:quickrun_config = {'_': {'runner': 'vimproc', 'runner/vimproc/updatetime': 60, 'split': 'vertical', 'into': 1}}
+      for [s:ft, s:exe] in [['quickrun', 'cat'], ['javascript', 'node'], ['roy', 'roy'], ['qcl', 'qcl'], ['bf', 'bf']]
+        let g:quickrun_config[s:ft] = {'command': s:exe}
+      endfor
+      let g:quickrun_config.haskell = {'command': 'runhaskell', 'cmdopt': '-Wall'}
+      let g:quickrun_config.markdown = {'type' : 'markdown/pandoc', 'outputter': 'browser', 'cmdopt': '-s'}
+      let g:quickrun_config.rst = {'command' : 'pandoc', 'exec': '%c --from=rst --to=html %o %s %a', 'outputter': 'browser', 'cmdopt': '-s'}
+      let g:quickrun_config.tex = {'command' : executable('autolatex') ? 'autolatex' : executable('platex') ? 'platex' : ''}
+      let g:quickrun_config.nroff = {'command': 'man', 'args': " -P cat | tr '\b' '\1' | sed -e 's/.\1//g'", 'filetype': 'man'}
+      let g:quickrun_config.gnuplot = {'command' : executable('autognuplot') ? 'autognuplot' : executable('gnuplot') ? 'gnuplot' : ''}
+      let g:quickrun_config.objc = {'command': 'cc', 'exec': ['%c %s -o %s:p:r -framework Foundation', '%s:p:r %a', 'rm -f %s:p:r'], 'tempfile': '{tempname()}.m'}
+      let g:quickrun_config.spice = {'command': 'scad3.exe', 'exec': ['%c -b %s:t'] }
+      let g:quickrun_config.abc = {'command': 'abcm2ps', 'exec': extend(['%c %s -O %s:p:r.ps', 'ps2pdf %s:p:r.ps', 'open %s:p:r.pdf'], executable('abc2midi') ? ['abc2midi %s -o %s:p:r.mid', 'open %s:p:r.mid'] : [])}
     script:
       - "nnoremap <silent> <Leader>r :<C-u>QuickRun -outputter/buffer/name \"[quickrun output%{tabpagenr()>1?' '.tabpagenr():''}]\"<CR>"
       - "nnoremap <silent> <Leader><Leader>r :<C-u>QuickRun >file:temp.dat<CR>"
@@ -134,21 +134,21 @@ plugin:
       - "vimproc"
       - "unite"
       - "vinarise"
-    beforeScript:
-      - "let g:vimfiler_as_default_explorer = 1"
-      - "let g:vimfiler_sort_type = 'TIME'"
-      - "let g:vimfiler_safe_mode_by_default = 0"
-      - "let g:vimfiler_force_overwrite_statusline = 0"
-      - "let g:vimfiler_data_directory = $CACHE.'/vimfiler'"
-      - "let g:vimfiler_draw_files_limit = 1000"
-      - "let g:vimfiler_ignore_pattern = '^\\.\\%([^v]\\|v[^i]\\|vi[^m]\\)\\|\\.\\%(o\\|hi\\)$\\|^dist$\\|^\\%(score\\|font\\|tex\\|graphviz\\|scheme\\|ANTLER\\|procon\\|pl\\|old_project\\|kmc\\|html\\|rst\\|eclipse\\|rubik\\|coq\\|r\\|antlr\\|ltspice\\)$'"
-      - "let g:vimfiler_tree_leaf_icon = g:fancy ? ' ' : '|'"
-      - "let g:vimfiler_tree_opened_icon = g:fancy ? '▾' : '-'"
-      - "let g:vimfiler_tree_closed_icon = g:fancy ? '▸' : '+'"
-      - "let g:vimfiler_file_icon = '-'"
-      - "let g:vimfiler_readonly_file_icon = g:fancy ? '✗' : 'x'"
-      - "let g:vimfiler_marked_file_icon = g:fancy ? '✓' : 'v'"
-      - "let g:vimfiler_execute_file_list = eval('{'.join(map(split('pdf,png,jpg,jpeg,gif,bmp,ico,ppt,html', ','), '''\"''.v:val.''\":\"open\"'''), ',').'}')"
+    beforeScript: |
+      let g:vimfiler_as_default_explorer = 1
+      let g:vimfiler_sort_type = 'TIME'
+      let g:vimfiler_safe_mode_by_default = 0
+      let g:vimfiler_force_overwrite_statusline = 0
+      let g:vimfiler_data_directory = $CACHE.'/vimfiler'
+      let g:vimfiler_draw_files_limit = 1000
+      let g:vimfiler_ignore_pattern = '^\.\%([^v]\|v[^i]\|vi[^m]\)\|\.\%(o\|hi\)$\|^dist$\|^\%(score\|font\|tex\|graphviz\|scheme\|ANTLER\|procon\|pl\|old_project\|kmc\|html\|rst\|eclipse\|rubik\|coq\|r\|antlr\|ltspice\)$'
+      let g:vimfiler_tree_leaf_icon = g:fancy ? ' ' : '|'
+      let g:vimfiler_tree_opened_icon = g:fancy ? '▾' : '-'
+      let g:vimfiler_tree_closed_icon = g:fancy ? '▸' : '+'
+      let g:vimfiler_file_icon = '-'
+      let g:vimfiler_readonly_file_icon = g:fancy ? '✗' : 'x'
+      let g:vimfiler_marked_file_icon = g:fancy ? '✓' : 'v'
+      let g:vimfiler_execute_file_list = {'jpg': 'open', 'jpeg': 'open', 'gif': 'open', 'bmp': 'open', 'html': 'open', 'ppt': 'open', 'pdf': 'open', 'png': 'open', 'ico': 'open'}
     script:
       - "nnoremap <silent> <Leader>f :<C-u>VimFilerBufferDir -status -buffer-name=vimfiler -auto-cd<CR>"
       - "nnoremap <silent> <Leader><Leader> :<C-u>VimFilerBufferDir -status -buffer-name=vimfiler -auto-cd<CR>"
@@ -168,13 +168,13 @@ plugin:
       - "UniteResume"
       - "UniteClose"
     mapleader: ","
-    beforeScript:
-      - "let g:unite_enable_start_insert = 1"
-      - "let g:unite_cursor_line_highlight = 'CursorLine'"
-      - "let g:unite_force_overwrite_statusline = 0"
-      - "let g:unite_data_directory = $CACHE.'/unite'"
-      - "let g:unite_marked_icon = g:fancy ? '✓' : 'v'"
-      - "let g:unite_candidate_icon = '-'"
+    beforeScript: |
+      let g:unite_enable_start_insert = 1
+      let g:unite_cursor_line_highlight = 'CursorLine'
+      let g:unite_force_overwrite_statusline = 0
+      let g:unite_data_directory = $CACHE.'/unite'
+      let g:unite_marked_icon = g:fancy ? '✓' : 'v'
+      let g:unite_candidate_icon = '-'
     script:
       - "nnoremap <silent><C-n> :Unite file/new directory/new -buffer-name=file/new,directory/new<CR>"
       - "nnoremap <silent><S-k> :Unite output:message -buffer-name=output<CR>"
@@ -260,18 +260,18 @@ plugin:
     mapleader: ";"
     dependon:
       - "vimproc"
-    beforeScript:
-      - "let g:vimshell_interactive_update_time = 150"
-      - "let g:vimshell_popup_command = 'top new'"
-      - "let g:vimshell_split_command = 'vsplit'"
-      - "let g:vimshell_prompt_expr = 'escape(fnamemodify(getcwd(), \":~\"), \"\\\\[]()?! \").\" \"'"
-      - "let g:vimshell_prompt_pattern = (has('win16') || has('win32') || has('win64') ? '\\%(^\\f:' : '\\%(^[~/]') . '\\%(\\f\\|\\\\.\\)* \\|^[*a-zA-Z][a-zA-Z .0-9]\\+> \\|^>>> \\)'"
-      - "let g:vimshell_scrollback_limit = 1000000000"
-      - "let g:vimshell_disable_escape_highlight = 0"
-      - "let g:vimshell_force_overwrite_statusline = 0"
-      - "let g:vimshell_temporary_directory = $CACHE.'/vimshell'"
-      - "let g:vimshell_max_command_history = 1000000"
-      - "let g:vimshell_vimshrc_path = expand('~/Dropbox/.files/.vimshrc')"
+    beforeScript: |
+      let g:vimshell_interactive_update_time = 150
+      let g:vimshell_popup_command = 'top new'
+      let g:vimshell_split_command = 'vsplit'
+      let g:vimshell_prompt_expr = 'escape(fnamemodify(getcwd(), ":~"), "\\[]()?! ")." "'
+      let g:vimshell_prompt_pattern = (has('win16') || has('win32') || has('win64') ? '\%(^\f:' : '\%(^[~/]') . '\%(\f\|\\.\)* \|^[*a-zA-Z][a-zA-Z .0-9]\+> \|^>>> \)'
+      let g:vimshell_scrollback_limit = 1000000000
+      let g:vimshell_disable_escape_highlight = 0
+      let g:vimshell_force_overwrite_statusline = 0
+      let g:vimshell_temporary_directory = $CACHE.'/vimshell'
+      let g:vimshell_max_command_history = 1000000
+      let g:vimshell_vimshrc_path = expand('~/Dropbox/.files/.vimshrc')
     script:
       - "nnoremap <silent> <Leader>s :<C-u>VimShellBufferDir<CR>"
       - "nnoremap <silent> H :<C-u>VimShellBufferDir -popup<CR>"
@@ -304,35 +304,59 @@ plugin:
     command: "Capture"
     complete: "command"
   kien/ctrlp.vim:
-    command: "CtrlPMRUFiles"
+    commands:
+      - "CtrlP"
+      - "CtrlPMRUFiles"
+      - "CtrlPBuffer"
+      - "CtrlPLastMode"
+      - "CtrlPClearCache"
+      - "CtrlPClearAllCaches"
+      - "ClearCtrlPCache"
+      - "ClearAllCtrlPCaches"
+      - "CtrlPCurWD"
+      - "CtrlPCurFile"
+      - "CtrlPRoot"
+      - "CtrlPTag"
+      - "CtrlPQuickfix"
+      - "CtrlPDir"
+      - "CtrlPBufTag"
+      - "CtrlPBufTagAll"
+      - "CtrlPRTS"
+      - "CtrlPUndo"
+      - "CtrlPLine"
+      - "CtrlPChange"
+      - "CtrlPChangeAll"
+      - "CtrlPMixed"
+      - "CtrlPBookmarkDir"
+      - "CtrlPBookmarkDirAdd"
     script:
       - "nnoremap <silent> <C-p> :<C-u>CtrlPMRUFiles<CR>"
-    beforeScript:
-      - "let g:ctrlp_cmd = 'CtrlPMRUFiles'"
-      - "let g:ctrlp_show_hidden = 1"
-      - "let g:ctrlp_max_depth = 5"
-      - "let g:ctrlp_max_files = 300"
-      - "let g:ctrlp_mruf_max = 300"
-      - "let g:ctrlp_custom_ignore = { 'dir': '\\v[\\/]\\.(git|hg|svn)$', 'file': '\\v\\.(exe|so|dll|swp|pdf|DS_Store)$', }"
-      - "let g:ctrlp_open_new_file = 'r'"
-      - "let g:ctrlp_use_caching = 1"
-      - "let g:ctrlp_cache_dir = $CACHE.'/ctrlp'"
-      - "let s:_ctrlp_cache = g:ctrlp_cache_dir . '/mru/cache.txt'"
-      - "silent call writefile(map(readfile(s:_ctrlp_cache), \"substitute(v:val, '^/home/\\\\a\\\\+', $HOME, '')\"), s:_ctrlp_cache)"
+    beforeScript: |
+      let g:ctrlp_cmd = 'CtrlPMRUFiles'
+      let g:ctrlp_show_hidden = 1
+      let g:ctrlp_max_depth = 5
+      let g:ctrlp_max_files = 300
+      let g:ctrlp_mruf_max = 300
+      let g:ctrlp_custom_ignore = { 'dir': '\v[\/]\.(git|hg|svn)$', 'file': '\v\.(exe|so|dll|swp|pdf|DS_Store)$', }
+      let g:ctrlp_open_new_file = 'r'
+      let g:ctrlp_use_caching = 1
+      let g:ctrlp_cache_dir = $CACHE.'/ctrlp'
+      let s:_ctrlp_cache = g:ctrlp_cache_dir . '/mru/cache.txt'
+      silent call writefile(map(readfile(s:_ctrlp_cache), "substitute(v:val, '^/home/\\a\\+', $HOME, '')"), s:_ctrlp_cache)
   tpope/vim-surround:
-    beforeScript:
-      - "let g:surround_{char2nr('$')} = \"$\\r$\""
+    beforeScript: |
+      let g:surround_{char2nr('$')} = "$\r$"
   tComment:
     command: "TComment"
     script:
       - "nnoremap <silent> __ :TComment<CR>"
       - "vnoremap <silent> __ :TComment<CR>"
-    beforeScript:
-      - "let g:tcommentMapLeader1 = ''"
-      - "let g:tcommentMapLeader2 = ''"
+    beforeScript: |
+      let g:tcommentMapLeader1 = ''
+      let g:tcommentMapLeader2 = ''
   autodate.vim:
-    beforeScript:
-      - "let g:autodate_format = '%Y/%m/%d %H:%M:%S'"
+    beforeScript: |
+      let g:autodate_format = '%Y/%m/%d %H:%M:%S'
   gregsexton/MatchTag: {}
   matchit.zip: {}
   tpope/vim-fugitive: {}
@@ -370,8 +394,8 @@ plugin:
   eagletmt/neco-ghc:
     filetype: "haskell"
     enable: "executable('ghc') && executable('ghc-mod')"
-    beforeScript:
-      - "let g:necoghc_enable_detailed_browse = 1"
+    beforeScript: |
+      let g:necoghc_enable_detailed_browse = 1
   ynkdir/vim-vimlparser:
     loadbefore:
       - "vimlint"
@@ -387,10 +411,10 @@ plugin:
       - "cpp"
       - "haskell"
     function: "SyntasticStatuslineFlag"
-    beforeScript:
-      - "let g:syntastic_mode_map = { 'mode': 'passive' }"
-      - "let g:syntastic_echo_current_error = 0"
-      - "let g:syntastic_enable_highlighting = 0"
+    beforeScript: |
+      let g:syntastic_mode_map = { 'mode': 'passive' }
+      let g:syntastic_echo_current_error = 0
+      let g:syntastic_enable_highlighting = 0
     script:
       - "autocmd Vimrc BufWritePost *.c,*.cpp,*.hs call s:syntastic()"
       - "function! s:syntastic()"
@@ -412,10 +436,10 @@ plugin:
     filetype: "html"
   mattn/emmet-vim:
     filetype: "html"
-    beforeScript:
-      - "let g:user_emmet_settings = { 'indentation' : '  ' }"
-    afterScript:
-      - "imap <buffer><silent> <tab> <plug>(emmet-expand-abbr)"
+    beforeScript: |
+      let g:user_emmet_settings = { 'indentation' : '  ' }
+    afterScript: |
+      imap <buffer><silent> <tab> <plug>(emmet-expand-abbr)
   wavded/vim-stylus:
     filetype: "stylus"
   groenewege/vim-less:
@@ -434,30 +458,30 @@ plugin:
     filetype: "markdown"
   davidhalter/jedi-vim:
     filetype: "python"
-    beforeScript:
-      - "let g:jedi#auto_vim_configuration = 0"
-      - "let g:jedi#popup_select_first = 0"
-      - "let g:jedi#completions_enabled = 0"
+    beforeScript: |
+      let g:jedi#auto_vim_configuration = 0
+      let g:jedi#popup_select_first = 0
+      let g:jedi#completions_enabled = 0
   itspriddle/vim-javascript-indent:
     filetype: "javascript"
 
-beforeScript:
-  - "let g:iswin = has('win16') || has('win32') || has('win64')"
-  - "let g:ismac = !g:iswin && !has('win32unix') && (has('mac') || has('macunix') || has('guimacvim'))"
-  - "let g:fancy = g:ismac && has('multi_byte')"
-  - ""
-  - "let g:loaded_netrwPlugin = 1"
-  - "let g:loaded_2html_plugin = 1"
-  - "let g:loaded_rrhelper = 1"
-  - "let g:loaded_getscriptPlugin = 1"
-  - "let g:loaded_vimballPlugin = 1"
-  - ""
-  - "let g:hs_highlight_boolean = 1"
-  - "let g:hs_highlight_types = 1"
-  - "let g:hs_highlight_more_types = 1"
+beforeScript: |
+  let g:iswin = has('win16') || has('win32') || has('win64')
+  let g:ismac = !g:iswin && !has('win32unix') && (has('mac') || has('macunix') || has('guimacvim'))
+  let g:fancy = g:ismac && has('multi_byte')
+  
+  let g:loaded_netrwPlugin = 1
+  let g:loaded_2html_plugin = 1
+  let g:loaded_rrhelper = 1
+  let g:loaded_getscriptPlugin = 1
+  let g:loaded_vimballPlugin = 1
+  
+  let g:hs_highlight_boolean = 1
+  let g:hs_highlight_types = 1
+  let g:hs_highlight_more_types = 1
 
-afterScript:
-  - "let g:mapleader = ','"
+afterScript: |
+  let g:mapleader = ','
 
 filetypeScript:
   c:
