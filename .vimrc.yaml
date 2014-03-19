@@ -76,7 +76,7 @@ plugin:
   itchyny/vim-cmdline-ranges:
     sync: false
   Shougo/neocomplete.vim:
-    enable: "has('lua') && v:version > 703"
+    enable: has('lua') && v:version > 703
     beforeScript: |
       let g:neocomplete#enable_at_startup = 1
       let g:neocomplete#enable_smart_case = 1
@@ -206,7 +206,7 @@ plugin:
     loadafter:
       - unite
     mapleader: ","
-    enable: "executable('hoogle')"
+    enable: executable('hoogle')
     script: |
       nnoremap <silent> <Leader>h :<C-u>Unite hoogle -buffer-name=hoogle<CR>
   h1mesuke/unite-outline:
@@ -277,19 +277,19 @@ plugin:
       nnoremap <silent> H :<C-u>VimShellBufferDir -popup<CR>
       nnoremap <silent> s :<C-u>VimShellBufferDir<CR>
   ujihisa/neco-look:
-    enable: "executable('look')"
+    enable: executable('look')
   Align:
     command: Align
   VimCalc:
     command: Calc
     mapleader: ","
-    enable: "has('python')"
+    enable: has('python')
     script: |
       nnoremap <silent> <Leader>a :<C-u>Calc<CR>
   sjl/gundo.vim:
     mapleader: ","
     command: GundoToggle
-    enable: "has('python')"
+    enable: has('python')
     script: |
       nnoremap <Leader>g :<C-u>GundoToggle<CR>
   xterm-color-table.vim:
@@ -346,7 +346,7 @@ plugin:
     beforeScript: |
       let g:surround_{char2nr('$')} = "$\r$"
   tComment:
-    command: "TComment"
+    command: TComment
     script: |
       nnoremap <silent> __ :TComment<CR>
       vnoremap <silent> __ :TComment<CR>
@@ -364,7 +364,7 @@ plugin:
     filetype: hatena
   eagletmt/ghci-vim:
     filetype: haskell
-    enable: "executable('ghc')"
+    enable: executable('ghc')
     commands:
       - GhciQuit
       - GhciType
@@ -374,7 +374,7 @@ plugin:
       - GhciSend
   eagletmt/ghcmod-vim:
     filetype: haskell
-    enable: "executable('ghc') && executable('ghc-mod')"
+    enable: executable('ghc') && executable('ghc-mod')
     dependon:
       - vimproc
     commands:
@@ -392,7 +392,7 @@ plugin:
       - GhcModExpand
   eagletmt/neco-ghc:
     filetype: haskell
-    enable: "executable('ghc') && executable('ghc-mod')"
+    enable: executable('ghc') && executable('ghc-mod')
     beforeScript: |
       let g:necoghc_enable_detailed_browse = 1
   ynkdir/vim-vimlparser:
@@ -421,7 +421,7 @@ plugin:
         if exists('*lightline#update') | call lightline#update() | endif
       endfunction
   Shougo/vimproc.vim:
-    build: "make"
+    build: make
     loadbefore:
       - ghcmod
       - vimfiler
