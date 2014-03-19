@@ -307,27 +307,6 @@ plugin:
       - CtrlP
       - CtrlPMRUFiles
       - CtrlPBuffer
-      - CtrlPLastMode
-      - CtrlPClearCache
-      - CtrlPClearAllCaches
-      - ClearCtrlPCache
-      - ClearAllCtrlPCaches
-      - CtrlPCurWD
-      - CtrlPCurFile
-      - CtrlPRoot
-      - CtrlPTag
-      - CtrlPQuickfix
-      - CtrlPDir
-      - CtrlPBufTag
-      - CtrlPBufTagAll
-      - CtrlPRTS
-      - CtrlPUndo
-      - CtrlPLine
-      - CtrlPChange
-      - CtrlPChangeAll
-      - CtrlPMixed
-      - CtrlPBookmarkDir
-      - CtrlPBookmarkDirAdd
     script: |
       nnoremap <silent> <C-p> :<C-u>CtrlPMRUFiles<CR>
     beforeScript: |
