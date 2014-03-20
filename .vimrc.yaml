@@ -492,6 +492,7 @@ filetypeScript:
     nmap <buffer><expr> e vimfiler#smart_cursor_map("\<Plug>(vimfiler_cd_file)", "\<Plug>(vimfiler_edit_file)")
     nnoremap <buffer><silent> t :<C-u>call vimfiler#mappings#do_action('change_time')<CR>
     silent! call delete("Icon\r")
+    silent! call delete(".DS_Store")
   vimshell: |
     iunmap <buffer> <C-h>
     iunmap <buffer> <C-k>
