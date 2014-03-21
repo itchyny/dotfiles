@@ -20,6 +20,8 @@ plugin:
     sync: false
     dependon:
       - lightline
+    loadafter:
+      - lightline
   itchyny/vim-spellbad-pattern:
     sync: false
     script: |
