@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2014/03/24 07:25:22.
+# - * Last Change: 2014/03/24 07:35:29.
 # ------------------------------------------------------------------------------------------------------------
 
 # history
@@ -31,9 +31,15 @@ export TERM=xterm-256color
 # prompt
 setopt prompt_subst
 setopt interactive_comments
-PROMPT="%(?.%{$fg[green]%}.%{$fg[blue]%})%B%~$%b%{${reset_color}%} "
-PROMPT2="%{$bg[blue]%}%_>%{$reset_color%}%b "
-SPROMPT="%{$bg[red]%}%B%r is correct? [n,y,a,e]:%{${reset_color}%}%b "
+if (($+VIM)); then
+  PROMPT="%~ "
+  PROMPT2="%_> "
+  SPROMPT="%r is correct? [n,y,a,e]: "
+else
+  PROMPT="%(?.%{$fg[green]%}.%{$fg[blue]%})%B%~$%b%{${reset_color}%} "
+  PROMPT2="%{$bg[blue]%}%_>%{$reset_color%}%b "
+  SPROMPT="%{$bg[red]%}%B%r is correct? [n,y,a,e]:%{${reset_color}%}%b "
+fi
 [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] && PROMPT="%{$bg[red]%}${HOST%%.*}${PROMPT}%{${reset_color}%}"
 alias prompt_kadai='PROMPT=" $ "'
 case "${TERM}" in
