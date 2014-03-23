@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2014/03/07 08:57:16.
+# - * Last Change: 2014/03/24 07:25:22.
 # ------------------------------------------------------------------------------------------------------------
 
 # history
@@ -361,5 +361,5 @@ bindkey '^[[B' history-substring-search-down
   source ~/Dropbox/.files/zaw/zaw.zsh && \
   bindkey '^z' zaw-history
 
-[ -e ~/Dropbox ] && cd ~/Dropbox > /dev/null
+[ -e ./Dropbox ] && cd ./Dropbox > /dev/null
 
