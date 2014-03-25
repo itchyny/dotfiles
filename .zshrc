@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2014/03/24 07:35:29.
+# - * Last Change: 2014/03/24 12:53:21.
 # ------------------------------------------------------------------------------------------------------------
 
 # history
@@ -242,13 +242,21 @@ alias ntpupdate='sudo /usr/sbin/ntpdate time.asia.apple.com >> ~/.ntpdate.log'
   alias univ='cd ~/Dropbox/univ/'
 case "${OSTYPE}" in
   freebsd*|darwin*)
-    alias ls='ls -wG'
-    alias ll='ls -altrwG'
+    if (($+VIM)); then
+      alias ll='ls -altr'
+    else
+      alias ls='ls -wG'
+      alias ll='ls -altrwG'
+    fi
     export os='mac'
     ;;
   *)
-    alias ls='ls --color'
-    alias ll='ls -altr --color'
+    if (($+VIM)); then
+      alias ll='ls -altr'
+    else
+      alias ls='ls --color'
+      alias ll='ls -altr --color'
+    fi
     export os='ubuntu'
     ;;
 esac
