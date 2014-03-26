@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/03/16 01:27:05.
+" - * Last Change: 2014/03/26 00:41:14.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -148,8 +148,8 @@ nnoremap <expr><C-m> (bufname('%') ==# '[Command Line]') ? "<CR>" : "<C-w>j"
 nnoremap <C-q> <C-w>
 
 " Open dot files
-exec 'nnoremap \. :e ~/' . (filereadable(expand('~/Dropbox/.files/.vimrc')) ? 'Dropbox/.files/' : '') . '.vimrc<CR>'
-exec 'nnoremap ;. :e ~/' . (filereadable(expand('~/Dropbox/.files/.zshrc')) ? 'Dropbox/.files/' : '') . '.zshrc<CR>'
+nnoremap <silent> \. :<C-u>e `=resolve(expand('~/.vimrc'))`<CR>
+nnoremap <silent> ;. :<C-u>e `=resolve(expand('~/.zshrc'))`<CR>
 
 " tab
 nnoremap <C-t> :<C-u>tabnew<CR>
