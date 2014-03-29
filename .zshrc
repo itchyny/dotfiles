@@ -269,6 +269,7 @@ function configurevim() {
                 --enable-pythoninterp=yes\
                 --with-lua-prefix=`dirname \`which lua\``\
                 --enable-luainterp=yes\
+                --with-luajit\
                 --enable-multibyte
   else
     CFLAGS="-O3" ./configure --with-features=huge\
