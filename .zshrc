@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2014/03/24 12:53:21.
+# - * Last Change: 2014/03/30 07:01:45.
 # ------------------------------------------------------------------------------------------------------------
 
 # history
@@ -269,7 +269,6 @@ function configurevim() {
                 --enable-pythoninterp=yes\
                 --with-lua-prefix=`dirname \`which lua\``\
                 --enable-luainterp=yes\
-                --with-luajit\
                 --enable-multibyte
   else
     CFLAGS="-O3" ./configure --with-features=huge\
