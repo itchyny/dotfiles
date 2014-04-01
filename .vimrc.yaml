@@ -12,8 +12,8 @@ plugin:
     sync: false
     script: |
       let g:lightline = {'colorscheme': 'landscape','mode_map':{'c': 'NORMAL'}}
-      exec 'set guifont=' . substitute('Inconsolata for Powerline', ' ', g:iswin ? '_' : '\\ ', 'g') . (g:ismac ? ':h15' : g:iswin ?  ':h13:cANSI' : '\ 12')
-      if g:iswin | set guifontwide=MS_Gothic:h11:cSHIFTJIS | endif
+      exec 'set gfn=' . substitute('Inconsolata for Powerline', ' ', g:iswin ? '_' : '\\ ', 'g') . (g:ismac ? ':h15' : g:iswin ?  ':h13:cANSI' : '\ 12')
+      if g:iswin | set gfw=MS_Gothic:h11:cSHIFTJIS | endif
     dependedby:
       - lightline-powerful
   itchyny/lightline-powerful:
