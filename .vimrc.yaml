@@ -234,6 +234,8 @@ plugin:
     loadafter:
       - unite
     sync: false
+    afterScript: |
+      call unite#custom_default_action('file', 'auto_open')
   itchyny/unite-changetime:
     loadafter:
       - unite
