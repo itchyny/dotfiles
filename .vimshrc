@@ -1,5 +1,3 @@
-# copied from .zshrc
-# note that edit .zshrc first
 alias eject='sudo diskutil unmount'
 alias cdup='cd ../'
 alias gosh='rlwrap gosh'
