@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2014/03/30 07:01:45.
+# - * Last Change: 2014/04/04 10:36:33.
 # ------------------------------------------------------------------------------------------------------------
 
 # history
@@ -88,6 +88,7 @@ bindkey "^W" backward-kill-word
 
 # export variables
 export LANG=ja_JP.UTF-8
+export LC_CTYPE=en_US.UTF-8
 export EDITOR=vim
 
 # path settings
