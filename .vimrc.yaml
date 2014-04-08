@@ -245,8 +245,6 @@ plugin:
       - unite
     sync: false
   tyru/open-browser.vim:
-    mapping: <Plug>(openbrowser-smart-search)
-    function: openbrowser
     mapleader: \
     script: |
       map <silent> <Leader>b <Plug>(openbrowser-smart-search)
