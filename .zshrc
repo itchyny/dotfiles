@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2014/04/04 10:36:33.
+# - * Last Change: 2014/04/08 23:14:19.
 # ------------------------------------------------------------------------------------------------------------
 
 # history
@@ -202,7 +202,6 @@ alias h='sudo shutdown -h'
 alias r='sudo shutdown -r'
 alias l='ls -al'
 alias c='clear'
-alias d='date'
 alias z='zsh'
 alias d='download'
 # default option
