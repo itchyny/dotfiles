@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2014/04/08 23:14:19.
+# - * Last Change: 2014/04/09 07:25:28.
 # ------------------------------------------------------------------------------------------------------------
 
 # history
@@ -227,7 +227,7 @@ which gosh > /dev/null && alias gosh='rlwrap gosh'
 which coqtop > /dev/null && alias coqtop='rlwrap coqtop'
 # others
 which pygmentize > /dev/null && alias ccat='pygmentize'
-which cam > /dev/null && alias slideshow='cam -e -c -s 1'
+which cam > /dev/null && alias slideshow='cam -q -C -s 1'
 [ -e ~/Dropbox/py/itchyny/tweet.py ] && \
   alias tweet='python ~/Dropbox/py/itchyny/tweet.py'
 [ -e ~/Dropbox/hs/twitter/twitter.hs ] && \
