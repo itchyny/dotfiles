@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2014/04/09 07:25:28.
+# - * Last Change: 2014/04/10 07:52:22.
 # ------------------------------------------------------------------------------------------------------------
 
 # history
@@ -192,7 +192,7 @@ alias :qa='exit'
 alias :x='exit'
 alias :xa='exit'
 alias emacs='vi'
-alias fg='fg || if [ $? -eq 1 ]; then; vi; fi;'
+alias fg='fg || vi'
 # see ambiwidth in .vimrc
 alias gnome-terminal='/bin/sh -c "VTE_CJK_WIDTH=1 gnome-terminal --disable-factory"'
 alias terminator='/bin/sh -c "VTE_CJK_WIDTH=1 terminator -m"'
