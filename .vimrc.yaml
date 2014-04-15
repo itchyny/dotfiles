@@ -246,6 +246,8 @@ plugin:
     sync: false
   tyru/open-browser.vim:
     mapleader: \
+    mapping: <Plug>(openbrowser-smart-search)
+    function: openbrowser
     script: |
       map <silent> <Leader>b <Plug>(openbrowser-smart-search)
   Shougo/vimshell.vim:
