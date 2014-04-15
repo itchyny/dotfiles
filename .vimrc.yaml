@@ -308,6 +308,10 @@ plugin:
   tyru/capture.vim:
     command: Capture
   kien/ctrlp.vim:
+    commands:
+      - CtrlP
+      - CtrlPMRUFiles
+      - CtrlPBuffer
     script: |
       nnoremap <silent> <C-p> :<C-u>CtrlPMRUFiles<CR>
     beforeScript: |
