@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/04/06 14:55:46.
+" - * Last Change: 2014/04/15 23:36:49.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -68,8 +68,7 @@ autocmd Vimrc BufEnter * silent! lcd `=expand('%:p:h')`
 command! S echo synIDattr(synID(line('.'), col('.'), 0), 'name')
 
 " Command line
-let s:cmdlist = 'vps;vsp,vp;vsp,di;Dictionary<SPACE>-cursor-word<SPACE>-no-duplicate,aoff;AutodateOFF,aon;AutodateON,qa1;qa!,q1;q!,nvew;vnew'
-for [s:cmd, s:exp] in map(split(s:cmdlist, ','), 'split(v:val, ";")')
+for [s:cmd, s:exp] in [['vps', 'vsp'], ['vp', 'vsp'], ['di', 'Dictionary<SPACE>-cursor-word<SPACE>-no-duplicate'], ['aoff', 'AutodateOFF'], ['aon', 'AutodateON'], ['qa1', 'qa!'], ['q1', 'q!'], ['nvew', 'vnew']]
   exec 'cabbrev <expr> '.s:cmd.' (getcmdtype() == ":" && getcmdline() ==# "'.s:cmd.'") ? "'.s:exp.'" : "'.s:cmd.'"'
 endfor
 
