@@ -11,17 +11,12 @@ plugin:
   itchyny/lightline.vim:
     sync: false
     script: |
-      let g:lightline = {'colorscheme': 'landscape','mode_map':{'c': 'NORMAL'}}
       exec 'set gfn=' . substitute('Inconsolata for Powerline', ' ', g:iswin ? '_' : '\\ ', 'g') . (g:ismac ? ':h15' : g:iswin ?  ':h13:cANSI' : '\ 12')
       if g:iswin | set gfw=MS_Gothic:h11:cSHIFTJIS | endif
-    dependedby:
-      - lightline-powerful
   itchyny/lightline-powerful:
     sync: false
-    dependon:
-      - lightline
-    loadafter:
-      - lightline
+    beforeScript: |
+      let g:lightline = {'colorscheme': 'landscape','mode_map':{'c': 'NORMAL'}}
   itchyny/vim-spellbad-pattern:
     sync: false
     script: |
