@@ -67,6 +67,7 @@ plugin:
     script: |
       map <Leader>g <Plug>(external-editor)
       map <Leader>n <Plug>(external-explorer)
+      map ge <Plug>(external-explorer)
   itchyny/vim-insert-mode-motion:
     sync: false
     insert: true
