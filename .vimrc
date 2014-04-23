@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/04/21 09:49:18.
+" - * Last Change: 2014/04/23 11:12:14.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -74,7 +74,7 @@ endfor
 
 " Filetype
 let s:filetypes1 = map(['bf', 'gnuplot', 'jade', 'json', 'less', 'r', 'roy', 'tex', 'meissa', 'coffee', 'stl'], '[v:val, v:val]')
-let s:filetypes2 = [['cls', 'tex'], ['aux', 'tex'], ['toc', 'tex'], ['nav', 'tex'], ['clo', 'tex'], ['hs', 'haskell'], ['hx', 'haxe'], ['md', 'markdown'], ['CIR', 'spice'], ['cir', 'spice'], ['asc', 'spice'], ['m', 'objc']]
+let s:filetypes2 = [['cls', 'tex'], ['aux', 'tex'], ['toc', 'tex'], ['nav', 'tex'], ['clo', 'tex'], ['tex', 'tex'], ['hs', 'haskell'], ['hx', 'haxe'], ['md', 'markdown'], ['CIR', 'spice'], ['cir', 'spice'], ['asc', 'spice'], ['m', 'objc']]
 for [s:ex, s:ft] in extend(s:filetypes1, s:filetypes2)
   execute 'autocmd Vimrc BufNewFile,BufReadPost *.' . s:ex 'setf' s:ft
 endfor
