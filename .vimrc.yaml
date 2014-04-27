@@ -51,6 +51,8 @@ plugin:
       let g:dictionary_executable_path = '~/Dropbox/bin/'
     dependon:
       - vimproc
+  itchyny/gitbranch.vim:
+    sync: false
   itchyny/vim-closebuffer:
     sync: false
     mapping: <Plug>(closebuffer)
@@ -340,7 +342,6 @@ plugin:
       let g:autodate_format = '%Y/%m/%d %H:%M:%S'
   gregsexton/MatchTag: {}
   matchit.zip: {}
-  tpope/vim-fugitive: {}
   banyan/recognize_charcode.vim: {}
   motemen/hatena-vim:
     filetype: hatena
