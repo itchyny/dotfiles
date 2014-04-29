@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2014/04/14 12:24:50.
+# - * Last Change: 2014/04/28 11:09:46.
 # ------------------------------------------------------------------------------------------------------------
 
 # history
@@ -291,7 +291,8 @@ function makenvim() {
 
 # suffix alias according to file extension
 alias -s txt=cat
-alias -s {tex,csv,js,css,less}=vi
+alias -s {csv,js,css,less}=vi
+alias -s tex=autolatex
 alias -s html=chrome
 alias -s pdf=evince
 alias -s {png,jpg,bmp,PNG,JPG,BMP}=eog
