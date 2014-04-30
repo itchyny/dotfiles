@@ -66,9 +66,11 @@ plugin:
     mappings:
       - <Plug>(external-editor)
       - <Plug>(external-explorer)
+      - <Plug>(external-browser)
     script: |
       map <Leader>g <Plug>(external-editor)
       map <Leader>n <Plug>(external-explorer)
+      map <Leader>b <Plug>(external-browser)
       map ge <Plug>(external-explorer)
   itchyny/vim-insert-mode-motion:
     sync: false
@@ -247,8 +249,6 @@ plugin:
     mapleader: \
     mapping: <Plug>(openbrowser-smart-search)
     function: openbrowser
-    script: |
-      map <silent> <Leader>b <Plug>(openbrowser-smart-search)
   Shougo/vimshell.vim:
     commands:
       - VimShell
