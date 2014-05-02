@@ -51,7 +51,7 @@ plugin:
       let g:dictionary_executable_path = '~/Dropbox/bin/'
     dependon:
       - vimproc
-  itchyny/gitbranch.vim:
+  itchyny/vim-gitbranch:
     sync: false
   itchyny/vim-closebuffer:
     sync: false
