@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2014/04/28 11:09:46.
+# - * Last Change: 2014/05/04 10:33:55.
 # ------------------------------------------------------------------------------------------------------------
 
 # history
@@ -208,7 +208,7 @@ alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 alias crontab="EDITOR=\"$HOME/Dropbox/bin/vi\" crontab"
-alias wget="wget --user-agent='Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_2) AppleWebKit/537.17 (KHTML, like Gecko) Chrome/24.0.1312.57 Safari/537.17' "
+alias wget="wget --user-agent='Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.131 Safari/537.36' "
 alias aspell="aspell -c -l en_US"
 alias nicovideo-dl="nicovideo-dl -n -t"
 # git
