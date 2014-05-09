@@ -57,12 +57,14 @@ plugin:
     sync: false
     mapping: <Plug>(closebuffer)
     insert: true
+    function: closebuffer
     script: |
       map <C-w> <Plug>(closebuffer)
       imap <C-w> <Plug>(closebuffer)
   itchyny/vim-external:
     sync: false
     mapleader: \
+    function: external
     mappings:
       - <Plug>(external-editor)
       - <Plug>(external-explorer)
@@ -406,6 +408,7 @@ plugin:
       endfunction
   Shougo/vimproc.vim:
     build: make
+    function: vimproc
     loadbefore:
       - ghcmod
       - vimfiler
