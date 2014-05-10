@@ -184,10 +184,10 @@ plugin:
       let g:unite_marked_icon = g:fancy ? '✓' : 'v'
       let g:unite_candidate_icon = '-'
     script: |
-      nnoremap <silent><C-n> :Unite file/new directory/new -buffer-name=file/new,directory/new<CR>
-      nnoremap <silent><S-k> :Unite output:message -buffer-name=output<CR>
-      nnoremap <silent><C-o> :Unite file file/new -buffer-name=file<CR>
-      nnoremap <silent><S-l> :Unite line -buffer-name=line<CR>
+      nnoremap <silent><C-n> :<C-u>Unite file/new directory/new -buffer-name=file/new,directory/new<CR>
+      nnoremap <silent><S-k> :<C-u>Unite output:message -buffer-name=output<CR>
+      nnoremap <silent><C-o> :<C-u>Unite file file/new -buffer-name=file<CR>
+      nnoremap <silent><S-l> :<C-u>Unite line -buffer-name=line<CR>
     dependedby:
       - unite-build
       - unite-colorscheme
