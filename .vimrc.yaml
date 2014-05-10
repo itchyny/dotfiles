@@ -518,7 +518,7 @@ filetypeScript:
     inoremap <silent><buffer> ^ <ESC>:call vimshell#execute('cd ../')<CR>:call vimshell#print_prompt()<CR>:call vimshell#start_insert()<CR>
     inoremap <buffer> <C-^> <ESC><C-^>
     imap <buffer> <C-g> <Plug>(vimshell_history_neocomplete)
-    let s:start_complete = ' "\<ESC>GA" . unite#sources#vimshell_history#start_complete(!0)'
+    let s:start_complete = ' "\<ESC>GA" . (getline(".") =~? "  $" ? "" : " ") . unite#sources#vimshell_history#start_complete(!0)'
     for s:key in ['<UP>', '<Down>', 'OA', 'OB']
       execute 'inoremap <buffer> <expr><silent> '.s:key.s:start_complete
       execute 'nnoremap <buffer> <expr><silent> '.s:key.s:start_complete
