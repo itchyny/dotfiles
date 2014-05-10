@@ -328,7 +328,7 @@ plugin:
       let g:ctrlp_use_caching = 1
       let g:ctrlp_cache_dir = $CACHE.'/ctrlp'
       let s:_ctrlp_cache = g:ctrlp_cache_dir . '/mru/cache.txt'
-      silent call writefile(map(readfile(s:_ctrlp_cache), "substitute(v:val, '^/home/\\a\\+', $HOME, '')"), s:_ctrlp_cache)
+      silent! call system(printf( 'ctrlp=`mktemp /tmp/XXXXXXXXXXXX`; sed ''s/^\/home\/[^/]*/%s/'' <%s | awk '' !x[$0]++'' > $ctrlp; cp $ctrlp %s; rm -f $ctrlp&', escape($HOME, '/'), s:_ctrlp_cache, s:_ctrlp_cache ))
   tpope/vim-surround:
     beforeScript: |
       let g:surround_{char2nr('$')} = "$\r$"
