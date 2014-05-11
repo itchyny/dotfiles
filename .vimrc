@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/04/23 13:42:51.
+" - * Last Change: 2014/05/11 21:06:14.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -164,6 +164,9 @@ map Q <Nop>
 cnoremap <C-a> <Home>
 cnoremap <C-b> <Left>
 cnoremap <C-f> <Right>
+
+" <C-g> in command line
+cmap <C-g> <ESC><C-g>
 " }}} KEY MAPPING
 
 " vim:foldmethod=marker
