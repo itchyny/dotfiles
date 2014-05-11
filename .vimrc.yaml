@@ -217,7 +217,7 @@ plugin:
     enable: executable('hoogle')
     script: |
       nnoremap <silent> <Leader>h :<C-u>Unite hoogle -buffer-name=hoogle<CR>
-  h1mesuke/unite-outline:
+  Shougo/unite-outline:
     loadafter:
       - unite
   ujihisa/unite-haskellimport:
