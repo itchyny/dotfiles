@@ -309,6 +309,14 @@ plugin:
     commands:
       - PrettyPrint
       - PP
+  thinca/vim-visualstar:
+    mappings:
+      - <Plug>(visualstar-*)
+      - <Plug>(visualstar-#)
+    script: |
+      let g:visualstar_no_default_key_mappings = 1
+      xmap <silent> * <Plug>(visualstar-*):<C-u>set hlsearch<CR>
+      xmap <silent> # <Plug>(visualstar-#):<C-u>set hlsearch<CR>
   tyru/capture.vim:
     command: Capture
   kien/ctrlp.vim:
