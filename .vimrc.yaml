@@ -476,6 +476,8 @@ beforeScript: |
   let g:hs_highlight_types = 1
   let g:hs_highlight_more_types = 1
 
+  let g:is_bash = 1
+
 afterScript: |
   let g:mapleader = ','
 
