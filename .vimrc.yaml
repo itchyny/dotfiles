@@ -405,6 +405,7 @@ plugin:
       - c
       - cpp
       - haskell
+      - sh
     function: SyntasticStatuslineFlag
     beforeScript: |
       let g:syntastic_mode_map = { 'mode': 'passive' }
