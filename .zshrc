@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2014/05/24 23:40:32.
+# - * Last Change: 2014/05/25 09:03:33.
 # ------------------------------------------------------------------------------------------------------------
 
 # history
@@ -139,7 +139,9 @@ bindkey '^@' starteditor
 bindkey '^\^' starteditor
 
 # cd with ls
-function chpwd() { ls }
+function chpwd() {
+  ls
+}
 
 # for vim's C-s
 stty -ixon -ixoff
@@ -163,8 +165,12 @@ elif [ `uname` = "Linux" ]; then
   alias pbcopy='xsel --clipboard --input'
 fi
 alias chrome='google-chrome'
-function runc () { gcc -O3 $1 && shift && ./a.out $@; rm -f ./a.out }
-function runcpp () { g++ -O3 $1 && shift && ./a.out $@; rm -f ./a.out }
+function runc () {
+  gcc -O3 $1 && shift && ./a.out $@; rm -f ./a.out
+}
+function runcpp () {
+  g++ -O3 $1 && shift && ./a.out $@; rm -f ./a.out
+}
 alias asm=runcpp
 # editor
 alias vi='vim'
