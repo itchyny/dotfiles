@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/05/11 21:06:14.
+" - * Last Change: 2014/05/26 01:29:06.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -73,8 +73,8 @@ for [s:cmd, s:exp] in [['vps', 'vsp'], ['vp', 'vsp'], ['di', 'Dictionary<SPACE>-
 endfor
 
 " Filetype
-let s:filetypes1 = map(['bf', 'gnuplot', 'jade', 'json', 'less', 'r', 'roy', 'tex', 'meissa', 'coffee', 'stl'], '[v:val, v:val]')
-let s:filetypes2 = [['cls', 'tex'], ['aux', 'tex'], ['toc', 'tex'], ['nav', 'tex'], ['clo', 'tex'], ['tex', 'tex'], ['hs', 'haskell'], ['hx', 'haxe'], ['md', 'markdown'], ['CIR', 'spice'], ['cir', 'spice'], ['asc', 'spice'], ['m', 'objc']]
+let s:filetypes1 = map(['bf', 'gnuplot', 'jade', 'json', 'less', 'r', 'roy', 'tex', 'meissa', 'coffee', 'stl', 'stylus'], '[v:val, v:val]')
+let s:filetypes2 = [['cls', 'tex'], ['aux', 'tex'], ['toc', 'tex'], ['nav', 'tex'], ['clo', 'tex'], ['tex', 'tex'], ['hs', 'haskell'], ['hx', 'haxe'], ['md', 'markdown'], ['CIR', 'spice'], ['cir', 'spice'], ['asc', 'spice'], ['m', 'objc'], ['styl', 'stylus']]
 for [s:ex, s:ft] in extend(s:filetypes1, s:filetypes2)
   execute 'autocmd Vimrc BufNewFile,BufReadPost *.' . s:ex 'setf' s:ft
 endfor
