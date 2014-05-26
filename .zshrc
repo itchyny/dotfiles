@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2014/05/25 09:03:33.
+# - * Last Change: 2014/05/26 20:48:10.
 # ------------------------------------------------------------------------------------------------------------
 
 # history
@@ -31,12 +31,28 @@ export TERM=xterm-256color
 # prompt
 setopt prompt_subst
 setopt interactive_comments
+function _zsh_git_branch {
+  local name gitstatus color
+  name=$(basename "`git symbolic-ref HEAD 2> /dev/null`")
+  if [[ -z $name ]]; then
+    return
+  fi
+  gitstatus=`git status 2> /dev/null`
+  if [[ -n `echo "$gitstatus" | grep "^nothing to"` ]]; then
+    color=${fg[cyan]}
+  elif [[ -n `echo "$gitstatus" | grep "^nothing added"` ]]; then
+    color=${fg[yellow]}
+  else
+    color=${fg[magenta]}
+  fi
+  echo " %{$color%}[$name]%{$reset_color%}"
+}
 if (($+VIM)); then
   PROMPT="%~ "
   PROMPT2="%_> "
   SPROMPT="%r is correct? [n,y,a,e]: "
 else
-  PROMPT="%(?.%{$fg[green]%}.%{$fg[blue]%})%B%~$%b%{${reset_color}%} "
+  PROMPT="%(?.%{$fg[green]%}.%{$fg[blue]%})%B%~%b"'$(_zsh_git_branch)'"%{${reset_color}%} "
   PROMPT2="%{$bg[blue]%}%_>%{$reset_color%}%b "
   SPROMPT="%{$bg[red]%}%B%r is correct? [n,y,a,e]:%{${reset_color}%}%b "
 fi
