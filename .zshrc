@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2014/05/26 20:48:10.
+# - * Last Change: 2014/05/27 08:11:02.
 # ------------------------------------------------------------------------------------------------------------
 
 # history
@@ -219,9 +219,9 @@ alias wget="wget --user-agent='Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) Ap
 alias aspell="aspell -c -l en_US"
 alias nicovideo-dl="nicovideo-dl -n -t"
 # git
-alias am='git commit -am'
-alias gd='git diff'
-alias gp='git push'
+alias am='git commit -am --color'
+alias gd='git diff --color'
+alias gp='git push --color'
 # un*
 alias ungzip='gzip -d'
 alias untar='tar xvf'
