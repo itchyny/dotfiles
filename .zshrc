@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2014/05/27 08:11:02.
+# - * Last Change: 2014/05/28 11:24:39.
 # ------------------------------------------------------------------------------------------------------------
 
 # history
@@ -156,7 +156,18 @@ bindkey '^\^' starteditor
 
 # cd with ls
 function chpwd() {
-  ls
+  if (($+VIM)); then
+    ls
+  else
+    case "${OSTYPE}" in
+      freebsd*|darwin*)
+        ls -wG
+        ;;
+      *)
+        ls --color
+        ;;
+    esac
+  fi
 }
 
 # for vim's C-s
