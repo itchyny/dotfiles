@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/05/26 01:29:42.
+" - * Last Change: 2014/05/29 13:58:33.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -81,9 +81,11 @@ endfor
 autocmd Vimrc CursorHold,CursorHoldI * call s:auto_filetype()
 function! s:auto_filetype()
   if line('.') > 5 | return | endif
+  let line1 = getline(1)
+  if line1 =~# '^\s*$' | return | endif
   let newft = ''
   for [pat, ft] in [['*[', 'hatena'],['#include', 'c'],['\documentclass', 'tex'],['import', 'haskell'],['main =', 'haskell'],['diff --', 'diff'],['{ ', 'vim']]
-    if getline(1)[:strlen(pat) - 1] ==# pat | let newft = ft | endif
+    if line1[:strlen(pat) - 1] ==# pat | let newft = ft | endif
   endfor
   if newft != '' && (&filetype == '' || &filetype == newft)  | exec 'setlocal filetype=' . newft | endif
 endfunction
