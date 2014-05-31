@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/05/29 13:58:33.
+" - * Last Change: 2014/06/01 00:12:58.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -18,9 +18,6 @@ endif
 " }}}
 
 " Setting {{{
-filetype plugin indent on
-syntax enable
-
 " Option
 try
   set list listchars=tab:▸\ ,extends:»,precedes:«,nbsp:%
@@ -55,6 +52,10 @@ if exists('&clipboard')
   if has('unnamedplus') | set clipboard+=unnamedplus | endif
 endif
 set swapfile nobackup updatetime=300 timeoutlen=500 ttyfast vb t_vb= wildignore+=*.sw?,*.bak,*.?~,*.??~,*.???~,*.~,*.o,*.hi,*.pyc wildmode=list:longest
+
+" Enable plugin, indent, syntax
+filetype plugin indent on
+syntax enable
 
 " Maximize the window
 if has('win16') || has('win32') || has('win64')
