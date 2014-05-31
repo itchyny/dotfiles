@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/06/01 00:12:58.
+" - * Last Change: 2014/06/01 08:46:27.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -150,8 +150,13 @@ nnoremap <expr><C-m> (bufname('%') ==# '[Command Line]') ? "<CR>" : "<C-w>j"
 nnoremap <C-q> <C-w>
 
 " Open dot files
-nnoremap <silent> \. :<C-u>e `=resolve(expand('~/.vimrc'))`<CR>
-nnoremap <silent> ;. :<C-u>e `=resolve(expand('~/.zshrc'))`<CR>
+if has('win16') || has('win32') || has('win64')
+  nnoremap <silent> \. :<C-u>e ~/.vimrc<CR>
+  nnoremap <silent> ;. :<C-u>e ~/.zshrc<CR>
+else
+  nnoremap <silent> \. :<C-u>e `=resolve(expand('~/.vimrc'))`<CR>
+  nnoremap <silent> ;. :<C-u>e `=resolve(expand('~/.zshrc'))`<CR>
+endif
 
 " tab
 nnoremap <C-t> :<C-u>tabnew<CR>
