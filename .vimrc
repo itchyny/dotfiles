@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/06/01 08:46:27.
+" - * Last Change: 2014/06/01 20:06:12.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -32,7 +32,7 @@ set number cursorline nocursorcolumn
   autocmd Vimrc FileType vimcalc,vimshell,quickrun,cam setlocal nocursorline
           \ | autocmd Vimrc BufEnter,WinEnter <buffer> setlocal nocursorline
 let [&t_SI,&t_EI] = ["\e]50;CursorShape=1\x7","\e]50;CursorShape=0\x7"]
-set showmatch noshowmode shortmess+=I pumheight=10 completeopt-=preview autoread
+set showmatch noshowmode shortmess+=I noruler pumheight=10 completeopt-=preview autoread
 set history=1000 viminfo='10,/10,:500,<10,@10,s10,n$CACHE/.viminfo directory=$CACHE/.swp,$CACHE,/tmp,. spellfile=$CACHE/.spellfile.add
 set nospell
   autocmd Vimrc FileType tex,markdown,help exec 'setl ' . (&bt !=# 'help' && search("[^\x01-\x7e]", 'n') == 0 && line('$') > 5 ? '' : 'no') . 'spell'
