@@ -344,9 +344,12 @@ plugin:
       let g:surround_{char2nr('$')} = "$\r$"
   tComment:
     command: TComment
+    function: tcomment
+    mapping: <Plug>TComment-gc
     script: |
       nnoremap <silent> __ :TComment<CR>
       vnoremap <silent> __ :TComment<CR>
+      nmap <silent> gc <Plug>TComment-gc
     beforeScript: |
       let g:tcommentMapLeader1 = ''
       let g:tcommentMapLeader2 = ''
