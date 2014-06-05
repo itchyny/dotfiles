@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/06/01 20:06:12.
+" - * Last Change: 2014/06/05 01:39:07.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -77,7 +77,7 @@ endfor
 let s:filetypes1 = map(['bf', 'gnuplot', 'jade', 'json', 'less', 'r', 'roy', 'tex', 'meissa', 'coffee', 'stl', 'stylus'], '[v:val, v:val]')
 let s:filetypes2 = [['cls', 'tex'], ['aux', 'tex'], ['toc', 'tex'], ['nav', 'tex'], ['clo', 'tex'], ['tex', 'tex'], ['hs', 'haskell'], ['hx', 'haxe'], ['md', 'markdown'], ['CIR', 'spice'], ['cir', 'spice'], ['asc', 'spice'], ['m', 'objc'], ['styl', 'stylus']]
 for [s:ex, s:ft] in extend(s:filetypes1, s:filetypes2)
-  execute 'autocmd Vimrc BufNewFile,BufReadPost *.' . s:ex 'setf' s:ft
+  execute 'autocmd Vimrc BufNewFile,BufReadPost *.' . s:ex 'set ft='.s:ft
 endfor
 autocmd Vimrc CursorHold,CursorHoldI * call s:auto_filetype()
 function! s:auto_filetype()
