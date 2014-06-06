@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/06/05 01:39:07.
+" - * Last Change: 2014/06/06 17:09:32.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -23,9 +23,6 @@ try
   set list listchars=tab:▸\ ,extends:»,precedes:«,nbsp:%
 catch
   set list listchars=tab:^I,extends:>,precedes:<,nbsp:%
-  let g:vimfiler_tree_leaf_icon = '|'
-  let g:vimfiler_tree_opened_icon = '-'
-  let g:vimfiler_tree_closed_icon = '+'
 endtry
 set number cursorline nocursorcolumn
   autocmd Vimrc FileType vimshell,vimcalc,quickrun setlocal nonumber
