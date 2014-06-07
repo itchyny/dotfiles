@@ -1,11 +1,22 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2014/06/04 23:40:40.
+# - * Last Change: 2014/06/07 14:05:56.
 # ------------------------------------------------------------------------------------------------------------
 
+# config path
+if [ -d ~/Dropbox/.files/ ]; then
+  ZSH_CONFIG_PATH=~/Dropbox/.files/
+elif [ -d ~/.files/ ]; then
+  ZSH_CONFIG_PATH=~/.files/
+elif [ -d ~/.zsh/ ]; then
+  ZSH_CONFIG_PATH=~/.zsh/
+else
+  ZSH_CONFIG_PATH=~/zsh/
+fi
+
 # history
-HISTFILE=~/Dropbox/.files/.histfile
+HISTFILE=$ZSH_CONFIG_PATH/.histfile
 HISTSIZE=10000000
 SAVEHIST=10000000
 setopt append_history
@@ -372,22 +383,22 @@ function http {
 }
 
 # http://mimosa-pudica.net/zsh-incremental.html
-[ -e ~/Dropbox/.files/incr-0.2.zsh ] && \
-  source ~/Dropbox/.files/incr-0.2.zsh
+[ -e $ZSH_CONFIG_PATH/incr-0.2.zsh ] && \
+  source $ZSH_CONFIG_PATH/incr-0.2.zsh
 
 # https://github.com/zsh-users/zsh-syntax-highlighting
-[ -e ~/Dropbox/.files/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && \
-  source ~/Dropbox/.files/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+[ -e $ZSH_CONFIG_PATH/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && \
+  source $ZSH_CONFIG_PATH/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # https://github.com/zsh-users/zsh-history-substring-search
-[ -e ~/Dropbox/.files/zsh-history-substring-search/zsh-history-substring-search.zsh  ] && \
-  source ~/Dropbox/.files/zsh-history-substring-search/zsh-history-substring-search.zsh
+[ -e $ZSH_CONFIG_PATH/zsh-history-substring-search/zsh-history-substring-search.zsh  ] && \
+  source $ZSH_CONFIG_PATH/zsh-history-substring-search/zsh-history-substring-search.zsh
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
 # https://github.com/nakamuray/zaw
-[ -e ~/Dropbox/.files/zaw/zaw.zsh ] && \
-  source ~/Dropbox/.files/zaw/zaw.zsh && \
+[ -e $ZSH_CONFIG_PATH/zaw/zaw.zsh ] && \
+  source $ZSH_CONFIG_PATH/zaw/zaw.zsh && \
   bindkey '^z' zaw-history
 
 [ -e ./Dropbox ] && cd ./Dropbox > /dev/null
