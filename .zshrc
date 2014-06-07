@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2014/06/07 14:05:56.
+# - * Last Change: 2014/06/07 14:06:56.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -108,10 +108,12 @@ setopt no_flow_control
 
 # integrate vim mode
 bindkey -v
-# http://blog-imgs-44.fc2.com/z/s/h/zshscreenvimvimpwget/zsh_vim_visualmode_osxver.txt
-[ -e ~/Dropbox/.files/zsh_vim_visualmode_osxver ] && \
-  source ~/Dropbox/.files/zsh_vim_visualmode_osxver
-bindkey "^W" backward-kill-word
+bindkey "^K" kill-whole-line
+bindkey "^A" beginning-of-line
+bindkey "^E" end-of-line
+bindkey "^D" delete-char
+bindkey "^F" forward-char
+bindkey "^B" backward-char
 
 # export variables
 export LANG=ja_JP.UTF-8
