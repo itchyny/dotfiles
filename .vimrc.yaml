@@ -450,6 +450,63 @@ plugin:
       - quickrun
       - dictionary
 
+  kana/vim-textobj-user: {}
+  kana/vim-textobj-entire:
+    dependon:
+      - textobj-user
+  kana/vim-textobj-line:
+    dependon:
+      - textobj-user
+  kana/vim-textobj-function:
+    dependon:
+      - textobj-user
+  kana/vim-textobj-indent:
+    dependon:
+      - textobj-user
+  kana/vim-textobj-underscore:
+    dependon:
+      - textobj-user
+  glts/vim-textobj-comment:
+    dependon:
+      - textobj-user
+  osyo-manga/vim-textobj-multiblock:
+    dependon:
+      - textobj-user
+    beforeScript: |
+      let g:textobj_multiblock_no_default_key_mappings = 1
+      let g:textobj_multiblock_blocks = [
+            \ [ "(", ")", 1 ],
+            \ [ "[", "]", 1 ],
+            \ [ "{", "}", 1 ],
+            \ [ '<', '>', 1 ],
+            \ [ '"', '"', 1 ],
+            \ [ "'", "'", 1 ],
+            \ ]
+  osyo-manga/vim-textobj-multitextobj:
+    dependon:
+      - textobj-user
+    beforeScript: |
+      let g:textobj_multitextobj_textobjects_i = [
+            \   { "textobj": "\<Plug>(textobj-multiblock-i)", "is_cursor_in": 1 },
+            \   { "textobj": "\<Plug>(textobj-comment-i)", "is_cursor_in": 1 },
+            \   { "textobj": "\<Plug>(textobj-indent-i)", "is_cursor_in": 1 },
+            \   { "textobj": "\<Plug>(textobj-function-i)", "is_cursor_in": 1 },
+            \   "\<Plug>(textobj-entire-i)",
+            \ ]
+      omap a<CR> <Plug>(textobj-multitextobj-a)
+      omap i<CR> <Plug>(textobj-multitextobj-i)
+      xmap a<CR> <Plug>(textobj-multitextobj-a)
+      xmap i<CR> <Plug>(textobj-multitextobj-i)
+  thinca/vim-textobj-between:
+    dependon:
+      - textobj-user
+    beforeScript: |
+      let g:textobj_between_no_default_key_mappings = 1
+      omap ib <Plug>(textobj-between-i)
+      omap ab <Plug>(textobj-between-a)
+      vmap ib <Plug>(textobj-between-i)
+      vmap ab <Plug>(textobj-between-a)
+
   indenthaskell.vim:
     filetype: haskell
   elzr/vim-json:
