@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/06/06 17:09:32.
+" - * Last Change: 2014/06/08 10:06:39.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -71,11 +71,6 @@ for [s:cmd, s:exp] in [['vps', 'vsp'], ['vp', 'vsp'], ['di', 'Dictionary<SPACE>-
 endfor
 
 " Filetype
-let s:filetypes1 = map(['bf', 'gnuplot', 'jade', 'json', 'less', 'r', 'roy', 'tex', 'meissa', 'coffee', 'stl', 'stylus'], '[v:val, v:val]')
-let s:filetypes2 = [['cls', 'tex'], ['aux', 'tex'], ['toc', 'tex'], ['nav', 'tex'], ['clo', 'tex'], ['tex', 'tex'], ['hs', 'haskell'], ['hx', 'haxe'], ['md', 'markdown'], ['CIR', 'spice'], ['cir', 'spice'], ['asc', 'spice'], ['m', 'objc'], ['styl', 'stylus']]
-for [s:ex, s:ft] in extend(s:filetypes1, s:filetypes2)
-  execute 'autocmd Vimrc BufNewFile,BufReadPost *.' . s:ex 'set ft='.s:ft
-endfor
 autocmd Vimrc CursorHold,CursorHoldI * call s:auto_filetype()
 function! s:auto_filetype()
   if line('.') > 5 | return | endif

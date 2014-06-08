@@ -636,3 +636,34 @@ filetypeScript:
     call tcomment#DefineType('spice', '* %s')
   help: |
     nnoremap <buffer> <C-[> <C-t>
+
+filetypeDetect:
+  bf: bf
+  gnuplot: gnuplot
+  jade: jade
+  json: json
+  less: less
+  sass: sass
+  scss: scss
+  r: r
+  roy: roy
+  meissa: meissa
+  coffee: coffee
+  stl: stl
+  cls: tex
+  aux: tex
+  toc: tex
+  nav: tex
+  clo: tex
+  tex: tex
+  hs: haskell
+  hx: haxe
+  md: markdown
+  mkd: markdown
+  markdown: markdown
+  CIR: spice
+  cir: spice
+  asc: spice
+  m: objc
+  styl: stylus
+  stylus: stylus
