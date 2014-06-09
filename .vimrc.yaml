@@ -138,6 +138,8 @@ plugin:
       nnoremap <silent> <Leader><Leader>r :<C-u>QuickRun >file:temp.dat<CR>
       nnoremap <silent> <Leader>e :<C-u>QuickRun <i <CR>
       nnoremap <silent> <Leader>o :<C-u>execute 'QuickRun ' . (filereadable('i') ? '<i ' : '') . '>file:output'<CR>
+  ujihisa/neco-look:
+    enable: executable('look')
 
   Shougo/vimfiler:
     mapleader: \
@@ -301,9 +303,6 @@ plugin:
       nnoremap <silent> <Leader>s :<C-u>VimShellBufferDir<CR>
       nnoremap <silent> H :<C-u>VimShellBufferDir -popup<CR>
       nnoremap <silent> s :<C-u>VimShellBufferDir<CR>
-
-  ujihisa/neco-look:
-    enable: executable('look')
 
   Align:
     command: Align
