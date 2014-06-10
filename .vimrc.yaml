@@ -358,6 +358,7 @@ plugin:
   tpope/vim-surround:
     beforeScript: |
       let g:surround_{char2nr('$')} = "$\r$"
+  tpope/vim-repeat: {}
   tComment:
     command: TComment
     function: tcomment
