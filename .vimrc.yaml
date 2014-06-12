@@ -527,7 +527,7 @@ plugin:
     filetype: m4
   jade.vim:
     filetype: jade
-  vim-coffee-script:
+  kchmck/vim-coffee-script:
     filetype: coffee
   briancollins/vim-jst:
     filetype: jst
