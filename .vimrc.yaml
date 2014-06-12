@@ -531,6 +531,8 @@ plugin:
     filetype: jade
   vim-coffee-script:
     filetype: coffee
+  briancollins/vim-jst:
+    filetype: jst
   rest.vim:
     filetype: rest
   tpope/vim-markdown:
@@ -649,6 +651,9 @@ filetypeDetect:
   roy: roy
   meissa: meissa
   coffee: coffee
+  ejs: jst
+  jst: jst
+  hamljs: jst
   stl: stl
   cls: tex
   aux: tex
