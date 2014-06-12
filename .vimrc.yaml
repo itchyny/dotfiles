@@ -61,8 +61,6 @@ plugin:
     function: screensaver
     script: |
       map <silent> <Leader>s :<C-u>ScreenSaver<CR>
-    afterScript: |
-      call screensaver#source#password#set('245843abef9e72e7efac30138a994bf6301e7e1d7d7042a33d42e863d2638811')
   itchyny/vim-gitbranch:
     sync: false
   itchyny/vim-closebuffer:
