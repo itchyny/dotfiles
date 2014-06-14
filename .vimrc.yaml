@@ -26,6 +26,7 @@ plugin:
     sync: false
     mapleader: ","
     command: Calendar
+    function: calendar
     mapping: <Plug>(calendar)
     script: |
       map <silent> <Leader>z <Plug>(calendar)
