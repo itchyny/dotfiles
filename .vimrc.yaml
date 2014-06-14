@@ -544,6 +544,8 @@ plugin:
       let g:jedi#completions_enabled = 0
   itspriddle/vim-javascript-indent:
     filetype: javascript
+  derekwyatt/vim-scala:
+    filetype: scala
 
 beforeScript: |
   let g:iswin = has('win16') || has('win32') || has('win64')
@@ -671,3 +673,4 @@ filetypeDetect:
   m: objc
   styl: stylus
   stylus: stylus
+  scala: scala
