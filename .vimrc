@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/06/09 12:17:48.
+" - * Last Change: 2014/06/16 01:17:52.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -116,7 +116,7 @@ nnoremap <silent> ,80 :s/\(.\{80}\)/\1<c-v><Enter>/g<Enter><ESC>:<C-u>set nohlse
 vnoremap <silent> ,80 :s/\(.\{80}\)/\1<c-v><Enter>/g<Enter><ESC>:<C-u>set nohlsearch<CR>
 
 " diff
-nnoremap ,d :<C-u>diffthis<CR>
+nnoremap <silent> <expr> ,d ":\<C-u>".(&diff?"diffoff":"diffthis")."\<CR>"
 
 " save
 nnoremap <C-s> :<C-u>w<CR>
