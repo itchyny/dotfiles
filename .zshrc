@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2014/06/15 18:03:41.
+# - * Last Change: 2014/06/15 22:00:20.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -44,14 +44,14 @@ setopt prompt_subst
 setopt interactive_comments
 function _zsh_git_branch {
   local name gitstatus color
-  name=$(basename "`git symbolic-ref HEAD 2> /dev/null`")
+  name=$(basename "$(git symbolic-ref HEAD 2> /dev/null)")
   if [[ -z $name ]]; then
     return
   fi
-  gitstatus=`git status 2> /dev/null`
-  if [[ -n `echo "$gitstatus" | grep "^nothing to"` ]]; then
+  gitstatus=$(git status 2> /dev/null)
+  if [[ -n $(echo "$gitstatus" | grep "^nothing to") ]]; then
     color=${fg[cyan]}
-  elif [[ -n `echo "$gitstatus" | grep "^nothing added"` ]]; then
+  elif [[ -n $(echo "$gitstatus" | grep "^nothing added") ]]; then
     color=${fg[yellow]}
   else
     color=${fg[magenta]}
@@ -188,7 +188,7 @@ stty -ixon -ixoff
 
 # alias
 alias cabal-update='sudo cabal update && sudo cabal install cabal-install'
-if [ `uname` = "Darwin" ]; then
+if [ "$(uname)" = "Darwin" ]; then
   alias google-chrome='open -a Google\ Chrome'
   alias evince='open -a Preview'
   alias display='open -a Preview'
@@ -198,7 +198,7 @@ if [ `uname` = "Darwin" ]; then
   pman () {
     man -t $@ | open -f -a /Applications/Preview.app
   }
-elif [ `uname` = "Linux" ]; then
+elif [ "$(uname)" = "Linux" ]; then
   alias apt-get-update='sudo apt-get update'
   alias update='cabal-update && apt-get-update'
   alias open='gnome-open'
@@ -294,7 +294,7 @@ function configurevim() {
     CFLAGS="-O3" ./configure --with-features=huge\
                 --with-compiledby=itchyny\
                 --enable-pythoninterp=yes\
-                --with-lua-prefix=`dirname \`which lua\``\
+                --with-lua-prefix=$(dirname $(which lua))\
                 --enable-luainterp=yes\
                 --enable-multibyte
   else
@@ -309,9 +309,9 @@ function makevim() {
   hg pull
   hg update
   make
-  ver=`vim --version | head -n 1 | sed -e 's/.*\([0-9][0-9]*\.[0-9][0-9]*\).*/\1/'`
-  ver=$ver.`vim --version | head -n 3 | tail -n 2 | tr -d '\n' | sed -e 's/.*-\([0-9][0-9]*\).*/\1/'`
-  cp -n `which vim` ~/Dropbox/cpp/vim/backup/vim-$os/vim@$ver
+  ver=$(vim --version | head -n 1 | sed -e 's/.*\([0-9][0-9]*\.[0-9][0-9]*\).*/\1/')
+  ver=$ver.$(vim --version | head -n 3 | tail -n 2 | tr -d '\n' | sed -e 's/.*-\([0-9][0-9]*\).*/\1/')
+  cp -n $(which vim) ~/Dropbox/cpp/vim/backup/vim-$os/vim@$ver
   sudo make install
 }
 function makenvim() {
