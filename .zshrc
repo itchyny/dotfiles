@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2014/06/07 14:06:56.
+# - * Last Change: 2014/06/15 18:03:41.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -333,6 +333,7 @@ alias -s cpp=runcpp
 alias -s py=python
 alias -s hs=runhaskell
 alias -s s=runcpp
+alias -s sh=sh
 
 function extract() {
   case $1 in
