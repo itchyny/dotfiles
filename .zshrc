@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2014/06/15 22:00:20.
+# - * Last Change: 2014/06/15 23:16:26.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -86,7 +86,7 @@ setopt auto_param_keys
 setopt auto_param_slash
 setopt auto_pushd
 setopt mark_dirs
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin
 
@@ -135,10 +135,10 @@ export PATH=$PATH:~/Library/Haskell/bin/
 function mkcd {
   if [ ! -n "$1" ]; then
     echo "Enter a directory name"
-  elif [ -d $1 ]; then
+  elif [ -d "$1" ]; then
     echo "\`$1' already exists"
   else
-    mkdir $1 && cd $1
+    mkdir "$1" && cd "$1"
   fi
 }
 
@@ -196,7 +196,7 @@ if [ "$(uname)" = "Darwin" ]; then
   alias port-update='sudo port selfupdate && sudo port upgrade outdated'
   alias update='cabal-update && port-update'
   pman () {
-    man -t $@ | open -f -a /Applications/Preview.app
+    man -t "$1" | open -f -a /Applications/Preview.app
   }
 elif [ "$(uname)" = "Linux" ]; then
   alias apt-get-update='sudo apt-get update'
@@ -206,10 +206,10 @@ elif [ "$(uname)" = "Linux" ]; then
 fi
 alias chrome='google-chrome'
 function runc () {
-  gcc -O3 $1 && shift && ./a.out $@; rm -f ./a.out
+  gcc -O3 "$1" && shift && ./a.out "$@"; rm -f ./a.out
 }
 function runcpp () {
-  g++ -O3 $1 && shift && ./a.out $@; rm -f ./a.out
+  g++ -O3 "$1" && shift && ./a.out "$@"; rm -f ./a.out
 }
 alias asm=runcpp
 # editor
@@ -294,7 +294,7 @@ function configurevim() {
     CFLAGS="-O3" ./configure --with-features=huge\
                 --with-compiledby=itchyny\
                 --enable-pythoninterp=yes\
-                --with-lua-prefix=$(dirname $(which lua))\
+                --with-lua-prefix="$(dirname $(which lua))"\
                 --enable-luainterp=yes\
                 --enable-multibyte
   else
@@ -311,7 +311,7 @@ function makevim() {
   make
   ver=$(vim --version | head -n 1 | sed -e 's/.*\([0-9][0-9]*\.[0-9][0-9]*\).*/\1/')
   ver=$ver.$(vim --version | head -n 3 | tail -n 2 | tr -d '\n' | sed -e 's/.*-\([0-9][0-9]*\).*/\1/')
-  cp -n $(which vim) ~/Dropbox/cpp/vim/backup/vim-$os/vim@$ver
+  cp -n "$(which vim)" "~/Dropbox/cpp/vim/backup/vim-$os/vim@$ver"
   sudo make install
 }
 function makenvim() {
@@ -337,34 +337,34 @@ alias -s sh=sh
 
 function extract() {
   case $1 in
-    *.tar.gz|*.tgz) tar xzvf $1;;
-    *.tar.xz) tar Jxvf $1;;
-    *.zip) unzip $1;;
-    *.lzh) lha e $1;;
-    *.tar.bz2|*.tbz) tar xjvf $1;;
-    *.tar.Z) tar zxvf $1;;
-    *.gz) gzip -d $1;;
-    *.bz2) bzip2 -dc $1;;
-    *.Z) uncompress $1;;
-    *.tar) tar xvf $1;;
-    *.arj) unarj $1;;
+    *.tar.gz|*.tgz) tar xzvf "$1";;
+    *.tar.xz) tar Jxvf "$1";;
+    *.zip) unzip "$1";;
+    *.lzh) lha e "$1";;
+    *.tar.bz2|*.tbz) tar xjvf "$1";;
+    *.tar.Z) tar zxvf "$1";;
+    *.gz) gzip -d "$1";;
+    *.bz2) bzip2 -dc "$1";;
+    *.Z) uncompress "$1";;
+    *.tar) tar xvf "$1";;
+    *.arj) unarj "$1";;
   esac
 }
 alias -s {gz,tgz,zip,lzh,bz2,tbz,Z,tar,arj,xz}=extract
 
 function download {
   if [[ $1 =~ ".*asx$" ]]; then
-    URL=`curl -s $1 | grep -i HREF | sed 's/.*="\(.*\)".*/\1/'`
-    FILENAME=`echo $URL | sed 's/.*\/\/\([a-z:0-9.\-]*\/\)*//' | sed 's/wsx/wmv/'`
-    mplayer $URL -dumpstream -dumpfile $FILENAME
+    URL=$(curl -s "$1" | grep -i HREF | sed 's/.*="\(.*\)".*/\1/')
+    FILENAME=$(echo "$URL" | sed 's/.*\/\/\([a-z:0-9.\-]*\/\)*//' | sed 's/wsx/wmv/')
+    mplayer "$URL" -dumpstream -dumpfile "$FILENAME"
   elif [[ $1 =~ ".*nicovideo.*" ]]; then
-    nicovideo-dl -n -t $1
+    nicovideo-dl -n -t "$1"
   elif [[ $1 =~ ".*youtube.*" ]]; then
-    youtube-dl $1
+    youtube-dl "$1"
   elif [[ $1 =~ ".*github.*" ]]; then
-    git clone $1
+    git clone "$1"
   else
-    wget --no-check-certificate $1
+    wget --no-check-certificate "$1"
   fi
 }
 
