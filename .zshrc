@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2014/06/15 23:16:26.
+# - * Last Change: 2014/06/16 00:07:47.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -353,15 +353,15 @@ function extract() {
 alias -s {gz,tgz,zip,lzh,bz2,tbz,Z,tar,arj,xz}=extract
 
 function download {
-  if [[ $1 =~ ".*asx$" ]]; then
+  if [[ $1 =~ .*asx$ ]]; then
     URL=$(curl -s "$1" | grep -i HREF | sed 's/.*="\(.*\)".*/\1/')
     FILENAME=$(echo "$URL" | sed 's/.*\/\/\([a-z:0-9.\-]*\/\)*//' | sed 's/wsx/wmv/')
     mplayer "$URL" -dumpstream -dumpfile "$FILENAME"
-  elif [[ $1 =~ ".*nicovideo.*" ]]; then
+  elif [[ $1 =~ .*nicovideo.* ]]; then
     nicovideo-dl -n -t "$1"
-  elif [[ $1 =~ ".*youtube.*" ]]; then
+  elif [[ $1 =~ .*youtube.* ]]; then
     youtube-dl "$1"
-  elif [[ $1 =~ ".*github.*" ]]; then
+  elif [[ $1 =~ .*github.* ]]; then
     git clone "$1"
   else
     wget --no-check-certificate "$1"
