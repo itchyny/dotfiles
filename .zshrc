@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2014/06/16 00:07:47.
+# - * Last Change: 2014/06/16 18:50:06.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -288,6 +288,8 @@ case "${OSTYPE}" in
     ;;
 esac
 function configurevim() {
+  local save_path
+  save_path="$(pwd)"
   cd ~/Dropbox/cpp/vim/vim-$os/
   rm -f src/auto/config.cache
   if which lua > /dev/null; then
@@ -303,8 +305,11 @@ function configurevim() {
                 --enable-pythoninterp=yes\
                 --enable-multibyte
   fi
+  cd "$save_path"
 }
 function makevim() {
+  local save_path
+  save_path="$(pwd)"
   cd ~/Dropbox/cpp/vim/vim-$os/
   hg pull
   hg update
@@ -313,6 +318,7 @@ function makevim() {
   ver=$ver.$(vim --version | head -n 3 | tail -n 2 | tr -d '\n' | sed -e 's/.*-\([0-9][0-9]*\).*/\1/')
   cp -n "$(which vim)" "~/Dropbox/cpp/vim/backup/vim-$os/vim@$ver"
   sudo make install
+  cd "$save_path"
 }
 function makenvim() {
   cd ~/Dropbox/cpp/vim/neovim/
