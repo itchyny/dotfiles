@@ -90,6 +90,8 @@ plugin:
     insert: true
   itchyny/vim-cmdline-ranges:
     sync: false
+  itchyny/vim-cmdline-escape:
+    sync: false
 
   Shougo/neocomplete.vim:
     enable: has('lua') && v:version > 703
