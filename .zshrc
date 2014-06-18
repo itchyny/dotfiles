@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2014/06/16 18:50:06.
+# - * Last Change: 2014/06/18 22:23:17.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -49,9 +49,9 @@ function _zsh_git_branch {
     return
   fi
   gitstatus=$(git status 2> /dev/null)
-  if [[ -n $(echo "$gitstatus" | grep "^nothing to") ]]; then
+  if echo "$gitstatus" | grep -q "^nothing to"; then
     color=${fg[cyan]}
-  elif [[ -n $(echo "$gitstatus" | grep "^nothing added") ]]; then
+  elif echo "$gitstatus" | grep -q "^nothing added"; then
     color=${fg[yellow]}
   else
     color=${fg[magenta]}
