@@ -1,0 +1,17 @@
+set nosmoothscroll
+set defaultnewtabpage
+
+let barposition = "bottom"
+let highlight = "#ffff00"
+let typelinkhintsdelay = 0
+let hintcharacters = "fdsawerjkiop"
+let blacklists = ["chrome://*","https://mail.google.com/*","https://www.google.com/calendar/*","http://feedly.com/*"]
+
+map 0 scrollToTop
+map <C-f> scrollFullPageDown
+map <C-b> scrollFullPageUp
+map i goToInput
+map a goToInput
+map d closeTab
+map u lastClosedTab
+map ; :
