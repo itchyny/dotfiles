@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2014/06/18 22:23:17.
+# - * Last Change: 2014/06/19 07:50:03.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -316,7 +316,7 @@ function makevim() {
   make
   ver=$(vim --version | head -n 1 | sed -e 's/.*\([0-9][0-9]*\.[0-9][0-9]*\).*/\1/')
   ver=$ver.$(vim --version | head -n 3 | tail -n 2 | tr -d '\n' | sed -e 's/.*-\([0-9][0-9]*\).*/\1/')
-  cp -n "$(which vim)" "~/Dropbox/cpp/vim/backup/vim-$os/vim@$ver"
+  cp -n "$(which vim)" ~/Dropbox/cpp/vim/backup/vim-$os/vim@$ver
   sudo make install
   cd "$save_path"
 }
