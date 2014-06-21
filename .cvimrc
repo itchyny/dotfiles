@@ -15,3 +15,6 @@ map a goToInput
 map d closeTab
 map u lastClosedTab
 map ; :
+iunmap <C-a>
+iunmap <C-l>
+iunmap <C-h>
