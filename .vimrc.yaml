@@ -374,6 +374,27 @@ plugin:
   autodate.vim:
     beforeScript: |
       let g:autodate_format = '%Y/%m/%d %H:%M:%S'
+  osyo-manga/vim-spice:
+    script: |
+      let g:spice_highlight_group = 'SpiceWord'
+      let g:spice_highlight_group_in_cursorline = 'SpiceCursorline'
+      let g:spice#enable_filetypes = { 'vimshell' : 0, 'vimfiler' : 0, 'unite' : 0, 'quickrun' : 0, 'vimcalc' : 0, 'calendar' : 0 , 'thumbnail' : 0 }
+      function! s:spice_highlight()
+        redir => out
+        silent! highlight CursorLine
+        redir END
+        let outstrs = split(out, '\n')
+        let [cbg, gbg] = ['', '']
+        if len(outstrs)
+          let [cbg, gbg] = [matchstr(outstrs[0], 'ctermbg=\S\+'), matchstr(outstrs[0], 'guibg=\S\+')]
+        endif
+        hi SpiceWord cterm=underline gui=underline
+        exec 'hi SpiceCursorline cterm=underline' cbg 'gui=underline' gbg
+      endfunction
+      augroup SpiceHighlight
+        autocmd!
+        autocmd VimEnter,ColorScheme * call s:spice_highlight()
+      augroup END
   gregsexton/MatchTag: {}
   matchit.zip: {}
   banyan/recognize_charcode.vim: {}
