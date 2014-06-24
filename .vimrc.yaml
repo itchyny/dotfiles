@@ -588,6 +588,7 @@ beforeScript: |
   let g:hs_highlight_more_types = 1
 
   let g:is_bash = 1
+  let g:tex_isk = '48-57,92,a-z,A-Z,192-255'
 
 afterScript: |
   let g:mapleader = ','
