@@ -517,8 +517,10 @@ plugin:
             \ ]
       omap a<CR> <Plug>(textobj-multitextobj-a)
       omap i<CR> <Plug>(textobj-multitextobj-i)
+      omap <CR> <Plug>(textobj-multitextobj-i)
       xmap a<CR> <Plug>(textobj-multitextobj-a)
       xmap i<CR> <Plug>(textobj-multitextobj-i)
+      xmap <CR> <Plug>(textobj-multitextobj-i)
   thinca/vim-textobj-between:
     dependon:
       - textobj-user
