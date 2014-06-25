@@ -5,7 +5,7 @@ let barposition = "bottom"
 let highlight = "#ffff00"
 let typelinkhintsdelay = 0
 let hintcharacters = "fdsawerjkiop"
-let blacklists = ["chrome://*","https://mail.google.com/*","https://www.google.com/calendar/*","http://feedly.com/*"]
+let blacklists = ["chrome://*","https://mail.google.com/*","https://www.google.com/calendar/*","http://feedly.com/*","http://localhost/*"]
 
 map 0 scrollToTop
 map <C-f> scrollFullPageDown
