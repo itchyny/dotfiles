@@ -1,5 +1,6 @@
 set nosmoothscroll
 set defaultnewtabpage
+set nohud
 
 let barposition = "bottom"
 let highlight = "#ffff00"
