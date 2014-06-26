@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/06/16 01:17:52.
+" - * Last Change: 2014/06/26 00:18:26.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -49,6 +49,7 @@ if exists('&clipboard')
   if has('unnamedplus') | set clipboard+=unnamedplus | endif
 endif
 set swapfile nobackup updatetime=300 timeoutlen=500 ttyfast vb t_vb= wildignore+=*.sw?,*.bak,*.?~,*.??~,*.???~,*.~,*.o,*.hi,*.pyc wildmode=list:longest
+if exists('&breakindent') | set breakindent | endif
 
 " Enable plugin, indent, syntax
 filetype plugin indent on
