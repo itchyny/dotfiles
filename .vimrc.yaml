@@ -167,7 +167,7 @@ plugin:
       let g:vimfiler_data_directory = $CACHE.'/vimfiler'
       let g:vimfiler_draw_files_limit = 1000
       let g:vimfiler_min_cache_files = 10000000000
-      let g:vimfiler_ignore_pattern = '^\.\%([^v]\|v[^i]\|vi[^m]\)\|\.\%(o\|hi\)$\|^dist$\|^\%(score\|font\|tex\|graphviz\|scheme\|ANTLER\|procon\|pl\|old_project\|kmc\|html\|rst\|eclipse\|rubik\|coq\|r\|antlr\|ltspice\)$'
+      let g:vimfiler_ignore_pattern = '^\.\%([^v]\|v[^i]\|vi[^m]\)\|\.\%(o\|hi\|bak\|pyc\|aux\|bbl\|blg\|dvi\|nav\|snm\|toc\|out\)$\|^dist$\|^\%(score\|font\|tex\|graphviz\|scheme\|ANTLER\|procon\|pl\|old_project\|kmc\|html\|rst\|eclipse\|rubik\|coq\|r\|antlr\|ltspice\)$'
       let g:vimfiler_tree_leaf_icon = g:fancy ? ' ' : '|'
       let g:vimfiler_tree_opened_icon = g:fancy ? '▾' : '-'
       let g:vimfiler_tree_closed_icon = g:fancy ? '▸' : '+'
