@@ -532,6 +532,13 @@ plugin:
       vmap ib <Plug>(textobj-between-i)
       vmap ab <Plug>(textobj-between-a)
 
+  kana/vim-operator-user: {}
+  kana/vim-operator-replace:
+    dependon:
+      - operator-user
+    beforeScript: |
+      map _  <Plug>(operator-replace)
+
   indenthaskell.vim:
     filetype: haskell
   elzr/vim-json:
