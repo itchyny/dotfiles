@@ -1,14 +1,14 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/06/27 09:38:05.
+" - * Last Change: 2014/06/28 16:52:36.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
 filetype off
 scriptencoding utf-8
-let $VIM = expand('~/.vim')
-let $CACHE = $VIM.'/.cache'
+let $VIM_PATH = expand('~/.vim')
+let $CACHE = $VIM_PATH.'/.cache'
 augroup Vimrc
   autocmd!
 augroup END
