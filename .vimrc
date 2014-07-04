@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/07/04 13:16:21.
+" - * Last Change: 2014/07/04 21:35:07.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -126,7 +126,6 @@ vnoremap <C-s> :<C-u>w<CR>
 
 " search
 autocmd Vimrc BufEnter,WinEnter * nnoremap <silent><buffer> <Esc><Esc> :<C-u>set nohlsearch nopaste<CR>
-autocmd Vimrc BufEnter,WinEnter [calendar* nunmap <buffer> <Esc><Esc>
 nnoremap / :<C-u>set hlsearch<CR>/
 nnoremap ? :<C-u>set hlsearch<CR>?
 nnoremap * :<C-u>set hlsearch<CR>*
