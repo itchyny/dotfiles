@@ -657,9 +657,16 @@ filetypeScript:
       execute 'inoremap <buffer> <expr><silent> '.s:key.s:start_complete
       execute 'nnoremap <buffer> <expr><silent> '.s:key.s:start_complete
     endfor
+    setlocal nonumber nocursorline
   calendar: |
     nunmap <buffer> <C-h>
     nunmap <buffer> <C-l>
+  vimcalc: |
+    setlocal nonumber nocursorline
+  quickrun: |
+    setlocal nonumber nocursorline
+  cam: |
+    setlocal nonumber nocursorline
   haskell: |
     setl ofu=necoghc#omnifunc
     setl iskeyword=39,48-57,95,a-z,A-Z,192-255
