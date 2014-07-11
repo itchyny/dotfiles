@@ -697,6 +697,7 @@ filetypeDetect:
   roy: roy
   meissa: meissa
   coffee: coffee
+  cson: coffee
   ejs: jst
   jst: jst
   hamljs: jst
