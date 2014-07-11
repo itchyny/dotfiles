@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2014/06/19 07:50:03.
+# - * Last Change: 2014/07/12 01:06:32.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -132,16 +132,6 @@ export PATH=~/Dropbox/bin/:$PATH
 export PATH=$PATH:~/Library/Haskell/bin/
 
 # function
-function mkcd {
-  if [ ! -n "$1" ]; then
-    echo "Enter a directory name"
-  elif [ -d "$1" ]; then
-    echo "\`$1' already exists"
-  else
-    mkdir "$1" && cd "$1"
-  fi
-}
-
 function pcolor() {
   for ((f = 0; f < 256; f++)); do
     printf "\e[38;5;%dm %3d\e[m" $f $f
