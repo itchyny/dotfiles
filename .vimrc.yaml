@@ -7,7 +7,7 @@ plugin:
       let g:landscape_highlight_url = 1
       let g:landscape_highlight_todo = 1
       let g:landscape_highlight_url_filetype = {'thumbnail': 0}
-      let g:landscape_vimfiler_important = ' \%(Dropbox/\|[Dd]ownloads/\|\.vim/\|Library/\|Application Support/\|Google/\|Chrome/\|Default/\|Extensions/\|src/\|README\%(\.md\)\?\|manifest.json\|univ/\|paper/\|js/\|quantum/\|main\.pdf\|miv/\|landscape/\|lightline/\|lightline-powerful/\|spellbad-pattern/\|calendar/\|thumbnail/\|dictionary/\|screensaver/\|gitbranch/\|closebuffer/\|external/\|insert-mode-motion/\|cmdline-ranges/\|cmdline-escape/\|vicenza/\|uninplemented/\|adblock-fast/\)'
+      let g:landscape_vimfiler_important = ' \%(Dropbox/\|[Dd]ownloads/\|\.vim/\|Library/\|Application Support/\|Google/\|Chrome/\|Default/\|Extensions/\|src/\|README\%(\.mk\?d\)\?\|manifest.json\|univ/\|paper/\|js/\|quantum/\|main\.pdf\|miv/\|landscape/\|lightline/\|lightline-powerful/\|spellbad-pattern/\|calendar/\|thumbnail/\|dictionary/\|screensaver/\|gitbranch/\|closebuffer/\|external/\|insert-mode-motion/\|cmdline-ranges/\|cmdline-escape/\|vicenza/\|uninplemented/\|adblock-fast/\)'
     afterScript: |
       colorscheme landscape
   itchyny/lightline.vim:
