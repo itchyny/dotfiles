@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/07/10 00:26:05.
+" - * Last Change: 2014/07/15 16:02:05.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -45,7 +45,7 @@ if exists('&clipboard')
   set clipboard=unnamed
   if has('unnamedplus') | set clipboard+=unnamedplus | endif
 endif
-set swapfile nobackup updatetime=300 timeoutlen=500 ttyfast visualbell t_vb= wildignore+=*.sw?,*.bak,*.?~,*.??~,*.???~,*.~,*.o,*.hi,*.pyc,*.aux,*.bbl,*.blg,*.dvi,*.nav,*.snm,*.toc,*.out,*.exe wildmode=list:longest
+set swapfile nobackup updatetime=300 timeoutlen=500 ttyfast visualbell t_vb= noerrorbells wildignore+=*.sw?,*.bak,*.?~,*.??~,*.???~,*.~,*.o,*.hi,*.pyc,*.aux,*.bbl,*.blg,*.dvi,*.nav,*.snm,*.toc,*.out,*.exe wildmode=list:longest
 if exists('&breakindent') | set breakindent | endif
 
 " Enable plugin, indent, syntax
