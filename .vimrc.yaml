@@ -612,6 +612,7 @@ filetypeScript:
     setl ofu=htmlcomplete#CompleteTags
   css: |
     setl ofu=csscomplete#CompleteCSS
+    setl iskeyword=37,45,48-57,95,a-z,A-Z,192-255
   javascript: |
     setl ofu=javascriptcomplete#CompleteJS
   php: |
