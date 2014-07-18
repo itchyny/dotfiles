@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/07/15 16:02:05.
+" - * Last Change: 2014/07/19 17:21:21.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -107,7 +107,11 @@ nnoremap Y y$
 nnoremap <silent> ,<Space> :<C-u> call <SID>remove_trailing_space()<CR>
 function! s:remove_trailing_space()
   let view = winsaveview()
-  keeppatterns %s/\s\+$//e
+  try
+    keeppatterns %s/\s\+$//e
+  catch
+    %s/\s\+$//e
+  endtry
   call winrestview(view)
 endfunction
 
