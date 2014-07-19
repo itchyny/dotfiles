@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2014/07/19 14:58:43.
+# - * Last Change: 2014/07/20 00:35:06.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -184,7 +184,8 @@ if [ "$(uname)" = "Darwin" ]; then
   alias display='open -a Preview'
   alias eog='open -a Preview'
   alias port-update='sudo port selfupdate && sudo port upgrade outdated'
-  alias update='cabal-update && port-update'
+  alias brew-update='brew update; brew upgrade'
+  alias update='cabal-update && brew-update'
   pman () {
     man -t "$1" | open -f -a /Applications/Preview.app
   }
