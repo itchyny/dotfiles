@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2014/07/12 01:06:32.
+# - * Last Change: 2014/07/19 14:58:43.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -122,14 +122,14 @@ export EDITOR=vim
 
 # path settings
 export MANPATH=/usr/local/share/man:/usr/local/man:/usr/share/man
-export PATH=$PATH:/Applications/Xcode.app/Contents/Developer/usr/bin/
-export PATH=$PATH:/usr/local/bin/
-export PATH=$PATH:/usr/local/git/bin/
-export PATH=$PATH:/opt/local/bin/
-export PATH=$PATH:~/.cabal/bin/
-export PATH=$PATH:/usr/local/usr/local/bin/
-export PATH=~/Dropbox/bin/:$PATH
-export PATH=$PATH:~/Library/Haskell/bin/
+export PATH=$PATH:/Applications/Xcode.app/Contents/Developer/usr/bin
+export PATH=$PATH:/usr/local/bin
+export PATH=$PATH:/usr/local/git/bin
+export PATH=$PATH:/opt/local/bin
+export PATH=$PATH:~/.cabal/bin
+export PATH=$PATH:/usr/local/usr/local/bin
+export PATH=~/Dropbox/bin:$PATH
+export PATH=$PATH:~/Library/Haskell/bin
 
 # function
 function pcolor() {
