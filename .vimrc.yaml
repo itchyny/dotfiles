@@ -621,6 +621,8 @@ filetypeScript:
     setl ofu=xmlcomplete#CompleteTags
   python: |
     setl ofu=jedi#completions
+  make: |
+    setl noexpandtab
   unite: |
     inoremap <silent> <buffer> <C-z> <Nop>
     inoremap <silent> <buffer> <C-o> <Nop>
