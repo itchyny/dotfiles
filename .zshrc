@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2014/07/20 00:35:06.
+# - * Last Change: 2014/07/20 21:54:05.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -299,17 +299,21 @@ function configurevim() {
   cd "$save_path"
 }
 function makevim() {
-  local save_path
-  save_path="$(pwd)"
-  cd ~/Dropbox/cpp/vim/vim-$os/
-  hg pull
-  hg update
-  make
-  ver=$(vim --version | head -n 1 | sed -e 's/.*\([0-9][0-9]*\.[0-9][0-9]*\).*/\1/')
-  ver=$ver.$(vim --version | head -n 3 | tail -n 2 | tr -d '\n' | sed -e 's/.*-\([0-9][0-9]*\).*/\1/')
-  cp -n "$(which vim)" ~/Dropbox/cpp/vim/backup/vim-$os/vim@$ver
-  sudo make install
-  cd "$save_path"
+  if command -v brew > /dev/null 2>&1; then
+    brew install vim --with-perl --with-lua --with-luajit --with-python --HEAD --override-system-vi
+  else
+    local save_path
+    save_path="$(pwd)"
+    cd ~/Dropbox/cpp/vim/vim-$os/
+    hg pull
+    hg update
+    make
+    ver=$(vim --version | head -n 1 | sed -e 's/.*\([0-9][0-9]*\.[0-9][0-9]*\).*/\1/')
+    ver=$ver.$(vim --version | head -n 3 | tail -n 2 | tr -d '\n' | sed -e 's/.*-\([0-9][0-9]*\).*/\1/')
+    cp -n "$(which vim)" ~/Dropbox/cpp/vim/backup/vim-$os/vim@$ver
+    sudo make install
+    cd "$save_path"
+  fi
 }
 function makenvim() {
   cd ~/Dropbox/cpp/vim/neovim/
