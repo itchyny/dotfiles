@@ -380,6 +380,7 @@ plugin:
     beforeScript: |
       let g:autodate_format = '%Y/%m/%d %H:%M:%S'
   osyo-manga/vim-spice:
+    sync: false
     script: |
       let g:spice_highlight_group = 'SpiceWord'
       let g:spice_highlight_group_in_cursorline = 'SpiceCursorline'
