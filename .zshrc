@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2014/07/21 00:41:01.
+# - * Last Change: 2014/07/21 23:32:43.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -178,6 +178,7 @@ function chpwd() {
 stty -ixon -ixoff
 
 # alias
+alias ..="cd ../"
 alias cabal-update='sudo cabal update && sudo cabal install cabal-install'
 if [ "$(uname)" = "Darwin" ]; then
   alias google-chrome='open -a Google\ Chrome'
