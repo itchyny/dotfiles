@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2014/07/21 00:40:52.
+# - * Last Change: 2014/07/21 00:41:01.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -130,6 +130,7 @@ export PATH=$PATH:~/.cabal/bin
 export PATH=$PATH:/usr/local/usr/local/bin
 export PATH=~/Dropbox/bin:$PATH
 export PATH=$PATH:~/Library/Haskell/bin
+export PATH=$PATH:/usr/local/Cellar/vim/HEAD/bin
 
 # function
 function pcolor() {
