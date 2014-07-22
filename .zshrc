@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2014/07/22 12:02:40.
+# - * Last Change: 2014/07/23 04:37:09.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -302,7 +302,11 @@ function configurevim() {
 }
 function makevim() {
   if command -v brew > /dev/null 2>&1; then
-    brew install vim --with-perl --with-lua --with-luajit --with-python --HEAD --override-system-vi
+    if brew list vim > /dev/null 2>&1; then
+      brew update; brew upgrade vim
+    else
+      brew install vim --with-perl --with-lua --with-luajit --with-python --HEAD --override-system-vi
+    fi
   else
     local save_path
     save_path="$(pwd)"
