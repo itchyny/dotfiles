@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2014/07/21 23:32:43.
+# - * Last Change: 2014/07/22 12:02:40.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -79,7 +79,7 @@ esac
 # complement (use incr-0.2.zsh but rewrite 6 to 100 in limit-completion)
 autoload -Uz compinit; compinit
 LISTMAX=1000000
-fignore=(.o .dvi .aux .log .toc .hi - \~)
+fignore=(.o .dvi .aux .log .toc .hi .swp .sw .bak .bbl .blg .nav .snm .toc .pyc)
 setopt auto_list
 setopt auto_menu
 setopt auto_param_keys
