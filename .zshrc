@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2014/07/26 19:42:13.
+# - * Last Change: 2014/07/27 15:10:53.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -281,10 +281,32 @@ case "${OSTYPE}" in
     export os='ubuntu'
     ;;
 esac
+function pullvim() {
+  if command -v brew > /dev/null 2>&1; then
+    return
+  fi
+  if ! [[ -d ~/downloads ]]; then
+    mkdir -p ~/downloads
+  fi
+  cd ~/downloads > /dev/null
+  if [[ -d ./vim/.hg ]]; then
+    cd ./vim > /dev/null
+    hg pull
+    hg update
+  else
+    hg clone https://code.google.com/p/vim/ ./vim
+  fi
+}
 function configurevim() {
+  if command -v brew > /dev/null 2>&1; then
+    return
+  fi
   local save_path
   save_path="$(pwd)"
-  cd ~/Dropbox/cpp/vim/vim-$os/
+  if ! [[ -d ~/downloads/vim/.hg ]]; then
+    pullvim
+  fi
+  cd ~/downloads/vim > /dev/null
   rm -f src/auto/config.cache
   if which lua > /dev/null; then
     CFLAGS="-O3" ./configure --with-features=huge\
@@ -299,27 +321,27 @@ function configurevim() {
                 --enable-pythoninterp=yes\
                 --enable-multibyte
   fi
-  cd "$save_path"
+  cd "$save_path" > /dev/null
 }
 function makevim() {
-  if command -v brew > /dev/null 2>&1; then
-    if brew list vim > /dev/null 2>&1; then
-      brew update; brew upgrade vim
-    else
-      brew install vim --with-perl --with-lua --with-luajit --with-python --HEAD --override-system-vi
-    fi
-  else
-    local save_path
-    save_path="$(pwd)"
-    cd ~/Dropbox/cpp/vim/vim-$os/
-    hg pull
-    hg update
-    make
+  if [[ -d ~/Dropbox/cpp/vim/backup/vim-$os ]]; then
     ver=$(vim --version | head -n 1 | sed -e 's/.*\([0-9][0-9]*\.[0-9][0-9]*\).*/\1/')
     ver=$ver.$(vim --version | head -n 3 | tail -n 2 | tr -d '\n' | sed -e 's/.*-\([0-9][0-9]*\).*/\1/')
     cp -n "$(which vim)" ~/Dropbox/cpp/vim/backup/vim-$os/vim@$ver
+    chmod 755 ~/Dropbox/cpp/vim/backup/vim-$os/vim@$ver
+  fi
+  if command -v brew > /dev/null 2>&1; then
+    if brew list vim > /dev/null 2>&1; then
+      brew update; brew rm vim
+    fi
+    brew install vim --with-perl --with-lua --with-luajit --with-python --HEAD --override-system-vi
+  else
+    local save_path
+    save_path="$(pwd)"
+    pullvim
+    make
     sudo make install
-    cd "$save_path"
+    cd "$save_path" > /dev/null
   fi
 }
 function makenvim() {
