@@ -166,6 +166,7 @@ plugin:
       let g:vimfiler_sort_type = 'TIME'
       let g:vimfiler_safe_mode_by_default = 0
       let g:vimfiler_force_overwrite_statusline = 0
+      let g:vimfiler_restore_alternate_file = 0
       let g:vimfiler_data_directory = $CACHE.'/vimfiler'
       let g:vimfiler_draw_files_limit = 1000
       let g:vimfiler_min_cache_files = 10000000000
