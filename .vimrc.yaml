@@ -53,7 +53,7 @@ plugin:
     script: |
       nnoremap <silent> <Leader>y :<C-u>Dictionary -no-duplicate<CR>
     beforeScript: |
-      let g:dictionary_executable_path = '~/Dropbox/bin/'
+      let g:dictionary_executable_path = '~/Dropbox/.bin/'
     dependon:
       - vimproc
   itchyny/screensaver.vim:
