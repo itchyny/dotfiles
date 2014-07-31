@@ -385,8 +385,9 @@ plugin:
   osyo-manga/vim-brightest:
     script: |
       let g:brightest#highlight = {'group': 'BrightestUnderline'}
-      let g:brightest#highlight_in_cursorline = {'group': 'BrightestCursorLine'}
-      let g:brightest#enable_highlight_cursorline = 1
+      let g:brightest#highlight_in_cursorline = {'group': 'BrightestCursorLineBg'}
+      let g:brightest#pattern = '\k\+'
+      let g:brightest#enable_filetypes = { "vimfiler" : 0, "vimshell" : 0, "quickrun" : 0 }
   gregsexton/MatchTag: {}
   matchit.zip: {}
   banyan/recognize_charcode.vim: {}
