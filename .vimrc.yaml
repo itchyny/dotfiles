@@ -706,6 +706,7 @@ filetypeDetect:
   md: markdown
   mkd: markdown
   markdown: markdown
+  yaml: yaml
   CIR: spice
   cir: spice
   asc: spice
