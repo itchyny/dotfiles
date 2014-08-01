@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2014/07/30 00:57:43.
+# - * Last Change: 2014/08/01 09:50:01.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -358,8 +358,8 @@ function backup {
     fi
     if [[ -d $dir/Dropbox/ ]]; then
       echo "Start backup to ... $dir"
-      if [[ -d ~/Dropbox/.dropbox* ]]; then
-        rm -rf ~/Dropbox/.dropbox*
+      if [[ -d ~/Dropbox/.dropbox.cache ]]; then
+        rm -rf ~/Dropbox/.dropbox.cache
       fi
       rsync -av --delete ~/Dropbox/ "$dir/Dropbox/"
     fi
