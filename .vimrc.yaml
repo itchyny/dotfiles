@@ -110,14 +110,16 @@ plugin:
       let g:neocomplete#ignore_source_files = [ 'member.vim', 'tag.vim', 'dictionary.vim', 'include.vim' ]
       let g:neocomplete#force_omni_input_patterns = get(g:, 'neocomplete#force_omni_input_patterns', {})
       let g:neocomplete#force_omni_input_patterns.python = '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
-      let g:neocomplete#force_omni_input_patterns.javascript = '\%([^. \t]\.\)\w*'
-      let g:neocomplete#force_omni_input_patterns.coffee = '\%([^. \t]\.\)\w*'
+      let g:neocomplete#force_omni_input_patterns.javascript = '\%([^. \t]\.\)'
+      let g:neocomplete#force_omni_input_patterns.coffee = '\%([^. \t]\.\)'
       let g:neocomplete#sources#omni#functions = get(g:, 'neocomplete#sources#omni#functions', {})
       let g:neocomplete#sources#omni#functions.javascript = 'jscomplete#Complete'
       let g:neocomplete#sources#omni#functions.coffee = 'coffeecomplete#Complete'
       let g:neocomplete#sources#omni#input_patterns = get(g:, 'neocomplete#sources#omni#input_patterns', {})
       let g:neocomplete#sources#omni#input_patterns.javascript = '[[:alpha:].]\+'
       let g:neocomplete#sources#omni#input_patterns.coffee = '[[:alpha:].]\+'
+    afterScript: |
+      call neocomplete#custom#source('omni', 'rank', 7)
   Shougo/neosnippet:
     script: |
       let g:neosnippet#snippets_directory = $VIM_PATH.'/snippets'
