@@ -116,8 +116,8 @@ plugin:
       let g:neocomplete#sources#omni#functions.javascript = 'jscomplete#Complete'
       let g:neocomplete#sources#omni#functions.coffee = 'coffeecomplete#Complete'
       let g:neocomplete#sources#omni#input_patterns = get(g:, 'neocomplete#sources#omni#input_patterns', {})
-      let g:neocomplete#sources#omni#input_patterns.javascript = '[[:alpha:].]\+'
-      let g:neocomplete#sources#omni#input_patterns.coffee = '[[:alpha:].]\+'
+      let g:neocomplete#sources#omni#input_patterns.javascript = '[[:alpha:]./"''$]\+'
+      let g:neocomplete#sources#omni#input_patterns.coffee = '[[:alpha:]./"''$]\+'
     afterScript: |
       call neocomplete#custom#source('omni', 'rank', 7)
   Shougo/neosnippet:
