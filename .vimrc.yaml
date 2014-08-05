@@ -197,6 +197,12 @@ plugin:
     mapleader: \
     loadbefore:
       - vimfiler
+    commands:
+      - Vinarise
+      - VinariseScript2Hex
+      - VinariseHex2Script
+      - VinarisePluginDump
+      - VinarisePluginViewBitmapView
   Shougo/unite.vim:
     commands:
       - Unite
