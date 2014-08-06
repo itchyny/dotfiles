@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2014/08/05 08:07:46.
+# - * Last Change: 2014/08/06 14:08:52.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -397,23 +397,6 @@ function extract() {
   esac
 }
 alias -s {gz,tgz,zip,lzh,bz2,tbz,Z,tar,arj,xz}=extract
-
-# http://blog.kamipo.net/entry/2013/02/20/122225
-function http {
-  if python -V 2>&1 | grep -qm1 'Python 3\.'; then
-    python -m http.server 8000
-  elif which python > /dev/null; then
-    python -m SimpleHTTPServer 8000
-  elif which ruby > /dev/null; then
-    ruby -rwebrick -e 'WEBrick::HTTPServer.new(:Port => 8000, :DocumentRoot => ".").start'
-  elif which plackup > /dev/null; then
-    plackup -MPlack::App::Directory -e 'Plack::App::Directory->new(root => ".")->to_app'
-  elif which php > /dev/null && php -v | grep -qm1 'PHP 5\.[45]\.'; then
-    php -S 0.0.0.0:8000
-  elif which erl > /dev/null; then
-    erl -eval 'inets:start(), inets:start(httpd, [{server_name, "httpd"}, {server_root, "."}, {document_root, "."}, {port, 8000}])'
-  fi
-}
 
 # http://mimosa-pudica.net/zsh-incremental.html
 [ -e $ZSH_CONFIG_PATH/incr-0.2.zsh ] && \
