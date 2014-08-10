@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2014/08/07 14:32:56.
+# - * Last Change: 2014/08/11 01:16:27.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -350,21 +350,6 @@ function makenvim() {
   cd ~/Dropbox/cpp/vim/neovim/
   git pull
   make
-}
-
-function backup {
-  for dir in /media/*; do
-    if [[ $dir =~ Mac ]]; then
-      continue
-    fi
-    if [[ -d $dir/Dropbox/ ]]; then
-      echo "Start backup to ... $dir"
-      if [[ -d ~/Dropbox/.dropbox.cache ]]; then
-        rm -rf ~/Dropbox/.dropbox.cache
-      fi
-      rsync -av --delete ~/Dropbox/ "$dir/Dropbox/"
-    fi
-  done
 }
 
 # suffix alias according to file extension
