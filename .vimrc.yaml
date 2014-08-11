@@ -632,6 +632,8 @@ filetypeScript:
     setl ofu=jedi#completions
   make: |
     setl noexpandtab
+  sh: |
+    setl iskeyword=36,45,48-57,64,95,a-z,A-Z,192-255
   unite: |
     inoremap <silent> <buffer> <C-z> <Nop>
     inoremap <silent> <buffer> <C-o> <Nop>
