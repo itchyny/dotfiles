@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2014/08/11 01:16:27.
+# - * Last Change: 2014/08/11 18:42:22.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -63,7 +63,7 @@ if (($+VIM)); then
   PROMPT2="%_> "
   SPROMPT="%r is correct? [n,y,a,e]: "
 else
-  PROMPT="%(?.%{$fg[green]%}.%{$fg[blue]%})%B%~%b"'$(_zsh_git_branch)'"%{${reset_color}%} "
+  PROMPT="%(?.%{$fg[green]%}.%{$fg[blue]%})%B%~%b\$(_zsh_git_branch)%{${reset_color}%} "
   PROMPT2="%{$bg[blue]%}%_>%{$reset_color%}%b "
   SPROMPT="%{$bg[red]%}%B%r is correct? [n,y,a,e]:%{${reset_color}%}%b "
 fi
