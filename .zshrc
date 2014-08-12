@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2014/08/11 18:42:22.
+# - * Last Change: 2014/08/12 12:18:43.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -314,7 +314,7 @@ function configurevim() {
     CFLAGS="-O3" ./configure --with-features=huge\
                 --with-compiledby=itchyny\
                 --enable-pythoninterp=yes\
-                --with-lua-prefix="$(dirname $(which lua))"\
+                --with-lua-prefix="$(dirname "$(which lua)")"\
                 --enable-luainterp=yes\
                 --enable-multibyte
   else
