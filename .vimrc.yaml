@@ -447,6 +447,8 @@ plugin:
     beforeScript: |
       let g:necoghc_enable_detailed_browse = 1
 
+  cohama/agit.vim:
+    command: Agit
   ynkdir/vim-vimlparser:
     loadbefore:
       - vimlint
