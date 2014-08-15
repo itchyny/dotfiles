@@ -422,7 +422,6 @@ plugin:
       - GhciLoad
       - GhciModule
       - GhciSend
-
   eagletmt/ghcmod-vim:
     filetype: haskell
     enable: executable('ghc') && executable('ghc-mod')
