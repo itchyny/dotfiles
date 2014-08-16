@@ -410,8 +410,6 @@ plugin:
   matchit.zip: {}
   banyan/recognize_charcode.vim: {}
 
-  motemen/hatena-vim:
-    filetype: hatena
   eagletmt/ghci-vim:
     filetype: haskell
     enable: executable('ghc')
@@ -550,6 +548,8 @@ plugin:
     beforeScript: |
       map _  <Plug>(operator-replace)
 
+  motemen/hatena-vim:
+    filetype: hatena
   indenthaskell.vim:
     filetype: haskell
   elzr/vim-json:
