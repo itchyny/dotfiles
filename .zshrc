@@ -1,18 +1,16 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2014/08/13 10:36:04.
+# - * Last Change: 2014/08/19 17:28:58.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
-if [ -d ~/Dropbox/.files/ ]; then
-  ZSH_CONFIG_PATH=~/Dropbox/.files/
-elif [ -d ~/.files/ ]; then
-  ZSH_CONFIG_PATH=~/.files/
-elif [ -d ~/.zsh/ ]; then
-  ZSH_CONFIG_PATH=~/.zsh/
+if [ -d ~/Dropbox/.files ]; then
+  ZSH_CONFIG_PATH=~/Dropbox/.files
+elif [ -d ~/.files ]; then
+  ZSH_CONFIG_PATH=~/.files
 else
-  ZSH_CONFIG_PATH=~/zsh/
+  ZSH_CONFIG_PATH=~/.zsh
 fi
 
 # history
