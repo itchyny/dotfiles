@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2014/08/19 17:28:58.
+# - * Last Change: 2014/08/21 00:19:31.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -56,7 +56,7 @@ function _zsh_git_branch {
   fi
   echo " %{$color%}[$name]%{$reset_color%}"
 }
-if (($+VIM)); then
+if test "$VIM"; then
   PROMPT="%~ "
   PROMPT2="%_> "
   SPROMPT="%r is correct? [n,y,a,e]: "
@@ -160,7 +160,7 @@ bindkey '^\^' starteditor
 
 # cd with ls
 function chpwd() {
-  if (($+VIM)); then
+  if test "$VIM"; then
     ls
   else
     case "${OSTYPE}" in
@@ -260,7 +260,7 @@ alias ntpupdate='sudo /usr/sbin/ntpdate time.asia.apple.com >> ~/.ntpdate.log'
   alias univ='cd ~/Dropbox/univ/'
 case "${OSTYPE}" in
   freebsd*|darwin*)
-    if (($+VIM)); then
+    if test "$VIM"; then
       alias ll='ls -altr'
     else
       alias ls='ls -wG'
@@ -269,7 +269,7 @@ case "${OSTYPE}" in
     export os='mac'
     ;;
   *)
-    if (($+VIM)); then
+    if test "$VIM"; then
       alias ll='ls -altr'
     else
       alias ls='ls --color'
