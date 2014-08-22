@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2014/08/21 00:19:31.
+# - * Last Change: 2014/08/22 13:04:43.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -321,12 +321,6 @@ function configurevim() {
   cd "$save_path" > /dev/null
 }
 function makevim() {
-  if [[ -d ~/Dropbox/cpp/vim/backup/vim-$os ]]; then
-    ver=$(vim --version | head -n 1 | sed -e 's/.*\([0-9][0-9]*\.[0-9][0-9]*\).*/\1/')
-    ver=$ver.$(vim --version | head -n 3 | tail -n 2 | tr -d '\n' | sed -e 's/.*-\([0-9][0-9]*\).*/\1/')
-    cp -n "$(which vim)" ~/Dropbox/cpp/vim/backup/vim-$os/vim@$ver
-    chmod 755 ~/Dropbox/cpp/vim/backup/vim-$os/vim@$ver
-  fi
   if command -v brew > /dev/null 2>&1; then
     if brew list vim > /dev/null 2>&1; then
       brew update; brew rm vim
