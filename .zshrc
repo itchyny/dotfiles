@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2014/08/22 13:04:43.
+# - * Last Change: 2014/08/23 15:39:37.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -11,6 +11,9 @@ elif [ -d ~/.files ]; then
   ZSH_CONFIG_PATH=~/.files
 else
   ZSH_CONFIG_PATH=~/.zsh
+fi
+if ! [ -d $ZSH_CONFIG_PATH ]; then
+  mkdir -p $ZSH_CONFIG_PATH
 fi
 
 # history
@@ -378,19 +381,28 @@ alias -s {gz,tgz,zip,lzh,bz2,tbz,Z,tar,arj,xz}=extract
   source $ZSH_CONFIG_PATH/incr-0.2.zsh
 
 # https://github.com/zsh-users/zsh-syntax-highlighting
-[ -e $ZSH_CONFIG_PATH/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && \
+if [ -e $ZSH_CONFIG_PATH/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
   source $ZSH_CONFIG_PATH/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+elif command -v git > /dev/null 2>&1; then
+  git clone https://github.com/zsh-users/zsh-syntax-highlighting $ZSH_CONFIG_PATH/zsh-syntax-highlighting
+fi
 
 # https://github.com/zsh-users/zsh-history-substring-search
-[ -e $ZSH_CONFIG_PATH/zsh-history-substring-search/zsh-history-substring-search.zsh  ] && \
+if [ -e $ZSH_CONFIG_PATH/zsh-history-substring-search/zsh-history-substring-search.zsh  ]; then
   source $ZSH_CONFIG_PATH/zsh-history-substring-search/zsh-history-substring-search.zsh
+elif command -v git > /dev/null 2>&1; then
+  git clone https://github.com/zsh-users/zsh-history-substring-search $ZSH_CONFIG_PATH/zsh-history-substring-search
+fi
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
 # https://github.com/nakamuray/zaw
-[ -e $ZSH_CONFIG_PATH/zaw/zaw.zsh ] && \
-  source $ZSH_CONFIG_PATH/zaw/zaw.zsh && \
+if [ -e $ZSH_CONFIG_PATH/zaw/zaw.zsh ]; then
+  source $ZSH_CONFIG_PATH/zaw/zaw.zsh
   bindkey '^z' zaw-history
+elif command -v git > /dev/null 2>&1; then
+  git clone https://github.com/nakamuray/zaw $ZSH_CONFIG_PATH/zaw
+fi
 
 [ -e ./Dropbox ] && cd ./Dropbox > /dev/null
 
