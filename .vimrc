@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/08/04 20:49:17.
+" - * Last Change: 2014/08/23 13:25:59.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -50,7 +50,7 @@ if exists('&breakindent') | set breakindent | endif
 
 " Enable plugin, indent, syntax
 filetype plugin indent on
-syntax enable
+silent! syntax enable
 
 " Maximize the window
 if has('win16') || has('win32') || has('win64')
