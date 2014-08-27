@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2014/08/23 15:39:37.
+# - * Last Change: 2014/08/27 02:39:14.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -211,7 +211,11 @@ alias asm=runcpp
 # editor
 alias vi='vim'
 alias q='exit'
+alias qq='exit'
+alias qqq='exit'
 alias :q='exit'
+alias :quit='exit'
+alias ::q='exit'
 alias :qa='exit'
 alias :x='exit'
 alias :xa='exit'
