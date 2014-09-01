@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2014/08/27 02:39:14.
+# - * Last Change: 2014/09/01 19:25:47.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -26,6 +26,7 @@ setopt hist_ignore_dups
 setopt hist_no_store
 setopt hist_reduce_blanks
 setopt hist_verify
+setopt hist_ignore_space
 setopt share_history
 
 # color (check: where color)
