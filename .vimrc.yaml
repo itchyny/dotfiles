@@ -150,10 +150,16 @@ plugin:
       let g:quickrun_config.spice = {'command': 'scad3.exe', 'exec': ['%c -b %s:t'] }
       let g:quickrun_config.abc = {'command': 'abcm2ps', 'exec': extend(['%c %s -O %s:p:r.ps', 'ps2pdf %s:p:r.ps', 'open %s:p:r.pdf'], executable('abc2midi') ? ['abc2midi %s -o %s:p:r.mid', 'open %s:p:r.mid'] : [])}
     script: |
-      nnoremap <silent> <Leader>r :<C-u>QuickRun -outputter/buffer/name "[quickrun output%{tabpagenr()>1?' '.tabpagenr():''}]"<CR>
-      nnoremap <silent> <Leader><Leader>r :<C-u>QuickRun >file:temp.dat<CR>
-      nnoremap <silent> <Leader>e :<C-u>QuickRun <i <CR>
-      nnoremap <silent> <Leader>o :<C-u>execute 'QuickRun ' . (filereadable('i') ? '<i ' : '') . '>file:output'<CR>
+      nnoremap <silent> <Leader>r :<C-u>call <SID>quickrun(0, 0)<CR>
+      nnoremap <silent> <Leader>e :<C-u>call <SID>quickrun(1, 0)<CR>
+      nnoremap <silent> <Leader>o :<C-u>call <SID>quickrun(1, 1)<CR>
+      function! s:quickrun(input, output)
+        let bufname = '-outputter/buffer/name ' . string( '[quickrun output'. (tabpagenr() > 1 ? ' ' . tabpagenr() : '') . ']' )
+        let out = a:output ? '>file:output' : ''
+        let infile = 'i' . matchstr(expand('%:t'), '.*\ze\.')
+        let in = a:input ? (filereadable(infile) ? '<' . infile : filereadable('i') ? '<i' : '') : ''
+        execute 'QuickRun' bufname in out
+      endfunction
   ujihisa/neco-look:
     enable: executable('look')
 
