@@ -155,8 +155,9 @@ plugin:
       nnoremap <silent> <Leader>o :<C-u>call <SID>quickrun(1, 1)<CR>
       function! s:quickrun(input, output)
         let bufname = '-outputter/buffer/name ' . string( '[quickrun output'. (tabpagenr() > 1 ? ' ' . tabpagenr() : '') . ']' )
-        let out = a:output ? '>file:output' : ''
-        let infile = 'i' . matchstr(expand('%:t'), '.*\ze\.')
+        let name = matchstr(expand('%:t'), '.*\ze\.')
+        let out = a:output ? '>file:' . name . 'o' : ''
+        let infile = name . 'i'
         let in = a:input ? (filereadable(infile) ? '<' . infile : filereadable('i') ? '<i' : '') : ''
         execute 'QuickRun' bufname in out
       endfunction
