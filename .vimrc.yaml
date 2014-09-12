@@ -150,6 +150,7 @@ plugin:
       let g:quickrun_config.spice = {'command': 'scad3.exe', 'exec': ['%c -b %s:t'] }
       let g:quickrun_config.abc = {'command': 'abcm2ps', 'exec': extend(['%c %s -O %s:p:r.ps', 'ps2pdf %s:p:r.ps', 'open %s:p:r.pdf'], executable('abc2midi') ? ['abc2midi %s -o %s:p:r.mid', 'open %s:p:r.mid'] : [])}
     script: |
+      nnoremap <expr><silent> <C-c> exists('*quickrun#is_running') && quickrun#is_running() ? quickrun#sweep_sessions() : "\<C-c>"
       nnoremap <silent> <Leader>r :<C-u>call <SID>quickrun(0, 0)<CR>
       nnoremap <silent> <Leader>e :<C-u>call <SID>quickrun(1, 0)<CR>
       nnoremap <silent> <Leader>o :<C-u>call <SID>quickrun(1, 1)<CR>
