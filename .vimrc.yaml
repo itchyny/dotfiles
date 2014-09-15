@@ -130,6 +130,7 @@ plugin:
   thinca/vim-quickrun:
     command: QuickRun
     mapping: <Plug>(quickrun)
+    function: quickrun
     mapleader: \
     dependon:
       - vimproc
