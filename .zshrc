@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2014/09/01 19:25:47.
+# - * Last Change: 2014/09/15 21:20:02.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -382,8 +382,11 @@ function extract() {
 alias -s {gz,tgz,zip,lzh,bz2,tbz,Z,tar,arj,xz}=extract
 
 # http://mimosa-pudica.net/zsh-incremental.html
-[ -e $ZSH_CONFIG_PATH/incr-0.2.zsh ] && \
+if [ -e $ZSH_CONFIG_PATH/incr-0.2.zsh ]; then
   source $ZSH_CONFIG_PATH/incr-0.2.zsh
+elif command -v curl > /dev/null 2>&1; then
+  curl -R http://mimosa-pudica.net/src/incr-0.2.zsh > $ZSH_CONFIG_PATH/incr-0.2.zsh
+fi
 
 # https://github.com/zsh-users/zsh-syntax-highlighting
 if [ -e $ZSH_CONFIG_PATH/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
