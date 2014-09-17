@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2014/09/15 21:20:02.
+# - * Last Change: 2014/09/18 06:07:22.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -130,6 +130,8 @@ export PATH=$PATH:/usr/local/git/bin
 export PATH=$PATH:/opt/local/bin
 export PATH=$PATH:~/.cabal/bin
 export PATH=$PATH:/usr/local/usr/local/bin
+export PATH=~/.bin:$PATH
+export PATH=~/bin:$PATH
 export PATH=~/Dropbox/.bin:$PATH
 export PATH=~/Dropbox/bin:$PATH
 export PATH=$PATH:~/Library/Haskell/bin
