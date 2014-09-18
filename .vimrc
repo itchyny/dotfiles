@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/09/01 21:18:10.
+" - * Last Change: 2014/09/19 08:18:50.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -78,7 +78,7 @@ function! s:auto_filetype()
   for [pat, ft] in [['*[', 'hatena'],['#include', 'c'],['\documentclass', 'tex'],['import', 'haskell'],['main =', 'haskell'],['diff --', 'diff'],['{ ', 'vim']]
     if line1[:strlen(pat) - 1] ==# pat | let newft = ft | endif
   endfor
-  if newft != '' && (&filetype == '' || &filetype == newft)  | exec 'setlocal filetype=' . newft | endif
+  if newft != '' && &ft == ''  | exec 'setlocal filetype=' . newft | endif
 endfunction
 " }}}
 
