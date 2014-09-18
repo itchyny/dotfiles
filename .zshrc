@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2014/09/18 06:07:22.
+# - * Last Change: 2014/09/18 17:10:18.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -344,11 +344,6 @@ function makevim() {
     sudo make install
     cd "$save_path" > /dev/null
   fi
-}
-function makenvim() {
-  cd ~/Dropbox/cpp/vim/neovim/
-  git pull
-  make
 }
 
 # suffix alias according to file extension
