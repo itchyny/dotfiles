@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/09/19 08:18:50.
+" - * Last Change: 2014/09/19 09:08:18.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -75,7 +75,7 @@ function! s:auto_filetype()
   let line1 = getline(1)
   if line1 =~# '^\s*$' | return | endif
   let newft = ''
-  for [pat, ft] in [['*[', 'hatena'],['#include', 'c'],['\documentclass', 'tex'],['import', 'haskell'],['main =', 'haskell'],['diff --', 'diff'],['{ ', 'vim']]
+  for [pat, ft] in [['*[', 'hatena'],['#include', 'c'],['\documentclass', 'tex'],['import', 'haskell'],['main ', 'haskell'],['module ', 'haskell'],['diff --', 'diff'],['{ ', 'vim']]
     if line1[:strlen(pat) - 1] ==# pat | let newft = ft | endif
   endfor
   if newft != '' && &ft == ''  | exec 'setlocal filetype=' . newft | endif
