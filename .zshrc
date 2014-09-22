@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2014/09/22 12:57:49.
+# - * Last Change: 2014/09/22 12:58:10.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -253,8 +253,6 @@ alias gp='git push --color'
 # un*
 alias ungzip='gzip -d'
 alias untar='tar xvf'
-# rlwrap
-which coqtop > /dev/null && alias coqtop='rlwrap coqtop'
 # others
 which pygmentize > /dev/null && alias ccat='pygmentize'
 which cam > /dev/null && alias slideshow='cam -q -C -s 1'
