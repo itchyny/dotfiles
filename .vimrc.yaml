@@ -272,8 +272,11 @@ plugin:
     loadafter:
       - unite
   ujihisa/unite-haskellimport:
+    mapleader: ","
     loadafter:
       - unite
+    script: |
+      nnoremap <silent> <Leader>p :<C-u>Unite haskellimport -buffer-name=haskellimport<CR>
   pasela/unite-webcolorname:
     loadafter:
       - unite
