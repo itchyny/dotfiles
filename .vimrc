@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/09/19 09:08:18.
+" - * Last Change: 2014/09/24 18:20:53.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -33,7 +33,7 @@ set nospell
 if has('conceal') | set concealcursor=nvc | endif
 set infercase wrapscan ignorecase smartcase incsearch nohlsearch magic
 set laststatus=2 showtabline=1 statusline=%{expand('%:p:t')}\ %<[%{expand('%:p:h')}]%=\ %m%r%y%w[%{&fenc!=''?&fenc:&enc}][%{&ff}][%3l,%3c,%3p]
-set background=dark
+set background=dark synmaxcol=300
 if !has('gui_running') | set t_Co=256 | endif
 set encoding=utf-8 fenc=utf-8 fileencodings=utf-8,euc-jp,sjis,jis,iso-2022-jp,cp932,latin formatoptions+=mM ambiwidth=double iminsert=0 imsearch=0
 set smartindent autoindent shiftwidth=2
