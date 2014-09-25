@@ -690,7 +690,7 @@ filetypeScript:
   vimcalc: |
     setlocal nonumber nocursorline
   quickrun: |
-    setlocal nonumber nocursorline
+    setlocal nonumber nocursorline tabstop=8 nolist
   cam: |
     setlocal nonumber nocursorline
   haskell: |
