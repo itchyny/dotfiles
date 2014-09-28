@@ -600,6 +600,8 @@ plugin:
     filetype: javascript
   derekwyatt/vim-scala:
     filetype: scala
+  fatih/vim-go:
+    filetype: go
 
 beforeScript: |
   let g:iswin = has('win16') || has('win32') || has('win64')
