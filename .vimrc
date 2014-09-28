@@ -1,11 +1,12 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/09/24 18:20:53.
+" - * Last Change: 2014/09/26 14:39:21.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
 filetype off
+set termencoding=utf-8
 scriptencoding utf-8
 let $VIM_PATH = expand('~/.vim')
 let $CACHE = $VIM_PATH.'/.cache'
@@ -25,7 +26,6 @@ catch
   set list listchars=tab:^I,extends:>,precedes:<,nbsp:%
 endtry
 set number cursorline nocursorcolumn
-let [&t_SI,&t_EI] = ["\e]50;CursorShape=1\x7","\e]50;CursorShape=0\x7"]
 set showmatch noshowmode shortmess+=I noruler pumheight=10 completeopt-=preview autoread display=uhex
 set history=1000 viminfo='10,/10,:500,<10,@10,s10,n$CACHE/.viminfo directory=$CACHE/.swp,$CACHE,/tmp,. spellfile=$CACHE/.spellfile.add undodir=$CACHE/.undo undofile
 set nospell
@@ -35,7 +35,13 @@ set infercase wrapscan ignorecase smartcase incsearch nohlsearch magic
 set laststatus=2 showtabline=1 statusline=%{expand('%:p:t')}\ %<[%{expand('%:p:h')}]%=\ %m%r%y%w[%{&fenc!=''?&fenc:&enc}][%{&ff}][%3l,%3c,%3p]
 set background=dark synmaxcol=300
 if !has('gui_running') | set t_Co=256 | endif
-set encoding=utf-8 fenc=utf-8 fileencodings=utf-8,euc-jp,sjis,jis,iso-2022-jp,cp932,latin formatoptions+=mM ambiwidth=double iminsert=0 imsearch=0
+try
+  set list listchars=tab:▸\ ,extends:»,precedes:«,nbsp:%
+catch
+  set list listchars=tab:^I,extends:>,precedes:<,nbsp:%
+endtry
+set number cursorline nocursorcolumn
+set encoding=utf-8 fenc=utf-8 fileencodings=utf-8,cp1251,koi8-r,cp866 iminsert=0 imsearch=0
 set smartindent autoindent shiftwidth=2
   autocmd Vimrc FileType tex,hatena setlocal nosmartindent noautoindent
   let g:tex_indent_items=0

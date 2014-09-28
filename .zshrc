@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2014/09/23 07:37:52.
+# - * Last Change: 2014/09/25 12:17:07.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -118,9 +118,9 @@ bindkey "^F" forward-char
 bindkey "^B" backward-char
 
 # export variables
-export LANG=ja_JP.UTF-8
+export LANG=ru_RU.UTF-8
 export LC_CTYPE=en_US.UTF-8
-export EDITOR=vim
+export EDITOR='vim'
 
 # path settings
 export MANPATH=/usr/local/share/man:/usr/local/man:/usr/share/man
@@ -228,7 +228,7 @@ alias fg='fg || vi'
 alias gnome-terminal='/bin/sh -c "VTE_CJK_WIDTH=1 gnome-terminal --disable-factory"'
 alias terminator='/bin/sh -c "VTE_CJK_WIDTH=1 terminator -m"'
 # one alphabet
-alias v='vim'
+alias v='vi'
 alias h='sudo shutdown -h'
 alias r='sudo shutdown -r'
 alias l='ls -al'
@@ -407,3 +407,4 @@ fi
 
 [ -e ./Dropbox ] && cd ./Dropbox > /dev/null
 
+eval "`npm completion`"

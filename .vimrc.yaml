@@ -52,8 +52,6 @@ plugin:
     mapping: <Plug>(dictionary)
     script: |
       nnoremap <silent> <Leader>y :<C-u>Dictionary -no-duplicate<CR>
-    beforeScript: |
-      let g:dictionary_executable_path = isdirectory(expand('~/Dropbox/.bin/')) ? '~/Dropbox/.bin/' : '~/.bin/'
     dependon:
       - vimproc
   itchyny/screensaver.vim:
@@ -74,8 +72,6 @@ plugin:
     script: |
       map <C-w> <Plug>(closebuffer)
       imap <C-w> <Plug>(closebuffer)
-  itchyny/vim-jscomplete:
-    sync: false
   itchyny/vim-external:
     sync: false
     mapleader: \
@@ -93,8 +89,6 @@ plugin:
     sync: false
     insert: true
   itchyny/vim-cmdline-ranges:
-    sync: false
-  itchyny/vim-cmdline-escape:
     sync: false
 
   Shougo/neocomplete.vim:
@@ -261,13 +255,6 @@ plugin:
   osyo-manga/unite-highlight:
     loadafter:
       - unite
-  eagletmt/unite-haddock:
-    loadafter:
-      - unite
-    mapleader: ","
-    enable: executable('hoogle')
-    script: |
-      nnoremap <silent> <Leader>h :<C-u>Unite hoogle -buffer-name=hoogle<CR>
   Shougo/unite-outline:
     loadafter:
       - unite
@@ -418,7 +405,6 @@ plugin:
       let g:brightest#enable_filetypes = { "vimfiler" : 0, "vimshell" : 0, "quickrun" : 0 }
   gregsexton/MatchTag: {}
   matchit.zip: {}
-  banyan/recognize_charcode.vim: {}
 
   eagletmt/ghci-vim:
     filetype: haskell
@@ -558,8 +544,6 @@ plugin:
     beforeScript: |
       map _  <Plug>(operator-replace)
 
-  motemen/hatena-vim:
-    filetype: hatena
   indenthaskell.vim:
     filetype: haskell
   elzr/vim-json:
@@ -600,6 +584,10 @@ plugin:
     filetype: javascript
   derekwyatt/vim-scala:
     filetype: scala
+  vim-bemhtml:
+    filetype: bemhtml
+  fatih/vim-go:
+    filetype: go
 
 beforeScript: |
   let g:iswin = has('win16') || has('win32') || has('win64')
@@ -623,7 +611,7 @@ beforeScript: |
 afterScript: |
   let g:mapleader = ','
 
-filetypeScript:
+  filetypeScript:
   c: |
     setl ofu=ccomplete#Complete
   html: |
