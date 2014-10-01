@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2014/09/23 07:37:52.
+# - * Last Change: 2014/09/28 21:23:14.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -139,22 +139,6 @@ export PATH=$PATH:/usr/local/Cellar/vim/HEAD/bin
 export PATH=$PATH:/usr/texbin
 
 # function
-function pcolor() {
-  for ((f = 0; f < 256; f++)); do
-    printf "\e[38;5;%dm %3d\e[m" $f $f
-    if [[ $f -ge 16 ]]; then
-      if [[ $f%6 -eq 3 ]]; then
-        printf "\n"
-      fi
-    else
-      if [[ $f%8 -eq 7 ]]; then
-        printf "\n"
-      fi
-    fi
-  done
-  echo
-}
-
 function starteditor() {
   exec < /dev/tty
   ${EDITOR}
