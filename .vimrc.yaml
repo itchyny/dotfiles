@@ -302,11 +302,6 @@ plugin:
       - unite
     sync: false
 
-  tyru/open-browser.vim:
-    mapleader: \
-    mapping: <Plug>(openbrowser-smart-search)
-    function: openbrowser
-
   Shougo/vimshell.vim:
     commands:
       - VimShell
