@@ -96,6 +96,8 @@ plugin:
     sync: false
   itchyny/vim-cmdline-escape:
     sync: false
+  itchyny/recognize_charcode.vim:
+    sync: false
 
   Shougo/neocomplete.vim:
     enable: has('lua') && v:version > 703
@@ -413,7 +415,6 @@ plugin:
       let g:brightest#enable_filetypes = { "vimfiler" : 0, "vimshell" : 0, "quickrun" : 0 }
   gregsexton/MatchTag: {}
   matchit.zip: {}
-  banyan/recognize_charcode.vim: {}
 
   eagletmt/ghci-vim:
     filetype: haskell
