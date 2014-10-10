@@ -239,7 +239,6 @@ plugin:
     script: |
       nnoremap <silent><C-n> :<C-u>Unite file/new directory/new -buffer-name=file/new,directory/new<CR>
       nnoremap <silent><S-k> :<C-u>Unite output:message -buffer-name=output<CR>
-      nnoremap <silent><C-o> :<C-u>Unite file file/new -buffer-name=file<CR>
       nnoremap <silent><S-l> :<C-u>Unite line -buffer-name=line<CR>
     dependedby:
       - unite-build
@@ -375,8 +374,10 @@ plugin:
       - CtrlP
       - CtrlPMRUFiles
       - CtrlPBuffer
+      - CtrlPCurFile
     script: |
       nnoremap <silent> <C-p> :<C-u>CtrlPMRUFiles<CR>
+      nnoremap <silent> <C-o> :<C-u>CtrlPCurFile<CR>
     beforeScript: |
       let g:ctrlp_cmd = 'CtrlPMRUFiles'
       let g:ctrlp_show_hidden = 1
