@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2014/09/28 21:23:14.
+# - * Last Change: 2014/10/11 10:42:33.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -238,6 +238,9 @@ alias gp='git push --color'
 alias ungzip='gzip -d'
 alias untar='tar xvf'
 # others
+if command -v htop > /dev/null 2>&1; then
+  alias top='htop'
+fi
 which cam > /dev/null && alias slideshow='cam -q -C -s 1'
 [ -e ~/Dropbox/py/itchyny/tweet.py ] && \
   alias tweet='python ~/Dropbox/py/itchyny/tweet.py'
