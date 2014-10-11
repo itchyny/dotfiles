@@ -595,6 +595,8 @@ plugin:
       let g:jedi#completions_enabled = 0
   itspriddle/vim-javascript-indent:
     filetype: javascript
+  leafgarland/typescript-vim:
+    filetype: typescript
   derekwyatt/vim-scala:
     filetype: scala
   fatih/vim-go:
