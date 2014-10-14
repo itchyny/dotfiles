@@ -74,8 +74,6 @@ plugin:
     script: |
       map <C-w> <Plug>(closebuffer)
       imap <C-w> <Plug>(closebuffer)
-  itchyny/vim-jscomplete:
-    sync: false
   itchyny/vim-external:
     sync: false
     mapleader: \
@@ -112,11 +110,6 @@ plugin:
       let g:neocomplete#ignore_source_files = [ 'member.vim', 'tag.vim', 'dictionary.vim', 'include.vim' ]
       let g:neocomplete#force_omni_input_patterns = get(g:, 'neocomplete#force_omni_input_patterns', {})
       let g:neocomplete#force_omni_input_patterns.python = '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
-      let g:neocomplete#force_omni_input_patterns.javascript = '\%([^. \t]\.\)'
-      let g:neocomplete#force_omni_input_patterns.coffee = '\%([^. \t]\.\)'
-      let g:neocomplete#sources#omni#functions = get(g:, 'neocomplete#sources#omni#functions', {})
-      let g:neocomplete#sources#omni#functions.javascript = 'jscomplete#Complete'
-      let g:neocomplete#sources#omni#functions.coffee = 'coffeecomplete#Complete'
       let g:neocomplete#sources#omni#input_patterns = get(g:, 'neocomplete#sources#omni#input_patterns', {})
       let g:neocomplete#sources#omni#input_patterns.javascript = '[[:alpha:]./"''$]\+'
       let g:neocomplete#sources#omni#input_patterns.coffee = '[[:alpha:]./"''$]\+'
@@ -595,6 +588,14 @@ plugin:
       let g:jedi#completions_enabled = 0
   itspriddle/vim-javascript-indent:
     filetype: javascript
+  1995eaton/vim-better-javascript-completion:
+    filetypes:
+      - javascript
+      - coffee
+    beforeScript: |
+      let g:vimjs#casesensistive = 1
+      let g:vimjs#chromeapis = 1
+      let g:vimjs#smartcomplete = 1
   leafgarland/typescript-vim:
     filetype: typescript
   derekwyatt/vim-scala:
@@ -633,9 +634,9 @@ filetypeScript:
     setl ofu=csscomplete#CompleteCSS
     setl iskeyword=37,45,48-57,95,a-z,A-Z,192-255
   javascript: |
-    setl ofu=jscomplete#Complete
+    setl ofu=js#CompleteJS
   coffee: |
-    setl ofu=coffeecomplete#Complete
+    setl ofu=js#CompleteJS
   php: |
     setl ofu=phpcomplete#CompletePHP
   xml: |
