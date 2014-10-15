@@ -577,6 +577,10 @@ plugin:
     filetype: jade
   kchmck/vim-coffee-script:
     filetype: coffee
+  mintplant/vim-literate-coffeescript:
+    dependon:
+      - coffee-script
+    filetype: litcoffee
   briancollins/vim-jst:
     filetype: jst
   rest.vim:
@@ -728,6 +732,7 @@ filetypeDetect:
   roy: roy
   meissa: meissa
   coffee: coffee
+  litcoffee: litcoffee
   cson: coffee
   ejs: jst
   jst: jst
