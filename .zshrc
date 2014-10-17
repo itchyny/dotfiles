@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2014/10/11 10:42:33.
+# - * Last Change: 2014/10/12 16:32:07.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -323,6 +323,7 @@ function makevim() {
     local save_path
     save_path="$(pwd)"
     pullvim
+    configurevim
     make
     sudo make install
     cd "$save_path" > /dev/null
