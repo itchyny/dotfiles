@@ -115,6 +115,7 @@ plugin:
       let g:neocomplete#sources#omni#input_patterns.coffee = '[[:alpha:]./"''$]\+'
     afterScript: |
       call neocomplete#custom#source('omni', 'rank', 7)
+      call neocomplete#custom#source('omni', 'converters', ['converter_remove_last_paren'])
   Shougo/neosnippet:
     script: |
       let g:neosnippet#snippets_directory = $VIM_PATH.'/snippets'
