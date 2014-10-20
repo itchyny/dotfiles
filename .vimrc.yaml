@@ -713,6 +713,7 @@ filetypeScript:
     nnoremap <buffer> <Leader>g :<C-u>GhcModCheckAsync<CR>
   gnuplot: |
     call tcomment#DefineType('gnuplot', '# %s')
+    setlocal nospell
   haxe: |
     call tcomment#DefineType('haxe', '// %s')
   meissa: |
