@@ -615,6 +615,7 @@ plugin:
       let g:vimjs#casesensistive = 1
       let g:vimjs#chromeapis = 1
       let g:vimjs#smartcomplete = 1
+      let g:jschromeapis = 1
   leafgarland/typescript-vim:
     filetype: typescript
   derekwyatt/vim-scala:
