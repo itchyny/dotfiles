@@ -412,16 +412,6 @@ plugin:
       let g:brightest#highlight_in_cursorline = {'group': 'BrightestCursorLineBg'}
       let g:brightest#pattern = '\k\+'
       let g:brightest#enable_filetypes = { "vimfiler" : 0, "vimshell" : 0, "quickrun" : 0 }
-  haya14busa/incsearch.vim:
-    script: |
-      map / <Plug>(incsearch-forward)
-      map ? <Plug>(incsearch-backward)
-      map n <Plug>(incsearch-nohl-n)
-      map N <Plug>(incsearch-nohl-N)
-      let g:incsearch#auto_nohlsearch = 0
-      let g:incsearch#consistent_n_direction = 1
-      let g:incsearch#emacs_like_keymap = 1
-      let g:incsearch#magic = '\v'
   gregsexton/MatchTag: {}
   matchit.zip: {}
 
