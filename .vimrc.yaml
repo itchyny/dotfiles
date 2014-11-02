@@ -670,7 +670,7 @@ filetypeScript:
     nmap <buffer> <C-r> <Plug>(vimfiler_redraw_screen)
     nmap <buffer> o <Plug>(vimfiler_sync_with_current_vimfiler)
     nmap <buffer> O <Plug>(vimfiler_sync_with_current_vimfiler)
-    nmap <buffer><silent><expr> <CR> vimfiler#smart_cursor_map("\<Plug>(vimfiler_cd_file)", vimfiler#get_filename() =~# '\.\(exe\\|png\\|gif\\|jpe\?g\\|pdf\)$' ? "\<Plug>(vimfiler_execute_system_associated)" : "\<Plug>(vimfiler_edit_file)")
+    nmap <buffer><silent><expr> <CR> vimfiler#smart_cursor_map("\<Plug>(vimfiler_cd_file)", vimfiler#get_filename() =~? '\.\(exe\\|png\\|gif\\|jpe\?g\\|pdf\)$' ? "\<Plug>(vimfiler_execute_system_associated)" : "\<Plug>(vimfiler_edit_file)")
     nmap <buffer><silent> l <CR>
     nmap <buffer><expr> e vimfiler#smart_cursor_map("\<Plug>(vimfiler_cd_file)", "\<Plug>(vimfiler_edit_file)")
     nnoremap <buffer><silent> t :<C-u>call vimfiler#mappings#do_action('change_time')<CR>
