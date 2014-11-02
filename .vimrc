@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/10/03 13:47:38.
+" - * Last Change: 2014/11/01 20:04:06.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -64,7 +64,7 @@ autocmd Vimrc BufEnter * silent! lcd `=expand('%:p:h')`
 command! S echo synIDattr(synID(line('.'), col('.'), 0), 'name')
 
 " Command line
-for [s:cmd, s:exp] in [['vps', 'vsp'], ['vp', 'vsp'], ['di', 'Dictionary<SPACE>-cursor-word<SPACE>-no-duplicate'], ['aoff', 'AutodateOFF'], ['aon', 'AutodateON'], ['qa1', 'qa!'], ['q1', 'q!'], ['nvew', 'vnew']]
+for [s:cmd, s:exp] in [['vps', 'vsp'], ['vp', 'vsp'], ['di', 'Dictionary<SPACE>-cursor-word<SPACE>-no-duplicate'], ['aoff', 'AutodateOFF'], ['aon', 'AutodateON'], ['qa1', 'qa!'], ['q1', 'q!'], ['nvew', 'vnew'], ['agit', 'Agit'], ['git', 'Agit']]
   exec 'cabbrev <expr> '.s:cmd.' (getcmdtype() == ":" && getcmdline() ==# "'.s:cmd.'") ? "'.s:exp.'" : "'.s:cmd.'"'
 endfor
 
