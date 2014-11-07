@@ -346,7 +346,14 @@ plugin:
     script: |
       nnoremap <Leader>g :<C-u>GundoToggle<CR>
   majutsushi/tagbar:
-    command: TagbarToggle
+    commands:
+      - Tagbar
+      - TagbarToggle
+      - TagbarOpen
+      - TagbarOpenAutoClose
+      - TagbarClose
+      - TagbarCurrentTag
+      - TagbarTogglePause
     beforeScript: |
       let g:tagbar_sort = 0
       let g:tagbar_autofocus = 1
