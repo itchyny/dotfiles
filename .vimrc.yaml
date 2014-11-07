@@ -94,8 +94,6 @@ plugin:
     sync: false
   itchyny/vim-cmdline-escape:
     sync: false
-  itchyny/recognize_charcode.vim:
-    sync: false
 
   Shougo/neocomplete.vim:
     enable: has('lua') && v:version > 703
