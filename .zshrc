@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2014/11/03 08:49:46.
+# - * Last Change: 2014/11/08 01:15:31.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -368,12 +368,12 @@ fi
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
-# https://github.com/nakamuray/zaw
+# https://github.com/zsh-users/zaw
 if [ -e $ZSH_CONFIG_PATH/zaw/zaw.zsh ]; then
   source $ZSH_CONFIG_PATH/zaw/zaw.zsh
   bindkey '^z' zaw-history
 elif command -v git > /dev/null 2>&1; then
-  git clone https://github.com/nakamuray/zaw $ZSH_CONFIG_PATH/zaw
+  git clone https://github.com/zsh-users/zaw $ZSH_CONFIG_PATH/zaw
 fi
 
 [ -e ./Dropbox ] && cd ./Dropbox > /dev/null
