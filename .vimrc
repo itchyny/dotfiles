@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/11/07 14:51:46.
+" - * Last Change: 2014/11/10 00:39:42.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -146,10 +146,10 @@ nnoremap <C-q> <C-w>
 " Open dot files
 if has('win16') || has('win32') || has('win64')
   nnoremap <silent> \. :<C-u>e ~/.vimrc<CR>
-  nnoremap <silent> ;. :<C-u>e ~/.zshrc<CR>
+  nnoremap <silent> \, :<C-u>e ~/.zshrc<CR>
 else
   nnoremap <silent> \. :<C-u>e `=resolve(expand('~/.vimrc'))`<CR>
-  nnoremap <silent> ;. :<C-u>e `=resolve(expand('~/.zshrc'))`<CR>
+  nnoremap <silent> \, :<C-u>e `=resolve(expand('~/.zshrc'))`<CR>
 endif
 
 " tab
