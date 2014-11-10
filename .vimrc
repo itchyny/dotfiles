@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/11/10 00:39:42.
+" - * Last Change: 2014/11/10 09:59:17.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -80,6 +80,9 @@ function! s:auto_filetype()
   endfor
   if newft != '' | exec 'setlocal filetype=' . newft | endif
 endfunction
+
+" Always open read-only when a swap file is found
+autocmd Vimrc SwapExists * let v:swapchoice = 'o'
 " }}}
 
 " KEY MAPPING {{{
