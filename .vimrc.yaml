@@ -309,7 +309,6 @@ plugin:
       - VimShellSendString
       - VimShellSendBuffer
     function: vimshell
-    mapleader: ;
     dependon:
       - vimproc
     beforeScript: |
@@ -325,7 +324,6 @@ plugin:
       let g:vimshell_max_command_history = 1000000
       let g:vimshell_vimshrc_path = isdirectory(expand('~/Dropbox/.files/')) ? expand('~/Dropbox/.files/.vimshrc') : expand('~/.files/.vimshrc')
     script: |
-      nnoremap <silent> <Leader>s :<C-u>VimShellBufferDir<CR>
       nnoremap <silent> H :<C-u>VimShellBufferDir -popup<CR>
       nnoremap <silent> s :<C-u>VimShellBufferDir<CR>
 
