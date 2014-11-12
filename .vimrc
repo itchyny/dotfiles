@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/11/10 09:59:17.
+" - * Last Change: 2014/11/10 10:00:33.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -131,10 +131,14 @@ vnoremap <C-s> :<C-u>w<CR>
 
 " search
 autocmd Vimrc BufEnter,WinEnter * nnoremap <silent><buffer> <Esc><Esc> :<C-u>set nohlsearch nopaste<CR>
-nnoremap / :<C-u>set hlsearch<CR>/
-nnoremap ? :<C-u>set hlsearch<CR>?
-nnoremap * :<C-u>set hlsearch<CR>*
-nnoremap # :<C-u>set hlsearch<CR>#
+function! s:search(key)
+  set hlsearch
+  return a:key
+endfunction
+nnoremap <expr> / <sid>search('/')
+nnoremap <expr> ? <sid>search('?')
+nnoremap <expr> * <sid>search('*')
+nnoremap <expr> # <sid>search('#')
 
 " navigate window
 nnoremap <C-h> <C-w>h
