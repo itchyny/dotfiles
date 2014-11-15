@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/11/10 10:00:33.
+" - * Last Change: 2014/11/15 21:16:47.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -83,6 +83,9 @@ endfunction
 
 " Always open read-only when a swap file is found
 autocmd Vimrc SwapExists * let v:swapchoice = 'o'
+
+" Write with sudo
+cnoreabbrev w!! w !sudo tee > /dev/null %
 " }}}
 
 " KEY MAPPING {{{
