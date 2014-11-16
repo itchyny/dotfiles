@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/11/16 08:58:20.
+" - * Last Change: 2014/11/16 23:30:15.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -65,7 +65,7 @@ command! S echo synIDattr(synID(line('.'), col('.'), 0), 'name')
 
 " Command line
 for [s:cmd, s:exp] in [['vps', 'vsp'], ['vp', 'vsp'], ['di', 'Dictionary<SPACE>-cursor-word<SPACE>-no-duplicate'], ['aoff', 'AutodateOFF'], ['aon', 'AutodateON'], ['qa1', 'qa!'], ['q1', 'q!'], ['nvew', 'vnew'], ['agit', 'Agit'], ['git', 'Agit']]
-  exec 'cabbrev <expr> '.s:cmd.' (getcmdtype() == ":" && getcmdline() ==# "'.s:cmd.'") ? "'.s:exp.'" : "'.s:cmd.'"'
+  exec 'cnoreabbrev <expr> '.s:cmd.' (getcmdtype() == ":" && getcmdline() ==# "'.s:cmd.'") ? "'.s:exp.'" : "'.s:cmd.'"'
 endfor
 
 " Filetype
