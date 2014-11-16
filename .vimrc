@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/11/15 21:16:47.
+" - * Last Change: 2014/11/16 08:58:20.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -167,6 +167,9 @@ nnoremap <silent> <C-t> :<C-u>tabnew<CR>
 inoremap <silent> <C-t> <ESC>:<C-u>tabnew<CR>
 nnoremap <silent> g0 :<C-u>tabfirst<CR>
 nnoremap <silent> g$ :<C-u>tablast<CR>
+
+" tag
+nnoremap <C-@> <C-t>
 
 " select last paste
 nnoremap <expr> gp '`['.strpart(getregtype(), 0, 1).'`]'
