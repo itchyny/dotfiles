@@ -22,7 +22,7 @@ plugin:
   itchyny/vim-spellbad-pattern:
     sync: false
     script: |
-      let g:spellbad_pattern = [ '\<a\> [aieo]', '^\$', '\<figure..\?\\', '\\ref{eq:', '^\\end{align}', '[^\~]\\\(eq\)\?ref\>', 'does not [a-z]*s\>', 's [a-z][a-z]\+s\>', '\<a \S\+s\>', 'in default']
+      let g:spellbad_pattern = [ '\<a\> [aieo]', '^\$', '\<figure..\?\\', '\\ref{eq:', '^\\end{align}', '[^\~]\\\(eq\)\?ref\>', 'does not [a-z]*s\>', '\([tT]hi\)\@<!s [a-z][a-z]\+s\>', '\<a \S\+s\>', 'in default']
   itchyny/calendar.vim:
     sync: false
     mapleader: ","
