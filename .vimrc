@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/11/18 12:07:29.
+" - * Last Change: 2014/11/20 13:14:18.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -65,7 +65,7 @@ autocmd Vimrc BufEnter * silent! lcd `=expand('%:p:h')`
 command! S echo synIDattr(synID(line('.'), col('.'), 0), 'name')
 
 " Command line
-for [s:cmd, s:exp] in [['vps', 'vsp'], ['vp', 'vsp'], ['di', 'Dictionary<SPACE>-cursor-word<SPACE>-no-duplicate'], ['aoff', 'AutodateOFF'], ['aon', 'AutodateON'], ['qa1', 'qa!'], ['q1', 'q!'], ['nvew', 'vnew'], ['agit', 'Agit'], ['git', 'Agit']]
+for [s:cmd, s:exp] in [['vps', 'vsp'], ['vp', 'vsp'], ['di', 'Dictionary<SPACE>-cursor-word<SPACE>-no-duplicate'], ['aoff', 'AutodateOFF'], ['aon', 'AutodateON'], ['qa1', 'qa!'], ['q1', 'q!'], ['nvew', 'vnew'], ['agit', 'Agit'], ['git', 'Agit'], ["w!!", 'w !sudo tee > /dev/null %']]
   exec 'cnoreabbrev <expr> '.s:cmd.' (getcmdtype() == ":" && getcmdline() ==# "'.s:cmd.'") ? "'.s:exp.'" : "'.s:cmd.'"'
 endfor
 
@@ -84,9 +84,6 @@ endfunction
 
 " Always open read-only when a swap file is found
 autocmd Vimrc SwapExists * let v:swapchoice = 'o'
-
-" Write with sudo
-cnoreabbrev w!! w !sudo tee > /dev/null %
 " }}}
 
 " KEY MAPPING {{{
