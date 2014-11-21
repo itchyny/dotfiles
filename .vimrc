@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/11/20 13:14:18.
+" - * Last Change: 2014/11/22 01:03:36.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -143,12 +143,11 @@ nnoremap <expr> # <sid>search('#')
 
 " navigate window
 nnoremap <C-h> <C-w>h
-nnoremap <C-m> <C-w>j
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 nnoremap <C-x> <C-w>x
-nnoremap <expr><C-m> (bufname('%') ==# '[Command Line]') ? "<CR>" : "<C-w>j"
+nnoremap <expr><C-m> (bufname('%') ==# '[Command Line]' <bar><bar> &l:buftype ==# 'quickfix') ? "<CR>" : "<C-w>j"
 nnoremap <C-q> <C-w>
 
 " Open dot files
