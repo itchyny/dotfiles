@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2014/11/08 01:15:31.
+# - * Last Change: 2014/11/19 08:14:33.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -258,10 +258,10 @@ function pullvim() {
   if command -v brew > /dev/null 2>&1; then
     return
   fi
-  if ! [[ -d ~/downloads ]]; then
-    mkdir -p ~/downloads
+  if ! [[ -d ~/Downloads ]]; then
+    mkdir -p ~/Downloads
   fi
-  cd ~/downloads > /dev/null
+  cd ~/Downloads > /dev/null
   if [[ -d ./vim/.hg ]]; then
     cd ./vim > /dev/null
     hg pull
@@ -276,10 +276,10 @@ function configurevim() {
   fi
   local save_path
   save_path="$(pwd)"
-  if ! [[ -d ~/downloads/vim/.hg ]]; then
+  if ! [[ -d ~/Downloads/vim/.hg ]]; then
     pullvim
   fi
-  cd ~/downloads/vim > /dev/null
+  cd ~/Downloads/vim > /dev/null
   rm -f src/auto/config.cache
   if which lua > /dev/null; then
     CFLAGS="-O3" ./configure --with-features=huge\
