@@ -496,6 +496,8 @@ plugin:
       - vimshell
       - quickrun
       - dictionary
+  vim-jp/vital.vim:
+    function: vital
 
   kana/vim-textobj-user: {}
   kana/vim-textobj-entire:
