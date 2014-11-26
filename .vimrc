@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/11/23 23:26:43.
+" - * Last Change: 2014/11/24 00:01:46.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -19,6 +19,7 @@ endif
 
 " Setting {{{
 " Option
+set encoding=utf-8 fileencoding=utf-8 fileencodings=utf-8,iso-2022-jp-3,euc-jisx0213,cp932,euc-jp,sjis,jis,latin,iso-2022-jp fileformats=unix,mac,dos
 set number cursorline nocursorcolumn list listchars=tab:▸\ ,extends:»,precedes:«,nbsp:%
 let [&t_SI,&t_EI] = ["\e]50;CursorShape=1\x7","\e]50;CursorShape=0\x7"]
 set showmatch noshowmode shortmess+=I noruler pumheight=10 completeopt-=preview autoread display=uhex
@@ -30,7 +31,7 @@ set infercase wrapscan ignorecase smartcase incsearch nohlsearch magic
 set laststatus=2 showtabline=1 statusline=%{expand('%:p:t')}\ %<[%{expand('%:p:h')}]%=\ %m%r%y%w[%{&fenc!=''?&fenc:&enc}][%{&ff}][%3l,%3c,%3p]
 set background=dark synmaxcol=300
 if !has('gui_running') | set t_Co=256 | endif
-set encoding=utf-8 fenc=utf-8 fileencodings=utf-8,iso-2022-jp-3,euc-jisx0213,cp932,euc-jp,sjis,jis,latin,iso-2022-jp fileformats=unix,mac,dos formatoptions+=mM ambiwidth=double iminsert=0 imsearch=0
+set formatoptions+=mM ambiwidth=double iminsert=0 imsearch=0
 set smartindent autoindent shiftwidth=2
   autocmd Vimrc FileType tex,hatena setlocal nosmartindent noautoindent
   let g:tex_indent_items=0
