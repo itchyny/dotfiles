@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/11/24 00:01:46.
+" - * Last Change: 2014/11/26 20:07:30.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -61,7 +61,7 @@ autocmd Vimrc BufEnter * silent! lcd `=expand('%:p:h')`
 command! S echo synIDattr(synID(line('.'), col('.'), 0), 'name')
 
 " Command line
-for [s:cmd, s:exp] in [['vps', 'vsp'], ['vp', 'vsp'], ['di', 'Dictionary<SPACE>-cursor-word<SPACE>-no-duplicate'], ['aoff', 'AutodateOFF'], ['aon', 'AutodateON'], ['qa1', 'qa!'], ['q1', 'q!'], ['nvew', 'vnew'], ['agit', 'Agit'], ['git', 'Agit'], ["w!!", 'w !sudo tee > /dev/null %']]
+for [s:cmd, s:exp] in [['vps', 'vsp'], ['vp', 'vsp'], ['di', 'Dictionary<SPACE>-cursor-word<SPACE>-no-duplicate'], ['aoff', 'AutodateOFF'], ['aon', 'AutodateON'], ['qa1', 'qa!'], ['q1', 'q!'], ['nvew', 'vnew'], ['agit', 'Agit'], ['git', 'Agit'], ["w!!", 'w !sudo tee > /dev/null %'], ["h!", "help <C-r><C-w>"]]
   exec 'cnoreabbrev <expr> '.s:cmd.' (getcmdtype() == ":" && getcmdline() ==# "'.s:cmd.'") ? "'.s:exp.'" : "'.s:cmd.'"'
 endfor
 
