@@ -233,7 +233,6 @@ plugin:
       call unite#custom#profile('default', 'context', { 'prompt_direction': 'top'})
     script: |
       nnoremap <silent><C-n> :<C-u>Unite file/new directory/new -buffer-name=file/new,directory/new<CR>
-      nnoremap <silent><S-k> :<C-u>Unite output:message -buffer-name=output<CR>
     dependedby:
       - unite-build
       - unite-colorscheme
