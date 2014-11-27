@@ -680,6 +680,7 @@ filetypeScript:
   vimfiler: |
     nunmap <buffer> <C-l>
     nunmap <buffer> \
+    nunmap <buffer> gr
     nnoremap <buffer> <C-l> <ESC><C-w>l
     nmap <buffer> <C-r> <Plug>(vimfiler_redraw_screen)
     nmap <buffer> o <Plug>(vimfiler_sync_with_current_vimfiler)
