@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/11/30 08:53:42.
+" - * Last Change: 2014/11/30 08:54:32.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -83,11 +83,6 @@ autocmd Vimrc SwapExists * let v:swapchoice = 'o'
 " }}}
 
 " KEY MAPPING {{{
-" Escape key
-if has('unix') && !has('gui_running')
-  inoremap <silent> <ESC> <ESC>
-endif
-
 " Increment and decrement
 nnoremap + <C-a>
 nnoremap - <C-x>
