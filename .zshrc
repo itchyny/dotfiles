@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2014/11/27 10:24:52.
+# - * Last Change: 2014/11/29 19:02:05.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -173,10 +173,10 @@ elif [ "$(uname)" = "Linux" ]; then
 fi
 alias chrome='google-chrome'
 function runc () {
-  gcc -O3 "$1" && shift && ./a.out "$@"; rm -f ./a.out
+  gcc -O3 "$1" && shift && ./a.out "$@"; local ret=$?; rm -f ./a.out; return $ret
 }
 function runcpp () {
-  g++ -O3 "$1" && shift && ./a.out "$@"; rm -f ./a.out
+  g++ -O3 "$1" && shift && ./a.out "$@"; local ret=$?; rm -f ./a.out; return $ret
 }
 alias asm=runcpp
 # editor
