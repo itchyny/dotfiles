@@ -1,11 +1,15 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/11/30 14:49:31.
+" - * Last Change: 2014/12/01 00:48:22.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
 filetype off
+if &encoding !=? 'utf-8'
+  let &termencoding = &encoding
+  set encoding=utf-8
+endif
 scriptencoding utf-8
 let $VIM_PATH = expand('~/.vim')
 let $CACHE = $VIM_PATH.'/.cache'
