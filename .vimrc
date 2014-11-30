@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/11/30 08:54:32.
+" - * Last Change: 2014/11/30 14:49:31.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -59,11 +59,6 @@ autocmd Vimrc BufEnter * silent! lcd `=expand('%:p:h')`
 
 " View syntax name under cursor
 command! S echo synIDattr(synID(line('.'), col('.'), 0), 'name')
-
-" Command line
-for [s:cmd, s:exp] in [['vps', 'vsp'], ['vp', 'vsp'], ['di', 'Dictionary<SPACE>-cursor-word<SPACE>-no-duplicate'], ['aoff', 'AutodateOFF'], ['aon', 'AutodateON'], ['qa1', 'qa!'], ['q1', 'q!'], ['nvew', 'vnew'], ['agit', 'Agit'], ['git', 'Agit'], ["w!!", 'w !sudo tee > /dev/null %'], ["h!", "help <C-r><C-w>"]]
-  exec 'cnoreabbrev <expr> '.s:cmd.' (getcmdtype() == ":" && getcmdline() ==# "'.s:cmd.'") ? "'.s:exp.'" : "'.s:cmd.'"'
-endfor
 
 " Filetype
 autocmd Vimrc CursorHold,CursorHoldI * call s:auto_filetype()
