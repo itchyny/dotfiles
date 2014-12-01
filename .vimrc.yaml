@@ -707,11 +707,10 @@ filetypeScript:
     inoremap <silent><buffer> ^ <ESC>:call vimshell#execute('cd ../')<CR>:call vimshell#print_prompt()<CR>:call vimshell#start_insert()<CR>
     inoremap <buffer> <C-^> <ESC><C-^>
     imap <buffer> <C-g> <Plug>(vimshell_history_neocomplete)
-    let s:start_complete = ' "\<ESC>GA" . (getline(".") =~? "  $" ? "" : " ") . unite#sources#vimshell_history#start_complete(!0)'
-    for s:key in ['<UP>', '<Down>', 'OA', 'OB']
-      execute 'inoremap <buffer> <expr><silent> '.s:key.s:start_complete
-      execute 'nnoremap <buffer> <expr><silent> '.s:key.s:start_complete
-    endfor
+    imap <buffer> <Up> <ESC>GA<Plug>(vimshell_history_unite)
+    nmap <buffer> <Up> GA<Plug>(vimshell_history_unite)
+    imap <buffer> <Down> <ESC>GA<Plug>(vimshell_history_unite)
+    nmap <buffer> <Down> GA<Plug>(vimshell_history_unite)
     setlocal nonumber nocursorline
   calendar: |
     nunmap <buffer> <C-h>
