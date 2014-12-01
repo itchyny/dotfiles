@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/12/01 10:10:29.
+" - * Last Change: 2014/12/02 00:28:39.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -12,7 +12,7 @@ if &encoding !=? 'utf-8'
 endif
 scriptencoding utf-8
 let $VIM_PATH = expand('~/.vim')
-let $CACHE = $VIM_PATH.'/.cache'
+let $CACHE = $VIM_PATH.'/cache'
 augroup Vimrc
   autocmd!
 augroup END
@@ -27,7 +27,10 @@ set encoding=utf-8 fileencoding=utf-8 fileencodings=utf-8,iso-2022-jp-3,euc-jisx
 set number cursorline nocursorcolumn list listchars=tab:▸\ ,extends:»,precedes:«,nbsp:%
 let [&t_SI,&t_EI] = ["\e]50;CursorShape=1\x7","\e]50;CursorShape=0\x7"]
 set showmatch matchtime=1 noshowmode shortmess+=I noruler pumheight=10 completeopt-=preview autoread display=uhex
-set history=1000 viminfo='10,/10,:500,<10,@10,s10,n$CACHE/.viminfo directory=$CACHE/.swp,$CACHE,/tmp,. spellfile=$CACHE/.spellfile.add undodir=$CACHE/.undo undofile
+set history=1000 viminfo='10,/10,:500,<10,@10,s10,n$CACHE/.viminfo spellfile=$CACHE/en.utf-8.add
+set swapfile directory=$CACHE/swap,$CACHE,/var/tmp/vim,/var/tmp
+set backup backupdir=$CACHE/backup,$CACHE,/var/tmp/vim,/var/tmp
+set undofile undodir=$CACHE/undo,$CACHE,/var/tmp/vim,/var/tmp
 set nospell
   autocmd Vimrc FileType tex,markdown,help exec 'setl ' . (&bt !=# 'help' && search("[^\x01-\x7e]", 'n') == 0 && line('$') > 5 ? '' : 'no') . 'spell'
 if has('conceal') | set concealcursor=nvc | endif
@@ -45,7 +48,7 @@ if exists('&clipboard')
   set clipboard=unnamed
   if has('unnamedplus') | set clipboard+=unnamedplus | endif
 endif
-set swapfile nobackup updatetime=300 timeout timeoutlen=1000 ttimeout ttimeoutlen=50 ttyfast visualbell t_vb= noerrorbells wildmode=list:longest
+set updatetime=300 timeout timeoutlen=1000 ttimeout ttimeoutlen=50 ttyfast visualbell t_vb= noerrorbells wildmode=list:longest
 set wildignore+=*.sw?,*.bak,*.?~,*.??~,*.???~,*.~,*.o,*.hi,*.pyc,*.aux,*.bbl,*.blg,*.dvi,*.nav,*.snm,*.toc,*.out,*.exe
 if exists('&breakindent') | set breakindent | endif
 
