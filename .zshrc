@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2014/11/29 19:02:05.
+# - * Last Change: 2014/12/02 00:27:24.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -322,7 +322,7 @@ alias -s tex=autolatex
 alias -s html=chrome
 alias -s pdf=evince
 alias -s {png,jpg,bmp,PNG,JPG,BMP}=eog
-alias -s {mp3,wav}=mplayer
+alias -s {mp3,mp4,wav,mkv,m4v,m4a,wmv,avi,mpeg,mpg,vob,mov,rm}=mplayer
 alias -s c=runc
 alias -s cpp=runcpp
 alias -s py=python
