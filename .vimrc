@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/12/02 14:16:35.
+" - * Last Change: 2014/12/03 17:34:55.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -127,7 +127,7 @@ inoremap <C-s> <ESC>:<C-u>w<CR>
 vnoremap <C-s> :<C-u>w<CR>
 
 " search
-autocmd Vimrc BufEnter,WinEnter * nnoremap <silent><buffer> <Esc><Esc> :<C-u>set nohlsearch nopaste<CR>
+nnoremap <silent> <Esc><Esc> :<C-u>set nohlsearch nopaste<CR>
 function! s:search(key)
   set hlsearch
   return a:key
