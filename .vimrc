@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/12/03 17:34:55.
+" - * Last Change: 2014/12/04 07:54:38.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -80,8 +80,8 @@ function! s:auto_filetype()
 endfunction
 
 " Open Quickfix window automatically
-autocmd Vimrc QuickfixCmdPost [^l]* copen | redraw!
-autocmd Vimrc QuickfixCmdPost l* lopen | redraw!
+autocmd Vimrc QuickfixCmdPost [^l]* leftabove copen | redraw!
+autocmd Vimrc QuickfixCmdPost l* leftabove lopen | redraw!
 
 " Always open read-only when a swap file is found
 autocmd Vimrc SwapExists * let v:swapchoice = 'o'
