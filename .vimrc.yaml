@@ -39,7 +39,6 @@ plugin:
       let g:calendar_google_calendar = 1
       let g:calendar_google_task = 1
       let g:calendar_debug = 1
-      autocmd BufEnter,WinEnter [calendar* nunmap <buffer> <Esc><Esc>
   itchyny/thumbnail.vim:
     sync: false
     mapleader: ","
