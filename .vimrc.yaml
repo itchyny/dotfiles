@@ -29,7 +29,6 @@ plugin:
     sync: false
     mapleader: ","
     command: Calendar
-    function: calendar
     mapping: <Plug>(calendar)
     script: |
       map <silent> <Leader>z <Plug>(calendar)
@@ -62,7 +61,6 @@ plugin:
     mapleader: ","
     mapping: <Plug>(screensaver)
     command: ScreenSaver
-    function: screensaver
     script: |
       map <silent> <Leader>s :<C-u>ScreenSaver<CR>
   itchyny/vim-gitbranch:
@@ -71,14 +69,12 @@ plugin:
     sync: false
     mapping: <Plug>(closebuffer)
     insert: true
-    function: closebuffer
     script: |
       map <C-w> <Plug>(closebuffer)
       imap <C-w> <Plug>(closebuffer)
   itchyny/vim-external:
     sync: false
     mapleader: \
-    function: external
     mappings:
       - <Plug>(external-editor)
       - <Plug>(external-explorer)
@@ -125,7 +121,6 @@ plugin:
   thinca/vim-quickrun:
     command: QuickRun
     mapping: <Plug>(quickrun)
-    function: quickrun
     mapleader: \
     dependon:
       - vimproc
@@ -217,7 +212,6 @@ plugin:
       - UniteWithInputDirectory
       - UniteResume
       - UniteClose
-    function: unite
     mapleader: ","
     beforeScript: |
       let g:unite_enable_start_insert = 1
@@ -308,7 +302,6 @@ plugin:
       - VimShellTerminal
       - VimShellSendString
       - VimShellSendBuffer
-    function: vimshell
     dependon:
       - vimproc
     beforeScript: |
@@ -404,7 +397,6 @@ plugin:
   tpope/vim-repeat: {}
   tComment:
     command: TComment
-    function: tcomment
     mapping: <Plug>TComment-gc
     script: |
       nnoremap <silent> __ :TComment<CR>
@@ -476,7 +468,6 @@ plugin:
       - cpp
       - haskell
       - sh
-    function: SyntasticStatuslineFlag
     beforeScript: |
       let g:syntastic_mode_map = { 'mode': 'passive' }
       let g:syntastic_echo_current_error = 0
