@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/12/05 00:03:10.
+" - * Last Change: 2014/12/05 00:45:17.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -56,9 +56,7 @@ filetype plugin indent on
 silent! syntax enable
 
 " Maximize the window
-if has('win16') || has('win32') || has('win64')
-  autocmd Vimrc GUIEnter * simalt ~x
-endif
+autocmd Vimrc GUIEnter * silent! simalt ~x
 
 " Move to the directory each buffer
 autocmd Vimrc BufEnter * silent! lcd `=expand('%:p:h')`
