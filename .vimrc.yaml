@@ -37,7 +37,6 @@ plugin:
       let g:calendar_views = [ 'year', 'month', 'day_3', 'clock' ]
       let g:calendar_google_calendar = 1
       let g:calendar_google_task = 1
-      let g:calendar_debug = 1
   itchyny/thumbnail.vim:
     sync: false
     mapleader: ","
