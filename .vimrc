@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/12/04 07:54:38.
+" - * Last Change: 2014/12/05 00:03:10.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -104,16 +104,7 @@ noremap v V
 nnoremap Y y$
 
 " remove spaces at the end of lines
-nnoremap <silent> ,<Space> :<C-u> call <SID>remove_trailing_space()<CR>
-function! s:remove_trailing_space()
-  let view = winsaveview()
-  try
-    keeppatterns %s/\s\+$//e
-  catch
-    %s/\s\+$//e
-  endtry
-  call winrestview(view)
-endfunction
+nnoremap <silent> ,<Space> :<C-u>silent! keeppatterns %substitute/\s\+$//e<CR>
 
 " smart Enter
 inoremap <silent> <expr> <CR> (pumvisible()?"\<ESC>o":"\<C-g>u\<CR>")
