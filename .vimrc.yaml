@@ -302,6 +302,7 @@ plugin:
       - VimShellTerminal
       - VimShellSendString
       - VimShellSendBuffer
+    function: vimshell
     dependon:
       - vimproc
     beforeScript: |
