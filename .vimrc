@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/12/06 01:36:28.
+" - * Last Change: 2014/12/06 08:21:30.
 " --------------------------------------------------------------------------------------------------------
 
 " Initial process {{{1
@@ -128,13 +128,9 @@ nnoremap <expr><C-m> (bufname('%') ==# '[Command Line]' <bar><bar> &l:buftype ==
 nnoremap <C-q> <C-w>
 
 " Open dot files
-if has('win16') || has('win32') || has('win64')
-  nnoremap <silent> \. :<C-u>e ~/.vimrc<CR>
-  nnoremap <silent> \, :<C-u>e ~/.zshrc<CR>
-else
-  nnoremap <silent> \. :<C-u>e `=resolve(expand('~/.vimrc'))`<CR>
-  nnoremap <silent> \, :<C-u>e `=resolve(expand('~/.zshrc'))`<CR>
-endif
+execute 'nnoremap \. :edit' resolve(expand('~/.vimrc')) '<CR>'
+execute 'nnoremap \; :edit' resolve(expand('~/.vimrc.yaml')) '<CR>'
+execute 'nnoremap \, :edit' resolve(expand('~/.zshrc')) '<CR>'
 
 " tab
 nnoremap <silent> <C-t> :<C-u>tabnew<CR>
