@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2014/12/02 00:27:24.
+# - * Last Change: 2014/12/04 11:03:19.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -256,64 +256,6 @@ case "${OSTYPE}" in
     export os='ubuntu'
     ;;
 esac
-function pullvim() {
-  if command -v brew > /dev/null 2>&1; then
-    return
-  fi
-  if ! [[ -d ~/Downloads ]]; then
-    mkdir -p ~/Downloads
-  fi
-  cd ~/Downloads > /dev/null
-  if [[ -d ./vim/.hg ]]; then
-    cd ./vim > /dev/null
-    hg pull
-    hg update
-  else
-    hg clone https://code.google.com/p/vim/ ./vim
-  fi
-}
-function configurevim() {
-  if command -v brew > /dev/null 2>&1; then
-    return
-  fi
-  local save_path
-  save_path="$(pwd)"
-  if ! [[ -d ~/Downloads/vim/.hg ]]; then
-    pullvim
-  fi
-  cd ~/Downloads/vim > /dev/null
-  rm -f src/auto/config.cache
-  if which lua > /dev/null; then
-    CFLAGS="-O3" ./configure --with-features=huge\
-                --with-compiledby=itchyny\
-                --enable-pythoninterp=yes\
-                --with-lua-prefix="$(dirname "$(which lua)")"\
-                --enable-luainterp=yes\
-                --enable-multibyte
-  else
-    CFLAGS="-O3" ./configure --with-features=huge\
-                --with-compiledby=itchyny\
-                --enable-pythoninterp=yes\
-                --enable-multibyte
-  fi
-  cd "$save_path" > /dev/null
-}
-function makevim() {
-  if command -v brew > /dev/null 2>&1; then
-    if brew list vim > /dev/null 2>&1; then
-      brew update; brew rm vim
-    fi
-    brew install vim --with-perl --with-lua --with-luajit --with-python --HEAD --override-system-vi
-  else
-    local save_path
-    save_path="$(pwd)"
-    pullvim
-    configurevim
-    make
-    sudo make install
-    cd "$save_path" > /dev/null
-  fi
-}
 
 # suffix alias according to file extension
 alias -s txt=cat
