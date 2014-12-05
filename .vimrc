@@ -1,10 +1,10 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/12/06 00:33:51.
+" - * Last Change: 2014/12/06 01:36:28.
 " --------------------------------------------------------------------------------------------------------
 
-" INITIALIZE {{{
+" Initial process {{{1
 filetype off
 if &encoding !=? 'utf-8'
   let &termencoding = &encoding
@@ -18,10 +18,8 @@ augroup END
 if has('vim_starting')
   set rtp^=~/.vim/miv/miv/
 endif
-" }}}
 
-" Setting {{{
-" Option
+" Setting options {{{1
 set encoding=utf-8 fileencoding=utf-8 fileencodings=utf-8,iso-2022-jp-3,euc-jisx0213,cp932,euc-jp,sjis,jis,latin,iso-2022-jp fileformats=unix,mac,dos
 set number cursorline nocursorcolumn list listchars=tab:▸\ ,extends:»,precedes:«,nbsp:%
 let [&t_SI,&t_EI] = ["\e]50;CursorShape=1\x7","\e]50;CursorShape=0\x7"]
@@ -49,10 +47,11 @@ set updatetime=300 timeout timeoutlen=1000 ttimeout ttimeoutlen=50 ttyfast visua
 set wildignore+=*.sw?,*.bak,*.?~,*.??~,*.???~,*.~,*.o,*.hi,*.pyc,*.aux,*.bbl,*.blg,*.dvi,*.nav,*.snm,*.toc,*.out,*.exe
 if exists('&breakindent') | set breakindent | endif
 
-" Enable plugin, indent, syntax
+" Enable plugin, indent, syntax {{{1
 filetype plugin indent on
 silent! syntax enable
 
+" Auto commands {{{1
 " Maximize the window
 autocmd Vimrc GUIEnter * silent! simalt ~x
 
@@ -81,9 +80,8 @@ autocmd Vimrc QuickfixCmdPost l* leftabove lopen | redraw!
 
 " Always open read-only when a swap file is found
 autocmd Vimrc SwapExists * let v:swapchoice = 'o'
-" }}}
 
-" KEY MAPPING {{{
+" Key mappings {{{1
 " Increment and decrement
 nnoremap + <C-a>
 nnoremap - <C-x>
@@ -160,4 +158,3 @@ cnoremap <C-f> <Right>
 
 " <C-g> in command line
 cmap <C-g> <ESC><C-g>
-" }}} KEY MAPPING
