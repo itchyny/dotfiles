@@ -90,6 +90,8 @@ plugin:
     sync: false
   itchyny/vim-cmdline-escape:
     sync: false
+  itchyny/vim-my-snippets:
+    sync: false
 
   Shougo/neocomplete.vim:
     enable: has('lua') && v:version > 703
@@ -112,7 +114,7 @@ plugin:
       call neocomplete#custom#source('omni', 'converters', ['converter_remove_last_paren'])
   Shougo/neosnippet:
     script: |
-      let g:neosnippet#snippets_directory = $VIM_PATH.'/snippets'
+      let g:neosnippet#snippets_directory = '~/.vim/miv/my-snippets/snippets'
       imap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
       smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
       imap <expr><C-o> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<ESC>o"
