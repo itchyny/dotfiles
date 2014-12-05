@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/12/06 00:24:17.
+" - * Last Change: 2014/12/06 00:33:51.
 " --------------------------------------------------------------------------------------------------------
 
 " INITIALIZE {{{
@@ -115,14 +115,10 @@ vnoremap <C-s> :<C-u>w<CR>
 
 " search
 nnoremap <silent> <Esc><Esc> :<C-u>set nohlsearch nopaste<CR>
-function! s:search(key)
-  set hlsearch
-  return a:key
-endfunction
-nnoremap <expr> / <sid>search('/')
-nnoremap <expr> ? <sid>search('?')
-nnoremap <expr> * <sid>search('*')
-nnoremap <expr> # <sid>search('#')
+nnoremap / :<C-u>set hlsearch<CR>/
+nnoremap ? :<C-u>set hlsearch<CR>?
+nnoremap * :<C-u>set hlsearch<CR>*
+nnoremap # :<C-u>set hlsearch<CR>#
 
 " navigate window
 nnoremap <C-h> <C-w>h
