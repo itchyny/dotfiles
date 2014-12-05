@@ -398,6 +398,7 @@ plugin:
   tComment:
     command: TComment
     mapping: <Plug>TComment-gc
+    function: tcomment
     script: |
       nnoremap <silent> __ :TComment<CR>
       vnoremap <silent> __ :TComment<CR>
