@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/12/07 00:49:13.
+" - * Last Change: 2014/12/07 01:31:33.
 " --------------------------------------------------------------------------------------------------------
 
 " Initial process {{{1
@@ -33,12 +33,8 @@ set formatoptions+=mM ambiwidth=double iminsert=0 imsearch=0
 set smartindent autoindent shiftwidth=2
   autocmd Vimrc FileType tex,hatena setlocal nosmartindent noautoindent
   let g:tex_indent_items=0
-set textwidth=0 expandtab tabstop=2 backspace=indent,eol,start nrformats-=ocral
+set textwidth=0 expandtab tabstop=2 backspace=indent,eol,start nrformats-=ocral clipboard=unnamed,unnamedplus 
   autocmd Vimrc FileType * exec 'setl ' . (search('^\t.*\n\t.*\n\t', 'n') > 0 ? 'no' : '') . 'expandtab'
-if exists('&clipboard')
-  set clipboard=unnamed
-  if has('unnamedplus') | set clipboard+=unnamedplus | endif
-endif
 set updatetime=300 timeout timeoutlen=1000 ttimeout ttimeoutlen=50 ttyfast visualbell t_vb= noerrorbells wildmode=list:longest
 set wildignore+=*.sw?,*.bak,*.?~,*.??~,*.???~,*.~,*.o,*.hi,*.pyc,*.aux,*.bbl,*.blg,*.dvi,*.nav,*.snm,*.toc,*.out,*.exe
 if exists('&breakindent') | set breakindent | endif
