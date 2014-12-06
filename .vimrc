@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/12/06 20:19:01.
+" - * Last Change: 2014/12/06 20:59:17.
 " --------------------------------------------------------------------------------------------------------
 
 " Initial process {{{1
@@ -60,19 +60,6 @@ autocmd Vimrc BufEnter * silent! lcd `=expand('%:p:h')`
 
 " View syntax name under cursor
 command! S echo synIDattr(synID(line('.'), col('.'), 0), 'name')
-
-" Filetype
-autocmd Vimrc CursorHold,CursorHoldI * call s:auto_filetype()
-function! s:auto_filetype()
-  if line('.') > 5 || &ft != '' | return | endif
-  let line1 = getline(1)
-  if line1 =~# '^\s*$' | return | endif
-  let newft = ''
-  for [pat, ft] in [['*[', 'hatena'],['#include', 'c'],['\documentclass', 'tex'],['import', 'haskell'],['main ', 'haskell'],['module ', 'haskell'],['diff --', 'diff'],['{ ', 'vim']]
-    if line1[:strlen(pat) - 1] ==# pat | let newft = ft | endif
-  endfor
-  if newft != '' | exec 'setlocal filetype=' . newft | endif
-endfunction
 
 " Open Quickfix window automatically
 autocmd Vimrc QuickfixCmdPost [^l]* leftabove copen | wincmd p | redraw!
