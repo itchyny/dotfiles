@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/12/06 20:59:17.
+" - * Last Change: 2014/12/07 00:19:57.
 " --------------------------------------------------------------------------------------------------------
 
 " Initial process {{{1
@@ -21,7 +21,7 @@ endif
 
 " Setting options {{{1
 set encoding=utf-8 fileencoding=utf-8 fileencodings=utf-8,iso-2022-jp-3,euc-jisx0213,cp932,euc-jp,sjis,jis,latin,iso-2022-jp fileformats=unix,mac,dos
-set number cursorline nocursorcolumn list listchars=tab:▸\ ,extends:»,precedes:«,nbsp:%
+set number cursorline nocursorcolumn list listchars=tab:>\ ,nbsp:_
 let [&t_SI,&t_EI] = ["\e]50;CursorShape=1\x7","\e]50;CursorShape=0\x7"]
 set showmatch matchtime=1 noshowmode shortmess+=I noruler pumheight=10 completeopt-=preview autoread display=uhex
 set history=1000 viminfo='10,/10,:500,<10,@10,s10,n$CACHE/.viminfo spellfile=$CACHE/en.utf-8.add nobackup
