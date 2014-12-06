@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/12/07 00:19:57.
+" - * Last Change: 2014/12/07 00:25:54.
 " --------------------------------------------------------------------------------------------------------
 
 " Initial process {{{1
@@ -10,7 +10,6 @@ if &encoding !=? 'utf-8'
   let &termencoding = &encoding
   set encoding=utf-8
 endif
-scriptencoding utf-8
 let $CACHE = expand('~/.vim/cache')
 augroup Vimrc
   autocmd!
