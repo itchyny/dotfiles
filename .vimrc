@@ -1,15 +1,11 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/12/07 00:25:54.
+" - * Last Change: 2014/12/07 00:49:13.
 " --------------------------------------------------------------------------------------------------------
 
 " Initial process {{{1
 filetype off
-if &encoding !=? 'utf-8'
-  let &termencoding = &encoding
-  set encoding=utf-8
-endif
 let $CACHE = expand('~/.vim/cache')
 augroup Vimrc
   autocmd!
@@ -19,6 +15,7 @@ if has('vim_starting')
 endif
 
 " Setting options {{{1
+if &encoding !=? 'utf-8' | let &termencoding = &encoding | endif
 set encoding=utf-8 fileencoding=utf-8 fileencodings=utf-8,iso-2022-jp-3,euc-jisx0213,cp932,euc-jp,sjis,jis,latin,iso-2022-jp fileformats=unix,mac,dos
 set number cursorline nocursorcolumn list listchars=tab:>\ ,nbsp:_
 let [&t_SI,&t_EI] = ["\e]50;CursorShape=1\x7","\e]50;CursorShape=0\x7"]
