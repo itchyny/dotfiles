@@ -477,7 +477,10 @@ plugin:
       let g:syntastic_echo_current_error = 0
       let g:syntastic_enable_highlighting = 0
     script: |
-      autocmd Vimrc BufWritePost *.c,*.cpp,*.hs call s:syntastic()
+      augroup auto-syntastic
+        autocmd!
+        autocmd BufWritePost *.c,*.cpp,*.hs call s:syntastic()
+      augroup END
       function! s:syntastic()
         if exists(':SyntasticCheck') | exec 'SyntasticCheck' | endif
         if exists('*lightline#update') | call lightline#update() | endif
