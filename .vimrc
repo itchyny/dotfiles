@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/12/08 00:54:59.
+" - * Last Change: 2014/12/08 08:24:40.
 " --------------------------------------------------------------------------------------------------------
 
 " Initial process {{{1
@@ -36,9 +36,10 @@ if has('unnamedplus') | set clipboard+=unnamedplus | endif
 
 " Cache files
 let $CACHE = expand('~/.vim/cache')
-silent! set history=500 nobackup viminfo='10,/10,:500,<10,@10,s10,n$CACHE/.viminfo
+silent! set history=500 viminfo='10,/10,:500,<10,@10,s10,n$CACHE/.viminfo
 silent! set nospell spellfile=$CACHE/en.utf-8.add
 silent! set swapfile directory=$CACHE/swap,$CACHE,/var/tmp/vim,/var/tmp
+silent! set nobackup backupdir=$CACHE/backup,$CACHE,/var/tmp/vim,/var/tmp
 silent! set undofile undolevels=1000 undodir=$CACHE/undo,$CACHE,/var/tmp/vim,/var/tmp
 
 " Search
