@@ -642,6 +642,10 @@ beforeScript: |
   let g:tex_isk = '48-57,92,a-z,A-Z,192-255'
   let g:tex_conceal=''
 
+  if v:version < 703
+    finish
+  endif
+
 afterScript: |
   let g:mapleader = ','
 
