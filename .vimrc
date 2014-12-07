@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/12/07 09:32:01.
+" - * Last Change: 2014/12/07 09:46:27.
 " --------------------------------------------------------------------------------------------------------
 
 " Initial process {{{1
@@ -47,9 +47,6 @@ autocmd Vimrc GUIEnter * silent! simalt ~x
 
 " Move to the directory each buffer
 autocmd Vimrc BufEnter * silent! lcd `=expand('%:p:h')`
-
-" View syntax name under cursor
-command! S echo synIDattr(synID(line('.'), col('.'), 0), 'name')
 
 " Open Quickfix window automatically
 autocmd Vimrc QuickfixCmdPost [^l]* leftabove copen | wincmd p | redraw!
