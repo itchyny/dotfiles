@@ -1,37 +1,65 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/12/07 15:06:46.
+" - * Last Change: 2014/12/08 00:54:59.
 " --------------------------------------------------------------------------------------------------------
 
 " Initial process {{{1
 filetype off
-let $CACHE = expand('~/.vim/cache')
 if has('vim_starting')
   set rtp^=~/.vim/miv/miv/
 endif
 
 " Setting options {{{1
+" Encoding
 if &encoding !=? 'utf-8' | let &termencoding = &encoding | endif
-set encoding=utf-8 fileencoding=utf-8 fileencodings=utf-8,iso-2022-jp-3,euc-jisx0213,cp932,euc-jp,sjis,jis,latin,iso-2022-jp fileformats=unix,mac,dos
-set number cursorline nocursorcolumn list listchars=tab:>\ ,nbsp:_
-let [&t_SI,&t_EI] = ["\e]50;CursorShape=1\x7","\e]50;CursorShape=0\x7"]
-set showmatch matchtime=1 noshowmode shortmess+=I noruler pumheight=10 completeopt-=preview autoread display=uhex
-set history=1000 viminfo='10,/10,:500,<10,@10,s10,n$CACHE/.viminfo spellfile=$CACHE/en.utf-8.add nobackup
-set swapfile directory=$CACHE/swap,$CACHE,/var/tmp/vim,/var/tmp undofile undodir=$CACHE/undo,$CACHE,/var/tmp/vim,/var/tmp
-set nospell
-if has('conceal') | set concealcursor=nvc | endif
-set infercase wrapscan ignorecase smartcase incsearch nohlsearch magic
-set laststatus=2 showtabline=1 statusline=%{expand('%:p:t')}\ %<[%{expand('%:p:h')}]%=\ %m%r%y%w[%{&fenc!=''?&fenc:&enc}][%{&ff}][%3l,%3c,%3p]
-set background=dark synmaxcol=300
-if !has('gui_running') | set t_Co=256 | endif
-set formatoptions+=mM ambiwidth=double iminsert=0 imsearch=0
-set smartindent autoindent shiftwidth=2
-  let g:tex_indent_items=0
-set textwidth=0 expandtab tabstop=2 backspace=indent,eol,start nrformats-=ocral clipboard=unnamed,unnamedplus 
-set updatetime=300 timeout timeoutlen=1000 ttimeout ttimeoutlen=50 ttyfast visualbell t_vb= noerrorbells wildmode=list:longest
-set wildignore+=*.sw?,*.bak,*.?~,*.??~,*.???~,*.~,*.o,*.hi,*.pyc,*.aux,*.bbl,*.blg,*.dvi,*.nav,*.snm,*.toc,*.out,*.exe
-if exists('&breakindent') | set breakindent | endif
+set encoding=utf-8 fileencoding=utf-8 fileformats=unix,mac,dos
+set fileencodings=utf-8,iso-2022-jp-3,euc-jisx0213,cp932,euc-jp,sjis,jis,latin,iso-2022-jp
+
+" Appearance
+set number background=dark display=lastline,uhex wrap wrapmargin=0 showbreak= notitle
+set showmatch matchtime=1 noshowmode shortmess+=I cmdheight=1 cmdwinheight=10
+set noruler rulerformat= laststatus=2 statusline=%t\ %=\ %m%r%y%w[%{&fenc}][%{&ff}][%3l,%3c,%3p]
+silent! set cursorline nocursorcolumn colorcolumn= concealcursor=nvc conceallevel=0 showtabline=1
+silent! set list listchars=tab:>\ ,nbsp:_ synmaxcol=300 ambiwidth=double breakindent breakindentopt=
+if has('gui_running') | set lines=999 columns=999 | else | set t_Co=256 | endif
+silent! let [&t_SI,&t_EI] = ["\e]50;CursorShape=1\x7","\e]50;CursorShape=0\x7"]
+
+" Editing
+set formatoptions+=mM iminsert=0 imsearch=0 autoread smartindent autoindent shiftwidth=2
+set foldclose=all nofoldenable foldlevel=0 foldmarker& foldmethod=indent nopaste pastetoggle= nogdefault
+set textwidth=0 expandtab tabstop=2 backspace=indent,eol,start nrformats=hex
+
+" Clipboard
+set clipboard=unnamed
+if has('unnamedplus') | set clipboard+=unnamedplus | endif
+
+" Cache files
+let $CACHE = expand('~/.vim/cache')
+silent! set history=500 nobackup viminfo='10,/10,:500,<10,@10,s10,n$CACHE/.viminfo
+silent! set nospell spellfile=$CACHE/en.utf-8.add
+silent! set swapfile directory=$CACHE/swap,$CACHE,/var/tmp/vim,/var/tmp
+silent! set undofile undolevels=1000 undodir=$CACHE/undo,$CACHE,/var/tmp/vim,/var/tmp
+
+" Search
+set wrapscan ignorecase smartcase incsearch nohlsearch magic
+
+" Insert completion
+silent! set complete& completeopt=menu infercase pumheight=10 noshowfulltag
+
+" Command line
+silent! set wildchar=9 nowildmenu wildmode=list:longest wildoptions= wildignorecase
+set wildignore=*.?~,*.??~,*.???~,*.~,*.o,*.sw?,*.bak,*.hi,*.pyc,*.aux,*.bbl,*.blg,*.dvi,*.nav,*.snm,*.toc,*.out,*.exe
+
+" Performance
+set updatetime=300 timeout timeoutlen=500 ttimeout ttimeoutlen=50 ttyfast lazyredraw
+
+" Bell
+set noerrorbells visualbell t_vb=
+
+" External interface
+set shell& shellcmdflag& shellpipe=2>&1\ >
+let &makeprg = 'if test -f configure; then ./configure && make; elif test -f Makefile -o -f makefile; then make; elif test -f Makefile.am; then autoreconf -i && ./configure && make; fi'
 
 " Enable plugin, indent, syntax {{{1
 filetype plugin indent on
