@@ -1,15 +1,12 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/12/07 09:46:27.
+" - * Last Change: 2014/12/07 15:06:46.
 " --------------------------------------------------------------------------------------------------------
 
 " Initial process {{{1
 filetype off
 let $CACHE = expand('~/.vim/cache')
-augroup Vimrc
-  autocmd!
-augroup END
 if has('vim_starting')
   set rtp^=~/.vim/miv/miv/
 endif
@@ -32,7 +29,6 @@ set formatoptions+=mM ambiwidth=double iminsert=0 imsearch=0
 set smartindent autoindent shiftwidth=2
   let g:tex_indent_items=0
 set textwidth=0 expandtab tabstop=2 backspace=indent,eol,start nrformats-=ocral clipboard=unnamed,unnamedplus 
-  autocmd Vimrc FileType * exec 'setl ' . (search('^\t.*\n\t.*\n\t', 'n') > 0 ? 'no' : '') . 'expandtab'
 set updatetime=300 timeout timeoutlen=1000 ttimeout ttimeoutlen=50 ttyfast visualbell t_vb= noerrorbells wildmode=list:longest
 set wildignore+=*.sw?,*.bak,*.?~,*.??~,*.???~,*.~,*.o,*.hi,*.pyc,*.aux,*.bbl,*.blg,*.dvi,*.nav,*.snm,*.toc,*.out,*.exe
 if exists('&breakindent') | set breakindent | endif
@@ -42,18 +38,25 @@ filetype plugin indent on
 silent! syntax enable
 
 " Auto commands {{{1
+augroup vimrc
+  autocmd!
+augroup END
+
 " Maximize the window
-autocmd Vimrc GUIEnter * silent! simalt ~x
+autocmd vimrc GUIEnter * silent! simalt ~x
 
 " Move to the directory each buffer
-autocmd Vimrc BufEnter * silent! lcd `=expand('%:p:h')`
+autocmd vimrc BufEnter * silent! lcd %:p:h
 
 " Open Quickfix window automatically
-autocmd Vimrc QuickfixCmdPost [^l]* leftabove copen | wincmd p | redraw!
-autocmd Vimrc QuickfixCmdPost l* leftabove lopen | wincmd p | redraw!
+autocmd vimrc QuickfixCmdPost [^l]* leftabove copen | wincmd p | redraw!
+autocmd vimrc QuickfixCmdPost l* leftabove lopen | wincmd p | redraw!
 
 " Always open read-only when a swap file is found
-autocmd Vimrc SwapExists * let v:swapchoice = 'o'
+autocmd vimrc SwapExists * let v:swapchoice = 'o'
+
+" Automatically set expandtab
+autocmd vimrc FileType * exec 'setl ' . (search('^\t.*\n\t.*\n\t', 'n') ? 'no' : '') . 'et'
 
 " Key mappings {{{1
 " Increment and decrement
