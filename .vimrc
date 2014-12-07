@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/12/07 09:19:00.
+" - * Last Change: 2014/12/07 09:30:06.
 " --------------------------------------------------------------------------------------------------------
 
 " Initial process {{{1
@@ -23,7 +23,6 @@ set showmatch matchtime=1 noshowmode shortmess+=I noruler pumheight=10 completeo
 set history=1000 viminfo='10,/10,:500,<10,@10,s10,n$CACHE/.viminfo spellfile=$CACHE/en.utf-8.add nobackup
 set swapfile directory=$CACHE/swap,$CACHE,/var/tmp/vim,/var/tmp undofile undodir=$CACHE/undo,$CACHE,/var/tmp/vim,/var/tmp
 set nospell
-  autocmd Vimrc FileType tex,markdown,help exec 'setl ' . (&bt !=# 'help' && search("[^\x01-\x7e]", 'n') == 0 && line('$') > 5 ? '' : 'no') . 'spell'
 if has('conceal') | set concealcursor=nvc | endif
 set infercase wrapscan ignorecase smartcase incsearch nohlsearch magic
 set laststatus=2 showtabline=1 statusline=%{expand('%:p:t')}\ %<[%{expand('%:p:h')}]%=\ %m%r%y%w[%{&fenc!=''?&fenc:&enc}][%{&ff}][%3l,%3c,%3p]
