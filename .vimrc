@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/12/07 09:30:47.
+" - * Last Change: 2014/12/07 09:32:01.
 " --------------------------------------------------------------------------------------------------------
 
 " Initial process {{{1
@@ -105,6 +105,12 @@ nnoremap <C-l> <C-w>l
 nnoremap <C-x> <C-w>x
 nnoremap <expr><C-m> (bufname('%') ==# '[Command Line]' <bar><bar> &l:buftype ==# 'quickfix') ? "<CR>" : "<C-w>j"
 nnoremap <C-q> <C-w>
+
+" improve scroll
+noremap <expr> <C-b> max([winheight(0) - 2, 1]) . "\<C-u>" . (line("w0") <= 1         ? "H" : "L")
+noremap <expr> <C-f> max([winheight(0) - 2, 1]) . "\<C-d>" . (line("w$") >= line('$') ? "L" : "H")
+noremap <expr> <C-y> (line("w0") <= 1         ? "k" : "\<C-y>")
+noremap <expr> <C-e> (line("w$") >= line('$') ? "j" : "\<C-e>")
 
 " Open dot files
 execute 'nnoremap \. :edit' resolve(expand('~/.vimrc')) '<CR>'
