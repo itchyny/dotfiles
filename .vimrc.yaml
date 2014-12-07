@@ -643,6 +643,8 @@ afterScript: |
   let g:mapleader = ','
 
 filetypeScript:
+  vim: |
+    setlocal foldmethod=marker
   c: |
     setlocal ofu=ccomplete#Complete
   html: |
