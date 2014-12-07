@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/12/07 01:31:33.
+" - * Last Change: 2014/12/07 09:19:00.
 " --------------------------------------------------------------------------------------------------------
 
 " Initial process {{{1
@@ -31,7 +31,6 @@ set background=dark synmaxcol=300
 if !has('gui_running') | set t_Co=256 | endif
 set formatoptions+=mM ambiwidth=double iminsert=0 imsearch=0
 set smartindent autoindent shiftwidth=2
-  autocmd Vimrc FileType tex,hatena setlocal nosmartindent noautoindent
   let g:tex_indent_items=0
 set textwidth=0 expandtab tabstop=2 backspace=indent,eol,start nrformats-=ocral clipboard=unnamed,unnamedplus 
   autocmd Vimrc FileType * exec 'setl ' . (search('^\t.*\n\t.*\n\t', 'n') > 0 ? 'no' : '') . 'expandtab'
