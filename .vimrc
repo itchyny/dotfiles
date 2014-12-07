@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/12/07 09:30:06.
+" - * Last Change: 2014/12/07 09:30:47.
 " --------------------------------------------------------------------------------------------------------
 
 " Initial process {{{1
@@ -94,6 +94,8 @@ nnoremap / :<C-u>set hlsearch<CR>/
 nnoremap ? :<C-u>set hlsearch<CR>?
 nnoremap * :<C-u>set hlsearch<CR>*
 nnoremap # :<C-u>set hlsearch<CR>#
+nnoremap g* :<C-u>set hlsearch<CR>g*
+nnoremap g# :<C-u>set hlsearch<CR>g#
 
 " navigate window
 nnoremap <C-h> <C-w>h
