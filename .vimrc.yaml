@@ -666,6 +666,16 @@ filetypeScript:
     setlocal noexpandtab
   sh: |
     setlocal iskeyword=36,45,48-57,64,95,a-z,A-Z,192-255
+  tex: |
+    setlocal nosmartindent noautoindent
+    execute 'setlocal ' . (search("[^\x01-\x7e]", 'n') == 0 && line('$') > 5 ? '' : 'no') . 'spell'
+  markdown: |
+    setlocal nosmartindent noautoindent
+    execute 'setlocal ' . (search("[^\x01-\x7e]", 'n') == 0 && line('$') > 5 ? '' : 'no') . 'spell'
+  hatena: |
+    setlocal nosmartindent noautoindent
+  dictionary: |
+    nmap <buffer> <C-@> <Plug>(dictionary_jump_back)
   unite: |
     inoremap <silent> <buffer> <C-z> <Nop>
     inoremap <silent> <buffer> <C-o> <Nop>
@@ -731,8 +741,6 @@ filetypeScript:
     call tcomment#DefineType('meissa', '# %s')
   spice: |
     call tcomment#DefineType('spice', '* %s')
-  help: |
-    nnoremap <buffer> <C-[> <C-t>
 
 filetypeDetect:
   bf: brainfuck
