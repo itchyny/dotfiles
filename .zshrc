@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2014/12/04 11:03:19.
+# - * Last Change: 2014/12/07 10:30:53.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -121,6 +121,7 @@ export PATH=~/Dropbox/bin:$PATH
 export PATH=$PATH:~/Library/Haskell/bin
 export PATH=$PATH:/usr/local/Cellar/vim/HEAD/bin
 export PATH=$PATH:/usr/texbin
+export GOPATH=~/.go
 
 # function
 function starteditor() {
