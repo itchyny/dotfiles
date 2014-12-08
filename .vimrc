@@ -1,14 +1,8 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/12/08 08:24:40.
+" - * Last Change: 2014/12/09 08:30:35.
 " --------------------------------------------------------------------------------------------------------
-
-" Initial process {{{1
-filetype off
-if has('vim_starting')
-  set rtp^=~/.vim/miv/miv/
-endif
 
 " Setting options {{{1
 " Encoding
@@ -61,10 +55,6 @@ set noerrorbells visualbell t_vb=
 " External interface
 set shell& shellcmdflag& shellpipe=2>&1\ >
 let &makeprg = 'if test -f configure; then ./configure && make; elif test -f Makefile -o -f makefile; then make; elif test -f Makefile.am; then autoreconf -i && ./configure && make; fi'
-
-" Enable plugin, indent, syntax {{{1
-filetype plugin indent on
-silent! syntax enable
 
 " Auto commands {{{1
 augroup vimrc
@@ -168,3 +158,11 @@ cnoremap <C-f> <Right>
 
 " <C-g> in command line
 cmap <C-g> <ESC><C-g>
+
+" Enable ftplugin, indent, syntax {{{1
+filetype off
+if has('vim_starting')
+  set runtimepath^=~/.vim/miv/miv/
+endif
+filetype plugin indent on
+silent! syntax enable
