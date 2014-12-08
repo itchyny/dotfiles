@@ -501,24 +501,76 @@ plugin:
   kana/vim-textobj-entire:
     dependon:
       - textobj-user
+    mapmode: o
+    mappings:
+      - <Plug>(textobj-entire-a)
+      - <Plug>(textobj-entire-i)
+      - ie
+      - ae
   kana/vim-textobj-line:
     dependon:
       - textobj-user
+    mapmode: o
+    mappings:
+      - <Plug>(textobj-line-a)
+      - <Plug>(textobj-line-i)
+      - il
+      - al
   kana/vim-textobj-function:
     dependon:
       - textobj-user
+    mapmode: o
+    mappings:
+      - <Plug>(textobj-function-a)
+      - <Plug>(textobj-function-i)
+      - <Plug>(textobj-function-A)
+      - <Plug>(textobj-function-I)
+      - if
+      - af
+      - iF
+      - aF
   kana/vim-textobj-indent:
     dependon:
       - textobj-user
+    mapmode: o
+    mappings:
+      - <Plug>(textobj-indent-a)
+      - <Plug>(textobj-indent-i)
+      - <Plug>(textobj-indent-A)
+      - <Plug>(textobj-indent-I)
+      - ii
+      - ai
+      - iI
+      - aI
   kana/vim-textobj-underscore:
     dependon:
       - textobj-user
+    mapmode: o
+    mappings:
+      - <Plug>(textobj-underscore-a)
+      - <Plug>(textobj-underscore-i)
+      - i_
+      - a_
   glts/vim-textobj-comment:
     dependon:
       - textobj-user
+    mapmode: o
+    mappings:
+      - <Plug>(textobj-comment-a)
+      - <Plug>(textobj-comment-i)
+      - <Plug>(textobj-comment-big-a)
+      - <Plug>(textobj-comment-big-i)
+      - ic
+      - ac
+      - iC
+      - aC
   osyo-manga/vim-textobj-multiblock:
     dependon:
       - textobj-user
+    mapmode: o
+    mappings:
+      - <Plug>(textobj-multiblock-a)
+      - <Plug>(textobj-multiblock-i)
     beforeScript: |
       let g:textobj_multiblock_no_default_key_mappings = 1
       let g:textobj_multiblock_blocks = [
@@ -532,6 +584,15 @@ plugin:
   osyo-manga/vim-textobj-multitextobj:
     dependon:
       - textobj-user
+      - textobj-multiblock
+      - textobj-comment
+      - textobj-indent
+      - textobj-function
+      - textobj-entire
+    mapmode: o
+    mappings:
+      - <Plug>(textobj-multitextobj-a)
+      - <Plug>(textobj-multitextobj-i)
     beforeScript: |
       let g:textobj_multitextobj_textobjects_i = [
             \   { "textobj": "\<Plug>(textobj-multiblock-i)", "is_cursor_in": 1 },
@@ -540,6 +601,7 @@ plugin:
             \   { "textobj": "\<Plug>(textobj-function-i)", "is_cursor_in": 1 },
             \   "\<Plug>(textobj-entire-i)",
             \ ]
+    script: |
       omap a<CR> <Plug>(textobj-multitextobj-a)
       omap i<CR> <Plug>(textobj-multitextobj-i)
       omap <CR> <Plug>(textobj-multitextobj-i)
@@ -549,6 +611,10 @@ plugin:
   thinca/vim-textobj-between:
     dependon:
       - textobj-user
+    mapmode: o
+    mappings:
+      - <Plug>(textobj-between-a)
+      - <Plug>(textobj-between-i)
     beforeScript: |
       let g:textobj_between_no_default_key_mappings = 1
       omap ib <Plug>(textobj-between-i)
