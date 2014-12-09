@@ -101,7 +101,7 @@ plugin:
       let g:neocomplete#max_list = 1000
       let g:neocomplete#skip_auto_completion_time = '0.20'
       let g:neocomplete#auto_completion_start_length = 1
-      let g:neocomplete#data_directory = $CACHE.'/neocomplete'
+      let g:neocomplete#data_directory = '~/.cache/neocomplete'
       let g:neocomplete#force_overwrite_completefunc = 1
       let g:neocomplete#ignore_source_files = [ 'member.vim', 'tag.vim', 'dictionary.vim', 'include.vim' ]
       let g:neocomplete#force_omni_input_patterns = get(g:, 'neocomplete#force_omni_input_patterns', {})
