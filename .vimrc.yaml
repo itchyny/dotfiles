@@ -638,11 +638,11 @@ plugin:
   html5.vim:
     filetype: html
   mattn/emmet-vim:
-    filetype: html
+    filetypes:
+      - html
+      - css
     beforeScript: |
       let g:user_emmet_settings = { 'indentation' : '  ' }
-    afterScript: |
-      imap <buffer><silent> <tab> <plug>(emmet-expand-abbr)
   wavded/vim-stylus:
     filetype: stylus
   groenewege/vim-less:
@@ -722,9 +722,11 @@ filetypeScript:
     setlocal ofu=ccomplete#Complete
   html: |
     setlocal ofu=htmlcomplete#CompleteTags
+    imap <buffer><silent> <tab> <Plug>(emmet-expand-abbr)
   css: |
     setlocal ofu=csscomplete#CompleteCSS
     setlocal iskeyword=37,45,48-57,95,a-z,A-Z,192-255
+    imap <buffer><silent> <tab> <Plug>(emmet-expand-abbr)
   javascript: |
     setlocal ofu=js#CompleteJS
   coffee: |
