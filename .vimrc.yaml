@@ -341,8 +341,6 @@ plugin:
     mapleader: ","
     command: GundoToggle
     enable: has('python')
-    script: |
-      nnoremap <Leader>g :<C-u>GundoToggle<CR>
   majutsushi/tagbar:
     commands:
       - Tagbar
@@ -462,7 +460,10 @@ plugin:
       let g:necoghc_enable_detailed_browse = 1
 
   cohama/agit.vim:
+    mapleader: ","
     command: Agit
+    script: |
+      nnoremap <silent> <Leader>g :<C-u>Agit<CR>
   ynkdir/vim-vimlparser:
     loadbefore:
       - vimlint
