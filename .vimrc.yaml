@@ -768,11 +768,13 @@ filetypeScript:
     setlocal ofu=ccomplete#Complete
   html: |
     setlocal ofu=htmlcomplete#CompleteTags
-    imap <buffer><silent> <tab> <Plug>(emmet-expand-abbr)
+    imap <buffer><expr><silent> <TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : emmet#isExpandable() ? "\<Plug>(emmet-expand-abbr)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+    imap <buffer><expr><silent> <C-g> emmet#isExpandable() ? "\<Plug>(emmet-expand-abbr)" : pumvisible() ? "\<C-n>" : "\<TAB>"
   css: |
     setlocal ofu=csscomplete#CompleteCSS
     setlocal iskeyword=37,45,48-57,95,a-z,A-Z,192-255
-    imap <buffer><silent> <tab> <Plug>(emmet-expand-abbr)
+    imap <buffer><expr><silent> <TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : emmet#isExpandable() ? "\<Plug>(emmet-expand-abbr)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+    imap <buffer><expr><silent> <C-g> emmet#isExpandable() ? "\<Plug>(emmet-expand-abbr)" : pumvisible() ? "\<C-n>" : "\<TAB>"
   javascript: |
     setlocal ofu=js#CompleteJS
   coffee: |
