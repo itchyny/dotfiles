@@ -465,6 +465,14 @@ plugin:
     command: Agit
     script: |
       nnoremap <silent> <Leader>g :<C-u>Agit<CR>
+  mattn/gist-vim:
+    command: Gist
+    dependon:
+      - webapi
+  mattn/webapi-vim:
+    loadbefore:
+      - gist
+      - emmet
   ynkdir/vim-vimlparser:
     loadbefore:
       - vimlint
@@ -675,6 +683,8 @@ plugin:
     filetypes:
       - html
       - css
+    dependon:
+      - webapi
     beforeScript: |
       let g:user_emmet_settings = { 'indentation' : '  ' }
   wavded/vim-stylus:
