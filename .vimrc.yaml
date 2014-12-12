@@ -118,6 +118,7 @@ plugin:
     afterScript: |
       call neocomplete#custom#source('omni', 'rank', 7)
       call neocomplete#custom#source('omni', 'converters', ['converter_remove_last_paren'])
+      call neocomplete#custom#source('look', 'min_pattern_length', 3)
   Shougo/neosnippet:
     script: |
       let g:neosnippet#snippets_directory = '~/.vim/miv/my-snippets/snippets'
