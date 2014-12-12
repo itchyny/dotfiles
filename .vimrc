@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/12/12 17:43:47.
+" - * Last Change: 2014/12/13 08:51:09.
 " --------------------------------------------------------------------------------------------------------
 
 " Setting options {{{1
@@ -162,3 +162,6 @@ if has('vim_starting')
 endif
 filetype plugin indent on
 silent! syntax enable
+if !has('vim_starting')
+  doautocmd FileType
+endif
