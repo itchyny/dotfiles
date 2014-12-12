@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/12/09 08:30:35.
+" - * Last Change: 2014/12/12 17:43:47.
 " --------------------------------------------------------------------------------------------------------
 
 " Setting options {{{1
@@ -51,10 +51,6 @@ set updatetime=300 timeout timeoutlen=500 ttimeout ttimeoutlen=50 ttyfast lazyre
 
 " Bell
 set noerrorbells visualbell t_vb=
-
-" External interface
-set shell& shellcmdflag& shellpipe=2>&1\ >
-let &makeprg = 'if test -f configure; then ./configure && make; elif test -f Makefile -o -f makefile; then make; elif test -f Makefile.am; then autoreconf -i && ./configure && make; fi'
 
 " Auto commands {{{1
 augroup vimrc
