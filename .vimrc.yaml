@@ -529,7 +529,7 @@ plugin:
       call altercmd#define('lin'    , 'silent! call vimlint#vimlint(expand(''%''), {''output'': ''quickfix''}) <bar> leftabove copen')
       call altercmd#define('lint'   , 'silent! call vimlint#vimlint(''.'', {''output'': ''quickfix''}) <bar> leftabove copen')
   vim-jp/vital.vim:
-    function: vital
+    enable: "0"
 
   kana/vim-textobj-user: {}
   kana/vim-textobj-entire:
