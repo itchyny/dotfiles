@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2014/12/07 10:30:53.
+# - * Last Change: 2014/12/11 23:23:34.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -215,11 +215,20 @@ alias wget="wget --user-agent='Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) Ap
 alias aspell="aspell -c -l en_US"
 alias nicovideo-dl="nicovideo-dl -n -t"
 # git
+alias gam='git commit -am'
+alias gb='git branch'
+alias gc='git checkout'
+alias gcb='git checkout -b'
+alias gcm='git checkout master'
 alias ga='git add'
 alias gm='git commit -m'
-alias am='git commit -am --color'
 alias gd='git diff --color'
 alias gp='git push --color'
+alias gpo='git push origin --color'
+alias gpom='git push origin master --color'
+alias gf='git fetch'
+alias gr='git remote'
+alias gra='git remote add'
 # un*
 alias ungzip='gzip -d'
 alias untar='tar xvf'

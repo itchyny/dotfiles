@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimshrc
 # - * Author: itchyny
-# - * Last Change: 2014/11/27 10:25:07.
+# - * Last Change: 2014/12/11 10:20:19.
 # ------------------------------------------------------------------------------------------------------------
 
 alias eject='sudo diskutil unmount'
@@ -12,11 +12,20 @@ alias l='ls -at'
 alias mplayer='mplayer -subdelay 100000 -fs -geometry 50%:50%'
 alias music='mplayer -lavdopts threads=2 -loop 0 -shuffle -geometry 50%:50%'
 alias c='clear'
+alias gam='git commit -am'
+alias gb='git branch'
+alias gc='git checkout'
+alias gcb='git checkout -b'
+alias gcm='git checkout master'
 alias ga='git add'
 alias gm='git commit -m'
-alias am='git commit -am'
 alias gd='git diff'
 alias gp='git push'
+alias gpo='git push origin'
+alias gpom='git push origin master'
+alias gf='git fetch'
+alias gr='git remote'
+alias gra='git remote add'
 alias ungzip='gzip -d'
 alias untar='tar xvf'
 alias d='download'
