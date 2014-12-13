@@ -329,6 +329,7 @@ plugin:
     script: |
       nnoremap <silent> H :<C-u>VimShellBufferDir -popup<CR>
       nnoremap <silent> s :<C-u>VimShellBufferDir<CR>
+      nnoremap <silent> S :<C-u>VimShellBufferDir -split<CR>
 
   Align:
     command: Align
