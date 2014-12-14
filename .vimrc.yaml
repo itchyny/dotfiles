@@ -553,7 +553,9 @@ plugin:
   kana/vim-textobj-entire:
     dependon:
       - textobj-user
-    mapmode: o
+    mapmodes:
+      - o
+      - v
     mappings:
       - <Plug>(textobj-entire-a)
       - <Plug>(textobj-entire-i)
@@ -562,7 +564,9 @@ plugin:
   kana/vim-textobj-line:
     dependon:
       - textobj-user
-    mapmode: o
+    mapmodes:
+      - o
+      - v
     mappings:
       - <Plug>(textobj-line-a)
       - <Plug>(textobj-line-i)
@@ -571,7 +575,9 @@ plugin:
   kana/vim-textobj-function:
     dependon:
       - textobj-user
-    mapmode: o
+    mapmodes:
+      - o
+      - v
     mappings:
       - <Plug>(textobj-function-a)
       - <Plug>(textobj-function-i)
@@ -584,7 +590,9 @@ plugin:
   kana/vim-textobj-indent:
     dependon:
       - textobj-user
-    mapmode: o
+    mapmodes:
+      - o
+      - v
     mappings:
       - <Plug>(textobj-indent-a)
       - <Plug>(textobj-indent-i)
@@ -597,7 +605,9 @@ plugin:
   kana/vim-textobj-underscore:
     dependon:
       - textobj-user
-    mapmode: o
+    mapmodes:
+      - o
+      - v
     mappings:
       - <Plug>(textobj-underscore-a)
       - <Plug>(textobj-underscore-i)
@@ -606,7 +616,9 @@ plugin:
   glts/vim-textobj-comment:
     dependon:
       - textobj-user
-    mapmode: o
+    mapmodes:
+      - o
+      - v
     mappings:
       - <Plug>(textobj-comment-a)
       - <Plug>(textobj-comment-i)
@@ -619,7 +631,9 @@ plugin:
   osyo-manga/vim-textobj-multiblock:
     dependon:
       - textobj-user
-    mapmode: o
+    mapmodes:
+      - o
+      - v
     mappings:
       - <Plug>(textobj-multiblock-a)
       - <Plug>(textobj-multiblock-i)
@@ -641,7 +655,9 @@ plugin:
       - textobj-indent
       - textobj-function
       - textobj-entire
-    mapmode: o
+    mapmodes:
+      - o
+      - v
     mappings:
       - <Plug>(textobj-multitextobj-a)
       - <Plug>(textobj-multitextobj-i)
@@ -663,7 +679,9 @@ plugin:
   thinca/vim-textobj-between:
     dependon:
       - textobj-user
-    mapmode: o
+    mapmodes:
+      - o
+      - v
     mappings:
       - <Plug>(textobj-between-a)
       - <Plug>(textobj-between-i)
