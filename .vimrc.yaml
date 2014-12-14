@@ -401,6 +401,15 @@ plugin:
       let s:_ctrlp_cache = g:ctrlp_cache_dir . '/mru/cache.txt'
       silent! call system(printf( 'ctrlp=`mktemp /tmp/XXXXXXXXXXXX`; sed ''s/^\/home\/[^/]*/%s/'' <%s | awk '' !x[$0]++'' > $ctrlp; cp $ctrlp %s; rm -f $ctrlp&', escape($HOME, '/'), s:_ctrlp_cache, s:_ctrlp_cache ))
   tpope/vim-surround:
+    mappings:
+      - <Plug>Dsurround
+      - <Plug>Csurround
+      - <Plug>Ysurround
+      - <Plug>VSurround
+    script: |
+      nmap ds <Plug>Dsurround
+      nmap cs <Plug>Csurround
+      vmap S <Plug>VSurround
     beforeScript: |
       let g:surround_{char2nr('$')} = "$\r$"
   tpope/vim-repeat: {}
