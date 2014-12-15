@@ -908,8 +908,6 @@ filetypeScript:
     setlocal iskeyword=39,48-57,95,a-z,A-Z,192-255
     nnoremap <buffer> <Leader>l :<C-u>GhciLoad<CR>
     nnoremap <buffer> <Leader>i :<C-u>GhciInfo<CR>
-    nnoremap <buffer> <Leader>t :<C-u>GhcModTypeInsert<CR>
-    nnoremap <buffer> <Leader>g :<C-u>GhcModCheckAsync<CR>
   gnuplot: |
     call tcomment#DefineType('gnuplot', '# %s')
     setlocal nospell
