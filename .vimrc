@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/12/13 22:52:20.
+" - * Last Change: 2014/12/15 13:06:49.
 " --------------------------------------------------------------------------------------------------------
 
 " Setting options {{{1
@@ -151,6 +151,12 @@ map Q <Nop>
 cnoremap <C-a> <Home>
 cnoremap <C-b> <Left>
 cnoremap <C-f> <Right>
+
+" Command line history
+cnoremap <C-p> <Up>
+cnoremap <C-n> <Down>
+cnoremap <Up> <C-p>
+cnoremap <Down> <C-n>
 
 " <C-g> in command line
 cmap <C-g> <ESC><C-g>
