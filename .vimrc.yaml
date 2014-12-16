@@ -167,14 +167,7 @@ plugin:
     mapleader: \
     commands:
       - VimFiler
-      - VimFilerDouble
-      - VimFilerCurrentDir
       - VimFilerBufferDir
-      - VimFilerCreate
-      - VimFilerSimple
-      - VimFilerSplit
-      - VimFilerTab
-      - VimFilerExplorer
     dependon:
       - vimproc
       - unite
@@ -205,21 +198,9 @@ plugin:
       - vimfiler
     commands:
       - Vinarise
-      - VinariseScript2Hex
-      - VinariseHex2Script
-      - VinarisePluginDump
-      - VinarisePluginViewBitmapView
   Shougo/unite.vim:
     commands:
       - Unite
-      - UniteWithCurrentDir
-      - UniteWithBufferDir
-      - UniteWithProjectDir
-      - UniteWithCursorWord
-      - UniteWithInput
-      - UniteWithInputDirectory
-      - UniteResume
-      - UniteClose
     mapleader: ","
     function: unite
     beforeScript: |
@@ -301,16 +282,7 @@ plugin:
   Shougo/vimshell.vim:
     commands:
       - VimShell
-      - VimShellCreate
-      - VimShellPop
-      - VimShellTab
-      - VimShellCurrentDir
       - VimShellBufferDir
-      - VimShellExecute
-      - VimShellInteractive
-      - VimShellTerminal
-      - VimShellSendString
-      - VimShellSendBuffer
     function: vimshell
     dependon:
       - vimproc
@@ -347,11 +319,6 @@ plugin:
     commands:
       - Tagbar
       - TagbarToggle
-      - TagbarOpen
-      - TagbarOpenAutoClose
-      - TagbarClose
-      - TagbarCurrentTag
-      - TagbarTogglePause
     beforeScript: |
       let g:tagbar_sort = 0
       let g:tagbar_autofocus = 1
@@ -380,7 +347,6 @@ plugin:
     commands:
       - CtrlP
       - CtrlPMRUFiles
-      - CtrlPBuffer
       - CtrlPCurFile
       - CtrlPLine
     script: |
@@ -460,19 +426,6 @@ plugin:
     enable: executable('ghc') && executable('ghc-mod')
     dependon:
       - vimproc
-    commands:
-      - GhcModDiagnostics
-      - GhcModType
-      - GhcModTypeInsert
-      - GhcModInfo
-      - GhcModTypeClear
-      - GhcModInfoPreview
-      - GhcModCheck
-      - GhcModLint
-      - GhcModCheckAsync
-      - GhcModLintAsync
-      - GhcModCheckAndLintAsync
-      - GhcModExpand
   eagletmt/neco-ghc:
     filetype: haskell
     enable: executable('ghc') && executable('ghc-mod')
