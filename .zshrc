@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2014/12/11 23:23:34.
+# - * Last Change: 2014/12/13 16:20:36.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -121,6 +121,7 @@ export PATH=~/Dropbox/bin:$PATH
 export PATH=$PATH:~/Library/Haskell/bin
 export PATH=$PATH:/usr/local/Cellar/vim/HEAD/bin
 export PATH=$PATH:/usr/texbin
+export PATH=$PATH:~/.go/bin
 export GOPATH=~/.go
 
 # function
