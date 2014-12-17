@@ -282,6 +282,7 @@ plugin:
   Shougo/vimshell.vim:
     commands:
       - VimShell
+      - VimShellPop
       - VimShellBufferDir
     function: vimshell
     dependon:
