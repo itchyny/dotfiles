@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/12/15 13:06:49.
+" - * Last Change: 2014/12/17 23:32:33.
 " --------------------------------------------------------------------------------------------------------
 
 " Setting options {{{1
@@ -66,6 +66,10 @@ autocmd vimrc BufEnter * silent! lcd %:p:h
 " Open Quickfix window automatically
 autocmd vimrc QuickfixCmdPost [^l]* leftabove copen | wincmd p | redraw!
 autocmd vimrc QuickfixCmdPost l* leftabove lopen | wincmd p | redraw!
+
+" Fix window position of help/quickfix
+autocmd vimrc FileType help if &l:buftype ==# 'help'     | wincmd K | endif
+autocmd vimrc FileType qf   if &l:buftype ==# 'quickfix' | wincmd J | endif
 
 " Always open read-only when a swap file is found
 autocmd vimrc SwapExists * let v:swapchoice = 'o'
