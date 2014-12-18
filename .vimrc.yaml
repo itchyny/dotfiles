@@ -662,6 +662,7 @@ plugin:
       - operator-user
     beforeScript: |
       map _  <Plug>(operator-replace)
+      map [  <Plug>(operator-replace)
 
   motemen/hatena-vim:
     filetype: hatena
