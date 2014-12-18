@@ -379,7 +379,6 @@ plugin:
       vmap S <Plug>VSurround
     beforeScript: |
       let g:surround_{char2nr('$')} = "$\r$"
-  tpope/vim-repeat: {}
   tComment:
     command: TComment
     mapping: <Plug>TComment-gc
