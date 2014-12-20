@@ -848,16 +848,16 @@ filetypeScript:
     nmap <buffer> <Up> GA<Plug>(vimshell_history_unite)
     imap <buffer> <Down> <ESC>GA<Plug>(vimshell_history_unite)
     nmap <buffer> <Down> GA<Plug>(vimshell_history_unite)
-    setlocal nonumber nocursorline
+    setlocal nonumber synmaxcol=10000
   calendar: |
     nunmap <buffer> <C-h>
     nunmap <buffer> <C-l>
   vimcalc: |
-    setlocal nonumber nocursorline
+    setlocal nonumber
   quickrun: |
-    setlocal nonumber nocursorline tabstop=8 nolist
+    setlocal nonumber tabstop=8 nolist
   cam: |
-    setlocal nonumber nocursorline
+    setlocal nonumber synmaxcol=10000
   haskell: |
     setlocal ofu=necoghc#omnifunc
     setlocal iskeyword=39,48-57,95,a-z,A-Z,192-255
