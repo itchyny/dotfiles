@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/12/17 23:32:33.
+" - * Last Change: 2014/12/20 00:25:53.
 " --------------------------------------------------------------------------------------------------------
 
 " Setting options {{{1
@@ -15,7 +15,7 @@ set number background=dark display=lastline,uhex wrap wrapmargin=0 showbreak= no
 set showmatch matchtime=1 noshowmode shortmess+=I cmdheight=1 cmdwinheight=10
 set noruler rulerformat= laststatus=2 statusline=%t\ %=\ %m%r%y%w\ %3l:%-2c
 silent! set cursorline nocursorcolumn colorcolumn= concealcursor=nvc conceallevel=0 showtabline=1
-silent! set list listchars=tab:>\ ,nbsp:_ synmaxcol=300 ambiwidth=double breakindent breakindentopt=
+silent! set list listchars=tab:>\ ,nbsp:_ synmaxcol=1000 ambiwidth=double breakindent breakindentopt=
 if has('gui_running') | set lines=999 columns=999 | else | set t_Co=256 | endif
 silent! let [&t_SI,&t_EI] = ["\e]50;CursorShape=1\x7","\e]50;CursorShape=0\x7"]
 
