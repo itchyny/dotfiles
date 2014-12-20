@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2014/12/13 16:20:36.
+# - * Last Change: 2014/12/20 14:30:35.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -317,11 +317,13 @@ fi
 # https://github.com/zsh-users/zsh-history-substring-search
 if [ -e $ZSH_CONFIG_PATH/zsh-history-substring-search/zsh-history-substring-search.zsh  ]; then
   source $ZSH_CONFIG_PATH/zsh-history-substring-search/zsh-history-substring-search.zsh
+  bindkey '^[[A' history-substring-search-up
+  bindkey '^[[B' history-substring-search-down
+  bindkey '^P' history-substring-search-up
+  bindkey '^N' history-substring-search-down
 elif command -v git > /dev/null 2>&1; then
   git clone https://github.com/zsh-users/zsh-history-substring-search $ZSH_CONFIG_PATH/zsh-history-substring-search
 fi
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
 
 # https://github.com/zsh-users/zaw
 if [ -e $ZSH_CONFIG_PATH/zaw/zaw.zsh ]; then
