@@ -743,6 +743,7 @@ beforeScript: |
   let g:is_bash = 1
   let g:tex_isk = '48-57,92,a-z,A-Z,192-255'
   let g:tex_conceal=''
+  let g:tex_indent_items = 0
 
   if v:version < 703
     finish
