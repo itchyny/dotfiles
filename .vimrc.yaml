@@ -407,7 +407,7 @@ plugin:
       let g:brightest#highlight = {'group': 'BrightestUnderline'}
       let g:brightest#highlight_in_cursorline = {'group': 'BrightestCursorLineBg'}
       let g:brightest#pattern = '\k\+'
-      let g:brightest#enable_filetypes = { "vimfiler" : 0, "vimshell" : 0, "quickrun" : 0 }
+      let g:brightest#enable_filetypes = { "vimfiler" : 0, "vimshell" : 0, "quickrun" : 0, "qf": 0 }
   gregsexton/MatchTag: {}
   matchit.zip: {}
 
