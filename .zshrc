@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2014/12/20 14:30:35.
+# - * Last Change: 2014/12/21 07:18:25.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -216,6 +216,9 @@ alias wget="wget --user-agent='Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) Ap
 alias aspell="aspell -c -l en_US"
 alias nicovideo-dl="nicovideo-dl -n -t"
 # git
+if command -v hub >/dev/null 2>&1; then
+  alias git=hub
+fi
 alias gam='git commit -am'
 alias gb='git branch'
 alias gc='git checkout'
