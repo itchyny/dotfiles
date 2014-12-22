@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2014/12/21 07:18:25.
+# - * Last Change: 2014/12/22 00:33:19.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -212,7 +212,6 @@ alias music='mplayer -lavdopts threads=2 -loop 0 -shuffle -geometry 50%:50% -vol
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
-alias wget="wget --user-agent='Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.131 Safari/537.36' "
 alias aspell="aspell -c -l en_US"
 alias nicovideo-dl="nicovideo-dl -n -t"
 # git
