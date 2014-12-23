@@ -403,6 +403,7 @@ plugin:
     beforeScript: |
       let g:autodate_format = '%Y/%m/%d %H:%M:%S'
   osyo-manga/vim-brightest:
+    enable: v:version > 702
     script: |
       let g:brightest#highlight = {'group': 'BrightestUnderline'}
       let g:brightest#highlight_in_cursorline = {'group': 'BrightestCursorLineBg'}
