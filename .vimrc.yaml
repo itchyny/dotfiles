@@ -745,7 +745,7 @@ beforeScript: |
   let g:tex_conceal=''
   let g:tex_indent_items = 0
 
-  if v:version < 703
+  if v:version < 700
     finish
   endif
 
