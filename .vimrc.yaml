@@ -731,7 +731,6 @@ beforeScript: |
   let g:ismac = !g:iswin && !has('win32unix') && (has('mac') || has('macunix') || has('guimacvim'))
   let g:fancy = g:ismac && has('multi_byte')
 
-  let g:loaded_netrwPlugin = 1
   let g:loaded_2html_plugin = 1
   let g:loaded_rrhelper = 1
   let g:loaded_getscriptPlugin = 1
