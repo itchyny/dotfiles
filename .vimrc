@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/12/24 16:30:49.
+" - * Last Change: 2014/12/26 01:01:14.
 " --------------------------------------------------------------------------------------------------------
 
 " Setting options {{{1
@@ -154,6 +154,9 @@ nnoremap <expr> gp '`['.strpart(getregtype(), 0, 1).'`]'
 " disable EX-mode
 nnoremap  Q <Nop>
 nnoremap gQ <Nop>
+
+" Go to the starting position after visual modes
+vnoremap <ESC> o<ESC>
 
 " navigation in command line
 cnoremap <C-a> <Home>
