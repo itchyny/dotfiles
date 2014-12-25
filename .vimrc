@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/12/24 00:44:00.
+" - * Last Change: 2014/12/24 16:30:49.
 " --------------------------------------------------------------------------------------------------------
 
 " Setting options {{{1
@@ -115,6 +115,9 @@ nnoremap * :<C-u>set hlsearch<CR>*
 nnoremap # :<C-u>set hlsearch<CR>#
 nnoremap g* :<C-u>set hlsearch<CR>g*
 nnoremap g# :<C-u>set hlsearch<CR>g#
+
+" Go to the first non-blank character of the line after paragraph motions
+noremap } }^
 
 " navigate window
 nnoremap <C-h> <C-w>h
