@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/12/26 08:18:54.
+" - * Last Change: 2014/12/26 18:13:37.
 " --------------------------------------------------------------------------------------------------------
 
 " Setting options {{{1
@@ -100,7 +100,7 @@ nnoremap Y y$
 nnoremap <silent> ,<Space> :<C-u>silent! keeppatterns %substitute/\s\+$//e<CR>
 
 " smart Enter
-inoremap <silent> <expr> <CR> (pumvisible()?"\<ESC>o":"\<C-g>u\<CR>")
+inoremap <silent><expr> <CR> (pumvisible() && bufname('%') !=# '[Command Line]' ? "\<C-e>\<CR>" : "\<C-g>u\<CR>")
 
 " diff
 nnoremap <silent> <expr> ,d ":\<C-u>".(&diff?"diffoff":"diffthis")."\<CR>"
