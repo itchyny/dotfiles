@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/12/26 01:01:14.
+" - * Last Change: 2014/12/26 08:18:54.
 " --------------------------------------------------------------------------------------------------------
 
 " Setting options {{{1
@@ -59,6 +59,9 @@ augroup END
 
 " Maximize the window
 autocmd vimrc GUIEnter * silent! simalt ~x
+
+" Reset t_vb again
+autocmd vimrc GUIEnter * silent! set t_vb=
 
 " Move to the directory each buffer
 autocmd vimrc BufEnter * silent! lcd %:p:h
