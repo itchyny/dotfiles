@@ -1,8 +1,9 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/12/26 18:13:37.
+" - * Last Change: 2014/12/27 19:59:03.
 " --------------------------------------------------------------------------------------------------------
+
 
 " Setting options {{{1
 " Encoding
@@ -40,7 +41,7 @@ silent! set undofile undolevels=1000 undodir=$CACHE/undo,$CACHE,/var/tmp/vim,/va
 set wrapscan ignorecase smartcase incsearch nohlsearch magic
 
 " Insert completion
-silent! set complete& completeopt=menu infercase pumheight=10 noshowfulltag
+silent! set complete& completeopt=menu infercase pumheight=10 noshowfulltag shortmess+=c
 
 " Command line
 silent! set wildchar=9 nowildmenu wildmode=list:longest wildoptions= wildignorecase
