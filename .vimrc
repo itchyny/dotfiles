@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/12/29 20:01:18.
+" - * Last Change: 2014/12/27 11:21:57.
 " --------------------------------------------------------------------------------------------------------
 
 " Setting options {{{1
@@ -178,7 +178,7 @@ cmap <C-g> <ESC><C-g>
 " Enable ftplugin, indent, syntax {{{1
 filetype off
 if has('vim_starting')
-  set runtimepath^=~/.vim/miv/miv/
+  let &runtimepath = (isdirectory(expand('~/Dropbox/.vim')) ? '~/Dropbox' : '~') . '/.vim/miv/miv/,' . &runtimepath
 endif
 filetype plugin indent on
 silent! syntax enable
