@@ -29,7 +29,7 @@ set clipboard=unnamed
 if has('unnamedplus') | set clipboard+=unnamedplus | endif
 
 " Cache files
-let $CACHE = expand('~/.vim/cache')
+let $CACHE = expand((isdirectory(expand('~/Dropbox/.vim/cache')) ? '~/Dropbox' : '~') . '/.vim/cache')
 silent! set history=500 viminfo='10,/10,:500,<10,@10,s10,n$CACHE/.viminfo
 silent! set nospell spellfile=$CACHE/en.utf-8.add
 silent! set swapfile directory=$CACHE/swap,$CACHE,/var/tmp/vim,/var/tmp
