@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2014/12/27 11:21:57.
+" - * Last Change: 2015/01/03 17:34:40.
 " --------------------------------------------------------------------------------------------------------
 
 " Setting options {{{1
@@ -174,6 +174,9 @@ cnoremap <Down> <C-n>
 
 " <C-g> in command line
 cmap <C-g> <ESC><C-g>
+
+" Escape from Select mode to Normal mode
+snoremap <ESC> <C-c>
 
 " Enable ftplugin, indent, syntax {{{1
 filetype off
