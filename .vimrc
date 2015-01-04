@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2015/01/04 20:18:37.
+" - * Last Change: 2015/01/05 00:31:08.
 " --------------------------------------------------------------------------------------------------------
 
 " Setting options {{{1
@@ -110,14 +110,8 @@ nnoremap <C-s> :<C-u>w<CR>
 inoremap <C-s> <ESC>:<C-u>w<CR>
 vnoremap <C-s> :<C-u>w<CR>
 
-" search
-nnoremap <silent> <Esc><Esc> :<C-u>set nohlsearch nopaste<CR>
-nnoremap / :<C-u>set hlsearch<CR>/
-nnoremap ? :<C-u>set hlsearch<CR>?
-nnoremap * :<C-u>set hlsearch<CR>*
-nnoremap # :<C-u>set hlsearch<CR>#
-nnoremap g* :<C-u>set hlsearch<CR>g*
-nnoremap g# :<C-u>set hlsearch<CR>g#
+" Clear hlsearch and set nopaste
+nnoremap <silent> <Esc><Esc> :<C-u>set nopaste<CR>:nohlsearch<CR>
 
 " Go to the first non-blank character of the line after paragraph motions
 noremap } }^
