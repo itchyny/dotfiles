@@ -850,6 +850,8 @@ filetypeScript:
     imap <buffer> <Down> <ESC>GA<Plug>(vimshell_history_unite)
     nmap <buffer> <Down> GA<Plug>(vimshell_history_unite)
     setlocal nonumber synmaxcol=10000
+  thumbnail: |
+    let w:highlighturl_enable = 0
   calendar: |
     nunmap <buffer> <C-h>
     nunmap <buffer> <C-l>
