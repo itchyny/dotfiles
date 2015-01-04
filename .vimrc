@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2015/01/04 09:26:46.
+" - * Last Change: 2015/01/04 20:18:37.
 " --------------------------------------------------------------------------------------------------------
 
 " Setting options {{{1
@@ -20,9 +20,9 @@ if has('gui_running') | set lines=999 columns=999 | else | set t_Co=256 | endif
 silent! let [&t_SI,&t_EI] = ["\e]50;CursorShape=1\x7","\e]50;CursorShape=0\x7"]
 
 " Editing
-set formatoptions+=mM iminsert=0 imsearch=0 autoread smartindent autoindent shiftwidth=2
+set iminsert=0 imsearch=0 autoread smartindent autoindent shiftwidth=2 comments& commentstring=#\ %s
 set foldclose=all nofoldenable foldlevel=0 foldmarker& foldmethod=indent nopaste pastetoggle= nogdefault
-set textwidth=0 expandtab tabstop=2 backspace=indent,eol,start nrformats=hex comments& commentstring=#\ %s
+silent! set textwidth=0 expandtab tabstop=2 backspace=indent,eol,start nrformats=hex formatoptions=cmMj
 
 " Clipboard
 set clipboard=unnamed
