@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2015/01/05 08:19:13.
+" - * Last Change: 2015/01/05 08:27:03.
 " --------------------------------------------------------------------------------------------------------
 
 " Setting options {{{1
@@ -37,7 +37,7 @@ silent! set nobackup backupdir=$CACHE/backup,$CACHE,/var/tmp/vim,/var/tmp
 silent! set undofile undolevels=1000 undodir=$CACHE/undo,$CACHE,/var/tmp/vim,/var/tmp
 
 " Search
-set wrapscan ignorecase smartcase incsearch nohlsearch magic
+set wrapscan ignorecase smartcase incsearch hlsearch magic
 
 " Insert completion
 silent! set complete& completeopt=menu infercase pumheight=10 noshowfulltag shortmess+=c
