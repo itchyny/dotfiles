@@ -391,15 +391,6 @@ plugin:
       let g:tcommentMapLeader1 = ''
       let g:tcommentMapLeader2 = ''
   autodate.vim:
-    commands:
-      - Autodate
-      - AutodateOFF
-      - AutodateON
-    script: |
-      augroup Autodate
-        autocmd!
-        autocmd FileWritePre,BufWritePre * Autodate
-      augroup END
     beforeScript: |
       let g:autodate_format = '%Y/%m/%d %H:%M:%S'
   osyo-manga/vim-brightest:
