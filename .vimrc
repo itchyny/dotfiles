@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2015/01/05 08:27:03.
+" - * Last Change: 2015/01/06 00:47:14.
 " --------------------------------------------------------------------------------------------------------
 
 " Setting options {{{1
@@ -78,7 +78,7 @@ autocmd vimrc FileType qf   if &l:buftype ==# 'quickfix' | wincmd J | endif
 autocmd vimrc SwapExists * let v:swapchoice = 'o'
 
 " Automatically set expandtab
-autocmd vimrc FileType * exec 'setl ' . (search('^\t.*\n\t.*\n\t', 'n') ? 'no' : '') . 'et'
+autocmd vimrc FileType * execute 'setlocal ' . (search('^\t.*\n\t.*\n\t', 'n') ? 'no' : '') . 'expandtab'
 
 " Key mappings {{{1
 " Increment and decrement
