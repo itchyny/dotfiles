@@ -501,6 +501,8 @@ plugin:
       call altercmd#define('di'     , 'Dictionary -cursor-word -no-duplicate')
       call altercmd#define('lin'    , 'silent! call vimlint#vimlint(expand(''%''), {''output'': ''quickfix''}) <bar> leftabove copen')
       call altercmd#define('lint'   , 'silent! call vimlint#vimlint(''.'', {''output'': ''quickfix''}) <bar> leftabove copen')
+  thinca/vim-themis:
+    function: themis
   vim-jp/vital.vim:
     enable: "0"
 
