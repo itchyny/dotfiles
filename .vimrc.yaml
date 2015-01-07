@@ -428,7 +428,7 @@ plugin:
     mapleader: ","
     command: Agit
     script: |
-      nnoremap <silent> <Leader>g :<C-u>Agit<CR>
+      nnoremap <silent> <Leader>g :<C-u>Agit<CR>:3wincmd w<CR>
   mattn/gist-vim:
     command: Gist
     dependon:
