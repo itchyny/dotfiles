@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2015/01/06 00:47:14.
+" - * Last Change: 2015/01/07 11:10:08.
 " --------------------------------------------------------------------------------------------------------
 
 " Setting options {{{1
@@ -25,8 +25,8 @@ set foldclose=all nofoldenable foldlevel=0 foldmarker& foldmethod=indent nopaste
 silent! set textwidth=0 expandtab tabstop=2 backspace=indent,eol,start nrformats=hex formatoptions=cmMj
 
 " Clipboard
-set clipboard=unnamed
-if has('unnamedplus') | set clipboard+=unnamedplus | endif
+silent! set clipboard=unnamed
+silent! set clipboard+=unnamedplus
 
 " Cache files
 let $CACHE = expand((isdirectory(expand('~/Dropbox/.vim/cache')) ? '~/Dropbox' : '~') . '/.vim/cache')
