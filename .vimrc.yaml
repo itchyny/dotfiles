@@ -14,7 +14,7 @@ plugin:
               \. 'lightline/\|lightline-powerful/\|spellbad-pattern/\|calendar/\|thumbnail/\|'
               \. 'dictionary/\|screensaver/\|gitbranch/\|closebuffer/\|external/\|insert-mode-motion/\|'
               \. 'cmdline-ranges/\|cmdline-escape/\|autoft/\|my-snippets/\|highlighturl/\|'
-              \. 'vicenza/\|adblock-fast/\|2\?bf\/\|maze\/\|cam\/\)'
+              \. 'winfix/\|prgquick/\|vicenza/\|adblock-fast/\|2\?bf\/\|maze\/\|cam\/\)'
     afterScript: |
       colorscheme landscape
   itchyny/lightline.vim:
