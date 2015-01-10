@@ -90,6 +90,21 @@ plugin:
       map <Leader>n <Plug>(external-explorer)
       map <Leader>b <Plug>(external-browser)
       map ge <Plug>(external-explorer)
+  itchyny/vim-autoft:
+    sync: false
+    beforeScript: |
+      let g:autoft_config = [
+            \ { 'filetype': 'html'     , 'pattern': '<\%(!DOCTYPE\|html\|head\|script\)\|^html:5' },
+            \ { 'filetype': 'tex'      , 'pattern': '\\\%(document\|begin\|usepackage\|section\)' },
+            \ { 'filetype': 'c'        , 'pattern': '#\%(include\|define\) ' },
+            \ { 'filetype': 'go'       , 'pattern': '^import (' },
+            \ { 'filetype': 'haskell'  , 'pattern': '^\%(import\|module\) ' },
+            \ { 'filetype': 'diff'     , 'pattern': '^diff -' },
+            \ { 'filetype': 'sh'       , 'pattern': '^#!.*\%(\<sh\>\|\<bash\>\)\s*$\|if [ -' },
+            \ { 'filetype': 'vim'      , 'pattern': '\%(^{\|\<\%(let\|set\|autocmd\) \)\|noremap\|g:loaded_\|&l:\|(g:,' },
+            \ { 'filetype': 'css'      , 'pattern': '^\%(html\|body\)\%(, *\%([a-z]\+\)\)* *{' },
+            \ { 'filetype': 'markdown' , 'pattern': '^# $' },
+            \ ]
   itchyny/vim-insert-mode-motion:
     sync: false
     insert: true
