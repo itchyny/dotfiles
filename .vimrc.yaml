@@ -770,7 +770,7 @@ filetypeScript:
     function! s:word()
       let m = "\<C-r>\<C-w>"
       let s = synIDattr(synID(line('.'), col('.'), 0), 'name')
-      return s ==# 'vimOption' ? "'".m."'" : s =~# 'vim\%(Command\|Map\>\|Let\|AugroupKey\|AutoCmd\|FTCmd\|NotFunc\)' ? ':'.m : s =~# 'vimFuncName' ? m.'()' : m
+      return s ==# 'vimOption' ? "'".m."'" : s =~# 'vim\%(Command\|Map\>\|Let\|AugroupKey\|AutoCmd\>\|FTCmd\|NotFunc\)' ? ':'.m : s =~# 'vimFuncName' ? m.'()' : m
     endfunction
   qf: |
     nnoremap <buffer><silent> q     :<C-u>try<bar>wincmd p<bar>cclose<bar>catch<bar>enew<bar>endtry<CR>
