@@ -14,6 +14,7 @@ plugin:
               \. 'lightline/\|lightline-powerful/\|spellbad-pattern/\|calendar/\|thumbnail/\|'
               \. 'dictionary/\|screensaver/\|gitbranch/\|closebuffer/\|external/\|insert-mode-motion/\|'
               \. 'cmdline-ranges/\|cmdline-escape/\|autoft/\|extra-snippets/\|highlighturl/\|'
+              \. 'unite-preview/\|unite-eject/\|unite-changetime/\|unite-auto-open/\|'
               \. 'winfix/\|prgquick/\|qfedit/\|vicenza/\|adblock-fast/\|2\?bf\/\|maze\/\|cam\/\)'
     afterScript: |
       colorscheme landscape
