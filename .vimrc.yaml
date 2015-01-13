@@ -95,13 +95,14 @@ plugin:
     sync: false
     beforeScript: |
       let g:autoft_config = [
-            \ { 'filetype': 'html'     , 'pattern': '<\%(!DOCTYPE\|html\|head\|script\)\|^html:5' },
+            \ { 'filetype': 'html'     , 'pattern': '<\%(!DOCTYPE\|html\|head\|script\)\|^html:5\s*$' },
             \ { 'filetype': 'tex'      , 'pattern': '\\\%(document\|begin\|usepackage\|section\)' },
-            \ { 'filetype': 'c'        , 'pattern': '#\%(include\|define\) ' },
+            \ { 'filetype': 'c'        , 'pattern': '\s*#\s*\<\%(include\|define\)\s' },
             \ { 'filetype': 'go'       , 'pattern': '^import (' },
             \ { 'filetype': 'haskell'  , 'pattern': '^\%(import\|module\) ' },
             \ { 'filetype': 'diff'     , 'pattern': '^diff -' },
             \ { 'filetype': 'sh'       , 'pattern': '^#!.*\%(\<sh\>\|\<bash\>\)\s*$\|if [ -' },
+            \ { 'filetype': 'hatena'   , 'pattern': '^\%(>|[a-z]\+|\|||<\)$\|^*\[[a-z]\+]' },
             \ { 'filetype': 'vim'      , 'pattern': '\%(^{\|\<\%(let\|set\|autocmd\) \)\|noremap\|g:loaded_\|&l:\|(g:,' },
             \ { 'filetype': 'css'      , 'pattern': '^\%(html\|body\)\%(, *\%([a-z]\+\)\)* *{' },
             \ { 'filetype': 'markdown' , 'pattern': '^# $' },
