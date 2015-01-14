@@ -141,6 +141,8 @@ plugin:
       call neocomplete#custom#source('omni', 'rank', 7)
       call neocomplete#custom#source('omni', 'converters', ['converter_remove_last_paren'])
       call neocomplete#custom#source('look', 'min_pattern_length', 3)
+      inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+      inoremap <expr><BS>  neocomplete#smart_close_popup()."\<BS>"
   Shougo/neosnippet:
     script: |
       let g:neosnippet#snippets_directory = expand((isdirectory(expand('~/Dropbox/.vim/miv')) ? '~/Dropbox' : '~') . '/.vim/miv/extra-snippets/snippets')
