@@ -107,6 +107,9 @@ plugin:
             \ { 'filetype': 'css'      , 'pattern': '^\%(html\|body\)\%(, *\%([a-z]\+\)\)* *{' },
             \ { 'filetype': 'markdown' , 'pattern': '^# $' },
             \ ]
+  itchyny/vim-qfedit:
+    filetype: qf
+    sync: false
   itchyny/vim-winfix:
     sync: false
   itchyny/vim-highlighturl:
