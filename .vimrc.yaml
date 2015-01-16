@@ -31,8 +31,7 @@ plugin:
     sync: false
     script: |
       let g:spellbad_pattern = [ '\<a\ze [aieo]', '^\$', '\<figure..\?\\', '\\ref{eq:', '^\\end{align}',
-            \ '[^\~]\\\(eq\)\?ref\>', 'does not [a-z]*s\>', '\<a [a-z]\+\zss\>', 'in default', '[^,]\zs \ze\$[^$]\{,9\}\$',
-            \ '\([tT]hi\|\<[ai]\|c\|s\|x\|sh\)\@<!s \zs\([a-z]*[^sxotau]\|\[a-z]*\([^o]\|[^l]o\)t\|[a-z]\+[au]\)s\>' ]
+            \ '[^\~]\\\(eq\)\?ref\>', 'does not [a-z]*s\>', '\<a [a-z]\+\zss\>', 'in default', '[^,]\zs \ze\$[^$]\{,9\}\$']
   itchyny/calendar.vim:
     sync: false
     mapleader: ","
