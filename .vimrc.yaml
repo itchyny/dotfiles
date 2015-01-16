@@ -96,7 +96,7 @@ plugin:
       let g:autoft_config = [
             \ { 'filetype': 'html'     , 'pattern': '<\%(!DOCTYPE\|html\|head\|script\)\|^html:5\s*$' },
             \ { 'filetype': 'tex'      , 'pattern': '\\\%(document\|begin\|usepackage\|section\)' },
-            \ { 'filetype': 'c'        , 'pattern': '\s*#\s*\<\%(include\|define\)\s' },
+            \ { 'filetype': 'c'        , 'pattern': '^\s*#\s*\%(include\|define\)\>' },
             \ { 'filetype': 'go'       , 'pattern': '^import (' },
             \ { 'filetype': 'haskell'  , 'pattern': '^\%(import\|module\) ' },
             \ { 'filetype': 'diff'     , 'pattern': '^diff -' },
