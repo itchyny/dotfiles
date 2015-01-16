@@ -90,6 +90,39 @@ plugin:
       map <Leader>n <Plug>(external-explorer)
       map <Leader>b <Plug>(external-browser)
       map ge <Plug>(external-explorer)
+  itchyny/vim-qffrom:
+    sync: false
+    commands:
+      - Qffrom
+      - Grep
+      - Find
+      - Make
+      - Vint
+    script: |
+      nnoremap gr   :<C-u>Grep<Space>
+      nnoremap K    :<C-u>Grep <C-r><C-w><CR>
+      nnoremap gf   :<C-u>Find<Space>
+      nnoremap <F5> :<C-u>Make<CR>
+    beforeScript: |
+      let g:qffrom = {
+            \   '_'   : { 'post': 'leftabove copen' },
+            \   'grep': { 'command': substitute( 'grep --exclude-dir=.git --exclude-dir=.svn '
+            \           . '--exclude=tags --exclude=\*.{bak,aux,bib,bbl,blg,nav,toc,out} --exclude=.histfile\* -HIsinr -- $* <dir>'
+            \           , 'exclude-dir', 'exclude' . (has('win32') || has('win64') ? '' : '-dir'), 'g') },
+            \   'find': { 'command': 'find <dir> -name .git -prune -o -type f -iname ''$*'' -print' },
+            \   'make': { 'command': 'cd <dir> 2>&1 && '
+            \           . 'if test -f Makefile -o -f makefile; then make $* 2>&1; '
+            \           . 'elif test -f configure; then ./configure 2>&1 && make 2>&1; '
+            \           . 'elif test -f Makefile.am; then autoreconf -i 2>&1 && ./configure 2>&1 && make 2>&1; '
+            \           . 'else; make; fi',
+            \             'dironly': 1
+            \           },
+            \   'vint': { 'command': 'vint $*' },
+            \ }
+      command! -nargs=* Grep Qffrom grep <args>
+      command! -nargs=* Find Qffrom find <args>
+      command! -nargs=* Make Qffrom make <args>
+      command! -nargs=* Vint Qffrom vint <args>
   itchyny/vim-autoft:
     sync: false
     beforeScript: |
