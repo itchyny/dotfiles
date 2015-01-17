@@ -30,7 +30,7 @@ plugin:
   itchyny/vim-spellbad-pattern:
     sync: false
     script: |
-      let g:spellbad_pattern = [ '\<a\ze [aieo]', '^\$', '\<figure..\?\\', '\\ref{eq:', '^\\end{align}',
+      let g:spellbad_pattern = [ '\<a\ze [aieo]', '^\$', '\~\$\zs\s\+', '\<figure..\?\\', '\\ref{eq:', '^\\end{align}',
             \ '[^\~]\\\(eq\)\?ref\>', 'does not [a-z]*s\>', '\<a [a-z]\+\zss\>', 'in default', '[^,]\zs \ze\$[^$]\{,9\}\$']
   itchyny/calendar.vim:
     sync: false
