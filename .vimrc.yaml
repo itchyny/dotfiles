@@ -908,6 +908,9 @@ filetypeScript:
     setlocal nonumber synmaxcol=10000
   agit: |
     nmap <buffer> <C-r> <Plug>(agit-reload)
+    nunmap <buffer> <C-k>
+    nunmap <buffer> <C-j>
+    nunmap <buffer> <C-m>
   agit_diff: |
     nmap <buffer> <C-r> <Plug>(agit-reload)
   agit_stat: |
