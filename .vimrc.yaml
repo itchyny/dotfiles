@@ -453,13 +453,6 @@ plugin:
   autodate.vim:
     beforeScript: |
       let g:autodate_format = '%Y/%m/%d %H:%M:%S'
-  osyo-manga/vim-brightest:
-    enable: v:version > 702
-    script: |
-      let g:brightest#highlight = {'group': 'BrightestUnderline'}
-      let g:brightest#highlight_in_cursorline = {'group': 'BrightestCursorLineBg'}
-      let g:brightest#pattern = '\k\+'
-      let g:brightest#enable_filetypes = { "vimfiler" : 0, "vimshell" : 0, "quickrun" : 0, "qf": 0 }
   gregsexton/MatchTag: {}
   matchit.zip: {}
 
