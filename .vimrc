@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2015/01/12 19:31:42.
+" - * Last Change: 2015/01/19 21:09:58.
 " --------------------------------------------------------------------------------------------------------
 
 " Setting options {{{1
@@ -48,7 +48,7 @@ silent! set wildchar=9 nowildmenu wildmode=list:longest wildoptions= wildignorec
 set wildignore=*.?~,*.??~,*.???~,*.~,*.o,*.sw?,*.bak,*.hi,*.pyc,*.aux,*.bbl,*.blg,*.dvi,*.nav,*.snm,*.toc,*.out,*.exe,*.pdf
 
 " Performance
-set updatetime=300 timeout timeoutlen=500 ttimeout ttimeoutlen=50 ttyfast lazyredraw
+set updatetime=300 timeout timeoutlen=500 ttimeout ttimeoutlen=50 ttyfast nolazyredraw
 
 " Bell
 set noerrorbells visualbell t_vb=
