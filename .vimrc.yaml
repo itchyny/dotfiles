@@ -144,6 +144,8 @@ plugin:
     sync: false
   itchyny/vim-winfix:
     sync: false
+  itchyny/vim-cursorword:
+    sync: false
   itchyny/vim-highlighturl:
     sync: false
   itchyny/vim-insert-mode-motion:
