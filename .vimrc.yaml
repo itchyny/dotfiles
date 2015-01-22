@@ -146,6 +146,11 @@ plugin:
     sync: false
   itchyny/vim-cursorword:
     sync: false
+    afterScript: |
+      augroup cursorword-filetype
+        autocmd!
+        autocmd FileType qf,vimfiler,vimshell,thumbnail,vimcalc,quickrun let b:cursorword = 0
+      augroup END
   itchyny/vim-highlighturl:
     sync: false
   itchyny/vim-insert-mode-motion:
