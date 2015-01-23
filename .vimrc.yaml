@@ -917,7 +917,7 @@ filetypeScript:
   agit_stat: |
     nmap <buffer> <C-r> <Plug>(agit-reload)
   thumbnail: |
-    let w:highlighturl_enable = 0
+    let b:highlighturl_enable = 0
   calendar: |
     nunmap <buffer> <C-h>
     nunmap <buffer> <C-l>
