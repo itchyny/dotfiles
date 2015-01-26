@@ -1,10 +1,13 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2015/01/19 21:09:58.
+" - * Last Change: 2015/01/24 00:24:17.
 " --------------------------------------------------------------------------------------------------------
 
 " Setting options {{{1
+" No Vi-compatible in case of being sourced with -u.
+if &compatible | set nocompatible | endif
+
 " Encoding
 if &encoding !=? 'utf-8' | let &termencoding = &encoding | endif
 set encoding=utf-8 fileencoding=utf-8 fileformats=unix,mac,dos
