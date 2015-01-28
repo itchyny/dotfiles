@@ -135,7 +135,7 @@ plugin:
             \ { 'filetype': 'diff'     , 'pattern': '^diff -' },
             \ { 'filetype': 'sh'       , 'pattern': '^#!.*\%(\<sh\>\|\<bash\>\)\s*$\|if [ -' },
             \ { 'filetype': 'hatena'   , 'pattern': '^\%(>|[a-z]\+|\|||<\)$\|^*\[[a-z]\+]' },
-            \ { 'filetype': 'vim'      , 'pattern': '\%(^{\|\<\%(let\|set\|autocmd\) \)\|noremap\|g:loaded_\|&l:\|(g:,' },
+            \ { 'filetype': 'vim'      , 'pattern': '\%(^{\|\<\%(let\|set\|autocmd\) \)\|noremap\|g:loaded_\|&l:\|(g:,\|^Called *\d\+ *times$' },
             \ { 'filetype': 'css'      , 'pattern': '^\%(html\|body\)\%(, *\%([a-z]\+\)\)* *{' },
             \ { 'filetype': 'markdown' , 'pattern': '^# $' },
             \ ]
