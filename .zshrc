@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2015/01/17 07:01:38.
+# - * Last Change: 2015/01/26 01:53:31.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -14,6 +14,12 @@ else
 fi
 if ! [ -d $ZSH_CONFIG_PATH ]; then
   mkdir -p $ZSH_CONFIG_PATH
+fi
+
+# plugin path
+ZSH_PLUGIN_PATH=~/.zsh
+if ! [ -d $ZSH_PLUGIN_PATH ]; then
+  mkdir -p $ZSH_PLUGIN_PATH
 fi
 
 # history
@@ -303,36 +309,36 @@ function extract() {
 alias -s {gz,tgz,zip,lzh,bz2,tbz,Z,tar,arj,xz}=extract
 
 # http://mimosa-pudica.net/zsh-incremental.html
-if [ -e $ZSH_CONFIG_PATH/incr-0.2.zsh ]; then
-  source $ZSH_CONFIG_PATH/incr-0.2.zsh
+if [ -e $ZSH_PLUGIN_PATH/incr-0.2.zsh ]; then
+  source $ZSH_PLUGIN_PATH/incr-0.2.zsh
 elif command -v curl > /dev/null 2>&1; then
-  curl -RL -m 10 http://mimosa-pudica.net/src/incr-0.2.zsh -o $ZSH_CONFIG_PATH/incr-0.2.zsh
+  curl -RL -m 10 http://mimosa-pudica.net/src/incr-0.2.zsh -o $ZSH_PLUGIN_PATH/incr-0.2.zsh
 fi
 
 # https://github.com/zsh-users/zsh-syntax-highlighting
-if [ -e $ZSH_CONFIG_PATH/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
-  source $ZSH_CONFIG_PATH/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+if [ -e $ZSH_PLUGIN_PATH/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
+  source $ZSH_PLUGIN_PATH/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 elif command -v git > /dev/null 2>&1; then
-  git clone https://github.com/zsh-users/zsh-syntax-highlighting $ZSH_CONFIG_PATH/zsh-syntax-highlighting
+  git clone https://github.com/zsh-users/zsh-syntax-highlighting $ZSH_PLUGIN_PATH/zsh-syntax-highlighting
 fi
 
 # https://github.com/zsh-users/zsh-history-substring-search
-if [ -e $ZSH_CONFIG_PATH/zsh-history-substring-search/zsh-history-substring-search.zsh  ]; then
-  source $ZSH_CONFIG_PATH/zsh-history-substring-search/zsh-history-substring-search.zsh
+if [ -e $ZSH_PLUGIN_PATH/zsh-history-substring-search/zsh-history-substring-search.zsh  ]; then
+  source $ZSH_PLUGIN_PATH/zsh-history-substring-search/zsh-history-substring-search.zsh
   bindkey '^[[A' history-substring-search-up
   bindkey '^[[B' history-substring-search-down
   bindkey '^P' history-substring-search-up
   bindkey '^N' history-substring-search-down
 elif command -v git > /dev/null 2>&1; then
-  git clone https://github.com/zsh-users/zsh-history-substring-search $ZSH_CONFIG_PATH/zsh-history-substring-search
+  git clone https://github.com/zsh-users/zsh-history-substring-search $ZSH_PLUGIN_PATH/zsh-history-substring-search
 fi
 
 # https://github.com/zsh-users/zaw
-if [ -e $ZSH_CONFIG_PATH/zaw/zaw.zsh ]; then
-  source $ZSH_CONFIG_PATH/zaw/zaw.zsh
+if [ -e $ZSH_PLUGIN_PATH/zaw/zaw.zsh ]; then
+  source $ZSH_PLUGIN_PATH/zaw/zaw.zsh
   bindkey '^z' zaw-history
 elif command -v git > /dev/null 2>&1; then
-  git clone https://github.com/zsh-users/zaw $ZSH_CONFIG_PATH/zaw
+  git clone https://github.com/zsh-users/zaw $ZSH_PLUGIN_PATH/zaw
 fi
 
 [ -e ./Dropbox ] && cd ./Dropbox > /dev/null
