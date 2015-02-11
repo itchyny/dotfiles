@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2015/02/12 08:16:09.
+" - * Last Change: 2015/02/12 08:25:22.
 " --------------------------------------------------------------------------------------------------------
 
 " Setting options {{{1
@@ -113,6 +113,7 @@ nnoremap <silent> <expr> ,d ":\<C-u>".(&diff?"diffoff":"diffthis")."\<CR>"
 nnoremap <C-s> :<C-u>w<CR>
 inoremap <C-s> <ESC>:<C-u>w<CR>
 vnoremap <C-s> :<C-u>w<CR>
+cnoremap <C-s> <C-u>w<CR>
 
 " Clear hlsearch and set nopaste
 nnoremap <silent> <Esc><Esc> :<C-u>set nopaste<CR>:nohlsearch<CR>
