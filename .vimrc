@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2015/02/12 02:14:13.
+" - * Last Change: 2015/02/12 08:16:09.
 " --------------------------------------------------------------------------------------------------------
 
 " Setting options {{{1
@@ -164,6 +164,9 @@ nnoremap gQ <Nop>
 
 " Go to the starting position after visual modes
 vnoremap <ESC> o<ESC>
+
+" Operator [
+onoremap [ <ESC>
 
 " navigation in command line
 cnoremap <C-a> <Home>
