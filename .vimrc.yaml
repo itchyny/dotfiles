@@ -941,9 +941,6 @@ filetypeScript:
     setlocal iskeyword=39,48-57,95,a-z,A-Z,192-255
     nnoremap <buffer> <Leader>l :<C-u>GhciLoad<CR>
     nnoremap <buffer> <Leader>i :<C-u>GhciInfo<CR>
-  gnuplot: |
-    call tcomment#DefineType('gnuplot', '# %s')
-    setlocal nospell
   haxe: |
     call tcomment#DefineType('haxe', '// %s')
   meissa: |
