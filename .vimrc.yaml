@@ -4,9 +4,7 @@ plugin:
   itchyny/landscape.vim:
     sync: false
     beforeScript: |
-      let g:landscape_highlight_url = 1
       let g:landscape_highlight_todo = 1
-      let g:landscape_highlight_url_filetype = {'thumbnail': 0}
       let g:landscape_cursorline = 0
       let g:landscape_vimfiler_important =
               \ ' \%(Dropbox/\|[Dd]ownloads/\|\.vim/\|Library/\|src/\|README\%(\.\%(mk\?d\|rst\)\)\?\>\|'
