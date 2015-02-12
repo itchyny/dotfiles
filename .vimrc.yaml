@@ -357,7 +357,7 @@ plugin:
       let g:vimshell_popup_command = 'top new'
       let g:vimshell_split_command = 'vsplit'
       let g:vimshell_prompt_expr = 'escape(fnamemodify(getcwd(), ":~"), "\\[]()?! ")." "'
-      let g:vimshell_prompt_pattern = (has('win16') || has('win32') || has('win64') ? '\%(^\f:' : '\%(^[~/]\+') . '\a\%(\f\|\\.\)* \|^[*a-zA-Z][a-zA-Z .0-9]\+> \|^>>> \)'
+      let g:vimshell_prompt_pattern = (has('win16') || has('win32') || has('win64') ? '\%(^\f:' : '\%(^[~/]\+') . '\%(\a\%(\f\|\\.\)*\)\? \|^[*a-zA-Z][a-zA-Z .0-9]\+> \|^>>> \)'
       let g:vimshell_scrollback_limit = 1000000000
       let g:vimshell_disable_escape_highlight = 0
       let g:vimshell_force_overwrite_statusline = 0
