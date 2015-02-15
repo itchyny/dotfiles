@@ -825,6 +825,9 @@ filetypeScript:
       let s = synIDattr(synID(line('.'), col('.'), 0), 'name')
       return s ==# 'vimOption' ? "'".m."'" : s =~# 'vim\%(Command\|Map\>\|Let\|AugroupKey\|AutoCmd\>\|FTCmd\|NotFunc\)' ? ':'.m : s =~# 'vimFuncName' ? m.'()' : m
     endfunction
+    if bufname('%') ==# '[Command Line]'
+      setlocal nowrap
+    endif
   qf: |
     nnoremap <buffer><silent> q     :<C-u>try<bar>wincmd p<bar>cclose<bar>catch<bar>enew<bar>endtry<CR>
     nnoremap <buffer><silent> <CR>  :<C-u>call <SID>qfenter('wincmd p')<CR>
