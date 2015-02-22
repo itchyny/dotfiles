@@ -544,36 +544,6 @@ plugin:
       - vimshell
       - quickrun
       - dictionary
-  kana/vim-altercmd:
-    afterScript: |
-      call altercmd#define('vps'    , 'vsp')
-      call altercmd#define('vp'     , 'vsp')
-      call altercmd#define('q1'     , 'q!')
-      call altercmd#define('qa1'    , 'qa!')
-      call altercmd#define('sil1'   , 'silent!')
-      call altercmd#define('silent1', 'silent!')
-      call altercmd#define('nvew'   , 'vnew')
-      call altercmd#define('w!!'    , 'w !sudo tee > /dev/null %')
-      call altercmd#define('make'   , 'silent! make')
-      call altercmd#define('syn'    , 'echo synIDattr(synID(line(''.''), col(''.''), 0), ''name'')')
-      call altercmd#define('prof'   , 'profile start profile.log <bar> profile func *')
-      call altercmd#define('rof'    , 'profile start profile.log <bar> profile func *')
-      call altercmd#define('rtp'    , 'if !get(b:,''rtp'')<bar>vne<bar>en<bar>let b:rtp=1<bar>sil!%d_<bar>0put=split(&rtp, '','')<bar>setl bt=nofile bh=wipe noswf nobl<bar>diffu')
-      call altercmd#define('scriptnames', 'if !get(b:,''s'')<bar>vne<bar>en<bar>redi=>b:s<bar>sil!scrip<bar>redi end<bar>sil!%d_<bar>sil0put=b:s<bar>sil!1d_<bar>setl bt=nofile bh=wipe noswf nobl<bar>diffu<bar>echo''''')
-      call altercmd#define('gd'     , 'if len(gitbranch#name())<bar>if !get(b:,''gd'')<bar>vne<bar>en<bar>let b:gd=1<bar>sil!%d_<bar>setl bt=nofile bh=wipe noswf nobl nowrap ft=diff<bar>sil!0put=system(''git diff'')<bar>sil!$d_<bar>ec''''<bar>sil!1<bar>el<bar>redr<bar>ec''''<bar>en')
-      call altercmd#define('aoff'   , 'AutodateOFF')
-      call altercmd#define('aon'    , 'AutodateON')
-      call altercmd#define('agit'   , 'Agit')
-      call altercmd#define('git'    , 'Agit')
-      call altercmd#define('gt'     , 'Agit')
-      call altercmd#define('bc'     , 'Calc')
-      call altercmd#define('gh'     , 'GHD!')
-      call altercmd#define('ga'     , 'GHA!')
-      call altercmd#define('cal'    , 'Calendar -position=topleft -split=vertical -width=27 -view=year')
-      call altercmd#define('date'   , 'echo strftime(''%x (%a) %X'')')
-      call altercmd#define('di'     , 'Dictionary -cursor-word -no-duplicate')
-      call altercmd#define('lin'    , 'silent! call vimlint#vimlint(expand(''%''), {''output'': ''quickfix''}) <bar> leftabove copen')
-      call altercmd#define('lint'   , 'silent! call vimlint#vimlint(''.'', {''output'': ''quickfix''}) <bar> leftabove copen')
   thinca/vim-themis:
     function: themis
   vim-jp/vital.vim:
