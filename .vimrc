@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2015/02/14 22:06:18.
+" - * Last Change: 2015/02/17 12:52:51.
 " --------------------------------------------------------------------------------------------------------
 
 " Setting options {{{1
@@ -132,9 +132,7 @@ nnoremap <C-q> <C-w>
 
 " improve cursor up/down
 nnoremap <expr> j v:count ? 'j' : 'gj'
-vnoremap <expr> j v:count ? 'j' : 'gj'
 nnoremap <expr> k v:count ? 'k' : 'gk'
-vnoremap <expr> k v:count ? 'k' : 'gk'
 
 " improve scroll
 noremap <expr> <C-b> max([winheight(0) - 2, 1]) . "\<C-u>" . (line("w0") <= 1         ? "H" : "L")
