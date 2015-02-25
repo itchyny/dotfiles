@@ -279,8 +279,6 @@ plugin:
             \ 'candidate_icon': g:fancy ? '▸ ' : '- ',
             \ 'marked_icon': g:fancy ? '* ' : '* ',
             \ 'hide_icon': 0 })
-    script: |
-      nnoremap <silent><C-n> :<C-u>Unite file/new directory/new -buffer-name=file/new,directory/new<CR>
     dependedby:
       - unite-build
       - unite-colorscheme
