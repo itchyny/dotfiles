@@ -137,6 +137,35 @@ plugin:
             \ { 'filetype': 'css'      , 'pattern': '^\%(html\|body\)\%(, *\%([a-z]\+\)\)* *{' },
             \ { 'filetype': 'markdown' , 'pattern': '^# $' },
             \ ]
+  itchyny/vim-extracmd:
+    sync: false
+    afterScript: |
+      call extracmd#set('a[ppend]', '')
+      call extracmd#set('i[nsert]', '')
+      call extracmd#set('<silent>', 'vp[s]'  , 'vsp')
+      call extracmd#set('<silent>', 'q1'     , 'q!')
+      call extracmd#set('<silent>', 'qa1'    , 'qa!')
+      call extracmd#set('sil[ent]1', 'silent!')
+      call extracmd#set('<silent>', 'nvew'   , 'vnew')
+      call extracmd#set('<silent>', 'w!!'    , 'w !sudo tee > /dev/null %')
+      call extracmd#set('<silent>', 'make'   , 'silent! make')
+      call extracmd#set('<silent>', 'syn'    , 'echo synIDattr(synID(line(''.''), col(''.''), 0), ''name'')')
+      call extracmd#set('<silent>', 'pro[fil]', 'profile start profile.log <bar> profile func *')
+      call extracmd#set('<silent>', 'rof'    , 'profile start profile.log <bar> profile func *')
+      call extracmd#set('<silent>', 'rtp'    , 'if !get(b:,''rtp'')<bar>vne<bar>en<bar>let b:rtp=1<bar>sil!%d_<bar>0put=split(&rtp, '','')<bar>setl bt=nofile bh=wipe noswf nobl<bar>diffu')
+      call extracmd#set('<silent>', 'scr[iptnames]', 'if !get(b:,''s'')<bar>vne<bar>en<bar>redi=>b:s<bar>sil!scrip<bar>redi end<bar>sil!%d_<bar>sil0put=b:s<bar>sil!1d_<bar>setl bt=nofile bh=wipe noswf nobl<bar>diffu')
+      call extracmd#set('<silent>', 'gd'     , 'if len(gitbranch#name())<bar>if !get(b:,''gd'')<bar>vne<bar>en<bar>let b:gd=1<bar>sil!%d_<bar>setl bt=nofile bh=wipe noswf nobl nowrap ft=diff<bar>sil!0put=system(''git diff'')<bar>sil!$d_<bar>sil!1<bar>el<bar>redr<bar>en')
+      call extracmd#set('<silent>', 'aoff'   , 'AutodateOFF')
+      call extracmd#set('<silent>', 'aon'    , 'AutodateON')
+      call extracmd#set('<silent>', '[a]git' , 'Agit')
+      call extracmd#set('<silent>', 'bc'     , 'Calc')
+      call extracmd#set('<silent>', 'gh'     , 'GHD!')
+      call extracmd#set('<silent>', 'ga'     , 'GHA!')
+      call extracmd#set('<silent>', 'cal[endar]', 'Calendar -position=topleft -split=vertical -width=27 -view=year')
+      call extracmd#set('<silent>', 'date'   , 'echo strftime("%x (%a) %X")')
+      call extracmd#set('<silent>', 'di'     , 'Dictionary -cursor-word -no-duplicate')
+      call extracmd#set('<silent>', 'lin'    , 'silent! call vimlint#vimlint(expand("%"), {"output": "quickfix"}) <bar> leftabove copen')
+      call extracmd#set('<silent>', 'lint'   , 'silent! call vimlint#vimlint(".", {"output": "quickfix"}) <bar> leftabove copen')
   itchyny/vim-qfedit:
     filetype: qf
     sync: false
