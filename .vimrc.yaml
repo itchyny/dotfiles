@@ -317,7 +317,6 @@ plugin:
       - unite-haskellimport
       - unite-webcolorname
       - codic-vim-with-unite
-      - unite-eject
       - unite-auto-open
       - unite-changetime
       - unite-preview
@@ -353,6 +352,7 @@ plugin:
     loadafter:
       - unite
   itchyny/unite-eject:
+    enable: "0"
     loadafter:
       - unite
     sync: false
