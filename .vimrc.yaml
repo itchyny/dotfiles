@@ -746,11 +746,20 @@ plugin:
   mattn/emmet-vim:
     filetypes:
       - html
+      - haml
+      - jade
+      - slim
       - css
+      - less
+      - sass
+      - scss
     dependon:
       - webapi
     beforeScript: |
       let g:user_emmet_settings = { 'indentation' : '  ' }
+    afterScript: |
+      imap <expr><silent> <Plug>(neosnippet-emmet-supertab) neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : emmet#isExpandable() ? "\<Plug>(emmet-expand-abbr)" : pumvisible() ? "\<C-n>" : "\<Tab>"
+      imap <expr><silent> <Plug>(emmet-supertab) emmet#isExpandable() ? "\<Plug>(emmet-expand-abbr)" : pumvisible() ? "\<C-n>" : "\<Tab>"
   wavded/vim-stylus:
     filetype: stylus
   groenewege/vim-less:
@@ -851,13 +860,31 @@ filetypeScript:
     setlocal ofu=ccomplete#Complete
   html: |
     setlocal ofu=htmlcomplete#CompleteTags
-    imap <buffer><expr><silent> <TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : emmet#isExpandable() ? "\<Plug>(emmet-expand-abbr)" : pumvisible() ? "\<C-n>" : "\<TAB>"
-    imap <buffer><expr><silent> <C-g> emmet#isExpandable() ? "\<Plug>(emmet-expand-abbr)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+    imap <buffer> <Tab> <Plug>(neosnippet-emmet-supertab)
+    imap <buffer> <C-g> <Plug>(emmet-supertab)
   css: |
     setlocal ofu=csscomplete#CompleteCSS
     setlocal iskeyword=37,45,48-57,95,a-z,A-Z,192-255
-    imap <buffer><expr><silent> <TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : emmet#isExpandable() ? "\<Plug>(emmet-expand-abbr)" : pumvisible() ? "\<C-n>" : "\<TAB>"
-    imap <buffer><expr><silent> <C-g> emmet#isExpandable() ? "\<Plug>(emmet-expand-abbr)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+    imap <buffer> <Tab> <Plug>(neosnippet-emmet-supertab)
+    imap <buffer> <C-g> <Plug>(emmet-supertab)
+  haml: |
+    imap <buffer> <Tab> <Plug>(neosnippet-emmet-supertab)
+    imap <buffer> <C-g> <Plug>(emmet-supertab)
+  jade: |
+    imap <buffer> <Tab> <Plug>(neosnippet-emmet-supertab)
+    imap <buffer> <C-g> <Plug>(emmet-supertab)
+  slim: |
+    imap <buffer> <Tab> <Plug>(neosnippet-emmet-supertab)
+    imap <buffer> <C-g> <Plug>(emmet-supertab)
+  less: |
+    imap <buffer> <Tab> <Plug>(neosnippet-emmet-supertab)
+    imap <buffer> <C-g> <Plug>(emmet-supertab)
+  sass: |
+    imap <buffer> <Tab> <Plug>(neosnippet-emmet-supertab)
+    imap <buffer> <C-g> <Plug>(emmet-supertab)
+  scss: |
+    imap <buffer> <Tab> <Plug>(neosnippet-emmet-supertab)
+    imap <buffer> <C-g> <Plug>(emmet-supertab)
   javascript: |
     setlocal ofu=js#CompleteJS
   coffee: |
