@@ -200,7 +200,7 @@ plugin:
       let g:neocomplete#auto_completion_start_length = 1
       let g:neocomplete#data_directory = '~/.cache/neocomplete'
       let g:neocomplete#force_overwrite_completefunc = 1
-      let g:neocomplete#ignore_source_files = [ 'member.vim', 'tag.vim', 'dictionary.vim', 'include.vim' ]
+      let g:neocomplete#ignore_source_files = [ 'member.vim', 'tag.vim', 'dictionary.vim', 'include.vim', 'file_include.vim' ]
       let g:neocomplete#force_omni_input_patterns = get(g:, 'neocomplete#force_omni_input_patterns', {})
       let g:neocomplete#force_omni_input_patterns.python = '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
       let g:neocomplete#sources#omni#input_patterns = get(g:, 'neocomplete#sources#omni#input_patterns', {})
