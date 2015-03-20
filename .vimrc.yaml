@@ -176,7 +176,7 @@ plugin:
     afterScript: |
       augroup cursorword-filetype
         autocmd!
-        autocmd FileType qf,unite,vimfiler,vimshell,thumbnail,vimcalc,quickrun,github-dashboard let b:cursorword = 0
+        autocmd FileType qf,unite,vimfiler,vimshell,thumbnail,vimcalc,quickrun,calendar,github-dashboard let b:cursorword = 0
       augroup END
   itchyny/vim-highlighturl:
     sync: false
