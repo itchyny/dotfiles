@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2015/02/24 09:13:32.
+# - * Last Change: 2015/03/14 14:55:26.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -221,6 +221,7 @@ alias mv='mv -i'
 alias aspell="aspell -c -l en_US"
 alias nicovideo-dl="nicovideo-dl -n -t"
 # git
+export GIT_MERGE_AUTOEDIT=no
 if command -v hub >/dev/null 2>&1; then
   alias git=hub
 fi
