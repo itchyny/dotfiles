@@ -316,7 +316,6 @@ plugin:
       - unite-outline
       - unite-haskellimport
       - unite-webcolorname
-      - codic-vim-with-unite
       - unite-auto-open
       - unite-changetime
       - unite-preview
@@ -346,9 +345,6 @@ plugin:
     script: |
       nnoremap <silent> <Leader>p :<C-u>Unite haskellimport -buffer-name=haskellimport<CR>
   pasela/unite-webcolorname:
-    loadafter:
-      - unite
-  rhysd/codic-vim-with-unite:
     loadafter:
       - unite
   itchyny/unite-eject:
