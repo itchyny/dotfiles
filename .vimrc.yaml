@@ -770,6 +770,8 @@ plugin:
     filetype: m4
   jade.vim:
     filetype: jade
+  slim-template/vim-slim:
+    filetype: slim
   kchmck/vim-coffee-script:
     filetype: coffee
   mintplant/vim-literate-coffeescript:
