@@ -463,7 +463,7 @@ plugin:
       let g:ctrlp_clear_cache_on_exit = 0
       let g:ctrlp_cache_dir = $CACHE.'/ctrlp'
       let s:_ctrlp_cache = g:ctrlp_cache_dir . '/mru/cache.txt'
-      silent! call system(printf( 'ctrlp=`mktemp /tmp/XXXXXXXXXXXX`; sed ''s/^\/home\/[^/]*/%s/'' <%s %c awk '' !x[$0]++'' > $ctrlp; cp $ctrlp %s; rm -f $ctrlp&', escape($HOME, '/'), s:_ctrlp_cache, 124, s:_ctrlp_cache ))
+
   junegunn/vim-github-dashboard:
     commands:
       - GHD
