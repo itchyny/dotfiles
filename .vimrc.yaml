@@ -528,7 +528,6 @@ plugin:
     command: Agit
     beforeScript: |
       let g:agit_enable_auto_refresh = 1
-      let g:agit_max_log_lines = 100
     script: |
       nnoremap <silent> <Leader>g :<C-u>Agit<CR>:silent! 3wincmd w<CR>
   mattn/gist-vim:
