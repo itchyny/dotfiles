@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2015/03/14 14:55:26.
+# - * Last Change: 2015/04/02 07:39:56.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -124,6 +124,7 @@ export PATH=~/.bin:$PATH
 export PATH=~/bin:$PATH
 export PATH=~/Dropbox/.bin:$PATH
 export PATH=~/Dropbox/bin:$PATH
+export PATH=$ZSH_PLUGIN_PATH/bin:$PATH
 export PATH=$PATH:~/Library/Haskell/bin
 export PATH=$PATH:/usr/local/Cellar/vim/HEAD/bin
 export PATH=$PATH:/usr/texbin
@@ -341,6 +342,11 @@ if [ -e $ZSH_PLUGIN_PATH/zaw/zaw.zsh ]; then
   bindkey '^z' zaw-history
 elif command -v git > /dev/null 2>&1; then
   git clone https://github.com/zsh-users/zaw $ZSH_PLUGIN_PATH/zaw
+fi
+
+# https://github.com/itchyny/bin
+if ! command -v download > /dev/null 2>&1; then
+  git clone https://github.com/itchyny/bin $ZSH_PLUGIN_PATH/bin
 fi
 
 [ -e ./Dropbox ] && cd ./Dropbox > /dev/null
