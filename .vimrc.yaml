@@ -214,7 +214,8 @@ plugin:
       inoremap <expr><BS>  neocomplete#smart_close_popup()."\<BS>"
   Shougo/neosnippet:
     script: |
-      let g:neosnippet#snippets_directory = expand((isdirectory(expand('~/Dropbox/.vim/miv')) ? '~/Dropbox' : '~') . '/.vim/miv/extra-snippets/snippets')
+      let g:neosnippet#snippets_directory = [ expand((isdirectory(expand('~/Dropbox/.vim/miv')) ? '~/Dropbox' : '~') . '/.vim/miv/extra-snippets/snippets'),
+              \ expand((isdirectory(expand('~/Dropbox/.vim/miv')) ? '~/Dropbox' : '~') . '/.vim/miv/scala-vim-snippets') ]
       imap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
       smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
       imap <expr><C-o> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<ESC>o"
