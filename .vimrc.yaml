@@ -799,6 +799,8 @@ plugin:
     filetype: typescript
   derekwyatt/vim-scala:
     filetype: scala
+  tommorris/scala-vim-snippets:
+    filetype: scala
   fatih/vim-go:
     filetype: go
 
