@@ -828,6 +828,17 @@ beforeScript: |
     finish
   endif
 
+  command -nargs=* Codeforces call s:codeforces(<f-args>)
+  function! s:codeforces(...) abort
+    if a:0 < 2
+      return
+    endif
+    let dir = expand(printf('~/Dropbox/procon/codeforces/%04d/', a:1))
+    silent! call mkdir(dir)
+    edit `=dir . tolower(a:2) . '.hs'`
+    vnew `=dir . tolower(a:2) . 'i'`
+  endfunction
+
 afterScript: |
   let g:mapleader = ','
 
