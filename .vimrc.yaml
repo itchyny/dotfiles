@@ -1031,3 +1031,4 @@ filetypeDetect:
   styl: stylus
   stylus: stylus
   scala: scala
+  sbt: scala
