@@ -2,7 +2,6 @@ config: {}
 plugin:
 
   itchyny/landscape.vim:
-    sync: false
     beforeScript: |
       let g:landscape_highlight_todo = 1
       let g:landscape_cursorline = 0
@@ -17,21 +16,17 @@ plugin:
     afterScript: |
       colorscheme landscape
   itchyny/lightline.vim:
-    sync: false
     script: |
       exec 'set gfn=' . substitute('Inconsolata for Powerline', ' ', g:iswin ? '_' : '\\ ', 'g') . (g:ismac ? ':h15' : g:iswin ?  ':h13:cANSI' : '\ 12')
       if g:iswin | set gfw=MS_Gothic:h11:cSHIFTJIS | endif
   itchyny/lightline-powerful:
-    sync: false
     beforeScript: |
       let g:lightline = {'colorscheme': 'landscape','mode_map':{'c': 'NORMAL'}}
   itchyny/vim-spellbad-pattern:
-    sync: false
     script: |
       let g:spellbad_pattern = [ '\<a\ze [aieo]', '^\$', '\~\$\zs\s\+', '\<figure..\?\\', '\\ref{eq:', '^\\end{align}',
             \ '[^\~]\\\(eq\)\?ref\>', 'does not [a-z]*s\>', '\<a [a-z]\+[a-np-rt-wyz]\zss\>', 'in default', '[^,]\zs \ze\$[^$]\{,9\}\$']
   itchyny/calendar.vim:
-    sync: false
     mapleader: ","
     command: Calendar
     mapping: <Plug>(calendar)
@@ -43,14 +38,12 @@ plugin:
       let g:calendar_google_calendar = 1
       let g:calendar_google_task = 1
   itchyny/thumbnail.vim:
-    sync: false
     mapleader: ","
     command: Thumbnail
     mapping: <Plug>(thumbnail)
     script: |
       map <silent> <Leader>t <Plug>(thumbnail)
   itchyny/dictionary.vim:
-    sync: false
     mapleader: ","
     command: Dictionary
     mapping: <Plug>(dictionary)
@@ -61,23 +54,19 @@ plugin:
     dependon:
       - vimproc
   itchyny/screensaver.vim:
-    sync: false
     mapleader: ","
     mapping: <Plug>(screensaver)
     command: ScreenSaver
     script: |
       map <silent> <Leader>s :<C-u>ScreenSaver<CR>
   itchyny/vim-gitbranch:
-    sync: false
   itchyny/vim-closebuffer:
-    sync: false
     mapping: <Plug>(closebuffer)
     insert: true
     script: |
       map <C-w> <Plug>(closebuffer)
       imap <C-w> <Plug>(closebuffer)
   itchyny/vim-external:
-    sync: false
     mapleader: \
     mappings:
       - <Plug>(external-editor)
@@ -89,7 +78,6 @@ plugin:
       map <Leader>b <Plug>(external-browser)
       map ge <Plug>(external-explorer)
   itchyny/vim-qffrom:
-    sync: false
     commands:
       - Qffrom
       - Grep
@@ -122,7 +110,6 @@ plugin:
       command! -nargs=* Make Qffrom make <args>
       command! -nargs=* Vint Qffrom vint <args>
   itchyny/vim-autoft:
-    sync: false
     beforeScript: |
       let g:autoft_config = [
             \ { 'filetype': 'html'     , 'pattern': '<\%(!DOCTYPE\|html\|head\|script\)\|^html:5\s*$' },
@@ -139,7 +126,6 @@ plugin:
             \ { 'filetype': 'markdown' , 'pattern': '^# $' },
             \ ]
   itchyny/vim-extracmd:
-    sync: false
     afterScript: |
       call extracmd#set('a[ppend]', '')
       call extracmd#set('i[nsert]', '')
@@ -169,27 +155,19 @@ plugin:
       call extracmd#set('<silent>', 'lint'   , 'silent! call vimlint#vimlint(".", {"output": "quickfix"}) <bar> leftabove copen')
   itchyny/vim-qfedit:
     filetype: qf
-    sync: false
   itchyny/vim-winfix:
-    sync: false
   itchyny/vim-cursorword:
-    sync: false
     afterScript: |
       augroup cursorword-filetype
         autocmd!
         autocmd FileType qf,unite,vimfiler,vimshell,thumbnail,vimcalc,quickrun,calendar,github-dashboard let b:cursorword = 0
       augroup END
   itchyny/vim-highlighturl:
-    sync: false
   itchyny/vim-insert-mode-motion:
-    sync: false
     insert: true
   itchyny/vim-cmdline-ranges:
-    sync: false
   itchyny/vim-cmdline-escape:
-    sync: false
   itchyny/vim-extra-snippets:
-    sync: false
 
   Shougo/neocomplete.vim:
     enable: has('lua') && v:version > 703
@@ -353,21 +331,17 @@ plugin:
     enable: "0"
     loadafter:
       - unite
-    sync: false
   itchyny/unite-auto-open:
     loadafter:
       - unite
-    sync: false
     afterScript: |
       call unite#custom_default_action('file', 'auto_open')
   itchyny/unite-changetime:
     loadafter:
       - unite
-    sync: false
   itchyny/unite-preview:
     loadafter:
       - unite
-    sync: false
 
   Shougo/vimshell.vim:
     commands:
