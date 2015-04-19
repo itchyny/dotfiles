@@ -60,6 +60,7 @@ plugin:
     script: |
       map <silent> <Leader>s :<C-u>ScreenSaver<CR>
   itchyny/vim-gitbranch:
+    {}
   itchyny/vim-closebuffer:
     mapping: <Plug>(closebuffer)
     insert: true
@@ -156,6 +157,7 @@ plugin:
   itchyny/vim-qfedit:
     filetype: qf
   itchyny/vim-winfix:
+    {}
   itchyny/vim-cursorword:
     afterScript: |
       augroup cursorword-filetype
@@ -163,11 +165,15 @@ plugin:
         autocmd FileType qf,unite,vimfiler,vimshell,thumbnail,vimcalc,quickrun,calendar,github-dashboard let b:cursorword = 0
       augroup END
   itchyny/vim-highlighturl:
+    {}
   itchyny/vim-insert-mode-motion:
     insert: true
   itchyny/vim-cmdline-ranges:
+    {}
   itchyny/vim-cmdline-escape:
+    {}
   itchyny/vim-extra-snippets:
+    {}
 
   Shougo/neocomplete.vim:
     enable: has('lua') && v:version > 703
