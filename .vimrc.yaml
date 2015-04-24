@@ -988,6 +988,7 @@ filetypeDetect:
   coffee: coffee
   litcoffee: litcoffee
   cson: coffee
+  ts: typescript
   ejs: jst
   jst: jst
   hamljs: jst
