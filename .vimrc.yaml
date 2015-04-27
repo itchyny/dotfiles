@@ -188,9 +188,11 @@ plugin:
       let g:neocomplete#ignore_source_files = [ 'member.vim', 'tag.vim', 'dictionary.vim', 'include.vim', 'file_include.vim' ]
       let g:neocomplete#force_omni_input_patterns = get(g:, 'neocomplete#force_omni_input_patterns', {})
       let g:neocomplete#force_omni_input_patterns.python = '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
+      let g:neocomplete#force_omni_input_patterns.haskell = '[A-Z][a-z]*\.\w*\|import.*'
       let g:neocomplete#sources#omni#input_patterns = get(g:, 'neocomplete#sources#omni#input_patterns', {})
       let g:neocomplete#sources#omni#input_patterns.javascript = '[[:alpha:]./"''$]\+'
       let g:neocomplete#sources#omni#input_patterns.coffee = '[[:alpha:]./"''$]\+'
+      let g:neocomplete#sources#omni#input_patterns.haskell = 'import\s\+.*\|[:alpha:]\.\w*'
     afterScript: |
       call neocomplete#custom#source('omni', 'rank', 7)
       call neocomplete#custom#source('omni', 'converters', ['converter_remove_last_paren'])
