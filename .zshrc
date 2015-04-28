@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2015/04/06 10:42:34.
+# - * Last Change: 2015/04/27 05:36:45.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -174,11 +174,19 @@ if [ "$(uname)" = "Darwin" ]; then
   pman () {
     man -t "$1" | open -f -a /Applications/Preview.app
   }
+  dropbox () {
+    case "${1:-start}" in
+      start|init) open -a Dropbox ;;
+      stop|kill) osascript -e 'tell application "Dropbox" to quit'; killall Dropbox 1>/dev/null 2>&1;;
+    esac
+    return 0
+  }
 elif [ "$(uname)" = "Linux" ]; then
   alias apt-get-update='sudo apt-get update'
   alias update='cabal-update && apt-get-update'
   alias open='gnome-open'
   alias pbcopy='xsel --clipboard --input'
+  dropbox () { dropbox ${1:-start} }
 fi
 alias chrome='google-chrome'
 function runc () {
