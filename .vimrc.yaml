@@ -509,7 +509,9 @@ plugin:
 
   cohama/agit.vim:
     mapleader: ","
-    command: Agit
+    commands:
+      - Agit
+      - AgitFile
     beforeScript: |
       let g:agit_enable_auto_refresh = 1
     script: |
