@@ -12,7 +12,7 @@ plugin:
               \. 'dictionary/\|screensaver/\|gitbranch/\|closebuffer/\|external/\|insert-mode-motion/\|'
               \. 'cmdline-ranges/\|cmdline-escape/\|autoft/\|extra-snippets/\|highlighturl/\|extracmd/\|'
               \. 'cursorword/\|unite-preview/\|unite-eject/\|unite-changetime/\|unite-auto-open/\|'
-              \. 'winfix/\|qffrom/\|qfedit/\|vicenza/\|adblock-fast/\|2\?bf\/\|maze\/\|cam\/\)'
+              \. 'winfix/\|qffrom/\|qfedit/\|vicenza/\|adblock-fast/\|2\?bf\/\|maze\/\|cam\/\|mackerel\S*\/\)'
     afterScript: |
       colorscheme landscape
   itchyny/lightline.vim:
