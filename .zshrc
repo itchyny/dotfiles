@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2015/04/27 05:36:45.
+# - * Last Change: 2015/04/30 06:46:10.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -186,7 +186,9 @@ elif [ "$(uname)" = "Linux" ]; then
   alias update='cabal-update && apt-get-update'
   alias open='gnome-open'
   alias pbcopy='xsel --clipboard --input'
-  dropbox () { dropbox ${1:-start} }
+  dropbox () {
+    dropbox "${1:-start}"
+  }
 fi
 alias chrome='google-chrome'
 function runc () {
