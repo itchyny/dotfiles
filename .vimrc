@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2015/04/30 09:51:06.
+" - * Last Change: 2015/05/02 07:44:04.
 " --------------------------------------------------------------------------------------------------------
 
 " Setting options {{{1
@@ -26,7 +26,7 @@ silent! let [&t_SI,&t_EI] = ["\e]50;CursorShape=1\x7","\e]50;CursorShape=0\x7"]
 set iminsert=0 imsearch=0 autoread smartindent autoindent shiftwidth=2 comments& commentstring=#\ %s
 set foldclose=all nofoldenable foldlevel=0 foldmarker& foldmethod=indent nopaste pastetoggle= nogdefault
 silent! set textwidth=0 expandtab tabstop=2 backspace=indent,eol,start nrformats=hex formatoptions=cmMj
-silent! set tags+=~/Documents/**/tags
+silent! set tags=tags,./tags,../tags,../../tags,~/Documents/**/tags
 
 " Clipboard
 silent! set clipboard=unnamed
