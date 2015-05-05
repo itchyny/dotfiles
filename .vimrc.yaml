@@ -120,7 +120,7 @@ plugin:
             \ { 'filetype': 'c'        , 'pattern': '^\s*#\s*\%(include\|define\)\>' },
             \ { 'filetype': 'go'       , 'pattern': '^import (' },
             \ { 'filetype': 'scala'    , 'pattern': '^\%(import\|module\) \%([a-pr-z]\)' },
-            \ { 'filetype': 'haskell'  , 'pattern': '^\%(import\|module\) [A-Z]' },
+            \ { 'filetype': 'haskell'  , 'pattern': '^\%(import\|module\) \%([A-Z]\|qualified\)\|main\s*::' },
             \ { 'filetype': 'diff'     , 'pattern': '^diff -' },
             \ { 'filetype': 'sh'       , 'pattern': '^#!.*\%(\<sh\>\|\<bash\>\)\s*$\|if [ -' },
             \ { 'filetype': 'hatena'   , 'pattern': '^\%(>|[a-z]\+|\|||<\)$\|^*\[[a-z]\+]' },
