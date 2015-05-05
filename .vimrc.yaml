@@ -119,7 +119,7 @@ plugin:
             \ { 'filetype': 'tex'      , 'pattern': '\\\%(document\|begin\|usepackage\|section\)' },
             \ { 'filetype': 'c'        , 'pattern': '^\s*#\s*\%(include\|define\)\>' },
             \ { 'filetype': 'go'       , 'pattern': '^import (' },
-            \ { 'filetype': 'scala'    , 'pattern': '^\%(import\|module\) [a-z]' },
+            \ { 'filetype': 'scala'    , 'pattern': '^\%(import\|module\) \%([a-pr-z]\)' },
             \ { 'filetype': 'haskell'  , 'pattern': '^\%(import\|module\) [A-Z]' },
             \ { 'filetype': 'diff'     , 'pattern': '^diff -' },
             \ { 'filetype': 'sh'       , 'pattern': '^#!.*\%(\<sh\>\|\<bash\>\)\s*$\|if [ -' },
