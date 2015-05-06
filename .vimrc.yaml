@@ -95,8 +95,8 @@ plugin:
             \   '_'   : { 'post': 'leftabove copen' },
             \   'grep': { 'command': substitute( 'grep --exclude-dir=.git --exclude-dir=.svn '
             \           . '--exclude-dir=conf --exclude-dir=docs --exclude-dir=dist --exclude-dir=target --exclude-dir=autodoc '
-            \           . '--exclude-dir=runtime --exclude-dir=compiled --exclude-dir=vendor '
-            \           . '--exclude=tags --exclude=\*.{bak,aux,bib,bbl,blg,nav,toc,out,min.js,min.css} --exclude=.histfile\* -HIsinr -- $* <dir>'
+            \           . '--exclude-dir=runtime --exclude-dir=compiled --exclude-dir=vendor --exclude-dir=project '
+            \           . '--exclude=tags --exclude=\*.{bak,aux,bib,bbl,blg,nav,toc,out,deb,rpm,gem,otf,webm,iml,swp,min.js,min.css} --exclude=.histfile\* -HIsinr -- $* <dir>'
             \           , 'exclude-dir', 'exclude' . (has('win32') || has('win64') ? '' : '-dir'), 'g'), 'git_root': 1 },
             \   'find': { 'command': 'find <dir> -name .git -prune -o -type f -iname ''$*'' -print', 'git_root': 1 },
             \   'make': { 'command': 'cd <dir> 2>&1 && '
