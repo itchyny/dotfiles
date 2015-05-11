@@ -975,6 +975,20 @@ filetypeScript:
     setlocal iskeyword=39,48-57,95,a-z,A-Z,192-255
     nnoremap <buffer> <Leader>l :<C-u>GhciLoad<CR>
     nnoremap <buffer> <Leader>i :<C-u>GhciInfo<CR>
+    augroup haskell-bufwritepre
+      autocmd!
+      autocmd BufWritePre <buffer>
+            \   let s:cursor = getpos('.')
+            \ | let s:view = winsaveview()
+            \ | let s:start = search('^import')
+            \ | let s:end = search('^\%(import\)\@!') - 1
+            \ | if s:start > 0 && s:end > s:start
+            \ |   execute s:start . ',' . s:end . 'sort'
+            \ | endif
+            \ | %s/\[Char\]/String/geI
+            \ | call setpos('.', s:cursor)
+            \ | call winrestview(s:view)
+    augroup END
   haxe: |
     call tcomment#DefineType('haxe', '// %s')
   meissa: |
