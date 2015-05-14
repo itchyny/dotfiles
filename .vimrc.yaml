@@ -196,6 +196,7 @@ plugin:
       let g:neocomplete#sources#omni#input_patterns = get(g:, 'neocomplete#sources#omni#input_patterns', {})
       let g:neocomplete#sources#omni#input_patterns.javascript = '[[:alpha:]./"''$]\+'
       let g:neocomplete#sources#omni#input_patterns.coffee = '[[:alpha:]./"''$]\+'
+      let g:neocomplete#sources#omni#input_patterns.typescript = '[[:alpha:]./"''$]\+'
       let g:neocomplete#sources#omni#input_patterns.haskell = 'import\s\+.*\|[:alpha:]\.\w*'
     afterScript: |
       call neocomplete#custom#source('omni', 'rank', 7)
@@ -781,6 +782,7 @@ plugin:
     filetypes:
       - javascript
       - coffee
+      - typescript
     beforeScript: |
       let g:vimjs#casesensistive = 1
       let g:vimjs#chromeapis = 1
@@ -888,6 +890,8 @@ filetypeScript:
   javascript: |
     setlocal ofu=js#CompleteJS
   coffee: |
+    setlocal ofu=js#CompleteJS nospell
+  typescript: |
     setlocal ofu=js#CompleteJS nospell
   php: |
     setlocal ofu=phpcomplete#CompletePHP
