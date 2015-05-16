@@ -211,6 +211,7 @@ plugin:
       imap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
       smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
       imap <expr><C-o> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<ESC>o"
+      let g:neosnippet#scope_aliases = { 'typescript': 'javascript' }
   Shougo/neosnippet-snippets: {}
   thinca/vim-quickrun:
     command: QuickRun
@@ -893,6 +894,7 @@ filetypeScript:
     setlocal ofu=js#CompleteJS nospell
   typescript: |
     setlocal ofu=js#CompleteJS nospell
+    imap <expr><buffer> <Tab> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
   php: |
     setlocal ofu=phpcomplete#CompletePHP
   xml: |
