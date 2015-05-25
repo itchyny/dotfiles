@@ -982,7 +982,6 @@ filetypeScript:
     nnoremap <buffer> <Leader>l :<C-u>GhciLoad<CR>
     nnoremap <buffer> <Leader>i :<C-u>GhciInfo<CR>
     augroup haskell-bufwritepre
-      autocmd!
       autocmd BufWritePre <buffer>
             \   let s:cursor = getpos('.')
             \ | let s:view = winsaveview()
