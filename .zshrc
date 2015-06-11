@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2015/04/30 06:46:10.
+# - * Last Change: 2015/06/06 21:36:06.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -241,6 +241,7 @@ alias gb='git branch'
 alias gc='git checkout'
 alias gcb='git checkout -b'
 alias gcm='git checkout master'
+alias gcd='git checkout develop'
 alias ga='git add'
 alias gm='git commit -m'
 alias gd='git diff --color'
