@@ -178,6 +178,8 @@ plugin:
     {}
   itchyny/vim-extra-snippets:
     {}
+  itchyny/vim-pdf:
+    filetype: pdf
 
   Shougo/neocomplete.vim:
     enable: has('lua') && v:version > 703
@@ -198,6 +200,7 @@ plugin:
       let g:neocomplete#sources#omni#input_patterns.coffee = '[[:alpha:]./"''$]\+'
       let g:neocomplete#sources#omni#input_patterns.typescript = '[[:alpha:]./"''$]\+'
       let g:neocomplete#sources#omni#input_patterns.haskell = 'import\s\+.*\|[:alpha:]\.\w*'
+      let g:neocomplete#sources#omni#input_patterns.pdf = '[-/%a-zA-Z0-9_]\+'
     afterScript: |
       call neocomplete#custom#source('omni', 'rank', 7)
       call neocomplete#custom#source('omni', 'converters', ['converter_remove_last_paren'])
