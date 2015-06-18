@@ -998,6 +998,8 @@ filetypeScript:
             \ | call setpos('.', s:cursor)
             \ | call winrestview(s:view)
     augroup END
+  pdf: |
+    nmap <silent><buffer> <C-@> <C-t>
   haxe: |
     call tcomment#DefineType('haxe', '// %s')
   meissa: |
