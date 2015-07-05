@@ -178,7 +178,7 @@ plugin:
     {}
   itchyny/vim-extra-snippets:
     {}
-  vim-haskell-indent:
+  itchyny/vim-haskell-indent:
     filetype: haskell
   itchyny/vim-pdf:
     filetype: pdf
