@@ -178,6 +178,8 @@ plugin:
     {}
   itchyny/vim-extra-snippets:
     {}
+  vim-haskell-indent:
+    filetype: haskell
   itchyny/vim-pdf:
     filetype: pdf
 
@@ -728,8 +730,6 @@ plugin:
 
   motemen/hatena-vim:
     filetype: hatena
-  indenthaskell.vim:
-    filetype: haskell
   elzr/vim-json:
     filetype: json
   html5.vim:
