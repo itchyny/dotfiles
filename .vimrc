@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2015/05/29 22:15:04.
+" - * Last Change: 2015/07/07 23:32:02.
 " --------------------------------------------------------------------------------------------------------
 
 " Setting options {{{1
@@ -14,20 +14,26 @@ set encoding=utf-8 fileencoding=utf-8 fileformats=unix,mac,dos
 set fileencodings=utf-8,iso-2022-jp-3,euc-jisx0213,cp932,euc-jp,sjis,jis,latin,iso-2022-jp
 
 " Appearance
-set number background=dark display=lastline,uhex wrap wrapmargin=0 showbreak= notitle guioptions=ce
-set showmatch matchtime=1 noshowmode shortmess+=I cmdheight=1 cmdwinheight=10 scrolloff=0
-set noshowcmd noruler rulerformat= laststatus=2 statusline=%t\ %=\ %m%r%y%w\ %3l:%-2c
-silent! set cursorline nocursorcolumn colorcolumn= concealcursor=nvc conceallevel=0 showtabline=1
+silent! set number background=dark display=lastline,uhex wrap wrapmargin=0 guioptions=ce key=
+silent! set showmatch matchtime=1 noshowmode shortmess+=I cmdheight=1 cmdwinheight=10 showbreak=
+silent! set noshowcmd noruler rulerformat= laststatus=2 statusline=%t\ %=\ %m%r%y%w\ %3l:%-2c
+silent! set title titlelen=100 titleold= titlestring=%f noicon iconstring=%t norightleft showtabline=1
+silent! set cursorline nocursorcolumn colorcolumn= concealcursor=nvc conceallevel=0 norelativenumber
 silent! set list listchars=tab:>\ ,nbsp:_ synmaxcol=1000 ambiwidth=double breakindent breakindentopt=
+silent! set nosplitbelow nosplitright startofline linespace=0 whichwrap=b,s scrolloff=0 sidescroll=0
+silent! set equalalways nowinfixwidth nowinfixheight winminwidth=3 winminheight=3 nowarn noconfirm
+silent! set fillchars=vert:\|,fold:\  eventignore= helplang=en viewoptions=options,cursor virtualedit=
 if has('gui_running') | set lines=999 columns=999 | else | set t_Co=256 | endif
 silent! let [&t_SI,&t_EI] = ["\e]50;CursorShape=1\x7","\e]50;CursorShape=0\x7"]
 
 " Editing
-set iminsert=0 imsearch=0 autoread smartindent autoindent shiftwidth=2 comments& commentstring=#\ %s
-set foldclose=all nofoldenable foldlevel=0 foldmarker& foldmethod=indent nopaste pastetoggle= nogdefault
-silent! set textwidth=0 expandtab tabstop=2 backspace=indent,eol,start nrformats=hex formatoptions=cmMj
-silent! set nohidden noautowrite breakat& nolinebreak mouse= modeline& modelines& mousehide softtabstop=2
-silent! set tags=tags,./tags,../tags,../../tags,~/Documents/**/tags
+silent! set iminsert=0 imsearch=0 nopaste pastetoggle= nogdefault comments& commentstring=#\ %s
+silent! set smartindent autoindent shiftround shiftwidth=2 expandtab tabstop=2 smarttab softtabstop=2
+silent! set foldclose=all foldcolumn=0 nofoldenable foldlevel=0 foldmarker& foldmethod=indent
+silent! set textwidth=0 backspace=indent,eol,start nrformats=hex formatoptions=cmMj nojoinspaces
+silent! set nohidden autoread noautowrite noautowriteall nolinebreak mouse= modeline& modelines&
+silent! set noautochdir write nowriteany writedelay=0 verbose=0 verbosefile= notildeop noinsertmode
+silent! set tags=tags,./tags,../tags,../../tags,~/Documents/**/tags tagstack
 
 " Clipboard
 silent! set clipboard=unnamed
@@ -36,27 +42,27 @@ silent! set clipboard+=unnamedplus
 " Cache files
 let $CACHE = expand((isdirectory(expand('~/Dropbox/.vim/cache')) ? '~/Dropbox' : '~') . '/.vim/cache')
 if !isdirectory($CACHE) | silent! call mkdir($CACHE, 'p') | endif
-silent! set history=500 viminfo='10,/100,:500,<10,@10,s10,h,n$CACHE/.viminfo
+silent! set history=1000 viminfo='10,/100,:1000,<10,@10,s10,h,n$CACHE/.viminfo
 silent! set nospell spellfile=$CACHE/en.utf-8.add
 silent! set swapfile directory=$CACHE/swap,$CACHE,/var/tmp/vim,/var/tmp
 silent! set nobackup backupdir=$CACHE/backup,$CACHE,/var/tmp/vim,/var/tmp
 silent! set undofile undolevels=1000 undodir=$CACHE/undo,$CACHE,/var/tmp/vim,/var/tmp
 
 " Search
-set wrapscan ignorecase smartcase incsearch hlsearch magic
+silent! set wrapscan ignorecase smartcase incsearch hlsearch magic
 
 " Insert completion
 silent! set complete& completeopt=menu infercase pumheight=10 noshowfulltag shortmess+=c
 
 " Command line
-silent! set wildchar=9 nowildmenu wildmode=list:longest wildoptions= wildignorecase
-set wildignore=*.?~,*.??~,*.???~,*.~,*.o,*.sw?,*.bak,*.hi,*.pyc,*.aux,*.bbl,*.blg,*.dvi,*.nav,*.snm,*.toc,*.out,*.exe,*.pdf
+silent! set wildchar=9 nowildmenu wildmode=list:longest wildoptions= wildignorecase cedit=<C-k>
+silent! set wildignore=*.~,*.?~,*.o,*.sw?,*.bak,*.hi,*.pyc,*.out suffixes=*.pdf
 
 " Performance
-set updatetime=300 timeout timeoutlen=500 ttimeout ttimeoutlen=50 ttyfast nolazyredraw
+silent! set updatetime=300 timeout timeoutlen=500 ttimeout ttimeoutlen=50 ttyfast nolazyredraw
 
 " Bell
-set noerrorbells visualbell t_vb=
+silent! set noerrorbells visualbell t_vb=
 
 " Auto commands {{{1
 augroup vimrc
