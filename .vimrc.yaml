@@ -6,13 +6,14 @@ plugin:
       let g:landscape_highlight_todo = 1
       let g:landscape_cursorline = 0
       let g:landscape_vimfiler_important =
-              \ ' \%(Dropbox/\|[Dd]ownloads/\|\.vim/\|Library/\|src/\|README\%(\.\%(mk\?d\|rst\)\)\?\>\|'
-              \. 'manifest.json\|univ/\|paper/\|js/\|quantum/\|main\.pdf\|miv/\|landscape/\|'
-              \. 'lightline/\|lightline-powerful/\|spellbad-pattern/\|calendar/\|thumbnail/\|'
-              \. 'dictionary/\|screensaver/\|gitbranch/\|closebuffer/\|external/\|insert-mode-motion/\|'
-              \. 'cmdline-ranges/\|cmdline-escape/\|autoft/\|extra-snippets/\|highlighturl/\|extracmd/\|'
-              \. 'cursorword/\|unite-preview/\|unite-eject/\|unite-changetime/\|unite-auto-open/\|'
-              \. 'winfix/\|qffrom/\|qfedit/\|vicenza/\|adblock-fast/\|2\?bf\/\|maze\/\|cam\/\|mackerel\S*\/\)'
+              \ ' \v(README(\.(mk?d|rst))?>|manifest.json|main\.pdf|'
+              \. '(Dropbox|[Dd]ownloads|Library|src|paper|js|hs|miv|pdf|\.vim|2?bf|maze|cam|'
+              \. 'landscape|lightline|lightline-powerful|spellbad-pattern|calendar|'
+              \. 'thumbnail|dictionary|screensaver|gitbranch|closebuffer|external|'
+              \. 'insert-mode-motion|cmdline-ranges|cmdline-escape|autoft|extracmd|'
+              \. 'extra-snippets|highlighturl|cursorword|winfix|qffrom|qfedit|'
+              \. 'unite-(preview|eject|changetime|auto-open)|vicenza|adblock-fast|'
+              \. 'haskell-indent|sjsp|py2bf|github-better-header|mackerel\S*)/)'
     afterScript: |
       colorscheme landscape
   itchyny/lightline.vim:
