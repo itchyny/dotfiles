@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2015/07/07 23:32:02.
+" - * Last Change: 2015/07/13 15:45:14.
 " --------------------------------------------------------------------------------------------------------
 
 " Setting options {{{1
@@ -33,7 +33,7 @@ silent! set foldclose=all foldcolumn=0 nofoldenable foldlevel=0 foldmarker& fold
 silent! set textwidth=0 backspace=indent,eol,start nrformats=hex formatoptions=cmMj nojoinspaces
 silent! set nohidden autoread noautowrite noautowriteall nolinebreak mouse= modeline& modelines&
 silent! set noautochdir write nowriteany writedelay=0 verbose=0 verbosefile= notildeop noinsertmode
-silent! set tags=tags,./tags,../tags,../../tags,~/Documents/**/tags tagstack
+silent! set tags=tags,./tags,../tags,../../tags,~/Documents/*/tags tagstack
 
 " Clipboard
 silent! set clipboard=unnamed
