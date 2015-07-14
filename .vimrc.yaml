@@ -148,6 +148,7 @@ plugin:
       call extracmd#set('<silent>', 'rtp'    , 'if !get(b:,''rtp'')<bar>vne<bar>en<bar>let b:rtp=1<bar>sil!%d_<bar>0put=split(&rtp, '','')<bar>setl bt=nofile bh=wipe noswf nobl<bar>diffu')
       call extracmd#set('<silent>', 'scr[iptnames]', 'if !get(b:,''s'')<bar>vne<bar>en<bar>redi=>b:s<bar>sil!scrip<bar>redi end<bar>sil!%d_<bar>sil0put=b:s<bar>sil!1d_<bar>setl bt=nofile bh=wipe noswf nobl<bar>diffu')
       call extracmd#set('<silent>', 'gd'     , 'if len(gitbranch#name())<bar>if (!get(b:,''gd''))*((&ft!='''')+(&mod)+(bufname('''')!=''''))<bar>vne<bar>en<bar>let b:gd=1<bar>sil!%d_<bar>setl bt=nofile bh=wipe noswf nobl nowrap ft=diff<bar>sil!0put=system(''git diff'')<bar>sil!$d_<bar>sil!1<bar>el<bar>redr<bar>en<bar>echo''git diff''')
+      call extracmd#set('<silent>', 'gdc'    , 'if len(gitbranch#name())<bar>if (!get(b:,''gd''))*((&ft!='''')+(&mod)+(bufname('''')!=''''))<bar>vne<bar>en<bar>let b:gd=1<bar>sil!%d_<bar>setl bt=nofile bh=wipe noswf nobl nowrap ft=diff<bar>sil!0put=system(''git diff --cached'')<bar>sil!$d_<bar>sil!1<bar>el<bar>redr<bar>en<bar>echo''git diff --cached''')
       call extracmd#set('<silent>', 'aoff'   , 'AutodateOFF')
       call extracmd#set('<silent>', 'aon'    , 'AutodateON')
       call extracmd#set('<silent>', '[a]git' , 'Agit')
