@@ -453,8 +453,8 @@ plugin:
       let g:ctrlp_cmd = 'CtrlPMRUFiles'
       let g:ctrlp_show_hidden = 1
       let g:ctrlp_max_depth = 5
-      let g:ctrlp_max_files = 300
-      let g:ctrlp_mruf_max = 300
+      let g:ctrlp_max_files = 500
+      let g:ctrlp_mruf_max = 1000
       let g:ctrlp_custom_ignore = { 'dir': '\v[\/]\.(git|hg|svn)$', 'file': '\v\.(exe|so|dll|swp|pdf|DS_Store)$', }
       let g:ctrlp_open_new_file = 'r'
       let g:ctrlp_use_caching = 1
