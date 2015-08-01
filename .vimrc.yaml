@@ -161,6 +161,8 @@ plugin:
       call extracmd#set('<silent>', 'lint'   , 'silent! call vimlint#vimlint(".", {"output": "quickfix"}) <bar> leftabove copen')
   itchyny/vim-qfedit:
     filetype: qf
+  itchyny/vim-tmpbuffer:
+    command: Tmpbuffer
   itchyny/vim-winfix:
     {}
   itchyny/vim-cursorword:
