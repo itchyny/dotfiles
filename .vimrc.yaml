@@ -463,15 +463,6 @@ plugin:
       let g:ctrlp_cache_dir = $CACHE.'/ctrlp'
       let s:_ctrlp_cache = g:ctrlp_cache_dir . '/mru/cache.txt'
 
-  junegunn/vim-github-dashboard:
-    commands:
-      - GHD
-      - GHA
-    beforeScript: |
-      let g:github_dashboard = {
-          \ 'emoji': 0,
-          \ 'statusline': 0,
-          \ 'username': 'itchyny' }
   tpope/vim-surround:
     mappings:
       - <Plug>Dsurround
