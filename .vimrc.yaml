@@ -522,6 +522,10 @@ plugin:
       let g:agit_enable_auto_refresh = 1
     script: |
       nnoremap <silent> <Leader>g :<C-u>Agit<CR>:silent! 3wincmd w<CR>
+  lambdalisue/vim-gita:
+    mapleader: ","
+    commands:
+      - Gita
   mattn/gist-vim:
     command: Gist
     dependon:
