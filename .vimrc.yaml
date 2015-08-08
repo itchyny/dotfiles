@@ -152,8 +152,6 @@ plugin:
       call extracmd#set('<silent>', 'aon'    , 'AutodateON')
       call extracmd#set('<silent>', '[a]git' , 'Agit')
       call extracmd#set('<silent>', 'bc'     , 'Calc')
-      call extracmd#set('<silent>', 'gh'     , 'GHD!')
-      call extracmd#set('<silent>', 'ga'     , 'GHA!')
       call extracmd#set('<silent>', 'cal[endar]', 'Calendar -position=topleft -split=vertical -width=27 -view=year')
       call extracmd#set('<silent>', 'date'   , 'echo strftime("%x (%a) %X")')
       call extracmd#set('<silent>', 'di'     , 'Dictionary -cursor-word -no-duplicate')
