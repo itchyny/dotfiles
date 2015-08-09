@@ -761,10 +761,6 @@ plugin:
     filetype: slim
   kchmck/vim-coffee-script:
     filetype: coffee
-  mintplant/vim-literate-coffeescript:
-    dependon:
-      - coffee-script
-    filetype: litcoffee
   briancollins/vim-jst:
     filetype: jst
   rest.vim:
