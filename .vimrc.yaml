@@ -274,7 +274,7 @@ plugin:
       let g:vimfiler_data_directory = $CACHE.'/vimfiler'
       let g:vimfiler_detect_drives = []
       let g:vimfiler_min_cache_files = 10000000000
-      let g:vimfiler_ignore_pattern = '^\.\%([^v]\|v[^i]\|vi[^m]\)\|\.\%(o\|hi\|bak\|pyc\|aux\|bbl\|blg\|dvi\|nav\|snm\|toc\|out\)$\|^dist$\|^\%(score\|font\|tex\|graphviz\|scheme\|ANTLER\|pl\|old_project\|kmc\|py\|rst\|eclipse\|rubik\|coq\|r\|antlr\|ltspice\)$\|conflicted copy\|競合コピー'
+      let g:vimfiler_ignore_pattern = '\v^\.([^v]|v[^i]|vi[^m])|\.(o|hi|bak|pyc|aux|bbl|blg|dvi|nav|snm|toc|out)$|^dist$|^(score|font|tex|graphviz|scheme|ANTLER|pl|old_project|kmc|py|rst|eclipse|rubik|coq|r|antlr|ltspice|hatena|univ|html)$|conflicted copy|競合コピー'
       let g:vimfiler_tree_leaf_icon = ' '
       let g:vimfiler_tree_opened_icon = '▾'
       let g:vimfiler_tree_closed_icon = '▸'
