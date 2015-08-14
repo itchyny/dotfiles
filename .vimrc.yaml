@@ -984,7 +984,10 @@ filetypeScript:
             \ | let s:start = search('^import')
             \ | let s:end = search('^\%(import\)\@!') - 1
             \ | if s:start > 0 && s:end > s:start
-            \ |   execute s:start . ',' . s:end . 'sort'
+            \ |   let s:lines = map(range(s:start, s:end), 'getline(v:val)')
+            \ |   if join(s:lines) !=# join(sort(s:lines))
+            \ |     call setline(s:start, sort(s:lines))
+            \ |   endif
             \ | endif
             \ | %s/\[Char\]/String/geI
             \ | call setpos('.', s:cursor)
