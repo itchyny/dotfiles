@@ -95,7 +95,7 @@ plugin:
             \   '_'   : { 'post': 'leftabove copen' },
             \   'grep': { 'command':
             \             'if git rev-parse >/dev/null 2>&1 && ! <hasdir>; then '
-            \           . '  git grep -HIin -- $* "$(git rev-parse --show-toplevel)" 2>/dev/null;'
+            \           . '  git grep -HIin -- $* "$(git rev-parse --show-toplevel)" 2>/dev/null | sed ''/\.pdf/d;/\.xml/d;/\.svg/d;/\.xsd/d'';'
             \           . 'else '
             \           . substitute( 'grep --exclude-dir=.git --exclude-dir=.svn '
             \           . '--exclude=tags --exclude=\*.{bak,aux,bib,bbl,blg,nav,toc,out,min.js,min.css} --exclude=.histfile\* -HIsinr -- $* <dir>; fi'
