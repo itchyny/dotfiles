@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2015/08/17 15:36:35.
+" - * Last Change: 2015/08/21 12:43:39.
 " --------------------------------------------------------------------------------------------------------
 
 " Setting options {{{1
@@ -157,6 +157,7 @@ nnoremap <silent> g0 :<C-u>tabfirst<CR>
 nnoremap <silent> g$ :<C-u>tablast<CR>
 
 " tag
+vnoremap <C-]> <ESC><C-w><C-]><C-w>H
 nnoremap <C-@> <C-t>
 
 " select last paste
