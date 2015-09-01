@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2015/08/21 12:43:39.
+" - * Last Change: 2015/09/01 23:24:33.
 " --------------------------------------------------------------------------------------------------------
 
 " Setting options {{{1
@@ -108,6 +108,9 @@ noremap v V
 
 " yank to the end of line
 nnoremap Y y$
+
+" yank entire lines
+nnoremap yie :<C-u>%y<CR>
 
 " remove spaces at the end of lines
 nnoremap <silent> ,<Space> :<C-u>silent! keeppatterns %substitute/\s\+$//e<CR>
