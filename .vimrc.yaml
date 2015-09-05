@@ -447,7 +447,6 @@ plugin:
     script: |
       nnoremap <silent><C-p> :<C-u>CtrlPMRUFiles<CR>
       nnoremap <silent><C-o> :<C-u>CtrlPCurFile<CR>
-      nnoremap <silent><S-l> :<C-u>CtrlPLine<CR>
     beforeScript: |
       let g:ctrlp_cmd = 'CtrlPMRUFiles'
       let g:ctrlp_show_hidden = 1
