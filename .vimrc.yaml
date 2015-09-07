@@ -161,6 +161,10 @@ plugin:
     filetype: qf
   itchyny/vim-tmpbuffer:
     command: Tmpbuffer
+  itchyny/vim-hatena-link:
+    command: HatenaLinkPaste
+    script: |
+      nnoremap <silent><S-l> :<C-u>HatenaLinkPaste<CR>
   itchyny/vim-winfix:
     {}
   itchyny/vim-cursorword:
