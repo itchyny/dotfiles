@@ -219,9 +219,10 @@ plugin:
     script: |
       let g:neosnippet#snippets_directory = [ expand((isdirectory(expand('~/Dropbox/.vim/miv')) ? '~/Dropbox' : '~') . '/.vim/miv/extra-snippets/snippets'),
               \ expand((isdirectory(expand('~/Dropbox/.vim/miv')) ? '~/Dropbox' : '~') . '/.vim/miv/scala-vim-snippets') ]
-      imap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
-      smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+      imap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : repeat("\<Space>", &shiftwidth)
+      smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : repeat("\<Space>", &shiftwidth)
       imap <expr><C-o> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<ESC>o"
+      imap <expr> <Plug>(neosnippet-emmet-supertab) neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : repeat("\<Space>", &shiftwidth)
       let g:neosnippet#scope_aliases = { 'typescript': 'javascript' }
   Shougo/neosnippet-snippets: {}
   thinca/vim-quickrun:
@@ -748,8 +749,8 @@ plugin:
     beforeScript: |
       let g:user_emmet_settings = { 'indentation' : '  ' }
     afterScript: |
-      imap <expr><silent> <Plug>(neosnippet-emmet-supertab) neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : emmet#isExpandable() ? "\<Plug>(emmet-expand-abbr)" : pumvisible() ? "\<C-n>" : "\<Tab>"
-      imap <expr><silent> <Plug>(emmet-supertab) emmet#isExpandable() ? "\<Plug>(emmet-expand-abbr)" : pumvisible() ? "\<C-n>" : "\<Tab>"
+      imap <expr><silent> <Plug>(neosnippet-emmet-supertab) neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : emmet#isExpandable() ? "\<Plug>(emmet-expand-abbr)" : pumvisible() ? "\<C-n>" : repeat("\<Space>", &shiftwidth)
+      imap <expr><silent> <Plug>(emmet-supertab) emmet#isExpandable() ? "\<Plug>(emmet-expand-abbr)" : pumvisible() ? "\<C-n>" : repeat("\<Space>", &shiftwidth)
   wavded/vim-stylus:
     filetype: stylus
   groenewege/vim-less:
@@ -894,7 +895,7 @@ filetypeScript:
     setlocal ofu=js#CompleteJS nospell
   typescript: |
     setlocal ofu=js#CompleteJS nospell
-    imap <expr><buffer> <Tab> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+    imap <buffer> <Tab> <Plug>(neosnippet-emmet-supertab)
   php: |
     setlocal ofu=phpcomplete#CompletePHP
   xml: |
