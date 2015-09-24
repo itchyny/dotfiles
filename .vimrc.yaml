@@ -78,6 +78,15 @@ plugin:
       map <Leader>n <Plug>(external-explorer)
       map <Leader>b <Plug>(external-browser)
       map ge <Plug>(external-explorer)
+  itchyny/vim-increx:
+    mappings:
+      - <Plug>(increx-incr)
+      - <Plug>(increx-decr)
+    script: |
+      nmap <C-a> <Plug>(increx-incr)
+      nmap <C-x> <Plug>(increx-decr)
+      nmap + <Plug>(increx-incr)
+      nmap - <Plug>(increx-decr)
   itchyny/vim-qffrom:
     commands:
       - Qffrom
