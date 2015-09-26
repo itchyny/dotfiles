@@ -405,15 +405,6 @@ plugin:
 
   Align:
     command: Align
-  zef/vim-cycle:
-    mappings:
-      - <Plug>CycleNext
-      - <Plug>CyclePrevious
-    script: |
-      nmap <C-a> <Plug>CycleNext
-      nmap <C-x> <Plug>CyclePrevious
-      nmap + <Plug>CycleNext
-      nmap - <Plug>CyclePrevious
   VimCalc:
     command: Calc
     mapleader: ","
