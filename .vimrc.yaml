@@ -749,8 +749,8 @@ plugin:
     beforeScript: |
       let g:user_emmet_settings = { 'indentation' : '  ' }
     afterScript: |
-      imap <expr><silent> <Plug>(neosnippet-emmet-supertab) neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : emmet#isExpandable() ? "\<Plug>(emmet-expand-abbr)" : pumvisible() ? "\<C-n>" : repeat("\<Space>", &shiftwidth)
-      imap <expr><silent> <Plug>(emmet-supertab) emmet#isExpandable() ? "\<Plug>(emmet-expand-abbr)" : pumvisible() ? "\<C-n>" : repeat("\<Space>", &shiftwidth)
+      imap <expr><silent> <Plug>(neosnippet-emmet-supertab) neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : &filetype =~# '\vhtml<bar>haml<bar>jade<bar>slim<bar>css<bar>less<bar>sass<bar>scss' && emmet#isExpandable() ? "\<Plug>(emmet-expand-abbr)" : pumvisible() ? "\<C-n>" : repeat("\<Space>", &shiftwidth)
+      imap <expr><silent> <Plug>(emmet-supertab) &filetype =~# '\vhtml<bar>haml<bar>jade<bar>slim<bar>css<bar>less<bar>sass<bar>scss' && emmet#isExpandable() ? "\<Plug>(emmet-expand-abbr)" : pumvisible() ? "\<C-n>" : repeat("\<Space>", &shiftwidth)
   wavded/vim-stylus:
     filetype: stylus
   groenewege/vim-less:
