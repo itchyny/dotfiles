@@ -10,7 +10,7 @@ plugin:
               \. 'landscape|lightline|lightline-powerful|spellbad-pattern|calendar|'
               \. 'thumbnail|dictionary|screensaver|gitbranch|closebuffer|external|'
               \. 'insert-mode-motion|cmdline-ranges|cmdline-escape|autoft|extracmd|'
-              \. 'extra-snippets|highlighturl|cursorword|winfix|qffrom|qfedit|'
+              \. 'extra-snippets|highlighturl|cursorword|winfix|qffrom|qfedit|increx|'
               \. 'unite-(preview|eject|changetime|auto-open)|vicenza|adblock-fast|'
               \. 'haskell-indent|sjsp|py2bf|github-better-header|mackerel\S*)/)'
     afterScript: |
