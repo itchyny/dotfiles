@@ -126,7 +126,7 @@ plugin:
   itchyny/vim-autoft:
     beforeScript: |
       let g:autoft_config = [
-            \ { 'filetype': 'html'     , 'pattern': '<\%(!DOCTYPE\|html\|head\|script\|meta\|link\)\|^html:5\s*$' },
+            \ { 'filetype': 'html'     , 'pattern': '<\%(!DOCTYPE\|html\|head\|script\|meta\|link|div\|span\)\>\|^html:5\s*$' },
             \ { 'filetype': 'tex'      , 'pattern': '\\\%(document\|begin\|usepackage\|section\)' },
             \ { 'filetype': 'c'        , 'pattern': '^\s*#\s*\%(include\|define\)\>' },
             \ { 'filetype': 'go'       , 'pattern': '^import (' },
