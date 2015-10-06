@@ -335,12 +335,15 @@ plugin:
       - unite-changetime
       - unite-preview
   Shougo/unite-build:
+    enable: "0"
     loadafter:
       - unite
   ujihisa/unite-colorscheme:
+    enable: "0"
     loadafter:
       - unite
   osyo-manga/unite-highlight:
+    enable: "0"
     loadafter:
       - unite
   eagletmt/unite-haddock:
@@ -367,6 +370,7 @@ plugin:
     loadafter:
       - unite
   itchyny/unite-auto-open:
+    enable: "0"
     loadafter:
       - unite
     afterScript: |
