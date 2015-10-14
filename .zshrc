@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2015/08/19 19:24:07.
+# - * Last Change: 2015/10/13 09:08:43.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -190,6 +190,8 @@ elif [ "$(uname)" = "Linux" ]; then
   dropbox () {
     dropbox "${1:-start}"
   }
+  alias suspend='dbus-send --system --print-reply --dest="org.freedesktop.UPower" /org/freedesktop/UPower org.freedesktop.UPower.Suspend'
+  alias hibernate='dbus-send --system --print-reply --dest="org.freedesktop.UPower" /org/freedesktop/UPower org.freedesktop.UPower.Hibernate'
 fi
 alias chrome='google-chrome'
 function runc () {
