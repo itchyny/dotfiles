@@ -159,7 +159,6 @@ plugin:
       call extracmd#set('<silent>', 'gdc'    , 'Tmpbuffer git diff --cached <bar> set filetype=diff')
       call extracmd#set('<silent>', 'aoff'   , 'AutodateOFF')
       call extracmd#set('<silent>', 'aon'    , 'AutodateON')
-      call extracmd#set('<silent>', '[a]git' , 'Agit')
       call extracmd#set('<silent>', 'bc'     , 'Calc')
       call extracmd#set('<silent>', 'cal[endar]', 'Calendar -position=topleft -split=vertical -width=27 -view=year')
       call extracmd#set('<silent>', 'date'   , 'echo strftime("%x (%a) %X")')
