@@ -801,7 +801,7 @@ plugin:
 
 beforeScript: |
   let g:iswin = has('win16') || has('win32') || has('win64')
-  let g:ismac = !g:iswin && !has('win32unix') && (has('mac') || has('macunix') || has('guimacvim'))
+  let g:ismac = !g:iswin && !has('win32unix') && (has('mac') || has('macunix'))
   let g:fancy = g:ismac && has('multi_byte')
 
   let g:loaded_2html_plugin = 1
