@@ -133,6 +133,7 @@ plugin:
             \ { 'filetype': 'scala'    , 'pattern': '^\%(import\|module\) \%([a-pr-z]\)' },
             \ { 'filetype': 'haskell'  , 'pattern': '^\%(import\|module\) \%([A-Z]\|qualified\)\|main\s*::\|::.*->\|{-# *\%(LANGUAGE\|OPTIONS\)\|^{-' },
             \ { 'filetype': 'diff'     , 'pattern': '^diff -' },
+            \ { 'filetype': 'javascript', 'pattern': 'function *\k* *([^)]*) *{\|window\.' },
             \ { 'filetype': 'sh'       , 'pattern': '^#!.*\%(\<sh\>\|\<bash\>\)\s*$\|if [ -' },
             \ { 'filetype': 'hatena'   , 'pattern': '^\%(>|[a-z]\+|\|||<\)$\|^*\[[a-z]\+]' },
             \ { 'filetype': 'vim'      , 'pattern': '\%(^{\|\<\%(let\|set\|autocmd\) \)\|noremap\|g:loaded_\|&l:\|(g:,\|^Called *\d\+ *times$' },
