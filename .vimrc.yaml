@@ -799,6 +799,10 @@ plugin:
     filetype: scala
   fatih/vim-go:
     filetype: go
+  kballard/vim-swift:
+    filetype: swift
+    beforeScript: |
+      let g:swift_suppress_showmatch_warning = 1
 
 beforeScript: |
   let g:iswin = has('win16') || has('win32') || has('win64')
@@ -1049,3 +1053,4 @@ filetypeDetect:
   stylus: stylus
   scala: scala
   sbt: scala
+  swift: swift
