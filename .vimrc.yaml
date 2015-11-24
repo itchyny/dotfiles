@@ -966,7 +966,7 @@ filetypeScript:
     nmap <buffer> <Up> GA<Plug>(vimshell_history_unite)
     imap <buffer> <Down> <ESC>GA<Plug>(vimshell_history_unite)
     nmap <buffer> <Down> GA<Plug>(vimshell_history_unite)
-    setlocal nonumber synmaxcol=10000
+    setlocal nonumber synmaxcol=10000 noautoindent indentkeys=
   agit: |
     nmap <buffer> <C-r> <Plug>(agit-reload)
     nunmap <buffer> <C-k>
