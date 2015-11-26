@@ -175,7 +175,8 @@ plugin:
     script: |
       nnoremap <silent><S-l> :<C-u>HatenaLinkPaste<CR>
   itchyny/vim-winfix:
-    {}
+    script: |
+      let g:winfix_tabfocus = 0
   itchyny/vim-cursorword:
     afterScript: |
       augroup cursorword-filetype
