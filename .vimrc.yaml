@@ -772,6 +772,8 @@ plugin:
     filetype: slim
   kchmck/vim-coffee-script:
     filetype: coffee
+  raichoo/purescript-vim:
+    filetype: purescript
   briancollins/vim-jst:
     filetype: jst
   rest.vim:
@@ -907,6 +909,12 @@ filetypeScript:
   typescript: |
     setlocal ofu=js#CompleteJS nospell
     imap <buffer> <Tab> <Plug>(neosnippet-emmet-supertab)
+  purescript: |
+    highlight link purescriptImport Include
+    highlight link purescriptQualifiedImport Include
+    highlight link purescriptType Normal
+    highlight link purescriptDot Normal
+    highlight link purescriptDelimiter Normal
   php: |
     setlocal ofu=phpcomplete#CompletePHP
   xml: |
@@ -1031,6 +1039,7 @@ filetypeDetect:
   meissa: meissa
   coffee: coffee
   litcoffee: litcoffee
+  purs: purescript
   cson: coffee
   ts: typescript
   ejs: jst
