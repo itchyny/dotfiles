@@ -1034,30 +1034,18 @@ filetypeDetect:
   r: r
   roy: roy
   meissa: meissa
-  coffee: coffee
+  coffee,cson: coffee
   litcoffee: litcoffee
   purs: purescript
-  cson: coffee
   ts: typescript
-  ejs: jst
-  jst: jst
-  hamljs: jst
+  ejs,jst,hamljs: jst
   stl: stl
-  cls: tex
-  aux: tex
-  toc: tex
-  nav: tex
-  clo: tex
-  tex: tex
+  tex,cls,aux,toc,nav,clo: tex
   hs: haskell
   hx: haxe
-  md: markdown
-  mkd: markdown
-  markdown: markdown
+  md,mkd,markdown: markdown
   yaml: yaml
   m: objc
-  styl: stylus
-  stylus: stylus
-  scala: scala
-  sbt: scala
+  styl,stylus: stylus
+  scala,sbt: scala
   swift: swift
