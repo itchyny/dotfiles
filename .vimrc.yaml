@@ -195,6 +195,8 @@ plugin:
     {}
   itchyny/vim-haskell-indent:
     filetype: haskell
+  itchyny/vim-haskell-sort-import:
+    filetype: haskell
   itchyny/vim-pdf:
     filetype: pdf
 
@@ -997,24 +999,8 @@ filetypeScript:
     setlocal iskeyword=39,48-57,95,a-z,A-Z,192-255
     nnoremap <buffer> <Leader>l :<C-u>GhciLoad<CR>
     nnoremap <buffer> <Leader>i :<C-u>GhciInfo<CR>
-    function! s:sorter(x, y) abort
-      return (matchstr(a:x, 'import *\%(qualified\)\? *\zs\S\+') > matchstr(a:y, 'import *\%(qualified\)\? *\zs\S\+')) * 2 - 1
-    endfunction
     augroup haskell-bufwritepre
-      autocmd BufWritePre <buffer>
-            \   let s:cursor = getpos('.')
-            \ | let s:view = winsaveview()
-            \ | let s:start = search('^import')
-            \ | let s:end = search('^\%(import\)\@!') - 1
-            \ | if s:start > 0 && s:end > s:start
-            \ |   let s:lines = map(range(s:start, s:end), 'getline(v:val)')
-            \ |   if join(s:lines) !=# join(sort(s:lines, function('s:sorter')))
-            \ |     call setline(s:start, sort(s:lines, function('s:sorter')))
-            \ |   endif
-            \ | endif
-            \ | %s/\[Char\]/String/geI
-            \ | call setpos('.', s:cursor)
-            \ | call winrestview(s:view)
+      autocmd BufWritePre <buffer> HaskellSortImport
     augroup END
   pdf: |
     nmap <silent><buffer> <C-@> <C-t>
