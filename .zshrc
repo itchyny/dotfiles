@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2015/11/29 19:19:53.
+# - * Last Change: 2015/12/25 08:22:40.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -106,6 +106,10 @@ bindkey "^E" end-of-line
 bindkey "^D" delete-char
 bindkey "^F" forward-char
 bindkey "^B" backward-char
+
+# search history
+bindkey "^R" history-beginning-search-backward
+bindkey '/' history-incremental-search-backward
 
 # export variables
 export LANG=ja_JP.UTF-8
