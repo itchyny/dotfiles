@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2015/12/25 09:06:25.
+# - * Last Change: 2015/12/25 09:08:44.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -109,7 +109,7 @@ bindkey "^B" backward-char
 
 # search history
 bindkey "^R" history-beginning-search-backward
-bindkey '/' history-incremental-search-backward
+bindkey '/' history-incremental-pattern-search-backward
 zle_highlight=(isearch:fg=yellow)
 
 # export variables
