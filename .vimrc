@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2015/09/01 23:24:33.
+" - * Last Change: 2015/12/25 23:34:02.
 " --------------------------------------------------------------------------------------------------------
 
 " Setting options {{{1
@@ -24,7 +24,7 @@ silent! set nosplitbelow nosplitright startofline linespace=0 whichwrap=b,s scro
 silent! set equalalways nowinfixwidth nowinfixheight winminwidth=3 winminheight=3 nowarn noconfirm
 silent! set fillchars=vert:\|,fold:\  eventignore= helplang=en viewoptions=options,cursor virtualedit=
 if has('gui_running') | set lines=999 columns=999 | else | set t_Co=256 | endif
-silent! let [&t_SI,&t_EI] = ["\e]50;CursorShape=1\x7","\e]50;CursorShape=0\x7"]
+silent! let [&t_SI,&t_EI] = exists('$TMUX') ? ["\ePtmux;\e\e[5 q\e\\","\ePtmux;\e\e[2 q\e\\"] : ["\e]50;CursorShape=1\x7","\e]50;CursorShape=0\x7"]
 
 " Editing
 silent! set iminsert=0 imsearch=0 nopaste pastetoggle= nogdefault comments& commentstring=#\ %s
