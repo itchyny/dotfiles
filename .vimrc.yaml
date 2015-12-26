@@ -807,6 +807,8 @@ plugin:
     filetype: swift
     beforeScript: |
       let g:swift_suppress_showmatch_warning = 1
+  tmux-plugins/vim-tmux:
+    filetype: tmux
 
 beforeScript: |
   let g:iswin = has('win16') || has('win32') || has('win64')
@@ -1035,3 +1037,4 @@ filetypeDetect:
   styl,stylus: stylus
   scala,sbt: scala
   swift: swift
+  tmux.conf: tmux
