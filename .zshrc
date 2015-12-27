@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2015/12/27 23:59:23.
+# - * Last Change: 2015/12/28 08:27:43.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -267,7 +267,8 @@ alias ungzip='gzip -d'
 alias untar='tar xvf'
 # others
 if command -v htop > /dev/null 2>&1; then
-  alias top='htop'
+  alias top='TERM=screen htop'
+  alias htop='TERM=screen htop'
 fi
 which cam > /dev/null && alias slideshow='cam -q -C -s 1'
 [ -e ~/Dropbox/py/itchyny/tweet.py ] && \
