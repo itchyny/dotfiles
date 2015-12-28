@@ -158,6 +158,8 @@ plugin:
       call extracmd#set('<silent>', 'scr[iptnames]', 'Tmpbuffer scriptnames')
       call extracmd#set('<silent>', 'gd'     , 'Tmpbuffer git diff <bar> set filetype=diff')
       call extracmd#set('<silent>', 'gdc'    , 'Tmpbuffer git diff --cached <bar> set filetype=diff')
+      command! -nargs=* Git Tmpbuffer git <args>
+      call extracmd#set('git'    , 'Git')
       call extracmd#set('<silent>', 'aoff'   , 'AutodateOFF')
       call extracmd#set('<silent>', 'aon'    , 'AutodateON')
       call extracmd#set('<silent>', 'bc'     , 'Calc')
