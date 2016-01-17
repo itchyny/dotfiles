@@ -169,6 +169,7 @@ plugin:
       call extracmd#set('<silent>', 'di'     , 'Dictionary -cursor-word -no-duplicate')
       call extracmd#set('<silent>', 'lin'    , 'silent! call vimlint#vimlint(expand("%"), {"output": "quickfix"}) <bar> leftabove copen')
       call extracmd#set('<silent>', 'lint'   , 'silent! call vimlint#vimlint(".", {"output": "quickfix"}) <bar> leftabove copen')
+      call extracmd#set('<silent>', 'push'   , 'call system("blogsync push " . string(expand("%:p")))')
   itchyny/vim-qfedit:
     filetype: qf
   itchyny/vim-tmpbuffer:
