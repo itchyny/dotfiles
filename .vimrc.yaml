@@ -110,7 +110,7 @@ plugin:
             \           . substitute( 'grep --exclude-dir=.git --exclude-dir=.svn '
             \           . '--exclude=tags --exclude=\*.{bak,aux,bib,bbl,blg,nav,toc,out,min.js,min.css} --exclude=.histfile\* -HIsinr -- $* <dir>; fi'
             \           , 'exclude-dir', 'exclude' . (has('win32') || has('win64') ? '' : '-dir'), 'g'), 'git_root': 1 },
-            \   'find': { 'command': 'find <dir> -name .git -prune -o -type f -iname ''$*'' -print', 'git_root': 1 },
+            \   'find': { 'command': 'find <dir> -name .git -prune -o -name cache -prune -o -type f -iname $* -print', 'git_root': 1 },
             \   'make': { 'command': 'cd <dir> 2>&1 && '
             \           . 'if test -f Makefile -o -f makefile; then make $* 2>&1; '
             \           . 'elif test -f configure; then ./configure 2>&1 && make 2>&1; '
