@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2015/12/28 08:27:43.
+# - * Last Change: 2016/01/22 08:46:17.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -175,7 +175,7 @@ if [ "$(uname)" = "Darwin" ]; then
   alias eog='open -a Preview'
   alias port-update='sudo port selfupdate && sudo port upgrade outdated'
   alias brew-update='brew update; brew upgrade'
-  alias update='cabal-update && brew-update'
+  alias update='cabal-update; brew-update'
   pman () {
     man -t "$1" | open -f -a /Applications/Preview.app
   }
@@ -188,7 +188,7 @@ if [ "$(uname)" = "Darwin" ]; then
   }
 elif [ "$(uname)" = "Linux" ]; then
   alias apt-get-update='sudo apt-get update'
-  alias update='cabal-update && apt-get-update'
+  alias update='cabal-update; apt-get-update'
   alias open='gnome-open'
   alias pbcopy='xsel --clipboard --input'
   dropbox () {
