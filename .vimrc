@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2015/12/25 23:34:02.
+" - * Last Change: 2016/01/24 20:36:25.
 " --------------------------------------------------------------------------------------------------------
 
 " Setting options {{{1
@@ -143,8 +143,8 @@ nnoremap <expr><C-m> (bufname('%') ==# '[Command Line]' <bar><bar> &l:buftype ==
 nnoremap <C-q> <C-w>
 
 " improve scroll
-noremap <expr> <C-b> max([winheight(0) - 2, 1]) . "\<C-u>" . (line("w0") <= 1         ? "H" : "L")
-noremap <expr> <C-f> max([winheight(0) - 2, 1]) . "\<C-d>" . (line("w$") >= line('$') ? "L" : "H")
+noremap <expr> <C-b> max([winheight(0) - 2, 1]) . "\<C-u>" . (line(".") < 1         + winheight(0) ? "H" : "2L")
+noremap <expr> <C-f> max([winheight(0) - 2, 1]) . "\<C-d>" . (line(".") > line('$') - winheight(0) ? "L" : "2H")
 noremap <expr> <C-y> (line("w0") <= 1         ? "k" : "\<C-y>")
 noremap <expr> <C-e> (line("w$") >= line('$') ? "j" : "\<C-e>")
 
