@@ -478,12 +478,12 @@ plugin:
       let g:surround_{char2nr('$')} = "$\r$"
   tomtom/tcomment_vim:
     command: TComment
-    mapping: <Plug>TComment-gc
+    mapping: <Plug>TComment_gc
     function: tcomment
     script: |
       nnoremap <silent> __ :TComment<CR>
       vnoremap <silent> __ :TComment<CR>
-      nmap <silent> gc <Plug>TComment-gc
+      nmap <silent> gc <Plug>TComment_gc
     beforeScript: |
       let g:tcommentMapLeader1 = ''
       let g:tcommentMapLeader2 = ''
