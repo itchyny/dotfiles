@@ -1,13 +1,13 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2016/01/27 00:03:07.
+# - * Last Change: 2016/01/28 08:38:32.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
 
   itchyny/landscape.vim:
-    beforeScript: |
+    before: |
       let g:landscape_highlight_todo = 1
       let g:landscape_cursorline = 0
       let g:landscape_vimfiler_important =
@@ -20,14 +20,14 @@ plugin:
               \. 'unite-(preview|eject|changetime|auto-open)|vicenza|tmpbuffer|'
               \. 'hatena-link|haskell-(indent|sort-import)|'
               \. 'sjsp|py2bf|github-better-header|mackerel\S*)/)'
-    afterScript: |
+    after: |
       colorscheme landscape
   itchyny/lightline.vim:
     script: |
       exec 'set gfn=' . substitute('Inconsolata for Powerline', ' ', g:iswin ? '_' : '\\ ', 'g') . (g:ismac ? ':h15' : g:iswin ?  ':h13:cANSI' : '\ 12')
       if g:iswin | set gfw=MS_Gothic:h11:cSHIFTJIS | endif
   itchyny/lightline-powerful:
-    beforeScript: |
+    before: |
       let g:lightline = {'colorscheme': 'landscape','mode_map':{'c': 'NORMAL'}}
   itchyny/vim-spellbad-pattern:
     script: |
@@ -39,7 +39,7 @@ plugin:
     mapping: <Plug>(calendar)
     script: |
       map <silent> <Leader>z <Plug>(calendar)
-    beforeScript: |
+    before: |
       let g:calendar_cache_directory = $CACHE.'/calendar'
       let g:calendar_views = [ 'year', 'month', 'day_3', 'clock' ]
       let g:calendar_google_calendar = 1
@@ -56,7 +56,7 @@ plugin:
     mapping: <Plug>(dictionary)
     script: |
       nnoremap <silent> <Leader>y :<C-u>Dictionary -no-duplicate<CR>
-    beforeScript: |
+    before: |
       let g:dictionary_executable_path = isdirectory(expand('~/Dropbox/.bin/')) ? '~/Dropbox/.bin/' : '~/.bin/'
     dependon:
       - vimproc
@@ -106,7 +106,7 @@ plugin:
       nnoremap K    :<C-u>Grep <C-r><C-w><CR>
       nnoremap gf   :<C-u>Find<Space>
       nnoremap <F5> :<C-u>Make<CR>
-    beforeScript: |
+    before: |
       let g:qffrom = {
             \   '_'   : { 'post': 'leftabove copen' },
             \   'grep': { 'command':
@@ -131,7 +131,7 @@ plugin:
       command! -nargs=* Make Qffrom make <args>
       command! -nargs=* Vint Qffrom vint <args>
   itchyny/vim-autoft:
-    beforeScript: |
+    before: |
       let g:autoft_config = [
             \ { 'filetype': 'html'     , 'pattern': '<\%(!DOCTYPE\|html\|head\|script\|meta\|link|div\|span\)\>\|^html:5\s*$' },
             \ { 'filetype': 'tex'      , 'pattern': '\\\%(document\|begin\|usepackage\|section\)' },
@@ -148,7 +148,7 @@ plugin:
             \ { 'filetype': 'markdown' , 'pattern': '^# $' },
             \ ]
   itchyny/vim-extracmd:
-    afterScript: |
+    after: |
       call extracmd#set('a[ppend]', '')
       call extracmd#set('i[nsert]', '')
       call extracmd#set('<silent>', 'vp[s]'  , 'vsp')
@@ -188,7 +188,7 @@ plugin:
     script: |
       let g:winfix_tabfocus = 0
   itchyny/vim-cursorword:
-    afterScript: |
+    after: |
       augroup cursorword-filetype
         autocmd!
         autocmd FileType qf,unite,vimfiler,vimshell,thumbnail,vimcalc,quickrun,calendar,github-dashboard let b:cursorword = 0
@@ -212,7 +212,7 @@ plugin:
 
   Shougo/neocomplete.vim:
     enable: has('lua') && v:version > 703
-    beforeScript: |
+    before: |
       let g:neocomplete#enable_at_startup = 1
       let g:neocomplete#enable_smart_case = 1
       let g:neocomplete#max_list = 1000
@@ -230,7 +230,7 @@ plugin:
       let g:neocomplete#sources#omni#input_patterns.typescript = '[[:alpha:]./"''$]\+'
       let g:neocomplete#sources#omni#input_patterns.haskell = 'import\s\+.*\|[:alpha:]\.\w*'
       let g:neocomplete#sources#omni#input_patterns.pdf = '[-/%a-zA-Z0-9_]\+'
-    afterScript: |
+    after: |
       call neocomplete#custom#source('omni', 'rank', 7)
       call neocomplete#custom#source('omni', 'converters', ['converter_remove_last_paren'])
       call neocomplete#custom#source('look', 'min_pattern_length', 3)
@@ -252,7 +252,7 @@ plugin:
     mapleader: \
     dependon:
       - vimproc
-    beforeScript: |
+    before: |
       let g:quickrun_config = {'_': {'runner': 'vimproc', 'runner/vimproc/updatetime': 200, 'split': 'vertical', 'into': 1}}
       for [s:ft, s:exe] in [['quickrun', 'cat'], ['javascript', 'node'], ['roy', 'roy'], ['qcl', 'qcl'], ['brainfuck', 'bf'], ['text', 'cat']]
         let g:quickrun_config[s:ft] = {'command': s:exe}
@@ -293,7 +293,7 @@ plugin:
     dependon:
       - vimproc
       - unite
-    beforeScript: |
+    before: |
       let g:vimfiler_as_default_explorer = 1
       let g:vimfiler_sort_type = 'TIME'
       let g:vimfiler_safe_mode_by_default = 0
@@ -324,12 +324,12 @@ plugin:
       - Unite
     mapleader: ","
     function: unite
-    beforeScript: |
+    before: |
       let g:unite_force_overwrite_statusline = 0
       let g:unite_data_directory = $CACHE.'/unite'
       let g:unite_source_grep_max_candidates = 500
       let g:unite_source_find_max_candidates = 500
-    afterScript: |
+    after: |
       call unite#custom#profile('default', 'context', {
             \ 'start_insert' : 1,
             \ 'prompt_direction': 'top',
@@ -375,7 +375,7 @@ plugin:
     enable: "0"
     loadafter:
       - unite
-    afterScript: |
+    after: |
       call unite#custom_default_action('file', 'auto_open')
   itchyny/unite-changetime:
     loadafter:
@@ -392,7 +392,7 @@ plugin:
     function: vimshell
     dependon:
       - vimproc
-    beforeScript: |
+    before: |
       let g:vimshell_interactive_update_time = 150
       let g:vimshell_popup_command = 'top new'
       let g:vimshell_split_command = 'vsplit'
@@ -425,7 +425,7 @@ plugin:
     commands:
       - Tagbar
       - TagbarToggle
-    beforeScript: |
+    before: |
       let g:tagbar_sort = 0
       let g:tagbar_autofocus = 1
       let g:tagbar_show_linenumbers = 1
@@ -458,7 +458,7 @@ plugin:
     script: |
       nnoremap <silent><C-p> :<C-u>CtrlPMRUFiles<CR>
       nnoremap <silent><C-o> :<C-u>CtrlPCurFile<CR>
-    beforeScript: |
+    before: |
       let g:ctrlp_cmd = 'CtrlPMRUFiles'
       let g:ctrlp_show_hidden = 1
       let g:ctrlp_max_depth = 5
@@ -480,7 +480,7 @@ plugin:
       nmap ds <Plug>Dsurround
       nmap cs <Plug>Csurround
       vmap S <Plug>VSurround
-    beforeScript: |
+    before: |
       let g:surround_{char2nr('$')} = "$\r$"
   tomtom/tcomment_vim:
     command: TComment
@@ -490,11 +490,11 @@ plugin:
       nnoremap <silent> __ :TComment<CR>
       vnoremap <silent> __ :TComment<CR>
       nmap <silent> gc <Plug>TComment_gc
-    beforeScript: |
+    before: |
       let g:tcommentMapLeader1 = ''
       let g:tcommentMapLeader2 = ''
   autodate.vim:
-    beforeScript: |
+    before: |
       let g:autodate_format = '%Y/%m/%d %H:%M:%S'
   gregsexton/MatchTag: {}
   matchit.zip: {}
@@ -517,7 +517,7 @@ plugin:
   eagletmt/neco-ghc:
     filetype: haskell
     enable: executable('ghc') && executable('ghc-mod')
-    beforeScript: |
+    before: |
       let g:necoghc_enable_detailed_browse = 1
 
   cohama/agit.vim:
@@ -525,7 +525,7 @@ plugin:
     commands:
       - Agit
       - AgitFile
-    beforeScript: |
+    before: |
       let g:agit_enable_auto_refresh = 1
     script: |
       nnoremap <silent> <Leader>g :<C-u>Agit<CR>
@@ -556,7 +556,7 @@ plugin:
       - cpp
       - haskell
       - sh
-    beforeScript: |
+    before: |
       let g:syntastic_mode_map = { 'mode': 'passive' }
       let g:syntastic_echo_current_error = 0
       let g:syntastic_enable_highlighting = 0
@@ -671,7 +671,7 @@ plugin:
     mappings:
       - <Plug>(textobj-multiblock-a)
       - <Plug>(textobj-multiblock-i)
-    beforeScript: |
+    before: |
       let g:textobj_multiblock_no_default_key_mappings = 1
       let g:textobj_multiblock_blocks = [
             \ [ '(', ')', 1 ],
@@ -695,7 +695,7 @@ plugin:
     mappings:
       - <Plug>(textobj-multitextobj-a)
       - <Plug>(textobj-multitextobj-i)
-    beforeScript: |
+    before: |
       let g:textobj_multitextobj_textobjects_i = [
             \   { 'textobj': "\<Plug>(textobj-multiblock-i)", 'is_cursor_in': 1 },
             \   { 'textobj': "\<Plug>(textobj-comment-i)", 'is_cursor_in': 1 },
@@ -719,7 +719,7 @@ plugin:
     mappings:
       - <Plug>(textobj-between-a)
       - <Plug>(textobj-between-i)
-    beforeScript: |
+    before: |
       let g:textobj_between_no_default_key_mappings = 1
       omap ib <Plug>(textobj-between-i)
       omap ab <Plug>(textobj-between-a)
@@ -730,7 +730,7 @@ plugin:
   kana/vim-operator-replace:
     dependon:
       - operator-user
-    beforeScript: |
+    before: |
       nmap [  <Plug>(operator-replace)
 
   motemen/hatena-vim:
@@ -751,9 +751,9 @@ plugin:
       - scss
     dependon:
       - webapi
-    beforeScript: |
+    before: |
       let g:user_emmet_settings = { 'indentation' : '  ' }
-    afterScript: |
+    after: |
       imap <expr><silent> <Plug>(neosnippet-emmet-supertab) neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : &filetype =~# '\vhtml<bar>haml<bar>jade<bar>slim<bar>css<bar>less<bar>sass<bar>scss' && emmet#isExpandable() ? "\<Plug>(emmet-expand-abbr)" : pumvisible() ? "\<C-n>" : repeat("\<Space>", &shiftwidth)
       imap <expr><silent> <Plug>(emmet-supertab) &filetype =~# '\vhtml<bar>haml<bar>jade<bar>slim<bar>css<bar>less<bar>sass<bar>scss' && emmet#isExpandable() ? "\<Plug>(emmet-expand-abbr)" : pumvisible() ? "\<C-n>" : repeat("\<Space>", &shiftwidth)
   wavded/vim-stylus:
@@ -780,7 +780,7 @@ plugin:
     filetype: markdown
   davidhalter/jedi-vim:
     filetype: python
-    beforeScript: |
+    before: |
       let g:jedi#auto_vim_configuration = 0
       let g:jedi#popup_select_first = 0
       let g:jedi#completions_enabled = 0
@@ -791,7 +791,7 @@ plugin:
       - javascript
       - coffee
       - typescript
-    beforeScript: |
+    before: |
       let g:vimjs#casesensistive = 1
       let g:vimjs#chromeapis = 1
       let g:vimjs#smartcomplete = 1
@@ -803,12 +803,12 @@ plugin:
     filetype: go
   kballard/vim-swift:
     filetype: swift
-    beforeScript: |
+    before: |
       let g:swift_suppress_showmatch_warning = 1
   tmux-plugins/vim-tmux:
     filetype: tmux
 
-beforeScript: |
+before: |
   let g:iswin = has('win16') || has('win32') || has('win64')
   let g:ismac = !g:iswin && !has('win32unix') && (has('mac') || has('macunix'))
   let g:fancy = g:ismac && has('multi_byte')
@@ -843,10 +843,10 @@ beforeScript: |
     vnew `=dir . tolower(a:2) . 'i'`
   endfunction
 
-afterScript: |
+after: |
   let g:mapleader = ','
 
-filetypeScript:
+filetype:
   vim: |
     setlocal foldmethod=marker
     cnoremap <buffer><expr> <C-r><C-w> <SID>word()
