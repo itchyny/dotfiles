@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2016/01/28 08:38:32.
+# - * Last Change: 2016/01/30 18:16:08.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -58,8 +58,7 @@ plugin:
       nnoremap <silent> <Leader>y :<C-u>Dictionary -no-duplicate<CR>
     before: |
       let g:dictionary_executable_path = isdirectory(expand('~/Dropbox/.bin/')) ? '~/Dropbox/.bin/' : '~/.bin/'
-    dependon:
-      - vimproc
+    dependon: vimproc
   itchyny/screensaver.vim:
     mapleader: ","
     mapping: <Plug>(screensaver)
@@ -76,7 +75,7 @@ plugin:
       imap <C-w> <Plug>(closebuffer)
   itchyny/vim-external:
     mapleader: \
-    mappings:
+    mapping:
       - <Plug>(external-editor)
       - <Plug>(external-explorer)
       - <Plug>(external-browser)
@@ -86,7 +85,7 @@ plugin:
       map <Leader>b <Plug>(external-browser)
       map ge <Plug>(external-explorer)
   itchyny/vim-increx:
-    mappings:
+    mapping:
       - <Plug>(increx-incr)
       - <Plug>(increx-decr)
     script: |
@@ -95,7 +94,7 @@ plugin:
       nmap + <Plug>(increx-incr)
       nmap - <Plug>(increx-decr)
   itchyny/vim-qffrom:
-    commands:
+    command:
       - Qffrom
       - Grep
       - Find
@@ -250,8 +249,7 @@ plugin:
     command: QuickRun
     mapping: <Plug>(quickrun)
     mapleader: \
-    dependon:
-      - vimproc
+    dependon: vimproc
     before: |
       let g:quickrun_config = {'_': {'runner': 'vimproc', 'runner/vimproc/updatetime': 200, 'split': 'vertical', 'into': 1}}
       for [s:ft, s:exe] in [['quickrun', 'cat'], ['javascript', 'node'], ['roy', 'roy'], ['qcl', 'qcl'], ['brainfuck', 'bf'], ['text', 'cat']]
@@ -287,7 +285,7 @@ plugin:
 
   Shougo/vimfiler:
     mapleader: \
-    commands:
+    command:
       - VimFiler
       - VimFilerBufferDir
     dependon:
@@ -315,13 +313,10 @@ plugin:
       nnoremap <silent> <Leader><Leader> :<C-u>VimFilerBufferDir -status -buffer-name=vimfiler<C-r>=tabpagenr()<CR> -auto-cd<CR>
   Shougo/vinarise.vim:
     mapleader: \
-    loadbefore:
-      - vimfiler
-    commands:
-      - Vinarise
+    loadbefore: vimfiler
+    command: Vinarise
   Shougo/unite.vim:
-    commands:
-      - Unite
+    command: Unite
     mapleader: ","
     function: unite
     before: |
@@ -349,49 +344,40 @@ plugin:
       - unite-changetime
       - unite-preview
   eagletmt/unite-haddock:
-    loadafter:
-      - unite
+    loadafter: unite
     mapleader: ","
     enable: executable('hoogle')
     script: |
       nnoremap <silent> <Leader>h :<C-u>Unite hoogle -buffer-name=hoogle<CR>
   Shougo/unite-outline:
-    loadafter:
-      - unite
+    loadafter: unite
   ujihisa/unite-haskellimport:
     mapleader: ","
-    loadafter:
-      - unite
+    loadafter: unite
     script: |
       nnoremap <silent> <Leader>p :<C-u>Unite haskellimport -buffer-name=haskellimport<CR>
   pasela/unite-webcolorname:
-    loadafter:
-      - unite
+    loadafter: unite
   itchyny/unite-eject:
     enable: "0"
-    loadafter:
-      - unite
+    loadafter: unite
   itchyny/unite-auto-open:
     enable: "0"
-    loadafter:
-      - unite
+    loadafter: unite
     after: |
       call unite#custom_default_action('file', 'auto_open')
   itchyny/unite-changetime:
-    loadafter:
-      - unite
+    loadafter: unite
   itchyny/unite-preview:
-    loadafter:
-      - unite
+    loadafter: unite
 
   Shougo/vimshell.vim:
-    commands:
+    command:
       - VimShell
       - VimShellPop
       - VimShellBufferDir
     function: vimshell
-    dependon:
-      - vimproc
+    dependon: vimproc
     before: |
       let g:vimshell_interactive_update_time = 150
       let g:vimshell_popup_command = 'top new'
@@ -422,9 +408,7 @@ plugin:
     command: GundoToggle
     enable: has('python')
   majutsushi/tagbar:
-    commands:
-      - Tagbar
-      - TagbarToggle
+    command: Tagbar
     before: |
       let g:tagbar_sort = 0
       let g:tagbar_autofocus = 1
@@ -436,11 +420,9 @@ plugin:
   thinca/vim-scouter:
     command: Scouter
   thinca/vim-prettyprint:
-    commands:
-      - PrettyPrint
-      - PP
+    command: PP
   thinca/vim-visualstar:
-    mappings:
+    mapping:
       - <Plug>(visualstar-*)
       - <Plug>(visualstar-#)
     script: |
@@ -450,7 +432,7 @@ plugin:
   tyru/capture.vim:
     command: Capture
   ctrlpvim/ctrlp.vim:
-    commands:
+    command:
       - CtrlP
       - CtrlPMRUFiles
       - CtrlPCurFile
@@ -471,7 +453,7 @@ plugin:
       let g:ctrlp_cache_dir = $CACHE.'/ctrlp'
 
   tpope/vim-surround:
-    mappings:
+    mapping:
       - <Plug>Dsurround
       - <Plug>Csurround
       - <Plug>Ysurround
@@ -502,7 +484,7 @@ plugin:
   eagletmt/ghci-vim:
     filetype: haskell
     enable: executable('ghc')
-    commands:
+    command:
       - GhciQuit
       - GhciType
       - GhciInfo
@@ -512,8 +494,7 @@ plugin:
   eagletmt/ghcmod-vim:
     filetype: haskell
     enable: executable('ghc') && executable('ghc-mod')
-    dependon:
-      - vimproc
+    dependon: vimproc
   eagletmt/neco-ghc:
     filetype: haskell
     enable: executable('ghc') && executable('ghc-mod')
@@ -522,7 +503,7 @@ plugin:
 
   cohama/agit.vim:
     mapleader: ","
-    commands:
+    command:
       - Agit
       - AgitFile
     before: |
@@ -531,27 +512,22 @@ plugin:
       nnoremap <silent> <Leader>g :<C-u>Agit<CR>
   lambdalisue/vim-gita:
     mapleader: ","
-    commands:
-      - Gita
+    command: Gita
   mattn/gist-vim:
     command: Gist
-    dependon:
-      - webapi
+    dependon: webapi
   mattn/webapi-vim:
     loadbefore:
       - gist
       - emmet
   ynkdir/vim-vimlparser:
-    loadbefore:
-      - vimlint
-    dependedby:
-      - vimlint
+    loadbefore: vimlint
+    dependedby: vimlint
   syngan/vim-vimlint:
     function: vimlint
-    dependon:
-      - vimlparser
+    dependon: vimlparser
   scrooloose/syntastic:
-    filetypes:
+    filetype:
       - c
       - cpp
       - haskell
@@ -585,34 +561,31 @@ plugin:
 
   kana/vim-textobj-user: {}
   kana/vim-textobj-entire:
-    dependon:
-      - textobj-user
-    mapmodes:
+    dependon: textobj-user
+    mapmode:
       - o
       - v
-    mappings:
+    mapping:
       - <Plug>(textobj-entire-a)
       - <Plug>(textobj-entire-i)
       - ie
       - ae
   kana/vim-textobj-line:
-    dependon:
-      - textobj-user
-    mapmodes:
+    dependon: textobj-user
+    mapmode:
       - o
       - v
-    mappings:
+    mapping:
       - <Plug>(textobj-line-a)
       - <Plug>(textobj-line-i)
       - il
       - al
   kana/vim-textobj-function:
-    dependon:
-      - textobj-user
-    mapmodes:
+    dependon: textobj-user
+    mapmode:
       - o
       - v
-    mappings:
+    mapping:
       - <Plug>(textobj-function-a)
       - <Plug>(textobj-function-i)
       - <Plug>(textobj-function-A)
@@ -622,12 +595,11 @@ plugin:
       - iF
       - aF
   kana/vim-textobj-indent:
-    dependon:
-      - textobj-user
-    mapmodes:
+    dependon: textobj-user
+    mapmode:
       - o
       - v
-    mappings:
+    mapping:
       - <Plug>(textobj-indent-a)
       - <Plug>(textobj-indent-i)
       - <Plug>(textobj-indent-A)
@@ -637,23 +609,21 @@ plugin:
       - iI
       - aI
   kana/vim-textobj-underscore:
-    dependon:
-      - textobj-user
-    mapmodes:
+    dependon: textobj-user
+    mapmode:
       - o
       - v
-    mappings:
+    mapping:
       - <Plug>(textobj-underscore-a)
       - <Plug>(textobj-underscore-i)
       - i_
       - a_
   glts/vim-textobj-comment:
-    dependon:
-      - textobj-user
-    mapmodes:
+    dependon: textobj-user
+    mapmode:
       - o
       - v
-    mappings:
+    mapping:
       - <Plug>(textobj-comment-a)
       - <Plug>(textobj-comment-i)
       - <Plug>(textobj-comment-big-a)
@@ -663,12 +633,11 @@ plugin:
       - iC
       - aC
   osyo-manga/vim-textobj-multiblock:
-    dependon:
-      - textobj-user
-    mapmodes:
+    dependon: textobj-user
+    mapmode:
       - o
       - v
-    mappings:
+    mapping:
       - <Plug>(textobj-multiblock-a)
       - <Plug>(textobj-multiblock-i)
     before: |
@@ -689,10 +658,10 @@ plugin:
       - textobj-indent
       - textobj-function
       - textobj-entire
-    mapmodes:
+    mapmode:
       - o
       - v
-    mappings:
+    mapping:
       - <Plug>(textobj-multitextobj-a)
       - <Plug>(textobj-multitextobj-i)
     before: |
@@ -711,12 +680,11 @@ plugin:
       xmap i<CR> <Plug>(textobj-multitextobj-i)
       xmap <CR> <Plug>(textobj-multitextobj-i)
   thinca/vim-textobj-between:
-    dependon:
-      - textobj-user
-    mapmodes:
+    dependon: textobj-user
+    mapmode:
       - o
       - v
-    mappings:
+    mapping:
       - <Plug>(textobj-between-a)
       - <Plug>(textobj-between-i)
     before: |
@@ -728,8 +696,7 @@ plugin:
 
   kana/vim-operator-user: {}
   kana/vim-operator-replace:
-    dependon:
-      - operator-user
+    dependon: operator-user
     before: |
       nmap [  <Plug>(operator-replace)
 
@@ -740,7 +707,7 @@ plugin:
   html5.vim:
     filetype: html
   mattn/emmet-vim:
-    filetypes:
+    filetype:
       - html
       - haml
       - jade
@@ -749,8 +716,7 @@ plugin:
       - less
       - sass
       - scss
-    dependon:
-      - webapi
+    dependon: webapi
     before: |
       let g:user_emmet_settings = { 'indentation' : '  ' }
     after: |
@@ -787,7 +753,7 @@ plugin:
   itspriddle/vim-javascript-indent:
     filetype: javascript
   1995eaton/vim-better-javascript-completion:
-    filetypes:
+    filetype:
       - javascript
       - coffee
       - typescript
