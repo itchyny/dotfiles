@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2016/01/30 18:16:08.
+# - * Last Change: 2016/02/01 08:35:37.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -812,6 +812,36 @@ before: |
 after: |
   let g:mapleader = ','
 
+  augroup setlocal-filetype
+    autocmd!
+    autocmd BufNewFile,BufReadPost *.yaml setlocal filetype=yaml
+    autocmd BufNewFile,BufReadPost *.gnuplot setlocal filetype=gnuplot
+    autocmd BufNewFile,BufReadPost *.ejs,*.jst,*.hamljs setlocal filetype=jst
+    autocmd BufNewFile,BufReadPost *.meissa setlocal filetype=meissa
+    autocmd BufNewFile,BufReadPost *.litcoffee setlocal filetype=litcoffee
+    autocmd BufNewFile,BufReadPost *.r setlocal filetype=r
+    autocmd BufNewFile,BufReadPost *.styl,*.stylus setlocal filetype=stylus
+    autocmd BufNewFile,BufReadPost *.sass setlocal filetype=sass
+    autocmd BufNewFile,BufReadPost *.tex,*.cls,*.aux,*.toc,*.nav,*.clo setlocal filetype=tex
+    autocmd BufNewFile,BufReadPost *.purs setlocal filetype=purescript
+    autocmd BufNewFile,BufReadPost *.bf setlocal filetype=brainfuck
+    autocmd BufNewFile,BufReadPost *.md,*.mkd,*.markdown setlocal filetype=markdown
+    autocmd BufNewFile,BufReadPost *.less setlocal filetype=less
+    autocmd BufNewFile,BufReadPost *.coffee,*.cson setlocal filetype=coffee
+    autocmd BufNewFile,BufReadPost *.tmux.conf setlocal filetype=tmux
+    autocmd BufNewFile,BufReadPost *.hs setlocal filetype=haskell
+    autocmd BufNewFile,BufReadPost *.stl setlocal filetype=stl
+    autocmd BufNewFile,BufReadPost *.hx setlocal filetype=haxe
+    autocmd BufNewFile,BufReadPost *.scss setlocal filetype=scss
+    autocmd BufNewFile,BufReadPost *.json setlocal filetype=json
+    autocmd BufNewFile,BufReadPost *.m setlocal filetype=objc
+    autocmd BufNewFile,BufReadPost *.scala,*.sbt setlocal filetype=scala
+    autocmd BufNewFile,BufReadPost *.jade setlocal filetype=jade
+    autocmd BufNewFile,BufReadPost *.swift setlocal filetype=swift
+    autocmd BufNewFile,BufReadPost *.ts setlocal filetype=typescript
+    autocmd BufNewFile,BufReadPost *.roy setlocal filetype=roy
+  augroup END
+
 filetype:
   vim: |
     setlocal foldmethod=marker
@@ -974,31 +1004,3 @@ filetype:
     call tcomment#DefineType('haxe', '// %s')
   meissa: |
     call tcomment#DefineType('meissa', '# %s')
-
-filetypeDetect:
-  bf: brainfuck
-  gnuplot: gnuplot
-  jade: jade
-  json: json
-  less: less
-  sass: sass
-  scss: scss
-  r: r
-  roy: roy
-  meissa: meissa
-  coffee,cson: coffee
-  litcoffee: litcoffee
-  purs: purescript
-  ts: typescript
-  ejs,jst,hamljs: jst
-  stl: stl
-  tex,cls,aux,toc,nav,clo: tex
-  hs: haskell
-  hx: haxe
-  md,mkd,markdown: markdown
-  yaml: yaml
-  m: objc
-  styl,stylus: stylus
-  scala,sbt: scala
-  swift: swift
-  tmux.conf: tmux
