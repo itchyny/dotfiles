@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2016/01/22 08:46:17.
+# - * Last Change: 2016/02/03 08:44:50.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -106,6 +106,9 @@ bindkey "^E" end-of-line
 bindkey "^D" delete-char
 bindkey "^F" forward-char
 bindkey "^B" backward-char
+autoload edit-command-line
+zle -N edit-command-line
+bindkey "^Q" edit-command-line
 
 # search history
 bindkey "^R" history-incremental-pattern-search-backward
