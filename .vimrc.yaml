@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2016/02/01 08:35:37.
+# - * Last Change: 2016/02/04 21:47:24.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -190,7 +190,7 @@ plugin:
     after: |
       augroup cursorword-filetype
         autocmd!
-        autocmd FileType qf,unite,vimfiler,vimshell,thumbnail,vimcalc,quickrun,calendar,github-dashboard let b:cursorword = 0
+        autocmd FileType qf,unite,vimfiler,vimshell,thumbnail,vimcalc,quickrun,calendar let b:cursorword = 0
       augroup END
   itchyny/vim-highlighturl:
     {}
