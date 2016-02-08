@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2016/02/06 12:27:38.
+# - * Last Change: 2016/02/09 08:14:50.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -814,31 +814,10 @@ after: |
 
   augroup setlocal-filetype
     autocmd!
-    autocmd BufNewFile,BufReadPost *.yaml setlocal filetype=yaml
     autocmd BufNewFile,BufReadPost *.gnuplot setlocal filetype=gnuplot
-    autocmd BufNewFile,BufReadPost *.ejs,*.jst,*.hamljs setlocal filetype=jst
     autocmd BufNewFile,BufReadPost *.meissa setlocal filetype=meissa
-    autocmd BufNewFile,BufReadPost *.litcoffee setlocal filetype=litcoffee
-    autocmd BufNewFile,BufReadPost *.r setlocal filetype=r
-    autocmd BufNewFile,BufReadPost *.styl,*.stylus setlocal filetype=stylus
-    autocmd BufNewFile,BufReadPost *.sass setlocal filetype=sass
-    autocmd BufNewFile,BufReadPost *.tex,*.cls,*.aux,*.toc,*.nav,*.clo setlocal filetype=tex
-    autocmd BufNewFile,BufReadPost *.purs setlocal filetype=purescript
     autocmd BufNewFile,BufReadPost *.bf setlocal filetype=brainfuck
-    autocmd BufNewFile,BufReadPost *.md,*.mkd,*.markdown setlocal filetype=markdown
-    autocmd BufNewFile,BufReadPost *.less setlocal filetype=less
-    autocmd BufNewFile,BufReadPost *.coffee,*.cson setlocal filetype=coffee
-    autocmd BufNewFile,BufReadPost *.tmux.conf setlocal filetype=tmux
-    autocmd BufNewFile,BufReadPost *.hs setlocal filetype=haskell
     autocmd BufNewFile,BufReadPost *.stl setlocal filetype=stl
-    autocmd BufNewFile,BufReadPost *.hx setlocal filetype=haxe
-    autocmd BufNewFile,BufReadPost *.scss setlocal filetype=scss
-    autocmd BufNewFile,BufReadPost *.json setlocal filetype=json
-    autocmd BufNewFile,BufReadPost *.m setlocal filetype=objc
-    autocmd BufNewFile,BufReadPost *.scala,*.sbt setlocal filetype=scala
-    autocmd BufNewFile,BufReadPost *.jade setlocal filetype=jade
-    autocmd BufNewFile,BufReadPost *.swift setlocal filetype=swift
-    autocmd BufNewFile,BufReadPost *.ts setlocal filetype=typescript
   augroup END
 
 filetype:
