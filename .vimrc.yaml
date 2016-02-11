@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2016/02/09 08:14:50.
+# - * Last Change: 2016/02/11 20:13:08.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -377,6 +377,7 @@ plugin:
       - VimShellPop
       - VimShellBufferDir
     function: vimshell
+    filetype: vimshrc
     dependon: vimproc
     before: |
       let g:vimshell_interactive_update_time = 150
