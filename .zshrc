@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2016/02/03 08:44:50.
+# - * Last Change: 2016/02/14 00:54:14.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -170,15 +170,11 @@ stty -ixon -ixoff
 
 # alias
 alias ..="cd ../"
-alias cabal-update='sudo cabal update && sudo cabal install cabal-install'
 if [ "$(uname)" = "Darwin" ]; then
   alias google-chrome='open -a Google\ Chrome'
   alias evince='open -a Preview'
   alias display='open -a Preview'
   alias eog='open -a Preview'
-  alias port-update='sudo port selfupdate && sudo port upgrade outdated'
-  alias brew-update='brew update; brew upgrade'
-  alias update='cabal-update; brew-update'
   pman () {
     man -t "$1" | open -f -a /Applications/Preview.app
   }
@@ -190,8 +186,6 @@ if [ "$(uname)" = "Darwin" ]; then
     return 0
   }
 elif [ "$(uname)" = "Linux" ]; then
-  alias apt-get-update='sudo apt-get update'
-  alias update='cabal-update; apt-get-update'
   alias open='gnome-open'
   alias pbcopy='xsel --clipboard --input'
   dropbox () {
