@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2016/02/14 00:54:14.
+# - * Last Change: 2016/02/20 10:39:56.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -378,8 +378,6 @@ if ! command -v http > /dev/null 2>&1; then
 else
   alias http='http -b'
 fi
-
-[[ -z "$TMUX" ]] && command -v tmux > /dev/null 2>&1 && exec tmux
 
 [ -e ./Dropbox ] && cd ./Dropbox > /dev/null
 
