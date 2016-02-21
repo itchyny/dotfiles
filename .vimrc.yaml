@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2016/02/14 09:55:07.
+# - * Last Change: 2016/02/20 10:40:49.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -430,8 +430,6 @@ plugin:
       let g:visualstar_no_default_key_mappings = 1
       xmap <silent> * <Plug>(visualstar-*):<C-u>set hlsearch<CR>
       xmap <silent> # <Plug>(visualstar-#):<C-u>set hlsearch<CR>
-  tyru/capture.vim:
-    command: Capture
   ctrlpvim/ctrlp.vim:
     command:
       - CtrlP
