@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2016/02/20 10:39:56.
+# - * Last Change: 2016/02/23 08:48:39.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -204,15 +204,6 @@ function runcpp () {
 alias asm=runcpp
 # editor
 alias vi='vim'
-alias q='exit'
-alias qq='exit'
-alias qqq='exit'
-alias :q='exit'
-alias :quit='exit'
-alias ::q='exit'
-alias :qa='exit'
-alias :x='exit'
-alias :xa='exit'
 alias emacs='vi'
 alias fg='fg || vi'
 # see ambiwidth in .vimrc
