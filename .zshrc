@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2016/02/23 08:48:39.
+# - * Last Change: 2016/02/23 09:02:56.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -221,9 +221,6 @@ alias d='download'
 alias mpg123='mpg123 -zC'
 alias mplayer='mplayer -subdelay 100000 -fs -geometry 50%:50%'
 alias music='mplayer -lavdopts threads=2 -loop 0 -shuffle -geometry 50%:50%'
-alias rm='rm -i'
-alias cp='cp -i'
-alias mv='mv -i'
 alias aspell="aspell -c -l en_US"
 alias nicovideo-dl="nicovideo-dl -n -t"
 # git
