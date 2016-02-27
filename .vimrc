@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2016/01/30 17:40:46.
+" - * Last Change: 2016/02/27 11:32:10.
 " --------------------------------------------------------------------------------------------------------
 
 " Setting options {{{1
@@ -92,6 +92,9 @@ autocmd vimrc SwapExists * let v:swapchoice = 'o'
 
 " Automatically set expandtab
 autocmd vimrc FileType * execute 'setlocal ' . (search('^\t.*\n\t.*\n\t', 'n') ? 'no' : '') . 'expandtab'
+
+" Setting lazyredraw causes a problem on startup
+autocmd vimrc VimEnter * redraw
 
 " Key mappings {{{1
 " Increment and decrement
