@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2016/02/26 08:15:23.
+# - * Last Change: 2016/02/29 09:00:15.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -262,8 +262,6 @@ which cam > /dev/null && alias slideshow='cam -q -C -s 1'
 alias ntpupdate='sudo /usr/sbin/ntpdate time.asia.apple.com >> ~/.ntpdate.log'
 [ -e ~/Dropbox/js/roy/roy ] && \
   alias roy='~/Dropbox/js/roy/roy'
-[ -e ~/Dropbox/univ/ ] && \
-  alias univ='cd ~/Dropbox/univ/'
 case "${OSTYPE}" in
   freebsd*|darwin*)
     if test "$VIM"; then
