@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimshrc
 # - * Author: itchyny
-# - * Last Change: 2016/03/02 23:55:00.
+# - * Last Change: 2016/03/02 23:57:34.
 # ------------------------------------------------------------------------------------------------------------
 
 alias vi='vim'
@@ -27,8 +27,6 @@ alias gp='git push'
 alias gpo='git push origin'
 alias gpot='git push origin --tags'
 alias gpom='git push origin master'
-alias gpl='git pull -p'
-alias gra='git remote add'
 alias kj='killall -KILL java'
 alias ungzip='gzip -d'
 alias untar='tar xvf'
