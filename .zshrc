@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2016/02/29 09:00:15.
+# - * Last Change: 2016/03/02 23:54:51.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -244,8 +244,6 @@ alias gpot='git push origin --tags'
 alias gpom='git push origin master'
 alias gpl='git pull -p'
 alias gf='git fetch -p'
-alias gr='git reset HEAD'
-alias gra='git remote add'
 # un*
 alias ungzip='gzip -d'
 alias untar='tar xvf'
