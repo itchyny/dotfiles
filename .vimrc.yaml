@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2016/02/28 20:35:01.
+# - * Last Change: 2016/03/03 09:00:28.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -334,12 +334,9 @@ plugin:
             \ 'hide_icon': 0 })
     dependedby:
       - unite-build
-      - unite-colorscheme
-      - unite-highlight
       - unite-haddock
       - unite-outline
       - unite-haskellimport
-      - unite-webcolorname
       - unite-auto-open
       - unite-changetime
       - unite-preview
@@ -356,8 +353,6 @@ plugin:
     loadafter: unite
     script: |
       nnoremap <silent> <Leader>p :<C-u>Unite haskellimport -buffer-name=haskellimport<CR>
-  pasela/unite-webcolorname:
-    loadafter: unite
   itchyny/unite-eject:
     enable: "0"
     loadafter: unite
