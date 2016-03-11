@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2016/03/02 23:57:32.
+# - * Last Change: 2016/03/11 23:31:49.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -138,6 +138,9 @@ export PATH=$PATH:/usr/local/Cellar/vim/HEAD/bin
 export PATH=$PATH:/usr/texbin
 export PATH=$PATH:~/.go/bin
 export GOPATH=~/.go
+if command -v plenv >/dev/null 2>&1; then
+  eval "$(plenv init -)"
+fi
 
 # function
 function starteditor() {
