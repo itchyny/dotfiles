@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2016/03/16 09:01:26.
+# - * Last Change: 2016/03/21 14:00:38.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -142,7 +142,7 @@ plugin:
             \ { 'filetype': 'javascript', 'pattern': 'function *\k* *([^)]*) *{\| window\.' },
             \ { 'filetype': 'sh'       , 'pattern': '^#!.*\%(\<sh\>\|\<bash\>\)\s*$\|if [ -' },
             \ { 'filetype': 'hatena'   , 'pattern': '^\%(>|[a-z]\+|\|||<\)$\|^*\[[a-z]\+]' },
-            \ { 'filetype': 'vim'      , 'pattern': '\%(^{\|\<\%(let\|set\|autocmd\) \)\|noremap\|g:loaded_\|&l:\|(g:,\|^Called *\d\+ *times$' },
+            \ { 'filetype': 'vim'      , 'pattern': '\%(^{\|\<\%(let\|set\|autocmd\) \)\|noremap\|g:loaded_\|&l:\|(g:,\|^Called *\d\+ *times$\|^function!' },
             \ { 'filetype': 'css'      , 'pattern': '^\%(html\|body\)\%(, *\%([a-z]\+\)\)* *{' },
             \ { 'filetype': 'markdown' , 'pattern': '^# $' },
             \ ]
