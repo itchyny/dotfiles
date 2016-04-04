@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2016/03/27 19:41:10.
+# - * Last Change: 2016/04/04 21:56:21.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -16,7 +16,7 @@ plugin:
               \. 'landscape|lightline|lightline-powerful|spellbad-pattern|calendar|'
               \. 'thumbnail|dictionary|screensaver|gitbranch|closebuffer|external|'
               \. 'insert-mode-motion|cmdline-ranges|cmdline-escape|autoft|extracmd|'
-              \. 'extra-snippets|highlighturl|cursorword|winfix|qffrom|qfedit|increx|'
+              \. 'extra-snippets|highlighturl|cursorword|parenmatch|winfix|qffrom|qfedit|increx|'
               \. 'unite-(preview|eject|changetime|auto-open)|vicenza|tmpbuffer|'
               \. 'hatena-link|haskell-(indent|sort-import)|'
               \. 'rexdep|sjsp|py2bf|github-better-header|mackerel\S*)/)'
