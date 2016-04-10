@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2016/04/04 21:56:21.
+# - * Last Change: 2016/04/11 08:46:36.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -521,10 +521,13 @@ plugin:
   syngan/vim-vimlint:
     function: vimlint
     dependon: vimlparser
+  ensime/ensime-vim:
+    filetype: scala
   scrooloose/syntastic:
     filetype:
       - c
       - cpp
+      - scala
       - haskell
       - sh
     before: |
@@ -534,7 +537,7 @@ plugin:
     script: |
       augroup auto-syntastic
         autocmd!
-        autocmd BufWritePost *.c,*.cpp,*.hs call s:syntastic()
+        autocmd BufWritePost *.c,*.cpp,*.scala,*.hs call s:syntastic()
       augroup END
       function! s:syntastic()
         if exists(':SyntasticCheck') | exec 'SyntasticCheck' | endif
