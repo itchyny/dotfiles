@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2016/04/14 16:04:47.
+# - * Last Change: 2016/04/18 06:26:55.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -521,8 +521,6 @@ plugin:
   syngan/vim-vimlint:
     function: vimlint
     dependon: vimlparser
-  ensime/ensime-vim:
-    filetype: scala
   scrooloose/syntastic:
     filetype:
       - c
