@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2016/04/18 06:26:55.
+# - * Last Change: 2016/04/22 16:15:45.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -475,6 +475,7 @@ plugin:
       let g:autodate_format = '%Y/%m/%d %H:%M:%S'
   gregsexton/MatchTag: {}
   matchit.zip: {}
+  machakann/vim-swap: {}
 
   eagletmt/ghci-vim:
     filetype: haskell
