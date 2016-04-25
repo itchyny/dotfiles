@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2016/03/11 23:31:49.
+# - * Last Change: 2016/04/25 22:42:05.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -118,6 +118,7 @@ zle_highlight=(isearch:fg=yellow)
 export LANG=ja_JP.UTF-8
 export LC_CTYPE=en_US.UTF-8
 export EDITOR=vim
+export REPORTTIME=10
 
 # path settings
 export MANPATH=/usr/local/share/man:/usr/local/man:/usr/share/man
