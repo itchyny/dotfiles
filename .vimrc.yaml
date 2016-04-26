@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2016/04/22 16:15:45.
+# - * Last Change: 2016/04/26 22:58:28.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -539,7 +539,7 @@ plugin:
         autocmd BufWritePost *.c,*.cpp,*.scala,*.hs call s:syntastic()
       augroup END
       function! s:syntastic()
-        if exists(':SyntasticCheck') | exec 'SyntasticCheck' | endif
+        if exists(':SyntasticCheck') | SyntasticCheck | endif
         if exists('*lightline#update') | call lightline#update() | endif
       endfunction
   Shougo/vimproc.vim:
