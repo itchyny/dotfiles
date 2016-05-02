@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2016/04/26 22:58:28.
+# - * Last Change: 2016/05/02 22:59:22.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -154,7 +154,6 @@ plugin:
       call extracmd#set('<silent>', 'q1'     , 'q!')
       call extracmd#set('<silent>', 'qa1'    , 'qa!')
       call extracmd#set('sil[ent]1', 'silent!')
-      call extracmd#set('<silent>', 'nvew'   , 'vnew')
       call extracmd#set('<silent>', 'w!!'    , 'w !sudo tee > /dev/null %')
       call extracmd#set('<silent>', 'make'   , 'silent! make')
       call extracmd#set('<silent>', 'syn'    , 'echo synIDattr(synID(line(''.''), col(''.''), 0), ''name'')')
