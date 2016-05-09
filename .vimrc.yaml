@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2016/05/06 10:26:39.
+# - * Last Change: 2016/05/10 08:49:09.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -526,26 +526,6 @@ plugin:
   syngan/vim-vimlint:
     function: vimlint
     dependon: vimlparser
-  scrooloose/syntastic:
-    filetype:
-      - c
-      - cpp
-      - scala
-      - haskell
-      - sh
-    before: |
-      let g:syntastic_mode_map = { 'mode': 'passive' }
-      let g:syntastic_echo_current_error = 0
-      let g:syntastic_enable_highlighting = 0
-    script: |
-      augroup auto-syntastic
-        autocmd!
-        autocmd BufWritePost *.c,*.cpp,*.scala,*.hs call s:syntastic()
-      augroup END
-      function! s:syntastic()
-        if exists(':SyntasticCheck') | SyntasticCheck | endif
-        if exists('*lightline#update') | call lightline#update() | endif
-      endfunction
   Shougo/vimproc.vim:
     build: make
     function: vimproc
