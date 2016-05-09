@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2016/05/10 08:49:09.
+# - * Last Change: 2016/05/10 08:53:20.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -256,6 +256,7 @@ plugin:
     mapping: <Plug>(quickrun)
     mapleader: \
     dependon: vimproc
+    loadbefore: watchdogs
     before: |
       let g:quickrun_config = {'_': {'runner': 'vimproc', 'runner/vimproc/updatetime': 200, 'split': 'vertical', 'into': 1}}
       for [s:ft, s:exe] in [['quickrun', 'cat'], ['javascript', 'node'], ['brainfuck', 'bf'], ['text', 'cat']]
@@ -526,6 +527,27 @@ plugin:
   syngan/vim-vimlint:
     function: vimlint
     dependon: vimlparser
+  osyo-manga/vim-watchdogs:
+    dependon: quickrun
+    filetype:
+      - c
+      - cpp
+      - haskell
+      - java
+      - perl
+      - ruby
+      - scala
+      - sh
+      - yaml
+      - zsh
+    before: |
+      let g:watchdogs_check_BufWritePost_enables = {
+            \ 'c': 1, 'cpp': 1, 'haskell': 1, 'java': 1, 'perl': 1,
+            \ 'ruby': 1, 'scala': 1, 'sh': 1, 'yaml': 1, 'zsh': 1,
+            \ }
+      let g:watchdogs_check_BufWritePost_enable_on_wq = 0
+    after: |
+      call watchdogs#setup(g:quickrun_config)
   Shougo/vimproc.vim:
     build: make
     function: vimproc
