@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2016/05/11 09:01:40.
+# - * Last Change: 2016/05/12 11:24:38.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -769,6 +769,8 @@ plugin:
     filetype: scala
   fatih/vim-go:
     filetype: go
+    before: |
+      let g:go_def_mapping_enabled = 0
   kballard/vim-swift:
     filetype: swift
     before: |
@@ -895,6 +897,9 @@ filetype:
     setlocal ofu=phpcomplete#CompletePHP
   xml: |
     setlocal ofu=xmlcomplete#CompleteTags
+  go: |
+    nnoremap <buffer><silent> <C-]> :GoDef<CR>
+    nnoremap <buffer><silent> <C-@> :<C-U>call go#def#StackPop(v:count1)<CR>
   python: |
     setlocal ofu=jedi#completions
   make: |
