@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2016/05/12 11:24:38.
+# - * Last Change: 2016/05/15 21:55:00.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -204,7 +204,7 @@ plugin:
   itchyny/vim-histexclude:
     before: |
       let g:histexclude = {
-            \ ':': '\v^[:[:space:]]*(\d+|v?ne%[w]|v?sp%[lit]|tabnew|tabc%[lose])\s*$',
+            \ ':': '\v^[:[:space:]]*%(\d+|v?ne%[w]|v?sp%[lit]|tabnew|tabc%[lose]|i%[nsert]|a%[ppend])\s*$',
             \ }
   itchyny/vim-extra-snippets:
     {}
