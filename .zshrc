@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2016/04/25 22:42:05.
+# - * Last Change: 2016/05/20 09:33:28.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -121,13 +121,7 @@ export EDITOR=vim
 export REPORTTIME=10
 
 # path settings
-export MANPATH=/usr/local/share/man:/usr/local/man:/usr/share/man
-export PATH=$PATH:/Applications/Xcode.app/Contents/Developer/usr/bin
-export PATH=$PATH:/usr/local/bin
-export PATH=$PATH:/usr/local/git/bin
-export PATH=$PATH:/opt/local/bin
-export PATH=$PATH:~/.cabal/bin
-export PATH=$PATH:/usr/local/usr/local/bin
+export PATH=/usr/local/bin:$PATH
 export PATH=~/.bin:$PATH
 export PATH=~/bin:$PATH
 export PATH=~/Dropbox/.bin:$PATH
@@ -135,9 +129,8 @@ export PATH=~/Dropbox/bin:$PATH
 export PATH=$ZSH_PLUGIN_PATH/bin:$PATH
 export PATH=$PATH:~/Library/Haskell/bin
 export PATH=$PATH:~/.local/bin
-export PATH=$PATH:/usr/local/Cellar/vim/HEAD/bin
-export PATH=$PATH:/usr/texbin
 export PATH=$PATH:~/.go/bin
+export MANPATH=/usr/local/share/man:/usr/local/man:/usr/share/man
 export GOPATH=~/.go
 if command -v plenv >/dev/null 2>&1; then
   eval "$(plenv init -)"
