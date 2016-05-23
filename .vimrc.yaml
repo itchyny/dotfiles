@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2016/05/15 21:55:00.
+# - * Last Change: 2016/05/24 08:43:24.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -701,6 +701,10 @@ plugin:
     dependon: operator-user
     before: |
       nmap [  <Plug>(operator-replace)
+  tyru/operator-camelize.vim:
+    dependon: operator-user
+    before: |
+      nmap g_ <Plug>(operator-camelize-toggle)
 
   motemen/hatena-vim:
     filetype: hatena
