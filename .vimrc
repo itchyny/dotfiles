@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2016/03/27 17:03:14.
+" - * Last Change: 2016/06/05 13:13:12.
 " --------------------------------------------------------------------------------------------------------
 
 " Setting options {{{1
@@ -178,6 +178,9 @@ vnoremap <ESC> o<ESC>
 
 " Operator [
 onoremap [ <ESC>
+
+" Execute register
+nnoremap ] @
 
 " navigation in command line
 cnoremap <C-a> <Home>
