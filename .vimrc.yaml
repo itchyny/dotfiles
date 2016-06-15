@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2016/05/24 08:43:24.
+# - * Last Change: 2016/06/15 09:00:35.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -852,8 +852,9 @@ filetype:
     nnoremap <buffer><silent> <C-l> :<C-u>call <SID>qfenter('wincmd p <bar> wincmd l')<CR>
     function! s:qfenter(cmd)
       let lnum = line('.')
+      let cmd = get(b:, 'qflisttype', '') ==# 'location' ? 'll' : 'cc'
       silent! execute a:cmd
-      silent! execute 'cc' lnum
+      silent! execute cmd lnum
     endfunction
   c: |
     setlocal ofu=ccomplete#Complete
