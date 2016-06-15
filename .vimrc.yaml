@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2016/06/15 09:00:35.
+# - * Last Change: 2016/06/15 09:01:39.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -107,7 +107,7 @@ plugin:
       nnoremap <F5> :<C-u>Make<CR>
     before: |
       let g:qffrom = {
-            \   '_'   : { 'post': 'leftabove copen' },
+            \   '_'   : { 'post': 'leftabove lopen' },
             \   'grep': { 'command':
             \             'if git rev-parse >/dev/null 2>&1 && ! <hasdir>; then '
             \           . '  git grep -HIin -- $* "$(git rev-parse --show-toplevel)" 2>/dev/null | sed ''/\.pdf/d;/\.tmp/d;/\.xml/d;/\.svg/d;/\.xsd/d'';'
