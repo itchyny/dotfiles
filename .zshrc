@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2016/05/20 09:33:28.
+# - * Last Change: 2016/06/18 23:35:09.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -357,8 +357,10 @@ else
   alias http='http -b'
 fi
 
-[ -e ./Dropbox ] && cd ./Dropbox > /dev/null
-
-[ -e ./Documents ] && cd ./Documents > /dev/null
+if [ -e ~/Dropbox ]; then
+  cd ~/Dropbox > /dev/null
+elif [ -e ~/Documents ]; then
+  cd ~/Documents > /dev/null
+fi
 
 return 0
