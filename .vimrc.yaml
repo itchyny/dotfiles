@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2016/06/15 09:01:39.
+# - * Last Change: 2016/06/24 15:05:33.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -144,6 +144,7 @@ plugin:
             \ { 'filetype': 'hatena'   , 'pattern': '^\%(>|[a-z]\+|\|||<\)$\|^*\[[a-z]\+]' },
             \ { 'filetype': 'vim'      , 'pattern': '\%(^{\|\<\%(let\|set\|autocmd\) \)\|noremap\|g:loaded_\|&l:\|(g:,\|^Called *\d\+ *times$\|^function!' },
             \ { 'filetype': 'css'      , 'pattern': '^\%(html\|body\)\%(, *\%([a-z]\+\)\)* *{' },
+            \ { 'filetype': 'sql'      , 'pattern': '\v\c^(BEGIN|SELECT|UPDATE|DELETE)' },
             \ { 'filetype': 'markdown' , 'pattern': '^# $' },
             \ ]
   itchyny/vim-extracmd:
