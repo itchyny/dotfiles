@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2016/06/24 15:05:33.
+# - * Last Change: 2016/06/25 19:06:32.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -275,6 +275,7 @@ plugin:
       let g:quickrun_config.objc = {'command': 'cc', 'exec': ['%c %s -o %s:p:r -framework Foundation', '%s:p:r %a'], 'tempfile': '{tempname()}.m', 'hook/sweep/files': '%s:p:r'}
       let g:quickrun_config.dot = {'command' : 'dot', 'exec': ['%c -Tpng %s -o %s:p:r.png', (executable('gnome-open') ? 'gnome-open' : 'open') . ' %s:p:r.png'] }
       let g:quickrun_config.abc = {'command': 'abcm2ps', 'exec': extend(['%c %s -O %s:p:r.ps', 'ps2pdf %s:p:r.ps', 'open %s:p:r.pdf'], executable('abc2midi') ? ['abc2midi %s -o %s:p:r.mid', 'open %s:p:r.mid'] : [])}
+      let g:quickrun_config['watchdogs_checker/_'] = { 'runner' : 'vimproc', 'outputter': 'loclist', 'hook/echo/enable' : 0, 'hook/back_window/enable' : 0, 'hook/back_window/enable_exit' : 0 }
     script: |
       nnoremap <expr> <C-c> exists('*quickrun#is_running') && quickrun#is_running() ? quickrun#sweep_sessions() : "\<C-c>"
       nnoremap <silent> <Leader>r :<C-u>call <SID>quickrun(0, 0)<CR>
@@ -529,7 +530,9 @@ plugin:
     function: vimlint
     dependon: vimlparser
   osyo-manga/vim-watchdogs:
-    dependon: quickrun
+    dependon:
+      - shabadou
+      - quickrun
     filetype:
       - haskell
       - java
@@ -547,6 +550,8 @@ plugin:
       let g:watchdogs_check_BufWritePost_enable_on_wq = 0
     after: |
       call watchdogs#setup(g:quickrun_config)
+  osyo-manga/shabadou.vim:
+    loadbefore: watchdogs
   Shougo/vimproc.vim:
     build: make
     function: vimproc
