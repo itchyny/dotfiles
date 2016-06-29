@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2016/06/28 09:12:31.
+# - * Last Change: 2016/06/29 09:27:49.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -782,6 +782,8 @@ plugin:
       let g:go_def_mapping_enabled = 0
   rust-lang/rust.vim:
     filetype: rust
+  udalov/kotlin-vim:
+    filetype: kotlin
   kballard/vim-swift:
     filetype: swift
     before: |
