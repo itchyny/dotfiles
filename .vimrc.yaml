@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2016/07/02 22:20:31.
+# - * Last Change: 2016/07/04 09:19:18.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -29,6 +29,7 @@ plugin:
   itchyny/lightline-powerful:
     before: |
       let g:lightline = {'colorscheme': 'landscape','mode_map':{'c': 'NORMAL'}}
+  itchyny/quickrun-lightline-hooks: {}
   itchyny/vim-spellbad-pattern:
     script: |
       let g:spellbad_pattern = [ '\<a\ze [aieo]', '^\$', '\~\$\zs\s\+', '\<figure..\?\\', '\\ref{eq:', '^\\end{align}',
