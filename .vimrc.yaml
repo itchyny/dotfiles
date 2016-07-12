@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2016/07/05 12:37:54.
+# - * Last Change: 2016/07/12 09:11:37.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -538,14 +538,9 @@ plugin:
       - haskell
       - java
       - perl
-      - ruby
-      - sh
-      - yaml
-      - zsh
     before: |
       let g:watchdogs_check_BufWritePost_enables = {
-            \ 'haskell': 1, 'java': 1, 'perl': 1,
-            \ 'ruby': 1, 'sh': 1, 'yaml': 1, 'zsh': 1,
+            \ 'haskell': 1, 'java': 1, 'perl': 1
             \ }
       let g:watchdogs_check_BufWritePost_enable_on_wq = 0
     after: |
