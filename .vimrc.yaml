@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2016/07/12 09:11:37.
+# - * Last Change: 2016/07/29 08:38:26.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -18,7 +18,7 @@ plugin:
               \. 'insert-mode-motion|cmdline-ranges|cmdline-escape|autoft|extracmd|histexclude|'
               \. 'extra-snippets|highlighturl|cursorword|parenmatch|winfix|qffrom|qfedit|increx|'
               \. 'unite-(preview|eject|changetime|auto-open)|vicenza|tmpbuffer|'
-              \. 'hatena-link|haskell-(indent|sort-import)|'
+              \. 'hatena-link|haskell-(indent|sort-import)|quickrun-lightline-hooks|'
               \. 'rexdep|sjsp|py2bf|github-better-header|mackerel\S*)/)'
     after: |
       colorscheme landscape
