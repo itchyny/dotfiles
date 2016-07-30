@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2016/07/29 08:38:26.
+# - * Last Change: 2016/07/30 23:05:45.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -161,7 +161,7 @@ plugin:
       call extracmd#set('<silent>', 'syn'    , 'echo synIDattr(synID(line(''.''), col(''.''), 0), ''name'')')
       call extracmd#set('<silent>', 'pro[fil]', 'profile start profile.log <bar> profile func *')
       call extracmd#set('<silent>', 'rof'    , 'profile start profile.log <bar> profile func *')
-      call extracmd#set('<silent>', 'rtp'    , 'Tmpbuffer PP split(&rtp, '','')')
+      call extracmd#set('<silent>', 'rtp'    , 'Tmpbuffer :PP split(&rtp, '','')')
       call extracmd#set('<silent>', 'scr[iptnames]', 'Tmpbuffer scriptnames')
       call extracmd#set('<silent>', 'gd'     , 'Tmpbuffer git diff <bar> set filetype=diff')
       call extracmd#set('<silent>', 'gdc'    , 'Tmpbuffer git diff --cached <bar> set filetype=diff')
