@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2016/07/30 23:05:45.
+# - * Last Change: 2016/08/14 22:48:03.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -959,6 +959,7 @@ filetype:
     inoremap <buffer> <C-j> <ESC><C-w>j
     inoremap <buffer> <C-k> <ESC><C-w>k
     inoremap <buffer> <C-l> <ESC><C-w>l
+    nmap <buffer> 0 <Plug>(vimshell_move_head)
     inoremap <silent><buffer> ^ <ESC>:call vimshell#execute('cd ../')<CR>:call vimshell#print_prompt()<CR>:call vimshell#start_insert()<CR>
     inoremap <buffer> <C-^> <ESC><C-^>
     imap <buffer> <C-g> <Plug>(vimshell_history_complete)<C-n>
