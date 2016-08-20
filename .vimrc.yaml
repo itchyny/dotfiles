@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2016/08/19 23:12:59.
+# - * Last Change: 2016/08/20 15:16:43.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -319,8 +319,8 @@ plugin:
       let g:vimfiler_marked_file_icon = '✓'
       let g:vimfiler_execute_file_list = {'jpg': 'open', 'jpeg': 'open', 'gif': 'open', 'bmp': 'open', 'html': 'open', 'ppt': 'open', 'pdf': 'open', 'png': 'open'}
     script: |
-      nnoremap <silent> <Leader>f :<C-u>VimFilerBufferDir -status -buffer-name=vimfiler<C-r>=tabpagenr()<CR> -auto-cd<CR>
-      nnoremap <silent> <Leader><Leader> :<C-u>VimFilerBufferDir -status -buffer-name=vimfiler<C-r>=tabpagenr()<CR> -auto-cd<CR>
+      nnoremap <silent> <Leader>f :<C-u>VimFilerBufferDir -status -auto-cd<CR>
+      nnoremap <silent> <Leader><Leader> :<C-u>VimFilerBufferDir -status -auto-cd<CR>
   Shougo/vinarise.vim:
     mapleader: \
     loadbefore: vimfiler
