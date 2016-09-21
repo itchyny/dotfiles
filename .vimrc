@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2016/06/05 13:13:12.
+" - * Last Change: 2016/09/21 23:04:47.
 " --------------------------------------------------------------------------------------------------------
 
 " Setting options {{{1
@@ -192,9 +192,6 @@ cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
 cnoremap <Up> <C-p>
 cnoremap <Down> <C-n>
-
-" <C-g> in command line
-cnoremap <C-g> <ESC><C-g>
 
 " Escape from Select mode to Normal mode
 snoremap <ESC> <C-c>
