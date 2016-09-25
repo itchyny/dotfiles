@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2016/09/18 16:56:15.
+# - * Last Change: 2016/09/25 18:56:18.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -849,7 +849,6 @@ filetype:
     endif
   qf: |
     nnoremap <buffer><silent> q     :<C-u>try<bar>wincmd p<bar>cclose<bar>catch<bar>enew<bar>endtry<CR>
-    nnoremap <buffer><silent> <CR>  :<C-u>call <SID>qfenter('wincmd p')<CR>
     nnoremap <buffer><silent> <C-t> :<C-u>call <SID>qfenter('tabnew')<CR>
     nnoremap <buffer><silent> <C-n> :<C-u>call <SID>qfenter('wincmd p <bar> new')<CR>
     nnoremap <buffer><silent> <C-v> :<C-u>call <SID>qfenter('wincmd p <bar> vnew')<CR>
