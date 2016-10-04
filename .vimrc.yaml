@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2016/09/25 18:56:18.
+# - * Last Change: 2016/10/04 20:00:00.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -890,11 +890,11 @@ filetype:
     imap <buffer> <Tab> <Plug>(neosnippet-emmet-supertab)
     imap <buffer> <C-g> <Plug>(emmet-supertab)
   javascript: |
-    setlocal ofu=js#CompleteJS
+    setlocal ofu=js#CompleteJS shiftwidth=4
   coffee: |
     setlocal ofu=js#CompleteJS nospell
   typescript: |
-    setlocal ofu=js#CompleteJS nospell
+    setlocal ofu=js#CompleteJS nospell shiftwidth=4
     imap <buffer> <Tab> <Plug>(neosnippet-emmet-supertab)
   purescript: |
     highlight link purescriptImport Include
