@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2016/06/18 23:35:09.
+# - * Last Change: 2016/10/05 20:02:51.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -50,13 +50,23 @@ export TERM=xterm-256color
 # prompt
 setopt prompt_subst
 setopt interactive_comments
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' enable git
+zstyle ':vcs_info:*' formats '%F{3}%b%f '
 if test "$VIM"; then
   PROMPT="%~ "
   PROMPT2="%_> "
   SPROMPT="%r is correct? [n,y,a,e]: "
 else
+  vcs_info_wrapper() {
+    vcs_info
+    if [ -n "$vcs_info_msg_0_" ]; then
+      echo "%{$fg[grey]%}${vcs_info_msg_0_}%{$reset_color%}$del"
+    fi
+  }
   PROMPT="%(?.%{$fg[green]%}.%{$fg[blue]%})%B%~%b%{${reset_color}%} "
   PROMPT2="%{$bg[blue]%}%_>%{$reset_color%}%b "
+  RPROMPT=$'$(vcs_info_wrapper)'
   SPROMPT="%{$bg[red]%}%B%r is correct? [n,y,a,e]:%{${reset_color}%}%b "
 fi
 [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] && PROMPT="%{$bg[red]%}${HOST%%.*}${PROMPT}%{${reset_color}%}"
