@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2016/10/04 20:00:00.
+# - * Last Change: 2016/10/12 22:13:55.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -757,7 +757,7 @@ plugin:
       let g:jedi#auto_vim_configuration = 0
       let g:jedi#popup_select_first = 0
       let g:jedi#completions_enabled = 0
-  itspriddle/vim-javascript-indent:
+  pangloss/vim-javascript:
     filetype: javascript
   1995eaton/vim-better-javascript-completion:
     filetype:
