@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2016/10/05 20:02:51.
+# - * Last Change: 2016/10/13 15:00:00.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -144,6 +144,9 @@ export MANPATH=/usr/local/share/man:/usr/local/man:/usr/share/man
 export GOPATH=~/.go
 if command -v plenv >/dev/null 2>&1; then
   eval "$(plenv init -)"
+fi
+if command -v rbenv >/dev/null 2>&1; then
+  eval "$(rbenv init -)"
 fi
 
 # function
