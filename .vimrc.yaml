@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2016/10/12 22:13:55.
+# - * Last Change: 2016/10/27 09:00:00.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -184,9 +184,7 @@ plugin:
     command: HatenaLinkPaste
     script: |
       nnoremap <silent><S-l> :<C-u>HatenaLinkPaste<CR>
-  itchyny/vim-winfix:
-    script: |
-      let g:winfix_tabfocus = 0
+  itchyny/vim-winfix: {}
   itchyny/vim-cursorword:
     after: |
       augroup cursorword-filetype
