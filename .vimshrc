@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimshrc
 # - * Author: itchyny
-# - * Last Change: 2016/03/02 23:57:34.
+# - * Last Change: 2016/10/31 09:11:26.
 # ------------------------------------------------------------------------------------------------------------
 
 alias vi='vim'
@@ -23,7 +23,7 @@ alias gm='git commit -m'
 alias gmd='git merge origin/develop'
 alias gd='git diff'
 alias gdc='git diff --cached'
-alias gp='git push'
+alias gpl='git pull -p'
 alias gpo='git push origin'
 alias gpot='git push origin --tags'
 alias gpom='git push origin master'

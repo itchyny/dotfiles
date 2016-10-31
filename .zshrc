@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2016/10/13 15:00:00.
+# - * Last Change: 2016/10/31 09:11:19.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -248,7 +248,7 @@ alias gm='git commit -m'
 alias gmd='git merge origin/develop'
 alias gd='git diff --color'
 alias gdc='git diff --cached'
-alias gp='git push'
+alias gpl='git pull -p'
 alias gpo='git push origin'
 alias gpot='git push origin --tags'
 alias gpom='git push origin master'
