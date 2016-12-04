@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2016/11/08 09:07:37.
+# - * Last Change: 2016/12/05 08:23:12.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -757,6 +757,12 @@ plugin:
       let g:jedi#auto_vim_configuration = 0
       let g:jedi#popup_select_first = 0
       let g:jedi#completions_enabled = 0
+      let g:jedi#goto_command = ''
+      let g:jedi#goto_assignments_command = ''
+      let g:jedi#goto_definitions_command = ''
+      let g:jedi#call_signatures_command = ''
+      let g:jedi#usages_command = ''
+      let g:jedi#documentation_command = ''
   pangloss/vim-javascript:
     filetype: javascript
   1995eaton/vim-better-javascript-completion:
