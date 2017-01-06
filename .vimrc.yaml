@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2016/12/05 08:23:12.
+# - * Last Change: 2017/01/06 00:11:32.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -443,6 +443,7 @@ plugin:
       nnoremap <silent><C-o> :<C-u>CtrlPCurFile<CR>
     before: |
       let g:ctrlp_cmd = 'CtrlPMRUFiles'
+      let g:ctrlp_tilde_homedir = 1
       let g:ctrlp_show_hidden = 1
       let g:ctrlp_max_depth = 5
       let g:ctrlp_max_files = 500
