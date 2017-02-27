@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2016/10/31 09:11:19.
+# - * Last Change: 2017/02/27 23:28:45.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -140,6 +140,7 @@ export PATH=$ZSH_PLUGIN_PATH/bin:$PATH
 export PATH=$PATH:~/Library/Haskell/bin
 export PATH=$PATH:~/.local/bin
 export PATH=$PATH:~/.go/bin
+export PATH=$PATH:/usr/local/opt/llvm/bin
 export MANPATH=/usr/local/share/man:/usr/local/man:/usr/share/man
 export GOPATH=~/.go
 if command -v plenv >/dev/null 2>&1; then
