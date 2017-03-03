@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2017/02/27 23:28:45.
+# - * Last Change: 2017/03/03 18:42:31.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -148,6 +148,9 @@ if command -v plenv >/dev/null 2>&1; then
 fi
 if command -v rbenv >/dev/null 2>&1; then
   eval "$(rbenv init -)"
+fi
+if command -v nodenv >/dev/null 2>&1; then
+  eval "$(nodenv init -)"
 fi
 
 # function
