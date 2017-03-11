@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2017/03/10 20:44:43.
+# - * Last Change: 2017/03/11 09:09:20.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -140,6 +140,7 @@ export PATH=$ZSH_PLUGIN_PATH/bin:$PATH
 export PATH=$PATH:~/Library/Haskell/bin
 export PATH=$PATH:~/.local/bin
 export PATH=$PATH:~/.go/bin
+export PATH=$PATH:~/.cargo/bin
 export PATH=$PATH:/usr/local/opt/llvm/bin
 export MANPATH=/usr/local/share/man:/usr/local/man:/usr/share/man
 export GOPATH=~/.go
