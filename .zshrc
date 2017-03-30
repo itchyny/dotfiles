@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2017/03/11 09:09:20.
+# - * Last Change: 2017/03/30 10:41:34.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -77,6 +77,8 @@ case "${TERM}" in
     echo -ne "\033]0;${USER}@${PWD}\007"
   };;
 esac
+autoload -Uz url-quote-magic
+zle -N self-insert url-quote-magic
 
 # complement (use incr-0.2.zsh but rewrite 6 to 100 in limit-completion)
 autoload -Uz compinit; compinit
