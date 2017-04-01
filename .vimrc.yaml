@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2017/03/18 12:35:50.
+# - * Last Change: 2017/04/01 23:31:11.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -200,7 +200,9 @@ plugin:
   itchyny/vim-cmdline-ranges:
     {}
   itchyny/vim-cmdline-escape:
-    {}
+    before: |
+      let g:cmdline_escape_default_mapping = 0
+      cmap / <Plug>(cmdline-escape-/)
   itchyny/vim-histexclude:
     before: |
       let g:histexclude = {
