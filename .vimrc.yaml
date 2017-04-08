@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2017/04/01 23:31:11.
+# - * Last Change: 2017/04/08 11:23:13.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -167,6 +167,8 @@ plugin:
       call extracmd#set('<silent>', 'gdc'    , 'Tmpbuffer git diff --cached <bar> set filetype=diff')
       command! -nargs=* Git Tmpbuffer git <args>
       call extracmd#set('git'    , 'Git')
+      call extracmd#set('gina'    , 'Gina')
+      call extracmd#set('gita'    , 'Gina')
       call extracmd#set('<silent>', 'aoff'   , 'AutodateOFF')
       call extracmd#set('<silent>', 'aon'    , 'AutodateON')
       call extracmd#set('<silent>', 'bc'     , 'Calc')
@@ -517,9 +519,12 @@ plugin:
       let g:agit_enable_auto_refresh = 1
     script: |
       nnoremap <silent> <Leader>g :<C-u>Agit<CR>
-  lambdalisue/vim-gita:
+  lambdalisue/vim-gina:
     mapleader: ","
-    command: Gita
+    command: Gina
+    after: |
+      call gina#custom#command#option('/\v(status|branch|ls|grep|changes)', '--opener', 'botright 10split')
+      call gina#custom#command#option('log', '--opener', 'topleft vsplit')
   mattn/gist-vim:
     command: Gist
     dependon: webapi
