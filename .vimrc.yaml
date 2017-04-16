@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2017/04/08 11:23:13.
+# - * Last Change: 2017/04/16 23:50:54.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -719,6 +719,8 @@ plugin:
     filetype: hatena
   elzr/vim-json:
     filetype: json
+  cespare/vim-toml:
+    filetype: toml
   html5.vim:
     filetype: html
   mattn/emmet-vim:
