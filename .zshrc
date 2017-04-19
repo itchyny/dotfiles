@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2017/03/30 10:41:34.
+# - * Last Change: 2017/04/20 00:32:28.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -211,14 +211,12 @@ elif [ "$(uname)" = "Linux" ]; then
   alias suspend='dbus-send --system --print-reply --dest="org.freedesktop.UPower" /org/freedesktop/UPower org.freedesktop.UPower.Suspend'
   alias hibernate='dbus-send --system --print-reply --dest="org.freedesktop.UPower" /org/freedesktop/UPower org.freedesktop.UPower.Hibernate'
 fi
-alias chrome='google-chrome'
 function runc () {
   gcc -O3 "$1" && shift && ./a.out "$@"; local ret=$?; rm -f ./a.out; return $ret
 }
 function runcpp () {
   g++ -O3 "$1" && shift && ./a.out "$@"; local ret=$?; rm -f ./a.out; return $ret
 }
-alias asm=runcpp
 # editor
 alias vi='vim'
 alias emacs='vi'
@@ -227,11 +225,7 @@ alias gnome-terminal='/bin/sh -c "VTE_CJK_WIDTH=1 gnome-terminal --disable-facto
 alias terminator='/bin/sh -c "VTE_CJK_WIDTH=1 terminator -m"'
 # one alphabet
 alias v='vim'
-alias h='sudo shutdown -h'
-alias r='sudo shutdown -r'
-alias l='ls -al'
 alias c='clear'
-alias z='zsh'
 alias d='download'
 # default option
 alias mpg123='mpg123 -zC'
@@ -268,13 +262,6 @@ if command -v htop > /dev/null 2>&1; then
   alias htop='TERM=screen htop'
 fi
 which cam > /dev/null && alias slideshow='cam -q -C -s 1'
-[ -e ~/Dropbox/py/itchyny/tweet.py ] && \
-  alias tweet='python ~/Dropbox/py/itchyny/tweet.py'
-[ -e ~/Dropbox/hs/twitter/twitter.hs ] && \
-  alias twitter='rlwrap runhaskell ~/Dropbox/hs/twitter/twitter.hs'
-alias ntpupdate='sudo /usr/sbin/ntpdate time.asia.apple.com >> ~/.ntpdate.log'
-[ -e ~/Dropbox/js/roy/roy ] && \
-  alias roy='~/Dropbox/js/roy/roy'
 case "${OSTYPE}" in
   freebsd*|darwin*)
     if test "$VIM"; then
@@ -300,7 +287,7 @@ esac
 alias -s txt=cat
 alias -s {csv,js,css,less,md}=vi
 alias -s tex=autolatex
-alias -s html=chrome
+alias -s html=google-chrome
 alias -s pdf=evince
 alias -s {png,jpg,bmp,PNG,JPG,BMP}=eog
 alias -s {mp3,mp4,wav,mkv,m4v,m4a,wmv,avi,mpeg,mpg,vob,mov,rm}=mplayer
