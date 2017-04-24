@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2017/04/24 11:49:31.
+# - * Last Change: 2017/04/24 15:12:10.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -103,7 +103,7 @@ plugin:
       - Vint
     script: |
       nnoremap gr   :<C-u>Grep<Space>
-      nnoremap K    :<C-u>Grep <C-r><C-w><CR>
+      nnoremap <expr> K ":\<C-u>Grep " . (expand('<cword>') !=# '' ? "\<C-r>\<C-w>\<CR>" : getreg('*') !~# '^\s\+$' ? "\<C-r>*\<CR>" : '')
       nnoremap gf   :<C-u>Find<Space>
       nnoremap <F5> :<C-u>Make<CR>
     before: |
