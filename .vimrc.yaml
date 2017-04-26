@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2017/04/25 10:52:01.
+# - * Last Change: 2017/04/27 05:42:27.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -529,7 +529,8 @@ plugin:
     command: Gina
     after: |
       call gina#custom#command#option('/\v(status|branch|ls|grep|changes)', '--opener', 'botright 10split')
-      call gina#custom#command#option('log', '--opener', 'topleft vsplit')
+      call gina#custom#command#option('/.*', '--opener', 'tabnew')
+      call gina#custom#command#option('blame', '--width', string(winwidth(0) / 4))
   mattn/gist-vim:
     command: Gist
     dependon: webapi
