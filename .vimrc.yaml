@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2017/04/27 05:42:27.
+# - * Last Change: 2017/04/27 05:51:36.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -1002,6 +1002,8 @@ filetype:
     nmap <buffer> <C-r> <Plug>(agit-reload)
   agit_stat: |
     nmap <buffer> <C-r> <Plug>(agit-reload)
+  gina-blame: |
+    highlight link GinaBlameSummary Normal
   thumbnail: |
     let b:highlighturl_enable = 0
   calendar: |
