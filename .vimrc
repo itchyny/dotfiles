@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2017/03/26 05:13:30.
+" - * Last Change: 2017/05/01 18:35:57.
 " --------------------------------------------------------------------------------------------------------
 
 " Setting options {{{1
@@ -84,7 +84,7 @@ autocmd vimrc QuickfixCmdPost [^l]* leftabove copen | wincmd p | redraw!
 autocmd vimrc QuickfixCmdPost l* leftabove lopen | wincmd p | redraw!
 
 " Fix window position of help
-autocmd vimrc FileType help if &l:buftype ==# 'help'     | wincmd K | endif
+autocmd vimrc FileType help if &l:buftype ==# 'help' | wincmd K | endif
 
 " Always open read-only when a swap file is found
 autocmd vimrc SwapExists * let v:swapchoice = 'o'
