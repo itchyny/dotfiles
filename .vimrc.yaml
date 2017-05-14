@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2017/05/14 19:52:46.
+# - * Last Change: 2017/05/14 20:00:24.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -153,6 +153,8 @@ plugin:
           call histadd(':', 'Grep ' . word)
           echo ':Grep' word
           execute 'Grep' word
+          let @/ = word
+          call histadd('/', word)
         endif
       endfunction
       command! -nargs=* Find Qffrom find <args>
