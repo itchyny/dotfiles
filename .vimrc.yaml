@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2017/05/02 22:29:55.
+# - * Last Change: 2017/05/14 19:52:46.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -98,12 +98,14 @@ plugin:
     command:
       - Qffrom
       - Grep
+      - GrepWord
       - Find
       - Make
       - Vint
     script: |
       nnoremap gr   :<C-u>Grep<Space>
-      nnoremap <expr> K ":\<C-u>Grep " . (expand('<cword>') !=# '' ? "\<C-r>\<C-w>\<CR>" : getreg('*') !~# '^\s\+$' ? "\<C-r>*\<CR>" : '')
+      nnoremap <silent> K :<C-u>GrepWord 0<CR>
+      vnoremap <silent> K :<C-u>GrepWord 1<CR>
       nnoremap gf   :<C-u>Find<Space>
       nnoremap <F5> :<C-u>Make<CR>
     before: |
@@ -127,6 +129,32 @@ plugin:
             \   'vint': { 'command': 'vint $*' },
             \ }
       command! -nargs=* Grep Qffrom grep <args>
+      command! -nargs=* GrepWord call s:grep_word(<q-args>)
+      function! s:normalize_text(text) abort
+        return escape(substitute(a:text, '\v^[[:space:][:return:]]+|[[:space:][:return:]]+$|\n.*', '', 'g'), '[]*\')
+      endfunction
+      function! s:get_text(visual) abort
+        if a:visual
+          let reg = '"'
+          let [save_reg, save_type] = [getreg(reg), getregtype(reg)]
+          normal! gv""y
+          let text = getreg(reg)
+          call setreg(reg, save_reg, save_type)
+          return s:normalize_text(text)
+        else
+          return s:normalize_text(expand('<cword>') !=# '' ? expand('<cword>') : getreg('*') !~# '^\s\+$' ? getreg('*') : '')
+        endif
+      endfunction
+      function! s:grep_word(arg) abort
+        let word = s:get_text(a:arg ==# '1')
+        if word ==# ''
+          echo 'no word to grep'
+        else
+          call histadd(':', 'Grep ' . word)
+          echo ':Grep' word
+          execute 'Grep' word
+        endif
+      endfunction
       command! -nargs=* Find Qffrom find <args>
       command! -nargs=* Make Qffrom make <args>
       command! -nargs=* Vint Qffrom vint <args>
