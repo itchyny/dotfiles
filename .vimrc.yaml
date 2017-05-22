@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2017/05/14 20:00:24.
+# - * Last Change: 2017/05/23 00:30:26.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -430,7 +430,7 @@ plugin:
       let g:vimshell_vimshrc_path = isdirectory(expand('~/Dropbox/.files/')) ? expand('~/Dropbox/.files/.vimshrc') : expand('~/.files/.vimshrc')
     script: |
       nnoremap <silent> H :<C-u>VimShellBufferDir -popup<CR>
-      nnoremap <silent> s :<C-u>VimShellBufferDir<CR>
+      nnoremap <expr><silent> s &modified ? ':<C-u>echoerr "E37: No write since last change."<CR>' : ":<C-u>VimShellBufferDir<CR>"
       nnoremap <silent> S :<C-u>VimShellBufferDir -split<CR>
 
   Align:
