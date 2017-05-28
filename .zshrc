@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2017/04/20 00:32:28.
+# - * Last Change: 2017/05/28 20:15:32.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -123,8 +123,18 @@ zle -N edit-command-line
 bindkey "^Q" edit-command-line
 
 # search history
-bindkey "^R" history-incremental-pattern-search-backward
-zle_highlight=(isearch:fg=yellow)
+if command -v fzf >/dev/null 2>&1; then
+  export FZF_DEFAULT_OPTS='--reverse'
+  function select-history() {
+    BUFFER=$(history -n -r 1 | fzf --no-sort +m --query "$LBUFFER")
+    CURSOR=$#BUFFER
+  }
+  zle -N select-history
+  bindkey "^R" select-history
+else
+  bindkey "^R" history-incremental-pattern-search-backward
+  zle_highlight=(isearch:fg=yellow)
+fi
 
 # export variables
 export LANG=ja_JP.UTF-8
