@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2017/05/28 20:15:32.
+# - * Last Change: 2017/06/02 10:14:31.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -61,7 +61,7 @@ else
   vcs_info_wrapper() {
     vcs_info
     if [ -n "$vcs_info_msg_0_" ]; then
-      echo "%{$fg[grey]%}${vcs_info_msg_0_}%{$reset_color%}$del"
+      echo "%{$fg[red]%}${vcs_info_msg_0_}%{$reset_color%}$del"
     fi
   }
   PROMPT="%(?.%{$fg[green]%}.%{$fg[blue]%})%B%~%b%{${reset_color}%} "
