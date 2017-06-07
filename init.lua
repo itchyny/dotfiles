@@ -1,5 +1,4 @@
 hs.pathwatcher.new(os.getenv("HOME") .. "/.files/init.lua", hs.reload):start()
-hs.alert.show("Config loaded")
 
 local function alert(str)
   hs.alert.show(str)
@@ -44,3 +43,5 @@ remap({'cmd'}, 'space', function()
   end
   prevKeyCode = nil
 end)
+
+hs.alert.show("Config loaded")
