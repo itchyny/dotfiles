@@ -32,3 +32,17 @@ end
 
 eventtap = hs.eventtap.new({hs.eventtap.event.types.keyDown}, handler)
 eventtap:start()
+
+local prevKeyCode
+hs.eventtap.new({hs.eventtap.event.types.flagsChanged}, function(e)
+  prevKeyCode = e:getKeyCode()
+end
+):start()
+remap({'cmd'}, 'space', function(e)
+  if prevKeyCode == 55 then
+    eng()
+  elseif prevKeyCode == 54 then
+    jp()
+  end
+  prevKeyCode = e:getKeyCode()
+end)
