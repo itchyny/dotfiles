@@ -17,8 +17,12 @@ local function eng()
 end
 
 remap({'ctrl'}, '[', function() eng() hs.eventtap.keyStroke({}, 'escape', 0) end)
-remap({'ctrl'}, ']', function() eng() hs.eventtap.keyStroke({}, 'escape', 0) end)
-remap({'ctrl'}, 'j', function() hs.eventtap.keyStroke({}, 'return', 0) end)
+esc = hs.hotkey.bind({}, 'escape', function()
+  esc:disable()
+  eng()
+  hs.eventtap.event.newKeyEvent({}, 'escape', true):post()
+  esc:enable()
+end, nil, nil)
 
 mapFnCtrlTap = hs.eventtap.new({hs.eventtap.event.types.keyDown}, function(e)
   local key = hs.keycodes.map[e:getKeyCode()]
