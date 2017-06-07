@@ -34,18 +34,18 @@ mapFnCtrlTap = hs.eventtap.new({hs.eventtap.event.types.keyDown}, function(e)
 end)
 mapFnCtrlTap:start()
 
-local prevKeyCode
-storeKeyCodeTap = hs.eventtap.new({hs.eventtap.event.types.flagsChanged}, function(e)
-  prevKeyCode = e:getKeyCode()
+local lastModifier
+storeLastModifier = hs.eventtap.new({hs.eventtap.event.types.flagsChanged}, function(e)
+  lastModifier = hs.keycodes.map[e:getKeyCode()]
 end)
-storeKeyCodeTap:start()
+storeLastModifier:start()
 remap({'cmd'}, 'space', function()
-  if prevKeyCode == 55 then
+  if lastModifier == 'cmd' then
     eng()
-  elseif prevKeyCode == 54 then
+  elseif lastModifier == 'rightcmd' then
     jp()
   end
-  prevKeyCode = nil
+  lastModifier = nil
 end)
 
 hs.alert.show("Config loaded")
