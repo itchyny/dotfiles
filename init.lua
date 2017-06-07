@@ -9,11 +9,11 @@ local function remap(mods, key, fn)
 end
 
 local function jp()
-  hs.eventtap.keyStroke({}, 0x68, 0)
+  hs.eventtap.keyStroke({}, 'kana', 0)
 end
 
 local function eng()
-  hs.eventtap.keyStroke({}, 0x66, 0)
+  hs.eventtap.keyStroke({}, 'eisu', 0)
 end
 
 remap({'ctrl'}, '[', function() eng() hs.eventtap.keyStroke({}, 'escape', 0) end)
