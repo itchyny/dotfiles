@@ -36,11 +36,11 @@ storeKeyCodeTap = hs.eventtap.new({hs.eventtap.event.types.flagsChanged}, functi
   prevKeyCode = e:getKeyCode()
 end)
 storeKeyCodeTap:start()
-remap({'cmd'}, 'space', function(e)
+remap({'cmd'}, 'space', function()
   if prevKeyCode == 55 then
     eng()
   elseif prevKeyCode == 54 then
     jp()
   end
-  prevKeyCode = e:getKeyCode()
+  prevKeyCode = nil
 end)
