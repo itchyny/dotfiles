@@ -21,7 +21,7 @@ esc = hs.hotkey.bind({}, 'escape', function()
   esc:disable()
   eng()
   hs.eventtap.event.newKeyEvent({}, 'escape', true):post()
-  esc:enable()
+  hs.timer.delayed.new(0.1, function() esc:enable() end):start()
 end, nil, nil)
 
 mapFnCtrlTap = hs.eventtap.new({hs.eventtap.event.types.keyDown}, function(e)
