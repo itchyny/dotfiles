@@ -21,23 +21,21 @@ remap({'ctrl'}, '[', function() eng() hs.eventtap.keyStroke({}, 'escape', 0) end
 remap({'ctrl'}, ']', function() eng() hs.eventtap.keyStroke({}, 'escape', 0) end)
 remap({'ctrl'}, 'j', function() hs.eventtap.keyStroke({}, 'return', 0) end)
 
-local handler = function(e)
+mapFnCtrlTap = hs.eventtap.new({hs.eventtap.event.types.keyDown}, function(e)
   local key = hs.keycodes.map[e:getKeyCode()]
   local hasFnFlag = e:getFlags()['fn']
   if (hasFnFlag and ((string.len(key) == 1 and 'a' <= key and key <= 'z') or key == 'space' or key == '[' or key == ']')) then
     hs.eventtap.keyStroke({'ctrl'}, key, 0)
     return ''
   end
-end
-
-eventtap = hs.eventtap.new({hs.eventtap.event.types.keyDown}, handler)
-eventtap:start()
+end)
+mapFnCtrlTap:start()
 
 local prevKeyCode
-hs.eventtap.new({hs.eventtap.event.types.flagsChanged}, function(e)
+storeKeyCodeTap = hs.eventtap.new({hs.eventtap.event.types.flagsChanged}, function(e)
   prevKeyCode = e:getKeyCode()
-end
-):start()
+end)
+storeKeyCodeTap:start()
 remap({'cmd'}, 'space', function(e)
   if prevKeyCode == 55 then
     eng()
