@@ -26,9 +26,13 @@ end, nil, nil)
 
 mapFnCtrlTap = hs.eventtap.new({hs.eventtap.event.types.keyDown}, function(e)
   local key = hs.keycodes.map[e:getKeyCode()]
-  local hasFnFlag = e:getFlags()['fn']
-  if (hasFnFlag and ((string.len(key) == 1 and 'a' <= key and key <= 'z') or key == 'space' or key == '[' or key == ']')) then
-    hs.eventtap.keyStroke({'ctrl'}, key, 0)
+  local hasFnFlag = e:getFlags().fn
+  if (hasFnFlag and ((string.len(key) == 1 and 'a' <= key and key <= 'z') or key == 'space' or key == 'tab' or key == '[' or key == ']')) then
+    local modifiers = {'ctrl'}
+    if e:getFlags().shift then
+      table.insert(modifiers, 'shift')
+    end
+    hs.eventtap.keyStroke(modifiers, key, 0)
     return ''
   end
 end)
