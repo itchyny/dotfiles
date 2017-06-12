@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2017/06/02 10:14:31.
+# - * Last Change: 2017/06/12 10:55:32.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -126,7 +126,7 @@ bindkey "^Q" edit-command-line
 if command -v fzf >/dev/null 2>&1; then
   export FZF_DEFAULT_OPTS='--reverse'
   function select-history() {
-    BUFFER=$(history -n -r 1 | fzf --no-sort +m --query "$LBUFFER")
+    BUFFER=$(history -n -r 1 | perl -ne 'print if !$seen{$_}++' | fzf --no-sort +m --query "$LBUFFER")
     CURSOR=$#BUFFER
   }
   zle -N select-history
