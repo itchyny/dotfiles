@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2017/06/12 10:55:32.
+# - * Last Change: 2017/06/13 10:15:38.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -324,6 +324,14 @@ function extract() {
   esac
 }
 alias -s {gz,tgz,zip,lzh,bz2,tbz,Z,tar,arj,xz}=extract
+
+prepend-fillin() {
+  if [[ "$BUFFER" == *{{*}}* ]] && [[ "$BUFFER" != fillin* ]]; then
+    BUFFER="fillin ${BUFFER}"
+  fi
+  zle .accept-line
+}
+zle -N accept-line prepend-fillin
 
 # http://mimosa-pudica.net/zsh-incremental.html
 if [ -e $ZSH_PLUGIN_PATH/incr-0.2.zsh ]; then
