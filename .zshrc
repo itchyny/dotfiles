@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2017/06/13 10:15:38.
+# - * Last Change: 2017/06/14 23:49:39.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -123,6 +123,10 @@ zle -N edit-command-line
 bindkey "^Q" edit-command-line
 
 # search history
+bindkey "^R" history-incremental-pattern-search-backward
+zle_highlight=(isearch:fg=yellow)
+
+# fuzzy history search
 if command -v fzf >/dev/null 2>&1; then
   export FZF_DEFAULT_OPTS='--reverse'
   function select-history() {
@@ -130,10 +134,7 @@ if command -v fzf >/dev/null 2>&1; then
     CURSOR=$#BUFFER
   }
   zle -N select-history
-  bindkey "^R" select-history
-else
-  bindkey "^R" history-incremental-pattern-search-backward
-  zle_highlight=(isearch:fg=yellow)
+  bindkey "^Z" select-history
 fi
 
 # export variables
@@ -356,14 +357,6 @@ if [ -e $ZSH_PLUGIN_PATH/zsh-history-substring-search/zsh-history-substring-sear
   bindkey '^N' history-substring-search-down
 elif command -v git > /dev/null 2>&1; then
   git clone https://github.com/zsh-users/zsh-history-substring-search $ZSH_PLUGIN_PATH/zsh-history-substring-search
-fi
-
-# https://github.com/zsh-users/zaw
-if [ -e $ZSH_PLUGIN_PATH/zaw/zaw.zsh ]; then
-  source $ZSH_PLUGIN_PATH/zaw/zaw.zsh
-  bindkey '^z' zaw-history
-elif command -v git > /dev/null 2>&1; then
-  git clone https://github.com/zsh-users/zaw $ZSH_PLUGIN_PATH/zaw
 fi
 
 # https://github.com/itchyny/bin
