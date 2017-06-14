@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2017/06/14 23:49:39.
+# - * Last Change: 2017/06/15 00:34:03.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -328,7 +328,11 @@ alias -s {gz,tgz,zip,lzh,bz2,tbz,Z,tar,arj,xz}=extract
 
 prepend-fillin() {
   if [[ "$BUFFER" == *{{*}}* ]] && [[ "$BUFFER" != fillin* ]]; then
-    BUFFER="fillin ${BUFFER}"
+    if [[ "$BUFFER" == *'$('* ]]; then
+      BUFFER="fillin '${BUFFER}'"
+    else
+      BUFFER="fillin ${BUFFER}"
+    fi
   fi
   zle .accept-line
 }
