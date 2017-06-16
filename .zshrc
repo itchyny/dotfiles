@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2017/06/16 09:05:50.
+# - * Last Change: 2017/06/16 09:24:26.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -235,7 +235,6 @@ alias emacs='vi'
 alias gnome-terminal='/bin/sh -c "VTE_CJK_WIDTH=1 gnome-terminal --disable-factory"'
 alias terminator='/bin/sh -c "VTE_CJK_WIDTH=1 terminator -m"'
 # one alphabet
-alias v='vim'
 alias c='clear'
 alias d='download'
 # default option
@@ -243,7 +242,6 @@ alias mpg123='mpg123 -zC'
 alias mplayer='mplayer -subdelay 100000 -fs -geometry 50%:50%'
 alias music='mplayer -lavdopts threads=2 -loop 0 -shuffle -geometry 50%:50%'
 alias aspell="aspell -c -l en_US"
-alias nicovideo-dl="nicovideo-dl -n -t"
 # git
 export GIT_MERGE_AUTOEDIT=no
 if command -v hub >/dev/null 2>&1; then
@@ -272,7 +270,6 @@ if command -v htop > /dev/null 2>&1; then
   alias top='TERM=screen htop'
   alias htop='TERM=screen htop'
 fi
-which cam > /dev/null && alias slideshow='cam -q -C -s 1'
 case "${OSTYPE}" in
   freebsd*|darwin*)
     if test "$VIM"; then
