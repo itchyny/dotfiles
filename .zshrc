@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2017/06/15 00:34:03.
+# - * Last Change: 2017/06/16 09:05:50.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -366,17 +366,6 @@ fi
 # https://github.com/itchyny/bin
 if ! command -v download > /dev/null 2>&1; then
   git clone https://github.com/itchyny/bin $ZSH_PLUGIN_PATH/bin
-fi
-
-# https://github.com/jkbrzt/httpie
-if ! command -v http > /dev/null 2>&1; then
-  if command -v brew > /dev/null 2>&1; then
-    brew install httpie
-  elif command -v apt-get > /dev/null 2>&1; then
-    sudo apt-get install httpie
-  fi
-else
-  alias http='http -b'
 fi
 
 if [ -e ~/Dropbox ]; then
