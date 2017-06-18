@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2017/05/23 00:30:26.
+# - * Last Change: 2017/06/18 18:56:51.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -827,6 +827,7 @@ plugin:
   fatih/vim-go:
     filetype: go
     before: |
+      let g:go_fmt_options = { 'gofmt': '-s' }
       let g:go_def_mapping_enabled = 0
       let g:go_doc_keywordprg_enabled = 0
   rust-lang/rust.vim:
