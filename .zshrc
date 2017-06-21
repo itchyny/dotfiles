@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2017/06/16 09:24:26.
+# - * Last Change: 2017/06/18 22:16:28.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -324,7 +324,7 @@ function extract() {
 alias -s {gz,tgz,zip,lzh,bz2,tbz,Z,tar,arj,xz}=extract
 
 prepend-fillin() {
-  if [[ "$BUFFER" == *{{*}}* ]] && [[ "$BUFFER" != fillin* ]]; then
+  if [[ "$BUFFER" == *{{*}}* ]] && [[ "$BUFFER" != *fillin* ]]; then
     if [[ "$BUFFER" == *'$('* ]]; then
       BUFFER="fillin '${BUFFER}'"
     else
