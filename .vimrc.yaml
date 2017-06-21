@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2017/06/20 22:45:09.
+# - * Last Change: 2017/06/21 23:40:00.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -906,6 +906,7 @@ filetype:
       setlocal nowrap
     endif
   qf: |
+    setlocal nocursorline
     nnoremap <buffer><silent> q     :<C-u>try<bar>wincmd p<bar>cclose<bar>catch<bar>enew<bar>endtry<CR>
     nnoremap <buffer><silent> <C-t> :<C-u>call <SID>qfenter('tabnew')<CR>
     nnoremap <buffer><silent> <C-n> :<C-u>call <SID>qfenter('wincmd p <bar> new')<CR>
