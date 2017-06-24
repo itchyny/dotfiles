@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2017/06/24 22:36:54.
+# - * Last Change: 2017/06/24 22:55:38.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -287,6 +287,8 @@ plugin:
         let in = a:input ? (filereadable(infile) ? '<' . infile : filereadable('i') ? '<i' : '') : ''
         execute 'QuickRun' bufname in out
       endfunction
+  tyru/open-browser.vim:
+    function: openbrowser
   ujihisa/neco-look:
     enable: executable('look')
 
