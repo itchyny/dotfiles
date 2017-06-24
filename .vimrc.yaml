@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2017/06/21 23:40:00.
+# - * Last Change: 2017/06/24 18:53:38.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -97,27 +97,15 @@ plugin:
   itchyny/vim-qffrom:
     command:
       - Qffrom
-      - Grep
-      - GrepWord
       - Find
       - Make
       - Vint
     script: |
-      nnoremap gr   :<C-u>Grep<Space>
-      nnoremap <silent> K :<C-u>GrepWord 0<CR>
-      vnoremap <silent> K :<C-u>GrepWord 1<CR>
       nnoremap gf   :<C-u>Find<Space>
       nnoremap <F5> :<C-u>Make<CR>
     before: |
       let g:qffrom = {
             \   '_'   : { 'post': 'leftabove lopen' },
-            \   'grep': { 'command':
-            \             'if git rev-parse >/dev/null 2>&1 && ! <hasdir>; then '
-            \           . '  git grep -HIin -- $* "$(git rev-parse --show-toplevel)" 2>/dev/null | sed ''/\.pdf/d;/\.tmp/d;/\.xml/d;/\.svg/d;/\.xsd/d'';'
-            \           . 'else '
-            \           . substitute( 'grep --exclude-dir=.git --exclude-dir=.svn '
-            \           . '--exclude=tags --exclude=\*.{bak,aux,bib,bbl,blg,nav,toc,out,min.js,min.css} --exclude=.histfile\* -HIsinr -- $* <dir>; fi'
-            \           , 'exclude-dir', 'exclude' . (has('win32') || has('win64') ? '' : '-dir'), 'g'), 'git_root': 1 },
             \   'find': { 'command': 'find <dir> -name .git -prune -o -name cache -prune -o -type f -iname $* -print', 'git_root': 1 },
             \   'make': { 'command': 'cd <dir> 2>&1 && '
             \           . 'if test -f Makefile -o -f makefile; then make $* 2>&1; '
@@ -128,38 +116,14 @@ plugin:
             \           },
             \   'vint': { 'command': 'vint $*' },
             \ }
-      command! -nargs=* Grep Qffrom grep <args>
-      command! -nargs=* GrepWord call s:grep_word(<q-args>)
-      function! s:normalize_text(text) abort
-        return escape(substitute(a:text, '\v^[[:space:][:return:]]+|[[:space:][:return:]]+$|\n.*', '', 'g'), '[]*\')
-      endfunction
-      function! s:get_text(visual) abort
-        if a:visual
-          let reg = '"'
-          let [save_reg, save_type] = [getreg(reg), getregtype(reg)]
-          normal! gv""y
-          let text = getreg(reg)
-          call setreg(reg, save_reg, save_type)
-          return s:normalize_text(text)
-        else
-          return s:normalize_text(expand('<cword>') !=# '' ? expand('<cword>') : getreg('*') !~# '^\s\+$' ? getreg('*') : '')
-        endif
-      endfunction
-      function! s:grep_word(arg) abort
-        let word = s:get_text(a:arg ==# '1')
-        if word ==# ''
-          echo 'no word to grep'
-        else
-          call histadd(':', 'Grep ' . word)
-          echo ':Grep' word
-          execute 'Grep' word
-          let @/ = word
-          call histadd('/', word)
-        endif
-      endfunction
       command! -nargs=* Find Qffrom find <args>
       command! -nargs=* Make Qffrom make <args>
       command! -nargs=* Vint Qffrom vint <args>
+  itchyny/vim-grep:
+    script: |
+      nnoremap gr :<C-u>Grep<Space>
+      nnoremap <silent> K :<C-u>Grep<CR>
+      vnoremap <silent> K :Grep<CR>
   itchyny/vim-autoft:
     before: |
       let g:autoft_config = [
