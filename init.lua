@@ -52,4 +52,29 @@ remap({'cmd'}, 'space', function()
   lastModifier = nil
 end)
 
+function flagEquals(flags, modifiers)
+  local set = {}
+  for _, k in ipairs(modifiers) do set[k] = true end
+  for _, k in ipairs({'fn', 'cmd', 'ctrl', 'alt', 'shift'}) do
+    if set[k] ~= flags[k] then return false end
+  end
+  return true
+end
+backslashModifier = hs.eventtap.new({hs.eventtap.event.types.keyDown, hs.eventtap.event.types.keyUp}, function(e)
+  local key = hs.keycodes.map[e:getKeyCode()]
+  if key == 'yen' then
+    if flagEquals(e:getFlags(), {'alt'}) then
+      e:setFlags({})
+    elseif flagEquals(e:getFlags(), {}) then
+      e:setFlags({alt=true})
+    end
+  elseif key == 'underscore' then
+    if flagEquals(e:getFlags(), {}) then
+      e:setKeyCode(hs.keycodes.map['yen'])
+      e:setFlags({alt=true})
+    end
+  end
+end)
+backslashModifier:start()
+
 hs.alert.show("Config loaded")
