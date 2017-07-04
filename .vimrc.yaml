@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2017/06/24 22:55:38.
+# - * Last Change: 2017/07/04 12:24:19.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -105,7 +105,7 @@ plugin:
       nnoremap <F5> :<C-u>Make<CR>
     before: |
       let g:qffrom = {
-            \   '_'   : { 'post': 'leftabove lopen' },
+            \   '_'   : { 'loclist': 1 },
             \   'find': { 'command': 'find <dir> -name .git -prune -o -name cache -prune -o -type f -iname $* -print', 'git_root': 1 },
             \   'make': { 'command': 'cd <dir> 2>&1 && '
             \           . 'if test -f Makefile -o -f makefile; then make $* 2>&1; '
