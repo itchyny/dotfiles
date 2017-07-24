@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimshrc
 # - * Author: itchyny
-# - * Last Change: 2017/03/10 20:43:34.
+# - * Last Change: 2017/07/24 17:54:40.
 # ------------------------------------------------------------------------------------------------------------
 
 alias vi='vim'
@@ -12,14 +12,14 @@ alias mplayer='mplayer -subdelay 100000 -fs -geometry 50%:50%'
 alias music='mplayer -lavdopts threads=2 -loop 0 -shuffle -geometry 50%:50%'
 alias c='clear'
 alias git='hub'
-alias gam='git commit -am'
 alias gb='git branch'
 alias gc='git checkout'
 alias gcb='git checkout -b'
 alias gcm='git checkout master'
 alias gcd='sh -c "git checkout develop 2>/dev/null || git checkout master"'
 alias ga='git add'
-alias gm='git commit -m'
+alias gam='sh -c "git commit -am $$args 2>/dev/null || git commit -am '$$args'" 2>/dev/null || git commit -am $$args'
+alias gm='sh -c "git commit -m $$args 2>/dev/null || git commit -m '$$args'" 2>/dev/null || git commit -m $$args'
 alias gmd='git merge origin/develop'
 alias gd='git diff'
 alias gdc='git diff --cached'
