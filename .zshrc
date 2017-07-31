@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2017/06/18 22:16:28.
+# - * Last Change: 2017/07/31 12:13:04.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -120,7 +120,6 @@ bindkey "^F" forward-char
 bindkey "^B" backward-char
 autoload edit-command-line
 zle -N edit-command-line
-bindkey "^Q" edit-command-line
 
 # search history
 bindkey "^R" history-incremental-pattern-search-backward
