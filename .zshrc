@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2017/07/31 12:13:04.
+# - * Last Change: 2017/08/24 21:23:13.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -246,14 +246,12 @@ export GIT_MERGE_AUTOEDIT=no
 if command -v hub >/dev/null 2>&1; then
   alias git=hub
 fi
-alias gam='git commit -am'
 alias gb='git branch'
 alias gc='git checkout'
 alias gcb='git checkout -b'
 alias gcm='git checkout master'
 alias gcd='git checkout develop 2>/dev/null || git checkout master'
 alias ga='git add'
-alias gm='git commit -m'
 alias gmd='git merge origin/develop'
 alias gd='git diff --color'
 alias gdc='git diff --cached'
