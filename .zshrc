@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2017/09/02 12:41:54.
+# - * Last Change: 2017/09/23 14:00:53.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -164,6 +164,9 @@ if command -v rbenv >/dev/null 2>&1; then
 fi
 if command -v nodenv >/dev/null 2>&1; then
   eval "$(nodenv init -)"
+fi
+if command -v rustc >/dev/null 2>&1; then
+  export DYLD_LIBRARY_PATH=$(rustc --print sysroot)/lib:$DYLD_LIBRARY_PATH
 fi
 
 # function
