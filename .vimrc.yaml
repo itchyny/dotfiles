@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2017/09/25 14:19:02.
+# - * Last Change: 2017/09/25 14:52:52.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -1029,5 +1029,7 @@ filetype:
     nmap <silent><buffer> <C-@> <C-t>
   haxe: |
     call tcomment#DefineType('haxe', '// %s')
+  nginx: |
+    setlocal shiftwidth=4
   meissa: |
     call tcomment#DefineType('meissa', '# %s')
