@@ -365,10 +365,12 @@ if ! command -v download > /dev/null 2>&1; then
   git clone https://github.com/itchyny/bin $ZSH_PLUGIN_PATH/bin
 fi
 
-if [ -e ~/Dropbox ]; then
-  cd ~/Dropbox > /dev/null
-elif [ -e ~/Documents ]; then
-  cd ~/Documents > /dev/null
+if ! test "$VIM"; then
+  if [ -e ~/Dropbox ]; then
+    cd ~/Dropbox > /dev/null
+  elif [ -e ~/Documents ]; then
+    cd ~/Documents > /dev/null
+  fi
 fi
 
 return 0
