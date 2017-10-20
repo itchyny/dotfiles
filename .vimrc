@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2017/06/25 12:38:12.
+" - * Last Change: 2017/10/20 18:10:19.
 " --------------------------------------------------------------------------------------------------------
 
 " Setting options {{{1
@@ -19,7 +19,7 @@ silent! set noshowmatch matchtime=1 noshowmode shortmess+=I cmdheight=1 cmdwinhe
 silent! set noshowcmd noruler rulerformat= laststatus=2 statusline=%t\ %=\ %m%r%y%w\ %3l:%-2c
 silent! set title titlelen=100 titleold= titlestring=%f noicon iconstring=%t norightleft showtabline=1
 silent! set cursorline nocursorcolumn colorcolumn= concealcursor=nvc conceallevel=0 norelativenumber
-silent! set list listchars=tab:>\ ,nbsp:_ synmaxcol=1000 ambiwidth=double breakindent breakindentopt=
+silent! set list listchars=tab:>\ ,nbsp:_ synmaxcol=3000 ambiwidth=double breakindent breakindentopt=
 silent! set nosplitbelow nosplitright startofline linespace=0 whichwrap=b,s scrolloff=0 sidescroll=0
 silent! set equalalways nowinfixwidth nowinfixheight winminwidth=3 winminheight=3 nowarn noconfirm
 silent! set fillchars=vert:\|,fold:\  eventignore= helplang=en viewoptions=options,cursor virtualedit=
