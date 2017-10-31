@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2017/10/20 18:10:19.
+" - * Last Change: 2017/11/01 01:31:27.
 " --------------------------------------------------------------------------------------------------------
 
 " Setting options {{{1
@@ -58,6 +58,9 @@ silent! set complete& completeopt=menu infercase pumheight=10 noshowfulltag shor
 " Command line
 silent! set wildchar=9 nowildmenu wildmode=list:longest wildoptions= wildignorecase cedit=<C-k>
 silent! set wildignore=*.~,*.?~,*.o,*.sw?,*.bak,*.hi,*.pyc,*.out,*.lock suffixes=*.pdf
+
+" terminal
+silent! set termkey=<C-q>
 
 " Performance
 silent! set updatetime=300 timeout timeoutlen=500 ttimeout ttimeoutlen=50 ttyfast lazyredraw
