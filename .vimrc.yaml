@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2017/10/31 23:43:55.
+# - * Last Change: 2017/11/01 20:38:31.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -27,7 +27,7 @@ plugin:
         augroup vimrc-landscape-highlight
           autocmd!
           autocmd CmdlineEnter [/\?] :highlight Search cterm=reverse ctermfg=100 ctermbg=236 gui=reverse guifg=#878700 guibg=#303030
-          autocmd CmdlineLeave [/\?] :highlight Search cterm=reverse ctermfg=142 ctermbg=236 gui=reverse guifg=#afaf00 guibg=#303030
+          autocmd CmdlineLeave [/\?] :highlight Search cterm=reverse ctermfg=178 ctermbg=236 gui=reverse guifg=#dfaf00 guibg=#303030
         augroup END
       endif
   itchyny/lightline.vim:
