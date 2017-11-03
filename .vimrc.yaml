@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2017/11/01 20:38:31.
+# - * Last Change: 2017/11/04 00:12:57.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -22,14 +22,6 @@ plugin:
               \. 'rexdep|fillin|(base58|volume)-go|sjsp|qhs|py2bf|github-better-header|mackerel\S*)/)'
     after: |
       colorscheme landscape
-      if exists('##CmdlineEnter')
-        highlight IncSearch cterm=reverse ctermfg=178 ctermbg=236 gui=reverse guifg=#dfaf00 guibg=#303030
-        augroup vimrc-landscape-highlight
-          autocmd!
-          autocmd CmdlineEnter [/\?] :highlight Search cterm=reverse ctermfg=100 ctermbg=236 gui=reverse guifg=#878700 guibg=#303030
-          autocmd CmdlineLeave [/\?] :highlight Search cterm=reverse ctermfg=178 ctermbg=236 gui=reverse guifg=#dfaf00 guibg=#303030
-        augroup END
-      endif
   itchyny/lightline.vim:
     script: |
       exec 'set gfn=' . substitute('Inconsolata for Powerline', ' ', g:iswin ? '_' : '\\ ', 'g') . (g:ismac ? ':h15' : g:iswin ?  ':h13:cANSI' : '\ 12')
