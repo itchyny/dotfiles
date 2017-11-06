@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2017/11/01 01:31:27.
+" - * Last Change: 2017/11/07 00:48:52.
 " --------------------------------------------------------------------------------------------------------
 
 " Setting options {{{1
@@ -58,9 +58,6 @@ silent! set complete& completeopt=menu infercase pumheight=10 noshowfulltag shor
 " Command line
 silent! set wildchar=9 nowildmenu wildmode=list:longest wildoptions= wildignorecase cedit=<C-k>
 silent! set wildignore=*.~,*.?~,*.o,*.sw?,*.bak,*.hi,*.pyc,*.out,*.lock suffixes=*.pdf
-
-" terminal
-silent! set termkey=<C-q>
 
 " Performance
 silent! set updatetime=300 timeout timeoutlen=500 ttimeout ttimeoutlen=50 ttyfast lazyredraw
@@ -194,6 +191,35 @@ cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
 cnoremap <Up> <C-p>
 cnoremap <Down> <C-n>
+
+" terminal
+silent! set termkey=<C-q>
+silent! tnoremap <silent> <C-w> <C-q>:try<bar>hide<bar>catch<bar>quit!<bar>endtry<CR>
+function! s:open_terminal() abort
+  let dir = expand('%:p:h')
+  for nr in range(1, winnr('$'))
+    if getbufvar(winbufnr(nr), '&buftype') ==# 'terminal'
+      execute nr 'wincmd w'
+      break
+    endif
+  endfor
+  if &buftype !=# 'terminal'
+    let nrs = term_list()
+    if len(nrs) == 0
+      terminal ++close
+    else
+      top new
+      execute 'buffer' nrs[0]
+    endif
+  endif
+  let nr = bufnr('')
+  let line = resolve(expand(substitute(term_getline(nr, term_getcursor(nr)[0]), ' *$', '', 'g')))
+  if isdirectory(line) && dir !=# line
+    let dir = fnamemodify(dir, ':~')
+    call term_sendkeys(nr, 'cd ' . (dir =~# '^[-a-zA-Z0-9_~/.]*$' ? dir : string(dir)) . "\<CR>")
+  endif
+endfunction
+nnoremap <silent> H :<C-u>call <SID>open_terminal()<CR>
 
 " Escape from Select mode to Normal mode
 snoremap <ESC> <C-c>
