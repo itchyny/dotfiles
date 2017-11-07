@@ -971,6 +971,7 @@ filetype:
     nunmap <buffer> \
     nunmap <buffer> gr
     nunmap <buffer> gf
+    nunmap <buffer> H
     nnoremap <buffer> <C-l> <ESC><C-w>l
     nmap <buffer> <C-r> <Plug>(vimfiler_redraw_screen)
     nmap <buffer> o <Plug>(vimfiler_sync_with_current_vimfiler)
