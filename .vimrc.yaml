@@ -403,9 +403,9 @@ plugin:
       let g:vimshell_max_command_history = 1000000
       let g:vimshell_vimshrc_path = isdirectory(expand('~/Dropbox/.files/')) ? expand('~/Dropbox/.files/.vimshrc') : expand('~/.files/.vimshrc')
     script: |
-      nnoremap <silent> H :<C-u>VimShellBufferDir -popup<CR>
-      nnoremap <expr><silent> s &modified ? ':<C-u>echoerr "E37: No write since last change."<CR>' : ":<C-u>VimShellBufferDir<CR>"
-      nnoremap <silent> S :<C-u>VimShellBufferDir -split<CR>
+      " nnoremap <silent> H :<C-u>VimShellBufferDir -popup<CR>
+      " nnoremap <expr><silent> s &modified ? ':<C-u>echoerr "E37: No write since last change."<CR>' : ":<C-u>VimShellBufferDir<CR>"
+      " nnoremap <silent> S :<C-u>VimShellBufferDir -split<CR>
 
   Align:
     command: Align
