@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2017/11/07 13:08:35.
+" - * Last Change: 2017/11/07 22:09:39.
 " --------------------------------------------------------------------------------------------------------
 
 " Setting options {{{1
@@ -196,35 +196,6 @@ cnoremap <Down> <C-n>
 silent! set termkey=<C-q>
 silent! tnoremap <silent> <C-w> <C-q>:try<bar>hide<bar>catch<bar>quit!<bar>endtry<CR>
 silent! tnoremap <C-q><C-q> <C-q>N
-function! s:open_terminal(cmd) abort
-  let dir = expand('%:p:h')
-  for nr in range(1, winnr('$'))
-    if getbufvar(winbufnr(nr), '&buftype') ==# 'terminal'
-      execute nr 'wincmd w'
-      break
-    endif
-  endfor
-  if &buftype !=# 'terminal'
-    let nrs = term_list()
-    if len(nrs) == 0
-      execute a:cmd
-      terminal ++curwin ++close
-    else
-      execute a:cmd
-      execute 'buffer' nrs[0]
-    endif
-  endif
-  let nr = bufnr('')
-  let line = resolve(expand(substitute(term_getline(nr, term_getcursor(nr)[0]), ' *$', '', 'g')))
-  if isdirectory(line) && dir !=# line
-    let dir = fnamemodify(dir, ':~')
-    call term_sendkeys(nr, 'cd ' . (dir =~# '^[-a-zA-Z0-9_~/.]*$' ? dir : string(dir)) . "\<CR>")
-  endif
-endfunction
-command! -nargs=* Term call s:open_terminal(<q-args>)
-nnoremap <silent> H :<C-u>Term top new<CR>
-nnoremap <silent> S :<C-u>Term vnew<CR>
-nnoremap <expr><silent> s &modified ? ':<C-u>echoerr "E37: No write since last change."<CR>' : ":<C-u>Term<CR>"
 
 " Escape from Select mode to Normal mode
 snoremap <ESC> <C-c>
