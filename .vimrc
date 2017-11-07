@@ -92,6 +92,8 @@ autocmd vimrc SwapExists * let v:swapchoice = 'o'
 " Automatically set expandtab
 autocmd vimrc FileType * execute 'setlocal ' . (search('^\t.*\n\t.*\n\t', 'n') ? 'no' : '') . 'expandtab'
 
+autocmd vimrc BufWinEnter * if &buftype == 'terminal' | setlocal nonumber | endif
+
 " Setting lazyredraw causes a problem on startup
 autocmd vimrc VimEnter * redraw
 
