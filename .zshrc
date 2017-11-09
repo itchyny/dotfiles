@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2017/11/09 09:19:09.
+# - * Last Change: 2017/11/09 09:26:02.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -179,18 +179,14 @@ bindkey '^\^' starteditor
 
 # cd with ls
 function chpwd() {
-  if test "$VIM"; then
-    ls
-  else
-    case "${OSTYPE}" in
-      freebsd*|darwin*)
-        ls -wG
-        ;;
-      *)
-        ls --color
-        ;;
-    esac
-  fi
+  case "${OSTYPE}" in
+    freebsd*|darwin*)
+      ls -wG
+      ;;
+    *)
+      ls --color
+      ;;
+  esac
 }
 
 # for vim's C-s
@@ -270,22 +266,12 @@ if command -v htop > /dev/null 2>&1; then
 fi
 case "${OSTYPE}" in
   freebsd*|darwin*)
-    if test "$VIM"; then
-      alias ll='ls -altr'
-    else
-      alias ls='ls -wG'
-      alias ll='ls -altrwG'
-    fi
-    export os='mac'
+    alias ls='ls -wG'
+    alias ll='ls -altrwG'
     ;;
   *)
-    if test "$VIM"; then
-      alias ll='ls -altr'
-    else
-      alias ls='ls --color'
-      alias ll='ls -altr --color'
-    fi
-    export os='ubuntu'
+    alias ls='ls --color'
+    alias ll='ls -altr --color'
     ;;
 esac
 
