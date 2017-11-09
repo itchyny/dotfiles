@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2017/11/06 15:20:40.
+# - * Last Change: 2017/11/09 09:19:09.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -62,25 +62,10 @@ fi
 # prompt
 setopt prompt_subst
 setopt interactive_comments
-autoload -Uz vcs_info
-zstyle ':vcs_info:*' enable git
-zstyle ':vcs_info:*' formats '%F{3}%b%f '
-if test "$VIM"; then
-  PROMPT="%~ "
-  PROMPT2="%_> "
-  SPROMPT="%r is correct? [n,y,a,e]: "
-else
-  vcs_info_wrapper() {
-    vcs_info
-    if [ -n "$vcs_info_msg_0_" ]; then
-      echo "%{$fg[red]%}${vcs_info_msg_0_}%{$reset_color%}$del"
-    fi
-  }
-  PROMPT="%(?.%{$fg[green]%}.%{$fg[blue]%})%B%~%b%{${reset_color}%} "
-  PROMPT2="%{$bg[blue]%}%_>%{$reset_color%}%b "
-  RPROMPT=$'$(vcs_info_wrapper)'
-  SPROMPT="%{$bg[red]%}%B%r is correct? [n,y,a,e]:%{${reset_color}%}%b "
-fi
+PROMPT="%(?.%{$fg[green]%}.%{$fg[blue]%})%B%~%b%{${reset_color}%} "
+PROMPT2="%{$bg[blue]%}%_>%{$reset_color%}%b "
+RPROMPT=$'$(git-branch-name 2>/dev/null)'
+SPROMPT="%{$bg[red]%}%B%r is correct? [n,y,a,e]:%{${reset_color}%}%b "
 [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] && PROMPT="%{$bg[red]%}${HOST%%.*}${PROMPT}%{${reset_color}%}"
 alias prompt_kadai='PROMPT=" $ "'
 case "${TERM}" in
