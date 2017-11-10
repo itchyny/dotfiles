@@ -236,6 +236,7 @@ plugin:
       let g:neocomplete#ignore_source_files = [ 'member.vim', 'tag.vim', 'dictionary.vim', 'include.vim', 'file_include.vim' ]
       let g:neocomplete#force_omni_input_patterns = get(g:, 'neocomplete#force_omni_input_patterns', {})
       let g:neocomplete#force_omni_input_patterns.python = '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
+      let g:neocomplete#force_omni_input_patterns.rust = '\v[A-Za-z0-9_]+(::|\.)\w*|use [a-z].*'
       let g:neocomplete#force_omni_input_patterns.haskell = '[A-Z][a-z]*\.\w*\|import.*'
       let g:neocomplete#sources#omni#input_patterns = get(g:, 'neocomplete#sources#omni#input_patterns', {})
       let g:neocomplete#sources#omni#input_patterns.javascript = '[[:alpha:]./"''$]\+'
@@ -810,6 +811,11 @@ plugin:
     filetype: rust
     before: |
       let g:rustfmt_autosave = 1
+  racer-rust/vim-racer:
+    filetype: rust
+    before: |
+      let g:racer_cmd = '~/.cargo/bin/racer'
+      let g:racer_experimental_completer = 1
   udalov/kotlin-vim:
     filetype: kotlin
   kballard/vim-swift:
