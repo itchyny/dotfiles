@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2017/11/07 22:15:36.
+# - * Last Change: 2017/11/10 20:23:17.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -67,6 +67,7 @@ plugin:
     script: |
       map <silent> <Leader>s :<C-u>ScreenSaver<CR>
   itchyny/vim-term:
+    enable: has('terminal')
     command: Term
     script: |
       nnoremap <silent> H :<C-u>Term -close -opener=top\ new -restore -autocd<CR>
