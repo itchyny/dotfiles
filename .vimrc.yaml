@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2017/11/10 20:23:17.
+# - * Last Change: 2017/11/11 12:42:00.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -194,7 +194,7 @@ plugin:
     after: |
       augroup cursorword-filetype
         autocmd!
-        autocmd FileType qf,unite,vimfiler,vimshell,thumbnail,vimcalc,quickrun,calendar let b:cursorword = 0
+        autocmd FileType qf,unite,vimfiler,thumbnail,vimcalc,quickrun,calendar let b:cursorword = 0
       augroup END
   itchyny/vim-parenmatch:
     after: |
@@ -384,31 +384,6 @@ plugin:
   itchyny/unite-preview:
     loadafter: unite
 
-  Shougo/vimshell.vim:
-    command:
-      - VimShell
-      - VimShellPop
-      - VimShellBufferDir
-    function: vimshell
-    filetype: vimshrc
-    dependon: vimproc
-    before: |
-      let g:vimshell_interactive_update_time = 150
-      let g:vimshell_popup_command = 'top new'
-      let g:vimshell_split_command = 'vsplit'
-      let g:vimshell_prompt_expr = 'escape(fnamemodify(getcwd(), ":~"), "\\[]()?! ")." "'
-      let g:vimshell_prompt_pattern = (has('win16') || has('win32') || has('win64') ? '\%(^\f:\\*' : '\%(^\~\?/') . '\%([[:alpha:].]\%(\f\|\\.\)*\)\? \|^[*a-zA-Z][a-zA-Z .0-9]\+> \|^>>> \)'
-      let g:vimshell_scrollback_limit = 1000000000
-      let g:vimshell_disable_escape_highlight = 0
-      let g:vimshell_force_overwrite_statusline = 0
-      let g:vimshell_temporary_directory = $CACHE.'/vimshell'
-      let g:vimshell_max_command_history = 1000000
-      let g:vimshell_vimshrc_path = isdirectory(expand('~/Dropbox/.files/')) ? expand('~/Dropbox/.files/.vimshrc') : expand('~/.files/.vimshrc')
-    script: |
-      " nnoremap <silent> H :<C-u>VimShellBufferDir -popup<CR>
-      " nnoremap <expr><silent> s &modified ? ':<C-u>echoerr "E37: No write since last change."<CR>' : ":<C-u>VimShellBufferDir<CR>"
-      " nnoremap <silent> S :<C-u>VimShellBufferDir -split<CR>
-
   Align:
     command: Align
   VimCalc:
@@ -573,7 +548,6 @@ plugin:
     loadbefore:
       - ghcmod
       - vimfiler
-      - vimshell
       - quickrun
       - dictionary
   thinca/vim-themis:
@@ -989,28 +963,6 @@ filetype:
     nnoremap <buffer><silent> t :<C-u>call vimfiler#mappings#do_action(b:vimfiler, 'change_time')<CR>
     silent! call delete("Icon\r")
     silent! call delete('.DS_Store')
-  vimshell: |
-    iunmap <buffer> <C-h>
-    iunmap <buffer> <C-k>
-    iunmap <buffer> <C-l>
-    iunmap <buffer> <C-w>
-    nunmap <buffer> <C-k>
-    nunmap <buffer> <C-l>
-    nnoremap <buffer> <C-a> <Nop>
-    nnoremap <buffer> <C-m> <ESC><C-w>j
-    inoremap <buffer> <C-h> <ESC><C-w>h
-    inoremap <buffer> <C-j> <ESC><C-w>j
-    inoremap <buffer> <C-k> <ESC><C-w>k
-    inoremap <buffer> <C-l> <ESC><C-w>l
-    nmap <buffer> 0 <Plug>(vimshell_move_head)
-    inoremap <silent><buffer> ^ <ESC>:call vimshell#execute('cd ../')<CR>:call vimshell#print_prompt()<CR>:call vimshell#start_insert()<CR>
-    inoremap <buffer> <C-^> <ESC><C-^>
-    imap <buffer> <C-g> <Plug>(vimshell_history_complete)<C-n>
-    imap <buffer> <Up> <ESC>GA<Plug>(vimshell_history_unite)
-    nmap <buffer> <Up> GA<Plug>(vimshell_history_unite)
-    imap <buffer> <Down> <ESC>GA<Plug>(vimshell_history_unite)
-    nmap <buffer> <Down> GA<Plug>(vimshell_history_unite)
-    setlocal nonumber synmaxcol=10000 noautoindent indentkeys=
   agit: |
     nmap <buffer> <C-r> <Plug>(agit-reload)
     nunmap <buffer> <C-k>
