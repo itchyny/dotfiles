@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2017/11/11 12:42:00.
+# - * Last Change: 2017/11/12 19:44:07.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -330,10 +330,6 @@ plugin:
     script: |
       nnoremap <silent> <Leader>f :<C-u>VimFilerBufferDir -status -auto-cd<CR>
       nnoremap <silent> <Leader><Leader> :<C-u>VimFilerBufferDir -status -auto-cd<CR>
-  Shougo/vinarise.vim:
-    mapleader: \
-    loadbefore: vimfiler
-    command: Vinarise
   Shougo/unite.vim:
     command: Unite
     mapleader: ","
@@ -961,6 +957,12 @@ filetype:
     nmap <buffer><silent> l <CR>
     nmap <buffer><expr> e vimfiler#smart_cursor_map("\<Plug>(vimfiler_cd_file)", "\<Plug>(vimfiler_edit_file)")
     nnoremap <buffer><silent> t :<C-u>call vimfiler#mappings#do_action(b:vimfiler, 'change_time')<CR>
+    nnoremap <buffer><silent> B :<C-u>call <SID>xxd_open(vimfiler#get_filename())<CR>
+    function! s:xxd_open(filename) abort
+      enew
+      execute 'Tmpbuffer! xxd -g1' fnameescape(a:filename)
+      setlocal filetype=xxd
+    endfunction
     silent! call delete("Icon\r")
     silent! call delete('.DS_Store')
   agit: |
