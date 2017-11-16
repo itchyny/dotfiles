@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2017/11/16 23:28:03.
+# - * Last Change: 2017/11/16 23:42:14.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -48,16 +48,13 @@ export LSCOLORS=gxfxcxdxbxegedabagacad
 export TERM=xterm-256color
 
 # colorize stderr output in red
-autoload -Uz is-at-least
-if is-at-least 4.3.4; then
-  zmodload zsh/terminfo zsh/system
-  color_stderr() {
-    while sysread std_err_color; do
-      syswrite -o 2 "${fg_bold[red]}${std_err_color}${terminfo[sgr0]}"
-    done
-  }
-  exec 2> >(color_stderr)
-fi
+zmodload zsh/terminfo zsh/system
+color_stderr() {
+  while sysread std_err_color; do
+    syswrite -o 2 "${fg_bold[red]}${std_err_color}${terminfo[sgr0]}"
+  done
+}
+exec 2> >(color_stderr)
 
 # prompt
 setopt prompt_subst
