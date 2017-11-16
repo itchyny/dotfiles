@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2017/11/16 21:34:43.
+# - * Last Change: 2017/11/16 23:28:03.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -51,12 +51,12 @@ export TERM=xterm-256color
 autoload -Uz is-at-least
 if is-at-least 4.3.4; then
   zmodload zsh/terminfo zsh/system
-  color_err () {
+  color_stderr() {
     while sysread std_err_color; do
       syswrite -o 2 "${fg_bold[red]}${std_err_color}${terminfo[sgr0]}"
     done
   }
-  exec 2> >( color_err )
+  exec 2> >(color_stderr)
 fi
 
 # prompt
