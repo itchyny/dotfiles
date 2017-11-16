@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2017/11/15 20:38:53.
+# - * Last Change: 2017/11/16 21:34:43.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -106,11 +106,6 @@ setopt correct
 WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 setopt auto_cd
 setopt no_flow_control
-
-# disable bracketed paste in terminal on VIm
-if ! [ -z "$VIM" ]; then
-  unset zle_bracketed_paste
-fi
 
 # integrate vim mode
 bindkey -v
