@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2017/11/09 21:35:50.
+" - * Last Change: 2017/11/25 19:52:24.
 " --------------------------------------------------------------------------------------------------------
 
 " Setting options {{{1
@@ -196,8 +196,8 @@ cnoremap <Down> <C-n>
 
 " terminal
 silent! set termkey=<C-q>
-silent! tnoremap <silent> <C-w> <C-q>:try<bar>hide<bar>catch<bar>quit!<bar>endtry<CR>
-silent! tnoremap <C-q><C-q> <C-q>N
+silent! tnoremap <silent> <C-q><C-q> <C-q>:try<bar>hide<bar>catch<bar>quit!<bar>endtry<CR>
+silent! tnoremap <C-q><C-[> <C-q>N
 
 " Escape from Select mode to Normal mode
 snoremap <ESC> <C-c>
