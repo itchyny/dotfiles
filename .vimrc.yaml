@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2017/11/12 19:44:07.
+# - * Last Change: 2017/12/05 10:40:59.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -173,7 +173,7 @@ plugin:
       call extracmd#set('blame'   , 'Gita blame')
       call extracmd#set('<silent>', 'aoff'   , 'AutodateOFF')
       call extracmd#set('<silent>', 'aon'    , 'AutodateON')
-      call extracmd#set('<silent>', 'bc'     , 'Calc')
+      call extracmd#set('<silent>', 'bc'     , 'Term -close -opener=top\ new bc -l')
       call extracmd#set('<silent>', 'cal[endar]', 'Calendar -position=topleft -split=vertical -width=27 -view=year')
       call extracmd#set('<silent>', 'date'   , 'echo strftime("%x (%a) %X")')
       call extracmd#set('<silent>', 'di'     , 'Dictionary -cursor-word -no-duplicate')
@@ -382,12 +382,6 @@ plugin:
 
   Align:
     command: Align
-  VimCalc:
-    command: Calc
-    mapleader: ","
-    enable: has('python')
-    script: |
-      nnoremap <silent> <Leader>a :<C-u>Calc<CR>
   sjl/gundo.vim:
     mapleader: ","
     command: GundoToggle
