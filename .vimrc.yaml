@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2017/12/05 10:40:59.
+# - * Last Change: 2017/12/13 01:01:27.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -503,6 +503,10 @@ plugin:
       call gina#custom#command#option('/\v(status|branch|ls|grep|changes)', '--opener', 'botright 10split')
       call gina#custom#command#option('/.*', '--opener', 'tabnew')
       call gina#custom#command#option('blame', '--width', string(winwidth(0) / 4))
+  hotwatermorning/auto-git-diff:
+    before: |
+      let g:auto_git_diff_show_window_at_right = 1
+      let g:auto_git_diff_command_options = ''
   mattn/gist-vim:
     command: Gist
     dependon: webapi
