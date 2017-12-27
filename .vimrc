@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2017/11/25 19:52:24.
+" - * Last Change: 2017/12/27 11:03:27.
 " --------------------------------------------------------------------------------------------------------
 
 " Setting options {{{1
@@ -80,8 +80,8 @@ autocmd vimrc GUIEnter * silent! set t_vb=
 autocmd vimrc BufEnter * silent! lcd %:p:h
 
 " Open Quickfix window automatically
-autocmd vimrc QuickfixCmdPost [^l]* nested leftabove copen | wincmd p
-autocmd vimrc QuickfixCmdPost l* nested leftabove lopen | wincmd p
+autocmd vimrc QuickfixCmdPost [^l]* nested copen | wincmd p
+autocmd vimrc QuickfixCmdPost l* nested lopen | wincmd p
 
 " Fix window position of help
 autocmd vimrc FileType help if &l:buftype ==# 'help' | wincmd K | endif
