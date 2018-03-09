@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2018/01/07 12:08:58.
+# - * Last Change: 2017/12/17 18:26:47.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -260,10 +260,10 @@ alias gpom='git push origin master'
 alias ungzip='gzip -d'
 alias untar='tar xvf'
 # others
-# if command -v htop > /dev/null 2>&1; then
-#   alias top='TERM=screen htop'
-#   alias htop='TERM=screen htop'
-# fi
+if command -v htop > /dev/null 2>&1; then
+  alias top='TERM=screen htop'
+  alias htop='TERM=screen htop'
+fi
 case "${OSTYPE}" in
   freebsd*|darwin*)
     alias ls='ls -wG'
