@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2017/12/17 18:26:47.
+# - * Last Change: 2018/03/19 18:25:25.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -250,7 +250,7 @@ alias gcm='git checkout master'
 alias gcd='git checkout develop 2>/dev/null || git checkout master'
 alias ga='git add'
 alias gmd='git merge origin/develop'
-alias gd='git diff --color'
+alias gd='git diff'
 alias gdc='git diff --cached'
 alias gpl='git pull -p'
 alias gpo='git push origin'
