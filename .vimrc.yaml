@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2018/03/05 10:51:28.
+# - * Last Change: 2018/03/19 18:23:33.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -138,7 +138,7 @@ plugin:
             \ { 'filetype': 'tex'      , 'pattern': '\\\%(document\|begin\|usepackage\|section\)' },
             \ { 'filetype': 'c'        , 'pattern': '^\s*#\s*\%(include\|define\)\>' },
             \ { 'filetype': 'go'       , 'pattern': '^\%(import (\|func \S\+() {\)' },
-            \ { 'filetype': 'scala'    , 'pattern': '^\%(import\|module\) \%([a-pr-z]\)' },
+            \ { 'filetype': 'scala'    , 'pattern': '^\%(import\|module\) \%([a-pr-z]\)\|case.*=>' },
             \ { 'filetype': 'haskell'  , 'pattern': '^\%(import\|module\) \%([A-Z]\|qualified\)\|main\s*::\|::.*->\|{-# *\%(LANGUAGE\|OPTIONS\)\|^{-' },
             \ { 'filetype': 'diff'     , 'pattern': '^diff -' },
             \ { 'filetype': 'javascript', 'pattern': 'function *\k* *([^)]*) *{\| window\.' },
