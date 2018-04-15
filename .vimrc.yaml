@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2018/03/19 18:23:33.
+# - * Last Change: 2018/04/14 10:42:50.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -19,7 +19,7 @@ plugin:
               \. 'extra-snippets|highlighturl|cursorword|parenmatch|winfix|qffrom|qfedit|grep|increx|'
               \. 'unite-(preview|eject|changetime|auto-open)|viva|tmpbuffer|'
               \. 'hatena-link|haskell-(indent|sort-import)|quickrun-lightline-hooks|'
-              \. 'rexdep|fillin|(base58|volume)-go|sjsp|qhs|py2bf|github-better-header|mackerel\S*)/)'
+              \. 'rexdep|fillin|bed|(base58|volume)-go|sjsp|qhs|py2bf|github-better-header|mackerel\S*)/)'
     after: |
       colorscheme landscape
   itchyny/lightline.vim:
@@ -955,11 +955,9 @@ filetype:
     nmap <buffer><silent> l <CR>
     nmap <buffer><expr> e vimfiler#smart_cursor_map("\<Plug>(vimfiler_cd_file)", "\<Plug>(vimfiler_edit_file)")
     nnoremap <buffer><silent> t :<C-u>call vimfiler#mappings#do_action(b:vimfiler, 'change_time')<CR>
-    nnoremap <buffer><silent> B :<C-u>call <SID>xxd_open(vimfiler#get_filename())<CR>
-    function! s:xxd_open(filename) abort
-      enew
-      execute 'Tmpbuffer! xxd -g1' fnameescape(a:filename)
-      setlocal filetype=xxd
+    nnoremap <buffer><silent> B :<C-u>call <SID>bed_open(vimfiler#get_filename())<CR>
+    function! s:bed_open(filename) abort
+      execute 'Term -close -opener=new bed' escape(fnameescape(a:filename), '\\')
     endfunction
     silent! call delete("Icon\r")
     silent! call delete('.DS_Store')
