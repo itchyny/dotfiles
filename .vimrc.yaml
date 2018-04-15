@@ -138,7 +138,7 @@ plugin:
             \ { 'filetype': 'tex'      , 'pattern': '\\\%(document\|begin\|usepackage\|section\)' },
             \ { 'filetype': 'c'        , 'pattern': '^\s*#\s*\%(include\|define\)\>' },
             \ { 'filetype': 'go'       , 'pattern': '^\%(import (\|func \S\+() {\)' },
-            \ { 'filetype': 'scala'    , 'pattern': '^\%(import\|module\) \%([a-pr-z]\)\|case.*=>' },
+            \ { 'filetype': 'scala'    , 'pattern': '^\%(import\|module\) \%([a-pr-z]\)\|case.*=>\|private.*\%(def\|val\)' },
             \ { 'filetype': 'haskell'  , 'pattern': '^\%(import\|module\) \%([A-Z]\|qualified\)\|main\s*::\|::.*->\|{-# *\%(LANGUAGE\|OPTIONS\)\|^{-' },
             \ { 'filetype': 'diff'     , 'pattern': '^diff -' },
             \ { 'filetype': 'javascript', 'pattern': 'function *\k* *([^)]*) *{\| window\.' },
