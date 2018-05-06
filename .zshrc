@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2018/03/19 18:25:25.
+# - * Last Change: 2018/05/06 19:57:39.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -169,7 +169,7 @@ fi
 function starteditor() {
   exec < /dev/tty
   ${EDITOR}
-  zle reset-prompt
+  zle && zle reset-prompt
 }
 zle -N starteditor
 bindkey '^@' starteditor
