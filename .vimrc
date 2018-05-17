@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2017/12/27 11:03:27.
+" - * Last Change: 2018/05/16 15:58:42.
 " --------------------------------------------------------------------------------------------------------
 
 " Setting options {{{1
@@ -195,7 +195,7 @@ cnoremap <Up> <C-p>
 cnoremap <Down> <C-n>
 
 " terminal
-silent! set termkey=<C-q>
+silent! set termwinkey=<C-q>
 silent! tnoremap <silent> <C-q><C-q> <C-q>:try<bar>hide<bar>catch<bar>quit!<bar>endtry<CR>
 silent! tnoremap <C-q><C-[> <C-q>N
 
