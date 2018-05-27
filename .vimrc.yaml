@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2018/05/17 10:33:16.
+# - * Last Change: 2018/05/23 21:23:30.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -725,6 +725,8 @@ plugin:
     filetype: less
   tpope/vim-haml:
     filetype: haml
+  jparise/vim-graphql:
+    filetype: graphql
   syntaxm4.vim:
     filetype: m4
   jade.vim:
