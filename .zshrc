@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2018/06/29 15:29:27.
+# - * Last Change: 2018/07/21 21:15:13.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -284,6 +284,7 @@ case "${OSTYPE}" in
     alias ll='ls -altr --color'
     ;;
 esac
+alias unascii="sed $'s|\x1B\\[[0-9;]*[a-zA-Z]||g'"
 
 # suffix alias according to file extension
 alias -s txt=cat
