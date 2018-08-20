@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2018/07/13 15:15:49.
+# - * Last Change: 2018/08/20 09:14:06.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -791,6 +791,7 @@ plugin:
     filetype: swift
     before: |
       let g:swift_suppress_showmatch_warning = 1
+      let g:swift_no_conceal = 1
   rhysd/vim-llvm:
     filetype: llvm
   tmux-plugins/vim-tmux:
