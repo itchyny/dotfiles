@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2018/09/21 17:40:52.
+# - * Last Change: 2018/10/19 22:59:31.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -134,20 +134,19 @@ plugin:
   itchyny/vim-autoft:
     before: |
       let g:autoft_config = [
-            \ { 'filetype': 'html'     , 'pattern': '<\%(!DOCTYPE\|html\|head\|script\|meta\|link|div\|span\)\>\|^html:5\s*$' },
-            \ { 'filetype': 'tex'      , 'pattern': '\\\%(document\|begin\|usepackage\|section\)' },
-            \ { 'filetype': 'c'        , 'pattern': '^\s*#\s*\%(include\|define\)\>' },
-            \ { 'filetype': 'go'       , 'pattern': '^\%(import (\|func \S\+() {\)' },
-            \ { 'filetype': 'scala'    , 'pattern': '^\%(import\|module\) \%([a-pr-z]\)\|case.*=>\|\(private\|implicit\).*\%(def\|val\)\|yield .*{\|case class' },
-            \ { 'filetype': 'haskell'  , 'pattern': '^\%(import\|module\) \%([A-Z]\|qualified\)\|main\s*::\|::.*->\|{-# *\%(LANGUAGE\|OPTIONS\)\|^{-' },
-            \ { 'filetype': 'diff'     , 'pattern': '^diff -' },
-            \ { 'filetype': 'javascript', 'pattern': 'function *\k* *([^)]*) *{\| window\.' },
-            \ { 'filetype': 'sh'       , 'pattern': '^#!.*\%(\<sh\>\|\<bash\>\)\s*$\|if [ -' },
-            \ { 'filetype': 'hatena'   , 'pattern': '^\%(>|[a-z]\+|\|||<\)$\|^*\[[a-z]\+]' },
-            \ { 'filetype': 'vim'      , 'pattern': '\%(^{\|\<\%(let\|set\|autocmd\) \)\|noremap\|g:loaded_\|&l:\|(g:,\|^Called *\d\+ *times$\|^function!' },
-            \ { 'filetype': 'css'      , 'pattern': '^\%(html\|body\)\%(, *\%([a-z]\+\)\)* *{' },
-            \ { 'filetype': 'sql'      , 'pattern': '\v\c^(BEGIN|SELECT|UPDATE|DELETE)' },
-            \ { 'filetype': 'markdown' , 'pattern': '^# $' },
+            \ { 'filetype': 'html'      , 'pattern': '\v\<%(!DOCTYPE|html|head|script|meta|link|div|span)>|^html:5\s*$' },
+            \ { 'filetype': 'c'         , 'pattern': '\v^\s*#\s*%(include|define)>' },
+            \ { 'filetype': 'go'        , 'pattern': '\v^%(import \(|func \S+\(\) \{)' },
+            \ { 'filetype': 'scala'     , 'pattern': '\v^%(import|module) %(com|org)|<case.*\=\>|%(<private>|<implicit>).*%(<def>|<val>)|yield .*\{|case class' },
+            \ { 'filetype': 'haskell'   , 'pattern': '\v^%(import|module) %([A-Z]|qualified)|main\s*::|::.*-\>|\{-# *%(LANGUAGE|OPTIONS)|^\{-' },
+            \ { 'filetype': 'diff'      , 'pattern': '\v^diff -' },
+            \ { 'filetype': 'javascript', 'pattern': '\v<function>\s+\k*\s+([^)]*)\{|<window\.' },
+            \ { 'filetype': 'sh'        , 'pattern': '\v^#!.*%(<sh>|<bash>)\s*$|<if +\[ -' },
+            \ { 'filetype': 'hatena'    , 'pattern': '\v^%(\>\|[a-z]+\||\|\|\<)$|^\*\[[a-z]+\]' },
+            \ { 'filetype': 'vim'       , 'pattern': '\v%(<%(let|set|autocmd) )|<[nvio]?noremap>|<g:loaded_|<l:|<g:,|^function!' },
+            \ { 'filetype': 'css'       , 'pattern': '\v^%(html|body)%(, *%([a-z]+))* *\{' },
+            \ { 'filetype': 'sql'       , 'pattern': '\v\c^(BEGIN|SELECT|UPDATE|DELETE)>' },
+            \ { 'filetype': 'markdown'  , 'pattern': '\v^# $' },
             \ ]
   itchyny/vim-extracmd:
     after: |
