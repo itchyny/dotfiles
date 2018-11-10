@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2018/07/21 21:15:13.
+# - * Last Change: 2018/11/10 21:31:26.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -147,7 +147,7 @@ export EDITOR=vim
 export REPORTTIME=10
 
 # path settings
-export PATH=/usr/local/bin:$PATH
+export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 export PATH=~/.bin:$PATH
 export PATH=~/bin:$PATH
 export PATH=~/Dropbox/.bin:$PATH
