@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2018/10/19 22:59:31.
+# - * Last Change: 2018/11/17 23:33:27.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -841,6 +841,7 @@ after: |
 
   augroup setlocal-filetype
     autocmd!
+    autocmd BufNewFile,BufReadPost *.csv setlocal filetype=csv
     autocmd BufNewFile,BufReadPost *.gnuplot setlocal filetype=gnuplot
     autocmd BufNewFile,BufReadPost *.meissa setlocal filetype=meissa
     autocmd BufNewFile,BufReadPost *.bf setlocal filetype=brainfuck
@@ -938,6 +939,8 @@ filetype:
     execute 'setlocal ' . (search("[^\x01-\x7e]", 'n') == 0 && line('$') > 5 ? '' : 'no') . 'spell'
   hatena: |
     setlocal nosmartindent noautoindent
+  csv: |
+    set foldmethod=manual
   dictionary: |
     nmap <buffer> <C-@> <Plug>(dictionary_jump_back)
   unite: |
