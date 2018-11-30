@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2018/11/10 21:31:26.
+# - * Last Change: 2018/11/26 21:43:19.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -141,7 +141,7 @@ if command -v fzf >/dev/null 2>&1; then
 fi
 
 # export variables
-export LANG=ja_JP.UTF-8
+export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
 export EDITOR=vim
 export REPORTTIME=10
