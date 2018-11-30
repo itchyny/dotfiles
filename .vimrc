@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2018/05/16 15:58:42.
+" - * Last Change: 2018/11/30 23:00:48.
 " --------------------------------------------------------------------------------------------------------
 
 " Setting options {{{1
@@ -165,7 +165,7 @@ nnoremap <silent> g$ :<C-u>tablast<CR>
 
 " tag
 vnoremap <C-]> <ESC><C-w><C-]><C-w>H
-nnoremap <C-@> <C-t>
+nnoremap g<C-t> <C-t>
 
 " select last paste
 nnoremap <expr> gp '`['.strpart(getregtype(), 0, 1).'`]'
