@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2018/12/06 23:05:20.
+# - * Last Change: 2018/12/08 12:36:43.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -59,7 +59,6 @@ plugin:
       nnoremap <silent> <Leader>y :<C-u>Dictionary -no-duplicate<CR>
     before: |
       let g:dictionary_executable_path = isdirectory(expand('~/Dropbox/.bin/')) ? '~/Dropbox/.bin/' : '~/.bin/'
-    dependon: vimproc
   itchyny/screensaver.vim:
     mapleader: ","
     mapping: <Plug>(screensaver)
