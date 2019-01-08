@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2018/12/08 12:36:43.
+# - * Last Change: 2019/01/08 12:42:07.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -741,6 +741,8 @@ plugin:
     filetype: rest
   tpope/vim-markdown:
     filetype: markdown
+  rhysd/vim-syntax-codeowners:
+    filetype: codeowners
   davidhalter/jedi-vim:
     filetype: python
     before: |
