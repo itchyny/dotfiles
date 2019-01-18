@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2019/01/08 12:42:07.
+# - * Last Change: 2019/01/16 11:43:05.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -263,7 +263,6 @@ plugin:
     mapping: <Plug>(quickrun)
     mapleader: \
     dependon: vimproc
-    loadbefore: watchdogs
     before: |
       let g:quickrun_config = {'_': {'runner': 'vimproc', 'runner/vimproc/updatetime': 200, 'split': 'vertical', 'into': 1}}
       for [s:ft, s:exe] in [['quickrun', 'cat'], ['javascript', 'node'], ['brainfuck', 'bf'], ['text', 'cat']]
@@ -281,7 +280,6 @@ plugin:
       let g:quickrun_config.objc = {'command': 'cc', 'exec': ['%c %s -o %s:p:r -framework Foundation', '%s:p:r %a'], 'tempfile': '{tempname()}.m', 'hook/sweep/files': '%s:p:r'}
       let g:quickrun_config.dot = {'command' : 'dot', 'exec': ['%c -Tpng %s -o %s:p:r.png', (executable('gnome-open') ? 'gnome-open' : 'open') . ' %s:p:r.png'] }
       let g:quickrun_config.abc = {'command': 'abcm2ps', 'exec': extend(['%c %s -O %s:p:r.ps', 'ps2pdf %s:p:r.ps', 'open %s:p:r.pdf'], executable('abc2midi') ? ['abc2midi %s -o %s:p:r.mid', 'open %s:p:r.mid'] : [])}
-      let g:quickrun_config['watchdogs_checker/_'] = { 'runner' : 'vimproc', 'outputter': 'loclist', 'hook/echo/enable' : 0, 'hook/back_window/enable' : 0, 'hook/back_window/enable_exit' : 0 }
     script: |
       nnoremap <expr> <C-c> exists('*quickrun#is_running') && quickrun#is_running() ? quickrun#sweep_sessions() : "\<C-c>"
       nnoremap <silent> <Leader>r :<C-u>call <SID>quickrun(0, 0)<CR>
@@ -518,22 +516,6 @@ plugin:
   syngan/vim-vimlint:
     function: vimlint
     dependon: vimlparser
-  osyo-manga/vim-watchdogs:
-    dependon:
-      - shabadou
-      - quickrun
-    filetype:
-      - java
-      - perl
-    before: |
-      let g:watchdogs_check_BufWritePost_enables = {
-            \ 'java': 1, 'perl': 1
-            \ }
-      let g:watchdogs_check_BufWritePost_enable_on_wq = 0
-    after: |
-      call watchdogs#setup(g:quickrun_config)
-  osyo-manga/shabadou.vim:
-    loadbefore: watchdogs
   Shougo/vimproc.vim:
     build: make
     function: vimproc
