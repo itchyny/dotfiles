@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2019/01/21 00:32:20.
+# - * Last Change: 2019/01/21 19:48:51.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -55,7 +55,7 @@ color_stderr() {
   done
 }
 exec 2> >(color_stderr)
-function vim () {
+vim() {
  if [ -t 0 ]; then
    command vim $@ < /dev/tty
  else
@@ -132,7 +132,7 @@ zle_highlight=(isearch:fg=yellow)
 # fuzzy history search
 if command -v fzf >/dev/null 2>&1; then
   export FZF_DEFAULT_OPTS='--reverse'
-  function select-history() {
+  select-history() {
     BUFFER=$(history -n -r 1 | awk '!x[$0]++' | fzf --no-sort +m --query "$LBUFFER")
     CURSOR=$#BUFFER
   }
@@ -176,7 +176,7 @@ if command -v rustc >/dev/null 2>&1; then
 fi
 
 # function
-function starteditor() {
+starteditor() {
   exec < /dev/tty
   ${EDITOR}
   zle && zle reset-prompt
@@ -187,7 +187,7 @@ bindkey '^\^' starteditor
 
 # cd with ls
 if ! test "$VIM"; then
-  function chpwd() {
+  chpwd() {
     case "${OSTYPE}" in
       freebsd*|darwin*)
         ls -wG
@@ -231,10 +231,10 @@ elif [ "$(uname)" = "Linux" ]; then
   alias suspend='dbus-send --system --print-reply --dest="org.freedesktop.UPower" /org/freedesktop/UPower org.freedesktop.UPower.Suspend'
   alias hibernate='dbus-send --system --print-reply --dest="org.freedesktop.UPower" /org/freedesktop/UPower org.freedesktop.UPower.Hibernate'
 fi
-function runc () {
+runc() {
   gcc -O3 "$1" && shift && ./a.out "$@"; local ret=$?; rm -f ./a.out; return $ret
 }
-function runcpp () {
+runcpp() {
   g++ -O3 "$1" && shift && ./a.out "$@"; local ret=$?; rm -f ./a.out; return $ret
 }
 # editor
@@ -304,7 +304,7 @@ alias -s hs=runhaskell
 alias -s s=runcpp
 alias -s sh=sh
 
-function extract() {
+extract() {
   case $1 in
     *.tar.gz|*.tgz) tar xzvf "$1";;
     *.tar.xz) tar Jxvf "$1";;
