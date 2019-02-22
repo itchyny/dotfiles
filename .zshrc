@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2019/01/21 19:48:51.
+# - * Last Change: 2019/02/22 10:43:10.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -145,6 +145,7 @@ export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
 export EDITOR=vim
 export REPORTTIME=10
+export GORE_PAGER=less
 
 # path settings
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
