@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2019/03/07 19:11:43.
+# - * Last Change: 2019/03/07 20:04:19.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -68,7 +68,7 @@ esac
 autoload -Uz url-quote-magic
 zle -N self-insert url-quote-magic
 
-# complement (use incr-0.2.zsh but rewrite 6 to 100 in limit-completion)
+# complement
 autoload -Uz compinit; compinit
 LISTMAX=1000000
 fignore=(.o .dvi .aux .log .toc .hi .swp .sw .bak .bbl .blg .nav .snm .toc .pyc)
