@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2019/03/07 16:17:53.
+# - * Last Change: 2019/03/07 16:40:46.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -49,16 +49,6 @@ color_stderr() {
   done
 }
 exec 2> >(color_stderr)
-vim() {
- if [ -t 0 ]; then
-   command vim $@ < /dev/tty
- else
-   local f=$(mktemp)
-   cat /dev/stdin > "$f"
-   command vim "$f" < /dev/tty
-   rm -f "$f" || :
- fi
-}
 
 # prompt
 setopt prompt_subst
