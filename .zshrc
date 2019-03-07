@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2019/03/07 16:03:58.
+# - * Last Change: 2019/03/07 16:17:53.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -14,12 +14,6 @@ else
 fi
 if ! [ -d $ZSH_CONFIG_PATH ]; then
   mkdir -p $ZSH_CONFIG_PATH
-fi
-
-# plugin path
-ZSH_PLUGIN_PATH=~/.zsh
-if ! [ -d $ZSH_PLUGIN_PATH ]; then
-  mkdir -p $ZSH_PLUGIN_PATH
 fi
 
 # history
@@ -334,29 +328,17 @@ prepend-fillin() {
 zle -N accept-line prepend-fillin
 
 # http://mimosa-pudica.net/zsh-incremental.html
-if [ -e $ZSH_PLUGIN_PATH/incr-0.2.zsh ]; then
-  source $ZSH_PLUGIN_PATH/incr-0.2.zsh
-elif command -v curl > /dev/null 2>&1; then
-  curl -RL -m 10 http://mimosa-pudica.net/src/incr-0.2.zsh -o $ZSH_PLUGIN_PATH/incr-0.2.zsh
-fi
+source ~/.zsh/incr-0.2.zsh
 
 # https://github.com/zsh-users/zsh-syntax-highlighting
-if [ -e $ZSH_PLUGIN_PATH/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
-  source $ZSH_PLUGIN_PATH/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-elif command -v git > /dev/null 2>&1; then
-  git clone https://github.com/zsh-users/zsh-syntax-highlighting $ZSH_PLUGIN_PATH/zsh-syntax-highlighting
-fi
+source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # https://github.com/zsh-users/zsh-history-substring-search
-if [ -e $ZSH_PLUGIN_PATH/zsh-history-substring-search/zsh-history-substring-search.zsh  ]; then
-  source $ZSH_PLUGIN_PATH/zsh-history-substring-search/zsh-history-substring-search.zsh
-  bindkey '^[[A' history-substring-search-up
-  bindkey '^[[B' history-substring-search-down
-  bindkey '^P' history-substring-search-up
-  bindkey '^N' history-substring-search-down
-elif command -v git > /dev/null 2>&1; then
-  git clone https://github.com/zsh-users/zsh-history-substring-search $ZSH_PLUGIN_PATH/zsh-history-substring-search
-fi
+source ~/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+bindkey '^P' history-substring-search-up
+bindkey '^N' history-substring-search-down
 
 if ! test "$VIM"; then
   if [ -e ~/Dropbox ]; then
