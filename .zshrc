@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2019/03/07 16:40:46.
+# - * Last Change: 2019/03/07 19:11:43.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -305,17 +305,8 @@ extract() {
 }
 alias -s {gz,tgz,zip,lzh,bz2,tbz,Z,tar,arj,xz}=extract
 
-prepend-fillin() {
-  if [[ "$BUFFER" == *{{*}}* ]] && [[ "$BUFFER" != *fillin* ]]; then
-    if [[ "$BUFFER" == *'$('* ]]; then
-      BUFFER="fillin '${BUFFER}'"
-    else
-      BUFFER="fillin ${BUFFER}"
-    fi
-  fi
-  zle .accept-line
-}
-zle -N accept-line prepend-fillin
+# https://github.com/itchyny/zsh-auto-fillin
+source ~/.zsh/zsh-auto-fillin/zsh-auto-fillin.zsh
 
 # http://mimosa-pudica.net/zsh-incremental.html
 source ~/.zsh/incr-0.2.zsh
