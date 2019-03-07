@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2019/02/22 10:43:10.
+# - * Last Change: 2019/03/07 16:03:58.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -153,7 +153,6 @@ export PATH=~/.bin:$PATH
 export PATH=~/bin:$PATH
 export PATH=~/Dropbox/.bin:$PATH
 export PATH=~/Dropbox/bin:$PATH
-export PATH=$ZSH_PLUGIN_PATH/bin:$PATH
 export PATH=$PATH:~/Library/Haskell/bin
 export PATH=$PATH:~/.local/bin
 export PATH=$PATH:~/.go/bin
@@ -357,11 +356,6 @@ if [ -e $ZSH_PLUGIN_PATH/zsh-history-substring-search/zsh-history-substring-sear
   bindkey '^N' history-substring-search-down
 elif command -v git > /dev/null 2>&1; then
   git clone https://github.com/zsh-users/zsh-history-substring-search $ZSH_PLUGIN_PATH/zsh-history-substring-search
-fi
-
-# https://github.com/itchyny/bin
-if ! command -v download > /dev/null 2>&1; then
-  git clone https://github.com/itchyny/bin $ZSH_PLUGIN_PATH/bin
 fi
 
 if ! test "$VIM"; then
