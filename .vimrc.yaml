@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2019/02/17 20:08:35.
+# - * Last Change: 2019/03/07 19:53:14.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -57,8 +57,6 @@ plugin:
     mapping: <Plug>(dictionary)
     script: |
       nnoremap <silent> <Leader>y :<C-u>Dictionary -no-duplicate<CR>
-    before: |
-      let g:dictionary_executable_path = isdirectory(expand('~/Dropbox/.bin/')) ? '~/Dropbox/.bin/' : '~/.bin/'
   itchyny/screensaver.vim:
     mapleader: ","
     mapping: <Plug>(screensaver)
