@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2019/03/08 09:18:19.
+# - * Last Change: 2019/03/09 20:50:37.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -199,19 +199,9 @@ if [ "$(uname)" = "Darwin" ]; then
   pman () {
     man -t "$1" | open -f -a /Applications/Preview.app
   }
-  dropbox () {
-    case "${1:-start}" in
-      start|init) open -a Dropbox ;;
-      stop|kill) osascript -e 'tell application "Dropbox" to quit'; killall Dropbox 1>/dev/null 2>&1;;
-    esac
-    return 0
-  }
 elif [ "$(uname)" = "Linux" ]; then
   alias open='gnome-open'
   alias pbcopy='xsel --clipboard --input'
-  dropbox () {
-    dropbox "${1:-start}"
-  }
   alias suspend='dbus-send --system --print-reply --dest="org.freedesktop.UPower" /org/freedesktop/UPower org.freedesktop.UPower.Suspend'
   alias hibernate='dbus-send --system --print-reply --dest="org.freedesktop.UPower" /org/freedesktop/UPower org.freedesktop.UPower.Hibernate'
 fi
