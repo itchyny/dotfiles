@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2019/03/11 10:38:23.
+# - * Last Change: 2019/03/11 10:39:16.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -189,20 +189,23 @@ stty -ixon -ixoff
 
 # alias
 alias ..="cd ../"
-if [ "$(uname)" = "Darwin" ]; then
-  alias google-chrome='open -a Google\ Chrome'
-  alias evince='open -a Preview'
-  alias display='open -a Preview'
-  alias eog='open -a Preview'
-  pman () {
-    man -t "$1" | open -f -a /Applications/Preview.app
-  }
-elif [ "$(uname)" = "Linux" ]; then
-  alias open='gnome-open'
-  alias pbcopy='xsel --clipboard --input'
-  alias suspend='dbus-send --system --print-reply --dest="org.freedesktop.UPower" /org/freedesktop/UPower org.freedesktop.UPower.Suspend'
-  alias hibernate='dbus-send --system --print-reply --dest="org.freedesktop.UPower" /org/freedesktop/UPower org.freedesktop.UPower.Hibernate'
-fi
+case "${OSTYPE}" in
+  darwin*)
+    alias google-chrome='open -a Google\ Chrome'
+    alias evince='open -a Preview'
+    alias display='open -a Preview'
+    alias eog='open -a Preview'
+    pman () {
+      man -t "$1" | open -f -a /Applications/Preview.app
+    }
+  ;;
+  linux*)
+    alias open='gnome-open'
+    alias pbcopy='xsel --clipboard --input'
+    alias suspend='dbus-send --system --print-reply --dest="org.freedesktop.UPower" /org/freedesktop/UPower org.freedesktop.UPower.Suspend'
+    alias hibernate='dbus-send --system --print-reply --dest="org.freedesktop.UPower" /org/freedesktop/UPower org.freedesktop.UPower.Hibernate'
+  ;;
+esac
 runc() {
   gcc -O3 "$1" && shift && ./a.out "$@"; local ret=$?; rm -f ./a.out; return $ret
 }
