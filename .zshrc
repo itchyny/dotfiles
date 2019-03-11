@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2019/03/09 20:50:37.
+# - * Last Change: 2019/03/11 10:38:23.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -134,9 +134,7 @@ export GORE_PAGER=less
 # path settings
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 export PATH=~/.bin:$PATH
-export PATH=~/bin:$PATH
 export PATH=~/Dropbox/.bin:$PATH
-export PATH=~/Dropbox/bin:$PATH
 export PATH=$PATH:~/Library/Haskell/bin
 export PATH=$PATH:~/.local/bin
 export PATH=$PATH:~/.go/bin
