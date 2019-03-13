@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2019/03/11 10:39:16.
+# - * Last Change: 2019/03/13 10:55:41.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -91,7 +91,6 @@ setopt no_check_jobs
 setopt print_eight_bit
 setopt list_packed
 setopt correct
-[ -e /etc/zsh_command_not_found ] && source /etc/zsh_command_not_found
 
 # operation
 WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
