@@ -1,23 +1,11 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2019/03/13 10:55:41.
+# - * Last Change: 2019/03/14 19:39:51.
 # ------------------------------------------------------------------------------------------------------------
 
-# config path
-if [ -d ~/Dropbox/.files ]; then
-  ZSH_CONFIG_PATH=~/Dropbox/.files
-elif [ -d ~/.files ]; then
-  ZSH_CONFIG_PATH=~/.files
-else
-  ZSH_CONFIG_PATH=~/.zsh
-fi
-if ! [ -d $ZSH_CONFIG_PATH ]; then
-  mkdir -p $ZSH_CONFIG_PATH
-fi
-
 # history
-HISTFILE=$ZSH_CONFIG_PATH/.histfile
+HISTFILE=~/.files/.histfile
 HISTSIZE=10000000
 SAVEHIST=10000000
 setopt append_history
