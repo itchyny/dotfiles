@@ -47,14 +47,9 @@ RPROMPT=$'$(git-branch-name 2>/dev/null)'
 SPROMPT="%{$bg[red]%}%B%r is correct? [n,y,a,e]:%{${reset_color}%}%b "
 [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] && PROMPT="%{$bg[red]%}${HOST%%.*}${PROMPT}%{${reset_color}%}"
 alias prompt_kadai='PROMPT=" $ "'
-case "${TERM}" in
-  kterm*|xterm)
-  precmd() {
-    echo -ne "\033]0;${USER}@${PWD}\007"
-  };;
-esac
 autoload -Uz url-quote-magic
 zle -N self-insert url-quote-magic
+precmd() { stty sane }
 
 # complement
 autoload -Uz compinit; compinit
