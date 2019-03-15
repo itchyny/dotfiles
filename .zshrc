@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2019/03/15 14:29:00.
+# - * Last Change: 2019/03/15 18:06:28.
 # ------------------------------------------------------------------------------------------------------------
 
 # history
@@ -73,6 +73,7 @@ setopt no_check_jobs
 setopt print_eight_bit
 setopt list_packed
 setopt correct
+setopt nonomatch
 
 # operation
 WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
