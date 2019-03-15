@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2019/03/14 19:39:51.
+# - * Last Change: 2019/03/15 14:29:00.
 # ------------------------------------------------------------------------------------------------------------
 
 # history
@@ -46,7 +46,6 @@ PROMPT2="%{$bg[blue]%}%_>%{$reset_color%}%b "
 RPROMPT=$'$(git-branch-name 2>/dev/null)'
 SPROMPT="%{$bg[red]%}%B%r is correct? [n,y,a,e]:%{${reset_color}%}%b "
 [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] && PROMPT="%{$bg[red]%}${HOST%%.*}${PROMPT}%{${reset_color}%}"
-alias prompt_kadai='PROMPT=" $ "'
 autoload -Uz url-quote-magic
 zle -N self-insert url-quote-magic
 precmd() { stty sane }
