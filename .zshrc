@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2019/03/15 18:06:28.
+# - * Last Change: 2019/03/19 09:10:32.
 # ------------------------------------------------------------------------------------------------------------
 
 # history
@@ -114,15 +114,8 @@ export REPORTTIME=10
 export GORE_PAGER=less
 
 # path settings
-export PATH=/usr/local/bin:/usr/local/sbin:$PATH
-export PATH=~/.bin:$PATH
-export PATH=~/Dropbox/.bin:$PATH
-export PATH=$PATH:~/Library/Haskell/bin
-export PATH=$PATH:~/.local/bin
-export PATH=$PATH:~/.go/bin
-export PATH=$PATH:~/.cargo/bin
-export PATH=$PATH:/usr/local/opt/python/libexec/bin
-export PATH=$PATH:/usr/local/opt/llvm/bin
+typeset -U path PATH
+export PATH=~/.bin:$PATH:~/.local/bin:~/.go/bin:~/.cargo/bin:/usr/local/opt/python/libexec/bin
 export MANPATH=/usr/local/share/man:/usr/local/man:/usr/share/man
 export GOPATH=~/.go
 if command -v plenv >/dev/null 2>&1; then
