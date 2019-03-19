@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2019/03/07 19:53:14.
+# - * Last Change: 2019/03/19 21:08:59.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -19,7 +19,7 @@ plugin:
               \. 'extra-snippets|highlighturl|cursorword|parenmatch|winfix|qffrom|qfedit|grep|increx|'
               \. 'unite-(preview|eject|changetime|auto-open)|viva|tmpbuffer|'
               \. 'hatena-link|haskell-(indent|sort-import)|quickrun-lightline-hooks|'
-              \. 'rexdep|fillin|bed|(base58|volume)-go|sjsp|qhs|py2bf|github-better-header|mackerel\S*)/)'
+              \. 'rexdep|fillin|bed|(base58|volume|kaitai)-go|gojo|mkrg|sjsp|qhs|homebrew-[a-z]+|py2bf|github-better-header|mackerel\S*)/)'
     after: |
       colorscheme landscape
   itchyny/lightline.vim:
