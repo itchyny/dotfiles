@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2019/03/19 09:10:32.
+# - * Last Change: 2019/03/19 20:06:34.
 # ------------------------------------------------------------------------------------------------------------
 
 # history
@@ -115,7 +115,7 @@ export GORE_PAGER=less
 
 # path settings
 typeset -U path PATH
-export PATH=~/.bin:$PATH:~/.local/bin:~/.go/bin:~/.cargo/bin:/usr/local/opt/python/libexec/bin
+export PATH=~/.bin:/usr/local/sbin:$PATH:~/.local/bin:~/.go/bin:~/.cargo/bin:/usr/local/opt/python/libexec/bin
 export MANPATH=/usr/local/share/man:/usr/local/man:/usr/share/man
 export GOPATH=~/.go
 if command -v plenv >/dev/null 2>&1; then
