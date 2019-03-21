@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2019/03/21 10:49:53.
+# - * Last Change: 2019/03/21 11:11:57.
 # ------------------------------------------------------------------------------------------------------------
 
 ZDOTDIR=$HOME/.zsh
@@ -104,7 +104,7 @@ bindkey "^R" history-incremental-pattern-search-backward
 zle_highlight=(isearch:fg=yellow)
 
 # fuzzy history search
-if command -v fzf >/dev/null 2>&1; then
+if (( $+commands[fzf] )); then
   export FZF_DEFAULT_OPTS='--reverse'
   select-history() {
     BUFFER=$(history -n -r 1 | awk '!x[$0]++' | fzf --no-sort +m --query "$LBUFFER")
@@ -126,16 +126,16 @@ typeset -U path PATH
 export PATH=~/.bin:/usr/local/sbin:$PATH:~/.local/bin:~/.go/bin:~/.cargo/bin:/usr/local/opt/python/libexec/bin
 export MANPATH=/usr/local/share/man:/usr/local/man:/usr/share/man
 export GOPATH=~/.go
-if command -v plenv >/dev/null 2>&1; then
+if (( $+commands[plenv] )); then
   eval "$(plenv init -)"
 fi
-if command -v rbenv >/dev/null 2>&1; then
+if (( $+commands[rbenv] )); then
   eval "$(rbenv init -)"
 fi
-if command -v nodenv >/dev/null 2>&1; then
+if (( $+commands[nodenv] )); then
   eval "$(nodenv init -)"
 fi
-if command -v rustc >/dev/null 2>&1; then
+if (( $+commands[rustc] )); then
   export DYLD_LIBRARY_PATH="$(rustc --print sysroot)/lib:$DYLD_LIBRARY_PATH"
   export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 fi
@@ -211,7 +211,7 @@ alias music='mplayer -lavdopts threads=2 -loop 0 -shuffle -geometry 50%:50%'
 alias aspell="aspell -c -l en_US"
 # git
 export GIT_MERGE_AUTOEDIT=no
-if command -v hub >/dev/null 2>&1; then
+if (( $+commands[hub] )); then
   alias git=hub
 fi
 alias gb='git branch'
@@ -231,7 +231,7 @@ alias gpom='git push origin master'
 alias ungzip='gzip -d'
 alias untar='tar xvf'
 # others
-if command -v htop > /dev/null 2>&1; then
+if (( $+commands[htop] )); then
   alias top='TERM=screen htop'
   alias htop='TERM=screen htop'
 fi
