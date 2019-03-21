@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2019/03/21 11:33:09.
+# - * Last Change: 2019/03/21 18:42:33.
 # ------------------------------------------------------------------------------------------------------------
 
 ZDOTDIR=$HOME/.zsh
@@ -72,6 +72,9 @@ zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin /usr/s
 zstyle ':completion:*:*:*:*:processes' menu yes select
 zstyle ':completion:*:*:*:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01'
 zstyle ':completion:*:*:*:*:processes' command "ps -u $USER -o pid,user,args -w -w"
+zmodload zsh/complist
+bindkey -M menuselect '^n' vi-down-line-or-history
+bindkey -M menuselect '^p' vi-up-line-or-history
 
 # beep
 setopt no_beep nolistbeep
