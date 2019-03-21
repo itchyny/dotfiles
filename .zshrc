@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2019/03/21 10:38:56.
+# - * Last Change: 2019/03/21 10:39:48.
 # ------------------------------------------------------------------------------------------------------------
 
 ZDOTDIR=$HOME/.zsh
@@ -53,7 +53,8 @@ zle -N self-insert url-quote-magic
 precmd() { stty sane }
 
 # completion
-autoload -Uz compinit; compinit
+autoload -Uz compinit
+if [[ $(date +'%j') != $(stat -f '%Sm' -t '%j' $ZDOTDIR/.zcompdump 2>/dev/null) ]]; then compinit; else compinit -C; fi
 LISTMAX=1000000
 fignore=(.o .dvi .aux .log .toc .hi .swp .sw .bak .bbl .blg .nav .snm .toc .pyc)
 setopt auto_list auto_menu list_packed auto_param_keys auto_param_slash mark_dirs
