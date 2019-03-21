@@ -1,8 +1,10 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2019/03/21 10:09:09.
+# - * Last Change: 2019/03/21 10:38:56.
 # ------------------------------------------------------------------------------------------------------------
+
+ZDOTDIR=$HOME/.zsh
 
 # history
 HISTFILE=~/.files/.histfile
@@ -56,7 +58,7 @@ LISTMAX=1000000
 fignore=(.o .dvi .aux .log .toc .hi .swp .sw .bak .bbl .blg .nav .snm .toc .pyc)
 setopt auto_list auto_menu list_packed auto_param_keys auto_param_slash mark_dirs
 zstyle ':completion:*' use-cache on
-zstyle ':completion:*' cache-path ~/.zsh/completion-cache
+zstyle ':completion:*' cache-path $ZDOTDIR/completion-cache
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 zstyle ':completion:*' rehash true
@@ -259,16 +261,16 @@ alias -s sh=sh
 alias -s {gz,tgz,zip,lzh,bz2,tbz,Z,tar,arj,xz}=extract
 
 # https://github.com/itchyny/zsh-auto-fillin
-source ~/.zsh/zsh-auto-fillin/zsh-auto-fillin.zsh
+source $ZDOTDIR/zsh-auto-fillin/zsh-auto-fillin.zsh
 
 # http://mimosa-pudica.net/zsh-incremental.html
-source ~/.zsh/incr-0.2.zsh
+source $ZDOTDIR/incr-0.2.zsh
 
 # https://github.com/zsh-users/zsh-syntax-highlighting
-source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $ZDOTDIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # https://github.com/zsh-users/zsh-history-substring-search
-source ~/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
+source $ZDOTDIR/zsh-history-substring-search/zsh-history-substring-search.zsh
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 bindkey '^P' history-substring-search-up
