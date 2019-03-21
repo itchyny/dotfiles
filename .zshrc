@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2019/03/19 20:06:34.
+# - * Last Change: 2019/03/21 10:09:09.
 # ------------------------------------------------------------------------------------------------------------
 
 # history
@@ -50,34 +50,37 @@ autoload -Uz url-quote-magic
 zle -N self-insert url-quote-magic
 precmd() { stty sane }
 
-# complement
+# completion
 autoload -Uz compinit; compinit
 LISTMAX=1000000
 fignore=(.o .dvi .aux .log .toc .hi .swp .sw .bak .bbl .blg .nav .snm .toc .pyc)
-setopt auto_list
-setopt auto_menu
-setopt auto_param_keys
-setopt auto_param_slash
-setopt auto_pushd
-setopt mark_dirs
+setopt auto_list auto_menu list_packed auto_param_keys auto_param_slash mark_dirs
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path ~/.zsh/completion-cache
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+zstyle ':completion:*' rehash true
+zstyle ':completion:*' accept-exact '*(N)'
+zstyle ':completion:*:corrections' format '%U%F{green}%d (errors: %e)%f%u'
+zstyle ':completion:*:warnings' format '%F{202}%BNo matches for: %F{214}%d%b'
 zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin
+zstyle ':completion:*:*:*:*:processes' menu yes select
+zstyle ':completion:*:*:*:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01'
+zstyle ':completion:*:*:*:*:processes' command "ps -u $USER -o pid,user,args -w -w"
 
 # beep
-setopt no_beep
-setopt nolistbeep
+setopt no_beep nolistbeep
 
 # appearance
 setopt no_check_jobs
 setopt print_eight_bit
-setopt list_packed
 setopt correct
 setopt nonomatch
 
 # operation
 WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 setopt auto_cd
+setopt auto_pushd
 setopt no_flow_control
 
 # integrate vim mode
