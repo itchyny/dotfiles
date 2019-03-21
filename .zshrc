@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2019/03/21 11:11:57.
+# - * Last Change: 2019/03/21 11:33:09.
 # ------------------------------------------------------------------------------------------------------------
 
 ZDOTDIR=$HOME/.zsh
@@ -57,7 +57,7 @@ precmd() {
 # completion
 autoload -Uz compinit
 if [[ $(date +'%j') != $(stat -f '%Sm' -t '%j' $ZDOTDIR/.zcompdump 2>/dev/null) ]]; then compinit; else compinit -C; fi
-LISTMAX=1000000
+LISTMAX=500
 fignore=(.o .dvi .aux .log .toc .hi .swp .sw .bak .bbl .blg .nav .snm .toc .pyc)
 setopt auto_list auto_menu list_packed auto_param_keys auto_param_slash mark_dirs
 zstyle ':completion:*' use-cache on
