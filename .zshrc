@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2019/03/21 10:48:46.
+# - * Last Change: 2019/03/21 10:49:53.
 # ------------------------------------------------------------------------------------------------------------
 
 ZDOTDIR=$HOME/.zsh
@@ -50,7 +50,9 @@ SPROMPT="%{$bg[red]%}%B%r is correct? [n,y,a,e]:%{${reset_color}%}%b "
 [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] && PROMPT="%{$bg[red]%}${HOST%%.*}${PROMPT}%{${reset_color}%}"
 autoload -Uz url-quote-magic
 zle -N self-insert url-quote-magic
-precmd() { stty sane }
+precmd() {
+  stty sane
+}
 
 # completion
 autoload -Uz compinit
