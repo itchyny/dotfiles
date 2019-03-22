@@ -138,10 +138,6 @@ fi
 if (( $+commands[nodenv] )); then
   eval "$(nodenv init -)"
 fi
-if (( $+commands[rustc] )); then
-  export DYLD_LIBRARY_PATH="$(rustc --print sysroot)/lib:$DYLD_LIBRARY_PATH"
-  export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
-fi
 
 # function
 starteditor() {
