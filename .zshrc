@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2019/03/22 23:19:15.
+# - * Last Change: 2019/03/23 00:36:10.
 # ------------------------------------------------------------------------------------------------------------
 
 ZDOTDIR=$HOME/.zsh
@@ -258,10 +258,8 @@ source $ZDOTDIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # https://github.com/zsh-users/zsh-history-substring-search
 source $ZDOTDIR/zsh-history-substring-search/zsh-history-substring-search.zsh
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
-bindkey '^P' history-substring-search-up
-bindkey '^N' history-substring-search-down
+bindkey '^p' history-substring-search-up
+bindkey '^n' history-substring-search-down
 
 if ! test "$VIM"; then
   if [ -e ~/Dropbox ]; then
