@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2019/03/21 18:42:33.
+# - * Last Change: 2019/03/22 00:53:55.
 # ------------------------------------------------------------------------------------------------------------
 
 ZDOTDIR=$HOME/.zsh
@@ -19,7 +19,7 @@ setopt hist_verify
 setopt hist_ignore_space
 setopt share_history
 
-# color (check: where color)
+# color
 autoload -Uz colors; colors
 LS_COLORS='di=01;36:ln=01;35:ex=01;31:'
 LS_COLORS+='*.c=01;35:*.cpp=01;35:*.js=01;35:*.json=01;35:*.hs=01;35:*.py=01;35:*.pl=01;35:'
@@ -152,21 +152,6 @@ starteditor() {
 zle -N starteditor
 bindkey '^@' starteditor
 bindkey '^\^' starteditor
-
-# cd with ls
-if ! test "$VIM"; then
-  chpwd() {
-    case "${OSTYPE}" in
-      freebsd*|darwin*)
-        ls -wG
-        ;;
-      *)
-        ls --color
-        ;;
-    esac
-  }
-fi
-
 and() { [ $? -eq 0 ] && "$@"; }
 or() { [ $? -eq 0 ] || "$@"; }
 
