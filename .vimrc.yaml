@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2019/03/20 22:44:39.
+# - * Last Change: 2019/03/23 13:54:28.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -68,7 +68,7 @@ plugin:
     enable: has('terminal')
     command: Term
     script: |
-      nnoremap <silent> H :<C-u>Term -close -opener=top\ new -restore -autocd<CR>
+      nnoremap <silent> H :<C-u>Term -close -opener=top\ 15new -restore -autocd<CR>
       nnoremap <silent> S :<C-u>Term -close -opener=vnew -restore -autocd<CR>
       nnoremap <expr><silent> s &modified ? ':<C-u>echoerr "E37: No write since last change."<CR>' : ":<C-u>Term -close -restore -autocd<CR>"
   itchyny/vim-gitbranch:
