@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2019/03/23 13:54:28.
+# - * Last Change: 2019/03/24 13:08:33.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -12,14 +12,14 @@ plugin:
       let g:landscape_cursorline = 0
       let g:landscape_vimfiler_important =
               \ ' \v(README(\.(mk?d|rst))?>|manifest.json|main\.pdf|'
-              \. '(Dropbox|[Dd]ownloads|Library|src|paper|js|hs|miv|\.vim|2?bf|maze|cam|git-branch-name|'
+              \. '(Dropbox|[Dd]ownloads|Library|src|paper|js|hs|go|miv|\.vim|2?bf|maze|cam|git-branch-name|'
               \. 'landscape|lightline|lightline-powerful|spellbad-pattern|calendar|'
               \. 'thumbnail|dictionary|screensaver|gitbranch|closebuffer|external|'
               \. 'insert-mode-motion|cmdline-ranges|cmdline-escape|autoft|extracmd|histexclude|'
               \. 'extra-snippets|highlighturl|cursorword|parenmatch|winfix|qffrom|qfedit|grep|increx|'
               \. 'unite-(preview|eject|changetime|auto-open)|viva|tmpbuffer|'
               \. 'hatena-link|haskell-(indent|sort-import)|quickrun-lightline-hooks|'
-              \. 'rexdep|fillin|bed|(base58|volume|kaitai)-go|gojo|mkrg|sjsp|qhs|'
+              \. 'rexdep|fillin|bed|(base58|volume|zshhist|kaitai|maketen)-go|gojo|mkrg|sjsp|qhs|'
               \. 'formulate|homebrew-tap|setup|py2bf|github-better-header|mackerel\S*)/)'
     after: |
       colorscheme landscape
