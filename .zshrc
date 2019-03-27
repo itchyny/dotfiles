@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2019/03/26 14:36:56.
+# - * Last Change: 2019/03/27 13:09:10.
 # ------------------------------------------------------------------------------------------------------------
 
 ZDOTDIR=$HOME/.zsh
@@ -126,7 +126,7 @@ export GORE_PAGER=less
 
 # path settings
 typeset -U path PATH
-export PATH=~/.bin:/usr/local/opt/python3/libexec/bin:/usr/local/sbin:/usr/local/bin:$PATH:~/.local/bin:~/.go/bin:~/.cargo/bin
+export PATH=~/.bin:/usr/local/opt/python3/libexec/bin:/usr/local/opt/node@10/bin:/usr/local/sbin:/usr/local/bin:$PATH:~/.local/bin:~/.go/bin:~/.cargo/bin
 export MANPATH=/usr/local/share/man:/usr/local/man:/usr/share/man
 export GOPATH=~/.go
 if (( $+commands[plenv] )); then
