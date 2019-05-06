@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2019/03/27 13:09:10.
+# - * Last Change: 2019/05/06 22:04:28.
 # ------------------------------------------------------------------------------------------------------------
 
 ZDOTDIR=$HOME/.zsh
@@ -260,11 +260,3 @@ source $ZDOTDIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $ZDOTDIR/zsh-history-substring-search/zsh-history-substring-search.zsh
 bindkey '^p' history-substring-search-up
 bindkey '^n' history-substring-search-down
-
-if ! test "$VIM"; then
-  if [ -e ~/Dropbox ]; then
-    cd ~/Dropbox > /dev/null
-  elif [ -e ~/Documents ]; then
-    cd ~/Documents > /dev/null
-  fi
-fi
