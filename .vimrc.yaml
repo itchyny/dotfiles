@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2019/04/14 22:44:18.
+# - * Last Change: 2019/05/10 08:54:44.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -678,6 +678,8 @@ plugin:
     filetype: hatena
   elzr/vim-json:
     filetype: json
+  vito-c/jq.vim:
+    filetype: jq
   cespare/vim-toml:
     filetype: toml
   html5.vim:
@@ -825,6 +827,7 @@ after: |
   augroup setlocal-filetype
     autocmd!
     autocmd BufNewFile,BufReadPost *.csv setlocal filetype=csv
+    autocmd BufNewFile,BufReadPost *.jq setlocal filetype=jq
     autocmd BufNewFile,BufReadPost *.gnuplot setlocal filetype=gnuplot
     autocmd BufNewFile,BufReadPost *.meissa setlocal filetype=meissa
     autocmd BufNewFile,BufReadPost *.bf setlocal filetype=brainfuck
