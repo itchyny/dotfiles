@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2019/05/06 22:04:28.
+# - * Last Change: 2019/05/15 16:54:08.
 # ------------------------------------------------------------------------------------------------------------
 
 ZDOTDIR=$HOME/.zsh
@@ -173,12 +173,6 @@ case "${OSTYPE}" in
     alias hibernate='dbus-send --system --print-reply --dest="org.freedesktop.UPower" /org/freedesktop/UPower org.freedesktop.UPower.Hibernate'
   ;;
 esac
-runc() {
-  gcc -O3 "$1" && shift && ./a.out "$@"; local ret=$?; rm -f ./a.out; return $ret
-}
-runcpp() {
-  g++ -O3 "$1" && shift && ./a.out "$@"; local ret=$?; rm -f ./a.out; return $ret
-}
 # editor
 alias vi='vim'
 alias emacs='vi'
@@ -239,11 +233,8 @@ alias -s html=google-chrome
 alias -s pdf=evince
 alias -s {png,jpg,bmp,PNG,JPG,BMP}=eog
 alias -s {mp3,mp4,wav,mkv,m4v,m4a,wmv,avi,mpeg,mpg,vob,mov,rm}=mplayer
-alias -s c=runc
-alias -s cpp=runcpp
 alias -s py=python
 alias -s hs=runhaskell
-alias -s s=runcpp
 alias -s sh=sh
 alias -s {gz,tgz,zip,lzh,bz2,tbz,Z,tar,arj,xz}=extract
 
