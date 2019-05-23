@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2019/04/02 15:11:48.
+" - * Last Change: 2019/05/20 11:07:13.
 " --------------------------------------------------------------------------------------------------------
 
 " Setting options {{{1
@@ -41,8 +41,7 @@ silent! set clipboard=unnamed
 silent! set clipboard+=unnamedplus
 
 " Cache files
-let $CACHE = expand((isdirectory(expand('~/Dropbox/.vim/cache')) ? '~/Dropbox' : '~') . '/.vim/cache')
-if !isdirectory($CACHE) | silent! call mkdir($CACHE, 'p') | endif
+let $CACHE = expand('~/.vim/cache')
 silent! set history=1000 viminfo='10,/100,:1000,<10,@10,s10,h,n$CACHE/.viminfo
 silent! set nospell spellfile=$CACHE/en.utf-8.add
 silent! set swapfile directory=$CACHE/swap,$CACHE,/var/tmp/vim,/var/tmp
