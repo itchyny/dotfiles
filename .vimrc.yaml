@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2019/05/10 08:54:44.
+# - * Last Change: 2019/05/29 16:30:39.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -760,6 +760,7 @@ plugin:
       let g:go_fmt_command = "goimports"
       let g:go_def_mapping_enabled = 0
       let g:go_doc_keywordprg_enabled = 0
+      let g:go_null_module_warning = 0
   rust-lang/rust.vim:
     filetype: rust
     before: |
