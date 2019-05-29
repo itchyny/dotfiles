@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2019/05/29 17:25:38.
+# - * Last Change: 2019/05/29 23:06:34.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -220,33 +220,92 @@ plugin:
   itchyny/vim-pdf:
     filetype: pdf
 
-  Shougo/neocomplete.vim:
-    enable: has('lua') && v:version > 703
+  prabirshrestha/async.vim: {}
+  prabirshrestha/vim-lsp:
+    dependon: async
     before: |
-      let g:neocomplete#enable_at_startup = 1
-      let g:neocomplete#enable_smart_case = 1
-      let g:neocomplete#max_list = 1000
-      let g:neocomplete#skip_auto_completion_time = '0.20'
-      let g:neocomplete#auto_completion_start_length = 1
-      let g:neocomplete#data_directory = '~/.cache/neocomplete'
-      let g:neocomplete#force_overwrite_completefunc = 1
-      let g:neocomplete#ignore_source_files = [ 'member.vim', 'tag.vim', 'dictionary.vim', 'include.vim', 'file_include.vim' ]
-      let g:neocomplete#force_omni_input_patterns = get(g:, 'neocomplete#force_omni_input_patterns', {})
-      let g:neocomplete#force_omni_input_patterns.python = '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
-      let g:neocomplete#force_omni_input_patterns.haskell = '[A-Z][a-z]*\.\w*\|import.*'
-      let g:neocomplete#sources#omni#input_patterns = get(g:, 'neocomplete#sources#omni#input_patterns', {})
-      let g:neocomplete#sources#omni#input_patterns.javascript = '[[:alpha:]./"''$]\+'
-      let g:neocomplete#sources#omni#input_patterns.coffee = '[[:alpha:]./"''$]\+'
-      let g:neocomplete#sources#omni#input_patterns.typescript = '[[:alpha:]./"''$]\+'
-      let g:neocomplete#sources#omni#input_patterns.haskell = 'import\s\+.*\|[:alpha:]\.\w*'
-      let g:neocomplete#sources#omni#input_patterns.pdf = '[-/%a-zA-Z0-9_]\+'
+      let g:lsp_async_completion = 1
+      let g:lsp_signs_enabled = 0
     after: |
-      call neocomplete#custom#source('omni', 'rank', 7)
-      call neocomplete#custom#source('omni', 'converters', ['converter_remove_last_paren'])
-      call neocomplete#custom#source('look', 'min_pattern_length', 3)
-      inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-      inoremap <expr><BS>  neocomplete#smart_close_popup()."\<BS>"
-      inoremap <expr><CR>  neocomplete#close_popup() . "\<CR>"
+      if executable('gopls')
+        augroup LspGo
+          autocmd!
+          autocmd User lsp_setup call lsp#register_server({
+              \ 'name': 'go',
+              \ 'cmd': {server_info->['gopls', '-mode', 'stdio']},
+              \ 'whitelist': ['go'],
+              \ })
+        augroup END
+      endif
+      if executable('metals-vim')
+        augroup LspScala
+          autocmd!
+          autocmd User lsp_setup call lsp#register_server({
+              \ 'name': 'scala',
+              \ 'cmd': {server_info->['metals-vim']},
+              \ 'initialization_options': { 'rootPatterns': 'build.sbt' },
+              \ 'whitelist': ['scala', 'sbt'],
+              \ })
+        augroup END
+      endif
+      if executable('typescript-language-server')
+        augroup LspTypeScript
+          autocmd!
+          autocmd User lsp_setup call lsp#register_server({
+              \ 'name': 'typescript',
+              \ 'cmd': {server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio']},
+              \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'tsconfig.json'))},
+              \ 'whitelist': ['typescript', 'typescript.tsx'],
+              \ })
+        augroup END
+      endif
+      if executable('solargraph')
+        augroup LspRuby
+          autocmd!
+          autocmd User lsp_setup call lsp#register_server({
+              \ 'name': 'ruby',
+              \ 'cmd': {server_info->[&shell, &shellcmdflag, 'solargraph stdio']},
+              \ 'initialization_options': {"diagnostics": "true"},
+              \ 'whitelist': ['ruby'],
+              \ })
+        augroup END
+      endif
+  prabirshrestha/asyncomplete.vim:
+    dependon: async
+  prabirshrestha/asyncomplete-lsp.vim:
+    dependon: asyncomplete
+  prabirshrestha/asyncomplete-buffer.vim:
+    dependon: asyncomplete
+    after: |
+      call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
+          \ 'name': 'buffer',
+          \ 'whitelist': ['*'],
+          \ 'completor': function('asyncomplete#sources#buffer#completor'),
+          \ }))
+  prabirshrestha/asyncomplete-file.vim:
+    dependon: asyncomplete
+    after: |
+      call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
+          \ 'name': 'file',
+          \ 'whitelist': ['*'],
+          \ 'completor': function('asyncomplete#sources#file#completor'),
+          \ }))
+  yami-beta/asyncomplete-omni.vim:
+    dependon: asyncomplete
+    after: |
+      call asyncomplete#register_source(asyncomplete#sources#omni#get_source_options({
+          \ 'name': 'omni',
+          \ 'whitelist': ['*'],
+          \ 'completor': function('asyncomplete#sources#omni#completor'),
+          \ }))
+  prabirshrestha/asyncomplete-neosnippet.vim:
+    dependon: asyncomplete
+    after: |
+      call asyncomplete#register_source(asyncomplete#sources#neosnippet#get_source_options({
+          \ 'name': 'neosnippet',
+          \ 'whitelist': ['*'],
+          \ 'completor': function('asyncomplete#sources#neosnippet#completor'),
+          \ }))
   Shougo/neosnippet:
     script: |
       let g:neosnippet#snippets_directory = [ expand((isdirectory(expand('~/Dropbox/.vim/miv')) ? '~/Dropbox' : '~') . '/.vim/miv/extra-snippets/snippets') ]
@@ -257,6 +316,17 @@ plugin:
       let g:neosnippet#scope_aliases = { 'typescript': 'javascript' }
       let g:neosnippet#enable_snipmate_compatibility = 1
   Shougo/neosnippet-snippets: {}
+  Shougo/neco-vim: {}
+  prabirshrestha/asyncomplete-necovim.vim:
+    dependon:
+      - asyncomplete
+      - neco
+    after: |
+      call asyncomplete#register_source(asyncomplete#sources#necovim#get_source_options({
+          \ 'name': 'necovim',
+          \ 'whitelist': ['vim'],
+          \ 'completor': function('asyncomplete#sources#necovim#completor'),
+          \ }))
   thinca/vim-quickrun:
     command: QuickRun
     mapping: <Plug>(quickrun)
@@ -761,6 +831,7 @@ plugin:
       let g:go_def_mapping_enabled = 0
       let g:go_doc_keywordprg_enabled = 0
       let g:go_null_module_warning = 0
+      let g:go_code_completion_enabled = 0
   rust-lang/rust.vim:
     filetype: rust
     before: |
