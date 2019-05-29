@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2019/05/29 16:30:39.
+# - * Last Change: 2019/05/29 17:25:38.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -610,8 +610,7 @@ plugin:
       - <Plug>(textobj-multiblock-a)
       - <Plug>(textobj-multiblock-i)
     before: |
-      let g:textobj_multiblock_no_default_key_mappings = 1
-      let g:textobj_multiblock_blocks = [
+      let g:textobj#multiblock#default_blocks = [
             \ [ '(', ')', 1 ],
             \ [ '[', ']', 1 ],
             \ [ '{', '}', 1 ],
@@ -619,6 +618,7 @@ plugin:
             \ [ '`', '`', 1 ],
             \ [ '"', '"', 1 ],
             \ [ "'", "'", 1 ],
+            \ [ '`', "'", 1 ],
             \ ]
   osyo-manga/vim-textobj-multitextobj:
     dependon:
