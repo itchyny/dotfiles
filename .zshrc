@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2019/05/30 12:33:16.
+# - * Last Change: 2019/05/30 14:45:08.
 # ------------------------------------------------------------------------------------------------------------
 
 ZDOTDIR=$HOME/.zsh
@@ -10,14 +10,7 @@ ZDOTDIR=$HOME/.zsh
 HISTFILE=~/.files/.histfile
 HISTSIZE=10000000
 SAVEHIST=10000000
-setopt append_history
-setopt extended_history
-setopt hist_ignore_dups
-setopt hist_no_store
-setopt hist_reduce_blanks
-setopt hist_verify
-setopt hist_ignore_space
-setopt share_history
+setopt append_history extended_history hist_ignore_dups hist_no_store hist_reduce_blanks hist_verify hist_ignore_space share_history
 
 # color
 autoload -Uz colors; colors
@@ -41,8 +34,7 @@ color_stderr() {
 exec 2> >(color_stderr)
 
 # prompt
-setopt prompt_subst
-setopt interactive_comments
+setopt prompt_subst interactive_comments
 PROMPT="%(?.%{$fg[green]%}.%{$fg[blue]%})%B%~%b%{${reset_color}%} "
 PROMPT2="%{$bg[blue]%}%_>%{$reset_color%}%b "
 RPROMPT=$'$(git-branch-name 2>/dev/null)'
@@ -76,20 +68,9 @@ zmodload zsh/complist
 bindkey -M menuselect '^n' vi-down-line-or-history
 bindkey -M menuselect '^p' vi-up-line-or-history
 
-# beep
-setopt no_beep nolistbeep
-
-# appearance
-setopt no_check_jobs
-setopt print_eight_bit
-setopt correct
-setopt nonomatch
-
-# operation
+# options
+setopt no_beep nolistbeep auto_cd auto_pushd no_flow_control no_check_jobs print_eight_bit correct nonomatch
 WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
-setopt auto_cd
-setopt auto_pushd
-setopt no_flow_control
 
 # integrate vim mode
 bindkey -v
