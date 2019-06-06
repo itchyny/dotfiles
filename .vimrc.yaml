@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2019/05/29 23:06:34.
+# - * Last Change: 2019/06/06 14:37:29.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -272,6 +272,25 @@ plugin:
       endif
   prabirshrestha/asyncomplete.vim:
     dependon: async
+    after: |
+      inoremap <expr><CR> asyncomplete#close_popup() . "\<CR>"
+      function! s:asyncomplete_preprocessor(options, matches) abort
+        if a:options.typed =~# '\v^$|\s$'
+          return
+        endif
+        let items = []
+        for [source_name, matches] in map(sort(map(
+              \ filter(items(a:matches), '!empty(v:val[1].items)'),
+              \ "[v:val[0] !~# 'asyncomplete_lsp', v:val] ")), 'v:val[1]')
+          for item in matches.items
+            if stridx(item.word, a:options.base) == 0
+              call add(items, item)
+            endif
+          endfor
+        endfor
+        call asyncomplete#preprocess_complete(a:options, items)
+      endfunction
+      let g:asyncomplete_preprocessor = [function('s:asyncomplete_preprocessor')]
   prabirshrestha/asyncomplete-lsp.vim:
     dependon: asyncomplete
   prabirshrestha/asyncomplete-buffer.vim:
