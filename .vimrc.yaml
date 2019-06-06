@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2019/06/06 14:37:29.
+# - * Last Change: 2019/06/06 17:19:51.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -886,6 +886,7 @@ before: |
   let g:loaded_getscriptPlugin = 1
   let g:loaded_vimballPlugin = 1
   let g:loaded_matchparen = 1
+  let g:loaded_sql_completion = 0
 
   let g:hs_highlight_boolean = 1
   let g:hs_highlight_types = 1
