@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2019/05/30 14:45:08.
+# - * Last Change: 2019/06/10 21:23:19.
 # ------------------------------------------------------------------------------------------------------------
 
 ZDOTDIR=$HOME/.zsh
@@ -137,23 +137,10 @@ stty -ixon -ixoff
 
 # alias
 alias ..="cd ../"
-case "${OSTYPE}" in
-  darwin*)
-    alias google-chrome='open -a Google\ Chrome'
-    alias evince='open -a Preview'
-    alias display='open -a Preview'
-    alias eog='open -a Preview'
-    pman () {
-      man -t "$1" | open -f -a /Applications/Preview.app
-    }
-  ;;
-  linux*)
-    alias open='gnome-open'
-    alias pbcopy='xsel --clipboard --input'
-    alias suspend='dbus-send --system --print-reply --dest="org.freedesktop.UPower" /org/freedesktop/UPower org.freedesktop.UPower.Suspend'
-    alias hibernate='dbus-send --system --print-reply --dest="org.freedesktop.UPower" /org/freedesktop/UPower org.freedesktop.UPower.Hibernate'
-  ;;
-esac
+alias google-chrome='open -a Google\ Chrome'
+alias evince='open -a Preview'
+alias display='open -a Preview'
+alias eog='open -a Preview'
 # editor
 alias vi='vim'
 alias emacs='vi'
@@ -194,16 +181,8 @@ if (( $+commands[htop] )); then
   alias top='TERM=screen htop'
   alias htop='TERM=screen htop'
 fi
-case "${OSTYPE}" in
-  freebsd*|darwin*)
-    alias ls='ls -wG'
-    alias ll='ls -altrwG'
-    ;;
-  *)
-    alias ls='ls --color'
-    alias ll='ls -altr --color'
-    ;;
-esac
+alias ls='ls -wG'
+alias ll='ls -altrwG'
 alias unascii="sed $'s|\x1B\\[[0-9;]*[a-zA-Z]||g'"
 
 # suffix alias according to file extension
