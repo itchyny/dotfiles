@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2019/06/13 11:22:06.
+# - * Last Change: 2019/06/18 17:41:56.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -301,6 +301,9 @@ plugin:
           \ 'name': 'buffer',
           \ 'whitelist': ['*'],
           \ 'completor': function('asyncomplete#sources#buffer#completor'),
+          \ 'config': {
+          \    'max_buffer_size': 100000,
+          \  },
           \ }))
   prabirshrestha/asyncomplete-file.vim:
     dependon: asyncomplete
