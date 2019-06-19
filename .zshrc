@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2019/06/19 10:06:21.
+# - * Last Change: 2019/06/19 10:29:21.
 # ------------------------------------------------------------------------------------------------------------
 
 ZDOTDIR=$HOME/.zsh
@@ -15,11 +15,11 @@ setopt append_history extended_history hist_ignore_dups hist_no_store hist_reduc
 # color
 autoload -Uz colors; colors
 LS_COLORS='di=36:ln=35:so=32:pi=33:ex=31:bd=34;47:cd=35;47:su=30;41:sg=30;46:tw=30;42:ow=30;43:'
-LS_COLORS+='*.1=32:*.sh=32:*.zsh=32:*.c=32:*.h=32:*.s=32:*.cpp=32:*.ac=32:*.m4=32:*.js=32:*.ts=32:*.go=32:'
+LS_COLORS+='*.1=32:*.sh=32:*.zsh=32:*.c=32:*.h=32:*.s=32:*.S=32:*.y=32:*.cpp=32:*.ac=32:*.m4=32:*.bat=32:*.js=32:*.ts=32:*.go=32:'
 LS_COLORS+='*.hs=32:*.lhs=32:*.py=32:*.rb=32:*.pl=32:*.tex=32:*.csv=32:*.txt=32:*.r=32:*.java=32:*.scala=32:'
 LS_COLORS+='*.jpg=35:*.png=35:*.bmp=35:*.gif=35:*.svg=35:*.tiff=35:'
 LS_COLORS+='*.gz=33:*.tgz=33:*.zip=33:*.lzh=33:*.bz2=33:*.tbz=33:*.Z=33:*.tar=33:*.arj=33:*.xz=33:'
-LS_COLORS+='*.md=94:*.pdf=94:*.html=94:*.xml=94:*.json=94:*.yml=94:*.yaml=94:*.less=94:*.css=94:'
+LS_COLORS+='*.md=94:*.pdf=94:*.html=94:*.xml=94:*.json=94:*.yml=94:*.yaml=94:*.conf=94:*.less=94:*.css=94:'
 export LS_COLORS # doesn't work in Mac
 export LSCOLORS=gxfxcxdxbxehfhabagacad
 export TERM=xterm-256color
