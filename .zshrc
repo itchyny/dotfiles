@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2019/06/13 23:07:04.
+# - * Last Change: 2019/06/19 10:06:21.
 # ------------------------------------------------------------------------------------------------------------
 
 ZDOTDIR=$HOME/.zsh
@@ -160,19 +160,6 @@ export GIT_MERGE_AUTOEDIT=no
 if (( $+commands[hub] )); then
   alias git=hub
 fi
-alias gb='git branch'
-alias gc='git checkout'
-alias gcb='git checkout -b'
-alias gcm='git checkout master'
-alias gcd='git checkout develop 2>/dev/null || git checkout master'
-alias ga='git add'
-alias gmd='git merge origin/develop'
-alias gd='git diff'
-alias gdc='git diff --cached'
-alias gpl='git pull -p'
-alias gpo='git push origin'
-alias gpot='git push origin --tags'
-alias gpom='git push origin master'
 # un*
 alias ungzip='gzip -d'
 alias untar='tar xvf'
@@ -200,6 +187,9 @@ alias -s {gz,tgz,zip,lzh,bz2,tbz,Z,tar,arj,xz}=extract
 
 # https://github.com/itchyny/zsh-auto-fillin
 source $ZDOTDIR/zsh-auto-fillin/zsh-auto-fillin.zsh
+
+# https://github.com/itchyny/zsh-git-alias
+source $ZDOTDIR/zsh-git-alias/zsh-git-alias.zsh
 
 # http://mimosa-pudica.net/zsh-incremental.html
 source $ZDOTDIR/incr-0.2.zsh
