@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2019/06/18 17:41:56.
+# - * Last Change: 2019/06/21 10:25:01.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -1005,7 +1005,11 @@ filetype:
     setlocal ofu=xmlcomplete#CompleteTags
   go: |
     nnoremap <buffer><silent> <C-]> :GoDef<CR>
+    nnoremap <buffer><silent> g<C-t> :GoDefPop<CR>
     nnoremap <buffer><silent> <C-@> :<C-U>call go#def#StackPop(v:count1)<CR>
+    if getline(1) =~# 'DO NOT EDIT'
+      setlocal nomodifiable
+    endif
   python: |
     setlocal ofu=jedi#completions
   make: |
