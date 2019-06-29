@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2019/06/21 10:25:01.
+# - * Last Change: 2019/06/23 21:05:01.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -167,6 +167,8 @@ plugin:
       call extracmd#set('git'    , 'Git')
       call extracmd#set('gina'    , 'Gina')
       call extracmd#set('gita'    , 'Gita')
+      call extracmd#set('ga'      , 'Gita add %')
+      call extracmd#set('gs'      , 'Gita status')
       call extracmd#set('blame'   , 'Gita blame')
       call extracmd#set('<silent>', 'aoff'   , 'AutodateOFF')
       call extracmd#set('<silent>', 'aon'    , 'AutodateON')
@@ -848,6 +850,7 @@ plugin:
     filetype: go
     before: |
       let g:go_fmt_options = { 'gofmt': '-s' }
+      let g:go_fmt_fail_silently = 1
       let g:go_fmt_command = "goimports"
       let g:go_def_mapping_enabled = 0
       let g:go_doc_keywordprg_enabled = 0
