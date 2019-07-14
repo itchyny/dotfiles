@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2019/06/19 10:29:21.
+# - * Last Change: 2019/07/14 17:42:22.
 # ------------------------------------------------------------------------------------------------------------
 
 ZDOTDIR=$HOME/.zsh
@@ -10,7 +10,7 @@ ZDOTDIR=$HOME/.zsh
 HISTFILE=~/.files/.histfile
 HISTSIZE=10000000
 SAVEHIST=10000000
-setopt append_history extended_history hist_ignore_dups hist_no_store hist_reduce_blanks hist_verify hist_ignore_space share_history
+setopt append_history extended_history hist_ignore_dups hist_no_store hist_reduce_blanks hist_verify hist_ignore_space share_history inc_append_history
 
 # color
 autoload -Uz colors; colors
