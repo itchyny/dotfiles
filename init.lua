@@ -30,6 +30,12 @@ esc = hs.hotkey.bind({}, 'escape', function()
   hs.eventtap.event.newKeyEvent({}, 'escape', true):post()
   hs.timer.delayed.new(0.1, function() esc:enable() end):start()
 end, nil, nil)
+ctrls = hs.hotkey.bind({'ctrl'}, 's', function()
+  ctrls:disable()
+  eisu()
+  hs.eventtap.event.newKeyEvent({'ctrl'}, 's', true):post()
+  hs.timer.delayed.new(0.1, function() ctrls:enable() end):start()
+end, nil, nil)
 
 mapFnCtrlTap = hs.eventtap.new({hs.eventtap.event.types.keyDown}, function(e)
   local key = hs.keycodes.map[e:getKeyCode()]
