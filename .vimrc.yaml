@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2019/08/09 21:20:18.
+# - * Last Change: 2019/08/14 11:02:37.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -68,7 +68,7 @@ plugin:
     enable: has('terminal')
     command: Term
     script: |
-      nnoremap <silent> H :<C-u>Term -close -opener=top\ 15new -restore -autocd<CR>
+      nnoremap <silent> H :<C-u>Term -close -opener=top\ 15new -restore<CR>
       nnoremap <silent> S :<C-u>Term -close -opener=vnew -restore -autocd<CR>
       nnoremap <expr><silent> s &modified ? ':<C-u>echoerr "E37: No write since last change."<CR>' : ":<C-u>Term -close -restore -autocd<CR>"
   itchyny/vim-gitbranch:
@@ -180,7 +180,7 @@ plugin:
       call extracmd#set('<silent>', 'lin'    , 'silent! call vimlint#vimlint(expand("%"), {"output": "quickfix"}) <bar> leftabove copen')
       call extracmd#set('<silent>', 'lint'   , 'silent! call vimlint#vimlint(".", {"output": "quickfix"}) <bar> leftabove copen')
       call extracmd#set('<silent>', 'push'   , 'call system("blogsync push " . string(expand("%:p")))')
-      call extracmd#set('<silent>', 'terminal', 'terminal ++close')
+      call extracmd#set('terminal', 'terminal ++close')
   itchyny/vim-qfedit:
     filetype: qf
   itchyny/vim-tmpbuffer:
