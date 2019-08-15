@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2019/08/14 11:02:37.
+# - * Last Change: 2019/08/15 10:57:46.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -68,9 +68,9 @@ plugin:
     enable: has('terminal')
     command: Term
     script: |
-      nnoremap <silent> H :<C-u>Term -close -opener=top\ 15new -restore<CR>
-      nnoremap <silent> S :<C-u>Term -close -opener=vnew -restore -autocd<CR>
-      nnoremap <expr><silent> s &modified ? ':<C-u>echoerr "E37: No write since last change."<CR>' : ":<C-u>Term -close -restore -autocd<CR>"
+      nnoremap <silent> H :<C-u>Term -close -opener=top\ 15new -restore -reporoot<CR>
+      nnoremap <silent> S :<C-u>Term -close -opener=vnew -restore -reporoot<CR>
+      nnoremap <expr><silent> s &modified ? ':<C-u>echoerr "E37: No write since last change."<CR>' : ":<C-u>Term -close -restore -reporoot<CR>"
   itchyny/vim-gitbranch:
     {}
   itchyny/vim-closebuffer:
