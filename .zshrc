@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2019/07/14 17:42:22.
+# - * Last Change: 2019/08/15 13:44:12.
 # ------------------------------------------------------------------------------------------------------------
 
 ZDOTDIR=$HOME/.zsh
@@ -28,7 +28,11 @@ export TERM=xterm-256color
 zmodload zsh/terminfo zsh/system
 color_stderr() {
   while sysread std_err_color; do
-    syswrite -o 2 "${fg_bold[red]}${std_err_color}${terminfo[sgr0]}"
+    if [[ $std_err_color =~ $'\e\\[0[m;]' ]]; then
+      syswrite -o 2 "${std_err_color}"
+    else
+      syswrite -o 2 "${fg_bold[red]}${std_err_color}${terminfo[sgr0]}"
+    fi
   done
 }
 exec 2> >(color_stderr)
