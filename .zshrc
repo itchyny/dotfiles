@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2019/08/15 13:44:12.
+# - * Last Change: 2019/09/14 06:06:52.
 # ------------------------------------------------------------------------------------------------------------
 
 ZDOTDIR=$HOME/.zsh
@@ -52,7 +52,7 @@ precmd() {
 
 # completion
 autoload -Uz compinit
-setopt extendedglob; if [[ -n $ZDOTDIR/.zcompdump(#qN.mh+24) ]]; then compinit; compdump; else compinit -C; fi; unsetopt extendedglob
+setopt extendedglob; if [[ -n $ZDOTDIR/.zcompdump(#qN.mh+720) ]]; then compinit; compdump; else compinit -C; fi; unsetopt extendedglob
 LISTMAX=500
 fignore=(.o .dvi .aux .log .toc .hi .swp .sw .bak .bbl .blg .nav .snm .toc .pyc)
 setopt auto_list auto_menu list_packed auto_param_keys auto_param_slash mark_dirs
