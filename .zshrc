@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2019/11/13 14:12:21.
+# - * Last Change: 2019/11/17 01:45:01.
 # ------------------------------------------------------------------------------------------------------------
 
 ZDOTDIR=$HOME/.zsh
@@ -116,6 +116,9 @@ export MANPATH=/usr/local/share/man:/usr/local/man:/usr/share/man
 export GOPATH=~/.go
 if (( $+commands[plenv] )); then
   eval "$(plenv init -)"
+fi
+if (( $+commands[pyenv] )); then
+  eval "$(pyenv init -)"
 fi
 if (( $+commands[rbenv] )); then
   eval "$(rbenv init -)"
