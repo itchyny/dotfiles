@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2019/11/17 01:45:01.
+# - * Last Change: 2019/11/19 10:39:30.
 # ------------------------------------------------------------------------------------------------------------
 
 ZDOTDIR=$HOME/.zsh
@@ -119,6 +119,7 @@ if (( $+commands[plenv] )); then
 fi
 if (( $+commands[pyenv] )); then
   eval "$(pyenv init -)"
+  alias brew="env PATH=${PATH//$(pyenv root)\/shims:/} brew"
 fi
 if (( $+commands[rbenv] )); then
   eval "$(rbenv init -)"
