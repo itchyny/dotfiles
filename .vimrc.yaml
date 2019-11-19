@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2019/11/16 21:34:15.
+# - * Last Change: 2019/11/19 08:17:44.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -521,6 +521,8 @@ plugin:
       vmap S <Plug>VSurround
     before: |
       let g:surround_{char2nr('$')} = "$\r$"
+  tpope/vim-abolish:
+    command: Subvert
   tomtom/tcomment_vim:
     command: TComment
     mapping: <Plug>TComment_gc
