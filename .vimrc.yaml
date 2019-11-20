@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2019/11/19 08:17:44.
+# - * Last Change: 2019/11/20 09:06:29.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -228,6 +228,7 @@ plugin:
     dependon: async
     before: |
       let g:lsp_async_completion = 1
+      let g:lsp_text_edit_enabled = 0
       let g:lsp_signs_enabled = 0
     after: |
       if executable('gopls')
