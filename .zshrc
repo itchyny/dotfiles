@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2019/11/19 10:39:30.
+# - * Last Change: 2019/11/20 14:32:35.
 # ------------------------------------------------------------------------------------------------------------
 
 ZDOTDIR=$HOME/.zsh
@@ -43,7 +43,6 @@ PROMPT="%(?.%{$fg[green]%}.%{$fg[blue]%})%B%~%b%{${reset_color}%} "
 PROMPT2="%{$bg[blue]%}%_>%{$reset_color%}%b "
 RPROMPT=$'$(git-branch-name 2>/dev/null)'
 SPROMPT="%{$bg[red]%}%B%r is correct? [n,y,a,e]:%{${reset_color}%}%b "
-[ -n "${REMOTEHOST}${SSH_CONNECTION}" ] && PROMPT="%{$bg[red]%}${HOST%%.*}${PROMPT}%{${reset_color}%}"
 autoload -Uz url-quote-magic
 zle -N self-insert url-quote-magic
 precmd() {
