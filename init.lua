@@ -85,4 +85,22 @@ backslashModifier = hs.eventtap.new({hs.eventtap.event.types.keyDown, hs.eventta
 end)
 backslashModifier:start()
 
+-- Initialize grid
+hs.grid.GRIDWIDTH = 2
+hs.grid.GRIDHEIGHT = 2
+hs.grid.MARGINX = 0
+hs.grid.MARGINY = 0
+
+-- Disable animation
+hs.window.animationDuration = 0
+
+-- Resize and move windows
+local mods_win = {'cmd', 'ctrl'}
+remap(mods_win, 'h', function() hs.grid.resizeWindowThinner().pushWindowLeft() end)
+remap(mods_win, 'l', function() hs.grid.resizeWindowThinner().pushWindowRight() end)
+remap(mods_win, 'k', function() hs.grid.resizeWindowShorter().pushWindowUp() end)
+remap(mods_win, 'j', function() hs.grid.resizeWindowShorter().pushWindowDown() end)
+remap(mods_win, 'f', function() hs.window.focusedWindow():toggleFullScreen() end)
+remap(mods_win, 'return', hs.grid.maximizeWindow)
+
 hs.alert.show("Config loaded")
