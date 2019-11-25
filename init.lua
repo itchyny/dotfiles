@@ -103,4 +103,11 @@ remap(mods_win, 'j', function() hs.grid.resizeWindowShorter().pushWindowDown() e
 remap(mods_win, 'f', function() hs.window.focusedWindow():toggleFullScreen() end)
 remap(mods_win, 'return', hs.grid.maximizeWindow)
 
+-- Launch or focus on applications
+local mods_app = {'cmd', 'shift'}
+remap(mods_app, 'f', function () hs.application.launchOrFocus('Finder') end)
+remap(mods_app, 'c', function () hs.application.launchOrFocus('Google Chrome') end)
+remap(mods_app, 'd', function () hs.application.launchOrFocus('iTerm') end)
+remap(mods_app, 's', function () hs.application.launchOrFocus('Slack') end)
+
 hs.alert.show("Config loaded")
