@@ -7,6 +7,7 @@ local function remap(mods, key, fn)
   return hs.hotkey.bind(mods, key, fn, nil, fn)
 end
 
+-- Switch to eisu mode on escape keys
 remap({'ctrl'}, '[', function()
   hs.eventtap.keyStroke({}, 'eisu', 0)
   hs.eventtap.keyStroke({}, 'escape', 0)
@@ -17,6 +18,7 @@ esc = hs.hotkey.bind({}, 'escape', function()
   hs.eventtap.event.newKeyEvent({}, 'escape', true):post()
   hs.timer.delayed.new(0.1, function() esc:enable() end):start()
 end, nil, nil)
+-- and on saving
 ctrls = hs.hotkey.bind({'ctrl'}, 's', function()
   ctrls:disable()
   hs.eventtap.keyStroke({}, 'eisu', 0)
@@ -24,6 +26,7 @@ ctrls = hs.hotkey.bind({'ctrl'}, 's', function()
   hs.timer.delayed.new(0.1, function() ctrls:enable() end):start()
 end, nil, nil)
 
+-- Change fn key to control key for some keys
 mapFnCtrlTap = hs.eventtap.new({hs.eventtap.event.types.keyDown}, function(e)
   local key = hs.keycodes.map[e:getKeyCode()]
   local hasFnFlag = e:getFlags().fn
@@ -38,6 +41,7 @@ mapFnCtrlTap = hs.eventtap.new({hs.eventtap.event.types.keyDown}, function(e)
 end)
 mapFnCtrlTap:start()
 
+-- Switch input modes on [cmd|rightcmd]-space
 local lastModifier
 storeLastModifier = hs.eventtap.new({hs.eventtap.event.types.flagsChanged}, function(e)
   lastModifier = hs.keycodes.map[e:getKeyCode()]
