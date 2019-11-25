@@ -1,8 +1,7 @@
-hs.pathwatcher.new(os.getenv("HOME") .. "/.files/init.lua", hs.reload):start()
-
-local function alert(str)
-  hs.alert.show(str)
-end
+-- Watch Hammerspoon configuration and reload it automatically
+configreloader = hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/init.lua", function()
+  hs.timer.delayed.new(0.1, hs.reload):start()
+end):start()
 
 local function remap(mods, key, fn)
   return hs.hotkey.bind(mods, key, fn, nil, fn)
