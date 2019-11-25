@@ -7,27 +7,19 @@ local function remap(mods, key, fn)
   return hs.hotkey.bind(mods, key, fn, nil, fn)
 end
 
-local function eisu()
-  hs.eventtap.keyStroke({}, 'eisu', 0)
-end
-
-local function kana()
-  hs.eventtap.keyStroke({}, 'kana', 0)
-end
-
 remap({'ctrl'}, '[', function()
-  eisu()
+  hs.eventtap.keyStroke({}, 'eisu', 0)
   hs.eventtap.keyStroke({}, 'escape', 0)
 end)
 esc = hs.hotkey.bind({}, 'escape', function()
   esc:disable()
-  eisu()
+  hs.eventtap.keyStroke({}, 'eisu', 0)
   hs.eventtap.event.newKeyEvent({}, 'escape', true):post()
   hs.timer.delayed.new(0.1, function() esc:enable() end):start()
 end, nil, nil)
 ctrls = hs.hotkey.bind({'ctrl'}, 's', function()
   ctrls:disable()
-  eisu()
+  hs.eventtap.keyStroke({}, 'eisu', 0)
   hs.eventtap.event.newKeyEvent({'ctrl'}, 's', true):post()
   hs.timer.delayed.new(0.1, function() ctrls:enable() end):start()
 end, nil, nil)
@@ -53,9 +45,9 @@ end)
 storeLastModifier:start()
 remap({'cmd'}, 'space', function()
   if lastModifier == 'cmd' then
-    eisu()
+    hs.eventtap.keyStroke({}, 'eisu', 0)
   elseif lastModifier == 'rightcmd' then
-    kana()
+    hs.eventtap.keyStroke({}, 'kana', 0)
   end
   lastModifier = nil
 end)
