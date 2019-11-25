@@ -38,8 +38,7 @@ mapFnCtrlTap = hs.eventtap.new({hs.eventtap.event.types.keyDown}, function(e)
     hs.eventtap.keyStroke(modifiers, key, 0)
     return ''
   end
-end)
-mapFnCtrlTap:start()
+end):start()
 
 -- Switch input modes on [cmd|rightcmd]-space
 local lastModifier
