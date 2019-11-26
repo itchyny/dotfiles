@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2019/11/20 14:32:35.
+# - * Last Change: 2019/11/26 20:45:50.
 # ------------------------------------------------------------------------------------------------------------
 
 ZDOTDIR=$HOME/.zsh
@@ -191,6 +191,20 @@ alias -s py=python
 alias -s hs=runhaskell
 alias -s sh=sh
 alias -s {gz,tgz,zip,lzh,bz2,tbz,Z,tar,arj,xz}=extract
+
+# shortcut for specifying the identity file for git
+git-ssh-key() {
+  ssh_key=${1:?Usage: git-ssh-key identity-file command...}
+  shift
+  GIT_SSH_COMMAND=" \
+    ssh -F /dev/null \
+      -o LogLevel=ERROR \
+      -o IdentitiesOnly=yes \
+      -o IdentityFile=\"$ssh_key\" \
+      -o UserKnownHostsFile=/dev/null \
+      -o StrictHostKeyChecking=no \
+    " "$@"
+}
 
 # https://github.com/itchyny/zsh-auto-fillin
 source $ZDOTDIR/zsh-auto-fillin/zsh-auto-fillin.zsh
