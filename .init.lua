@@ -1,25 +1,23 @@
+remap = hs.hotkey.bind
+
 -- Watch Hammerspoon configuration and reload it automatically
 configreloader = hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/init.lua", function()
   hs.timer.delayed.new(0.1, hs.reload):start()
 end):start()
-
-local function remap(mods, key, fn)
-  return hs.hotkey.bind(mods, key, fn, nil, fn)
-end
 
 -- Switch to eisu mode on escape keys
 remap({'ctrl'}, '[', function()
   hs.eventtap.keyStroke({}, 'eisu', 0)
   hs.eventtap.keyStroke({}, 'escape', 0)
 end)
-esc = hs.hotkey.bind({}, 'escape', function()
+esc = remap({}, 'escape', function()
   esc:disable()
   hs.eventtap.keyStroke({}, 'eisu', 0)
   hs.eventtap.event.newKeyEvent({}, 'escape', true):post()
   hs.timer.delayed.new(0.1, function() esc:enable() end):start()
 end, nil, nil)
 -- and on saving
-ctrls = hs.hotkey.bind({'ctrl'}, 's', function()
+ctrls = remap({'ctrl'}, 's', function()
   ctrls:disable()
   hs.eventtap.keyStroke({}, 'eisu', 0)
   hs.eventtap.event.newKeyEvent({'ctrl'}, 's', true):post()
