@@ -5,6 +5,20 @@ configreloader = hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/init.lua
   hs.timer.delayed.new(0.1, hs.reload):start()
 end):start()
 
+-- Swap : and ;
+colon = remap({'shift'}, ';', function()
+  colon:disable()
+  semicolon:disable()
+  hs.eventtap.keyStroke({}, ';', 0)
+  hs.timer.delayed.new(0.1, function() colon:enable(); semicolon:enable() end):start()
+end, nil, nil)
+semicolon = remap({}, ';', function()
+  colon:disable()
+  semicolon:disable()
+  hs.eventtap.keyStroke({'shift'}, ';', 0)
+  hs.timer.delayed.new(0.1, function() colon:enable(); semicolon:enable() end):start()
+end, nil, nil)
+
 -- Switch to eisu mode on escape keys
 remap({'ctrl'}, '[', function()
   hs.eventtap.keyStroke({}, 'eisu', 0)
