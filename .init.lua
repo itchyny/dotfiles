@@ -1,7 +1,7 @@
 remap = hs.hotkey.bind
 
 -- Watch Hammerspoon configuration and reload it automatically
-configreloader = hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/init.lua", function()
+configreloader = hs.pathwatcher.new(os.getenv('HOME') .. '/.hammerspoon/init.lua', function()
   hs.timer.delayed.new(0.1, hs.reload):start()
 end):start()
 
@@ -92,4 +92,4 @@ remap(mods_app, 'c', function () hs.application.launchOrFocus('Google Chrome') e
 remap(mods_app, 'd', function () hs.application.launchOrFocus('iTerm') end)
 remap(mods_app, 's', function () hs.application.launchOrFocus('Slack') end)
 
-hs.alert.show("Config loaded")
+hs.alert.show('Config loaded')
