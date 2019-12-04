@@ -56,8 +56,7 @@ end):start()
 local lastModifier
 storeLastModifier = hs.eventtap.new({hs.eventtap.event.types.flagsChanged}, function(e)
   lastModifier = hs.keycodes.map[e:getKeyCode()]
-end)
-storeLastModifier:start()
+end):start()
 remap({'cmd'}, 'space', function()
   if lastModifier == 'cmd' then
     hs.eventtap.keyStroke({}, 'eisu', 0)
