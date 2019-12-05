@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2019/12/05 13:28:15.
+# - * Last Change: 2019/12/05 16:11:00.
 # ------------------------------------------------------------------------------------------------------------
 
 ZDOTDIR=$HOME/.zsh
@@ -111,7 +111,7 @@ export GORE_PAGER=less
 # path settings
 export XDG_CONFIG_HOME=~/.config
 export XDG_CACHE_HOME=~/.cache
-export XDG_DATA_HOME=~/.local/share
+export XDG_DATA_HOME=~/.share
 export MANPATH=/usr/local/share/man:/usr/local/man:/usr/share/man
 export GOPATH=$XDG_CACHE_HOME/go
 export GORE_HOME=$XDG_CACHE_HOME/gore
@@ -126,7 +126,7 @@ export FURO_LOGS_DIR=$XDG_CACHE_HOME/furoshiki2
 export AWS_CONFIG_FILE=$XDG_CONFIG_HOME/aws/config
 export AWS_SHARED_CREDENTIALS_FILE=$XDG_CONFIG_HOME/aws/credentials
 typeset -U path PATH
-export PATH=~/.bin:$GOPATH/bin:$CARGO_HOME/bin:/usr/local/opt/python3/libexec/bin:/usr/local/sbin:/usr/local/bin:$PATH
+export PATH=$XDG_CONFIG_HOME/bin:$GOPATH/bin:$CARGO_HOME/bin:/usr/local/opt/python3/libexec/bin:/usr/local/sbin:/usr/local/bin:$PATH
 if (( $+commands[plenv] )); then
   export PLENV_ROOT=$XDG_CACHE_HOME/plenv
   eval "$(plenv init -)"
@@ -143,6 +143,9 @@ fi
 if (( $+commands[nodenv] )); then
   export NODENV_ROOT=$XDG_CACHE_HOME/nodenv
   eval "$(nodenv init -)"
+fi
+if (( $+commands[sbt] )); then
+  alias sbt="sbt -ivy $XDG_CACHE_HOME/ivy2 -sbt-dir $XDG_CACHE_HOME/sbt"
 fi
 
 # function
