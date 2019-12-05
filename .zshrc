@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2019/12/05 20:37:59.
+# - * Last Change: 2019/12/05 20:50:52.
 # ------------------------------------------------------------------------------------------------------------
 
 # XDG Base Directory Specification
@@ -128,6 +128,10 @@ export DOCKER_CONFIG=$XDG_CONFIG_HOME/docker
 export FURO_LOGS_DIR=$XDG_CACHE_HOME/furoshiki2
 export AWS_CONFIG_FILE=$XDG_CONFIG_HOME/aws/config
 export AWS_SHARED_CREDENTIALS_FILE=$XDG_CONFIG_HOME/aws/credentials
+createdir() { [[ ! -d "${1%/*}" ]] && mkdir -p "${1%/*}"; echo "$1"; }
+export MYSQL_HISTFILE=$(createdir "$XDG_DATA_HOME/mysql/history")
+export PSQL_HISTORY=$(createdir "$XDG_DATA_HOME/psql/history")
+export NODE_REPL_HISTORY=$(createdir "$XDG_DATA_HOME/node/history")
 typeset -U path PATH
 export PATH=$XDG_CONFIG_HOME/bin:$GOPATH/bin:$CARGO_HOME/bin:/usr/local/opt/python3/libexec/bin:/usr/local/sbin:/usr/local/bin:$PATH
 if (( $+commands[plenv] )); then
