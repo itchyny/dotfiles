@@ -1,13 +1,17 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2019/12/05 16:11:00.
+# - * Last Change: 2019/12/05 16:51:37.
 # ------------------------------------------------------------------------------------------------------------
 
+# XDG Base Directory Specification
+export XDG_CONFIG_HOME=~/.config
+export XDG_CACHE_HOME=~/.cache
+export XDG_DATA_HOME=~/.share
 ZDOTDIR=$HOME/.zsh
 
 # history
-HISTFILE=~/.files/.histfile
+HISTFILE=$XDG_DATA_HOME/zsh/histfile
 HISTSIZE=10000000
 SAVEHIST=10000000
 setopt append_history extended_history hist_ignore_dups hist_no_store hist_reduce_blanks hist_verify hist_ignore_space share_history inc_append_history
@@ -109,9 +113,6 @@ export REPORTTIME=10
 export GORE_PAGER=less
 
 # path settings
-export XDG_CONFIG_HOME=~/.config
-export XDG_CACHE_HOME=~/.cache
-export XDG_DATA_HOME=~/.share
 export MANPATH=/usr/local/share/man:/usr/local/man:/usr/share/man
 export GOPATH=$XDG_CACHE_HOME/go
 export GORE_HOME=$XDG_CACHE_HOME/gore
