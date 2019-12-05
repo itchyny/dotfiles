@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2019/11/26 20:45:50.
+# - * Last Change: 2019/12/05 13:28:15.
 # ------------------------------------------------------------------------------------------------------------
 
 ZDOTDIR=$HOME/.zsh
@@ -109,21 +109,39 @@ export REPORTTIME=10
 export GORE_PAGER=less
 
 # path settings
-typeset -U path PATH
-export PATH=~/.bin:~/.go/bin:~/.cargo/bin:/usr/local/opt/python3/libexec/bin:/usr/local/opt/node@10/bin:/usr/local/sbin:/usr/local/bin:$PATH
+export XDG_CONFIG_HOME=~/.config
+export XDG_CACHE_HOME=~/.cache
+export XDG_DATA_HOME=~/.local/share
 export MANPATH=/usr/local/share/man:/usr/local/man:/usr/share/man
-export GOPATH=~/.go
+export GOPATH=$XDG_CACHE_HOME/go
+export GORE_HOME=$XDG_CACHE_HOME/gore
+export CARGO_HOME=$XDG_CACHE_HOME/cargo
+export STACK_ROOT=$XDG_CACHE_HOME/stack
+export PERL_CPANM_HOME=$XDG_CACHE_HOME/cpanm
+export BUNDLE_USER_HOME=$XDG_CACHE_HOME/bundle
+export GEM_HOME=$XDG_CACHE_HOME/gem
+export GEM_SPEC_CACHE=$GEM_HOME/specs
+export DOCKER_CONFIG=$XDG_CONFIG_HOME/docker
+export FURO_LOGS_DIR=$XDG_CACHE_HOME/furoshiki2
+export AWS_CONFIG_FILE=$XDG_CONFIG_HOME/aws/config
+export AWS_SHARED_CREDENTIALS_FILE=$XDG_CONFIG_HOME/aws/credentials
+typeset -U path PATH
+export PATH=~/.bin:$GOPATH/bin:$CARGO_HOME/bin:/usr/local/opt/python3/libexec/bin:/usr/local/sbin:/usr/local/bin:$PATH
 if (( $+commands[plenv] )); then
+  export PLENV_ROOT=$XDG_CACHE_HOME/plenv
   eval "$(plenv init -)"
 fi
 if (( $+commands[pyenv] )); then
+  export PYENV_ROOT=$XDG_CACHE_HOME/pyenv
   eval "$(pyenv init -)"
   alias brew="env PATH=${PATH//$(pyenv root)\/shims:/} brew"
 fi
 if (( $+commands[rbenv] )); then
+  export RBENV_ROOT=$XDG_CACHE_HOME/rbenv
   eval "$(rbenv init -)"
 fi
 if (( $+commands[nodenv] )); then
+  export NODENV_ROOT=$XDG_CACHE_HOME/nodenv
   eval "$(nodenv init -)"
 fi
 
