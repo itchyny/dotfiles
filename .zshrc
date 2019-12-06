@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2019/12/05 20:50:52.
+# - * Last Change: 2019/12/06 10:51:15.
 # ------------------------------------------------------------------------------------------------------------
 
 # XDG Base Directory Specification
@@ -122,6 +122,7 @@ export CARGO_HOME=$XDG_CACHE_HOME/cargo
 export STACK_ROOT=$XDG_CACHE_HOME/stack
 export PERL_CPANM_HOME=$XDG_CACHE_HOME/cpanm
 export BUNDLE_USER_HOME=$XDG_CACHE_HOME/bundle
+export NPM_CONFIG_CACHE=$XDG_CACHE_HOME/npm
 export GEM_HOME=$XDG_CACHE_HOME/gem
 export GEM_SPEC_CACHE=$GEM_HOME/specs
 export DOCKER_CONFIG=$XDG_CONFIG_HOME/docker
