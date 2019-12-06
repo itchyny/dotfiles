@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2019/12/06 10:51:15.
+# - * Last Change: 2019/12/06 17:23:55.
 # ------------------------------------------------------------------------------------------------------------
 
 # XDG Base Directory Specification
@@ -151,9 +151,6 @@ fi
 if (( $+commands[nodenv] )); then
   export NODENV_ROOT=$XDG_CACHE_HOME/nodenv
   eval "$(nodenv init -)"
-fi
-if (( $+commands[sbt] )); then
-  alias sbt="sbt -ivy $XDG_CACHE_HOME/ivy2 -sbt-dir $XDG_CACHE_HOME/sbt"
 fi
 
 # function
