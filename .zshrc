@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2019/12/06 17:23:55.
+# - * Last Change: 2019/12/10 11:46:55.
 # ------------------------------------------------------------------------------------------------------------
 
 # XDG Base Directory Specification
@@ -125,6 +125,8 @@ export BUNDLE_USER_HOME=$XDG_CACHE_HOME/bundle
 export NPM_CONFIG_CACHE=$XDG_CACHE_HOME/npm
 export GEM_HOME=$XDG_CACHE_HOME/gem
 export GEM_SPEC_CACHE=$GEM_HOME/specs
+export IPYTHONDIR=$XDG_CACHE_HOME/ipython
+export MPLCONFIGDIR=$XDG_CACHE_HOME/matplotlib
 export DOCKER_CONFIG=$XDG_CONFIG_HOME/docker
 export FURO_LOGS_DIR=$XDG_CACHE_HOME/furoshiki2
 export AWS_CONFIG_FILE=$XDG_CONFIG_HOME/aws/config
