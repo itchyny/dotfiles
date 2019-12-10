@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2019/05/20 11:07:13.
+" - * Last Change: 2019/12/08 11:02:47.
 " --------------------------------------------------------------------------------------------------------
 
 " Setting options {{{1
@@ -41,12 +41,12 @@ silent! set clipboard=unnamed
 silent! set clipboard+=unnamedplus
 
 " Cache files
-let $CACHE = expand('~/.vim/cache')
-silent! set history=1000 viminfo='10,/100,:1000,<10,@10,s10,h,n$CACHE/.viminfo
-silent! set nospell spellfile=$CACHE/en.utf-8.add
-silent! set swapfile directory=$CACHE/swap,$CACHE,/var/tmp/vim,/var/tmp
-silent! set nobackup backupdir=$CACHE/backup,$CACHE,/var/tmp/vim,/var/tmp
-silent! set undofile undolevels=1000 undodir=$CACHE/undo,$CACHE,/var/tmp/vim,/var/tmp
+let $VIM_DATA = $XDG_DATA_HOME . '/vim'
+silent! set history=1000 viminfo='10,/100,:1000,<10,@10,s10,h,n$XDG_CACHE_HOME/vim/viminfo
+silent! set nospell spellfile=$VIM_DATA/en.utf-8.add
+silent! set swapfile directory=$XDG_CACHE_HOME/vim/swap,/var/tmp/vim,/var/tmp
+silent! set nobackup backupdir=$XDG_CACHE_HOME/vim/backup,/var/tmp/vim,/var/tmp
+silent! set undofile undolevels=1000 undodir=$XDG_CACHE_HOME/vim/undo,/var/tmp/vim,/var/tmp
 
 " Search
 silent! set wrapscan ignorecase smartcase incsearch hlsearch magic
