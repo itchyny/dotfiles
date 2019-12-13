@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2019/12/12 20:19:56.
+# - * Last Change: 2019/12/13 18:03:32.
 # ------------------------------------------------------------------------------------------------------------
 
 # XDG Base Directory Specification
@@ -111,6 +111,7 @@ fi
 export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
 export EDITOR=vim
+export GIT_EDITOR=vim
 export REPORTTIME=10
 export GORE_PAGER=less
 
