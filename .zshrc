@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2019/12/13 18:03:32.
+# - * Last Change: 2019/12/13 19:17:02.
 # ------------------------------------------------------------------------------------------------------------
 
 # XDG Base Directory Specification
@@ -138,7 +138,7 @@ export MYSQL_HISTFILE=$(createdir "$XDG_DATA_HOME/mysql/history")
 export PSQL_HISTORY=$(createdir "$XDG_DATA_HOME/psql/history")
 export NODE_REPL_HISTORY=$(createdir "$XDG_DATA_HOME/node/history")
 typeset -U path PATH
-export PATH=$XDG_CONFIG_HOME/bin:$GOPATH/bin:$CARGO_HOME/bin:/usr/local/opt/python3/libexec/bin:/usr/local/sbin:/usr/local/bin:$PATH
+export PATH=$XDG_DATA_HOME/bin:$GOPATH/bin:$CARGO_HOME/bin:/usr/local/opt/python3/libexec/bin:/usr/local/sbin:/usr/local/bin:$PATH
 if (( $+commands[plenv] )); then
   export PLENV_ROOT=$XDG_CACHE_HOME/plenv
   eval "$(plenv init -)"
