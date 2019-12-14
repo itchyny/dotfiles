@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2019/12/08 10:58:16.
+# - * Last Change: 2019/12/14 16:23:06.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -388,7 +388,6 @@ plugin:
       - VimFiler
       - VimFilerBufferDir
     dependon:
-      - vimproc
       - unite
     before: |
       let g:vimfiler_as_default_explorer = 1
@@ -427,13 +426,6 @@ plugin:
             \ 'candidate_icon': g:fancy ? '▸ ' : '- ',
             \ 'marked_icon': g:fancy ? '* ' : '* ',
             \ 'hide_icon': 0 })
-    dependedby:
-      - unite-haddock
-      - unite-outline
-      - unite-haskellimport
-      - unite-auto-open
-      - unite-changetime
-      - unite-preview
   eagletmt/unite-haddock:
     loadafter: unite
     mapleader: ","
@@ -557,7 +549,6 @@ plugin:
   eagletmt/ghcmod-vim:
     filetype: haskell
     enable: executable('ghc') && executable('ghc-mod')
-    dependon: vimproc
   eagletmt/neco-ghc:
     filetype: haskell
     enable: executable('ghc') && executable('ghc-mod')
@@ -599,7 +590,6 @@ plugin:
       - emmet
   ynkdir/vim-vimlparser:
     loadbefore: vimlint
-    dependedby: vimlint
   syngan/vim-vimlint:
     function: vimlint
     dependon: vimlparser
@@ -609,8 +599,6 @@ plugin:
     loadbefore:
       - ghcmod
       - vimfiler
-      - quickrun
-      - dictionary
   thinca/vim-themis:
     function: themis
   vim-jp/vital.vim:
