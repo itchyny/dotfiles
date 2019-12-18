@@ -829,6 +829,7 @@ plugin:
       let g:go_doc_keywordprg_enabled = 0
       let g:go_null_module_warning = 0
       let g:go_code_completion_enabled = 0
+      let g:go_gopls_enabled = 0
   rust-lang/rust.vim:
     filetype: rust
     before: |
