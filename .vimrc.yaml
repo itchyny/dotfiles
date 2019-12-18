@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2019/12/14 16:23:06.
+# - * Last Change: 2019/12/18 19:21:05.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -439,14 +439,6 @@ plugin:
     loadafter: unite
     script: |
       nnoremap <silent> <Leader>p :<C-u>Unite haskellimport -buffer-name=haskellimport<CR>
-  itchyny/unite-eject:
-    enable: "0"
-    loadafter: unite
-  itchyny/unite-auto-open:
-    enable: "0"
-    loadafter: unite
-    after: |
-      call unite#custom_default_action('file', 'auto_open')
   itchyny/unite-changetime:
     loadafter: unite
   itchyny/unite-preview:
@@ -601,8 +593,6 @@ plugin:
       - vimfiler
   thinca/vim-themis:
     function: themis
-  vim-jp/vital.vim:
-    enable: "0"
 
   kana/vim-textobj-user: {}
   kana/vim-textobj-entire:
