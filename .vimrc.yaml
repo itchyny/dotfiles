@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2019/12/19 21:00:52.
+# - * Last Change: 2019/12/22 21:26:14.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -817,20 +817,8 @@ plugin:
       let g:vimjs#smartcomplete = 1
   derekwyatt/vim-scala:
     filetype: scala
-  fatih/vim-go:
-    filetype:
-      - go
-      - gomod
-    before: |
-      let g:go_fmt_options = { 'gofmt': '-s' }
-      let g:go_fmt_fail_silently = 1
-      let g:go_fmt_command = "goimports"
-      let g:go_def_mapping_enabled = 0
-      let g:go_doc_keywordprg_enabled = 0
-      let g:go_null_module_warning = 0
-      let g:go_code_completion_enabled = 0
-      let g:go_gopls_enabled = 0
-      let g:go_def_mode = 'godef'
+  mattn/vim-goimports:
+    filetype: go
   rust-lang/rust.vim:
     filetype: rust
     before: |
@@ -971,6 +959,7 @@ filetype:
   typescript: |
     setlocal ofu=js#CompleteJS nospell shiftwidth=4
     imap <buffer> <Tab> <Plug>(neosnippet-emmet-supertab)
+    nnoremap <buffer><silent> <C-]> :LspDefinition<CR>
   purescript: |
     highlight link purescriptImport Include
     highlight link purescriptQualifiedImport Include
@@ -984,9 +973,7 @@ filetype:
   xml: |
     setlocal ofu=xmlcomplete#CompleteTags
   go: |
-    nnoremap <buffer><silent> <C-]> :GoDef<CR>
-    nnoremap <buffer><silent> g<C-t> :GoDefPop<CR>
-    nnoremap <buffer><silent> <C-@> :<C-U>call go#def#StackPop(v:count1)<CR>
+    nnoremap <buffer><silent> <C-]> :LspDefinition<CR>
     if getline(1) =~# 'DO NOT EDIT'
       setlocal nomodifiable
     endif
