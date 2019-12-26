@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2019/12/24 13:44:56.
+# - * Last Change: 2019/12/26 11:48:17.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -230,39 +230,6 @@ plugin:
       let g:lsp_async_completion = 1
       let g:lsp_text_edit_enabled = 0
       let g:lsp_signs_enabled = 0
-    after: |
-      if executable('gopls')
-        augroup LspGo
-          autocmd!
-          autocmd User lsp_setup call lsp#register_server({
-              \ 'name': 'go',
-              \ 'cmd': {server_info->['gopls', '-mode', 'stdio']},
-              \ 'whitelist': ['go'],
-              \ })
-        augroup END
-      endif
-      if executable('typescript-language-server')
-        augroup LspTypeScript
-          autocmd!
-          autocmd User lsp_setup call lsp#register_server({
-              \ 'name': 'typescript',
-              \ 'cmd': {server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio']},
-              \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'tsconfig.json'))},
-              \ 'whitelist': ['typescript', 'typescript.tsx'],
-              \ })
-        augroup END
-      endif
-      if executable('solargraph')
-        augroup LspRuby
-          autocmd!
-          autocmd User lsp_setup call lsp#register_server({
-              \ 'name': 'ruby',
-              \ 'cmd': {server_info->[&shell, &shellcmdflag, 'solargraph stdio']},
-              \ 'initialization_options': {"diagnostics": "true"},
-              \ 'whitelist': ['ruby'],
-              \ })
-        augroup END
-      endif
   prabirshrestha/asyncomplete.vim:
     dependon: async
     after: |
@@ -322,6 +289,14 @@ plugin:
           \ 'whitelist': ['*'],
           \ 'completor': function('asyncomplete#sources#neosnippet#completor'),
           \ }))
+  mattn/vim-lsp-settings:
+    dependon: lsp
+    before: |
+      let g:lsp_settings_whitelist = [
+          \ 'typescript', 'javascript', 'python', 'rust', 
+          \ 'go', 'ruby', 'lua', 'vim', 'bash', 'dockerfile', 
+          \ 'yaml', 'xml', 'json', 'swift',
+          \ ]
   Shougo/neosnippet:
     script: |
       let g:neosnippet#snippets_directory = [ expand((isdirectory(expand('~/Dropbox/.vim/miv')) ? '~/Dropbox' : '~') . '/.vim/miv/extra-snippets/snippets') ]
