@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2019/12/23 10:32:21.
+" - * Last Change: 2020/01/05 17:00:00.
 " --------------------------------------------------------------------------------------------------------
 
 " Setting options {{{1
@@ -14,7 +14,7 @@ set encoding=utf-8 fileencoding=utf-8 fileformats=unix,mac,dos
 set fileencodings=utf-8,iso-2022-jp-3,euc-jisx0213,cp932,euc-jp,sjis,jis,latin,iso-2022-jp
 
 " Appearance
-silent! set number background=dark display=lastline,uhex wrap wrapmargin=0 guioptions=ce key=
+silent! set number background=dark display=lastline,uhex wrap wrapmargin=0 key= t_Co=256
 silent! set noshowmatch matchtime=1 noshowmode shortmess+=I cmdheight=1 cmdwinheight=10 showbreak=
 silent! set noshowcmd noruler rulerformat= laststatus=2 statusline=%t\ %=\ %m%r%y%w\ %3l:%-2c
 silent! set title titlelen=100 titleold= titlestring=%f noicon norightleft showtabline=1
@@ -23,7 +23,6 @@ silent! set list listchars=tab:>\ ,nbsp:_ synmaxcol=3000 ambiwidth=double breaki
 silent! set nosplitbelow nosplitright startofline linespace=0 whichwrap=b,s scrolloff=0 sidescroll=0
 silent! set equalalways nowinfixwidth nowinfixheight winminwidth=3 winminheight=3 nowarn noconfirm
 silent! set fillchars=vert:\|,fold:\  eventignore= helplang=en viewoptions=options,cursor virtualedit=
-if has('gui_running') | set lines=999 columns=999 | else | set t_Co=256 | endif
 silent! let [&t_SI,&t_EI] = exists('$TMUX') ? ["\ePtmux;\e\e[5 q\e\\","\ePtmux;\e\e[2 q\e\\"] : ["\e]50;CursorShape=1\x7","\e]50;CursorShape=0\x7"]
 
 " Editing
@@ -68,12 +67,6 @@ silent! set noerrorbells visualbell t_vb=
 augroup vimrc
   autocmd!
 augroup END
-
-" Maximize the window
-autocmd vimrc GUIEnter * silent! simalt ~x
-
-" Reset t_vb again
-autocmd vimrc GUIEnter * silent! set t_vb=
 
 " Move to the directory each buffer
 autocmd vimrc BufEnter * silent! lcd %:p:h
