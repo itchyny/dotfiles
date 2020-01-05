@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2019/12/26 11:48:17.
+# - * Last Change: 2020/01/04 21:20:20.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -794,6 +794,8 @@ plugin:
     filetype: scala
   mattn/vim-goimports:
     filetype: go
+  johejo/gomod.vim:
+    filetype: gomod
   rust-lang/rust.vim:
     filetype: rust
     before: |
