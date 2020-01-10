@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2020/01/05 17:00:00.
+" - * Last Change: 2020/01/09 21:58:17.
 " --------------------------------------------------------------------------------------------------------
 
 " Setting options {{{1
@@ -20,7 +20,7 @@ silent! set noshowcmd noruler rulerformat= laststatus=2 statusline=%t\ %=\ %m%r%
 silent! set title titlelen=100 titleold= titlestring=%f noicon norightleft showtabline=1
 silent! set cursorline nocursorcolumn colorcolumn= concealcursor=nvc conceallevel=0 norelativenumber
 silent! set list listchars=tab:>\ ,nbsp:_ synmaxcol=3000 ambiwidth=double breakindent breakindentopt=
-silent! set nosplitbelow nosplitright startofline linespace=0 whichwrap=b,s scrolloff=0 sidescroll=0
+silent! set nosplitbelow nosplitright nostartofline linespace=0 whichwrap=b,s scrolloff=0 sidescroll=0
 silent! set equalalways nowinfixwidth nowinfixheight winminwidth=3 winminheight=3 nowarn noconfirm
 silent! set fillchars=vert:\|,fold:\  eventignore= helplang=en viewoptions=options,cursor virtualedit=
 silent! let [&t_SI,&t_EI] = exists('$TMUX') ? ["\ePtmux;\e\e[5 q\e\\","\ePtmux;\e\e[2 q\e\\"] : ["\e]50;CursorShape=1\x7","\e]50;CursorShape=0\x7"]
