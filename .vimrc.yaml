@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2020/01/08 22:55:22.
+# - * Last Change: 2020/01/15 12:33:02.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -532,7 +532,7 @@ plugin:
       let g:agit_max_author_name_width = 10
     script: |
       nnoremap <silent> <Leader>g :<C-u>Agit<CR>
-  lambdalisue/vim-gita:
+  itchyny/vim-gita: # use a fork for now
     mapleader: ","
     command: Gita
     before: |
