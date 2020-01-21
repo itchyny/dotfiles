@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2020/01/21 10:39:09.
+" - * Last Change: 2020/01/21 10:40:00.
 " --------------------------------------------------------------------------------------------------------
 
 " Setting options {{{1
@@ -71,7 +71,7 @@ augroup END
 " Move to the directory each buffer
 autocmd vimrc BufEnter * silent! lcd %:p:h
 
-" Open Quickfix window automatically
+" Open quickfix window automatically
 autocmd vimrc QuickfixCmdPost [^l]* nested copen | wincmd p
 autocmd vimrc QuickfixCmdPost l* nested lopen | wincmd p
 
@@ -87,7 +87,8 @@ autocmd vimrc SwapExists * let v:swapchoice = 'o'
 " Automatically set expandtab
 autocmd vimrc FileType * execute 'setlocal ' . (search('^\t.*\n\t.*\n\t', 'n') ? 'no' : '') . 'expandtab'
 
-autocmd vimrc BufWinEnter * if &buftype == 'terminal' | setlocal nonumber | endif
+" Set nonumber in terminal window
+autocmd vimrc BufWinEnter * if &l:buftype == 'terminal' | setlocal nonumber | endif
 
 " Setting lazyredraw causes a problem on startup
 autocmd vimrc VimEnter * redraw
