@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2020/01/15 12:33:02.
+# - * Last Change: 2020/01/20 18:33:44.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -291,12 +291,6 @@ plugin:
           \ }))
   mattn/vim-lsp-settings:
     dependon: lsp
-    before: |
-      let g:lsp_settings_whitelist = [
-          \ 'typescript', 'javascript', 'python', 'rust', 
-          \ 'go', 'ruby', 'lua', 'vim', 'bash', 'dockerfile', 
-          \ 'yaml', 'xml', 'json', 'swift',
-          \ ]
   Shougo/neosnippet:
     script: |
       let g:neosnippet#snippets_directory = [ expand((isdirectory(expand('~/Dropbox/.vim/miv')) ? '~/Dropbox' : '~') . '/.vim/miv/extra-snippets/snippets') ]
