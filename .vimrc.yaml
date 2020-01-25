@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2020/01/22 17:59:19.
+# - * Last Change: 2020/01/25 23:16:32.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -293,7 +293,7 @@ plugin:
     dependon: lsp
   Shougo/neosnippet:
     script: |
-      let g:neosnippet#snippets_directory = [ expand((isdirectory(expand('~/Dropbox/.vim/miv')) ? '~/Dropbox' : '~') . '/.vim/miv/extra-snippets/snippets') ]
+      let g:neosnippet#snippets_directory = [expand('$XDG_DATA_HOME/miv/extra-snippets/snippets')]
       imap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : repeat("\<Space>", &shiftwidth)
       smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : repeat("\<Space>", &shiftwidth)
       imap <expr><C-o> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<ESC>o"
