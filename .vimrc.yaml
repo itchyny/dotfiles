@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2020/01/25 23:16:32.
+# - * Last Change: 2020/01/27 11:15:47.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -496,6 +496,7 @@ plugin:
   matchit.zip: {}
   machakann/vim-swap: {}
   markonm/traces.vim: {}
+  mattn/vim-lexiv: {}
 
   eagletmt/ghci-vim:
     filetype: haskell
