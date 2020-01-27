@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2020/01/27 11:15:47.
+# - * Last Change: 2020/01/27 11:22:16.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -233,7 +233,6 @@ plugin:
   prabirshrestha/asyncomplete.vim:
     dependon: async
     after: |
-      inoremap <expr><CR> asyncomplete#close_popup() . "\<CR>"
       function! s:asyncomplete_preprocessor(options, matches) abort
         if a:options.typed =~# '\v^$|\s$'
           return
