@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2020/01/27 11:22:16.
+# - * Last Change: 2020/01/30 09:02:48.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -230,6 +230,15 @@ plugin:
       let g:lsp_async_completion = 1
       let g:lsp_text_edit_enabled = 0
       let g:lsp_signs_enabled = 0
+      augroup lsp_install
+        autocmd!
+        autocmd User lsp_buffer_enabled
+              \   setlocal omnifunc=lsp#complete
+              \ | nmap <buffer> <C-]> <plug>(lsp-definition)
+              \ | nmap <buffer> ,n    <plug>(lsp-next-error)
+              \ | nmap <buffer> ,p    <plug>(lsp-previous-error)
+              \ | nmap <buffer> <F2>  <plug>(lsp-rename)
+      augroup END
   prabirshrestha/asyncomplete.vim:
     dependon: async
     after: |
@@ -930,7 +939,6 @@ filetype:
   typescript: |
     setlocal ofu=js#CompleteJS nospell shiftwidth=4
     imap <buffer> <Tab> <Plug>(neosnippet-emmet-supertab)
-    nmap <buffer> <C-]> <plug>(lsp-definition)
   purescript: |
     highlight link purescriptImport Include
     highlight link purescriptQualifiedImport Include
@@ -944,7 +952,6 @@ filetype:
   xml: |
     setlocal ofu=xmlcomplete#CompleteTags
   go: |
-    nmap <buffer> <C-]> <plug>(lsp-definition)
     if getline(1) =~# 'DO NOT EDIT'
       setlocal nomodifiable
     endif
