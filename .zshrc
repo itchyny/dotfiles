@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2020/01/21 14:43:55.
+# - * Last Change: 2020/01/31 21:12:43.
 # ------------------------------------------------------------------------------------------------------------
 
 # XDG Base Directory Specification
@@ -28,7 +28,6 @@ LS_COLORS+='*.gz=33:*.tgz=33:*.zip=33:*.lzh=33:*.bz2=33:*.tbz=33:*.Z=33:*.tar=33
 LS_COLORS+='*.md=94:*.pdf=94:*.html=94:*.xml=94:*.json=94:*.yml=94:*.yaml=94:*.conf=94:*.less=94:*.css=94:'
 export LS_COLORS # doesn't work in Mac
 export LSCOLORS=gxfxcxdxbxehfhabagacad
-export TERM=xterm-256color
 
 # colorize stderr output in red
 zmodload zsh/terminfo zsh/system
