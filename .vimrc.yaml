@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2020/01/31 22:44:56.
+# - * Last Change: 2020/01/31 22:59:06.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -68,8 +68,7 @@ plugin:
       nnoremap <silent> H :<C-u>Term -opener=top\ 15new -restore -reporoot<CR>
       nnoremap <silent> S :<C-u>Term -opener=vnew -restore -reporoot<CR>
       nnoremap <expr><silent> s &modified ? ':<C-u>echoerr "E37: No write since last change."<CR>' : ":<C-u>Term -restore -reporoot<CR>"
-  itchyny/vim-gitbranch:
-    {}
+  itchyny/vim-gitbranch: {}
   itchyny/vim-closebuffer:
     mapping: <Plug>(closebuffer)
     insert: true
@@ -196,12 +195,10 @@ plugin:
   itchyny/vim-parenmatch:
     after: |
       highlight! link MatchParen ParenMatch
-  itchyny/vim-highlighturl:
-    {}
+  itchyny/vim-highlighturl: {}
   itchyny/vim-insert-mode-motion:
     insert: true
-  itchyny/vim-cmdline-ranges:
-    {}
+  itchyny/vim-cmdline-ranges: {}
   itchyny/vim-cmdline-escape:
     before: |
       let g:cmdline_escape_default_mapping = 0
@@ -211,8 +208,7 @@ plugin:
       let g:histexclude = {
             \ ':': '\v^[:[:space:]]*%(\d+|v?ne%[w]|v?sp%[lit]|tabnew|tabc%[lose]|i%[nsert]|a%[ppend])\s*$',
             \ }
-  itchyny/vim-extra-snippets:
-    {}
+  itchyny/vim-extra-snippets: {}
   itchyny/vim-haskell-indent:
     filetype: haskell
   itchyny/vim-haskell-sort-import:
