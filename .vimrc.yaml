@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2020/01/30 09:02:48.
+# - * Last Change: 2020/01/31 22:44:56.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -23,10 +23,7 @@ plugin:
               \. 'formulate|homebrew-tap|setup|py2bf|github-better-header)/)'
     after: |
       colorscheme landscape
-  itchyny/lightline.vim:
-    script: |
-      exec 'set gfn=' . substitute('Inconsolata for Powerline', ' ', g:iswin ? '_' : '\\ ', 'g') . (g:ismac ? ':h15' : g:iswin ?  ':h13:cANSI' : '\ 12')
-      if g:iswin | set gfw=MS_Gothic:h11:cSHIFTJIS | endif
+  itchyny/lightline.vim: {}
   itchyny/lightline-powerful:
     before: |
       let g:lightline = {'colorscheme': 'landscape','mode_map':{'c': 'NORMAL'}}
@@ -399,9 +396,9 @@ plugin:
       call unite#custom#profile('default', 'context', {
             \ 'start_insert' : 1,
             \ 'prompt_direction': 'top',
-            \ 'prompt': g:fancy ? '❯ ' : '> ',
-            \ 'candidate_icon': g:fancy ? '▸ ' : '- ',
-            \ 'marked_icon': g:fancy ? '* ' : '* ',
+            \ 'prompt': '> ',
+            \ 'candidate_icon': '- ',
+            \ 'marked_icon': '* ',
             \ 'hide_icon': 0 })
   eagletmt/unite-haddock:
     loadafter: unite
@@ -825,10 +822,6 @@ plugin:
     filetype: elixir
 
 before: |
-  let g:iswin = has('win16') || has('win32') || has('win64')
-  let g:ismac = !g:iswin && !has('win32unix') && (has('mac') || has('macunix'))
-  let g:fancy = g:ismac && has('multi_byte')
-
   let g:loaded_2html_plugin = 1
   let g:loaded_rrhelper = 1
   let g:loaded_getscriptPlugin = 1
@@ -845,10 +838,6 @@ before: |
   let g:tex_conceal=''
   let g:tex_indent_items = 0
   let g:no_pdf_maps = 1
-
-  if v:version < 700
-    finish
-  endif
 
   command -nargs=* Codeforces call s:codeforces(<f-args>)
   function! s:codeforces(...) abort
