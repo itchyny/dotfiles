@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2020/01/31 22:59:06.
+# - * Last Change: 2020/01/31 23:04:48.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -834,17 +834,6 @@ before: |
   let g:tex_conceal=''
   let g:tex_indent_items = 0
   let g:no_pdf_maps = 1
-
-  command -nargs=* Codeforces call s:codeforces(<f-args>)
-  function! s:codeforces(...) abort
-    if a:0 < 2
-      return
-    endif
-    let dir = expand(printf('~/Dropbox/procon/codeforces/%04d/', a:1))
-    silent! call mkdir(dir)
-    edit `=dir . tolower(a:2) . '.hs'`
-    vnew `=dir . tolower(a:2) . 'i'`
-  endfunction
 
 after: |
   let g:mapleader = ','
