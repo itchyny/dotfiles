@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2020/02/01 15:43:34.
+# - * Last Change: 2020/02/03 22:46:00.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -68,6 +68,10 @@ plugin:
       nnoremap <silent> H :<C-u>Term -opener=top\ 15new -restore -reporoot<CR>
       nnoremap <silent> S :<C-u>Term -opener=vnew -restore -reporoot<CR>
       nnoremap <expr><silent> s &modified ? ':<C-u>echoerr "E37: No write since last change."<CR>' : ":<C-u>Term -restore -reporoot<CR>"
+  itchyny/vim-gof:
+    command: Gof
+    script: |
+      nnoremap <silent><C-o> :<C-u>Gof<CR>
   itchyny/vim-gitbranch: {}
   itchyny/vim-closebuffer:
     mapping: <Plug>(closebuffer)
@@ -451,7 +455,6 @@ plugin:
       - CtrlPLine
     script: |
       nnoremap <silent><C-p> :<C-u>CtrlPMRUFiles<CR>
-      nnoremap <silent><C-o> :<C-u>CtrlPCurFile<CR>
     before: |
       let g:ctrlp_cmd = 'CtrlPMRUFiles'
       let g:ctrlp_tilde_homedir = 1
