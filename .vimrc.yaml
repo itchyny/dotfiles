@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2020/02/03 22:46:00.
+# - * Last Change: 2020/02/04 01:22:52.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -69,9 +69,10 @@ plugin:
       nnoremap <silent> S :<C-u>Term -opener=vnew -restore -reporoot<CR>
       nnoremap <expr><silent> s &modified ? ':<C-u>echoerr "E37: No write since last change."<CR>' : ":<C-u>Term -restore -reporoot<CR>"
   itchyny/vim-gof:
-    command: Gof
     script: |
       nnoremap <silent><C-o> :<C-u>Gof<CR>
+      nnoremap <silent><C-p> :<C-u>Gof mru<CR>
+      let g:gof_mru = 1
   itchyny/vim-gitbranch: {}
   itchyny/vim-closebuffer:
     mapping: <Plug>(closebuffer)
@@ -447,26 +448,6 @@ plugin:
       let g:visualstar_no_default_key_mappings = 1
       xmap <silent> * <Plug>(visualstar-*):<C-u>set hlsearch<CR>
       xmap <silent> # <Plug>(visualstar-#):<C-u>set hlsearch<CR>
-  ctrlpvim/ctrlp.vim:
-    command:
-      - CtrlP
-      - CtrlPMRUFiles
-      - CtrlPCurFile
-      - CtrlPLine
-    script: |
-      nnoremap <silent><C-p> :<C-u>CtrlPMRUFiles<CR>
-    before: |
-      let g:ctrlp_cmd = 'CtrlPMRUFiles'
-      let g:ctrlp_tilde_homedir = 1
-      let g:ctrlp_show_hidden = 1
-      let g:ctrlp_max_depth = 5
-      let g:ctrlp_max_files = 500
-      let g:ctrlp_mruf_max = 100000
-      let g:ctrlp_custom_ignore = { 'dir': '\v[\/]\.(git|hg|svn)$', 'file': '\v\.(exe|so|dll|swp|pdf|DS_Store)$', }
-      let g:ctrlp_open_new_file = 'r'
-      let g:ctrlp_use_caching = 1
-      let g:ctrlp_clear_cache_on_exit = 0
-      let g:ctrlp_cache_dir = $VIM_DATA.'/ctrlp'
 
   tpope/vim-surround:
     mapping:
