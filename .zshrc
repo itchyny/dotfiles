@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2020/01/31 21:12:43.
+# - * Last Change: 2020/02/08 16:40:33.
 # ------------------------------------------------------------------------------------------------------------
 
 # XDG Base Directory Specification
@@ -96,15 +96,12 @@ bindkey "^R" history-incremental-pattern-search-backward
 zle_highlight=(isearch:fg=yellow)
 
 # fuzzy history search
-if (( $+commands[fzf] )); then
-  export FZF_DEFAULT_OPTS='--reverse'
-  select-history() {
-    BUFFER=$(history -n -r 1 | awk '!x[$0]++' | fzf --no-sort +m --query "$LBUFFER")
-    CURSOR=$#BUFFER
-  }
-  zle -N select-history
-  bindkey "^Z" select-history
-fi
+select-history() {
+  BUFFER=$(history -n -r 1 | awk '!x[$0]++' | gof)
+  CURSOR=$#BUFFER
+}
+zle -N select-history
+bindkey "^Z" select-history
 
 # export variables
 export LANG=en_US.UTF-8
