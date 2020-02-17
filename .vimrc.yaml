@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2020/02/17 13:43:57.
+# - * Last Change: 2020/02/17 13:46:52.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -426,7 +426,9 @@ plugin:
   sjl/gundo.vim:
     mapleader: ","
     command: GundoToggle
-    enable: has('python')
+    enable: has('python3')
+    script: |
+      let g:gundo_prefer_python3 = 1
   xterm-color-table.vim:
     command: XtermColorTable
   thinca/vim-scouter:
