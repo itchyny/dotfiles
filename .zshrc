@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2020/02/08 16:40:33.
+# - * Last Change: 2020/03/06 15:44:08.
 # ------------------------------------------------------------------------------------------------------------
 
 # XDG Base Directory Specification
@@ -114,7 +114,7 @@ export GORE_PAGER=less
 # path settings
 export MANPATH=/usr/local/share/man:/usr/local/man:/usr/share/man
 export GOPATH=$XDG_DATA_HOME/go
-export GORE_HOME=$XDG_CACHE_HOME/gore
+export GORE_HOME=$XDG_DATA_HOME/gore
 export CARGO_HOME=$XDG_CACHE_HOME/cargo
 export STACK_ROOT=$XDG_CACHE_HOME/stack
 export PERL_CPANM_HOME=$XDG_CACHE_HOME/cpanm
