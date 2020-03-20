@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2020/03/20 11:46:08.
+# - * Last Change: 2020/03/20 12:16:07.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -237,7 +237,7 @@ plugin:
               \ | nmap <buffer> ,n    <plug>(lsp-next-error)
               \ | nmap <buffer> ,p    <plug>(lsp-previous-error)
               \ | nmap <buffer> <F2>  <plug>(lsp-rename)
-              \ | inoremap <expr><CR> asyncomplete#close_popup()
+              \ | inoremap <expr><CR> asyncomplete#close_popup() . "\<CR>"
       augroup END
   prabirshrestha/asyncomplete.vim:
     dependon: async
