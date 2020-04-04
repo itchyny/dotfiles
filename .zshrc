@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2020/03/06 15:44:08.
+# - * Last Change: 2020/04/04 17:48:44.
 # ------------------------------------------------------------------------------------------------------------
 
 # XDG Base Directory Specification
@@ -127,6 +127,7 @@ export IRBRC=$XDG_CONFIG_HOME/irb/irbrc
 export SOLARGRAPH_CACHE=$XDG_CACHE_HOME/solargraph
 export IPYTHONDIR=$XDG_CACHE_HOME/ipython
 export MPLCONFIGDIR=$XDG_CACHE_HOME/matplotlib
+export GRADLE_USER_HOME=$XDG_DATA_HOME/gradle
 export HUB_CONFIG=$XDG_CONFIG_HOME/hub/hub
 export DOCKER_CONFIG=$XDG_CONFIG_HOME/docker
 export FURO_LOGS_DIR=$XDG_CACHE_HOME/furoshiki2
