@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2020/03/20 12:16:07.
+# - * Last Change: 2020/04/21 16:11:36.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -299,6 +299,10 @@ plugin:
           \ }))
   mattn/vim-lsp-settings:
     dependon: lsp
+    before: |
+      let g:lsp_settings = {
+          \ 'efm-langserver': {'disabled': 1},
+          \ }
   Shougo/neosnippet:
     script: |
       let g:neosnippet#snippets_directory = [expand('$XDG_DATA_HOME/miv/extra-snippets/snippets')]
