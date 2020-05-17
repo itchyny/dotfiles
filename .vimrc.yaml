@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2020/05/08 16:15:13.
+# - * Last Change: 2020/05/17 23:54:13.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -154,6 +154,7 @@ plugin:
       call extracmd#set('i[nsert]', '')
       call extracmd#set('<silent>', 'vp[s]'  , 'vsp')
       call extracmd#set('<silent>', 'q1'     , 'q!')
+      call extracmd#set('<silent>', 'qq'     , 'qa!')
       call extracmd#set('<silent>', 'qa1'    , 'qa!')
       call extracmd#set('sil[ent]1', 'silent!')
       call extracmd#set('<silent>', 'w!!'    , 'w !sudo tee > /dev/null %')
