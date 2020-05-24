@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2020/05/17 23:54:13.
+# - * Last Change: 2020/05/24 22:07:55.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -40,6 +40,7 @@ plugin:
       map <silent> <Leader>z <Plug>(calendar)
     before: |
       let g:calendar_cache_directory = $VIM_DATA.'/calendar'
+      let g:calendar_date_endian = 'big'
       let g:calendar_views = [ 'year', 'month', 'day_3', 'clock' ]
       let g:calendar_google_calendar = 1
       let g:calendar_google_task = 1
