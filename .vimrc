@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2020/01/31 22:53:05.
+" - * Last Change: 2020/05/29 10:41:22.
 " --------------------------------------------------------------------------------------------------------
 
 " Setting options {{{1
@@ -23,7 +23,7 @@ silent! set list listchars=tab:>\ ,nbsp:_ synmaxcol=3000 ambiwidth=double breaki
 silent! set nosplitbelow nosplitright nostartofline linespace=0 whichwrap=b,s scrolloff=0 sidescroll=0
 silent! set equalalways nowinfixwidth nowinfixheight winminwidth=3 winminheight=3 nowarn noconfirm
 silent! set fillchars=vert:\|,fold:\  eventignore= helplang=en viewoptions=options,cursor virtualedit=
-silent! let [&t_SI,&t_EI] = exists('$TMUX') ? ["\ePtmux;\e\e[5 q\e\\","\ePtmux;\e\e[2 q\e\\"] : ["\e]50;CursorShape=1\x7","\e]50;CursorShape=0\x7"]
+silent! let [&t_SI,&t_EI] = exists('$VIM_TERMINAL') ? ["", ""] : exists('$TMUX') ? ["\ePtmux;\e\e[5 q\e\\","\ePtmux;\e\e[2 q\e\\"] : ["\e]50;CursorShape=1\x7","\e]50;CursorShape=0\x7"]
 silent! let [&t_PS, &t_PE, &t_BE, &t_BD] = ["\e[200~", "\e[201~", "\e[?2004h", "\e[?2004l"]
 
 " Editing
