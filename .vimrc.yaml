@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2020/06/03 11:36:48.
+# - * Last Change: 2020/06/10 12:45:03.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -44,6 +44,7 @@ plugin:
       let g:calendar_views = [ 'year', 'month', 'day_3', 'clock' ]
       let g:calendar_google_calendar = 1
       let g:calendar_google_task = 1
+      silent! execute 'source' expand(g:calendar_cache_directory . '/credentials.vim')
   itchyny/thumbnail.vim:
     mapleader: ","
     command: Thumbnail
