@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2020/06/18 18:03:47.
+# - * Last Change: 2020/06/18 18:04:23.
 # ------------------------------------------------------------------------------------------------------------
 
 # XDG Base Directory Specification
@@ -165,7 +165,6 @@ starteditor() {
 }
 zle -N starteditor
 bindkey '^@' starteditor
-bindkey '^\^' starteditor
 
 # for vim's C-s
 stty -ixon -ixoff
