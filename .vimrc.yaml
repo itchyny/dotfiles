@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2020/06/10 12:45:03.
+# - * Last Change: 2020/06/21 14:16:31.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -225,9 +225,7 @@ plugin:
   itchyny/vim-pdf:
     filetype: pdf
 
-  prabirshrestha/async.vim: {}
   prabirshrestha/vim-lsp:
-    dependon: async
     before: |
       let g:lsp_async_completion = 1
       let g:lsp_text_edit_enabled = 0
@@ -243,7 +241,6 @@ plugin:
               \ | inoremap <expr><CR> asyncomplete#close_popup() . "\<CR>"
       augroup END
   prabirshrestha/asyncomplete.vim:
-    dependon: async
     after: |
       function! s:asyncomplete_preprocessor(options, matches) abort
         if a:options.typed =~# '\v^$|\s$'
