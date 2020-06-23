@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2020/05/29 10:41:22.
+" - * Last Change: 2020/06/23 15:17:21.
 " --------------------------------------------------------------------------------------------------------
 
 " Setting options {{{1
@@ -37,8 +37,7 @@ silent! set tags=tags,./tags,../tags,../../tags,../../../tags,../../../../tags,.
 silent! set tags+=../../../../../../tags,../../../../../../../tags,~/Documents/scala/tags,~/Documents/*/tags tagstack
 
 " Clipboard
-silent! set clipboard=unnamed
-silent! set clipboard+=unnamedplus
+silent! set clipboard=unnamed,unnamedplus
 
 " Cache files
 let $VIM_DATA = $XDG_DATA_HOME . '/vim'
@@ -90,9 +89,6 @@ autocmd vimrc FileType * execute 'setlocal ' . (search('^\t.*\n\t.*\n\t', 'n') ?
 
 " Set nonumber in terminal window
 autocmd vimrc BufWinEnter * if &l:buftype == 'terminal' | setlocal nonumber | endif
-
-" Setting lazyredraw causes a problem on startup
-autocmd vimrc VimEnter * redraw
 
 " Key mappings {{{1
 " Increment and decrement
@@ -201,11 +197,6 @@ snoremap <ESC> <C-c>
 
 " Enable ftplugin, indent, syntax {{{1
 filetype off
-if has('vim_starting')
-  set runtimepath^=$XDG_DATA_HOME/miv/miv
-endif
+set runtimepath^=$XDG_DATA_HOME/miv/miv
 filetype plugin indent on
-silent! syntax enable
-if !has('vim_starting')
-  doautocmd FileType
-endif
+syntax enable
