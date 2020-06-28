@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2020/06/21 14:16:31.
+# - * Last Change: 2020/06/28 22:23:13.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -862,6 +862,9 @@ filetype:
     endfunction
   c:
     setlocal ofu=ccomplete#Complete
+  yacc: |
+    setlocal shiftwidth=4 expandtab
+    call tcomment#DefineType('yacc', '// %s')
   html: |
     setlocal ofu=htmlcomplete#CompleteTags
     imap <buffer> <Tab> <Plug>(neosnippet-emmet-supertab)
