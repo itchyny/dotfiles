@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2020/06/29 12:32:45.
+# - * Last Change: 2020/07/05 18:35:20.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -306,8 +306,8 @@ plugin:
   Shougo/neosnippet:
     script: |
       let g:neosnippet#snippets_directory = [expand('$XDG_DATA_HOME/miv/extra-snippets/snippets')]
-      imap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : repeat("\<Space>", &shiftwidth)
-      smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : repeat("\<Space>", &shiftwidth)
+      imap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : &expandtab ? repeat("\<Space>", &shiftwidth):  "\t"
+      smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : &expandtab ? repeat("\<Space>", &shiftwidth) : "\t"
       imap <expr><C-o> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<ESC>o"
       imap <expr> <Plug>(neosnippet-emmet-supertab) neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : repeat("\<Space>", &shiftwidth)
       let g:neosnippet#scope_aliases = { 'typescript': 'javascript' }
