@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2020/06/23 15:17:21.
+" - * Last Change: 2020/07/11 08:29:27.
 " --------------------------------------------------------------------------------------------------------
 
 " Setting options {{{1
@@ -72,8 +72,8 @@ augroup END
 autocmd vimrc BufEnter * silent! lcd %:p:h
 
 " Open quickfix window automatically
-autocmd vimrc QuickfixCmdPost [^l]* nested copen | wincmd p
-autocmd vimrc QuickfixCmdPost l* nested lopen | wincmd p
+autocmd vimrc QuickfixCmdPost [^l]* ++nested copen | wincmd p
+autocmd vimrc QuickfixCmdPost l* ++nested lopen | wincmd p
 
 " Close quickfix window when it is the only window
 autocmd vimrc WinEnter * if &l:buftype ==# 'quickfix' && winnr('$') == 1 | quit | endif
