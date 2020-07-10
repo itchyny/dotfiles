@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2020/07/03 14:53:20.
+# - * Last Change: 2020/07/11 08:39:08.
 # ------------------------------------------------------------------------------------------------------------
 
 # XDG Base Directory Specification
@@ -133,6 +133,7 @@ export DOCKER_CONFIG=$XDG_CONFIG_HOME/docker
 export FURO_LOGS_DIR=$XDG_CACHE_HOME/furoshiki2
 export AWS_CONFIG_FILE=$XDG_CONFIG_HOME/aws/config
 export AWS_SHARED_CREDENTIALS_FILE=$XDG_CONFIG_HOME/aws/credentials
+export CDK_HOME=$XDG_DATA_HOME/cdk
 export MINIKUBE_HOME=$XDG_DATA_HOME/minikube
 export KUBECONFIG=$XDG_DATA_HOME/kube/config
 createdir() { [[ ! -d "${1%/*}" ]] && mkdir -p "${1%/*}"; echo "$1"; }
