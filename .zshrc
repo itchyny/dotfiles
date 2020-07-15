@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2020/07/11 08:39:08.
+# - * Last Change: 2020/07/15 20:17:02.
 # ------------------------------------------------------------------------------------------------------------
 
 # XDG Base Directory Specification
@@ -135,7 +135,6 @@ export AWS_CONFIG_FILE=$XDG_CONFIG_HOME/aws/config
 export AWS_SHARED_CREDENTIALS_FILE=$XDG_CONFIG_HOME/aws/credentials
 export CDK_HOME=$XDG_DATA_HOME/cdk
 export MINIKUBE_HOME=$XDG_DATA_HOME/minikube
-export KUBECONFIG=$XDG_DATA_HOME/kube/config
 createdir() { [[ ! -d "${1%/*}" ]] && mkdir -p "${1%/*}"; echo "$1"; }
 export MYSQL_HISTFILE=$(createdir "$XDG_DATA_HOME/mysql/history")
 export PSQL_HISTORY=$(createdir "$XDG_DATA_HOME/psql/history")
