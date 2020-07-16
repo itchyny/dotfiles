@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2020/07/16 12:09:14.
+# - * Last Change: 2020/07/16 12:35:52.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -173,10 +173,25 @@ plugin:
       call extracmd#set('gina'    , 'Gina')
       call extracmd#set('gita'    , 'Gita')
       call extracmd#set('ga'      , 'Gita add %')
-      call extracmd#set('gm'      , join(['top new', 'Tmpbuffer git diff --staged', 'set filetype=diff', 'Gina commit'], ' <bar> '))
-      call extracmd#set('gam'     , join(['top new', 'Tmpbuffer git diff HEAD', 'set filetype=diff', 'Gina commit -a'], ' <bar> '))
-      call extracmd#set('gs'      , 'Gita status')
-      call extracmd#set('blame'   , 'Gita blame')
+      function! GitCommit(cmd, diffcmd) abort
+        call system(a:diffcmd . ' --quiet')
+        if !v:shell_error
+          echohl ErrorMsg
+          echo 'Nothing to commit.'
+          echohl None
+          return
+        endif
+        top new
+        execute 'Tmpbuffer' a:diffcmd
+        setlocal filetype=diff
+        let s:git_commit_winnr = winnr()
+        execute 'Gina' a:cmd
+        autocmd! BufHidden <buffer> execute s:git_commit_winnr 'wincmd w' | quit!
+      endfunction
+      call extracmd#set('<silent>', 'gm'      , 'call GitCommit("commit", "git diff --staged")')
+      call extracmd#set('<silent>', 'gam'     , 'call GitCommit("commit -a", "git diff HEAD")')
+      call extracmd#set('<silent>', 'gs'      , 'Gita status')
+      call extracmd#set('<silent>', 'blame'   , 'Gita blame')
       call extracmd#set('<silent>', 'aoff'   , 'AutodateOFF')
       call extracmd#set('<silent>', 'aon'    , 'AutodateON')
       call extracmd#set('<silent>', 'bc'     , 'Term -close -opener=top\ new bc -l')
