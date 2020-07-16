@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2020/07/16 10:54:26.
+# - * Last Change: 2020/07/16 10:55:07.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -756,11 +756,6 @@ plugin:
     filetype: rust
     before: |
       let g:rustfmt_autosave = 1
-  racer-rust/vim-racer:
-    filetype: rust
-    before: |
-      let g:racer_cmd = '~/.cargo/bin/racer'
-      let g:racer_experimental_completer = 1
   udalov/kotlin-vim:
     filetype: kotlin
   kballard/vim-swift:
