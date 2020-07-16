@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2020/07/16 10:44:49.
+# - * Last Change: 2020/07/16 10:53:11.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -199,7 +199,7 @@ plugin:
     after: |
       augroup cursorword-filetype
         autocmd!
-        autocmd FileType qf,unite,vimfiler,thumbnail,vimcalc,quickrun,calendar let b:cursorword = 0
+        autocmd FileType qf,unite,vimfiler,thumbnail,quickrun,calendar let b:cursorword = 0
       augroup END
   itchyny/vim-parenmatch:
     after: |
@@ -338,8 +338,6 @@ plugin:
       endif
       let g:quickrun_config.markdown = {'type' : 'markdown/pandoc', 'outputter': 'browser', 'cmdopt': '-s'}
       let g:quickrun_config.rst = {'command' : 'pandoc', 'exec': '%c --from=rst --to=html %o %s %a', 'outputter': 'browser', 'cmdopt': '-s'}
-      let g:quickrun_config.tex = {'command' : executable('autolatex') ? 'autolatex' : executable('platex') ? 'platex' : ''}
-      let g:quickrun_config.latex = g:quickrun_config.tex
       let g:quickrun_config.nroff = {'command': 'man', 'args': " -P cat | tr '\b' '\1' | sed -e 's/.\1//g'", 'filetype': 'man'}
       let g:quickrun_config.gnuplot = {'command' : executable('autognuplot') ? 'autognuplot' : executable('gnuplot') ? 'gnuplot' : ''}
       let g:quickrun_config.objc = {'command': 'cc', 'exec': ['%c %s -o %s:p:r -framework Foundation', '%s:p:r %a'], 'tempfile': '{tempname()}.m', 'hook/sweep/files': '%s:p:r'}
@@ -814,7 +812,6 @@ after: |
     autocmd BufNewFile,BufReadPost *.csv setlocal filetype=csv
     autocmd BufNewFile,BufReadPost *.jq setlocal filetype=jq
     autocmd BufNewFile,BufReadPost *.gnuplot setlocal filetype=gnuplot
-    autocmd BufNewFile,BufReadPost *.meissa setlocal filetype=meissa
     autocmd BufNewFile,BufReadPost *.bf setlocal filetype=brainfuck
     autocmd BufNewFile,BufReadPost *.stl setlocal filetype=stl
     autocmd BufNewFile,BufReadPost *.ksy setlocal filetype=yaml
@@ -848,17 +845,13 @@ filetype:
       silent! execute a:cmd
       silent! execute cmd lnum
     endfunction
-  c:
-    setlocal ofu=ccomplete#Complete
   yacc: |
     setlocal shiftwidth=4 expandtab
     call tcomment#type#Define('yacc', '// %s')
   html: |
-    setlocal ofu=htmlcomplete#CompleteTags
     imap <buffer> <Tab> <Plug>(neosnippet-emmet-supertab)
     imap <buffer> <C-g> <Plug>(emmet-supertab)
   css: |
-    setlocal ofu=csscomplete#CompleteCSS
     setlocal iskeyword=37,45,48-57,95,a-z,A-Z,192-255
     imap <buffer> <Tab> <Plug>(neosnippet-emmet-supertab)
     imap <buffer> <C-g> <Plug>(emmet-supertab)
@@ -895,10 +888,6 @@ filetype:
     highlight link purescriptDelimiter Normal
   perl: |
     setlocal shiftwidth=4
-  php: |
-    setlocal ofu=phpcomplete#CompletePHP
-  xml: |
-    setlocal ofu=xmlcomplete#CompleteTags
   go: |
     if getline(1) =~# 'DO NOT EDIT'
       setlocal nomodifiable
@@ -907,9 +896,6 @@ filetype:
     setlocal noexpandtab
   sh: |
     setlocal iskeyword=36,45,48-57,64,95,a-z,A-Z,192-255
-  tex: |
-    setlocal nosmartindent noautoindent
-    execute 'setlocal ' . (search("[^\x01-\x7e]", 'n') == 0 && line('$') > 5 ? '' : 'no') . 'spell'
   markdown: |
     setlocal nosmartindent noautoindent
     execute 'setlocal ' . (search("[^\x01-\x7e]", 'n') == 0 && line('$') > 5 ? '' : 'no') . 'spell'
@@ -959,12 +945,8 @@ filetype:
   calendar: |
     nunmap <buffer> <C-h>
     nunmap <buffer> <C-l>
-  vimcalc: |
-    setlocal nonumber
   quickrun: |
     setlocal nonumber tabstop=8 nolist
-  cam: |
-    setlocal nonumber synmaxcol=10000
   haskell: |
     setlocal ofu=necoghc#omnifunc
     setlocal iskeyword=39,48-57,95,a-z,A-Z,192-255
@@ -975,9 +957,5 @@ filetype:
     augroup END
   pdf: |
     nmap <silent><buffer> <C-@> <C-t>
-  haxe: |
-    call tcomment#type#Define('haxe', '// %s')
   nginx: |
     setlocal shiftwidth=4
-  meissa: |
-    call tcomment#type#Define('meissa', '# %s')
