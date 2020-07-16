@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2020/07/16 12:51:51.
+# - * Last Change: 2020/07/16 16:26:45.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -189,6 +189,7 @@ plugin:
       endfunction
       call extracmd#set('<silent>', 'ga'     , 'Gita add %')
       call extracmd#set('<silent>', 'gpl'    , 'Gina pull -p')
+      call extracmd#set('<silent>', 'gc'     , 'Gina checkout')
       call extracmd#set('<silent>', 'gpo'    , 'Gina push origin')
       call extracmd#set('<silent>', 'gpom'   , 'Gina push origin master')
       call extracmd#set('<silent>', 'gm'     , 'call GitCommit("commit", "git diff --staged")')
