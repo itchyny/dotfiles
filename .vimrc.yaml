@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2020/07/16 11:59:06.
+# - * Last Change: 2020/07/16 12:05:59.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -520,7 +520,7 @@ plugin:
     command: Gina
     after: |
       call gina#custom#command#option('/\v(status|branch|ls|grep|changes)', '--opener', 'botright 10split')
-      call gina#custom#command#option('/.*', '--opener', 'tabnew')
+      call gina#custom#command#option('/\v(blame|diff|log)', '--opener', 'tabnew')
       call gina#custom#command#option('/commit', '--opener', 'below vnew')
       call gina#custom#command#option('blame', '--width', string(winwidth(0) / 4))
   hotwatermorning/auto-git-diff:
