@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2020/07/16 10:55:07.
+# - * Last Change: 2020/07/16 11:59:06.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -173,6 +173,7 @@ plugin:
       call extracmd#set('gina'    , 'Gina')
       call extracmd#set('gita'    , 'Gita')
       call extracmd#set('ga'      , 'Gita add %')
+      call extracmd#set('gam'     , join(['top new', 'Tmpbuffer git diff HEAD', 'set filetype=diff', 'Gina commit -a'], ' <bar> '))
       call extracmd#set('gs'      , 'Gita status')
       call extracmd#set('blame'   , 'Gita blame')
       call extracmd#set('<silent>', 'aoff'   , 'AutodateOFF')
@@ -520,6 +521,7 @@ plugin:
     after: |
       call gina#custom#command#option('/\v(status|branch|ls|grep|changes)', '--opener', 'botright 10split')
       call gina#custom#command#option('/.*', '--opener', 'tabnew')
+      call gina#custom#command#option('/commit', '--opener', 'below vnew')
       call gina#custom#command#option('blame', '--width', string(winwidth(0) / 4))
   hotwatermorning/auto-git-diff:
     before: |
