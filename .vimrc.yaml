@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2020/07/05 18:35:20.
+# - * Last Change: 2020/07/16 10:44:49.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -746,18 +746,6 @@ plugin:
     filetype: markdown
   rhysd/vim-syntax-codeowners:
     filetype: codeowners
-  davidhalter/jedi-vim:
-    filetype: python
-    before: |
-      let g:jedi#auto_vim_configuration = 0
-      let g:jedi#popup_select_first = 0
-      let g:jedi#completions_enabled = 0
-      let g:jedi#goto_command = ''
-      let g:jedi#goto_assignments_command = ''
-      let g:jedi#goto_definitions_command = ''
-      let g:jedi#call_signatures_command = ''
-      let g:jedi#usages_command = ''
-      let g:jedi#documentation_command = ''
   pangloss/vim-javascript:
     filetype: javascript
   1995eaton/vim-better-javascript-completion:
@@ -915,8 +903,6 @@ filetype:
     if getline(1) =~# 'DO NOT EDIT'
       setlocal nomodifiable
     endif
-  python: |
-    setlocal ofu=jedi#completions
   make: |
     setlocal noexpandtab
   sh: |
