@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2020/07/16 12:48:14.
+# - * Last Change: 2020/07/16 12:51:51.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -169,13 +169,9 @@ plugin:
       call extracmd#set('<silent>', 'gd'     , 'Tmpbuffer git diff <bar> set filetype=diff')
       call extracmd#set('<silent>', 'gdc'    , 'Tmpbuffer git diff --cached <bar> set filetype=diff')
       command! -nargs=* Git Tmpbuffer git <args>
-      call extracmd#set('git'    , 'Git')
+      call extracmd#set('git'     , 'Git')
       call extracmd#set('gina'    , 'Gina')
       call extracmd#set('gita'    , 'Gita')
-      call extracmd#set('ga'      , 'Gita add %')
-      call extracmd#set('gpl'     , 'Gina pull -p')
-      call extracmd#set('gpo'     , 'Gina push origin')
-      call extracmd#set('gpom'    , 'Gina push origin master')
       function! GitCommit(cmd, diffcmd) abort
         call system(a:diffcmd . ' --quiet')
         if !v:shell_error
@@ -191,6 +187,10 @@ plugin:
         execute 'Gina' a:cmd
         autocmd! BufHidden,BufWriteCmd <buffer> execute s:git_commit_winnr 'wincmd w' | quit!
       endfunction
+      call extracmd#set('<silent>', 'ga'     , 'Gita add %')
+      call extracmd#set('<silent>', 'gpl'    , 'Gina pull -p')
+      call extracmd#set('<silent>', 'gpo'    , 'Gina push origin')
+      call extracmd#set('<silent>', 'gpom'   , 'Gina push origin master')
       call extracmd#set('<silent>', 'gm'     , 'call GitCommit("commit", "git diff --staged")')
       call extracmd#set('<silent>', 'gam'    , 'call GitCommit("commit -a", "git diff HEAD")')
       call extracmd#set('<silent>', 'gs'     , 'Gita status')
