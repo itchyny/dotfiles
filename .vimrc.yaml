@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2020/07/16 10:53:11.
+# - * Last Change: 2020/07/16 10:54:26.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -746,15 +746,6 @@ plugin:
     filetype: codeowners
   pangloss/vim-javascript:
     filetype: javascript
-  1995eaton/vim-better-javascript-completion:
-    filetype:
-      - javascript
-      - coffee
-      - typescript
-    before: |
-      let g:vimjs#casesensistive = 1
-      let g:vimjs#chromeapis = 1
-      let g:vimjs#smartcomplete = 1
   derekwyatt/vim-scala:
     filetype: scala
   mattn/vim-goimports:
@@ -873,12 +864,7 @@ filetype:
   scss: |
     imap <buffer> <Tab> <Plug>(neosnippet-emmet-supertab)
     imap <buffer> <C-g> <Plug>(emmet-supertab)
-  javascript: |
-    setlocal ofu=js#CompleteJS shiftwidth=4
-  coffee: |
-    setlocal ofu=js#CompleteJS nospell
   typescript: |
-    setlocal ofu=js#CompleteJS nospell shiftwidth=4
     imap <buffer> <Tab> <Plug>(neosnippet-emmet-supertab)
   purescript: |
     highlight link purescriptImport Include
