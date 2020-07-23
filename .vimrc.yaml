@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2020/07/16 16:26:45.
+# - * Last Change: 2020/07/23 20:14:53.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -180,7 +180,9 @@ plugin:
           echohl None
           return
         endif
-        top new
+        if bufname('') !=# '' || &modified || &filetype !=# ''
+          tabnew
+        endif
         execute 'Tmpbuffer' a:diffcmd
         setlocal filetype=diff
         let s:git_commit_winnr = winnr()
