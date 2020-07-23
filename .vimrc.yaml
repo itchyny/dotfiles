@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2020/07/23 20:14:53.
+# - * Last Change: 2020/07/23 20:31:58.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -185,9 +185,8 @@ plugin:
         endif
         execute 'Tmpbuffer' a:diffcmd
         setlocal filetype=diff
-        let s:git_commit_winnr = winnr()
         execute 'Gina' a:cmd
-        autocmd! BufHidden,BufWriteCmd <buffer> execute s:git_commit_winnr 'wincmd w' | quit!
+        autocmd! QuitPre <buffer> call timer_start(0, {->execute('tabclose')})
       endfunction
       call extracmd#set('<silent>', 'ga'     , 'Gita add %')
       call extracmd#set('<silent>', 'gpl'    , 'Gina pull -p')
