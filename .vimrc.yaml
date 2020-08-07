@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2020/08/03 10:21:49.
+# - * Last Change: 2020/08/07 23:39:43.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -46,11 +46,8 @@ plugin:
       let g:calendar_google_task = 1
       silent! execute 'source' expand(g:calendar_cache_directory . '/credentials.vim')
   itchyny/thumbnail.vim:
-    mapleader: ","
     command: Thumbnail
     mapping: <Plug>(thumbnail)
-    script: |
-      map <silent> <Leader>t <Plug>(thumbnail)
   itchyny/dictionary.vim:
     mapleader: ","
     command: Dictionary
@@ -497,6 +494,17 @@ plugin:
   matchit.zip: {}
   machakann/vim-swap: {}
   markonm/traces.vim: {}
+  vim-test/vim-test:
+    mapleader: ","
+    command:
+      - TestNearest
+      - TestFile
+      - TestSuite
+    before: |
+      let g:test#strategy = 'vimterminal'
+      let g:test#vim#term_position = 'top 15 new'
+    script: |
+      nnoremap <silent> <Leader>t :<C-u>TestSuite<CR>
 
   eagletmt/ghci-vim:
     filetype: haskell
