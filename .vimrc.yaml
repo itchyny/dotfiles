@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2020/09/02 13:12:33.
+# - * Last Change: 2020/09/17 11:14:14.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -823,12 +823,13 @@ after: |
 
   augroup setlocal-filetype
     autocmd!
-    autocmd BufNewFile,BufReadPost *.csv setlocal filetype=csv
-    autocmd BufNewFile,BufReadPost *.jq setlocal filetype=jq
-    autocmd BufNewFile,BufReadPost *.gnuplot setlocal filetype=gnuplot
     autocmd BufNewFile,BufReadPost *.bf setlocal filetype=brainfuck
-    autocmd BufNewFile,BufReadPost *.stl setlocal filetype=stl
+    autocmd BufNewFile,BufReadPost *.csv setlocal filetype=csv
+    autocmd BufNewFile,BufReadPost *.def setlocal filetype=perl
+    autocmd BufNewFile,BufReadPost *.gnuplot setlocal filetype=gnuplot
+    autocmd BufNewFile,BufReadPost *.jq setlocal filetype=jq
     autocmd BufNewFile,BufReadPost *.ksy setlocal filetype=yaml
+    autocmd BufNewFile,BufReadPost *.stl setlocal filetype=stl
     autocmd BufNewFile,BufReadPost Capfile* setlocal filetype=ruby
     autocmd BufReadPre .histfile setlocal binary
   augroup END
