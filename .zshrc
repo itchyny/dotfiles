@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2020/08/21 00:05:49.
+# - * Last Change: 2020/09/19 11:34:37.
 # ------------------------------------------------------------------------------------------------------------
 
 # XDG Base Directory Specification
@@ -163,7 +163,7 @@ fi
 # function
 starteditor() {
   exec < /dev/tty
-  ${EDITOR}
+  $=EDITOR
   zle && zle reset-prompt
 }
 zle -N starteditor
