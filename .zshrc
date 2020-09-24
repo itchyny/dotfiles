@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2020/09/19 11:34:37.
+# - * Last Change: 2020/09/24 20:17:50.
 # ------------------------------------------------------------------------------------------------------------
 
 # XDG Base Directory Specification
@@ -33,7 +33,7 @@ export LSCOLORS=gxfxcxdxbxehfhabagacad
 zmodload zsh/terminfo zsh/system
 color_stderr() {
   while sysread std_err_color; do
-    if [[ $std_err_color =~ $'\e\\[0[m;]' ]]; then
+    if [[ $std_err_color =~ $'\e\\[0[m;]' ]] 2>/dev/null; then
       syswrite -o 2 "${std_err_color}"
     else
       syswrite -o 2 "${fg_bold[red]}${std_err_color}${terminfo[sgr0]}"
