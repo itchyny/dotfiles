@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2020/09/19 11:36:30.
+# - * Last Change: 2020/09/25 19:54:33.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -136,6 +136,7 @@ plugin:
             \ { 'filetype': 'html'      , 'pattern': '\v[<]%(!DOCTYPE|html|head|script|meta|link|div|span)>|^html:5\s*$' },
             \ { 'filetype': 'c'         , 'pattern': '\v^\s*#\s*%(include|define)>' },
             \ { 'filetype': 'go'        , 'pattern': '\v^%(import \(|func \S+\(\) \{)' },
+            \ { 'filetype': 'rust'      , 'pattern': '\v%(<let mut>|^impl |^fn main|^use std::)' },
             \ { 'filetype': 'scala'     , 'pattern': '\v^%(import|module) %(com|org)|<case.*\=\>|%(<private>|<implicit>).*%(<def>|<val>)|yield .*\{|case class' },
             \ { 'filetype': 'haskell'   , 'pattern': '\v^%(import|module) %([A-Z]|qualified)|main\s*::|::.*-\>|\{-# *%(LANGUAGE|OPTIONS)|^\{-' },
             \ { 'filetype': 'diff'      , 'pattern': '\v^diff -|^commit .*\nAuthor:' },
