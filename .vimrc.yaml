@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2020/09/25 19:54:33.
+# - * Last Change: 2020/09/28 23:46:47.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -836,7 +836,7 @@ after: |
     autocmd BufNewFile,BufReadPost *.ksy setlocal filetype=yaml
     autocmd BufNewFile,BufReadPost *.stl setlocal filetype=stl
     autocmd BufNewFile,BufReadPost Capfile* setlocal filetype=ruby
-    autocmd BufReadPre .histfile setlocal binary
+    autocmd BufReadPre *histfile setlocal binary
   augroup END
 
 filetype:
