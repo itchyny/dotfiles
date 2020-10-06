@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2020/09/28 23:46:47.
+# - * Last Change: 2020/10/06 12:29:55.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -955,6 +955,8 @@ filetype:
     nmap <buffer> <C-r> <Plug>(agit-reload)
   gina-blame: |
     highlight link GinaBlameSummary Normal
+  gina-commit: |
+    setlocal spell
   thumbnail: |
     let b:highlighturl_enable = 0
   calendar: |
@@ -974,3 +976,5 @@ filetype:
     nmap <silent><buffer> <C-@> <C-t>
   nginx: |
     setlocal shiftwidth=4
+  gitcommit: |
+    setlocal spell
