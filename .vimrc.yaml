@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2020/10/06 12:29:55.
+# - * Last Change: 2020/10/18 10:09:30.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -143,6 +143,7 @@ plugin:
             \ { 'filetype': 'javascript', 'pattern': '\v<function>\s+\k*\s+([^)]*)\{|<window\.' },
             \ { 'filetype': 'sh'        , 'pattern': '\v^#!.*%(<sh>|<bash>)\s*$|<if +\[ -' },
             \ { 'filetype': 'hatena'    , 'pattern': '\v^%(\>\|[a-z]+\||\|\|\<)$|^\*\[[a-z]+\]' },
+            \ { 'filetype': 'python'    , 'pattern': '\v%(for \S+ in range\(.*\):)$' },
             \ { 'filetype': 'vim'       , 'pattern': '\v%(^\s*<(let|set|autocmd) )|<[nvio]?noremap>|<g:loaded_|^function!' },
             \ { 'filetype': 'css'       , 'pattern': '\v^%(html|body)%(, *%([a-z]+))* *\{' },
             \ { 'filetype': 'sql'       , 'pattern': '\v\c^(BEGIN|SELECT|UPDATE|DELETE)>' },
