@@ -1,7 +1,7 @@
 # --------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2020/10/30 13:09:16.
+# - * Last Change: 2020/10/30 13:09:34.
 # --------------------------------------------------------------------------------------------------
 
 # XDG Base Directory Specification
@@ -146,51 +146,15 @@ zle -N starteditor
 bindkey '^@' starteditor
 
 # alias
-alias ..="cd ../"
-alias google-chrome='open -a Google\ Chrome'
-alias evince='open -a Preview'
-alias display='open -a Preview'
-alias eog='open -a Preview'
-# editor
-alias vi='vim'
-alias emacs='vi'
-# see ambiwidth in .vimrc
-alias gnome-terminal='/bin/sh -c "VTE_CJK_WIDTH=1 gnome-terminal --disable-factory"'
-alias terminator='/bin/sh -c "VTE_CJK_WIDTH=1 terminator -m"'
-# one alphabet
 alias c='clear'
 alias d='download'
-# default option
-alias mpg123='mpg123 -zC'
-alias mplayer='mplayer -subdelay 100000 -fs -geometry 50%:50%'
-alias music='mplayer -lavdopts threads=2 -loop 0 -shuffle -geometry 50%:50%'
-alias aspell="aspell -c -l en_US"
-# git
-export GIT_MERGE_AUTOEDIT=no
-if (( $+commands[hub] )); then
-  alias git=hub
-fi
-# un*
-alias ungzip='gzip -d'
-alias untar='tar xvf'
-# others
-if (( $+commands[htop] )); then
-  alias top='TERM=screen htop'
-  alias htop='TERM=screen htop'
-fi
-alias ls='ls -wG'
-alias ll='ls -altrwG'
-alias unascii="sed $'s|\x1B\\[[0-9;]*[a-zA-Z]||g'"
+alias ls='exa'
+alias git='hub'
+alias top='htop'
 
-# suffix alias according to file extension
-alias -s txt=cat
-alias -s {csv,js,css,less,md}=vi
-alias -s tex=autolatex
-alias -s html=google-chrome
-alias -s pdf=evince
-alias -s {png,jpg,bmp,gif,svg,tiff}=eog
-alias -s {mp3,mp4,wav,mkv,m4v,m4a,wmv,avi,mpeg,mpg,vob,mov,rm}=mplayer
-alias -s py=python
-alias -s hs=runhaskell
-alias -s sh=sh
-alias -s {gz,tgz,zip,lzh,bz2,tbz,Z,tar,arj,xz}=extract
+# suffix alias
+alias -s {txt,md,json}='less'
+alias -s html='open -a Google\ Chrome'
+alias -s {pdf,png,jpg,bmp,gif,svg,tiff}='open -a Preview'
+alias -s {mp3,mp4,wav,mkv,m4v,m4a,wmv,avi,mpeg,mpg,vob,mov,rm}='mplayer'
+alias -s {gz,tgz,zip,lzh,bz2,tbz,Z,tar,arj,xz}='extract'
