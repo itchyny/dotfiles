@@ -1,7 +1,7 @@
 # --------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2020/10/30 13:07:20.
+# - * Last Change: 2020/10/30 13:08:32.
 # --------------------------------------------------------------------------------------------------
 
 # XDG Base Directory Specification
@@ -38,7 +38,7 @@ zstyle :prompt:pure:path color 14
 
 # history
 HISTFILE=$ZDOTDIR/histfile
-HISTSIZE=10000000
+HISTSIZE=10000
 SAVEHIST=10000000
 setopt append_history extended_history hist_ignore_dups hist_no_store hist_reduce_blanks hist_verify hist_ignore_space share_history inc_append_history
 
