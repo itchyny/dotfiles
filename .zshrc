@@ -1,16 +1,40 @@
-# ------------------------------------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2020/09/24 20:17:50.
-# ------------------------------------------------------------------------------------------------------------
+# - * Last Change: 2020/10/30 13:07:20.
+# --------------------------------------------------------------------------------------------------
 
 # XDG Base Directory Specification
 export XDG_CONFIG_HOME=~/.config
 export XDG_CACHE_HOME=~/.cache
 export XDG_DATA_HOME=~/.share
 
-# data directory for zsh
+# data directory
 ZDOTDIR=$XDG_DATA_HOME/zsh
+
+# zinit
+declare -A ZINIT
+ZINIT[HOME_DIR]=$XDG_DATA_HOME/zinit
+ZINIT[BIN_DIR]=${ZINIT[HOME_DIR]}/bin
+ZINIT[PLUGINS_DIR]=${ZINIT[HOME_DIR]}/plugins
+ZINIT[COMPLETIONS_DIR]=${ZINIT[HOME_DIR]}/completions
+ZINIT[SNIPPETS_DIR]=${ZINIT[HOME_DIR]}/snippets
+ZINIT[ZCOMPDUMP_PATH]=${ZINIT[HOME_DIR]}/zcompdump
+source ${ZINIT[BIN_DIR]}/zinit.zsh
+
+# plugins
+zinit light itchyny/zsh-auto-fillin
+zinit light itchyny/zsh-git-alias
+zinit light zdharma/fast-syntax-highlighting
+zinit light zdharma/history-search-multi-word
+zinit light zsh-users/zsh-autosuggestions
+
+zinit light popstas/zsh-command-time
+ZSH_COMMAND_TIME_COLOR=yellow
+
+zinit ice pick"async.zsh" src"pure.zsh"
+zinit light sindresorhus/pure
+zstyle :prompt:pure:path color 14
 
 # history
 HISTFILE=$ZDOTDIR/histfile
@@ -18,82 +42,35 @@ HISTSIZE=10000000
 SAVEHIST=10000000
 setopt append_history extended_history hist_ignore_dups hist_no_store hist_reduce_blanks hist_verify hist_ignore_space share_history inc_append_history
 
-# color
-autoload -Uz colors; colors
-LS_COLORS='di=36:ln=35:so=32:pi=33:ex=31:bd=34;47:cd=35;47:su=30;41:sg=30;46:tw=30;42:ow=30;43:'
-LS_COLORS+='*.1=32:*.sh=32:*.zsh=32:*.c=32:*.h=32:*.s=32:*.S=32:*.y=32:*.cpp=32:*.ac=32:*.m4=32:*.bat=32:*.js=32:*.ts=32:*.go=32:'
-LS_COLORS+='*.hs=32:*.lhs=32:*.py=32:*.rb=32:*.pl=32:*.tex=32:*.csv=32:*.txt=32:*.r=32:*.java=32:*.scala=32:'
-LS_COLORS+='*.jpg=35:*.png=35:*.bmp=35:*.gif=35:*.svg=35:*.tiff=35:'
-LS_COLORS+='*.gz=33:*.tgz=33:*.zip=33:*.lzh=33:*.bz2=33:*.tbz=33:*.Z=33:*.tar=33:*.arj=33:*.xz=33:'
-LS_COLORS+='*.md=94:*.pdf=94:*.html=94:*.xml=94:*.json=94:*.yml=94:*.yaml=94:*.conf=94:*.less=94:*.css=94:'
-export LS_COLORS # doesn't work in Mac
-export LSCOLORS=gxfxcxdxbxehfhabagacad
-
-# colorize stderr output in red
-zmodload zsh/terminfo zsh/system
-color_stderr() {
-  while sysread std_err_color; do
-    if [[ $std_err_color =~ $'\e\\[0[m;]' ]] 2>/dev/null; then
-      syswrite -o 2 "${std_err_color}"
-    else
-      syswrite -o 2 "${fg_bold[red]}${std_err_color}${terminfo[sgr0]}"
-    fi
-  done
-}
-exec 2> >(color_stderr)
-
-# prompt
-setopt prompt_subst interactive_comments
-PROMPT="%(?.%{$fg[green]%}.%{$fg[blue]%})%B%~%b%{${reset_color}%} "
-PROMPT2="%{$bg[blue]%}%_>%{$reset_color%}%b "
-RPROMPT=$'$(git-branch-name 2>/dev/null)'
-SPROMPT="%{$bg[red]%}%B%r is correct? [n,y,a,e]:%{${reset_color}%}%b "
-autoload -Uz url-quote-magic
+# quote URL
+autoload -Uz url-quote-magic bracketed-paste-magic
 zle -N self-insert url-quote-magic
-precmd() {
-  stty sane
-}
+zle -N bracketed-paste bracketed-paste-magic
 
 # completion
-autoload -Uz compinit
-setopt extendedglob; if [[ -n $ZDOTDIR/.zcompdump(#qN.mh+720) ]]; then compinit; compdump; else compinit -C; fi; unsetopt extendedglob
+autoload -Uz compinit; compinit -C
 LISTMAX=500
-fignore=(.git .o .dvi .aux .log .toc .hi .swp .sw .bak .bbl .blg .nav .snm .toc .pyc)
 setopt auto_list auto_menu list_packed auto_param_keys auto_param_slash mark_dirs
-zstyle ':completion:*' use-cache on
-zstyle ':completion:*' cache-path $ZDOTDIR/completion-cache
-zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
-zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
-zstyle ':completion:*' rehash true
-zstyle ':completion:*' accept-exact '*(N)'
-zstyle ':completion:*:corrections' format '%U%F{green}%d (errors: %e)%f%u'
-zstyle ':completion:*:warnings' format '%F{202}%BNo matches for: %F{214}%d%b'
-zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin
-zstyle ':completion:*:*:*:*:processes' menu yes select
-zstyle ':completion:*:*:*:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01'
-zstyle ':completion:*:*:*:*:processes' command "ps -u $USER -o pid,user,args -w -w"
-zmodload zsh/complist
-bindkey -M menuselect '^n' vi-down-line-or-history
-bindkey -M menuselect '^p' vi-up-line-or-history
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' '+r:|[._-]=* r:|=*' '+l:|=* r:|=*'
 
 # options
 setopt no_beep nolistbeep auto_cd auto_pushd no_flow_control no_check_jobs print_eight_bit correct nonomatch
-WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 
 # integrate vim mode
 bindkey -v
-bindkey "^K" kill-whole-line
-bindkey "^A" beginning-of-line
-bindkey "^E" end-of-line
-bindkey "^D" delete-char
-bindkey "^F" forward-char
-bindkey "^B" backward-char
+bindkey '^K' kill-whole-line
+bindkey '^A' beginning-of-line
+bindkey '^E' end-of-line
+bindkey '^D' delete-char
+bindkey '^F' forward-char
+bindkey '^B' backward-char
 autoload edit-command-line
 zle -N edit-command-line
 
 # search history
-bindkey "^R" history-incremental-pattern-search-backward
-zle_highlight=(isearch:fg=yellow)
+bindkey '^R' history-incremental-pattern-search-backward
+bindkey '^P' up-line-or-search
+bindkey '^N' down-line-or-search
 
 # fuzzy history search
 select-history() {
@@ -101,15 +78,15 @@ select-history() {
   CURSOR=$#BUFFER
 }
 zle -N select-history
-bindkey "^Z" select-history
+bindkey '^Z' select-history
 
 # export variables
 export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
 export EDITOR=vim
 export GIT_EDITOR=vim
-export REPORTTIME=10
 export GORE_PAGER=less
+export GIT_MERGE_AUTOEDIT=no
 
 # path settings
 export MANPATH=/usr/local/share/man:/usr/local/man:/usr/share/man
@@ -160,7 +137,7 @@ if (( $+commands[nodenv] )); then
   eval "$(nodenv init -)"
 fi
 
-# function
+# editor
 starteditor() {
   exec < /dev/tty
   $=EDITOR
@@ -168,9 +145,6 @@ starteditor() {
 }
 zle -N starteditor
 bindkey '^@' starteditor
-
-# for vim's C-s
-stty -ixon -ixoff
 
 # alias
 alias ..="cd ../"
@@ -221,20 +195,3 @@ alias -s py=python
 alias -s hs=runhaskell
 alias -s sh=sh
 alias -s {gz,tgz,zip,lzh,bz2,tbz,Z,tar,arj,xz}=extract
-
-# https://github.com/itchyny/zsh-auto-fillin
-source $ZDOTDIR/zsh-auto-fillin/zsh-auto-fillin.zsh
-
-# https://github.com/itchyny/zsh-git-alias
-source $ZDOTDIR/zsh-git-alias/zsh-git-alias.zsh
-
-# http://mimosa-pudica.net/zsh-incremental.html
-source $ZDOTDIR/incr-0.2.zsh
-
-# https://github.com/zsh-users/zsh-syntax-highlighting
-source $ZDOTDIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-# https://github.com/zsh-users/zsh-history-substring-search
-source $ZDOTDIR/zsh-history-substring-search/zsh-history-substring-search.zsh
-bindkey '^p' history-substring-search-up
-bindkey '^n' history-substring-search-down
