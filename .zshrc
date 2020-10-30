@@ -1,7 +1,7 @@
 # --------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2020/10/30 13:08:32.
+# - * Last Change: 2020/10/30 13:09:16.
 # --------------------------------------------------------------------------------------------------
 
 # XDG Base Directory Specification
@@ -113,12 +113,11 @@ export AWS_CONFIG_FILE=$XDG_CONFIG_HOME/aws/config
 export AWS_SHARED_CREDENTIALS_FILE=$XDG_CONFIG_HOME/aws/credentials
 export CDK_HOME=$XDG_DATA_HOME/cdk
 export MINIKUBE_HOME=$XDG_DATA_HOME/minikube
-createdir() { [[ ! -d "${1%/*}" ]] && mkdir -p "${1%/*}"; echo "$1"; }
-export MYSQL_HISTFILE=$(createdir "$XDG_DATA_HOME/mysql/history")
-export PSQL_HISTORY=$(createdir "$XDG_DATA_HOME/psql/history")
-export NODE_REPL_HISTORY=$(createdir "$XDG_DATA_HOME/node/history")
+export MYSQL_HISTFILE=$XDG_DATA_HOME/mysql/histfile
+export PSQL_HISTORY=$XDG_DATA_HOME/psql/histfile
+export NODE_REPL_HISTORY=$XDG_DATA_HOME/node/histfile
 typeset -U path PATH
-export PATH=$XDG_DATA_HOME/bin:$GOPATH/bin:$CARGO_HOME/bin:/usr/local/opt/python3/libexec/bin:/usr/local/sbin:/usr/local/bin:$PATH
+export PATH=$XDG_DATA_HOME/bin:$PATH
 if (( $+commands[plenv] )); then
   export PLENV_ROOT=$XDG_CACHE_HOME/plenv
   eval "$(plenv init -)"
