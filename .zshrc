@@ -1,7 +1,7 @@
 # --------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2020/10/30 13:09:34.
+# - * Last Change: 2020/11/05 00:12:55.
 # --------------------------------------------------------------------------------------------------
 
 # XDG Base Directory Specification
@@ -136,14 +136,14 @@ if (( $+commands[nodenv] )); then
   eval "$(nodenv init -)"
 fi
 
-# editor
-starteditor() {
+# start editor shortcut key
+start-editor() {
   exec < /dev/tty
   $=EDITOR
   zle && zle reset-prompt
 }
-zle -N starteditor
-bindkey '^@' starteditor
+zle -N start-editor
+bindkey '^@' start-editor
 
 # alias
 alias c='clear'
