@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2020/11/06 23:42:21.
+# - * Last Change: 2020/11/07 01:18:48.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -1021,15 +1021,21 @@ syntax:
     highlight link quickrunTime Constant
     highlight link quickrunDate Constant
   vimfiler: |
-    syntax match vimfilerTypeArchive    /\%3c.*\ze\[A\]/ contained containedin=vimfilerNormalFile contains=vimfilerColumn__Type,vimfilerColumn__Size,vimfilerColumn__Time
-    syntax match vimfilerTypeDirectory  /\%3c.*\ze\[D\]/ contained containedin=vimfilerNormalFile contains=vimfilerColumn__Type,vimfilerColumn__Size,vimfilerColumn__Time
-    syntax match vimfilerTypeExecute    /\%3c.*\ze\[X\]/ contained containedin=vimfilerNormalFile contains=vimfilerColumn__Type,vimfilerColumn__Size,vimfilerColumn__Time
-    syntax match vimfilerTypeImage      /\%3c.*\ze\[I\]/ contained containedin=vimfilerNormalFile contains=vimfilerColumn__Type,vimfilerColumn__Size,vimfilerColumn__Time
-    syntax match vimfilerTypeLink       /\%3c.*\ze\[L\]/ contained containedin=vimfilerNormalFile contains=vimfilerColumn__Type,vimfilerColumn__Size,vimfilerColumn__Time
-    syntax match vimfilerTypeMultimedia /\%3c.*\ze\[M\]/ contained containedin=vimfilerNormalFile contains=vimfilerColumn__Type,vimfilerColumn__Size,vimfilerColumn__Time
-    syntax match vimfilerTypeSystem     /\%3c.*\ze\[S\]/ contained containedin=vimfilerNormalFile contains=vimfilerColumn__Type,vimfilerColumn__Size,vimfilerColumn__Time
-    syntax match vimfilerTypeText       /\%3c.*\ze\[T\]/ contained containedin=vimfilerNormalFile contains=vimfilerColumn__Type,vimfilerColumn__Size,vimfilerColumn__Time
-    syntax match vimfilerPdfHtml        /\%3c.*\.\%(pdf\|html\) / contained containedin=vimfilerNormalFile contains=vimfilerColumn__Type,vimfilerColumn__Size,vimfilerColumn__Time
+    command! -nargs=* VimfilerSyntax
+          \ execute 'syntax match' [<f-args>][0] '/\%3c.*' . [<f-args>][1] . '/'
+          \  'contained containedin=vimfilerNormalFile'
+          \  'contains=vimfilerColumn__Type,vimfilerColumn__Size,vimfilerColumn__Time' |
+          \ execute 'highlight link' [<f-args>][0] [<f-args>][2]
+    VimfilerSyntax vimfilerTypeArchive    \[A\] Special
+    VimfilerSyntax vimfilerTypeDirectory  \[D\] Preproc
+    VimfilerSyntax vimfilerTypeExecute    \[X\] Statement
+    VimfilerSyntax vimfilerTypeImage      \[I\] Type
+    VimfilerSyntax vimfilerTypeLink       \[L\] Identifier
+    VimfilerSyntax vimfilerTypeMultimedia \[M\] SpecialComment
+    VimfilerSyntax vimfilerTypeSystem     \[S\] Comment
+    VimfilerSyntax vimfilerTypeText       \[T\] Constant
+    VimfilerSyntax vimfilerTypePdfHtml    \.\%(pdf\|html\)\s Function
+    delcommand VimfilerSyntax
     execute 'syntax match vimfilerImportant' string(
           \  ' \v%(README%(\.%(mk?d|rst))?>|manifest.json|main\.pdf|'
           \. '%(Dropbox|[Dd]ownloads|Library|src|paper|[rh]s|miv|\.vim|2?bf|maze|cam|git-branch-name|'
@@ -1052,12 +1058,3 @@ syntax:
     highlight link vimfilerMarkedFile StorageClass
     highlight link vimfilerNonMark LineNr
     highlight link vimfilerOpenedFile Preproc
-    highlight link vimfilerPdfHtml Function
-    highlight link vimfilerTypeArchive Special
-    highlight link vimfilerTypeDirectory Preproc
-    highlight link vimfilerTypeExecute Statement
-    highlight link vimfilerTypeImage Type
-    highlight link vimfilerTypeLink Constant
-    highlight link vimfilerTypeMultimedia SpecialComment
-    highlight link vimfilerTypeSystem Comment
-    highlight link vimfilerTypeText Constant
