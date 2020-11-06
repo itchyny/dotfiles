@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2020/11/07 01:59:37.
+# - * Last Change: 2020/11/07 02:19:58.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -504,25 +504,6 @@ plugin:
             \ : ':<C-u>TestSuite<CR>'
       command! Submit execute 'terminal cargo compete submit' matchstr(bufname('%'), '\v^.+\ze\.')
 
-  eagletmt/ghci-vim:
-    filetype: haskell
-    enable: executable('ghc')
-    command:
-      - GhciQuit
-      - GhciType
-      - GhciInfo
-      - GhciLoad
-      - GhciModule
-      - GhciSend
-  eagletmt/ghcmod-vim:
-    filetype: haskell
-    enable: executable('ghc') && executable('ghc-mod')
-  eagletmt/neco-ghc:
-    filetype: haskell
-    enable: executable('ghc') && executable('ghc-mod')
-    before: |
-      let g:necoghc_enable_detailed_browse = 1
-
   cohama/agit.vim:
     mapleader: ","
     command:
@@ -566,7 +547,6 @@ plugin:
     build: make
     function: vimproc
     loadbefore:
-      - ghcmod
       - vimfiler
   thinca/vim-themis:
     function: themis
@@ -956,10 +936,7 @@ filetype:
   quickrun: |
     setlocal nonumber tabstop=8 nolist
   haskell: |
-    setlocal ofu=necoghc#omnifunc
     setlocal iskeyword=39,48-57,95,a-z,A-Z,192-255
-    nnoremap <buffer> <Leader>l :<C-u>GhciLoad<CR>
-    nnoremap <buffer> <Leader>i :<C-u>GhciInfo<CR>
     augroup haskell-bufwritepre
       autocmd BufWritePre <buffer> HaskellSortImport
     augroup END
