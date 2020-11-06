@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2020/11/07 02:19:58.
+# - * Last Change: 2020/11/07 02:23:28.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -414,19 +414,6 @@ plugin:
             \ 'candidate_icon': '- ',
             \ 'marked_icon': '* ',
             \ 'hide_icon': 0 })
-  eagletmt/unite-haddock:
-    loadafter: unite
-    mapleader: ","
-    enable: executable('hoogle')
-    script: |
-      nnoremap <silent> <Leader>h :<C-u>Unite hoogle -buffer-name=hoogle<CR>
-  Shougo/unite-outline:
-    loadafter: unite
-  ujihisa/unite-haskellimport:
-    mapleader: ","
-    loadafter: unite
-    script: |
-      nnoremap <silent> <Leader>p :<C-u>Unite haskellimport -buffer-name=haskellimport<CR>
   itchyny/unite-changetime:
     loadafter: unite
   itchyny/unite-preview:
