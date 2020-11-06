@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2020/11/02 01:59:28.
+# - * Last Change: 2020/11/06 23:42:21.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -10,17 +10,6 @@ plugin:
     before: |
       let g:landscape_highlight_todo = 1
       let g:landscape_cursorline = 0
-      let g:landscape_vimfiler_important =
-              \ ' \v(README(\.(mk?d|rst))?>|manifest.json|main\.pdf|'
-              \. '(Dropbox|[Dd]ownloads|Library|src|paper|js|hs|go|miv|\.vim|2?bf|maze|cam|git-branch-name|'
-              \. 'landscape|lightline|lightline-powerful|spellbad-pattern|calendar|'
-              \. 'thumbnail|dictionary|screensaver|gitbranch|closebuffer|external|'
-              \. 'insert-mode-motion|cmdline-ranges|cmdline-escape|autoft|extracmd|histexclude|'
-              \. 'extra-snippets|highlighturl|cursorword|parenmatch|winfix|qffrom|qfedit|grep|increx|'
-              \. 'unite-(preview|eject|changetime|auto-open)|viva|tmpbuffer|'
-              \. 'hatena-link|haskell-(indent|sort-import)|quickrun-lightline-hooks|'
-              \. 'rexdep|fillin|bed|(base58|volume|zshhist|maketen|astgen|timefmt|rassemble)-go|gojo|gojq|mmv|gof|mkrg|kaitai|sjsp|qhs|'
-              \. 'formulate|homebrew-tap|setup|py2bf|github-better-header)/)'
     after: |
       colorscheme landscape
   itchyny/lightline.vim: {}
@@ -106,6 +95,7 @@ plugin:
       - Find
       - Make
       - Vint
+    function: qffrom
     script: |
       nnoremap gf   :<C-u>Find<Space>
       nnoremap <F5> :<C-u>Make<CR>
@@ -982,3 +972,92 @@ filetype:
     setlocal shiftwidth=4
   gitcommit: |
     setlocal spell
+
+syntax:
+  qf: |
+    execute 'syntax match qfPathIgnore'
+          \ string(escape(qffrom#git_root(), '*~\.^$[]') . '/\|'
+          \ . escape(expand('~'), '*~\.^$[]') . '/[^/]\+/')
+          \ 'containedin=qfDirectory conceal'
+    syntax match qfDirectory '^[^|]*' nextgroup=qfSeparator
+    syntax match qfFileName '[^/|]\+\ze|' contained containedin=qfDirectory
+    syntax match qfSeparator '|' nextgroup=qfLineNr contained
+    syntax match qfLineNr '[^|]*' contained contains=qfError
+    syntax match qfError 'error' contained
+    highlight link qfDirectory Identifier
+    highlight link qfFileName PreProc
+    highlight link qfLineNr LineNr
+    highlight link qfError Error
+    highlight link qfPathIgnore qfDirectory
+    setlocal conceallevel=3 nowrap
+    let b:current_syntax = 'qf'
+  quickrun: |
+    syntax keyword Error Error ERROR error warning Warning WARNING Overfull
+    syntax match Error '^!.*'
+    syntax match quickrunPath '\(^\|\s\)\(\(\.\|\~\)\?\|\.\.\?\)\(\/\([[:alnum:]_.][[:alnum:]_.-]\+\)\)\+\/\?'
+    syntax match quickrunPath '\(\(\.\|\~\)\?\/\|\.\.\?\)\(\([[:alpha:]_.][[:alnum:]_.-]*\)\/\)\+\(\([[:alnum:]_.][[:alnum:]_.-]\+\)\|.\)\?'
+    syntax match quickrunPath '[[:alnum:]]\@<!\.\?\/\([a-z][[:alnum:]_-]*\)\.\([a-z]*[[:alnum:]_-]\+\)'
+    syntax match quickrunPath '\(^\|\s\)\(\(\.\|\~\)\?\/\|\.\.\?\)\?\(\([[:alnum:]_.][[:alnum:]_.-]*\)\/\)\+\(\([[:alnum:]_.][[:alnum:]_.-]\+\)\|.\)\?'
+    syntax match quickrunPath '\(\/\|\.\.\?\)\(\([[:alpha:]_.][[:alnum:]_.-]*\)\/\)\+\(\([[:alnum:]_.][[:alnum:]_.-]\+\)\|.\)\?'
+    syntax match quickrunImage '<\@<=[[:alnum:]]\@<!\.\?\/\?\([[:alnum:]_-]*\)\.\([a-z]*[[:alnum:]_-]\+\)>\@='
+    syntax match quickrunStringSpecial '\\\([0-9]\+\|o[0-7]\+\|x[0-9a-fA-F]\+\|[\"\\'&\\abfnrtv]\|^[A-Z^_\[\\\]]\)' contains=quickrunFunction contained
+    syntax region quickrunString start=+"+ end=+"+ contains=quickrunStringSpecial oneline
+    syntax region quickrunString start=+'+ end=+'+ contains=quickrunStringSpecial oneline
+    syntax region quickrunString start=+`+ end=+`+ contains=quickrunStringSpecial oneline
+    syntax region quickrunString start=+`+ end=+'+ contains=quickrunStringSpecial oneline
+    syntax region quickrunString start=+‘+ end=+’+ contains=quickrunStringSpecial oneline
+    highlight link quickrunStringSpecial SpecialChar
+    highlight link quickrunString String
+    highlight link quickrunPath Preproc
+    highlight link quickrunImage Type
+    highlight link quickrunNumber Number
+    highlight link quickrunFloat Float
+    syntax match quickrunNumber '\([+-]\=\<\d\+\>\|[+-]\=\<0[xX]\x\+\>\|[+-]\=\<0[oO]\o\+\>\)\.\@!'
+    syntax match quickrunFloat '\<[+-]\=\%(\d\+\.\d\+\|\d\+\.\|\.\d\+\)\%([eE][+-]\=\d\+\)\?'
+    syntax match quickrunTime '\<\d\d\=:\d\d\=\>'
+    syntax match quickrunTime '\<\d\d\=:\d\d\=:\d\d\=\>'
+    syntax match quickrunDate '\<\d\+-\d\d\=-\d\+\>'
+    syntax match quickrunDate '\<\d\+/\d\d\=/\d\+\>'
+    highlight link quickrunTime Constant
+    highlight link quickrunDate Constant
+  vimfiler: |
+    syntax match vimfilerTypeArchive    /\%3c.*\ze\[A\]/ contained containedin=vimfilerNormalFile contains=vimfilerColumn__Type,vimfilerColumn__Size,vimfilerColumn__Time
+    syntax match vimfilerTypeDirectory  /\%3c.*\ze\[D\]/ contained containedin=vimfilerNormalFile contains=vimfilerColumn__Type,vimfilerColumn__Size,vimfilerColumn__Time
+    syntax match vimfilerTypeExecute    /\%3c.*\ze\[X\]/ contained containedin=vimfilerNormalFile contains=vimfilerColumn__Type,vimfilerColumn__Size,vimfilerColumn__Time
+    syntax match vimfilerTypeImage      /\%3c.*\ze\[I\]/ contained containedin=vimfilerNormalFile contains=vimfilerColumn__Type,vimfilerColumn__Size,vimfilerColumn__Time
+    syntax match vimfilerTypeLink       /\%3c.*\ze\[L\]/ contained containedin=vimfilerNormalFile contains=vimfilerColumn__Type,vimfilerColumn__Size,vimfilerColumn__Time
+    syntax match vimfilerTypeMultimedia /\%3c.*\ze\[M\]/ contained containedin=vimfilerNormalFile contains=vimfilerColumn__Type,vimfilerColumn__Size,vimfilerColumn__Time
+    syntax match vimfilerTypeSystem     /\%3c.*\ze\[S\]/ contained containedin=vimfilerNormalFile contains=vimfilerColumn__Type,vimfilerColumn__Size,vimfilerColumn__Time
+    syntax match vimfilerTypeText       /\%3c.*\ze\[T\]/ contained containedin=vimfilerNormalFile contains=vimfilerColumn__Type,vimfilerColumn__Size,vimfilerColumn__Time
+    syntax match vimfilerPdfHtml        /\%3c.*\.\%(pdf\|html\) / contained containedin=vimfilerNormalFile contains=vimfilerColumn__Type,vimfilerColumn__Size,vimfilerColumn__Time
+    execute 'syntax match vimfilerImportant' string(
+          \  ' \v%(README%(\.%(mk?d|rst))?>|manifest.json|main\.pdf|'
+          \. '%(Dropbox|[Dd]ownloads|Library|src|paper|[rh]s|miv|\.vim|2?bf|maze|cam|git-branch-name|'
+          \. 'landscape|lightline|lightline-powerful|spellbad-pattern|calendar|thumbnail|dictionary|'
+          \. 'screensaver|gitbranch|closebuffer|external|insert-mode-motion|cmdline-%(ranges|escape)|'
+          \. 'autoft|extracmd|histexclude|tmpbuffer|extra-snippets|highlighturl|cursorword|parenmatch|'
+          \. 'winfix|qffrom|qfedit|grep|increx|unite-%(preview|eject|changetime|auto-open)|viva|'
+          \. 'hatena-link|haskell-%(indent|sort-import)|quickrun-lightline-hooks|'
+          \. '%(base58|volume|zshhist|maketen|astgen|timefmt|rassemble)-go|'
+          \. 'rexdep|fillin|bed|go%(jo|jq|f)?|mmv|mkrg|kaitai|sjsp|qhs|'
+          \. 'formulate|homebrew-tap|setup|py2bf|github-%(migrator|better-header))/)'
+          \ ) 'contained containedin=vimfilerNonMark,vimfilerNormalFile,vimfilerClosedFile,vimfilerOpenedFile'
+    highlight link vimfilerColumn__TimeToday Comment
+    highlight link vimfilerColumn__TimeWeek Special
+    highlight link vimfilerColumn__TimeNormal Identifier
+    highlight link vimfilerColumn__SizeLine Constant
+    highlight link vimfilerClosedFile Preproc
+    highlight link vimfilerCurrentDirectory Preproc
+    highlight link vimfilerImportant SpecialChar
+    highlight link vimfilerMarkedFile StorageClass
+    highlight link vimfilerNonMark LineNr
+    highlight link vimfilerOpenedFile Preproc
+    highlight link vimfilerPdfHtml Function
+    highlight link vimfilerTypeArchive Special
+    highlight link vimfilerTypeDirectory Preproc
+    highlight link vimfilerTypeExecute Statement
+    highlight link vimfilerTypeImage Type
+    highlight link vimfilerTypeLink Constant
+    highlight link vimfilerTypeMultimedia SpecialComment
+    highlight link vimfilerTypeSystem Comment
+    highlight link vimfilerTypeText Constant
