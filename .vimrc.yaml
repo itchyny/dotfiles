@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2020/11/07 02:23:28.
+# - * Last Change: 2020/11/07 02:29:34.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -309,6 +309,14 @@ plugin:
           \ 'whitelist': ['*'],
           \ 'completor': function('asyncomplete#sources#neosnippet#completor'),
           \ }))
+  htlsne/asyncomplete-look:
+    dependon: asyncomplete
+    after: |
+      call asyncomplete#register_source({
+          \ 'name': 'look',
+          \ 'allowlist': ['text', 'markdown', ''],
+          \ 'completor': function('asyncomplete#sources#look#completor'),
+          \ })
   mattn/vim-lsp-settings:
     dependon: lsp
     before: |
@@ -367,8 +375,6 @@ plugin:
       endfunction
   tyru/open-browser.vim:
     function: openbrowser
-  ujihisa/neco-look:
-    enable: executable('look')
 
   Shougo/vimfiler:
     mapleader: \
