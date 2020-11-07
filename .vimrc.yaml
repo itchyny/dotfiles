@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2020/11/07 23:21:17.
+# - * Last Change: 2020/11/08 00:36:12.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -142,6 +142,7 @@ plugin:
             \ { 'filetype': 'markdown'  , 'pattern': '\v^# $' },
             \ ]
   itchyny/vim-extracmd:
+    cmdline: ':'
     after: |
       call extracmd#set('a[ppend]', '')
       call extracmd#set('i[nsert]', '')
@@ -220,12 +221,15 @@ plugin:
   itchyny/vim-highlighturl: {}
   itchyny/vim-insert-mode-motion:
     insert: true
-  itchyny/vim-cmdline-ranges: {}
+  itchyny/vim-cmdline-ranges:
+    cmdline: ':'
   itchyny/vim-cmdline-escape:
+    cmdline: '/'
     before: |
       let g:cmdline_escape_default_mapping = 0
       cmap / <Plug>(cmdline-escape-/)
   itchyny/vim-histexclude:
+    cmdline: ':'
     before: |
       let g:histexclude = {
             \ ':': '\v^[:[:space:]]*%(\d+|v?ne%[w]|v?sp%[lit]|tabnew|tabc%[lose]|i%[nsert]|a%[ppend])\s*$',
