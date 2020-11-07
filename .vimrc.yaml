@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2020/11/07 15:32:00.
+# - * Last Change: 2020/11/07 23:16:21.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -459,7 +459,6 @@ plugin:
     mapping:
       - <Plug>Dsurround
       - <Plug>Csurround
-      - <Plug>Ysurround
       - <Plug>VSurround
     script: |
       nmap ds <Plug>Dsurround
