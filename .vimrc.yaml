@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2020/11/08 00:36:12.
+# - * Last Change: 2020/11/08 02:17:48.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -177,8 +177,9 @@ plugin:
         endif
         execute 'Tmpbuffer' a:diffcmd
         setlocal filetype=diff
+        let bufnr = bufnr()
         execute 'Gina' a:cmd
-        autocmd! QuitPre <buffer> call timer_start(0, {->execute('tabclose')})
+        execute 'autocmd! QuitPre <buffer> bwipeout' bufnr
       endfunction
       call extracmd#set('<silent>', 'ga'     , 'Gita add %')
       call extracmd#set('<silent>', 'gpl'    , 'Gina pull -p')
