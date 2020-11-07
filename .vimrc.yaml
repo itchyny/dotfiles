@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2020/11/07 09:47:35.
+# - * Last Change: 2020/11/07 15:00:48.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -1006,13 +1006,13 @@ syntax:
     execute 'syntax match vimfilerImportant' string(
           \  ' \v%(README%(\.%(mk?d|rst))?>|manifest.json|main\.pdf|'
           \. '%(Dropbox|[Dd]ownloads|Library|src|paper|[rh]s|miv|\.vim|2?bf|maze|cam|git-branch-name|'
-          \. 'landscape|lightline|lightline-powerful|spellbad-pattern|calendar|thumbnail|dictionary|'
+          \. 'lightline(-powerful)?|calendar|thumbnail|dictionary|landscape|spellbad-pattern|'
           \. 'screensaver|gitbranch|closebuffer|external|insert-mode-motion|cmdline-%(ranges|escape)|'
           \. 'autoft|extracmd|histexclude|tmpbuffer|extra-snippets|highlighturl|cursorword|parenmatch|'
           \. 'winfix|qffrom|qfedit|grep|increx|unite-%(preview|eject|changetime|auto-open)|viva|'
           \. 'hatena-link|haskell-%(indent|sort-import)|quickrun-lightline-hooks|'
           \. '%(base58|volume|zshhist|maketen|astgen|timefmt|rassemble)-go|'
-          \. 'rexdep|fillin|bed|go%(jo|jq|f)?|mmv|mkrg|kaitai|sjsp|qhs|'
+          \. 'rexdep|fillin|bed|go%(jo|jq|f)?|mmv|mkrg|kaitai|qhs|'
           \. 'formulate|homebrew-tap|setup|py2bf|github-%(migrator|better-header))/)'
           \ ) 'contained containedin=vimfilerNonMark,vimfilerNormalFile,vimfilerClosedFile,vimfilerOpenedFile'
     highlight link vimfilerColumn__TimeToday Comment
