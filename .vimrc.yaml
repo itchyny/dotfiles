@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2020/11/07 15:00:48.
+# - * Last Change: 2020/11/07 15:32:00.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -64,8 +64,10 @@ plugin:
     build: go get github.com/mattn/gof
   itchyny/vim-gitbranch: {}
   itchyny/vim-closebuffer:
+    mapmode:
+      - 'n'
+      - i
     mapping: <Plug>(closebuffer)
-    insert: true
     script: |
       map <C-w> <Plug>(closebuffer)
       imap <C-w> <Plug>(closebuffer)
@@ -440,6 +442,8 @@ plugin:
   thinca/vim-prettyprint:
     command: PP
   thinca/vim-visualstar:
+    mapmode:
+      - v
     mapping:
       - <Plug>(visualstar-*)
       - <Plug>(visualstar-#)
@@ -449,6 +453,9 @@ plugin:
       xmap <silent> # <Plug>(visualstar-#):<C-u>set hlsearch<CR>
 
   tpope/vim-surround:
+    mapmode:
+      - 'n'
+      - v
     mapping:
       - <Plug>Dsurround
       - <Plug>Csurround
