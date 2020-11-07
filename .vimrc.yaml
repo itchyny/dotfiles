@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2020/11/08 02:17:48.
+# - * Last Change: 2020/11/08 02:29:16.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -413,7 +413,6 @@ plugin:
       nnoremap <silent> <Leader><Leader> :<C-u>VimFilerBufferDir -status -auto-cd<CR>
   Shougo/unite.vim:
     command: Unite
-    mapleader: ","
     function: unite
     before: |
       let g:unite_force_overwrite_statusline = 0
@@ -436,7 +435,6 @@ plugin:
   Align:
     command: Align
   sjl/gundo.vim:
-    mapleader: ","
     command: GundoToggle
     enable: has('python3')
     script: |
@@ -520,12 +518,10 @@ plugin:
     script: |
       nnoremap <silent> <Leader>g :<C-u>Agit<CR>
   itchyny/vim-gita: # use a fork for now
-    mapleader: ","
     command: Gita
     before: |
       let g:gita#suppress_warning = 1
   lambdalisue/gina.vim:
-    mapleader: ","
     command: Gina
     after: |
       call gina#custom#command#option('/\v(status|branch|ls|grep|changes)', '--opener', 'botright 10split')
