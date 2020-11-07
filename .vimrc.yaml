@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2020/11/07 23:16:21.
+# - * Last Change: 2020/11/07 23:21:17.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -335,7 +335,8 @@ plugin:
       let g:neosnippet#scope_aliases = { 'typescript': 'javascript' }
       let g:neosnippet#enable_snipmate_compatibility = 1
   Shougo/neosnippet-snippets: {}
-  Shougo/neco-vim: {}
+  Shougo/neco-vim:
+    filetype: vim
   prabirshrestha/asyncomplete-necovim.vim:
     dependon:
       - asyncomplete
