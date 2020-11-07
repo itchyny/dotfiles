@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2020/11/08 02:29:16.
+# - * Last Change: 2020/11/08 02:32:08.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -343,6 +343,7 @@ plugin:
   Shougo/neco-vim:
     filetype: vim
   prabirshrestha/asyncomplete-necovim.vim:
+    filetype: vim
     dependon:
       - asyncomplete
       - neco
