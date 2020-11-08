@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2020/11/08 02:32:08.
+# - * Last Change: 2020/11/08 14:08:18.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -244,6 +244,7 @@ plugin:
     filetype: pdf
 
   prabirshrestha/vim-lsp:
+    insert: true
     before: |
       let g:lsp_async_completion = 1
       let g:lsp_text_edit_enabled = 0
@@ -260,6 +261,7 @@ plugin:
               \ | inoremap <expr><CR> asyncomplete#close_popup() . "\<CR>"
       augroup END
   prabirshrestha/asyncomplete.vim:
+    insert: true
     after: |
       function! s:asyncomplete_preprocessor(options, matches) abort
         if a:options.typed =~# '\v^$|\s$'
@@ -280,8 +282,10 @@ plugin:
       let g:asyncomplete_preprocessor = [function('s:asyncomplete_preprocessor')]
   prabirshrestha/asyncomplete-lsp.vim:
     dependon: asyncomplete
+    insert: true
   prabirshrestha/asyncomplete-buffer.vim:
     dependon: asyncomplete
+    insert: true
     after: |
       call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
           \ 'name': 'buffer',
@@ -294,6 +298,7 @@ plugin:
           \ }))
   prabirshrestha/asyncomplete-file.vim:
     dependon: asyncomplete
+    insert: true
     after: |
       call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
           \ 'name': 'file',
@@ -302,6 +307,7 @@ plugin:
           \ }))
   yami-beta/asyncomplete-omni.vim:
     dependon: asyncomplete
+    insert: true
     after: |
       call asyncomplete#register_source(asyncomplete#sources#omni#get_source_options({
           \ 'name': 'omni',
@@ -310,6 +316,7 @@ plugin:
           \ }))
   prabirshrestha/asyncomplete-neosnippet.vim:
     dependon: asyncomplete
+    insert: true
     after: |
       call asyncomplete#register_source(asyncomplete#sources#neosnippet#get_source_options({
           \ 'name': 'neosnippet',
@@ -318,6 +325,7 @@ plugin:
           \ }))
   htlsne/asyncomplete-look:
     dependon: asyncomplete
+    insert: true
     after: |
       call asyncomplete#register_source({
           \ 'name': 'look',
@@ -326,11 +334,13 @@ plugin:
           \ })
   mattn/vim-lsp-settings:
     dependon: lsp
+    insert: true
     before: |
       let g:lsp_settings = {
           \ 'efm-langserver': {'disabled': 1},
           \ }
   Shougo/neosnippet:
+    insert: true
     script: |
       let g:neosnippet#snippets_directory = [expand('$XDG_DATA_HOME/miv/extra-snippets/snippets')]
       imap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : &expandtab ? repeat("\<Space>", &shiftwidth):  "\t"
@@ -339,7 +349,8 @@ plugin:
       imap <expr> <Plug>(neosnippet-emmet-supertab) neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : repeat("\<Space>", &shiftwidth)
       let g:neosnippet#scope_aliases = { 'typescript': 'javascript' }
       let g:neosnippet#enable_snipmate_compatibility = 1
-  Shougo/neosnippet-snippets: {}
+  Shougo/neosnippet-snippets:
+    insert: true
   Shougo/neco-vim:
     filetype: vim
   prabirshrestha/asyncomplete-necovim.vim:
