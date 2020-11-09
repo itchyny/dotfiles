@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2020/11/08 14:08:18.
+# - * Last Change: 2020/11/09 10:12:37.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -260,6 +260,8 @@ plugin:
               \ | nmap <buffer> <F2>  <plug>(lsp-rename)
               \ | inoremap <expr><CR> asyncomplete#close_popup() . "\<CR>"
       augroup END
+    after: |
+      doautocmd BufEnter
   prabirshrestha/asyncomplete.vim:
     insert: true
     after: |
