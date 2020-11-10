@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2020/11/09 10:12:37.
+# - * Last Change: 2020/11/10 15:49:22.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -72,6 +72,9 @@ plugin:
       map <C-w> <Plug>(closebuffer)
       imap <C-w> <Plug>(closebuffer)
   itchyny/vim-external:
+    mapmode:
+      - 'n'
+      - v
     mapleader: \
     mapping:
       - <Plug>(external-editor)
