@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2020/11/12 00:24:11.
+# - * Last Change: 2020/11/12 10:31:36.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -247,6 +247,7 @@ plugin:
     filetype: pdf
 
   prabirshrestha/vim-lsp:
+    enable: has('timers')
     insert: true
     before: |
       let g:lsp_async_completion = 1
@@ -266,6 +267,7 @@ plugin:
     after: |
       doautocmd BufEnter
   prabirshrestha/asyncomplete.vim:
+    enable: has('timers')
     insert: true
     after: |
       function! s:asyncomplete_preprocessor(options, matches) abort
@@ -286,9 +288,11 @@ plugin:
       endfunction
       let g:asyncomplete_preprocessor = [function('s:asyncomplete_preprocessor')]
   prabirshrestha/asyncomplete-lsp.vim:
+    enable: has('timers')
     dependon: asyncomplete
     insert: true
   prabirshrestha/asyncomplete-buffer.vim:
+    enable: has('timers')
     dependon: asyncomplete
     insert: true
     after: |
@@ -302,6 +306,7 @@ plugin:
           \ 'events': ['BufWinEnter','BufWritePost'],
           \ }))
   prabirshrestha/asyncomplete-file.vim:
+    enable: has('timers')
     dependon: asyncomplete
     insert: true
     after: |
@@ -311,6 +316,7 @@ plugin:
           \ 'completor': function('asyncomplete#sources#file#completor'),
           \ }))
   yami-beta/asyncomplete-omni.vim:
+    enable: has('timers')
     dependon: asyncomplete
     insert: true
     after: |
@@ -320,6 +326,7 @@ plugin:
           \ 'completor': function('asyncomplete#sources#omni#completor'),
           \ }))
   prabirshrestha/asyncomplete-neosnippet.vim:
+    enable: has('timers')
     dependon: asyncomplete
     insert: true
     after: |
@@ -329,6 +336,7 @@ plugin:
           \ 'completor': function('asyncomplete#sources#neosnippet#completor'),
           \ }))
   htlsne/asyncomplete-look:
+    enable: has('timers')
     dependon: asyncomplete
     insert: true
     after: |
@@ -338,6 +346,7 @@ plugin:
           \ 'completor': function('asyncomplete#sources#look#completor'),
           \ })
   mattn/vim-lsp-settings:
+    enable: has('timers')
     dependon: lsp
     insert: true
     before: |
@@ -359,6 +368,7 @@ plugin:
   Shougo/neco-vim:
     filetype: vim
   prabirshrestha/asyncomplete-necovim.vim:
+    enable: has('timers')
     filetype: vim
     dependon:
       - asyncomplete
