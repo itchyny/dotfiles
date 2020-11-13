@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2020/11/13 23:12:40.
+# - * Last Change: 2020/11/13 23:13:18.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -342,7 +342,7 @@ plugin:
     after: |
       call asyncomplete#register_source({
           \ 'name': 'look',
-          \ 'allowlist': ['text', 'markdown', ''],
+          \ 'allowlist': ['text', 'markdown', 'gina-commit', ''],
           \ 'completor': function('asyncomplete#sources#look#completor'),
           \ })
   mattn/vim-lsp-settings:
