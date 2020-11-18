@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2020/11/18 12:15:05.
+# - * Last Change: 2020/11/18 18:10:17.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -248,7 +248,6 @@ plugin:
 
   prabirshrestha/vim-lsp:
     enable: has('timers')
-    insert: true
     before: |
       let g:lsp_async_completion = 1
       let g:lsp_text_edit_enabled = 0
@@ -268,7 +267,6 @@ plugin:
       doautocmd BufEnter
   prabirshrestha/asyncomplete.vim:
     enable: has('timers')
-    insert: true
     after: |
       function! s:asyncomplete_preprocessor(options, matches) abort
         if a:options.typed =~# '\v^$|\s$'
@@ -290,11 +288,9 @@ plugin:
   prabirshrestha/asyncomplete-lsp.vim:
     enable: has('timers')
     dependon: asyncomplete
-    insert: true
   prabirshrestha/asyncomplete-buffer.vim:
     enable: has('timers')
     dependon: asyncomplete
-    insert: true
     after: |
       call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
           \ 'name': 'buffer',
@@ -308,7 +304,6 @@ plugin:
   prabirshrestha/asyncomplete-file.vim:
     enable: has('timers')
     dependon: asyncomplete
-    insert: true
     after: |
       call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
           \ 'name': 'file',
@@ -318,7 +313,6 @@ plugin:
   yami-beta/asyncomplete-omni.vim:
     enable: has('timers')
     dependon: asyncomplete
-    insert: true
     after: |
       call asyncomplete#register_source(asyncomplete#sources#omni#get_source_options({
           \ 'name': 'omni',
@@ -338,7 +332,6 @@ plugin:
   htlsne/asyncomplete-look:
     enable: has('timers')
     dependon: asyncomplete
-    insert: true
     after: |
       call asyncomplete#register_source({
           \ 'name': 'look',
@@ -348,7 +341,6 @@ plugin:
   mattn/vim-lsp-settings:
     enable: has('timers')
     dependon: lsp
-    insert: true
     before: |
       let g:lsp_settings = {
           \ 'efm-langserver': {'disabled': 1},
