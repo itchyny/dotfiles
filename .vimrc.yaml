@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2020/11/18 18:10:17.
+# - * Last Change: 2020/11/20 16:03:33.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -127,6 +127,7 @@ plugin:
       vnoremap <silent> K :Grep<CR>
   itchyny/vim-autoft:
     before: |
+      let g:autoft_maxline = 15
       let g:autoft_config = [
             \ { 'filetype': 'html'      , 'pattern': '\v[<]%(!DOCTYPE|html|head|script|meta|link|div|span)>|^html:5\s*$' },
             \ { 'filetype': 'c'         , 'pattern': '\v^\s*#\s*%(include|define)>' },
