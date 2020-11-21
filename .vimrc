@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2020/11/11 03:15:04.
+" - * Last Change: 2020/11/21 10:58:57.
 " --------------------------------------------------------------------------------------------------------
 
 " Setting options {{{1
@@ -39,13 +39,13 @@ silent! set tags+=../../../../../../tags,../../../../../../../tags,~/Documents/s
 " Clipboard
 silent! set clipboard=unnamed,unnamedplus
 
-" Cache files
-let $VIM_DATA = $XDG_DATA_HOME . '/vim'
-silent! set history=10000 viminfo='10,/100,:10000,<10,@10,s10,h,n$XDG_CACHE_HOME/vim/viminfo
+" Data files
+let $VIM_DATA = v:version >= 800 ? $XDG_DATA_HOME . '/vim' : '/tmp'
+silent! set history=10000 viminfo='10,/100,:10000,<10,@10,s10,h,n$VIM_DATA/viminfo
 silent! set nospell spellfile=$VIM_DATA/en.utf-8.add
-silent! set swapfile directory=$XDG_CACHE_HOME/vim/swap,/var/tmp/vim,/var/tmp
-silent! set nobackup backupdir=$XDG_CACHE_HOME/vim/backup,/var/tmp/vim,/var/tmp
-silent! set undofile undolevels=1000 undodir=$XDG_CACHE_HOME/vim/undo,/var/tmp/vim,/var/tmp
+silent! set swapfile directory=$VIM_DATA/swap,/var/tmp/vim,/var/tmp
+silent! set nobackup backupdir=$VIM_DATA/backup,/var/tmp/vim,/var/tmp
+silent! set undofile undolevels=1000 undodir=$VIM_DATA/undo,/var/tmp/vim,/var/tmp
 
 " Search
 silent! set wrapscan ignorecase smartcase incsearch hlsearch magic
