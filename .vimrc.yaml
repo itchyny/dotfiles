@@ -1,14 +1,13 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2020/11/20 16:03:33.
+# - * Last Change: 2020/11/23 17:46:52.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
 
   itchyny/landscape.vim:
     before: |
-      let g:landscape_highlight_todo = 1
       let g:landscape_cursorline = 0
     after: |
       colorscheme landscape
