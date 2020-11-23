@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2020/11/23 17:46:52.
+# - * Last Change: 2020/11/23 18:00:39.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -943,8 +943,6 @@ filetype:
     function! s:bed_open(filename) abort
       execute 'Term -close -opener=new bed' escape(fnameescape(a:filename), '\\')
     endfunction
-    silent! call delete("Icon\r")
-    silent! call delete('.DS_Store')
   agit: |
     nmap <buffer> <C-r> <Plug>(agit-reload)
     nunmap <buffer> <C-k>
