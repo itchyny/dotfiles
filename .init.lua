@@ -53,17 +53,22 @@ mapFnCtrlTap = hs.eventtap.new({hs.eventtap.event.types.keyDown}, function(e)
 end):start()
 
 -- Switch input modes on [cmd|rightcmd]-space
-local lastModifier
+local cmd = false
+local rightcmd = false
 storeLastModifier = hs.eventtap.new({hs.eventtap.event.types.flagsChanged}, function(e)
-  lastModifier = hs.keycodes.map[e:getKeyCode()]
+  local modifier = hs.keycodes.map[e:getKeyCode()]
+  if modifier == 'cmd' then
+    cmd = not cmd
+  elseif modifier == 'rightcmd' then
+    rightcmd = not rightcmd
+  end
 end):start()
 remap({'cmd'}, 'space', function()
-  if lastModifier == 'cmd' then
+  if cmd then
     hs.eventtap.keyStroke({}, 'eisu', 0)
-  elseif lastModifier == 'rightcmd' then
+  elseif rightcmd then
     hs.eventtap.keyStroke({}, 'kana', 0)
   end
-  lastModifier = nil
 end)
 
 -- Initialize grid
