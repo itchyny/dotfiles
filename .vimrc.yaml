@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2021/01/06 20:20:29.
+# - * Last Change: 2021/01/17 18:36:52.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -64,7 +64,7 @@ plugin:
   itchyny/vim-gitbranch: {}
   itchyny/vim-closebuffer:
     mapmode:
-      - 'n'
+      - n
       - i
     mapping: <Plug>(closebuffer)
     script: |
@@ -72,7 +72,7 @@ plugin:
       imap <C-w> <Plug>(closebuffer)
   itchyny/vim-external:
     mapmode:
-      - 'n'
+      - n
       - v
     mapleader: \
     mapping:
@@ -477,7 +477,7 @@ plugin:
 
   tpope/vim-surround:
     mapmode:
-      - 'n'
+      - n
       - v
     mapping:
       - <Plug>Dsurround
