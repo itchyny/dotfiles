@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2021/01/17 18:36:52.
+# - * Last Change: 2021/01/28 19:32:57.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -182,7 +182,7 @@ plugin:
         setlocal filetype=diff
         let bufnr = bufnr()
         execute 'Gina' a:cmd
-        execute 'autocmd! QuitPre <buffer> bwipeout' bufnr
+        execute 'autocmd! QuitPre <buffer> try | bwipeout' bufnr '| catch | endtry'
       endfunction
       call extracmd#set('<silent>', 'ga'     , 'Gita add %')
       call extracmd#set('<silent>', 'gpl'    , 'Gina pull -p')
