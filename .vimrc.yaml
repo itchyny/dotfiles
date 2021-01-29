@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2021/01/28 19:32:57.
+# - * Last Change: 2021/01/29 21:40:57.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -60,6 +60,7 @@ plugin:
       nnoremap <silent><C-o> :<C-u>Gof<CR>
       nnoremap <silent><C-p> :<C-u>Gof mru<CR>
       let g:gof_mru = 1
+      let g:gof_mru_ignore_pattern = '\v/\.(git|cache|ssh)/|/node_modules/|/pkg/mod/|/Cellar/|/testdata/'
     build: go get github.com/mattn/gof
   itchyny/vim-gitbranch: {}
   itchyny/vim-closebuffer:
