@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2021/01/29 21:40:57.
+# - * Last Change: 2021/01/30 16:15:03.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -237,7 +237,7 @@ plugin:
     cmdline: ':'
     before: |
       let g:histexclude = {
-            \ ':': '\v^[:[:space:]]*%(\d+|v?ne%[w]|v?sp%[lit]|tabnew|tabc%[lose]|i%[nsert]|a%[ppend]|%(noa%[utocmd] +)?[eqwx])\s*$',
+            \ ':': '\v^[:[:space:]]*%(\d+|v?ne%[w]|v?sp%[lit]|tabnew|tabc%[lose]|i%[nsert]|a%[ppend]|%(noa%[utocmd] +)?[eqwx]|c%[hange])\s*$',
             \ }
   itchyny/vim-extra-snippets: {}
   itchyny/vim-haskell-indent:
