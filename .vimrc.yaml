@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2021/01/30 16:15:03.
+# - * Last Change: 2021/01/30 21:53:44.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -958,6 +958,9 @@ filetype:
     highlight link GinaBlameSummary Normal
   gina-commit: |
     setlocal spell
+  gita-status: |
+    nmap <buffer> D <Plug>(gita-checkout)
+    nmap <buffer> dd <Plug>(gita-checkout)
   thumbnail: |
     let b:highlighturl_enable = 0
   calendar: |
