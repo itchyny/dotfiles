@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2021/01/30 21:53:44.
+# - * Last Change: 2021/02/01 14:32:04.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -807,6 +807,8 @@ plugin:
     filetype: nginx
   elixir-editors/vim-elixir:
     filetype: elixir
+  dannywillems/vim-icalendar:
+    filetype: icalendar
 
 before: |
   let g:loaded_2html_plugin = 1
