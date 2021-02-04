@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2021/02/01 14:32:04.
+# - * Last Change: 2021/02/04 12:08:11.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -420,7 +420,7 @@ plugin:
       let g:vimfiler_data_directory = $VIM_DATA.'/vimfiler'
       let g:vimfiler_detect_drives = []
       let g:vimfiler_min_cache_files = 10000000000
-      let g:vimfiler_ignore_pattern = '\v^\.|\.(o|hi|bak|pyc|aux|bbl|blg|dvi|nav|snm|toc|out)$|^(dist|bower_components|node_modules|score|pl|old_project|py|cpp|scala|scansnap|univ)$|conflicted copy|競合コピー|^Icon\r$'
+      let g:vimfiler_ignore_pattern = '\v^\.|\.(o|hi|bak|pyc|aux|bbl|blg|dvi|nav|snm|toc|out)$|^(dist|bower_components|node_modules|score|perl|old_project|py|scala|scansnap|univ)$|conflicted copy|競合コピー|^Icon\r$'
       let g:vimfiler_tree_leaf_icon = ' '
       let g:vimfiler_tree_opened_icon = '▾'
       let g:vimfiler_tree_closed_icon = '▸'
