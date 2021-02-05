@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2021/02/04 12:08:11.
+# - * Last Change: 2021/02/06 03:33:14.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -451,6 +451,10 @@ plugin:
     loadafter: unite
   itchyny/unite-preview:
     loadafter: unite
+  itchyny/unite-auto-open:
+    enable: "0"
+  itchyny/unite-eject:
+    enable: "0"
 
   Align:
     command: Align
