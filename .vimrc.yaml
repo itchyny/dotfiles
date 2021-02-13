@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2021/02/06 03:33:14.
+# - * Last Change: 2021/02/13 21:27:40.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -1023,16 +1023,16 @@ syntax:
     highlight link quickrunString String
     highlight link quickrunPath Preproc
     highlight link quickrunImage Type
-    highlight link quickrunNumber Number
-    highlight link quickrunFloat Float
     syntax match quickrunNumber '\([+-]\=\<\d\+\>\|[+-]\=\<0[xX]\x\+\>\|[+-]\=\<0[oO]\o\+\>\)\.\@!'
+    highlight link quickrunNumber Number
     syntax match quickrunFloat '\<[+-]\=\%(\d\+\.\d\+\|\d\+\.\|\.\d\+\)\%([eE][+-]\=\d\+\)\?'
-    syntax match quickrunTime '\<\d\d\=:\d\d\=\>'
-    syntax match quickrunTime '\<\d\d\=:\d\d\=:\d\d\=\>'
-    syntax match quickrunDate '\<\d\+-\d\d\=-\d\+\>'
-    syntax match quickrunDate '\<\d\+/\d\d\=/\d\+\>'
-    highlight link quickrunTime Constant
+    highlight link quickrunFloat Float
+    syntax match quickrunDate '\<\d\{4}\([-/]\)\d\{1,2}\1\d\{1,2}\>'
     highlight link quickrunDate Constant
+    syntax match quickrunTime '\<\d\{1,2}:\d\{1,2}:\d\{1,2}\>'
+    highlight link quickrunTime Constant
+    syntax match quickrunDateTime '\<\d\{4}\([-/]\)\d\{1,2}\1\d\{1,2}T\d\{1,2}:\d\{1,2}:\d\{1,2}\%(Z\|[-+]\d\{4\}\)\>'
+    highlight link quickrunDateTime Constant
   vimfiler: |
     command! -nargs=* VimfilerSyntax
           \ execute 'syntax match' [<f-args>][0] '/\%3c.*' . [<f-args>][1] . '/'
