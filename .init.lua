@@ -68,6 +68,9 @@ remap({'cmd'}, 'space', function()
     hs.eventtap.keyStroke({}, 'eisu', 0)
   elseif rightcmd then
     hs.eventtap.keyStroke({}, 'kana', 0)
+  else
+    cmd = true
+    hs.eventtap.keyStroke({}, 'eisu', 0)
   end
 end)
 
