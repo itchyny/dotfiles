@@ -29,6 +29,8 @@ esc = remap({}, 'escape', function()
   hs.eventtap.keyStroke({}, 'eisu', 0)
   hs.eventtap.event.newKeyEvent({}, 'escape', true):post()
   hs.timer.delayed.new(0.1, function() esc:enable() end):start()
+  cmd = false
+  rightcmd = false
 end, nil, nil)
 -- and on saving
 ctrls = remap({'ctrl'}, 's', function()
@@ -68,9 +70,6 @@ remap({'cmd'}, 'space', function()
     hs.eventtap.keyStroke({}, 'eisu', 0)
   elseif rightcmd then
     hs.eventtap.keyStroke({}, 'kana', 0)
-  else
-    cmd = true
-    hs.eventtap.keyStroke({}, 'eisu', 0)
   end
 end)
 
