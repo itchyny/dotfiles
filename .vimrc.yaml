@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2021/02/21 12:51:19.
+# - * Last Change: 2021/02/21 13:18:53.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -1032,7 +1032,7 @@ syntax:
     highlight link quickrunDate Constant
     syntax match quickrunTime '\<\d\{1,2}:\d\{1,2}:\d\{1,2}\>'
     highlight link quickrunTime Constant
-    syntax match quickrunDateTime '\<\d\{4}\([-/]\)\d\{1,2}\1\d\{1,2}T\d\{1,2}:\d\{1,2}:\d\{1,2}\%(Z\|[-+]\d\{2\}:\?\d\{2\}\%(:\?\d\{2\}\)\?\)\>'
+    syntax match quickrunDateTime '\<\d\{4}\([-/]\)\d\{1,2}\1\d\{1,2}[T ]\d\{1,2}:\d\{1,2}:\d\{1,2}\%(Z\|[-+]\d\{2\}:\?\d\{2\}\%(:\?\d\{2\}\)\?\)\>'
     highlight link quickrunDateTime Constant
   vimfiler: |
     command! -nargs=* VimfilerSyntax
