@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2021/02/23 17:00:25.
+# - * Last Change: 2021/02/23 17:01:26.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -186,6 +186,7 @@ plugin:
         execute 'autocmd! QuitPre <buffer> try | bwipeout' bufnr '| catch | endtry'
       endfunction
       call extracmd#set('<silent>', 'ga'     , 'Gita add %')
+      call extracmd#set('<silent>', 'gb'     , 'Gina branch')
       call extracmd#set('<silent>', 'gpl'    , 'Gina pull -p')
       call extracmd#set('<silent>', 'gc'     , 'Gina checkout')
       call extracmd#set('<silent>', 'gpo'    , 'Gina push origin')
