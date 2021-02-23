@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2021/02/23 00:20:47.
+# - * Last Change: 2021/02/23 17:00:25.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -963,6 +963,10 @@ filetype:
     nmap <buffer> <C-r> <Plug>(agit-reload)
   gina-blame: |
     highlight link GinaBlameSummary Normal
+  gina-branch: |
+    nmap <buffer> O <Plug>(gina-branch-new)
+    nmap <buffer> o <Plug>(gina-branch-new)
+    nmap <buffer> N <Plug>(gina-branch-new)
   gina-commit: |
     setlocal spell
   gita-status: |
