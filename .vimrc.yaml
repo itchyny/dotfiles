@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2021/02/24 07:12:30.
+# - * Last Change: 2021/03/08 13:27:25.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -255,6 +255,7 @@ plugin:
       let g:lsp_text_edit_enabled = 0
       let g:lsp_signs_enabled = 0
       let g:lsp_document_highlight_enabled = 0
+      let g:lsp_document_code_action_signs_enabled = 0
       augroup lsp_install
         autocmd!
         autocmd User lsp_buffer_enabled
