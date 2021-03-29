@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2021/03/08 13:27:25.
+# - * Last Change: 2021/03/29 21:21:52.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -581,11 +581,6 @@ plugin:
   syngan/vim-vimlint:
     function: vimlint
     dependon: vimlparser
-  Shougo/vimproc.vim:
-    build: make
-    function: vimproc
-    loadbefore:
-      - vimfiler
   thinca/vim-themis:
     function: themis
 
