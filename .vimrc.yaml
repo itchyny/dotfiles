@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2021/03/29 21:21:52.
+# - * Last Change: 2021/04/06 20:08:27.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -877,7 +877,7 @@ filetype:
     imap <buffer> <Tab> <Plug>(neosnippet-emmet-supertab)
     imap <buffer> <C-g> <Plug>(emmet-supertab)
   css: |
-    setlocal iskeyword=37,45,48-57,95,a-z,A-Z,192-255
+    setlocal iskeyword=@,37,45,48-57,_,192-255
     imap <buffer> <Tab> <Plug>(neosnippet-emmet-supertab)
     imap <buffer> <C-g> <Plug>(emmet-supertab)
   haml: |
@@ -914,11 +914,11 @@ filetype:
       setlocal nomodifiable
     endif
   make: |
-    setlocal noexpandtab
+    setlocal iskeyword=@,45,48-57,_,192-255 noexpandtab
   sh: |
-    setlocal iskeyword=36,45,48-57,64,95,a-z,A-Z,192-255
+    setlocal iskeyword=@,45,48-57,_,192-255
   zsh: |
-    setlocal iskeyword=36,45,48-57,64,95,a-z,A-Z,192-255
+    setlocal iskeyword=@,45,48-57,_,192-255
   markdown: |
     setlocal nosmartindent noautoindent
     execute 'setlocal ' . (search("[^\x01-\x7e]", 'n') == 0 && line('$') > 5 ? '' : 'no') . 'spell'
@@ -979,7 +979,7 @@ filetype:
   quickrun: |
     setlocal nonumber tabstop=8 nolist
   haskell: |
-    setlocal iskeyword=39,48-57,95,a-z,A-Z,192-255
+    setlocal iskeyword=@,39,48-57,_,192-255
     augroup haskell-bufwritepre
       autocmd BufWritePre <buffer> HaskellSortImport
     augroup END
