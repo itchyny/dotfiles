@@ -95,6 +95,7 @@ remap(mods_win, 'return', hs.grid.maximizeWindow)
 local mods_app = {'cmd', 'shift'}
 remap(mods_app, 'f', function () hs.application.launchOrFocus('Finder') end)
 remap(mods_app, 'c', function () hs.application.launchOrFocus('Google Chrome') end)
+remap(mods_app, 'a', function () hs.application.launchOrFocus('Safari') end)
 remap(mods_app, 'd', function () hs.application.launchOrFocus('iTerm') end)
 remap(mods_app, 's', function () hs.application.launchOrFocus('Slack') end)
 
