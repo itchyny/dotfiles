@@ -55,8 +55,8 @@ mapFnCtrlTap = hs.eventtap.new({hs.eventtap.event.types.keyDown}, function(e)
 end):start()
 
 -- Switch input modes on [cmd|rightcmd]-space
-local cmd = false
-local rightcmd = false
+cmd = false
+rightcmd = false
 storeLastModifier = hs.eventtap.new({hs.eventtap.event.types.flagsChanged}, function(e)
   local modifier = hs.keycodes.map[e:getKeyCode()]
   if modifier == 'cmd' then
