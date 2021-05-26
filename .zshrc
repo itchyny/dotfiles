@@ -1,7 +1,7 @@
 # --------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2021/02/24 14:28:32.
+# - * Last Change: 2021/05/26 10:06:44.
 # --------------------------------------------------------------------------------------------------
 
 # XDG Base Directory Specification
@@ -124,7 +124,7 @@ if (( $+commands[plenv] )); then
 fi
 if (( $+commands[pyenv] )); then
   export PYENV_ROOT=$XDG_CACHE_HOME/pyenv
-  eval "$(pyenv init -)"
+  eval "$(pyenv init --path)"
   alias brew="env PATH=${PATH//$(pyenv root)\/shims:/} brew"
 fi
 if (( $+commands[rbenv] )); then
