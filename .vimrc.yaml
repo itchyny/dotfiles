@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2021/05/16 03:12:22.
+# - * Last Change: 2021/06/05 01:49:48.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -552,6 +552,7 @@ plugin:
     before: |
       let g:agit_enable_auto_refresh = 1
       let g:agit_max_author_name_width = 10
+      let g:agit_max_log_lines = 2000
     script: |
       nnoremap <silent> <Leader>g :<C-u>Agit<CR>
   itchyny/vim-gita: # use a fork for now
