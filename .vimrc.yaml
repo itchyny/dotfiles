@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2021/08/15 01:33:02.
+# - * Last Change: 2021/08/26 12:12:49.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -137,7 +137,7 @@ plugin:
             \ { 'filetype': 'haskell'   , 'pattern': '\v^%(import|module) %([A-Z]|qualified)|main\s+::|\s::\s.*\s-\>\s|\{-# *%(LANGUAGE|OPTIONS)|^\{-' },
             \ { 'filetype': 'diff'      , 'pattern': '\v^diff -|^commit .*\nAuthor:' },
             \ { 'filetype': 'javascript', 'pattern': '\v<function>\s+\k*\s+([^)]*)\{|<window\.' },
-            \ { 'filetype': 'sh'        , 'pattern': '\v^#!.*%(<sh>|<bash>)\s*$|<if +\[ -' },
+            \ { 'filetype': 'sh'        , 'pattern': '\v^#!.*%(<sh>|<bash>)\s*$|<if +\[ -|set -[ex]' },
             \ { 'filetype': 'hatena'    , 'pattern': '\v^%(\>\|[a-z]+\||\|\|\<)$|^\*\[[a-z]+\]' },
             \ { 'filetype': 'python'    , 'pattern': '\v^\s+%(def|if|for)\s.*:$' },
             \ { 'filetype': 'vim'       , 'pattern': '\v%(^\s*<(let|set|autocmd) )|<[nvio]?noremap>|<g:loaded_|^function!' },
