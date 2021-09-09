@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2021/05/02 12:28:57.
+" - * Last Change: 2021/09/09 12:14:09.
 " --------------------------------------------------------------------------------------------------------
 
 " Setting options {{{1
@@ -25,6 +25,7 @@ silent! set equalalways nowinfixwidth nowinfixheight winminwidth=3 winheight=3 w
 silent! set fillchars=vert:\|,fold:\  eventignore= helplang=en viewoptions=options,cursor virtualedit=
 silent! let [&t_SI,&t_EI] = exists('$VIM_TERMINAL') ? ["", ""] : exists('$TMUX') ? ["\ePtmux;\e\e[5 q\e\\","\ePtmux;\e\e[2 q\e\\"] : ["\e]50;CursorShape=1\x7","\e]50;CursorShape=0\x7"]
 silent! let [&t_PS, &t_PE, &t_BE, &t_BD] = ["\e[200~", "\e[201~", "\e[?2004h", "\e[?2004l"]
+silent! call setcellwidths([[0x2580, 0x259f, 1]])
 
 " Editing
 silent! set iminsert=0 imsearch=0 nopaste pastetoggle= nogdefault comments& commentstring=#\ %s
