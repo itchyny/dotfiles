@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2021/09/09 12:14:09.
+" - * Last Change: 2021/09/09 20:17:47.
 " --------------------------------------------------------------------------------------------------------
 
 " Setting options {{{1
@@ -43,7 +43,7 @@ silent! set clipboard=unnamed,unnamedplus
 " Data files
 let $VIM_DATA = v:version >= 800 ? $XDG_DATA_HOME . '/vim' : '/tmp'
 let $TMPDIR = $VIM_DATA . '/tmp'
-silent! set history=10000 viminfo='10,/100,:10000,<10,@10,s10,h,n$VIM_DATA/viminfo
+silent! set history=5000 viminfo='10,/100,:5000,<10,@10,s10,h,n$VIM_DATA/viminfo
 silent! set nospell spellfile=$VIM_DATA/en.utf-8.add
 silent! set swapfile directory=$VIM_DATA/swap,/var/tmp/vim,/var/tmp
 silent! set nobackup backupdir=$VIM_DATA/backup,/var/tmp/vim,/var/tmp
