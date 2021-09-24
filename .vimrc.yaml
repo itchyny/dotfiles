@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2021/08/26 12:12:49.
+# - * Last Change: 2021/09/25 04:09:33.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -928,6 +928,15 @@ filetype:
     setlocal nosmartindent noautoindent
   csv: |
     set foldmethod=manual
+    autocmd CursorMoved,CursorMovedI <buffer>
+          \ if get(b:, 'csv_header_col') | call matchdelete(b:csv_header_col) | endif |
+          \ let b:csv_header_col = getline('.')[col('.')-1] !=# ',' ? matchadd(
+          \   'Underlined',
+          \   '\v%1l^([^,]+,){' .
+          \       len(substitute(getline('.')[:max([col('.')-2,0])], '[^,]', '', 'g')) .
+          \     '}\zs[^,]+',
+          \    -100
+          \  ) : 0
   dictionary: |
     nmap <buffer> <C-@> <Plug>(dictionary_jump_back)
   unite: |
