@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2021/09/25 20:51:38.
+# - * Last Change: 2021/10/01 13:16:38.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -61,7 +61,7 @@ plugin:
       nnoremap <silent><C-p> :<C-u>Gof mru<CR>
       let g:gof_mru = 1
       let g:gof_mru_ignore_pattern = '\v/\.(git|cache|ssh)/|/node_modules/|/pkg/mod/|/Cellar/|/testdata/'
-    build: go get github.com/mattn/gof
+    build: go install github.com/mattn/gof@latest
   itchyny/vim-gitbranch: {}
   itchyny/vim-closebuffer:
     mapmode:
