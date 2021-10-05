@@ -1,13 +1,14 @@
 # --------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2021/05/26 10:06:44.
+# - * Last Change: 2021/10/03 10:16:40.
 # --------------------------------------------------------------------------------------------------
 
 # XDG Base Directory Specification
 export XDG_CONFIG_HOME=~/.config
 export XDG_CACHE_HOME=~/.cache
 export XDG_DATA_HOME=~/.share
+export XDG_STATE_HOME=~/.share/state
 
 # data directory
 ZDOTDIR=$XDG_DATA_HOME/zsh
