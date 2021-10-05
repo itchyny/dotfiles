@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2021/10/05 11:13:17.
+# - * Last Change: 2021/10/05 11:50:30.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -346,7 +346,17 @@ plugin:
     dependon: lsp
     before: |
       let g:lsp_settings = {
-          \ 'efm-langserver': {'disabled': 1},
+          \ 'efm-langserver': { 'disabled': 1 },
+          \ 'rust-analyzer': {
+          \   'initialization_options': {
+          \     'completion': {
+          \       'autoimport': { 'enable': 1 },
+          \     },
+          \     'diagnostics': {
+          \       'disabled': ['unresolved-proc-macro'],
+          \     }
+          \   },
+          \ },
           \ }
   Shougo/neosnippet:
     insert: true
