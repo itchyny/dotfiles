@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2021/09/17 11:06:21.
+" - * Last Change: 2021/10/18 10:17:28.
 " --------------------------------------------------------------------------------------------------------
 
 " Setting options {{{1
@@ -34,8 +34,7 @@ silent! set foldclose=all foldcolumn=0 nofoldenable foldlevel=0 foldmarker& fold
 silent! set textwidth=0 backspace=indent,eol,start nrformats=hex formatoptions=cmMj nojoinspaces
 silent! set nohidden autoread noautowrite noautowriteall nolinebreak mouse= modeline& modelines&
 silent! set noautochdir write nowriteany writedelay=0 verbose=0 verbosefile= notildeop noinsertmode
-silent! set tags=tags,./tags,../tags,../../tags,../../../tags,../../../../tags,../../../../../tags
-silent! set tags+=../../../../../../tags,../../../../../../../tags,~/Documents/scala/tags,~/Documents/*/tags tagstack
+silent! set tags=tags,./tags,../tags,../../tags,../../../tags,../../../../tags,../../../../../tags tagstack
 
 " Clipboard
 silent! set clipboard=unnamed,unnamedplus
