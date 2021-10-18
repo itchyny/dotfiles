@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2021/10/05 11:50:30.
+# - * Last Change: 2021/10/18 10:06:11.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -408,7 +408,7 @@ plugin:
       nnoremap <silent> <Leader>e :<C-u>call <SID>quickrun(1, 0)<CR>
       nnoremap <silent> <Leader>o :<C-u>call <SID>quickrun(1, 1)<CR>
       function! s:quickrun(input, output)
-        let bufname = '-outputter/buffer/name ' . string( '[quickrun output'. (tabpagenr() > 1 ? ' ' . tabpagenr() : '') . ']' )
+        let bufname = '-outputter/buffer/bufname quickrun://output:' . tabpagenr()
         let name = matchstr(expand('%:t'), '.*\ze\.')
         let out = a:output ? '>file:' . name . 'o' : ''
         let infile = name . 'i'
