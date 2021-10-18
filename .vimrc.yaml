@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2021/10/18 10:06:11.
+# - * Last Change: 2021/10/18 14:36:47.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -422,7 +422,7 @@ plugin:
     mapleader: \
     command:
       - VimFiler
-      - VimFilerBufferDir
+      - VimFilerCurrentDir
     dependon:
       - unite
     before: |
@@ -443,8 +443,8 @@ plugin:
       let g:vimfiler_marked_file_icon = '✓'
       let g:vimfiler_execute_file_list = {'jpg': 'open', 'jpeg': 'open', 'gif': 'open', 'bmp': 'open', 'html': 'open', 'ppt': 'open', 'pdf': 'open', 'png': 'open'}
     script: |
-      nnoremap <silent> <Leader>f :<C-u>VimFilerBufferDir -status -auto-cd<CR>
-      nnoremap <silent> <Leader><Leader> :<C-u>VimFilerBufferDir -status -auto-cd<CR>
+      nnoremap <silent> <Leader>f :<C-u>VimFilerCurrentDir -status -auto-cd<CR>
+      nnoremap <silent> <Leader><Leader> :<C-u>VimFilerCurrentDir -status -auto-cd<CR>
   Shougo/unite.vim:
     command: Unite
     function: unite
