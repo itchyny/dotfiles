@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2021/10/18 14:36:47.
+# - * Last Change: 2021/10/23 12:30:47.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -748,8 +748,6 @@ plugin:
     filetype: json
   vito-c/jq.vim:
     filetype: jq
-  cespare/vim-toml:
-    filetype: toml
   html5.vim:
     filetype: html
   mattn/emmet-vim:
