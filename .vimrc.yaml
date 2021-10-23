@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2021/10/23 12:30:47.
+# - * Last Change: 2021/10/23 12:31:45.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -815,8 +815,6 @@ plugin:
     filetype: llvm
   tmux-plugins/vim-tmux:
     filetype: tmux
-  chr4/nginx.vim:
-    filetype: nginx
   elixir-editors/vim-elixir:
     filetype: elixir
   dannywillems/vim-icalendar:
