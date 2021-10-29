@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2021/10/23 12:33:39.
+# - * Last Change: 2021/10/29 21:33:00.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -764,6 +764,8 @@ plugin:
     after: |
       imap <expr><silent> <Plug>(neosnippet-emmet-supertab) neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : &filetype =~# '\vhtml<bar>haml<bar>jade<bar>slim<bar>css<bar>less<bar>sass<bar>scss' && emmet#isExpandable() ? "\<Plug>(emmet-expand-abbr)" : pumvisible() ? "\<C-n>" : repeat("\<Space>", &shiftwidth)
       imap <expr><silent> <Plug>(emmet-supertab) &filetype =~# '\vhtml<bar>haml<bar>jade<bar>slim<bar>css<bar>less<bar>sass<bar>scss' && emmet#isExpandable() ? "\<Plug>(emmet-expand-abbr)" : pumvisible() ? "\<C-n>" : repeat("\<Space>", &shiftwidth)
+  evanleck/vim-svelte:
+    filetype: svelte
   wavded/vim-stylus:
     filetype: stylus
   groenewege/vim-less:
