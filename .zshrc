@@ -1,7 +1,7 @@
 # --------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2021/10/03 10:16:40.
+# - * Last Change: 2021/10/30 12:06:37.
 # --------------------------------------------------------------------------------------------------
 
 # XDG Base Directory Specification
@@ -26,8 +26,7 @@ source ${ZINIT[BIN_DIR]}/zinit.zsh
 # plugins
 zinit light itchyny/zsh-auto-fillin
 zinit light itchyny/zsh-git-alias
-zinit light zdharma/fast-syntax-highlighting
-zinit light zdharma/history-search-multi-word
+zinit light zdharma-continuum/fast-syntax-highlighting
 zinit light zsh-users/zsh-autosuggestions
 
 zinit light popstas/zsh-command-time
