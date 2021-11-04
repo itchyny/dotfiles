@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2021/10/29 21:33:00.
+# - * Last Change: 2021/11/04 19:37:48.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -916,6 +916,8 @@ filetype:
     highlight link purescriptType Normal
     highlight link purescriptDot Normal
     highlight link purescriptDelimiter Normal
+  java: |
+    setlocal shiftwidth=4 expandtab
   perl: |
     setlocal shiftwidth=4
   go: |
