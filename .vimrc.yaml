@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2021/11/04 19:37:48.
+# - * Last Change: 2021/11/08 23:51:10.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -90,8 +90,6 @@ plugin:
       - <Plug>(increx-incr)
       - <Plug>(increx-decr)
     script: |
-      nmap <C-a> <Plug>(increx-incr)
-      nmap <C-x> <Plug>(increx-decr)
       nmap + <Plug>(increx-incr)
       nmap - <Plug>(increx-decr)
   itchyny/vim-qffrom:
@@ -259,12 +257,13 @@ plugin:
       augroup lsp_install
         autocmd!
         autocmd User lsp_buffer_enabled
-              \   setlocal omnifunc=lsp#complete
-              \ | nmap <buffer> <C-]> <plug>(lsp-definition)
-              \ | nmap <buffer> ,n    <plug>(lsp-next-error)
-              \ | nmap <buffer> ,p    <plug>(lsp-previous-error)
-              \ | nmap <buffer> <F2>  <plug>(lsp-rename)
-              \ | inoremap <expr><CR> asyncomplete#close_popup() . "\<CR>"
+              \  setlocal omnifunc=lsp#complete
+              \| nmap <buffer> <C-]> <plug>(lsp-definition)
+              \| nmap <buffer> ,n    <plug>(lsp-next-error)
+              \| nmap <buffer> ,p    <plug>(lsp-previous-error)
+              \| nmap <buffer> <F2>  <plug>(lsp-rename)
+              \| nmap <buffer> <C-a> <plug>(lsp-code-action)
+              \| inoremap <expr><CR> asyncomplete#close_popup() . "\<CR>"
       augroup END
     after: |
       doautocmd BufEnter
