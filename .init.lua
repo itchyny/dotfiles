@@ -90,6 +90,24 @@ remap(mods_win, 'k', function() hs.grid.resizeWindowShorter().pushWindowUp() end
 remap(mods_win, 'j', function() hs.grid.resizeWindowShorter().pushWindowDown() end)
 remap(mods_win, 'f', function() hs.window.focusedWindow():toggleFullScreen() end)
 remap(mods_win, 'return', hs.grid.maximizeWindow)
+remap(mods_win, '=', function() resize(100, 100) end)
+remap(mods_win, '-', function() resize(-100, -100) end)
+function resize(x, y)
+  local win = hs.window.focusedWindow()
+  local f = win:frame()
+  local sf = win:screen():frame()
+  if f.x > sf.x then
+    f.x = math.max(f.x - x, sf.x)
+  end
+  if f.y > sf.y then
+    f.y = math.max(f.y - y, sf.y)
+  end
+  win:setTopLeft(f)
+  local size = win:size()
+  size.w = size.w + x
+  size.h = size.h + y
+  win:setSize(size)
+end
 
 -- Launch or focus on applications
 local mods_app = {'cmd', 'shift'}
