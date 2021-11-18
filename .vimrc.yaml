@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2021/11/16 15:07:30.
+# - * Last Change: 2021/11/18 10:19:51.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -259,6 +259,7 @@ plugin:
         autocmd User lsp_buffer_enabled
               \  setlocal omnifunc=lsp#complete
               \| nmap <buffer> <C-]> <plug>(lsp-definition)
+              \| nmap <buffer> <C-i> <plug>(lsp-implementation)
               \| nmap <buffer> ,n    <plug>(lsp-next-error)
               \| nmap <buffer> ,p    <plug>(lsp-previous-error)
               \| nmap <buffer> <F2>  <plug>(lsp-rename)
