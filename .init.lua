@@ -116,5 +116,6 @@ remap(mods_app, 'c', function () hs.application.launchOrFocus('Google Chrome') e
 remap(mods_app, 'a', function () hs.application.launchOrFocus('Safari') end)
 remap(mods_app, 'd', function () hs.application.launchOrFocus('iTerm') end)
 remap(mods_app, 's', function () hs.application.launchOrFocus('Slack') end)
+remap(mods_app, 'z', function () hs.application.launchOrFocus('zoom.us') end)
 
 hs.alert.show('Config loaded')
