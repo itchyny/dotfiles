@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2021/12/02 14:24:08.
+# - * Last Change: 2021/12/03 10:06:30.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -909,6 +909,7 @@ filetype:
     imap <buffer> <Tab> <Plug>(neosnippet-emmet-supertab)
     imap <buffer> <C-g> <Plug>(emmet-supertab)
   scss: |
+    setlocal iskeyword=@,37,45,48-57,_,192-255
     imap <buffer> <Tab> <Plug>(neosnippet-emmet-supertab)
     imap <buffer> <C-g> <Plug>(emmet-supertab)
   typescript: |
