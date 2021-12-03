@@ -115,6 +115,7 @@ remap(mods_app, 'f', function () hs.application.launchOrFocus('Finder') end)
 remap(mods_app, 'c', function () hs.application.launchOrFocus('Google Chrome') end)
 remap(mods_app, 'a', function () hs.application.launchOrFocus('Safari') end)
 remap(mods_app, 'd', function () hs.application.launchOrFocus('iTerm') end)
+remap(mods_app, 'j', function () hs.application.launchOrFocus('IntelliJ IDEA') end)
 remap(mods_app, 's', function () hs.application.launchOrFocus('Slack') end)
 remap(mods_app, 'z', function () hs.application.launchOrFocus('zoom.us') end)
 
