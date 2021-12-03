@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2021/12/03 10:06:30.
+# - * Last Change: 2021/12/03 18:14:01.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -299,7 +299,7 @@ plugin:
     after: |
       call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
           \ 'name': 'buffer',
-          \ 'whitelist': ['*'],
+          \ 'allowlist': ['*'],
           \ 'blocklist': ['java'],
           \ 'completor': function('asyncomplete#sources#buffer#completor'),
           \ 'config': {
@@ -313,7 +313,7 @@ plugin:
     after: |
       call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
           \ 'name': 'file',
-          \ 'whitelist': ['*'],
+          \ 'allowlist': ['*'],
           \ 'completor': function('asyncomplete#sources#file#completor'),
           \ }))
   yami-beta/asyncomplete-omni.vim:
@@ -322,7 +322,7 @@ plugin:
     after: |
       call asyncomplete#register_source(asyncomplete#sources#omni#get_source_options({
           \ 'name': 'omni',
-          \ 'whitelist': ['*'],
+          \ 'allowlist': ['*'],
           \ 'completor': function('asyncomplete#sources#omni#completor'),
           \ }))
   prabirshrestha/asyncomplete-neosnippet.vim:
@@ -332,7 +332,7 @@ plugin:
     after: |
       call asyncomplete#register_source(asyncomplete#sources#neosnippet#get_source_options({
           \ 'name': 'neosnippet',
-          \ 'whitelist': ['*'],
+          \ 'allowlist': ['*'],
           \ 'blocklist': ['java'],
           \ 'completor': function('asyncomplete#sources#neosnippet#completor'),
           \ }))
@@ -385,7 +385,7 @@ plugin:
     after: |
       call asyncomplete#register_source(asyncomplete#sources#necovim#get_source_options({
           \ 'name': 'necovim',
-          \ 'whitelist': ['vim'],
+          \ 'allowlist': ['vim'],
           \ 'completor': function('asyncomplete#sources#necovim#completor'),
           \ }))
   thinca/vim-quickrun:
