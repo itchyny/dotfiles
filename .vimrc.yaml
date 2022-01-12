@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2021/12/03 18:14:01.
+# - * Last Change: 2022/01/12 20:49:32.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -228,7 +228,9 @@ plugin:
   itchyny/vim-cmdline-ranges:
     cmdline: ':'
   itchyny/vim-cmdline-escape:
-    cmdline: '/'
+    cmdline:
+      - ':'
+      - '/'
     before: |
       let g:cmdline_escape_default_mapping = 0
       cmap / <Plug>(cmdline-escape-/)
