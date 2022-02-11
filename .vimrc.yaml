@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2022/01/12 20:49:32.
+# - * Last Change: 2022/02/11 18:18:27.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -353,6 +353,7 @@ plugin:
     before: |
       let g:lsp_settings = {
           \ 'efm-langserver': { 'disabled': 1 },
+          \ 'remark-language-server': { 'disabled': 1 },
           \ 'rust-analyzer': {
           \   'initialization_options': {
           \     'completion': {
