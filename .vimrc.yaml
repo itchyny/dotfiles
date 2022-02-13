@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2022/02/11 18:18:27.
+# - * Last Change: 2022/02/13 21:26:58.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -807,6 +807,8 @@ plugin:
     filetype: go
   johejo/gomod.vim:
     filetype: gomod
+  rhysd/vim-goyacc:
+    filetype: goyacc
   rust-lang/rust.vim:
     filetype: rust
     before: |
