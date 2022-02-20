@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2022/02/13 21:26:58.
+# - * Last Change: 2022/02/20 19:55:33.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -989,6 +989,8 @@ filetype:
     nunmap <buffer> <C-j>
   agit_diff: |
     nmap <buffer> <C-r> <Plug>(agit-reload)
+    highlight link agitDiffAdd DiffAdded
+    highlight link agitDiffRemove DiffRemoved
   agit_stat: |
     nmap <buffer> <C-r> <Plug>(agit-reload)
   gina-blame: |
