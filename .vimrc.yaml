@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2022/02/20 19:55:33.
+# - * Last Change: 2022/02/24 20:29:46.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -813,6 +813,8 @@ plugin:
     filetype: rust
     before: |
       let g:rustfmt_autosave = 1
+  qnighy/lalrpop.vim:
+    filetype: lalrpop
   udalov/kotlin-vim:
     filetype: kotlin
   kballard/vim-swift:
