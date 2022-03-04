@@ -89,7 +89,18 @@ remap(mods_win, 'l', function() hs.grid.resizeWindowThinner().pushWindowRight() 
 remap(mods_win, 'k', function() hs.grid.resizeWindowShorter().pushWindowUp() end)
 remap(mods_win, 'j', function() hs.grid.resizeWindowShorter().pushWindowDown() end)
 remap(mods_win, 'f', function() hs.window.focusedWindow():toggleFullScreen() end)
-remap(mods_win, 'return', hs.grid.maximizeWindow)
+remap(mods_win, 'return', function()
+  local win = hs.window.focusedWindow()
+  local f = win:frame()
+  local sf = win:screen():frame()
+  local size = win:size()
+  size.w = sf.w - math.max(sf.w - 1920, 0) / 2
+  size.h = sf.h - math.max(sf.h - 1260, 0) / 2
+  f.x = sf.x + (sf.w - size.w) / 1.3
+  f.y = sf.y + (sf.h - size.h) / 2
+  win:setTopLeft(f)
+  win:setSize(size)
+end)
 remap(mods_win, '=', function() resize(100, 100) end)
 remap(mods_win, '-', function() resize(-100, -100) end)
 function resize(x, y)
