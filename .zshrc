@@ -1,7 +1,7 @@
 # --------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2021/10/30 12:06:37.
+# - * Last Change: 2022/04/14 19:17:38.
 # --------------------------------------------------------------------------------------------------
 
 # XDG Base Directory Specification
@@ -35,6 +35,7 @@ ZSH_COMMAND_TIME_COLOR=yellow
 zinit ice pick"async.zsh" src"pure.zsh"
 zinit light sindresorhus/pure
 zstyle :prompt:pure:path color 14
+PURE_GIT_PULL=0
 
 # history
 HISTFILE=$ZDOTDIR/histfile
