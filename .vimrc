@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2022/05/22 13:27:03.
+" - * Last Change: 2022/05/22 19:09:31.
 " --------------------------------------------------------------------------------------------------------
 
 " Setting options {{{1
@@ -31,7 +31,7 @@ silent! call setcellwidths([[0x2500, 0x259f, 1]])
 silent! set iminsert=0 imsearch=0 nopaste pastetoggle= nogdefault comments& commentstring=#\ %s
 silent! set smartindent autoindent shiftround shiftwidth=2 expandtab tabstop=2 smarttab softtabstop=2
 silent! set foldclose=all foldcolumn=0 nofoldenable foldlevel=0 foldmarker& foldmethod=indent
-silent! set textwidth=0 backspace=indent,eol,start nrformats=hex formatoptions=cmMj nojoinspaces
+silent! set textwidth=0 backspace=indent,eol,start nrformats=hex formatoptions=cqmMj nojoinspaces
 silent! set nohidden autoread noautowrite noautowriteall nolinebreak mouse= modeline& modelines&
 silent! set noautochdir write nowriteany writedelay=0 verbose=0 verbosefile= notildeop noinsertmode
 silent! set tags=tags,./tags,../tags,../../tags,../../../tags,../../../../tags,../../../../../tags tagstack
