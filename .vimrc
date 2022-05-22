@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2022/05/22 13:24:10.
+" - * Last Change: 2022/05/22 13:27:03.
 " --------------------------------------------------------------------------------------------------------
 
 " Setting options {{{1
@@ -84,9 +84,6 @@ autocmd vimrc FileType help if &l:buftype ==# 'help' | wincmd K | endif
 
 " Always open read-only when a swap file is found
 autocmd vimrc SwapExists * let v:swapchoice = 'o'
-
-" Automatically set expandtab
-autocmd vimrc FileType * execute 'setlocal ' . (search('^\t.*\n\t.*\n\t', 'n') ? 'no' : '') . 'expandtab'
 
 " Set nonumber in terminal window
 autocmd vimrc BufWinEnter * if &l:buftype == 'terminal' | setlocal nonumber | endif
