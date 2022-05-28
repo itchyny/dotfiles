@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2022/04/02 07:55:21.
+# - * Last Change: 2022/05/28 11:33:27.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -855,7 +855,6 @@ after: |
     autocmd BufNewFile,BufReadPost *.csv setlocal filetype=csv
     autocmd BufNewFile,BufReadPost *.def setlocal filetype=perl
     autocmd BufNewFile,BufReadPost *.gnuplot setlocal filetype=gnuplot
-    autocmd BufNewFile,BufReadPost *.jq setlocal filetype=jq
     autocmd BufNewFile,BufReadPost *.ksy setlocal filetype=yaml
     autocmd BufNewFile,BufReadPost *.stl setlocal filetype=stl
     autocmd BufNewFile,BufReadPost *.sum setlocal filetype=gomod
