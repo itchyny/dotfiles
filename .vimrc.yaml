@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2022/05/28 11:33:27.
+# - * Last Change: 2022/05/30 11:05:58.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -749,6 +749,8 @@ plugin:
     before: |
       nmap g_ <Plug>(operator-camelize-toggle)
 
+  gutenye/json5.vim:
+    filetype: json5
   motemen/hatena-vim:
     filetype: hatena
   vito-c/jq.vim:
