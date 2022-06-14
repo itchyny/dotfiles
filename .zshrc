@@ -1,7 +1,7 @@
 # --------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2022/06/05 20:37:13.
+# - * Last Change: 2022/06/14 09:07:01.
 # --------------------------------------------------------------------------------------------------
 
 # XDG Base Directory Specification
@@ -82,6 +82,16 @@ select-history() {
 }
 zle -N select-history
 bindkey '^Z' select-history
+
+# git switch to recent branches
+git-switch-branch() {
+  BUFFER=$(git reflog --since 1month --pretty=format:%gs |
+    sed -n '/^checkout: /s/.* to //p' | awk '!x[$0]++' | gof)
+  test -n "$BUFFER" && BUFFER="git switch $BUFFER"
+  CURSOR=$#BUFFER
+}
+zle -N git-switch-branch
+bindkey '^S' git-switch-branch
 
 # export variables
 export LANG=en_US.UTF-8
