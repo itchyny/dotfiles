@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2022/05/22 19:09:31.
+" - * Last Change: 2022/07/16 11:18:17.
 " --------------------------------------------------------------------------------------------------------
 
 " Setting options {{{1
@@ -100,6 +100,9 @@ vnoremap > >gv|
 " swap line/normal visual mode
 noremap V v
 noremap v V
+
+" select excluding the newline
+xnoremap $ $h
 
 " yank to the end of line
 nnoremap Y y$
