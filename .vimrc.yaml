@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2022/06/02 17:16:40.
+# - * Last Change: 2022/08/21 16:16:54.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -934,6 +934,7 @@ filetype:
   perl: |
     setlocal shiftwidth=4
   go: |
+    setlocal noexpandtab
     if getline(1) =~# 'DO NOT EDIT'
       setlocal nomodifiable
     endif
