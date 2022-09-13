@@ -94,7 +94,7 @@ remap(mods_win, 'return', function()
   local f = win:frame()
   local sf = win:screen():frame()
   local size = win:size()
-  size.w = sf.w - math.max(sf.w - 1920, 0) / 2
+  size.w = sf.w - math.max(sf.w - 2048, 0) / 2
   size.h = sf.h - math.max(sf.h - 1260, 0) / 2
   f.x = sf.x + (sf.w - size.w) / 1.3
   f.y = sf.y + (sf.h - size.h) / 2
