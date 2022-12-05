@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2022/07/16 11:19:11.
+" - * Last Change: 2022/12/05 10:55:12.
 " --------------------------------------------------------------------------------------------------------
 
 " Setting options {{{1
@@ -77,7 +77,8 @@ autocmd vimrc QuickfixCmdPost [^l]* ++nested copen | wincmd p
 autocmd vimrc QuickfixCmdPost l* ++nested lopen | wincmd p
 
 " Close quickfix window when it is the only window
-autocmd vimrc WinEnter * if &l:buftype ==# 'quickfix' && winnr('$') == 1 | quit | endif
+autocmd vimrc WinEnter * if &l:buftype ==# 'quickfix' && winnr('$') == 1 && has('timers')
+      \ | call timer_start(0, {-> execute('quit') }) | endif
 
 " Fix window position of help
 autocmd vimrc FileType help if &l:buftype ==# 'help' | wincmd K | endif
