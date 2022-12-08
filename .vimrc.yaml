@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2022/11/09 09:42:25.
+# - * Last Change: 2022/12/08 20:33:20.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -945,6 +945,10 @@ filetype:
   sh: |
     setlocal iskeyword=@,45,48-57,_,192-255
   zsh: |
+    setlocal iskeyword=@,45,48-57,_,192-255
+  yaml: |
+    setlocal iskeyword=@,45,48-57,_,192-255
+  toml: |
     setlocal iskeyword=@,45,48-57,_,192-255
   markdown: |
     setlocal nosmartindent noautoindent
