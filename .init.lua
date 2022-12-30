@@ -1,71 +1,41 @@
-remap = hs.hotkey.bind
-
 -- Watch Hammerspoon configuration and reload it automatically
-configreloader = hs.pathwatcher.new(os.getenv('HOME') .. '/.config/hammerspoon/init.lua', function()
-  hs.timer.delayed.new(0.1, hs.reload):start()
+reloadConfiguration = hs.pathwatcher.new(os.getenv('HOME') .. '/.config/hammerspoon/init.lua', function()
+  hs.timer.doAfter(0.1, hs.reload)
 end):start()
 
--- Swap : and ;
-colon = remap({'shift'}, ';', function()
-  colon:disable()
-  semicolon:disable()
-  hs.eventtap.keyStroke({}, ';', 0)
-  hs.timer.delayed.new(0.1, function() colon:enable(); semicolon:enable() end):start()
-end, nil, nil)
-semicolon = remap({}, ';', function()
-  colon:disable()
-  semicolon:disable()
-  hs.eventtap.keyStroke({'shift'}, ';', 0)
-  hs.timer.delayed.new(0.1, function() colon:enable(); semicolon:enable() end):start()
-end, nil, nil)
-
--- Switch to eisu mode on escape keys
-remap({'ctrl'}, '[', function()
-  hs.eventtap.keyStroke({}, 'eisu', 0)
-  hs.eventtap.keyStroke({}, 'escape', 0)
-end)
-esc = remap({}, 'escape', function()
-  esc:disable()
-  hs.eventtap.keyStroke({}, 'eisu', 0)
-  hs.eventtap.event.newKeyEvent({}, 'escape', true):post()
-  hs.timer.delayed.new(0.1, function() esc:enable() end):start()
-  cmd = false
-  rightcmd = false
-end, nil, nil)
--- and on saving
-ctrls = remap({'ctrl'}, 's', function()
-  ctrls:disable()
-  hs.eventtap.keyStroke({}, 'eisu', 0)
-  hs.eventtap.event.newKeyEvent({'ctrl'}, 's', true):post()
-  hs.timer.delayed.new(0.1, function() ctrls:enable() end):start()
-end, nil, nil)
-
--- Change fn key to control key for some keys
-mapFnCtrlTap = hs.eventtap.new({hs.eventtap.event.types.keyDown}, function(e)
-  local key = hs.keycodes.map[e:getKeyCode()]
-  local hasFnFlag = e:getFlags().fn
-  if (hasFnFlag and ((string.len(key) == 1 and 'a' <= key and key <= 'z') or key == 'space' or key == 'tab' or key == '[' or key == ']')) then
-    local modifiers = {'ctrl'}
-    if e:getFlags().shift then
-      table.insert(modifiers, 'shift')
+-- Swap colon and semicolon
+swapColonAndSemicolon = hs.eventtap.new({hs.eventtap.event.types.keyDown}, function(e)
+  if hs.keycodes.map[e:getKeyCode()] == ';' then
+    remappingColonAndSemicolon = not remappingColonAndSemicolon
+    if remappingColonAndSemicolon then
+      hs.eventtap.event.newKeyEvent(hs.keycodes.map.shift, not e:getFlags().shift):post()
+      hs.eventtap.event.newKeyEvent(';', true):post()
+      return true
     end
-    hs.eventtap.keyStroke(modifiers, key, 0)
-    return ''
   end
 end):start()
 
+-- Switch to the eisu mode on the escape key
+switchToEisuOnEscape = hs.eventtap.new({hs.eventtap.event.types.keyDown}, function(e)
+  if hs.keycodes.map[e:getKeyCode()] == 'escape' then
+    hs.eventtap.keyStroke({}, 'eisu', 0)
+  end
+end):start()
+
+-- Remap C-[ to the escape key
+hs.hotkey.bind({'ctrl'}, '[', function(e)
+  hs.eventtap.keyStroke({}, 'escape', 0)
+end, nil, nil)
+
 -- Switch input modes on [cmd|rightcmd]-space
-cmd = false
-rightcmd = false
-storeLastModifier = hs.eventtap.new({hs.eventtap.event.types.flagsChanged}, function(e)
-  local modifier = hs.keycodes.map[e:getKeyCode()]
-  if modifier == 'cmd' then
+saveCmdAndRightcmd = hs.eventtap.new({hs.eventtap.event.types.flagsChanged}, function(e)
+  if hs.keycodes.map[e:getKeyCode()] == 'cmd' then
     cmd = not cmd
-  elseif modifier == 'rightcmd' then
+  elseif hs.keycodes.map[e:getKeyCode()] == 'rightcmd' then
     rightcmd = not rightcmd
   end
 end):start()
-remap({'cmd'}, 'space', function()
+hs.hotkey.bind({'cmd'}, 'space', function()
   if cmd then
     hs.eventtap.keyStroke({}, 'eisu', 0)
   elseif rightcmd then
@@ -84,12 +54,12 @@ hs.window.animationDuration = 0
 
 -- Resize and move windows
 local mods_win = {'cmd', 'ctrl'}
-remap(mods_win, 'h', function() hs.grid.resizeWindowThinner().pushWindowLeft() end)
-remap(mods_win, 'l', function() hs.grid.resizeWindowThinner().pushWindowRight() end)
-remap(mods_win, 'k', function() hs.grid.resizeWindowShorter().pushWindowUp() end)
-remap(mods_win, 'j', function() hs.grid.resizeWindowShorter().pushWindowDown() end)
-remap(mods_win, 'f', function() hs.window.focusedWindow():toggleFullScreen() end)
-remap(mods_win, 'return', function()
+hs.hotkey.bind(mods_win, 'h', function() hs.grid.resizeWindowThinner().pushWindowLeft() end)
+hs.hotkey.bind(mods_win, 'l', function() hs.grid.resizeWindowThinner().pushWindowRight() end)
+hs.hotkey.bind(mods_win, 'k', function() hs.grid.resizeWindowShorter().pushWindowUp() end)
+hs.hotkey.bind(mods_win, 'j', function() hs.grid.resizeWindowShorter().pushWindowDown() end)
+hs.hotkey.bind(mods_win, 'f', function() hs.window.focusedWindow():toggleFullScreen() end)
+hs.hotkey.bind(mods_win, 'return', function()
   local win = hs.window.focusedWindow()
   local f = win:frame()
   local sf = win:screen():frame()
@@ -101,8 +71,8 @@ remap(mods_win, 'return', function()
   win:setTopLeft(f)
   win:setSize(size)
 end)
-remap(mods_win, '=', function() resize(100, 100) end)
-remap(mods_win, '-', function() resize(-100, -100) end)
+hs.hotkey.bind(mods_win, '=', function() resize(100, 100) end)
+hs.hotkey.bind(mods_win, '-', function() resize(-100, -100) end)
 function resize(x, y)
   local win = hs.window.focusedWindow()
   local f = win:frame()
@@ -122,12 +92,12 @@ end
 
 -- Launch or focus on applications
 local mods_app = {'cmd', 'shift'}
-remap(mods_app, 'f', function () hs.application.launchOrFocus('Finder') end)
-remap(mods_app, 'c', function () hs.application.launchOrFocus('Google Chrome') end)
-remap(mods_app, 'a', function () hs.application.launchOrFocus('Safari') end)
-remap(mods_app, 'd', function () hs.application.launchOrFocus('iTerm') end)
-remap(mods_app, 'j', function () hs.application.launchOrFocus('IntelliJ IDEA') end)
-remap(mods_app, 's', function () hs.application.launchOrFocus('Slack') end)
-remap(mods_app, 'z', function () hs.application.launchOrFocus('zoom.us') end)
+hs.hotkey.bind(mods_app, 'f', function() hs.application.launchOrFocus('Finder') end)
+hs.hotkey.bind(mods_app, 'c', function() hs.application.launchOrFocus('Google Chrome') end)
+hs.hotkey.bind(mods_app, 'a', function() hs.application.launchOrFocus('Safari') end)
+hs.hotkey.bind(mods_app, 'd', function() hs.application.launchOrFocus('iTerm') end)
+hs.hotkey.bind(mods_app, 'j', function() hs.application.launchOrFocus('IntelliJ IDEA') end)
+hs.hotkey.bind(mods_app, 's', function() hs.application.launchOrFocus('Slack') end)
+hs.hotkey.bind(mods_app, 'z', function() hs.application.launchOrFocus('zoom.us') end)
 
 hs.alert.show('Config loaded')
