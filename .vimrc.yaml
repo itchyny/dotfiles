@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2022/12/08 20:33:20.
+# - * Last Change: 2023/01/07 21:48:13.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -218,6 +218,7 @@ plugin:
       augroup cursorword-filetype
         autocmd!
         autocmd FileType qf,unite,vimfiler,thumbnail,quickrun,calendar let b:cursorword = 0
+        autocmd FileType sh,zsh,make,json,yaml,toml,xml setlocal iskeyword=@,-,.,48-57,_,192-255
       augroup END
   itchyny/vim-parenmatch:
     after: |
@@ -941,15 +942,7 @@ filetype:
       setlocal nomodifiable
     endif
   make: |
-    setlocal iskeyword=@,45,48-57,_,192-255 noexpandtab
-  sh: |
-    setlocal iskeyword=@,45,48-57,_,192-255
-  zsh: |
-    setlocal iskeyword=@,45,48-57,_,192-255
-  yaml: |
-    setlocal iskeyword=@,45,48-57,_,192-255
-  toml: |
-    setlocal iskeyword=@,45,48-57,_,192-255
+    setlocal noexpandtab
   markdown: |
     setlocal nosmartindent noautoindent
     execute 'setlocal ' . (search("[^\x01-\x7e]", 'n') == 0 && line('$') > 5 ? '' : 'no') . 'spell'
