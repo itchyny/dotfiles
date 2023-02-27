@@ -1,7 +1,7 @@
 # --------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2023/02/25 13:06:07.
+# - * Last Change: 2023/02/27 09:06:33.
 # --------------------------------------------------------------------------------------------------
 
 # XDG Base Directory Specification
@@ -54,8 +54,10 @@ zle -N bracketed-paste bracketed-paste-magic
 autoload -Uz compinit; compinit -C
 LISTMAX=500
 setopt auto_list auto_menu list_packed auto_param_keys auto_param_slash mark_dirs
-zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' '+r:|[._-]=* r:|=*' '+l:|=* r:|=*'
+zstyle ':completion:*' menu select
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=*' 'r:|=*' 'l:|=*'
 zstyle ':completion:*:descriptions' format '%F{magenta}Completing %B%d%b%f'
+bindkey '^[[Z' reverse-menu-complete
 
 # options
 setopt no_beep nolistbeep auto_cd auto_pushd no_flow_control no_check_jobs print_eight_bit correct nonomatch
