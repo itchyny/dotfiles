@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2023/02/19 14:48:01.
+# - * Last Change: 2023/03/05 09:42:31.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -135,10 +135,12 @@ plugin:
             \ { 'filetype': 'scala'     , 'pattern': '\v^%(import|module) %(com|org)|<case.*\=\>|%(<private>|<implicit>).*%(<def>|<val>)|yield .*\{|case class' },
             \ { 'filetype': 'haskell'   , 'pattern': '\v^%(import|module) %([A-Z]|qualified)|main\s+::|\s::\s.*\s-\>\s|\{-# *%(LANGUAGE|OPTIONS)|^\{-' },
             \ { 'filetype': 'javascript', 'pattern': '\v<function>\s+\k*\s+([^)]*)\{|<window\.' },
-            \ { 'filetype': 'sh'        , 'pattern': '\v^#!.*%(<sh>|<bash>)\s*$|<if +\[ -|set -[ex]' },
+            \ { 'filetype': 'sh'        , 'pattern': '\v^#!.*<%(sh|bash)>%(\s+-\S+)?\s*$' },
+            \ { 'filetype': 'zsh'       , 'pattern': '\v^#!.*<zsh>%(\s+-\S+)?\s*$' },
+            \ { 'filetype': 'sh'        , 'pattern': '\v^\s*%(if\s+\[\[?\s+%(!\s+)?%(-|"?\$)|while\s+%(IFS\=\S+\s+)?read|set\s+-[eux])' },
             \ { 'filetype': 'hatena'    , 'pattern': '\v^%(\>\|[a-z]+\||\|\|\<)$|^\*\[[a-z]+\]' },
             \ { 'filetype': 'python'    , 'pattern': '\v^\s+%(def|if|for)\s.*:$' },
-            \ { 'filetype': 'vim'       , 'pattern': '\v%(^\s*<(let|set|autocmd) )|<[nvio]?noremap>|<g:loaded_|^function!' },
+            \ { 'filetype': 'vim'       , 'pattern': '\v^\s*autocmd |<[nvio]?noremap>|<g:loaded_|^function!' },
             \ { 'filetype': 'css'       , 'pattern': '\v^%(html|body)%(, *%([a-z]+))* *\{' },
             \ { 'filetype': 'sql'       , 'pattern': '\v\c^(BEGIN|SELECT|UPDATE|DELETE)>' },
             \ { 'filetype': 'markdown'  , 'pattern': '\v^# $' },
