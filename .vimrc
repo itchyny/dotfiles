@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2022/12/05 10:55:12.
+" - * Last Change: 2023/03/05 16:16:46.
 " --------------------------------------------------------------------------------------------------------
 
 " Setting options {{{1
@@ -180,6 +180,7 @@ nnoremap ] @
 cnoremap <C-a> <Home>
 cnoremap <C-b> <Left>
 cnoremap <C-f> <Right>
+cnoremap <C-d> <Del>
 
 " Command line history
 cnoremap <C-p> <Up>
