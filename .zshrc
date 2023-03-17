@@ -1,7 +1,7 @@
 # --------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2023/02/27 09:06:33.
+# - * Last Change: 2023/03/17 20:29:55.
 # --------------------------------------------------------------------------------------------------
 
 # XDG Base Directory Specification
@@ -70,6 +70,7 @@ bindkey '^E' end-of-line
 bindkey '^D' delete-char
 bindkey '^F' forward-char
 bindkey '^B' backward-char
+bindkey '^W' backward-kill-word
 autoload edit-command-line
 zle -N edit-command-line
 
