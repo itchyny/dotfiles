@@ -1,7 +1,7 @@
 # --------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2023/03/17 20:29:55.
+# - * Last Change: 2023/03/24 10:36:38.
 # --------------------------------------------------------------------------------------------------
 
 # XDG Base Directory Specification
@@ -61,6 +61,7 @@ bindkey '^[[Z' reverse-menu-complete
 
 # options
 setopt no_beep nolistbeep auto_cd auto_pushd no_flow_control no_check_jobs print_eight_bit correct nonomatch
+WORDCHARS=${WORDCHARS/\/}
 
 # integrate vim mode
 bindkey -v
