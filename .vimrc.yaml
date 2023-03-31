@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2023/03/12 09:34:53.
+# - * Last Change: 2023/03/31 09:17:12.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -843,6 +843,8 @@ plugin:
     filetype: elixir
   dannywillems/vim-icalendar:
     filetype: icalendar
+  yasuhiroki/github-actions-yaml.vim:
+    filetype: yaml.gha
 
 before: |
   let g:loaded_2html_plugin = 1
