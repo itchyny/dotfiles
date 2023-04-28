@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2023/03/31 09:17:12.
+# - * Last Change: 2023/04/28 09:42:25.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -1036,7 +1036,7 @@ filetype:
     setlocal shiftwidth=4
   gitcommit: |
     setlocal spell
-    autocmd BufEnter <buffer> lcd %:p:h:h
+    autocmd BufEnter <buffer> lcd %:p:h:h | setlocal formatoptions-=t
 
 syntax:
   qf: |
