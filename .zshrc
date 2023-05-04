@@ -1,7 +1,7 @@
 # --------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2023/04/11 09:58:35.
+# - * Last Change: 2023/05/04 12:27:44.
 # --------------------------------------------------------------------------------------------------
 
 # XDG Base Directory Specification
@@ -24,7 +24,6 @@ ZINIT[ZCOMPDUMP_PATH]=${ZINIT[HOME_DIR]}/zcompdump
 source ${ZINIT[BIN_DIR]}/zinit.zsh
 
 # plugins
-zinit light itchyny/zsh-auto-fillin
 zinit light itchyny/zsh-git-alias
 zinit light zdharma-continuum/fast-syntax-highlighting
 zinit light zsh-users/zsh-autosuggestions
