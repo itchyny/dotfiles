@@ -1,7 +1,7 @@
 # --------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2023/08/08 23:30:31.
+# - * Last Change: 2023/09/07 17:39:08.
 # --------------------------------------------------------------------------------------------------
 
 # XDG Base Directory Specification
@@ -167,8 +167,8 @@ bindkey '^@' start-editor
 # alias
 alias c='clear'
 alias d='download'
-alias ls='exa --classify --time-style=long-iso'
-alias tree='exa --tree -I .git --classify --time-style=long-iso'
+alias ls='eza --classify --time-style=long-iso'
+alias tree='eza --tree -I .git --classify --time-style=long-iso'
 alias git='hub'
 alias top='htop'
 
