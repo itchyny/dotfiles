@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2023/08/11 09:43:54.
+# - * Last Change: 2023/09/15 19:38:52.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -849,6 +849,8 @@ plugin:
     filetype: jsonnet
   kyoh86/vim-jsonl:
     filetype: jsonl
+  hashivim/vim-terraform:
+    filetype: terraform
 
 before: |
   let g:loaded_2html_plugin = 1
