@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2023/09/25 09:33:28.
+# - * Last Change: 2023/12/05 17:41:03.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -433,6 +433,11 @@ plugin:
       endfunction
   tyru/open-browser.vim:
     function: openbrowser
+  github/copilot.vim:
+    dependon: insert-mode-motion
+    before: |
+      let g:copilot_no_tab_map = 1
+      imap <script><silent><nowait><expr> <C-e> copilot#Accept("\<End>")
 
   Shougo/vimfiler:
     mapleader: \
