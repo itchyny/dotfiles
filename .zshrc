@@ -1,7 +1,7 @@
 # --------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2023/09/07 17:39:08.
+# - * Last Change: 2024/03/12 22:28:49.
 # --------------------------------------------------------------------------------------------------
 
 # XDG Base Directory Specification
@@ -177,4 +177,4 @@ alias -s {txt,md,json}='less'
 alias -s html='open -a Google\ Chrome'
 alias -s {pdf,png,jpg,bmp,gif,svg,tiff}='open -a Preview'
 alias -s {mp3,mp4,wav,mkv,m4v,m4a,wmv,avi,mpeg,mpg,vob,mov,rm}='mplayer'
-alias -s {gz,tgz,zip,lzh,bz2,tbz,Z,tar,arj,xz}='extract'
+alias -s {gz,tgz,bz2,tbz,xz,Z,br,tbr,zst,tar,zip,lzh,arj}='extract'
