@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2024/03/30 20:37:55.
+# - * Last Change: 2024/03/31 01:20:44.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -455,7 +455,7 @@ plugin:
       let g:vimfiler_data_directory = $VIM_DATA.'/vimfiler'
       let g:vimfiler_detect_drives = []
       let g:vimfiler_min_cache_files = 10000000000
-      let g:vimfiler_ignore_pattern = '\v^\.|\.(o|lo|hi|bak|pyc|aux|bbl|blg|dvi|nav|snm|toc|out)$|^(dist|bower_components|node_modules|score|perl|old_project|py|scala|scansnap|univ)$|conflicted copy|競合コピー|^Icon\r$'
+      let g:vimfiler_ignore_pattern = '\v^\.|\.%(o|a|lo|hi|la|pyc|aux|bbl|blg|dvi|nav|snm|toc|out%(put)?|inc|bak|lock|sum|cache|bat)$|^%(dist|build|target|node_modules|univ|Icon\r)$'
       let g:vimfiler_tree_leaf_icon = ' '
       let g:vimfiler_tree_opened_icon = '▾'
       let g:vimfiler_tree_closed_icon = '▸'
@@ -463,6 +463,11 @@ plugin:
       let g:vimfiler_readonly_file_icon = '✗'
       let g:vimfiler_marked_file_icon = '✓'
       let g:vimfiler_execute_file_list = {'jpg': 'open', 'jpeg': 'open', 'gif': 'open', 'bmp': 'open', 'html': 'open', 'ppt': 'open', 'pdf': 'open', 'png': 'open'}
+    after: |
+      call vimfiler#set_extensions('text', 'txt,cfg,ini,conf,json,json5,toml,yaml,yml')
+      call vimfiler#set_extensions('image', 'bmp,png,gif,jpg,jpeg,tif,ico,svg,webp,heic')
+      call vimfiler#set_extensions('archive', 'gz,tgz,bz2,tbz,xz,Z,br,tbr,zst,tar,zip,lzh,arj,jar')
+      call vimfiler#set_extensions('system', 'inf,sys,reg,dat,spi,a,so,lib,dll,la,bin,log,output,in,inc,pc,m4,trs,bak,lock,sum,cache,bat')
     script: |
       nnoremap <silent> <Leader>f :<C-u>VimFilerCurrentDir -status -auto-cd<CR>
       nnoremap <silent> <Leader><Leader> :<C-u>VimFilerCurrentDir -status -auto-cd<CR>
@@ -1118,16 +1123,17 @@ syntax:
     VimfilerSyntax vimfilerTypePdfHtml    \.\%(pdf\|html\)\s Function
     delcommand VimfilerSyntax
     execute 'syntax match vimfilerImportant' string(
-          \  ' \v%(README%(\.%(mk?d|rst))?>|manifest\.json|main\.pdf|'
-          \. '%(Dropbox|[Dd]ownloads|Library|src|paper|[rh]s|miv|\.vim|2?bf|maze|cam|git-branch-name|'
-          \. 'lightline(-powerful)?|calendar|thumbnail|dictionary|landscape|spellbad-pattern|'
+          \  ' \v%(%(README|readme)%(\.%(mk?d|txt|rst))?|manifest\.json|main\.pdf|'
+          \. '%(Dropbox|Downloads|Library|photo|pictures|toplevel|salary|kakeibo|'
+          \. 'src|go|rs|cpp|\.?vim|2?bf|maze|cam|git-branch-name|jq|'
+          \. 'lightline%(-powerful)?|calendar|thumbnail|dictionary|landscape|spellbad-pattern|'
           \. 'screensaver|gitbranch|closebuffer|external|insert-mode-motion|cmdline-%(ranges|escape)|'
           \. 'autoft|extracmd|histexclude|tmpbuffer|extra-snippets|highlighturl|cursorword|parenmatch|'
           \. 'winfix|qffrom|qfedit|grep|increx|unite-%(preview|eject|changetime|auto-open)|viva|'
-          \. 'hatena-link|haskell-%(indent|sort-import)|quickrun-lightline-hooks|'
-          \. '%(base58|volume|zshhist|maketen|astgen|timefmt|rassemble|kaitai)-go|'
-          \. 'rexdep|fillin|bed|go%(jo|jq|f)?|json2yaml|mmv|mkrg|qhs|'
-          \. 'formulate|homebrew-tap|setup|py2bf|github-%(migrator|better-header))/)'
+          \. 'hatena-link|haskell-%(indent|sort-import)|quickrun-lightline-hooks|mackerel-plugin-\l+|'
+          \. '%(base58|volume|zshhist|maketen|astgen|timefmt|rassemble|kaitai)-go|uptime-rs|'
+          \. 'rexdep|fillin|bed|goj[oq]|json2yaml|mmv|mkrg|miv|qhs|pihex|log2hex|s3-cache-action|'
+          \. 'formulate|homebrew-tap|py2bf|github-migrator|%(mackerel|kintone)-client-[rh]s)/)\ze\s'
           \ ) 'contained containedin=vimfilerNonMark,vimfilerNormalFile,vimfilerClosedFile,vimfilerOpenedFile'
     highlight link vimfilerColumn__TimeToday Comment
     highlight link vimfilerColumn__TimeWeek Special
