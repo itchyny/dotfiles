@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2023/12/05 17:41:03.
+# - * Last Change: 2024/03/30 20:37:55.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -813,6 +813,11 @@ plugin:
     filetype: rest
   tpope/vim-markdown:
     filetype: markdown
+    before: |
+      let g:markdown_fenced_languages = [
+          \ 'c', 'go', 'rust', 'javascript', 'js=javascript', 'typescript', 'ts=typescript',
+          \ 'json', 'yaml', 'html', 'xml', 'sh', 'bash=sh', 'shell=sh', 'console=sh'
+          \ ]
   rhysd/vim-syntax-codeowners:
     filetype: codeowners
   pangloss/vim-javascript:
