@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2024/03/31 01:20:44.
+# - * Last Change: 2024/04/07 15:41:53.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -955,7 +955,6 @@ filetype:
     imap <buffer> <Tab> <Plug>(neosnippet-emmet-supertab)
     imap <buffer> <C-g> <Plug>(emmet-supertab)
   typescript: |
-    setlocal shiftwidth=4
     imap <buffer> <Tab> <Plug>(neosnippet-emmet-supertab)
   purescript: |
     highlight link purescriptImport Include
