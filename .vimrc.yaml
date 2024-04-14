@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2024/04/07 15:41:53.
+# - * Last Change: 2024/04/15 07:53:01.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -455,7 +455,7 @@ plugin:
       let g:vimfiler_data_directory = $VIM_DATA.'/vimfiler'
       let g:vimfiler_detect_drives = []
       let g:vimfiler_min_cache_files = 10000000000
-      let g:vimfiler_ignore_pattern = '\v^\.|\.%(o|a|lo|hi|la|pyc|aux|bbl|blg|dvi|nav|snm|toc|out%(put)?|inc|bak|lock|sum|cache|bat)$|^%(dist|build|target|node_modules|univ|Icon\r)$'
+      let g:vimfiler_ignore_pattern = '\v^\.|\.%(o|a|lo|hi|la|pyc|aux|bbl|blg|dvi|nav|snm|toc|out%(put)?|inc|bak|lock|sum|cache|bat)$|^%(dist|build|target|node_modules|package-lock\.json|univ|Icon\r)$'
       let g:vimfiler_tree_leaf_icon = ' '
       let g:vimfiler_tree_opened_icon = '▾'
       let g:vimfiler_tree_closed_icon = '▸'
@@ -893,7 +893,6 @@ after: |
     autocmd BufNewFile,BufReadPost *.gnuplot setlocal filetype=gnuplot
     autocmd BufNewFile,BufReadPost *.ksy setlocal filetype=yaml
     autocmd BufNewFile,BufReadPost *.stl setlocal filetype=stl
-    autocmd BufNewFile,BufReadPost *.sum setlocal filetype=gomod
     autocmd BufNewFile,BufReadPost *nginx.conf.template setlocal filetype=nginx
     autocmd BufNewFile,BufReadPost Capfile* setlocal filetype=ruby
     autocmd BufReadPre *histfile setlocal binary
