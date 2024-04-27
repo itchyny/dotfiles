@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2023/06/24 13:43:02.
+" - * Last Change: 2024/04/15 12:47:45.
 " --------------------------------------------------------------------------------------------------------
 
 " Setting options {{{1
@@ -145,7 +145,7 @@ noremap <expr> <C-y> (line('w0') <= 1         ? 'k' : "\<C-y>")
 noremap <expr> <C-e> (line('w$') >= line('$') ? 'j' : "\<C-e>")
 
 " Open dot files
-nnoremap \. :edit <C-r>=resolve(expand('~/.vimrc'))<CR><CR>
+nnoremap \. :edit <C-r>=resolve(expand('$XDG_CONFIG_HOME/vim/vimrc'))<CR><CR>
 nnoremap \; :edit <C-r>=resolve(expand('$XDG_CONFIG_HOME/miv/config.yaml'))<CR><CR>
 nnoremap \, :edit <C-r>=resolve(expand('~/.zshrc'))<CR><CR>
 
