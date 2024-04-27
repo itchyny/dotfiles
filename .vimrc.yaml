@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2024/04/15 07:53:01.
+# - * Last Change: 2024/04/27 23:38:04.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -768,92 +768,42 @@ plugin:
     before: |
       nmap g_ <Plug>(operator-camelize-toggle)
 
-  gutenye/json5.vim:
-    filetype: json5
-  motemen/hatena-vim:
-    filetype: hatena
-  vito-c/jq.vim:
-    filetype: jq
   html5.vim:
     filetype: html
   mattn/emmet-vim:
     filetype:
       - html
-      - haml
-      - jade
-      - slim
       - css
       - less
-      - sass
       - scss
     dependon: webapi
     before: |
       let g:user_emmet_settings = { 'indentation' : '  ' }
     after: |
-      imap <expr><silent> <Plug>(neosnippet-emmet-supertab) neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : &filetype =~# '\vhtml<bar>haml<bar>jade<bar>slim<bar>css<bar>less<bar>sass<bar>scss' && emmet#isExpandable() ? "\<Plug>(emmet-expand-abbr)" : pumvisible() ? "\<C-n>" : repeat("\<Space>", &shiftwidth)
-      imap <expr><silent> <Plug>(emmet-supertab) &filetype =~# '\vhtml<bar>haml<bar>jade<bar>slim<bar>css<bar>less<bar>sass<bar>scss' && emmet#isExpandable() ? "\<Plug>(emmet-expand-abbr)" : pumvisible() ? "\<C-n>" : repeat("\<Space>", &shiftwidth)
+      imap <expr><silent> <Plug>(neosnippet-emmet-supertab) neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : &filetype =~# '\vhtml<bar>css<bar>less<bar>scss' && emmet#isExpandable() ? "\<Plug>(emmet-expand-abbr)" : pumvisible() ? "\<C-n>" : repeat("\<Space>", &shiftwidth)
+      imap <expr><silent> <Plug>(emmet-supertab) &filetype =~# '\vhtml<bar>css<bar>less<bar>scss' && emmet#isExpandable() ? "\<Plug>(emmet-expand-abbr)" : pumvisible() ? "\<C-n>" : repeat("\<Space>", &shiftwidth)
   evanleck/vim-svelte:
     filetype: svelte
-  wavded/vim-stylus:
-    filetype: stylus
-  groenewege/vim-less:
-    filetype: less
-  tpope/vim-haml:
-    filetype: haml
   jparise/vim-graphql:
     filetype: graphql
-  syntaxm4.vim:
-    filetype: m4
-  jade.vim:
-    filetype: jade
-  slim-template/vim-slim:
-    filetype: slim
   kchmck/vim-coffee-script:
     filetype: coffee
   raichoo/purescript-vim:
     filetype: purescript
-  briancollins/vim-jst:
-    filetype: jst
-  rest.vim:
-    filetype: rest
-  tpope/vim-markdown:
-    filetype: markdown
-    before: |
-      let g:markdown_fenced_languages = [
-          \ 'c', 'go', 'rust', 'javascript', 'js=javascript', 'typescript', 'ts=typescript',
-          \ 'json', 'yaml', 'html', 'xml', 'sh', 'bash=sh', 'shell=sh', 'console=sh'
-          \ ]
   rhysd/vim-syntax-codeowners:
     filetype: codeowners
   pangloss/vim-javascript:
     filetype: javascript
-  derekwyatt/vim-scala:
-    filetype: scala
   mattn/vim-goimports:
     filetype: go
   johejo/gomod.vim:
     filetype: gomod
   rhysd/vim-goyacc:
     filetype: goyacc
-  rust-lang/rust.vim:
-    filetype: rust
-    before: |
-      let g:rustfmt_autosave = 1
-  ziglang/zig.vim:
-    filetype: zig
   qnighy/lalrpop.vim:
     filetype: lalrpop
-  udalov/kotlin-vim:
-    filetype: kotlin
-  kballard/vim-swift:
-    filetype: swift
-    before: |
-      let g:swift_suppress_showmatch_warning = 1
-      let g:swift_no_conceal = 1
   rhysd/vim-llvm:
     filetype: llvm
-  tmux-plugins/vim-tmux:
-    filetype: tmux
   elixir-editors/vim-elixir:
     filetype: elixir
   dannywillems/vim-icalendar:
@@ -970,11 +920,17 @@ filetype:
     if getline(1) =~# 'DO NOT EDIT'
       setlocal nomodifiable
     endif
+  rust:
+    let g:rustfmt_autosave = 1
   make: |
     setlocal noexpandtab
   markdown: |
     setlocal nosmartindent noautoindent
-    execute 'setlocal ' . (search("[^\x01-\x7e]", 'n') == 0 && line('$') > 5 ? '' : 'no') . 'spell'
+    execute 'setlocal ' . (search("[^\x01-\x7e]", 'n', 20) == 0 && line('$') > 5 ? '' : 'no') . 'spell'
+    let g:markdown_fenced_languages = [
+        \ 'c', 'go', 'rust', 'javascript', 'js=javascript', 'typescript', 'ts=typescript',
+        \ 'json', 'yaml', 'html', 'xml', 'sh', 'bash=sh', 'shell=sh', 'console=sh'
+        \ ]
   hatena: |
     setlocal nosmartindent noautoindent
   csv: |
