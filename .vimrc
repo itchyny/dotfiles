@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: itchyny
-" - * Last Change: 2024/04/15 12:47:45.
+" - * Last Change: 2024/04/28 18:09:49.
 " --------------------------------------------------------------------------------------------------------
 
 " Setting options {{{1
@@ -199,5 +199,6 @@ snoremap <ESC> <C-c>
 " Enable ftplugin, indent, syntax {{{1
 filetype off
 set runtimepath^=$XDG_DATA_HOME/miv/miv
+set runtimepath+=$VIMRUNTIME/pack/dist/opt/comment
 filetype plugin indent on
 syntax enable

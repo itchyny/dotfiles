@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2024/04/27 23:38:04.
+# - * Last Change: 2024/04/28 18:14:40.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -538,19 +538,6 @@ plugin:
     function: repeat
   tpope/vim-abolish:
     command: Subvert
-  tomtom/tcomment_vim:
-    command: TComment
-    mapping: <Plug>TComment_gc
-    function: tcomment
-    script: |
-      nnoremap <silent> __ :TComment<CR>
-      vnoremap <silent> __ :TComment<CR>
-      nmap <silent> gc <Plug>TComment_gc
-    before: |
-      let g:tcommentMapLeader1 = ''
-      let g:tcommentMapLeader2 = ''
-      let g:tcommentMapLeaderUncommentAnyway = ''
-      let g:tcommentMapLeaderCommentAnyway = ''
   autodate.vim:
     before: |
       let g:autodate_format = '%Y/%m/%d %H:%M:%S'
@@ -876,7 +863,6 @@ filetype:
     endfunction
   yacc: |
     setlocal shiftwidth=4 expandtab
-    call tcomment#type#Define('yacc', '// %s')
   html: |
     imap <buffer> <Tab> <Plug>(neosnippet-emmet-supertab)
     imap <buffer> <C-g> <Plug>(emmet-supertab)
