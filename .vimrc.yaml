@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2024/04/28 18:14:40.
+# - * Last Change: 2024/05/13 08:37:33.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -957,6 +957,8 @@ filetype:
     function! s:bed_open(filename) abort
       execute 'Term -close -opener=new bed' escape(fnameescape(a:filename), '\\')
     endfunction
+  gitconfig: |
+    setlocal noexpandtab
   agit: |
     nmap <buffer> <C-r> <Plug>(agit-reload)
     nunmap <buffer> <C-k>
