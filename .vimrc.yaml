@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2024/05/13 08:37:33.
+# - * Last Change: 2024/06/19 08:21:45.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -127,7 +127,7 @@ plugin:
     before: |
       let g:autoft_maxline = 15
       let g:autoft_config = [
-            \ { 'filetype': 'diff'      , 'pattern': '\v^diff -|^commit .*\nAuthor:' },
+            \ { 'filetype': 'diff'      , 'pattern': '\v^diff -|^commit [0-9a-z]{40}$' },
             \ { 'filetype': 'html'      , 'pattern': '\v[<]%(!DOCTYPE|html|head|script|meta|link|div|span)>|^html:5\s*$' },
             \ { 'filetype': 'c'         , 'pattern': '\v^\s*#\s*%(include|define)>' },
             \ { 'filetype': 'go'        , 'pattern': '\v^%(import \(|func \S+\(\) \{)' },
