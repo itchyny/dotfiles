@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2024/06/19 08:21:45.
+# - * Last Change: 2024/06/22 21:14:05.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -176,14 +176,7 @@ plugin:
           echohl None
           return
         endif
-        if bufname('') !=# '' || &modified || &filetype !=# ''
-          tabnew
-        endif
-        execute 'Tmpbuffer' a:diffcmd
-        setlocal filetype=diff
-        let bufnr = bufnr()
-        execute 'Gina' a:cmd
-        execute 'autocmd! QuitPre <buffer> try | bwipeout' bufnr '| catch | endtry'
+        execute 'Gina --opener=tabnew' a:cmd
       endfunction
       call extracmd#set('<silent>', 'ga'     , 'Gita add %')
       call extracmd#set('<silent>', 'gb'     , 'Gina branch')
