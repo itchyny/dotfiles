@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2024/09/25 10:58:02.
+# - * Last Change: 2025/01/09 17:05:47.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -961,6 +961,7 @@ filetype:
     function! s:bed_open(filename) abort
       execute 'Term -close -opener=new bed' escape(fnameescape(a:filename), '\\')
     endfunction
+    setlocal updatetime=1000
   gitconfig: |
     setlocal noexpandtab
   agit: |
