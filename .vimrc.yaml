@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2025/02/13 16:15:29.
+# - * Last Change: 2025/02/15 22:04:23.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -264,6 +264,7 @@ plugin:
               \| nmap <buffer> <F2>  <plug>(lsp-rename)
               \| nmap <buffer> <C-a> <plug>(lsp-code-action)
               \| inoremap <expr><CR> asyncomplete#close_popup() . "\<CR>"
+        autocmd BufNewFile \[preview*\]* call lsp#disable_diagnostics_for_buffer()
       augroup END
     after: |
       doautocmd BufEnter
