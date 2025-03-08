@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2025/02/16 10:40:57.
+# - * Last Change: 2025/03/08 20:42:37.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -984,7 +984,7 @@ filetype:
     nmap <buffer> o <Plug>(gina-branch-new)
     nmap <buffer> N <Plug>(gina-branch-new)
   gina-commit: |
-    setlocal spell
+    setlocal spell spellcapcheck=
   gita-status: |
     nmap <buffer> D <Plug>(gita-checkout)
     nmap <buffer> dd <Plug>(gita-checkout)
@@ -1006,7 +1006,7 @@ filetype:
   nginx: |
     setlocal shiftwidth=4
   gitcommit: |
-    setlocal spell
+    setlocal spell spellcapcheck=
     autocmd BufEnter <buffer> lcd %:p:h:h | setlocal formatoptions-=t
 
 syntax:
