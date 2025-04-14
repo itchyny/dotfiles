@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2025/03/11 08:34:42.
+# - * Last Change: 2025/04/14 21:09:59.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -213,7 +213,8 @@ plugin:
       augroup cursorword-filetype
         autocmd!
         autocmd FileType qf,unite,vimfiler,thumbnail,quickrun,calendar let b:cursorword = 0
-        autocmd FileType make,automake,dockerfile,json,json5,yaml,toml,html,xml,svg,diff setlocal iskeyword=@,-,.,48-57,_,192-255
+        autocmd FileType make,automake,dockerfile,json,json5,yaml,toml
+              \,html,xml,svg,diff,cabal setlocal iskeyword=@,-,.,48-57,_,192-255
         autocmd FileType sh,zsh setlocal iskeyword=@,-,48-58,_,192-255
       augroup END
   itchyny/vim-parenmatch:
