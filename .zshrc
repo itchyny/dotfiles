@@ -1,7 +1,7 @@
 # --------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2024/06/14 09:51:11.
+# - * Last Change: 2025/06/10 10:41:43.
 # --------------------------------------------------------------------------------------------------
 
 # XDG Base Directory Specification
@@ -132,6 +132,7 @@ export AWS_CONFIG_FILE=$XDG_CONFIG_HOME/aws/config
 export AWS_SHARED_CREDENTIALS_FILE=$XDG_CONFIG_HOME/aws/credentials
 export CDK_HOME=$XDG_DATA_HOME/cdk
 export MINIKUBE_HOME=$XDG_DATA_HOME/minikube
+export PARALLEL_HOME=$XDG_DATA_HOME/parallel
 export MYSQL_HISTFILE=$XDG_DATA_HOME/mysql/histfile
 export PSQL_HISTORY=$XDG_DATA_HOME/psql/histfile
 export NODE_REPL_HISTORY=$XDG_DATA_HOME/node/histfile
