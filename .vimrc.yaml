@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2025/06/11 22:11:45.
+# - * Last Change: 2025/06/11 22:47:54.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -214,7 +214,7 @@ plugin:
         autocmd!
         autocmd FileType qf,unite,vimfiler,thumbnail,quickrun,calendar let b:cursorword = 0
         autocmd FileType sh,zsh,make,automake,dockerfile,json,json5,yaml,toml
-              \,html,xml,svg,diff,cabal setlocal iskeyword=@,-,.,48-57,_,192-255
+              \,html,xml,svg,diff,cabal,terraform setlocal iskeyword=@,-,.,48-57,_,192-255
       augroup END
   itchyny/vim-parenmatch:
     after: |
