@@ -1,7 +1,7 @@
 # --------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2025/06/10 10:41:43.
+# - * Last Change: 2025/07/01 13:58:39.
 # --------------------------------------------------------------------------------------------------
 
 # XDG Base Directory Specification
@@ -154,6 +154,9 @@ fi
 if (( $+commands[nodenv] )); then
   export NODENV_ROOT=$XDG_CACHE_HOME/nodenv
   eval "$(nodenv init -)"
+fi
+if (( $+commands[direnv] )); then
+  eval "$(direnv hook zsh)"
 fi
 
 # start editor shortcut key
