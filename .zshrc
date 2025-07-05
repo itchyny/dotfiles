@@ -1,7 +1,7 @@
 # --------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2025/07/01 13:58:39.
+# - * Last Change: 2025/07/05 20:18:50.
 # --------------------------------------------------------------------------------------------------
 
 # XDG Base Directory Specification
@@ -138,10 +138,6 @@ export PSQL_HISTORY=$XDG_DATA_HOME/psql/histfile
 export NODE_REPL_HISTORY=$XDG_DATA_HOME/node/histfile
 typeset -U path PATH
 export PATH=$XDG_DATA_HOME/bin:$PATH
-if (( $+commands[plenv] )); then
-  export PLENV_ROOT=$XDG_CACHE_HOME/plenv
-  eval "$(plenv init -)"
-fi
 if (( $+commands[pyenv] )); then
   export PYENV_ROOT=$XDG_CACHE_HOME/pyenv
   eval "$(pyenv init --path)"
