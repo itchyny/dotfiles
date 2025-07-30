@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2025/06/11 22:47:54.
+# - * Last Change: 2025/07/30 21:06:25.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -1012,8 +1012,8 @@ filetype:
 syntax:
   qf: |
     execute 'syntax match qfPathIgnore'
-          \ string(escape(qffrom#git_root(), '*~\.^$[]') . '/\|'
-          \ . escape(expand('~'), '*~\.^$[]') . '/[^/]\+/')
+          \ string('^\(' . escape(qffrom#git_root(), '\.^$~*()[]') . '\|'
+          \ . escape(expand('~'), '\.^$~*()[]') . '/[^/]\+\)/')
           \ 'containedin=qfDirectory conceal'
     syntax match qfDirectory '^[^|]*' nextgroup=qfSeparator
     syntax match qfFileName '[^/|]\+\ze|' contained containedin=qfDirectory
