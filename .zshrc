@@ -1,7 +1,7 @@
 # --------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2025/07/05 20:18:50.
+# - * Last Change: 2025/08/05 14:48:58.
 # --------------------------------------------------------------------------------------------------
 
 # XDG Base Directory Specification
@@ -153,6 +153,9 @@ if (( $+commands[nodenv] )); then
 fi
 if (( $+commands[direnv] )); then
   eval "$(direnv hook zsh)"
+fi
+if (( $+commands[mise] )); then
+  eval "$(mise activate zsh)"
 fi
 
 # start editor shortcut key
