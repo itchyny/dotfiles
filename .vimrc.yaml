@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2025/07/30 21:06:25.
+# - * Last Change: 2025/08/29 15:28:02.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -142,7 +142,7 @@ plugin:
             \ { 'filetype': 'python'    , 'pattern': '\v^\s+%(def|if|for)\s.*:$' },
             \ { 'filetype': 'vim'       , 'pattern': '\v^\s*autocmd |<[nvio]?noremap>|<g:loaded_|^function!' },
             \ { 'filetype': 'css'       , 'pattern': '\v^%(html|body)%(, *%([a-z]+))* *\{' },
-            \ { 'filetype': 'sql'       , 'pattern': '\v\c^(BEGIN|SELECT|UPDATE|DELETE)>' },
+            \ { 'filetype': 'sql'       , 'pattern': '\v\c^(BEGIN|SELECT|INSERT|UPDATE|DELETE|EXPLAIN)>' },
             \ { 'filetype': 'markdown'  , 'pattern': '\v^# $' },
             \ ]
   itchyny/vim-extracmd:
