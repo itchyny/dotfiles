@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2025/11/05 21:39:39.
+# - * Last Change: 2025/11/21 11:46:09.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -184,8 +184,8 @@ plugin:
       call extracmd#set('<silent>', 'gc'     , 'Gina checkout')
       call extracmd#set('<silent>', 'gpo'    , 'Gina push origin')
       call extracmd#set('<silent>', 'gpom'   , 'Gina push origin master')
-      call extracmd#set('<silent>', 'gm'     , 'call GitCommit("commit", "git diff --staged --ignore-all-space")')
-      call extracmd#set('<silent>', 'gam'    , 'call GitCommit("commit -a", "git diff HEAD --ignore-all-space")')
+      call extracmd#set('<silent>', 'gm'     , 'call GitCommit("commit", "git diff --staged")')
+      call extracmd#set('<silent>', 'gam'    , 'call GitCommit("commit -a", "git diff HEAD")')
       call extracmd#set('<silent>', 'gs'     , 'Gita status')
       call extracmd#set('<silent>', 'blame'  , 'Gita blame')
       call extracmd#set('<silent>', 'aoff'   , 'AutodateOFF')
@@ -584,6 +584,7 @@ plugin:
       let g:agit_enable_auto_refresh = 1
       let g:agit_max_author_name_width = 10
       let g:agit_max_log_lines = 2000
+      let g:agit_ignore_spaces = 0
     script: |
       nnoremap <silent> <Leader>g :<C-u>Agit<CR>
   itchyny/vim-gita: # use a fork for now
