@@ -1,7 +1,7 @@
 # --------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2025/08/05 14:48:58.
+# - * Last Change: 2026/04/21 15:34:11.
 # --------------------------------------------------------------------------------------------------
 
 # XDG Base Directory Specification
@@ -42,7 +42,8 @@ PURE_GIT_PULL=0
 HISTFILE=$ZDOTDIR/histfile
 HISTSIZE=100000
 SAVEHIST=10000000
-setopt append_history extended_history hist_ignore_dups hist_no_store hist_reduce_blanks hist_verify hist_ignore_space inc_append_history_time
+setopt append_history extended_history hist_ignore_dups hist_no_store hist_reduce_blanks
+setopt hist_verify hist_ignore_space inc_append_history_time no_bang_hist
 
 # quote URL
 autoload -Uz url-quote-magic bracketed-paste-magic
