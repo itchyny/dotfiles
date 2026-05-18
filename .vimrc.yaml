@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2026/03/21 14:26:55.
+# - * Last Change: 2026/05/18 23:20:48.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -1083,7 +1083,7 @@ syntax:
           \. 'winfix|qffrom|qfedit|grep|increx|unite-%(preview|eject|changetime|auto-open)|viva|'
           \. 'hatena-link|haskell-%(indent|sort-import)|quickrun-lightline-hooks|mackerel-plugin-\l+|'
           \. '%(base58|volume|zshhist|maketen|astgen|timefmt|rassemble|kaitai)-go|uptime-rs|'
-          \. 'rexdep|fillin|bed|goj[oq]|json2yaml|mmv|mkrg|miv|qhs|pihex|log2hex|s3-cache-action|'
+          \. 'rexdep|fillin|bed|go%(jq|jo|2bf)|json2yaml|mmv|mkrg|miv|qhs|pihex|log2hex|s3-cache-action|'
           \. 'formulate|homebrew-tap|py2bf|github-migrator|%(mackerel|kintone)-client-[rh]s)/)\ze\s'
           \ ) 'contained containedin=vimfilerNonMark,vimfilerNormalFile,vimfilerClosedFile,vimfilerOpenedFile'
     highlight link vimfilerColumn__TimeToday Comment
