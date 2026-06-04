@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2026/05/18 23:20:48.
+# - * Last Change: 2026/06/04 14:32:01.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -249,6 +249,7 @@ plugin:
     enable: has('timers')
     before: |
       let g:lsp_async_completion = 1
+      let g:lsp_diagnostics_enabled = 0
       let g:lsp_text_edit_enabled = 0
       let g:lsp_signs_enabled = 0
       let g:lsp_document_highlight_enabled = 0
@@ -460,7 +461,7 @@ plugin:
       let g:vimfiler_data_directory = $VIM_DATA.'/vimfiler'
       let g:vimfiler_detect_drives = []
       let g:vimfiler_min_cache_files = 10000000000
-      let g:vimfiler_ignore_pattern = '\v^\.|\.%(o|a|log?|hi|la|pyc|aux|bbl|blg|dvi|nav|snm|toc|out%(put)?|inc?|trs|bak|lock|sum|cache|status|bat|tfstate.*|pb\.go)$|^%(dist|build|target|node_modules|package-lock\.json|compile_commands\.json|univ|libtool|stamp-h1|Icon\r)$'
+      let g:vimfiler_ignore_pattern = '\v^\.|\.%(o|a|log?|hi|la|pyc|aux|bbl|blg|dvi|nav|snm|toc|out%(put)?|inc?|trs|bak|lock|sum|cache|status|bat|tfstate.*)$|^%(dist|build|target|node_modules|package-lock\.json|compile_commands\.json|univ|libtool|stamp-h1|Icon\r)$'
       let g:vimfiler_tree_leaf_icon = ' '
       let g:vimfiler_tree_opened_icon = '▾'
       let g:vimfiler_tree_closed_icon = '▸'
