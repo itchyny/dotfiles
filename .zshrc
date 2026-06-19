@@ -1,7 +1,7 @@
 # --------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2026/04/21 15:34:11.
+# - * Last Change: 2026/06/18 17:29:08.
 # --------------------------------------------------------------------------------------------------
 
 # XDG Base Directory Specification
@@ -147,10 +147,6 @@ fi
 if (( $+commands[rbenv] )); then
   export RBENV_ROOT=$XDG_CACHE_HOME/rbenv
   eval "$(rbenv init -)"
-fi
-if (( $+commands[nodenv] )); then
-  export NODENV_ROOT=$XDG_CACHE_HOME/nodenv
-  eval "$(nodenv init -)"
 fi
 if (( $+commands[direnv] )); then
   eval "$(direnv hook zsh)"
