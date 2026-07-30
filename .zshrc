@@ -1,7 +1,7 @@
 # --------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: itchyny
-# - * Last Change: 2026/06/18 17:29:08.
+# - * Last Change: 2026/07/30 22:58:38.
 # --------------------------------------------------------------------------------------------------
 
 # XDG Base Directory Specification
@@ -100,18 +100,18 @@ git-switch-branch() {
 zle -N git-switch-branch
 bindkey '^S' git-switch-branch
 
-# export variables
+# environment variables
 export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
 export EDITOR=vim
 export GIT_EDITOR=vim
 export GORE_PAGER=less
+export GORE_VERBOSE=0
 export GIT_MERGE_AUTOEDIT=no
 
 # path settings
 export MANPATH=/usr/local/share/man:/usr/local/man:/usr/share/man
 export GOPATH=$XDG_DATA_HOME/go
-export GORE_HOME=$XDG_DATA_HOME/gore
 export CARGO_HOME=$XDG_CACHE_HOME/cargo
 export RUSTUP_HOME=$XDG_CACHE_HOME/rustup
 export STACK_ROOT=$XDG_CACHE_HOME/stack
