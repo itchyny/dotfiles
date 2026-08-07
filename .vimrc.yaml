@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2026/06/04 14:32:01.
+# - * Last Change: 2026/08/07 20:25:44.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -275,7 +275,7 @@ plugin:
       let g:asyncomplete_popup_delay = 100
     after: |
       function! s:asyncomplete_preprocessor(options, matches) abort
-        if a:options.typed =~# '\v^$|\s$'
+        if a:options.typed =~# '\v^$|\s$' || getline('.') =~# '\%.c\k'
           return
         endif
         let items = []
