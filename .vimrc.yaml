@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .vimrc.yaml
 # - * Author: itchyny
-# - * Last Change: 2026/08/07 20:25:44.
+# - * Last Change: 2026/09/18 12:28:53.
 # ------------------------------------------------------------------------------------------------------------
 
 plugin:
@@ -11,6 +11,8 @@ plugin:
       let g:landscape_cursorline = 0
     after: |
       colorscheme landscape
+      highlight DiffAdd ctermfg=42 ctermbg=none
+      highlight DiffDelete ctermfg=203 ctermbg=none
   itchyny/lightline.vim: {}
   itchyny/lightline-powerful:
     before: |
@@ -586,6 +588,9 @@ plugin:
       let g:agit_max_author_name_width = 10
       let g:agit_max_log_lines = 2000
       let g:agit_ignore_spaces = 0
+    after: |
+      highlight link agitDiffAddMerge DiffAdd
+      highlight link agitDiffRemoveMerge DiffDelete
     script: |
       nnoremap <silent> <Leader>g :<C-u>Agit<CR>
   itchyny/vim-gita: # use a fork for now
